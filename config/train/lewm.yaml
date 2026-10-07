@@ -1,0 +1,54 @@
+# Fine-tune the official single-agent LeWM on cooperative Push-T data (the coop2 runs: 30 epochs, ~4 h on an H100 slice)
+defaults:
+  - _self_
+  - data: coop              # coop: own action | coop_joint: [self, partner]
+  - model: lewm
+
+output_model_name: lewm_coop2_ftfull   # -> $STABLEWM_HOME/checkpoints/<name>/weights_epoch_<n>.pt
+init_ckpt: lewm/pusht/weights.pt       # null = train from scratch
+save_every: 10                         # epochs between weight files (70 MB each)
+
+num_workers: 8
+train_split: 0.9
+seed: 3072
+img_size: 224
+embed_dim: 192
+history_size: 3
+num_preds: 1
+
+trainer:
+  max_epochs: 30
+  devices: 1
+  accelerator: gpu
+  precision: bf16
+  gradient_clip_val: 1.0
+  default_root_dir: ${hydra:runtime.output_dir}
+
+loader:
+  batch_size: 128
+  num_workers: ${num_workers}
+  persistent_workers: false
+  prefetch_factor: 2
+  pin_memory: true
+
+optimizer:
+  type: AdamW
+  lr: 5e-5
+  weight_decay: 1e-3
+
+loss:
+  sigreg:
+    weight: 0.09
+    kwargs:
+      knots: 17
+      num_proj: 1024
+
+wandb:
+  enabled: false
+  config:
+    project: multi-agent-wm
+    name: ${output_model_name}
+
+hydra:
+  run:
+    dir: ${oc.env:STABLEWM_HOME}/outputs/${hydra:job.name}/${now:%Y-%m-%d}/${now:%H-%M-%S}

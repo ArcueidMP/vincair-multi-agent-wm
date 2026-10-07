@@ -1,0 +1,29 @@
+# Cooperative Push-T data: force-threshold physics, scripted team with noise, smoothing and solo segments
+defaults:
+  - _self_
+  - override hydra/launcher: basic
+
+env: # world.MultiPushT kwargs
+  n_agents: 2
+  others: distinct          # partner drawn in orange in each agent's view
+  agent_collisions: true
+  agent_force: 1.0e5        # force threshold: one agent alone cannot move the T (null = original physics)
+  solver_iterations: 50     # so a lone push does not leak through the T's friction
+  jpeg_quality: 95          # JPEG 4:2:0 round trip, like the official Push-T frames LeWM was trained on
+  max_episode_steps: 200
+
+seed: 0
+num_episodes: 1000
+policy: coop                # coop (scripted team) | heuristic (independent noisy pushers)
+policy_kwargs:
+  noise: 0.05
+  smooth: 0.5
+  p_solo: 0.2               # segments where one agent pushes alone (and the T does not move)
+
+output:
+  name: multipusht_2a_coop.h5 # under $STABLEWM_HOME/datasets
+  mode: error               # append | overwrite | error
+
+hydra:
+  run:
+    dir: ${oc.env:STABLEWM_HOME}/outputs/${hydra:job.name}/${now:%Y-%m-%d}/${now:%H-%M-%S}

@@ -1,0 +1,32 @@
+# Cooperative Push-T planning: LeWM's eval protocol (CEM 300 x 30, horizon 5, 50 episodes) with two agents
+defaults:
+  - solver: cem
+  - _self_
+  - override hydra/launcher: basic
+
+policy: lewm_coop2_ftfull  # checkpoint folder under $STABLEWM_HOME/checkpoints (lewm/pusht = official LeWM)
+planning: independent      # independent | decentralized | centralized (the last two need a joint-action checkpoint)
+seed: 0                    # eval seed: 0, 1, 2 or 42 (assets/eval_episodes.npz)
+num_episodes: 50
+budget: 150                # env steps; both agents must walk to the T first, so 50 (LeWM's budget) is too short
+video: true
+img_size: 224
+run_name: ${policy}_${planning}_s${seed}
+
+env: # world.MultiPushT kwargs, as config/collect.yaml
+  n_agents: 2
+  others: distinct
+  agent_collisions: true
+  agent_force: 1.0e5
+  solver_iterations: 50
+  jpeg_quality: 95
+  success: pusht           # the original test: T pose and agent 0 at its goal spot
+
+plan_config:
+  horizon: 5
+  receding_horizon: 5
+  action_block: 5          # frameskip
+
+hydra:
+  run:
+    dir: ${oc.env:STABLEWM_HOME}/outputs/${hydra:job.name}/${now:%Y-%m-%d}/${now:%H-%M-%S}

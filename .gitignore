@@ -1,0 +1,8 @@
+# ./data holds datasets, checkpoints and outputs (a symlink to big storage is fine)
+/data
+__pycache__/
+outputs/
+wandb/
+*.ckpt
+*.pt
+.venv
