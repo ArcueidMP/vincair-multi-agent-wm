@@ -12,5 +12,6 @@ else
     mkdir -p data
 fi
 uv sync                                   # .venv from uv.lock (PyTorch CUDA 12.8 wheels)
-uv run python scripts/download.py         # official LeWM + coop2 checkpoints (~210 MB)
+uv run python scripts/download.py         # official LeWM + coop2 + VMAS checkpoints (~220 MB)
 uv run python -c "from world import MultiPushT; e = MultiPushT(agent_force=1e5, solver_iterations=50); e.reset(seed=0); print('MultiPushT ok')"
+uv run python -c "from vmas_pusht.scenario import make; e = make(num_envs=2, device='cpu'); e.reset(); print('VMAS Push-T ok')"

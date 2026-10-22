@@ -1,13 +1,14 @@
 [project]
 name = "multipusht-lewm"
 version = "0.1.0"
-description = "LeWM world models planning for two agents in cooperative Push-T"
+description = "LeWM-style world models for multi-agent Push-T: pixel LeWM (MultiPush-T) and entity-token LeWM (VMAS)"
 requires-python = ">=3.10"
 dependencies = [
     "hydra-core>=1.3.7",
     "pettingzoo>=1.27.0",
     "stable-worldmodel[env,format,train]>=0.1.1",
     "transformers>=4.50,<5",
+    "vmas>=1.5.2",
 ]
 
 [tool.uv.extra-build-dependencies]

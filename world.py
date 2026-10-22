@@ -347,7 +347,9 @@ class PushTN(PushT):
             yield
         finally:
             for b, (p, a) in zip(bodies, saved):
-                b.position, b.angle = p, a
+                # angle first: pymunk keeps the centre of gravity fixed when the angle changes, and the T's is
+                # 45 px from its origin, so restoring the position first moved the T by ~45 px x the angle difference
+                b.angle, b.position = a, p
                 self.space.reindex_shapes_for_body(b)
 
     def _sample_starts(self, agent0, block, lo=50, hi=450, block_gap=110, agent_gap=60):
