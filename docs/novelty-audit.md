@@ -1,135 +1,135 @@
-# VMAS 协作边界与固定边缘配对审计
+# Audit of VMAS Cooperation Boundaries and Pairing with Fixed Marginals
 
-2026-10-23，本地 `codex/novelty`，基于 `b9102e83cc52276362355add86efb3bdc0313c55`。
-Python 3.10.21、VMAS 1.5.2、PyTorch 2.11.0+cpu；模型为发布的 `wm_full_h_agg2.pt`，未重新训练。
+2026-10-23, local branch `codex/novelty`, based on `b9102e83cc52276362355add86efb3bdc0313c55`.
+Python 3.10.21, VMAS 1.5.2, PyTorch 2.11.0+cpu; the model is the released `wm_full_h_agg2.pt`, without retraining.
 
-本轮已经完成物理边界测量、精确快照修复和配对实验。结果支持继续研究**特定条件与预算下的联合动作价值及其可预测性**。
-默认 VMAS 不能作为“任何单人策略都不可能完成任务”的前提；当前实验也还没有证明表示丢失了协作信息。
+This round completed physical boundary measurements, exact snapshot repairs, and pairing experiments. The results support further investigation of **the value and predictability of joint actions under specified conditions and budgets**.
+The default VMAS setup cannot justify the premise that no solo policy can complete the task; these experiments also do not establish that the representation has discarded information needed for cooperation.
 
-## 1. 状态快照：已修复，影响真实但不能夸大
+## 1. State snapshots: repaired, with a real but limited effect
 
-原来的 15 维 `state(env)` 只保存两名 agent 的平移状态和 T 的 bar 状态，遗漏了独立积分的 stem。
-`set_state` 把 stem 放回理想刚体位置、赋予与 bar 相同的速度，不能恢复接触后的关节残差。
+The original 15-dimensional `state(env)` stored only the translational states of the two agents and the state of the T's bar, omitting the independently integrated stem.
+`set_state` returned the stem to an ideal rigid-body position and assigned it the bar's velocity, so it could not restore joint residuals produced by contact.
 
-- 新增 `snapshot.capture/restore`：保存所有实体的位置、速度、角度、角速度，agent 控制缓冲、目标、奖励和步数。
-- 支持快照行的复制与重排；恢复前检查物理参数与拓扑；快照、源环境和目标环境不共享可变存储。
-- `plan.py` 的真实模拟器 CEM 和 `--diag` 分支已使用完整快照。
-- 保留发布模型的输入格式。`set_state` 仍用于近似摆放，同时修复 stem 的刚体速度 `v_stem = v_bar + omega × r`。
-- 修复诊断中的 Spearman 并列秩：成本全相等时相关性未定义，JSON 写 `null`，不再制造虚假排序信号。
+- Added `snapshot.capture/restore`: saves every entity's position, velocity, orientation, and angular velocity, along with agent control buffers, goals, rewards, and step counts.
+- Supports duplication and reordering of snapshot rows; checks physical parameters and topology before restoration; snapshots, source environments, and destination environments do not share mutable storage.
+- The true-simulator CEM and `--diag` paths in `plan.py` now use complete snapshots.
+- Preserves the released model's input format. `set_state` remains available for approximate placement, with the stem's rigid-body velocity corrected to `v_stem = v_bar + omega × r`.
+- Corrects tied ranks in the diagnostic Spearman calculation: correlation is undefined when all costs are equal, so JSON records `null` instead of producing a spurious ranking signal.
 
-8 个经过真实接触演化的朝向、同一后续动作流：精确快照在 1/5/25 步的全部物理状态、奖励和 done 均完全一致。
-旧 compact 重建在第 25 步的 bar 位置误差最大为 **0.003024**，角度误差最大为 **0.016966 rad**。
-同样的 16 条候选动作中，8 个初态有 1 个改变了最优候选；选择损失均值 **0.000463**。
-这说明旧重建确实引入偏差，但不足以把原规划器的低成功率主要归因于此。
+For 8 orientations reached through actual contact dynamics, replaying the same subsequent action stream from exact snapshots reproduced all physical states, rewards, and done flags exactly at 1/5/25 steps.
+At step 25, the old compact-state reconstruction produced a maximum bar-position error of **0.003024** and a maximum orientation error of **0.016966 rad**.
+Among the same 16 candidate action sequences, the best candidate changed for 1 of the 8 initial states; mean selection loss was **0.000463**.
+The old reconstruction therefore introduced a measurable bias, but this evidence is insufficient to attribute the original planner's low success rate primarily to that bias.
 
-精确恢复的是状态，不是任意批处理布局下的长期数值轨迹保证。另一个批大小或同行样本集合可能改变浮点计算路径；
-配对实验另行审计了这种差异，没有靠放宽回放断言隐藏它。
+Exact state restoration does not guarantee identical long-term numerical trajectories under arbitrary batch layouts. A different batch size or set of neighboring batch rows can change the floating-point computation path.
+The pairing experiments audited this difference separately rather than hiding it by relaxing replay assertions.
 
-数据：[snapshot.json](../data/novelty/snapshot.json)。实现：[snapshot.py](../vmas_pusht/snapshot.py)、
-[snapshot_audit.py](../vmas_pusht/snapshot_audit.py)。
+Data: [snapshot.json](../data/novelty/snapshot.json). Implementation: [snapshot.py](../vmas_pusht/snapshot.py),
+[snapshot_audit.py](../vmas_pusht/snapshot_audit.py).
 
-## 2. 单人/双人边界：严格“双人必要性”不成立
+## 2. Solo versus joint pushing: strict two-agent necessity does not hold
 
-设计：每个条件复制相同完整状态，比较 `00 / 10 / 01 / 11`。未行动的 agent 仍是可碰撞、可被推动的实体，输入为零。
-所有主动动作采用单位欧氏范数方向，避免 `[-1,1]²` 的对角动作具有更大推力的混淆。
-先执行 10 步零动作，再测量；目标为沿推动方向平移 0.2，位置容差 0.05、角度容差 20°。
+Design: duplicate the same complete state for each condition and compare `00 / 10 / 01 / 11`. An inactive agent receives zero input but remains a collidable body that can be pushed.
+All active actions use directions normalized to unit Euclidean norm, avoiding the confound that diagonal actions in `[-1,1]²` exert greater force.
+Measurement starts after 10 zero-action steps. The target is a translation of 0.2 along the pushing direction, with position tolerance 0.05 and orientation tolerance 20°.
 
-扫描 friction_ratio = 0/0.75/1.5/2.25，substeps = 2/5/10/20，朝向 = 0°/45°，
-接触 = wide/side/centered，强度 = 0.5/1，B 延迟 = 0/10/25，H = 5/25/100/200。
-共 **576 组条件、2304 条四分支轨迹**，记录 2304 个“条件 × 时域”行，全部数值有限。
-substeps=1 的四个摩擦组合被 VMAS 关节实现拒绝，明确记作 `unsupported`。
-这些是设计条件网格，不是独立同分布样本；没有给出成功概率的置信区间。
+The sweep covers friction_ratio = 0/0.75/1.5/2.25, substeps = 2/5/10/20, orientation = 0°/45°,
+contact layout = wide/side/centered, strength = 0.5/1, B delay = 0/10/25, and H = 5/25/100/200.
+There are **576 conditions and 2304 trajectories across the four intervention branches**, with 2304 condition-by-horizon rows recorded; all states remained finite.
+VMAS's joint implementation rejected the four friction combinations at substeps=1, which are explicitly recorded as `unsupported`.
+These form a designed condition grid, not independent and identically distributed samples; no confidence interval for a success probability is reported.
 
-默认 r=1.5、wide 轴向接触、单位动作、无延迟、H=25 的**有向质心位移**如下。长度均为场景单位，没有 SI 标定。
+For the default r=1.5, axial pushing with wide contact, unit actions, no delay, and H=25, **signed center-of-mass displacement along the pushing direction** is as follows. All lengths are in uncalibrated scene units, not SI units.
 
-| substeps | 仅 A | 仅 B | A+B | `11 − 10 − 01 + 00` |
+| substeps | A only | B only | A+B | `11 − 10 − 01 + 00` |
 |---|---:|---:|---:|---:|
 | 2 | 0.050081 | 0.050081 | 0.126508 | 0.026346 |
-| 5（默认） | 0.026792 | 0.026792 | 0.117240 | 0.063655 |
+| 5 (default) | 0.026792 | 0.026792 | 0.117240 | 0.063655 |
 | 10 | 0.017865 | 0.017865 | 0.114684 | 0.078954 |
 | 20 | 0.013090 | 0.013090 | 0.113308 | 0.087129 |
 
-这里交互对比使用物理位移，不使用任意 latent 坐标差。它是指定动作干预的交互效果，不是所有策略的可达性定理。
+This interaction contrast uses physical displacement, not differences in arbitrary latent coordinates. It measures the interaction effect of the specified action interventions; it is not a reachability theorem over all policies.
 
-一个明确的 solo 成功反例：**r=1.5、substeps=5、centered 接触、45°、A 单位范数持续推动、B 零动作**。
-A 在第 **115 步**到达目标，首次几何边界接触在第 **195 步**；H=200 时有向质心位移 **0.199095**，最终仍成功。
-同样条件下 A 强度降为 0.5，也在第 **236 步**成功，早于边界接触第 392 步。
-相同初态下双人单位动作在第 36 步成功，说明时间预算可以改变该动作族内的协作需求。
+A clear counterexample to solo impossibility is **r=1.5, substeps=5, centered contact, 45°, a continuous unit-norm push by A, and zero action by B**.
+A reaches the target at **step 115**, before the first geometric arena-boundary contact at **step 195**. At H=200, signed center-of-mass displacement is **0.199095**, and the final state still satisfies the goal.
+Reducing A's strength to 0.5 under the same conditions also succeeds at **step 236**, before boundary contact at step 392.
+From the same initial state, joint unit actions succeed at step 36, showing that the time budget can change the need for cooperation within this action family.
 
-离散化也会改变判断：r=2.25、wide 轴向双人推动，substeps=5/10 分别在第 76/140 步成功；substeps=20 在 200 步内失败。
-因此不能仅凭 friction_ratio 推断静摩擦阈值或联盟必要性。VMAS 1.5.2 在零速度处摩擦为零，其低速摩擦还包含按分量的步长裁剪。
-本轮保留原物理实现，没有修改摩擦来人为确保“双人必需”。
+Discretization also changes the assessment: for r=2.25 and joint axial pushing with wide contact, substeps=5/10 succeed at steps 76/140, respectively, whereas substeps=20 fails within 200 steps.
+Consequently, friction_ratio alone cannot establish a static-friction threshold or coalition necessity. VMAS 1.5.2 applies zero friction at zero velocity, and its low-speed friction also includes componentwise clipping that depends on the integration step size.
+This round retained the original physics implementation; friction was not modified to force two-agent necessity.
 
-`success_ever` 与 `success_final` 分开记录，避免越过目标后误判；同时记录首次成功、首次场地边界接触、接触比例与有限性。
-长时域汇总尤其需要查看边界标记。不同 B 延迟会重复同一个 A-only 控制，不能把这些重复视作独立证据。
+`success_ever` and `success_final` are recorded separately to avoid misclassifying trajectories that pass the goal and overshoot. First success, first arena-boundary contact, contact fraction, and finiteness are also recorded.
+Boundary flags are particularly important when summarizing long horizons. Different B delays repeat the same A-only control, and these repetitions must not be treated as independent evidence.
 
-数据：[boundary.json](../data/novelty/boundary.json)、[centered 长时域控制](../data/novelty/boundary_centered.json)。
-实现：[boundary.py](../vmas_pusht/boundary.py)。
+Data: [boundary.json](../data/novelty/boundary.json), [centered-contact long-horizon control](../data/novelty/boundary_centered.json).
+Implementation: [boundary.py](../vmas_pusht/boundary.py).
 
-## 3. 固定边缘分布：存在配对收益，现有模型只回收一部分
+## 3. Fixed marginals: pairing gains exist, but the current model recovers only part of them
 
-每个初态下，每名 agent 固定 8 条完整动作序列。耦合为一个置换矩阵除以 8，行和、列和都严格为 1/8。
-每次平衡执行使用每条序列恰好一次；没有从固定池里挑出一个最优动作对，也没有重新优化或重采样单体候选。
-独立耦合的期望为全部 64 对结果的均值。最大权匹配求出该有限表上的最优置换。
+For each initial state, each agent has a fixed library of 8 complete action sequences. A coupling is a permutation matrix divided by 8, with every row and column summing to exactly 1/8.
+Each balanced execution uses every sequence exactly once; it neither selects a single best action pair from the fixed pool nor reoptimizes or resamples individual candidates.
+The independent coupling's expectation is the mean outcome over all 64 pairs. Maximum-weight matching identifies the optimal permutation on this finite outcome table.
 
-方法包括独立耦合、256 个随机置换、最大脉冲重叠的同步规则、冻结世界模型，以及真实模拟器最优/最差置换。
-模型和同步规则在看到未来真实结果之前确定配对。
-模型使用真实执行的 10 步零动作历史，共 3 帧，未用重复帧伪造历史。
-每组使用同一候选表；模型评估 64 对，真实模拟器也评估 64 对，没有额外 CEM 迭代或候选扩充。
-真实最优使用了特权信息，是诊断上界；同步规则和模型的实际计算成本不同，不能称为等线上成本的算法优劣比较。
+Methods include independent coupling, 256 random permutations, a synchronization rule that maximizes pulse overlap, a frozen world model, and the best/worst permutations under the true simulator.
+The model and synchronization rule choose pairings before observing the true future outcomes.
+The model receives a genuinely executed 10-step zero-action history containing 3 frames, rather than a history fabricated by repeating frames.
+Each group uses the same candidate table: the model evaluates 64 pairs and the true simulator also evaluates 64 pairs, without extra CEM iterations or candidate expansion.
+The true optimum uses privileged information and serves as a diagnostic upper bound. The synchronization rule and model have different actual computational costs, so this is not an algorithm comparison at equal online cost.
 
-先固定纯时序族，再预先声明更难的“时序 + 方向”族。后者在每个 agent 的候选中分配 `−30/−20/−10/0/0/10/20/30°`
-偏转，起始时间与偏转顺序分别以固定种子排列。脉冲长度和推力范数保持相等，冲量方向可以不同，但各方法之间候选完全相同。
-每族测试 wide/narrow/side × 0°/45° 共 6 个条件，H=25 配 10 步脉冲，H=60 配 20 步脉冲。没有按结果调节角度或筛选条件。
+A timing-only family was fixed first, followed by a prespecified, harder timing-and-direction family. In the latter, each agent's candidates receive deflections of `−30/−20/−10/0/0/10/20/30°`;
+start times and deflection order are independently permuted with fixed seeds. Pulse duration and force norm remain equal. Impulse directions may differ, but the candidate libraries are identical across methods.
+Each family tests 6 conditions: wide/narrow/side × 0°/45°. H=25 uses 10-step pulses, and H=60 uses 20-step pulses. Angles were not tuned and conditions were not selected based on outcomes.
 
-指标为 `初始目标姿态误差 − 终端目标姿态误差`，角度权重与场景一致；下表是六个设计条件的描述性均值。
-“增益”均相对独立耦合；它们不是成功率百分点。
+The metric is `initial target-pose error − terminal target-pose error`, with the scenario's orientation weighting. The table reports descriptive means over the six designed conditions.
+All gains are relative to independent coupling; they are not percentage-point increases in success rate.
 
-| 候选族 / H | 独立进展 | 同步规则增益 | 冻结 WM 增益 | 真实最优增益 | WM 回收最优增益 |
+| Candidate family / H | Independent progress | Synchronization gain | Frozen WM gain | True-optimum gain | Fraction of optimal gain recovered by WM |
 |---|---:|---:|---:|---:|---:|
-| 时序 / 25 | 0.031943 | 0.018793 | 0.013915 | 0.018793 | 74.0% |
-| 时序 / 60 | 0.057081 | 0.034268 | 0.017556 | 0.034268 | 51.2% |
-| 时序 + 方向 / 25 | 0.019297 | 0.012995 | 0.006668 | 0.014762 | 45.2% |
-| 时序 + 方向 / 60 | 0.011114 | 0.019292 | 0.002215 | 0.032853 | 6.7% |
+| Timing / 25 | 0.031943 | 0.018793 | 0.013915 | 0.018793 | 74.0% |
+| Timing / 60 | 0.057081 | 0.034268 | 0.017556 | 0.034268 | 51.2% |
+| Timing + direction / 25 | 0.019297 | 0.012995 | 0.006668 | 0.014762 | 45.2% |
+| Timing + direction / 60 | 0.011114 | 0.019292 | 0.002215 | 0.032853 | 6.7% |
 
-纯时序族的同步规则在全部条件达到最优，所以它本身不能支撑复杂协作学习的必要性。
-引入方向后，同步规则在 H=60 只回收 **58.7%** 的最优增益，确实留下了同步之外的配对空间。
-但现有模型没有填补这个空间：方向族 H=25 的 1/6、H=60 的 2/6 条件中，模型配对反而差于独立耦合。
-这为后续训练提供了清晰诊断目标，但不能据此断言失败来自表示，而不是动力学预测、解码成本或长时域误差。
+The synchronization rule is optimal in every timing-only condition, so that family alone cannot establish a need for complex cooperation learning.
+With directional variation at H=60, synchronization recovers only **58.7%** of the optimal gain, leaving measurable pairing opportunities beyond synchronization.
+The current model does not exploit that opportunity: in the direction-varying family, its pairing is worse than independent coupling in 1/6 conditions at H=25 and 2/6 at H=60.
+This provides a clear diagnostic target for subsequent training, but it does not identify representation failure rather than dynamics prediction, the decoded cost, or long-horizon error as the cause.
 
-**四组配对实验在平移 0.2 的目标上，所有候选均未成功。** 本轮证明的是进展和物理响应的配对收益，尚未证明任务成功率收益。
-H=60 也超出发布模型所报告的 5 个模型步验证时域，应单独看待长预测误差。
+**Across all four pairing experiments, no candidate succeeds on the translation target of 0.2.** This round establishes pairing gains in progress and physical response, not gains in task success rate.
+H=60 also exceeds the released model's reported validation horizon of 5 model steps; long-horizon prediction error must be considered separately.
 
-验证与数值审计：
+Validation and numerical audit:
 
-- 24 个条件的同批次完整回放误差均为零；完整动作序列哈希、初态、历史、评分矩阵和置换均保存。
-- 行项 + 列项的可加矩阵负控制，在所有条件下配对增益为零。
-- 每种选定配对另以 8 条平衡轨迹重新执行；每个 agent 的每条序列使用次数均为 1。
-- 再执行 8 个循环置换覆盖全部 64 对，获得相同批大小的独立参照，避免只依赖大矩阵查表。
-- 改变批大小后的最大单元进展差：纯时序 H25/H60 为 0.00000523/0.00013012，方向族为 0.00001158/0.00217468。
-  方向族 H60 在实际 8 条平衡执行中的平均增益为：WM **0.002177**、同步 **0.019251**、原大表最优置换 **0.032858**，排序保持。
-  未把跨批差异归因为已证实的具体 VMAS bug，也没有把它当成快照字段遗漏。
+- Complete replay within the same batch has zero error for all 24 conditions; hashes of full action sequences, initial states, histories, score matrices, and permutations are saved.
+- An additive-matrix negative control consisting of a row term plus a column term has zero pairing gain in every condition.
+- Each selected pairing is also executed again as 8 balanced trajectories; every sequence of each agent has a usage count of 1.
+- A further 8 cyclic permutations cover all 64 pairs, providing an independent-coupling reference at the same batch size instead of relying only on lookup in the larger outcome table.
+- The maximum individual-cell difference in progress after changing batch size is 0.00000523/0.00013012 for timing-only H25/H60 and 0.00001158/0.00217468 for the direction-varying family.
+  For the direction-varying family at H60, mean gains in the actual batches of 8 balanced executions are **0.002177** for WM, **0.019251** for synchronization, and **0.032858** for the original large-table optimal permutation; the ranking is unchanged.
+  Cross-batch differences were not attributed to a confirmed, specific VMAS bug or treated as evidence of omitted snapshot fields.
 
-数据：[时序 H25](../data/novelty/pairing_pilot_h25.json)、[时序 H60](../data/novelty/pairing_pilot_h60.json)、
-[方向 H25](../data/novelty/pairing_steering_h25.json)、[方向 H60](../data/novelty/pairing_steering_h60.json)。
-同名 `.pt` 保存完整动作库和快照。实现：[pairing.py](../vmas_pusht/pairing.py)。
+Data: [timing H25](../data/novelty/pairing_pilot_h25.json), [timing H60](../data/novelty/pairing_pilot_h60.json),
+[direction H25](../data/novelty/pairing_steering_h25.json), [direction H60](../data/novelty/pairing_steering_h60.json).
+The corresponding `.pt` files store complete action libraries and snapshots. Implementation: [pairing.py](../vmas_pusht/pairing.py).
 
-## 4. 下一阶段可检验的主张
+## 4. Testable claims for the next stage
 
-可以主张：**在固定个体动作序列能力和边缘分布下，配对关系具有可测量的决策价值；发布模型对这种价值的利用随条件与时域而失效。**
-目前只有有限诊断证据；新方法、未见团队泛化、最小联盟识别、因果表示优势都尚未完成。
+A defensible claim is: **with individual action-sequence capabilities and marginal distributions fixed, the pairing relationship has measurable decision value; the released model's ability to exploit that value breaks down as conditions and horizons change.**
+The evidence remains a finite diagnostic study. A new method, generalization to unseen teams, minimum-coalition identification, and an advantage from causal representations have not yet been established.
 
-下一步应先用匹配数据比较普通 joint-action WM 与交互效果约束训练，保持数据量、候选库和预测预算一致，
-按未见接触布局/方向/相对时序划分测试集；同时保留同步、解析几何/力矩配对和直接结果预测基线。
-核心指标应是成功与进展、配对 regret，以及未见条件下回收多少可实现增益，不能只看 latent MSE。
-如果收益仍能由同步或简单几何规则解释，或只出现在随 substeps 改变的数值边界上，应缩小主张。
+The next step should compare an ordinary joint-action WM with training constrained by interaction effects on matched data, keeping dataset size, candidate libraries, and prediction budgets equal.
+Test splits should hold out contact layouts, directions, and relative timing. Synchronization, analytical geometry/torque pairing, and direct outcome-prediction baselines should all remain in the comparison.
+The key metrics should be success and progress, pairing regret, and the fraction of attainable gain recovered under unseen conditions, rather than latent MSE alone.
+If synchronization or simple geometric rules still explain the gains, or if gains occur only at numerical boundaries that move with substeps, the claim should be narrowed.
 
-## 5. 复现与验证
+## 5. Reproduction and validation
 
-仅需要本仓库及已下载的状态模型，无需像素模型、原训练数据或 GPU。
+Only this repository and the downloaded state model are required; neither the pixel models, the original training data, nor a GPU is needed.
 
 ```bash
-uv venv --python 3.10 .venv  # 已有环境时跳过
+uv venv --python 3.10 .venv  # Skip if the environment already exists
 uv pip install --python .venv/bin/python -r requirements-novelty.txt
 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 .venv/bin/python -m pytest -q
 .venv/bin/python -m vmas_pusht.snapshot_audit --out data/novelty/snapshot.json
@@ -147,9 +147,9 @@ OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 .venv/bin/python -m pytest -q
   --bank-family timing-steering --horizon 60 --pulse-steps 20 --out data/novelty/pairing_steering_h60.json
 ```
 
-测试覆盖接触/旋转状态回放、同环境重放、批次映射、存储独立性、配置拒绝、compact 重建误差、并列秩、
-匹配四分支干预、接触几何、置换约束、暴力最优匹配对照、可加性负控制、候选范数和冲量。
-`true`、`sim_latent`、`latent --diag` 三种规划路径也完成小规模实际运行。
-历史发布成绩未重跑，不将它们与本轮有限诊断混为一个 benchmark。
+Tests cover replay of contact and rotational states, replay in the same environment, batch mappings, storage independence, rejection of incompatible configurations, compact-reconstruction error, tied ranks,
+matched four-branch interventions, contact geometry, permutation constraints, comparison with brute-force optimal matching, the additivity negative control, candidate norms, and impulses.
+Small actual runs also exercised the `true`, `sim_latent`, and `latent --diag` planning paths.
+Previously published scores were not rerun and are not combined with this finite diagnostic study into a single benchmark.
 
-原始输出约 17 MB，存于 gitignored 的 `data/novelty/`。代码与本说明留在本地研究分支，未推送。
+Raw outputs occupy approximately 17 MB in the gitignored `data/novelty/` directory. At the time of this audit, the code and this report remained on the local research branch and had not been pushed.

@@ -145,6 +145,11 @@ rotation before training, retrains local models under equal budgets in both sett
 composition and counterfactual tests. The new setting passes local and recorded-action refinement checks;
 the remaining composition failure is traced to pose changes during contact recovery, not simply solver resolution.
 
+The [recovery intervention and simulator-MPC audit](docs/recovery-attribution-mpc-audit.md) separates the two
+agents' recovery drives from identical complete retreat snapshots. It then compares the original bank13 with
+physically executed reverse-contact routes under the same remaining task budget, using receding-horizon true
+simulation and the original ordered-goal scoring. No world model is retrained for these diagnostics.
+
 ```bash
 .venv/bin/python -m vmas_pusht.physical_abstraction
 .venv/bin/python -m vmas_pusht.abstraction_models

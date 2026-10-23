@@ -1,200 +1,204 @@
-# 稳定物理设定、局部 WM 重训与冻结组合验证
+# Stable Physics, Local WM Retraining, and Frozen Composition Evaluation
 
-2026-10-23，`codex/novelty`。
+2026-10-23, `codex/novelty`.
 
-**本轮建立了保留旋转控制作用、通过有限网格数值检查的新设定，并保留原设定作对照。**
-原/新设定分别按相同预算重训局部 WM，冻结后执行组合任务。
-新设定与对应重训模型提高了第一段目标的成功数，但完整组合仍为 **0/720**。
-主要失败已定位到重新支撑阶段改变了物体姿态，越过最终目标；不能把它全部解释成 WM 的表示或预测失败。
+**This round established a new physical configuration that retains rotational control authority and passes numerical checks on a finite grid, while preserving the original configuration as a control.**
+Local WMs were retrained separately under the original and new configurations with equal budgets, then frozen for composition evaluation.
+The new configuration and its corresponding retrained model increased first-stage goal successes, but complete composition still achieved **0/720**.
+The main failure was traced to rebracing changing the object's pose and overshooting the final goal; it cannot all be attributed to WM representation or prediction failure.
 
-## 1. 物理设置在训练和任务评估前选定
+The subsequent [recovery attribution and closed-loop simulator recovery audit](recovery-attribution-mpc-audit.md) is now complete: true-simulator MPC with the original bank13 still could not recover
+108 cases that passed the first-goal gate. Adding physical side changes and reverse contact achieved 108/108, and all successes were preserved in fixed-action replay at 320 substeps.
+The 0/720 in this report is the result for the original frozen action interface; it does not imply that these states are physically unrecoverable.
 
-新增 [physics_profiles.py](../vmas_pusht/physics_profiles.py)。原 `scenario.make` 默认值未改，原结果、权重和数据均保留。
+## 1. Physics Was Selected Before Training and Task Evaluation
 
-| 参数 | 原设定 `original` | 新设定 `dry_light` |
+Added [physics_profiles.py](../vmas_pusht/physics_profiles.py). The original `scenario.make` defaults were unchanged, and the original results, weights, and data were preserved.
+
+| Parameter | Original configuration `original` | New configuration `dry_light` |
 |---|---:|---:|
-| T 总质量 | 2 | 2 |
-| agent 推力倍率 | 1 | 1 |
+| Total T mass | 2 | 2 |
+| Agent force multiplier | 1 | 1 |
 | friction_ratio | 1.5 | 0.25 |
 | rot_friction_ratio | 1.2 | 0.10 |
-| 环境步长 dt | 0.1 | 0.1 |
-| 碰撞、有限刚度关节、drag | 原实现 | 原实现 |
+| Environment timestep dt | 0.1 | 0.1 |
+| Collisions, finite-stiffness joints, drag | Original implementation | Original implementation |
 
-控制欧氏范数上限保持 1，没有使用无限夹具、物体锁定或额外推力。
-选择只依据局部响应、数值误差与关节残差，没有使用组合成功率或 WM 的测试表现。
-候选物理系数先冻结，再按精度门槛选择数值分辨率，最终采用 **160 子步训练/执行，320 子步复核**。
-冻结记录见 [stable_physics_selected.json](../data/novelty/stable_physics_selected.json)。
+The Euclidean control-norm limit remains 1. No infinite-strength fixture, object locking, or additional force was used.
+Selection used only local responses, numerical discrepancies, and joint residuals, without using composition success or WM test performance.
+Candidate physical coefficients were frozen first; numerical resolution was then selected against the accuracy thresholds. The final choice was **160 substeps for training/execution and 320 substeps for verification**.
+The frozen selection is recorded in [stable_physics_selected.json](../data/novelty/stable_physics_selected.json).
 
-门槛为所有共同时间点最大位置差 ≤0.001 场景单位、最大角度差 ≤0.003 rad，
-同时要求匹配零主动作的平均/最大旋转作用达到 0.04/0.12 rad，关节位置/角度残差 ≤0.01/0.08，动作有界。
-既比较固定反馈，也回放完全相同的联合动作；以下取两者较差的误差：
+The thresholds were a maximum position discrepancy of ≤0.001 scene units and a maximum angular discrepancy of ≤0.003 rad over all common timepoints.
+The mean/maximum rotational effect relative to a matched zero-primary-action rollout also had to reach 0.04/0.12 rad, with joint position/angular residuals ≤0.01/0.08 and bounded actions.
+Both fixed feedback controllers and replay of exactly the same joint actions were compared; the table reports the worse discrepancy of the two:
 
-| 完整局部测试集 | substeps 比较 | 最大位置差 | 最大角差 | 判定 |
+| Complete local test set | Substeps compared | Maximum position discrepancy | Maximum angular discrepancy | Result |
 |---|---|---:|---:|---|
-| 开发 57 条 | 40→160 | 0.001711 | 0.006060 | 失败 |
-| 开发 57 条 | 80→160 | 0.000542 | 0.002196 | 通过 |
-| 开发 57 条 | 160→320 | 0.000262 | 0.001374 | 通过 |
-| 独立验证 135 条 | 80→320 | 0.000824 | 0.003910 | 失败 |
-| 独立验证 135 条 | **160→320** | **0.000275** | **0.001647** | **通过** |
+| Development: 57 trajectories | 40→160 | 0.001711 | 0.006060 | Fail |
+| Development: 57 trajectories | 80→160 | 0.000542 | 0.002196 | Pass |
+| Development: 57 trajectories | 160→320 | 0.000262 | 0.001374 | Pass |
+| Independent validation: 135 trajectories | 80→320 | 0.000824 | 0.003910 | Fail |
+| Independent validation: 135 trajectories | **160→320** | **0.000275** | **0.001647** | **Pass** |
 
-在 320 子步上，预载支撑的匹配零动作旋转效应：开发集均值/最大值约 0.198/0.658 rad，
-独立验证约 0.148/0.214 rad。原设定同一开发集在 160 子步仅约 0.0029/0.0087 rad。
-新设定的非平凡运动没有随细化消失。
+At 320 substeps, the mean/maximum rotational effect of primary action relative to matched zero-action controls under preloaded support was approximately 0.198/0.658 rad on the development set
+and 0.148/0.214 rad on independent validation. Under the original configuration, the same development set at 160 substeps produced only approximately 0.0029/0.0087 rad.
+The new configuration's nontrivial motion did not disappear under refinement.
 
-独立验证的最大关节残差约 0.00470/0.05784，未超局部门槛；预载真实双接触比例约 81%，普通锚点约 56%。
-有局部动作会丢失接触，因此不把整个动作族无条件描述成理想铰链。
-以上是有限局部网格证据，不是所有状态上的收敛证明或真实硬件验证。
+The maximum joint residuals on independent validation were approximately 0.00470/0.05784, within the local thresholds. Actual dual-contact fractions were approximately 81% for preloaded support and 56% for the ordinary anchor.
+Some local actions lose contact, so the entire action family is not unconditionally characterized as an ideal hinge.
+This is evidence from a finite local grid, not a convergence proof over all states or a real-hardware validation.
 
-## 2. 等预算、局部数据重训
+## 2. Equal-Budget Retraining on Local Data
 
-[stable_local_wm.py](../vmas_pusht/stable_local_wm.py) 分别在原设定和新设定的 160 子步下收集局部数据。
-每个物理设定有 1,638 条 primitive family 轨迹；5/10/20 步程序共享的因果前缀在模拟前合并，避免重复样本和批次舍入差异。
-每种支撑最终有 1,092 个唯一训练窗口、336 个验证窗口、964 个严格测试窗口。
-窗口来自 273 个训练原语族，不能将相关窗口当成独立随机重复。
+[stable_local_wm.py](../vmas_pusht/stable_local_wm.py) collected local data separately under the original and new configurations at 160 substeps.
+Each physical configuration contains 1,638 primitive-family trajectories. Causal prefixes shared by the 5/10/20-step programs were merged before simulation to avoid duplicate samples and batch-roundoff discrepancies.
+Each support condition ultimately has 1,092 unique training windows, 336 validation windows, and 964 strict test windows.
+The training windows come from 273 primitive families; correlated windows must not be treated as independent random replications.
 
-- 每个标签是一个恒定主动作的 5 步响应；长原语提供局部续接状态。
-- 所有模式共享 10 步真实零主动作前导观察，记录辅助动作及其成本，不伪造历史。
-- 训练包含方向 −20/0/20°、强度 0.15/0.3/0.6/0.9、时长 5/10/20；验证与未见动作方向、强度和时长另行划分。
-- 训练几何含小幅接触位置变化，保留初始朝向 30° 和组合速度扰动作测试。
-- 没有任务目标、完整组合、撤离、重新支撑或任务反事实标签进入训练。
-- 每种支撑固定 1,000 次更新、三个初始化种子；架构与更新数不按测试结果选择。
+- Each label is the response to a constant primary action over 5 steps; longer primitives provide local continuation states.
+- All modes share a 10-step real zero-primary-action observation prelude. Helper actions and their costs are recorded; history is not fabricated.
+- Training uses directions −20/0/20°, strengths 0.15/0.3/0.6/0.9, and durations 5/10/20. Validation and unseen-action directions, strengths, and durations are assigned separate splits.
+- Training geometry includes small contact-position variations; the initial orientation of 30° and combined velocity perturbations are held out for testing.
+- No task goals, complete compositions, retreat, rebracing, or task-counterfactual labels enter training.
+- Each support condition uses a fixed 1,000 updates and three initialization seeds. Architectures and update counts are not selected using test results.
 
-两种物理各训练 36 个模型，均可安全默认加载，冻结权重和归一化后再执行任务：
+Each physical configuration has 36 trained models, all loadable with the default safe loader. Weights and normalization statistics were frozen before task execution:
 
-| 模型 | 参数量 | 相对粗模型的额外信息 |
+| Model | Parameters | Information added relative to the coarse model |
 |---|---:|---|
-| 粗几何/体坐标粗模型 | 1,763 | 无速度；当前几何、动作、时长、分辨率、锚点 |
-| 完整状态 | 1,731 | 速度、角速度与物理参数 |
-| 历史模型 | 1,741 | 两段真实过去几何及联合动作，额外存储 34 个数值 |
+| Coarse geometry / body-frame coarse model | 1,763 | No velocity; current geometry, action, duration, resolution, and anchor |
+| Full state | 1,731 | Velocities, angular velocities, and physical parameters |
+| History model | 1,741 | Two real past geometry-and-joint-action intervals; 34 additional stored values |
 
-helper 仍为手写 PD，无学习参数。它及恢复协调器的锚点、阶段记忆、速度/接触感知、几何知识和物理功耗都不能当作免费资源。
-原始世界坐标粗模型还存在方向 OOD 外推问题，主要解释采用预先声明的体坐标、完整状态和历史基线。
+The helper remains a hand-written PD controller with no learned parameters. Its anchor and phase memory, velocity/contact sensing, geometric knowledge, and physical actuation costs—and those of the recovery coordinator—cannot be treated as free resources.
+The raw world-coordinate coarse model also exhibits orientation-OOD extrapolation problems, so the main interpretation uses the prespecified body-frame, full-state, and history baselines.
 
-严格测试结果使用 `test_action/test_context/test_nuisance`，排除验证集。
-原报告中沿用的 `all_heldout` 会包含验证集，不能把它直接称作严格 OOD 测试。
+Strict test results use `test_action/test_context/test_nuisance` and exclude validation.
+The inherited `all_heldout` aggregate in the original report includes validation and must not be directly described as a strict OOD test.
 
-新设定、每种支撑 964 个严格测试窗口的角度预测 RMS，三个初始化均值：
+Angular prediction RMS under the new configuration, over 964 strict test windows per support condition, averaged across three initializations:
 
-| 支撑 | 粗体坐标 | 完整状态 | 历史 |
+| Support | Body-frame coarse | Full state | History |
 |---|---:|---:|---:|
 | passive | 0.02361 | 0.02980 | 0.02037 |
 | world_anchor | 0.03793 | 0.01502 | 0.01780 |
 | preloaded_anchor | 0.10244 | 0.01300 | 0.02430 |
 
-固定支撑没有让这个不含速度的粗表示普遍变得充分；支撑条件下，完整状态和历史仍有很强的优势。
-有限数据与优化也影响这些结果，因此不能把网络的全部拟合误差当成信息论下界。
+Fixed support did not make this velocity-free coarse representation generally sufficient. Full state and history retain substantial advantages under active support.
+Finite data and optimization also affect these results, so the network's entire fitting error cannot be interpreted as an information-theoretic lower bound.
 
-模型与数据：[原设定](../data/novelty/stable_local_original_models.json)、
-[新设定](../data/novelty/stable_local_selected_models.json)、
-[排除验证集的严格汇总](../data/novelty/stable_angular_selected_primary_strict_test.json)。
+Models and data: [original configuration](../data/novelty/stable_local_original_models.json),
+[new configuration](../data/novelty/stable_local_selected_models.json),
+and [strict summary excluding validation](../data/novelty/stable_angular_selected_primary_strict_test.json).
 
-## 3. 冻结后的组合与二乘二对照
+## 3. Frozen Composition and the Two-by-Two Control
 
-全部执行使用相同 bank13：零动作，加三个方向 × 四档强度；每次恒定执行 5 步。
-目标序列保留 `.04→.08 rad`，另测 `.06→.12 rad`；角容差 0.015，bar 平移限制 0.05。
-前导观察的时间、推力、功与移动单独记录并计入成本，目标相对前导后的初态定义。
-阶段预算仍为 60/20/80/60，恢复控制和判据在任务结果出现前冻结。
+All executions use the same bank13: zero action plus three directions × four strength levels, with each action held constant for 5 steps.
+The goal sequence retains `.04→.08 rad` and additionally tests `.06→.12 rad`; angular tolerance is 0.015 and the bar-translation limit is 0.05.
+Prelude time, force, work, and movement are recorded separately and included in the costs; goals are defined relative to the physical state after the prelude.
+Phase budgets remain 60/20/80/60, and recovery control and criteria were frozen before task outcomes were observed.
 
-主计分将两件事分开：
+The primary scoring distinguishes two outcomes:
 
-- **外部有序目标成功**：第一目标与最终目标的连续五步门槛、终端姿态、有限性和边界限制。
-- **接触接口完整完成**：额外要求真实撤离与持续恢复。
+- **External ordered-goal success**: the first and final goals meet their consecutive-five-step gates, with terminal pose, finiteness, and boundary constraints satisfied.
+- **Complete contact-interface execution**: additionally requires actual retreat and sustained recovery.
 
-这样不会因 passive 不能满足主动双接触要求，就自动判它不能完成操作目标。
+This avoids automatically declaring passive support unable to achieve the manipulation goals merely because it cannot satisfy the active dual-contact requirement.
 
-原/新物理 × 原/新等预算重训粗体坐标模型，在同样 160 子步执行，第一阶段成功如下。每格 36 个设计条件：
+The original/new physics × original/new equal-budget retrained body-frame coarse models were all executed at the same 160 substeps. First-stage successes are shown below, with 36 design conditions per cell:
 
-| 执行物理／训练物理 | 原设定模型 | 新设定模型 |
+| Execution physics / training physics | Original-configuration model | New-configuration model |
 |---|---:|---:|
-| 原设定 | 10/36 | 0/36 |
-| 新设定 | 0/36 | 25/36 |
+| Original configuration | 10/36 | 0/36 |
+| New configuration | 0/36 | 25/36 |
 
-这说明新的物理设定恢复了实用控制作用，并需要匹配的局部动态模型。
-新设定下，普通角度反馈第一阶段 36/36，完整状态 23/36，历史模型 24/36；
-160→320 后，粗模型为 25→24，其余三者计数不变。这里的成功是第一段，不能冒充完整组合成功。
+This indicates that the new physical configuration restores useful control authority and requires a matching local dynamics model.
+Under the new configuration, ordinary angular feedback achieved 36/36 first-stage successes, full state 23/36, and history 24/36.
+After 160→320 refinement, the coarse model changed from 25→24; the counts for the other three remained unchanged. These are first-stage successes and must not be presented as complete composition successes.
 
-完整固定矩阵包含 **720 次组合执行，外部有序目标成功为 0/720**。
-主模型用预先固定的 seed0 执行，局部预测另报告三个初始化；没有按任务结果挑选模型。
-还记录 4,032 条未见动作反事实分支，事后在相同状态、相同真值上比较全部冻结模型，避免只比较各自访问的状态。
+The complete fixed matrix contains **720 composition executions, with external ordered-goal success of 0/720**.
+The primary model uses the prespecified seed0 for execution; local prediction results separately report three initializations. No model was selected using task outcomes.
+A further 4,032 unseen-action counterfactual branches were recorded. All frozen models were compared afterward on the same states and ground truth, avoiding a comparison restricted to each model's own visited states.
 
-## 4. 失败发生在恢复交接，而不是只有 WM 误差
+## 4. Failure Occurs at Recovery Handoff, Not Only in WM Prediction
 
-新设定 160 子步下，第一阶段通过的 108 个案例，在重新支撑后 **108/108 已超过最终角度容差**。
-其中 75 个是主动支撑。代表案例（角度均相对前导后的初态）：
+At 160 substeps under the new configuration, of the 108 cases that passed the first stage, **108/108 had already exceeded the final angular tolerance after rebracing**.
+Of these, 75 used active support. A representative case follows; all angles are relative to the post-prelude initial state:
 
-| 阶段 | bar 角度 |
+| Stage | Bar angle |
 |---|---:|
-| 第一阶段结束，目标 0.04 | 0.038512 |
-| 撤离结束 | 0.038423 |
-| 重新支撑及主执行者就位结束 | 0.121292 |
-| 最终，目标 0.08 | 0.128607 |
+| End of first stage; goal 0.04 | 0.038512 |
+| End of retreat | 0.038423 |
+| End of rebracing and primary-agent repositioning | 0.121292 |
+| Final state; goal 0.08 | 0.128607 |
 
-重新支撑阶段增加 **0.082869 rad**。接触与低相对速度等门槛可以满足，但这些门槛没有约束物体姿态的改变。
-这里的恢复协调器会移动两名 agent，不能把全部扰动都归因于辅助者单独施力。
+The rebracing stage added **0.082869 rad**. Contact and low-relative-speed gates can be satisfied without constraining the change in object pose.
+The recovery coordinator moves both agents, so the entire disturbance cannot be attributed to the helper acting alone.
 
-真实模拟器从交接后的同一完整状态尝试全部 13 个候选、5 步未来：
-75 个主动支撑案例中，没有找到降低综合目标代价或达到最终姿态的动作。
-此诊断共保存 2,808 条 oracle 分支；它只说明当前短时动作库不能立即修复，不是所有长时策略都不可达的证明。
-当前库只提供既定接触方向的推动，不能假设增加模型容量会自动补出反向转动或重新布置能力。
+From the same complete physical states after handoff, the true simulator tried all 13 candidates over 5 future steps.
+Among the 75 active-support cases, no action was found that reduced the combined goal cost or achieved the final pose.
+This diagnostic saved 2,808 oracle branches. It shows only that the current short-horizon action library cannot provide an immediate repair; it is not proof of unreachability under all longer-horizon policies.
+The current library only pushes from the prescribed contact direction. Increasing model capacity cannot be assumed to supply reverse rotation or repositioning capabilities automatically.
 
-局部训练只覆盖恒定推动窗口，没有覆盖强推后的停止、任意策略切换、撤离和重新支撑。
-因此最终失败还涉及训练覆盖与原语切换契约；不能全归因为粗表示缺失信息，也不能用这一个实现否定所有可组合抽象。
+Local training covers only constant-push windows, not stopping after a strong push, arbitrary policy changes, retreat, or rebracing.
+Final failure therefore also involves training coverage and primitive-transition contracts. It cannot all be attributed to missing information in the coarse representation, nor can this single implementation rule out all composable abstractions.
 
-诊断：[交接状态、同状态模型比较、真实短时 oracle](../data/novelty/stable_composition_diagnostics.json)。
+Diagnostic: [handoff states, same-state model comparison, and the true short-horizon oracle](../data/novelty/stable_composition_diagnostics.json).
 
-## 5. 长任务物理回放也通过数值门槛
+## 5. Long-Task Physical Replay Also Passes the Numerical Thresholds
 
-完整闭环的少数粗模型案例有较大端点差异，所以额外固定其实际联合动作，
-保留全部批次成员、顺序和完整快照，逐时刻回放 203 步。
-两组各 108 例：160 子步重放与原轨迹全部 24 维物理状态逐位一致。
+A few coarse-model cases had larger endpoint discrepancies in complete closed-loop execution. Their actual joint actions were therefore fixed for an additional replay,
+preserving every batch member, row order, and full snapshot, and comparing all timepoints over 203 steps.
+There were two groups of 108 cases each: replay at 160 substeps was bitwise identical to the original trajectories in all 24 physical-state coordinates.
 
-| 目标序列 | 同动作 160→320 最大位置差 | 最大角差 |
+| Goal sequence | Maximum position discrepancy, identical actions at 160→320 | Maximum angular discrepancy |
 |---|---:|---:|
 | .04→.08 | 0.000696 | 0.002307 |
 | .06→.12 | 0.000611 | 0.002030 |
 
-均低于 `.001/.003`，排除零主推动、按阶段/控制器划分、以及结束后补齐段也分别通过。
-所以约 `.033 rad` 的少数闭环端点差异不能直接称为相同动作下的物理积分不收敛，
-更可能涉及反馈、准备状态与事件决策对小差异的放大；尚未单独识别哪一项是充分原因。
+Both are below `.001/.003`. The checks also pass when excluding zero-primary-push cases, when stratifying by phase/controller, and for post-termination padding segments separately.
+Thus the approximately `.033 rad` endpoint discrepancies in a few closed-loop cases cannot directly be labeled a failure of physical integration to converge under identical actions.
+They more plausibly involve amplification of small differences by feedback, readiness states, and event decisions; which factor is a sufficient cause has not been independently identified.
 
-仍保留一个物理保真度限制：长任务中的最大 bar/stem 相对角残差 **0.08249 rad**，略高于局部门槛 0.08；
-位置残差约 0.00631。场景仍是有限刚度焊接近似，微任务评分也沿用 bar 姿态，不能把它无条件解释为理想刚体 T。
+One physical-fidelity limitation remains: the maximum bar/stem relative-angle residual during long tasks was **0.08249 rad**, slightly above the local threshold of 0.08.
+The position residual was approximately 0.00631. The scene remains a finite-stiffness welded approximation, and the microtask score still uses bar pose; it cannot unconditionally be interpreted as an ideal rigid T.
 
-数据：[完整任务固定动作数值审计](../data/novelty/stable_task_numerics.json)。
+Data: [fixed-action numerical audit of complete tasks](../data/novelty/stable_task_numerics.json).
 
-## 6. 单独的角速度诊断，不替换主实验
+## 6. Separate Angular-Velocity Diagnostic, Without Replacing the Primary Experiment
 
-在主模型冻结后另做探索性检查：旋转有惯性，几何约束不一定消除角速度。
-在粗体坐标输入中仅加入当前 bar 角速度，使用 1,708 参数、相同训练行与更新数；没有用于主实验动作选择。
+An exploratory check was conducted after the primary models were frozen: rotation has inertia, and geometric constraints need not eliminate angular velocity.
+Only current bar angular velocity was added to the coarse body-frame input. The resulting model has 1,708 parameters and uses the same training rows and update count; it was not used for action selection in the primary experiment.
 
-新设定严格测试的角 RMS 从 passive/world/preload 的 `0.02361/0.03793/0.10244`，
-变为 `0.02068/0.02356/0.04185 rad`。部分误差确由二阶运动信息解释，但完整状态仍强，
-也没有出现 helper 让该紧凑表示普遍优于 passive 的证据。
+Under the new configuration, strict-test angular RMS for passive/world/preload changed from `0.02361/0.03793/0.10244`
+to `0.02068/0.02356/0.04185 rad`. Second-order motion information explains part of the error, but full state remains a strong baseline.
+There is also no evidence that the helper makes this compact representation generally outperform passive support.
 
-精确别名分析的可比较重复子集仅 105/189 行，均为初始 omega=0；必须报告这个覆盖范围。
-在相同子集、相同主动作下，world/preload 对剩余平移扰动的 RMS 减少约 13.7%/16.9%，
-但剩余角度 RMS 从 passive 的 0.001328 增至 0.003089/0.002335 rad。
-减少几何自由度与减少任务相关预测不确定性需要分别验证。
+The comparable repeated subset in the exact-alias analysis contains only 105/189 rows, all with initial omega=0; this coverage must be reported.
+On the same subset and under the same primary actions, world/preload reduce RMS sensitivity to the remaining translational perturbations by approximately 13.7%/16.9%,
+but the remaining angular RMS increases from passive support's 0.001328 to 0.003089/0.002335 rad.
+Reducing geometric degrees of freedom and reducing task-relevant predictive uncertainty require separate verification.
 
-该检查是事后机制诊断，没有重新训练或替换主模型，也没有将修正表示的结果冒充预注册成功。
-数据：[角速度诊断](../data/novelty/stable_angular_selected_models.json)、
-[别名覆盖审计](../data/novelty/stable_angular_selected_alias.json)。
+This is a post hoc mechanism diagnostic. It neither retrained nor replaced the primary models, and results from the revised representation are not presented as a preregistered success.
+Data: [angular-velocity diagnostic](../data/novelty/stable_angular_selected_models.json)
+and [alias-coverage audit](../data/novelty/stable_angular_selected_alias.json).
 
-## 7. 当前可支持的判断
+## 7. Conclusions Currently Supported
 
-已经完成的进展是：保留原参数对照，建立了可转动且通过局部/实际动作回放数值检查的新设定，
-并在等预算局部训练后证明第一段目标能够改善。
-没有证明的是：固定支撑让粗表示充分、降低系统总资源需求，以及仅靠本轮局部训练就形成完整可组合接口。
+The completed progress is a new configuration that retains the original-parameter control, permits rotation, and passes local and actual-action replay numerical checks,
+followed by evidence of improved first-stage goals after equal-budget local training.
+What remains unproven is that fixed support makes the coarse representation sufficient, reduces total system resource requirements, or produces a complete composable interface from this round's local training alone.
 
-下一步最直接的工作应是给重新支撑建立**位姿扰动有界的退出条件**，或者把其真实状态转移和反向操作纳入局部原语。
-先确认目标在该原语库内可达，再检验冻结小模型是否能预测和组合。
-若 helper、协调器或额外感知承担了复杂度，必须一起计账。
-本轮既没有证明强主张，也没有给出该思路在其他合理接口设计下不可能的结论。
+The most direct next step is to give rebracing an **exit condition that bounds pose disturbance**, or to include its actual state transition and reverse operations in the local primitive library.
+First establish that the goal is reachable within that library, then test whether the frozen small model can predict and compose its operations.
+Any complexity carried by the helper, coordinator, or additional sensing must be included in the accounting.
+This round neither proves the strong claim nor establishes that the idea is impossible under other reasonable interface designs.
 
-## 8. 复现与实现
+## 8. Reproduction and Implementation
 
 ```bash
-# 原设置始终可用；新设置的选择记录为 stable_physics_selected.json
+# The original configuration remains available; the new selection is recorded in stable_physics_selected.json
 .venv/bin/python -m vmas_pusht.stable_physics --profiles dry_light original \
   --split development --substeps 40 80 160 --out data/novelty/stable_physics_development
 .venv/bin/python -m vmas_pusht.stable_physics --profiles dry_light \
@@ -202,13 +206,13 @@ helper 仍为手写 PD，无学习参数。它及恢复协调器的锚点、阶�
 .venv/bin/python -m vmas_pusht.stable_physics --profiles dry_light \
   --split development --substeps 160 320 --out data/novelty/stable_physics_development320
 
-# 两种物理完全相同的局部训练预算
+# Exactly the same local-training budget under both physical configurations
 .venv/bin/python -m vmas_pusht.stable_local_wm --profile original --substeps 160 \
   --output data/novelty/stable_local_original
 .venv/bin/python -m vmas_pusht.stable_local_wm --profile dry_light --substeps 160 \
   --output data/novelty/stable_local_selected
 
-# 冻结后的新设置全对照；原设置和交叉矩阵参数见相应 JSON 的 arguments
+# Frozen full controls under the new configuration; original-physics and cross-matrix arguments are in the corresponding JSON files
 .venv/bin/python -m vmas_pusht.stable_composition --profile dry_light \
   --new-models data/novelty/stable_local_selected_models.pt --training-profile dry_light \
   --substeps 160 320 --planners new_coarse_body_small new_full_matched new_history_matched \
@@ -219,18 +223,18 @@ helper 仍为手写 PD，无学习参数。它及恢复协调器的锚点、阶�
 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 .venv/bin/python -m pytest -q
 ```
 
-新增代码：[物理配置](../vmas_pusht/physics_profiles.py)、[物理验证](../vmas_pusht/stable_physics.py)、
-[局部训练](../vmas_pusht/stable_local_wm.py)、[冻结组合](../vmas_pusht/stable_composition.py)、
-[交接诊断](../vmas_pusht/stable_diagnostics.py)、[任务数值回放](../vmas_pusht/stable_task_numerics.py)。
+New code: [physics profiles](../vmas_pusht/physics_profiles.py), [physics validation](../vmas_pusht/stable_physics.py),
+[local training](../vmas_pusht/stable_local_wm.py), [frozen composition](../vmas_pusht/stable_composition.py),
+[handoff diagnostics](../vmas_pusht/stable_diagnostics.py), and [task numerical replay](../vmas_pusht/stable_task_numerics.py).
 
-主执行数据：[原设置匹配](../data/novelty/stable_composition_original_matched.json)、
-[新设置匹配](../data/novelty/stable_composition_selected_matched.json)、
-[原物理/新模型](../data/novelty/stable_composition_original_cross.json)、
-[新物理/原模型](../data/novelty/stable_composition_selected_cross.json)。
+Primary execution data: [matched original configuration](../data/novelty/stable_composition_original_matched.json),
+[matched new configuration](../data/novelty/stable_composition_selected_matched.json),
+[original physics / new model](../data/novelty/stable_composition_original_cross.json),
+and [new physics / original model](../data/novelty/stable_composition_selected_cross.json).
 
-复现命令会写入所列输出路径；保留本轮冻结产物时，应先复制到单独的实验目录再运行。
-[最终哈希核验](../data/novelty/stable_provenance_audit.json) 检查了 132 个引用、40 个不同文件。
-早期两份物理实验记录对应的 `stable_physics.py` 比当前版本少一个后来新增的 `finalize_selection` 函数；
-已保存与原始记录 SHA256 完全一致的源码快照。模拟、判据、局部训练和任务执行代码没有因此改变，历史记录未被覆盖。
+The reproduction commands write to the listed output paths. To preserve this round's frozen artifacts, copy them to a separate experiment directory before running the commands.
+The [final hash verification](../data/novelty/stable_provenance_audit.json) checked 132 references and 40 distinct files.
+The `stable_physics.py` source used for two early physics experiment records lacks the subsequently added `finalize_selection` function present in the current version.
+Source snapshots matching the original records' SHA256 hashes exactly have been saved. Simulation, criteria, local training, and task-execution code were not changed by that addition, and historical records were not overwritten.
 
-**143 项测试通过**。源码、物理配置、数据与模型哈希均保留；全部修改在本地 `codex/novelty`，未推送。
+**143 tests passed**. Source, physical-configuration, data, and model hashes were preserved. At the time of this audit, all changes were on the local `codex/novelty` branch and had not been pushed.
