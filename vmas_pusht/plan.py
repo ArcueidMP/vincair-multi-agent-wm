@@ -39,7 +39,8 @@ import torch
 from vmas_pusht.model import EntityJEPA
 from vmas_pusht.policy import ScriptedTeam
 from vmas_pusht.probe import fit_mlp_probe
-from vmas_pusht.scenario import make, set_state, state, wrap
+from vmas_pusht.scenario import make, state, wrap
+from vmas_pusht.snapshot import capture, restore
 from vmas_pusht.subgoal import RoleSchedule, Schedule, goal_state, scripted_rollout, state_dist
 
 FS = 5
@@ -155,10 +156,43 @@ def colored_noise(shape, beta, gen, dev):
 
 
 def spearman_rows(a, b):
-    """(E, S) x (E, S) -> (E,) Spearman rank correlation along dim 1."""
-    ra = a.argsort(1).argsort(1).float(); rb = b.argsort(1).argsort(1).float()
+    """Rowwise Spearman correlation with average ranks for ties.
+
+    A constant row or a row with nonfinite inputs has undefined correlation
+    (NaN). Assigning different ranks to equal costs would invent ranking signal.
+    """
+    if a.ndim != 2 or b.shape != a.shape or a.shape[1] == 0:
+        raise ValueError("Spearman inputs must be equal nonempty (episodes, samples) matrices")
+
+    def ranks(values):
+        order = values.argsort(dim=1, stable=True)
+        sorted_values = values.gather(1, order)
+        group_start = torch.ones_like(sorted_values, dtype=torch.bool)
+        group_start[:, 1:] = sorted_values[:, 1:] != sorted_values[:, :-1]
+        groups = group_start.long().cumsum(1) - 1
+        positions = torch.arange(1, values.shape[1] + 1, device=values.device, dtype=torch.float64).expand_as(values)
+        sums = torch.zeros_like(positions).scatter_add_(1, groups, positions)
+        counts = torch.zeros_like(positions).scatter_add_(1, groups, torch.ones_like(positions))
+        average = sums.gather(1, groups) / counts.gather(1, groups)
+        return torch.zeros_like(average).scatter_(1, order, average)
+
+    ra, rb = ranks(a), ranks(b)
     ra = ra - ra.mean(1, keepdim=True); rb = rb - rb.mean(1, keepdim=True)
-    return (ra * rb).sum(1) / (ra.norm(dim=1) * rb.norm(dim=1)).clamp(min=1e-8)
+    denominator = ra.norm(dim=1) * rb.norm(dim=1)
+    correlation = ((ra * rb).sum(1) / denominator).clamp(-1, 1)
+    valid = a.isfinite().all(1) & b.isfinite().all(1) & (denominator > 0)
+    return torch.where(valid, correlation, torch.full_like(correlation, float("nan")))
+
+
+def json_safe(value):
+    """Encode undefined diagnostic statistics as JSON null, never NaN/Infinity."""
+    if isinstance(value, float) and not math.isfinite(value):
+        return None
+    if isinstance(value, dict):
+        return {key: json_safe(item) for key, item in value.items()}
+    if isinstance(value, (list, tuple)):
+        return [json_safe(item) for item in value]
+    return value
 
 
 @torch.no_grad()
@@ -245,6 +279,10 @@ def run(args):
     for t in range(args.budget):
         if planning and t % replan == 0:
             s = state(env)
+            # Compact learning states omit the independently integrated stem.
+            # Every simulator candidate starts from this exact live snapshot.
+            sim_start = capture(env) if args.method != "latent" or diag is not None else None
+            source_rows = torch.arange(E, device=dev).repeat_interleave(args.samples)
             target = sched.update(s) if sched is not None else goal_state(s, goal)      # (E, D)
             if latent_cost:
                 zg = model.encode(norm(target))[:, tok]                                   # (E, n_tok, latent)
@@ -269,12 +307,12 @@ def run(args):
                     return (last[:, tok] - zg.repeat_interleave(S, 0)).pow(2).sum((-1, -2))
 
                 if diag is not None:
-                    def true_fn(c, s=s, target=target):
-                        """true cost of candidates c (E*S, PL, 2, 2) from state s, and the T position they reach."""
+                    def true_fn(c, sim_start=sim_start, target=target):
+                        """True cost of candidates from the exact live state, and their final T positions."""
                         S = c.shape[0] // E
                         rep = args.samples // S                                        # the sim batch is E * samples
                         c = c.repeat_interleave(rep, 0)
-                        set_state(dsim, s.repeat_interleave(args.samples, 0), goal.repeat_interleave(args.samples, 0))
+                        restore(dsim, sim_start, indices=source_rows)
                         for k in range(c.shape[1]):
                             dsim.step([c[:, k, 0], c[:, k, 1]])
                         st = state(dsim)
@@ -296,8 +334,8 @@ def run(args):
                             drec["min_true_final"] = tcost.min(1).values.tolist()
                             drec["min_model_final"] = mcost.min(1).values.tolist()
             else:
-                def cost_fn(c, s=s, target=target):
-                    set_state(sim, s.repeat_interleave(args.samples, 0), goal.repeat_interleave(args.samples, 0))
+                def cost_fn(c, sim_start=sim_start, target=target):
+                    restore(sim, sim_start, indices=source_rows)
                     for k in range(c.shape[1]):
                         sim.step([c[:, k, 0], c[:, k, 1]])
                     if latent_cost:
@@ -363,7 +401,7 @@ def run(args):
            "pose_err_start": float(err0.mean()), "pose_err_end": float(env.scenario.pose_err()[~solved].mean()) if (~solved).any() else 0.0,
            "co_contact": float((co / args.budget).mean()), "solved_at": solved_at.tolist(), "minutes": round((time.time() - t0) / 60, 1)}
     out = Path(args.out); out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(json.dumps(res, indent=1))
+    out.write_text(json.dumps(json_safe(res), indent=1, allow_nan=False))
     print({k: v for k, v in res.items() if k != "solved_at"}, "->", out, flush=True)
     if diag is not None:
         T_ = lambda k: torch.tensor([r[k] for r in diag])                        # (replans, E)
@@ -377,8 +415,8 @@ def run(args):
         summ["gap_true_minus_model_median"] = float(gap.median()); summ["regret_vs_best_true_median"] = float(regret.median())
         summ["regret_vs_best_true_mean"] = float(regret.mean())
         Path(args.diag).parent.mkdir(parents=True, exist_ok=True)
-        Path(args.diag).write_text(json.dumps({"summary": summ, "args": vars(args), "replans": diag}, indent=1))
-        print("diag", json.dumps(summ, indent=1), "->", args.diag, flush=True)
+        Path(args.diag).write_text(json.dumps(json_safe({"summary": summ, "args": vars(args), "replans": diag}), indent=1, allow_nan=False))
+        print("diag", json.dumps(json_safe(summ), indent=1, allow_nan=False), "->", args.diag, flush=True)
     if args.record:
         d = dict(state=torch.stack(rec_s, 1).cpu(), action=torch.stack(rec_a, 1).cpu(), goal=goal.cpu(),
                  contact=torch.stack(rec_c, 1).cpu(), success=torch.stack(rec_w, 1).cpu())

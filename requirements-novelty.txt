@@ -1,0 +1,12 @@
+# Minimal CPU environment for the novelty audits; does not install the pixel pipeline.
+# uv venv --python 3.10 .venv
+# uv pip install --python .venv/bin/python -r requirements-novelty.txt
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.11.0+cpu
+vmas==1.5.2
+numpy==2.2.6
+scipy==1.15.3
+einops==0.8.2
+gym==0.26.2
+pyglet==1.5.27
+pytest==9.1.1

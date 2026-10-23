@@ -1,12 +1,14 @@
 """Cooperative Push-T as a VMAS scenario (VMAS 1.5.2), state-based, vectorized in torch.
 
 The T is a bar (0.4 x 0.1) and a stem (0.1 x 0.3) welded by a dist-0 joint with fixed relative rotation. Floor
-friction on both parts uses VMAS's linear / angular friction: a friction force of at most coeff x mass opposes
-motion, so a push below the total friction moves nothing and only the excess accelerates the T. With
-friction_ratio r in (1, 2) the friction is r x one agent's force: one agent cannot move the T, two can, and the T
-moves faster the more the pushes exceed the friction (graded, unlike the pymunk env's quasi-static threshold).
-rot_friction_ratio does the same for torque (x one agent's torque at the bar tip).
-friction_ratio=0 gives the plain additive regime (a heavy T with drag, like VMAS Transport).
+friction on both parts uses VMAS's linear / angular friction: a velocity-dependent force of at most coeff x mass
+opposes existing motion. VMAS 1.5.2 applies zero friction at zero velocity; this is not a static-friction constraint.
+friction_ratio r sets the nominal total friction cap to r x one agent's axis-aligned force, but does not prove that
+one agent cannot move the T. Action bounds are per coordinate, so diagonal force can also exceed agent_force.
+Finite-horizon solo/joint feasibility and substep sensitivity must be measured. rot_friction_ratio sets the analogous
+angular friction cap (x one agent's torque at the bar tip).
+friction_ratio=0 removes the configured linear friction; drag, contacts and angular friction remain, so neither
+the dynamics nor the resulting reward is guaranteed to be additive in the agents' actions.
 
 Success: T within pos_tol of its goal position and rot_tol of its goal angle (T pose only; no agent goal spot).
 
@@ -169,7 +171,7 @@ def scenario(env):
 
 
 def state(env):
-    """(B, STATE_DIM): both agents' pos + vel, T bar pos, rot, vel, angular vel, padding."""
+    """Compact model state (B, 4*n_agents+7), 15D for two agents; not an exact physics snapshot."""
     sc = env.scenario
     a = [torch.cat([ag.state.pos, ag.state.vel], 1) for ag in env.world.agents]
     b = sc.bar.state
@@ -177,19 +179,36 @@ def state(env):
 
 
 def set_state(env, s, goal=None):
-    """Put every env of the batch at state s (B or 1, STATE_DIM), optionally with goal poses (B or 1, 3)."""
+    """Place a compact model state, optionally with goal poses (B or 1, 3).
+
+    This reconstructs an ideal rigid T from its bar pose and velocity. The VMAS
+    bar/stem joint is a finite-stiffness constraint, so real trajectories can
+    have distinct stem pose/velocity that cannot be recovered from this state.
+    Use ``snapshot.capture/restore`` for exact counterfactual simulator replay.
+    The existing two-agent model schema remains 15D.
+    """
     sc = env.scenario
     B = env.world.batch_dim
-    s = s.expand(B, -1) if s.shape[0] == 1 else s
+    offset = 4 * len(env.world.agents)
+    if s.ndim != 2 or s.shape[1] != offset + 7 or s.shape[0] not in (1, B):
+        raise ValueError(f"Expected compact state shape (1 or {B}, {offset + 7})")
+    if goal is not None and (goal.ndim != 2 or goal.shape[1] != 3 or goal.shape[0] not in (1, B)):
+        raise ValueError(f"Expected goal shape (1 or {B}, 3)")
+    s = s.to(env.device).expand(B, -1).clone()
     for i, ag in enumerate(env.world.agents):
         ag.set_pos(s[:, 4 * i:4 * i + 2].contiguous(), batch_index=None)
         ag.set_vel(s[:, 4 * i + 2:4 * i + 4].contiguous(), batch_index=None)
-    sc.place_t(s[:, 8:11].contiguous())
+    sc.place_t(s[:, offset:offset + 3].contiguous())
+    velocity = s[:, offset + 3:offset + 5]
+    omega = s[:, offset + 5:offset + 6]
+    displacement = sc.stem.state.pos - sc.bar.state.pos
+    rotational_velocity = omega * torch.stack([-displacement[:, 1], displacement[:, 0]], dim=1)
+    sc.bar.set_vel(velocity.clone(), batch_index=None)
+    sc.stem.set_vel(velocity + rotational_velocity, batch_index=None)
     for ent in (sc.bar, sc.stem):
-        ent.set_vel(s[:, 11:13].contiguous(), batch_index=None)
-        ent.set_ang_vel(s[:, 13:14].contiguous(), batch_index=None)
+        ent.set_ang_vel(omega.clone(), batch_index=None)
     if goal is not None:
-        goal = goal.expand(B, -1) if goal.shape[0] == 1 else goal
+        goal = goal.to(env.device).expand(B, -1).clone()
         sc.place_t(goal.contiguous(), goal=True)
         sc.goal_pose[:] = goal
     sc.prev_err[:] = sc.pose_err()

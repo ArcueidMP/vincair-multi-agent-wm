@@ -1,13 +1,14 @@
 # Multi-agent Push-T world models (LeWM)
 
-Can a [LeWM](https://github.com/lucas-maes/le-wm)-style world model (a JEPA that plans with CEM in latent space) plan for
-**two agents that must push a T together**? The T is too heavy for one agent; it moves only when both push. Two
-settings:
+Can a [LeWM](https://github.com/lucas-maes/le-wm)-style world model (a JEPA that plans with CEM in latent space) plan
+coordinated pushing by two agents? The two settings use different physics; whether cooperation is necessary must
+be checked for the particular contact conditions, action bounds and time budget:
 
 - **MultiPush-T** (pixels): stable-worldmodel's Push-T with two agents and a force threshold; pixel LeWM fine-tuned
   from the official single-agent checkpoint.
-- **VMAS Push-T** (state): the same task in [VMAS](https://github.com/proroklab/VectorizedMultiAgentSimulator), with an
-  entity-token LeWM (one token per agent and one for the T).
+- **VMAS Push-T** (state): a related task in [VMAS](https://github.com/proroklab/VectorizedMultiAgentSimulator), with an
+  entity-token LeWM (one token per agent and one for the T). VMAS 1.5.2 uses velocity-dependent friction, not a
+  strict static-friction threshold. The default parameters allow measurable solo motion and some solo successes.
 
 Weights: [huggingface.co/fuisloy/vincair-multi-agent-wm](https://huggingface.co/fuisloy/vincair-multi-agent-wm).
 
@@ -98,6 +99,58 @@ held-out windows and lose to them in the simulator just as often. Even on the tr
 25-step CEM horizon solves 5 of 30 (`scripts/sim_cem.py`). In VMAS, the cost readout was the main limit: a readout head
 trained with the model, data from the planner's own visits and colored-noise CEM together lift planning from 8 to 57
 of 128.
+
+## Controlled VMAS audits
+
+The [novelty audit](docs/novelty-audit.md) records the matched solo/joint boundary measurements, complete-state
+replay checks, and fixed-marginal action-sequence pairing experiments. These are finite, deterministic diagnostics;
+they do not prove that all single-agent policies fail, or that a new learning method generalizes.
+
+Use a minimal CPU environment for these audits if the pixel pipeline is not needed:
+
+```bash
+uv venv --python 3.10 .venv                  # only when .venv does not already exist
+uv pip install --python .venv/bin/python -r requirements-novelty.txt
+.venv/bin/python -m pytest -q
+.venv/bin/python -m vmas_pusht.snapshot_audit
+.venv/bin/python -m vmas_pusht.boundary
+.venv/bin/python -m vmas_pusht.pairing --checkpoint data/vmas_pusht/wm_full_h_agg2.pt
+```
+
+`state(env)` remains the 15-dimensional model observation for the released two-agent checkpoints. For simulator
+branching, use `vmas_pusht.snapshot.capture/restore`: the compact observation omits the independently simulated
+stem. Live true-simulator CEM and planning diagnostics now use complete snapshots. Earlier planning numbers above
+are historical release results, not a rerun with the corrected snapshot implementation.
+
+The pairing audit freezes each agent's complete action-sequence bank and assigns every sequence equal mass. It
+optimizes a permutation of pairings, uses every candidate once per balanced replicate, and compares the frozen
+world model with a timing heuristic and a privileged simulator bound. Raw configurations, hashes, matrices,
+snapshots and permutations are saved under `data/novelty/` (gitignored).
+
+The separate [physical-abstraction audit](docs/physical-abstraction-audit.md) tests whether bounded helper contact
+reduces hidden-state sensitivity while preserving primary-agent control. It includes passive/PD/tracking controls,
+a finite preload check, matched-progress and effort measurements, frozen small/full-state model comparisons,
+contact-removal interventions after real action histories, and goal/planner/primitive-composition transfer. This is an empirical hypothesis test, not a claim that
+a new learned, reusable abstraction has already been established.
+
+The [recovery and convergence follow-up](docs/rebrace-convergence-audit.md) corrects an earlier contact measurement:
+VMAS's collision shell permits nonzero reaction force across a positive geometric gap. The old composition score
+of 0/216 is withdrawn; remeasuring the original trajectories gives 116/216 under the original remaining gates,
+or 93/216 with a persistent handoff requirement. The follow-up separates this correction from controller changes
+and tests numerical refinement through 320 substeps without changing the environment physics.
+
+The [stable-physics and retraining audit](docs/stable-physics-local-wm-audit.md) adds an explicit `dry_light`
+profile while preserving `original` and the scenario defaults. It validates numerical accuracy and nontrivial
+rotation before training, retrains local models under equal budgets in both settings, and freezes them for
+composition and counterfactual tests. The new setting passes local and recorded-action refinement checks;
+the remaining composition failure is traced to pose changes during contact recovery, not simply solver resolution.
+
+```bash
+.venv/bin/python -m vmas_pusht.physical_abstraction
+.venv/bin/python -m vmas_pusht.abstraction_models
+.venv/bin/python -m vmas_pusht.abstraction_release
+.venv/bin/python -m vmas_pusht.abstraction_transfer
+```
 
 ## Reproduce
 
