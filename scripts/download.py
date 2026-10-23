@@ -2,12 +2,15 @@
 
     python scripts/download.py                 # official LeWM Push-T + the two coop2 models + the two VMAS models (~220 MB)
     python scripts/download.py --vmas-data     # also the VMAS data: train / heldout / aggregated train (~300 MB)
+    python scripts/download.py --coop-heldout  # also the held-out coop scenes the readouts were fit on (700 MB)
     python scripts/download.py --pusht-data    # also the official Push-T dataset (44 GB, only to re-export assets/)
 
 Layout:
     checkpoints/lewm/pusht/{weights.pt,config.json}          official single-agent LeWM (quentinll/lewm-pusht)
     checkpoints/lewm_coop2_ftfull/{weights.pt,config.json}   fine-tuned on coop data, own action
     checkpoints/lewm_coop2_joint/{weights.pt,config.json}    fine-tuned on coop data, action = [self, partner]
+    checkpoints/lewm_coop2_*/readout/cost_probe.pt           state readout of each coop2 model (readout.py)
+    datasets/multipusht_2a_coop_heldout.h5                   held-out coop scenes (--coop-heldout)
     vmas_pusht/wm_full_v2.pt                                 VMAS entity-token LeWM, full attention
     vmas_pusht/wm_full_h_agg2.pt                             ... with a jointly trained state readout head
     vmas_pusht/{train,heldout,train_agg2}.pt                 VMAS data (--vmas-data)
@@ -25,6 +28,7 @@ from huggingface_hub import hf_hub_download, list_repo_files
 LEWM_REPO = "quentinll/lewm-pusht"
 COOP_REPO = os.environ.get("COOP_REPO", "fuisloy/vincair-multi-agent-wm")  # Hugging Face model repo with the released checkpoints
 COOP_MODELS = ("lewm_coop2_ftfull", "lewm_coop2_joint")
+COOP_HELDOUT = "multipusht_2a_coop_heldout.h5"  # collect.py seed=1 num_episodes=100: the readouts' fit / test data
 VMAS_MODELS = ("wm_full_v2.pt", "wm_full_h_agg2.pt")  # config, z-scores and delta_std are inside each file
 VMAS_DATA = ("train.pt", "heldout.pt", "train_agg2.pt")
 
@@ -46,6 +50,7 @@ def retarget(cfg):
 def main():
     p = argparse.ArgumentParser()
     p.add_argument("--vmas-data", action="store_true", help="also the VMAS data (~300 MB)")
+    p.add_argument("--coop-heldout", action="store_true", help="also the held-out coop scenes (700 MB)")
     p.add_argument("--pusht-data", action="store_true", help="also the official Push-T dataset (44 GB)")
     args = p.parse_args()
     root = Path(os.environ["STABLEWM_HOME"]).resolve()
@@ -60,13 +65,17 @@ def main():
     for name in COOP_MODELS:
         out = root / "checkpoints" / name
         out.mkdir(parents=True, exist_ok=True)
-        for f in ("weights.pt", "config.json"):
+        for f in ("weights.pt", "config.json", "readout/cost_probe.pt"):
             hf_hub_download(COOP_REPO, f"{name}/{f}", local_dir=root / "checkpoints")
         print(f"[ckpt] {out}")
 
     for f in VMAS_MODELS + (VMAS_DATA if args.vmas_data else ()):
         hf_hub_download(COOP_REPO, f"vmas_pusht/{f}", local_dir=root)
         print(f"[{'ckpt' if f in VMAS_MODELS else 'data'}] {root / 'vmas_pusht' / f}")
+
+    if args.coop_heldout:
+        hf_hub_download(COOP_REPO, f"datasets/{COOP_HELDOUT}", local_dir=root)
+        print(f"[data] {root / 'datasets' / COOP_HELDOUT}")
 
     if args.pusht_data:
         import zstandard
