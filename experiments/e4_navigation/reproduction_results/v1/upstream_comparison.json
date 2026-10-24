@@ -1,0 +1,164 @@
+[
+  {
+    "scene": "S1_symmetric",
+    "seed": 42,
+    "method": "centralized_no_safety",
+    "reference_match": true,
+    "reference_steps": 91,
+    "local_steps": 91,
+    "minimum_separation_abs_difference": 0.0
+  },
+  {
+    "scene": "S1_symmetric",
+    "seed": 42,
+    "method": "centralized_safety",
+    "reference_match": true,
+    "reference_steps": 87,
+    "local_steps": 87,
+    "minimum_separation_abs_difference": 0.0
+  },
+  {
+    "scene": "S1_symmetric",
+    "seed": 43,
+    "method": "centralized_no_safety",
+    "reference_match": true,
+    "reference_steps": 93,
+    "local_steps": 93,
+    "minimum_separation_abs_difference": 0.0
+  },
+  {
+    "scene": "S1_symmetric",
+    "seed": 43,
+    "method": "centralized_safety",
+    "reference_match": true,
+    "reference_steps": 93,
+    "local_steps": 93,
+    "minimum_separation_abs_difference": 0.0
+  },
+  {
+    "scene": "S1_symmetric",
+    "seed": 44,
+    "method": "centralized_no_safety",
+    "reference_match": true,
+    "reference_steps": 91,
+    "local_steps": 91,
+    "minimum_separation_abs_difference": 0.0
+  },
+  {
+    "scene": "S1_symmetric",
+    "seed": 44,
+    "method": "centralized_safety",
+    "reference_match": true,
+    "reference_steps": 91,
+    "local_steps": 91,
+    "minimum_separation_abs_difference": 0.0
+  },
+  {
+    "scene": "S2_perpendicular",
+    "seed": 42,
+    "method": "centralized_no_safety",
+    "reference_match": true,
+    "reference_steps": 67,
+    "local_steps": 67,
+    "minimum_separation_abs_difference": 0.0
+  },
+  {
+    "scene": "S2_perpendicular",
+    "seed": 42,
+    "method": "centralized_safety",
+    "reference_match": true,
+    "reference_steps": 71,
+    "local_steps": 71,
+    "minimum_separation_abs_difference": 0.0
+  },
+  {
+    "scene": "S2_perpendicular",
+    "seed": 43,
+    "method": "centralized_no_safety",
+    "reference_match": true,
+    "reference_steps": 69,
+    "local_steps": 69,
+    "minimum_separation_abs_difference": 0.0
+  },
+  {
+    "scene": "S2_perpendicular",
+    "seed": 43,
+    "method": "centralized_safety",
+    "reference_match": true,
+    "reference_steps": 69,
+    "local_steps": 69,
+    "minimum_separation_abs_difference": 0.0
+  },
+  {
+    "scene": "S2_perpendicular",
+    "seed": 44,
+    "method": "centralized_no_safety",
+    "reference_match": true,
+    "reference_steps": 72,
+    "local_steps": 72,
+    "minimum_separation_abs_difference": 0.0
+  },
+  {
+    "scene": "S2_perpendicular",
+    "seed": 44,
+    "method": "centralized_safety",
+    "reference_match": true,
+    "reference_steps": 72,
+    "local_steps": 72,
+    "minimum_separation_abs_difference": 0.0
+  },
+  {
+    "scene": "S3_asymmetric",
+    "seed": 42,
+    "method": "centralized_no_safety",
+    "reference_match": true,
+    "reference_steps": 83,
+    "local_steps": 83,
+    "minimum_separation_abs_difference": 0.0
+  },
+  {
+    "scene": "S3_asymmetric",
+    "seed": 42,
+    "method": "centralized_safety",
+    "reference_match": true,
+    "reference_steps": 87,
+    "local_steps": 87,
+    "minimum_separation_abs_difference": 0.0
+  },
+  {
+    "scene": "S3_asymmetric",
+    "seed": 43,
+    "method": "centralized_no_safety",
+    "reference_match": true,
+    "reference_steps": 81,
+    "local_steps": 81,
+    "minimum_separation_abs_difference": 0.0
+  },
+  {
+    "scene": "S3_asymmetric",
+    "seed": 43,
+    "method": "centralized_safety",
+    "reference_match": true,
+    "reference_steps": 90,
+    "local_steps": 90,
+    "minimum_separation_abs_difference": 0.0
+  },
+  {
+    "scene": "S3_asymmetric",
+    "seed": 44,
+    "method": "centralized_no_safety",
+    "reference_match": true,
+    "reference_steps": 79,
+    "local_steps": 79,
+    "minimum_separation_abs_difference": 0.0
+  },
+  {
+    "scene": "S3_asymmetric",
+    "seed": 44,
+    "method": "centralized_safety",
+    "reference_match": true,
+    "reference_steps": 83,
+    "local_steps": 83,
+    "minimum_separation_abs_difference": 0.0
+  }
+]

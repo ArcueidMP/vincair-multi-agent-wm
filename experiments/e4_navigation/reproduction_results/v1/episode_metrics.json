@@ -1,0 +1,1241 @@
+[
+  {
+    "scene": "S1_symmetric",
+    "method": "centralized_no_safety",
+    "seed": 42,
+    "steps": 91,
+    "termination": "joint_success",
+    "joint_success": true,
+    "minimum_separation": 0.20472180843353271,
+    "loss_of_separation": true,
+    "collision_proxy": false,
+    "violation_steps": 15,
+    "cumulative_violation": 0.9090278148651123,
+    "substep_minimum_separation": 0.20472180843353271,
+    "substep_loss_of_separation": true,
+    "substep_collision_proxy": false,
+    "safe_joint_success": false,
+    "final_goal_distances": [
+      0.010686724446713924,
+      0.11323139816522598
+    ],
+    "final_speeds": [
+      0.06412027031183243,
+      0.23021070659160614
+    ],
+    "path_lengths": [
+      2.3040757179260254,
+      2.177293062210083
+    ],
+    "mean_planning_ms": 130.18099669230764,
+    "p95_planning_ms": 164.7258559999969,
+    "wall_seconds": 12.718703422999994,
+    "native_replay_max_abs_error": 0.0,
+    "physics": {
+      "dt": 0.1,
+      "substeps": 2,
+      "radii": [
+        0.1,
+        0.1
+      ],
+      "action_limits": [
+        1.0,
+        1.0
+      ],
+      "mass": [
+        1.0,
+        1.0
+      ],
+      "drag": [
+        null,
+        null
+      ],
+      "world_drag": 0.25,
+      "max_speed": [
+        null,
+        null
+      ]
+    },
+    "trajectory_sha256": "ad2a569344bad3af57e3565bf6c420df88ea4f393eb59181d2bb2701a18064b3"
+  },
+  {
+    "scene": "S1_symmetric",
+    "method": "centralized_no_safety",
+    "seed": 43,
+    "steps": 93,
+    "termination": "joint_success",
+    "joint_success": true,
+    "minimum_separation": 0.193440780043602,
+    "loss_of_separation": true,
+    "collision_proxy": true,
+    "violation_steps": 13,
+    "cumulative_violation": 0.8241763710975647,
+    "substep_minimum_separation": 0.193440780043602,
+    "substep_loss_of_separation": true,
+    "substep_collision_proxy": true,
+    "safe_joint_success": false,
+    "final_goal_distances": [
+      0.02771107666194439,
+      0.11737550050020218
+    ],
+    "final_speeds": [
+      0.08745072036981583,
+      0.26187863945961
+    ],
+    "path_lengths": [
+      2.3291807174682617,
+      2.1795270442962646
+    ],
+    "mean_planning_ms": 131.0113943548401,
+    "p95_planning_ms": 161.3794373999951,
+    "wall_seconds": 13.110658419000004,
+    "native_replay_max_abs_error": 0.0,
+    "physics": {
+      "dt": 0.1,
+      "substeps": 2,
+      "radii": [
+        0.1,
+        0.1
+      ],
+      "action_limits": [
+        1.0,
+        1.0
+      ],
+      "mass": [
+        1.0,
+        1.0
+      ],
+      "drag": [
+        null,
+        null
+      ],
+      "world_drag": 0.25,
+      "max_speed": [
+        null,
+        null
+      ]
+    },
+    "trajectory_sha256": "e507887036902bae73d81681a4339f4b9c3c642d902bbf3e35ee995176a5605e"
+  },
+  {
+    "scene": "S1_symmetric",
+    "method": "centralized_no_safety",
+    "seed": 44,
+    "steps": 91,
+    "termination": "joint_success",
+    "joint_success": true,
+    "minimum_separation": 0.2279263585805893,
+    "loss_of_separation": true,
+    "collision_proxy": false,
+    "violation_steps": 11,
+    "cumulative_violation": 0.5255378484725952,
+    "substep_minimum_separation": 0.2279263585805893,
+    "substep_loss_of_separation": true,
+    "substep_collision_proxy": false,
+    "safe_joint_success": false,
+    "final_goal_distances": [
+      0.04382985085248947,
+      0.10700344294309616
+    ],
+    "final_speeds": [
+      0.05976739153265953,
+      0.25354257225990295
+    ],
+    "path_lengths": [
+      2.3478782176971436,
+      2.189727783203125
+    ],
+    "mean_planning_ms": 119.12014421978022,
+    "p95_planning_ms": 149.76426350000338,
+    "wall_seconds": 11.598842311999988,
+    "native_replay_max_abs_error": 0.0,
+    "physics": {
+      "dt": 0.1,
+      "substeps": 2,
+      "radii": [
+        0.1,
+        0.1
+      ],
+      "action_limits": [
+        1.0,
+        1.0
+      ],
+      "mass": [
+        1.0,
+        1.0
+      ],
+      "drag": [
+        null,
+        null
+      ],
+      "world_drag": 0.25,
+      "max_speed": [
+        null,
+        null
+      ]
+    },
+    "trajectory_sha256": "0ea6b9447b10c219133b3e27096528f2e3ac3728c4b2cd7f81c3c4930df3e223"
+  },
+  {
+    "scene": "S1_symmetric",
+    "method": "centralized_safety",
+    "seed": 42,
+    "steps": 87,
+    "termination": "joint_success",
+    "joint_success": true,
+    "minimum_separation": 0.2840611934661865,
+    "loss_of_separation": true,
+    "collision_proxy": false,
+    "violation_steps": 4,
+    "cumulative_violation": 0.04079583287239075,
+    "substep_minimum_separation": 0.2839652895927429,
+    "substep_loss_of_separation": true,
+    "substep_collision_proxy": false,
+    "safe_joint_success": false,
+    "final_goal_distances": [
+      0.0210623387247324,
+      0.1160067617893219
+    ],
+    "final_speeds": [
+      0.0261670034378767,
+      0.26460614800453186
+    ],
+    "path_lengths": [
+      2.288907527923584,
+      2.167588472366333
+    ],
+    "mean_planning_ms": 137.43501083908183,
+    "p95_planning_ms": 164.0576503000048,
+    "wall_seconds": 12.854420884000007,
+    "native_replay_max_abs_error": 0.0,
+    "physics": {
+      "dt": 0.1,
+      "substeps": 2,
+      "radii": [
+        0.1,
+        0.1
+      ],
+      "action_limits": [
+        1.0,
+        1.0
+      ],
+      "mass": [
+        1.0,
+        1.0
+      ],
+      "drag": [
+        null,
+        null
+      ],
+      "world_drag": 0.25,
+      "max_speed": [
+        null,
+        null
+      ]
+    },
+    "trajectory_sha256": "2bb6f0459efed6b9f3a34c81b0e34b77d4a3ff5523c7c3b80cc7d1ae0b6d48f8"
+  },
+  {
+    "scene": "S1_symmetric",
+    "method": "centralized_safety",
+    "seed": 43,
+    "steps": 93,
+    "termination": "joint_success",
+    "joint_success": true,
+    "minimum_separation": 0.30727940797805786,
+    "loss_of_separation": false,
+    "collision_proxy": false,
+    "violation_steps": 0,
+    "cumulative_violation": 0.0,
+    "substep_minimum_separation": 0.30727940797805786,
+    "substep_loss_of_separation": false,
+    "substep_collision_proxy": false,
+    "safe_joint_success": true,
+    "final_goal_distances": [
+      0.020374318584799767,
+      0.10341773927211761
+    ],
+    "final_speeds": [
+      0.0860084816813469,
+      0.19020335376262665
+    ],
+    "path_lengths": [
+      2.3535401821136475,
+      2.1864073276519775
+    ],
+    "mean_planning_ms": 128.26897332258176,
+    "p95_planning_ms": 147.15905480001652,
+    "wall_seconds": 12.86055753299999,
+    "native_replay_max_abs_error": 0.0,
+    "physics": {
+      "dt": 0.1,
+      "substeps": 2,
+      "radii": [
+        0.1,
+        0.1
+      ],
+      "action_limits": [
+        1.0,
+        1.0
+      ],
+      "mass": [
+        1.0,
+        1.0
+      ],
+      "drag": [
+        null,
+        null
+      ],
+      "world_drag": 0.25,
+      "max_speed": [
+        null,
+        null
+      ]
+    },
+    "trajectory_sha256": "3eb15a5fda9ae3d895e2238348603a357880647efe74b2c2ab73946f04b91483"
+  },
+  {
+    "scene": "S1_symmetric",
+    "method": "centralized_safety",
+    "seed": 44,
+    "steps": 91,
+    "termination": "joint_success",
+    "joint_success": true,
+    "minimum_separation": 0.3016985058784485,
+    "loss_of_separation": false,
+    "collision_proxy": false,
+    "violation_steps": 0,
+    "cumulative_violation": 0.0,
+    "substep_minimum_separation": 0.3016985058784485,
+    "substep_loss_of_separation": false,
+    "substep_collision_proxy": false,
+    "safe_joint_success": true,
+    "final_goal_distances": [
+      0.012452175840735435,
+      0.11642298847436905
+    ],
+    "final_speeds": [
+      0.06446807086467743,
+      0.3055505156517029
+    ],
+    "path_lengths": [
+      2.2984111309051514,
+      2.206033229827881
+    ],
+    "mean_planning_ms": 111.06555026373677,
+    "p95_planning_ms": 132.3504379999889,
+    "wall_seconds": 10.872231123000006,
+    "native_replay_max_abs_error": 0.0,
+    "physics": {
+      "dt": 0.1,
+      "substeps": 2,
+      "radii": [
+        0.1,
+        0.1
+      ],
+      "action_limits": [
+        1.0,
+        1.0
+      ],
+      "mass": [
+        1.0,
+        1.0
+      ],
+      "drag": [
+        null,
+        null
+      ],
+      "world_drag": 0.25,
+      "max_speed": [
+        null,
+        null
+      ]
+    },
+    "trajectory_sha256": "4facee95673a036ef144e4a8ca782ccaee8f9a4d62f752cbbff8209139dcf6e7"
+  },
+  {
+    "scene": "S1_symmetric",
+    "method": "independent_cem",
+    "seed": 42,
+    "steps": 80,
+    "termination": "joint_success",
+    "joint_success": true,
+    "minimum_separation": 0.1673698127269745,
+    "loss_of_separation": true,
+    "collision_proxy": true,
+    "violation_steps": 25,
+    "cumulative_violation": 2.253133773803711,
+    "substep_minimum_separation": 0.1641606241464615,
+    "substep_loss_of_separation": true,
+    "substep_collision_proxy": true,
+    "safe_joint_success": false,
+    "final_goal_distances": [
+      0.0502873919904232,
+      0.10789760947227478
+    ],
+    "final_speeds": [
+      0.10538510978221893,
+      0.22904790937900543
+    ],
+    "path_lengths": [
+      2.4091107845306396,
+      2.2895803451538086
+    ],
+    "mean_planning_ms": 254.36775069999962,
+    "p95_planning_ms": 334.43104195000825,
+    "wall_seconds": 21.106394725,
+    "native_replay_max_abs_error": 0.0,
+    "physics": {
+      "dt": 0.1,
+      "substeps": 2,
+      "radii": [
+        0.1,
+        0.1
+      ],
+      "action_limits": [
+        1.0,
+        1.0
+      ],
+      "mass": [
+        1.0,
+        1.0
+      ],
+      "drag": [
+        null,
+        null
+      ],
+      "world_drag": 0.25,
+      "max_speed": [
+        null,
+        null
+      ]
+    },
+    "trajectory_sha256": "9b5009538508e02eb42a924e4678992e1a89d6b0729df40b11cdd65ba8e6f831"
+  },
+  {
+    "scene": "S1_symmetric",
+    "method": "independent_pd",
+    "seed": 42,
+    "steps": 200,
+    "termination": "environment_done",
+    "joint_success": false,
+    "minimum_separation": 0.14590579271316528,
+    "loss_of_separation": true,
+    "collision_proxy": true,
+    "violation_steps": 180,
+    "cumulative_violation": 19.64628028869629,
+    "substep_minimum_separation": 0.14590579271316528,
+    "substep_loss_of_separation": true,
+    "substep_collision_proxy": true,
+    "safe_joint_success": false,
+    "final_goal_distances": [
+      0.8950001001358032,
+      0.8950001001358032
+    ],
+    "final_speeds": [
+      0.00013749224308412522,
+      0.00013749224308412522
+    ],
+    "path_lengths": [
+      1.9229406118392944,
+      1.9229406118392944
+    ],
+    "mean_planning_ms": 0.17130543500030626,
+    "p95_planning_ms": 0.2612340499979382,
+    "wall_seconds": 2.3429926660000007,
+    "native_replay_max_abs_error": 0.0,
+    "physics": {
+      "dt": 0.1,
+      "substeps": 2,
+      "radii": [
+        0.1,
+        0.1
+      ],
+      "action_limits": [
+        1.0,
+        1.0
+      ],
+      "mass": [
+        1.0,
+        1.0
+      ],
+      "drag": [
+        null,
+        null
+      ],
+      "world_drag": 0.25,
+      "max_speed": [
+        null,
+        null
+      ]
+    },
+    "trajectory_sha256": "3c4d4729aaf85d6872e8b3e49bb49db815e58d728186637b35945487da0345c4"
+  },
+  {
+    "scene": "S1_symmetric",
+    "method": "priority_pd",
+    "seed": 42,
+    "steps": 150,
+    "termination": "joint_success",
+    "joint_success": true,
+    "minimum_separation": 1.027089238166809,
+    "loss_of_separation": false,
+    "collision_proxy": false,
+    "violation_steps": 0,
+    "cumulative_violation": 0.0,
+    "substep_minimum_separation": 1.0269322395324707,
+    "substep_loss_of_separation": false,
+    "substep_collision_proxy": false,
+    "safe_joint_success": true,
+    "final_goal_distances": [
+      0.10446307063102722,
+      0.11538466811180115
+    ],
+    "final_speeds": [
+      5.266940863277885e-16,
+      0.05663133040070534
+    ],
+    "path_lengths": [
+      2.158278703689575,
+      2.147357225418091
+    ],
+    "mean_planning_ms": 0.14193414666702134,
+    "p95_planning_ms": 0.20771160000094813,
+    "wall_seconds": 1.2237058329999968,
+    "native_replay_max_abs_error": 0.0,
+    "physics": {
+      "dt": 0.1,
+      "substeps": 2,
+      "radii": [
+        0.1,
+        0.1
+      ],
+      "action_limits": [
+        1.0,
+        1.0
+      ],
+      "mass": [
+        1.0,
+        1.0
+      ],
+      "drag": [
+        null,
+        null
+      ],
+      "world_drag": 0.25,
+      "max_speed": [
+        null,
+        null
+      ]
+    },
+    "trajectory_sha256": "414664959f356bf5c7098466a6350e1687be7ef5843e8a4a9e1e00ebd964fecb"
+  },
+  {
+    "scene": "S2_perpendicular",
+    "method": "centralized_no_safety",
+    "seed": 42,
+    "steps": 67,
+    "termination": "joint_success",
+    "joint_success": true,
+    "minimum_separation": 0.19546069204807281,
+    "loss_of_separation": true,
+    "collision_proxy": true,
+    "violation_steps": 15,
+    "cumulative_violation": 0.9847568869590759,
+    "substep_minimum_separation": 0.19546069204807281,
+    "substep_loss_of_separation": true,
+    "substep_collision_proxy": true,
+    "safe_joint_success": false,
+    "final_goal_distances": [
+      0.1195148378610611,
+      0.055600669234991074
+    ],
+    "final_speeds": [
+      0.16974914073944092,
+      0.12676134705543518
+    ],
+    "path_lengths": [
+      1.5242211818695068,
+      1.6068675518035889
+    ],
+    "mean_planning_ms": 113.18376161194233,
+    "p95_planning_ms": 139.55149020000022,
+    "wall_seconds": 8.142837375,
+    "native_replay_max_abs_error": 0.0,
+    "physics": {
+      "dt": 0.1,
+      "substeps": 2,
+      "radii": [
+        0.1,
+        0.1
+      ],
+      "action_limits": [
+        1.0,
+        1.0
+      ],
+      "mass": [
+        1.0,
+        1.0
+      ],
+      "drag": [
+        null,
+        null
+      ],
+      "world_drag": 0.25,
+      "max_speed": [
+        null,
+        null
+      ]
+    },
+    "trajectory_sha256": "83b18319d98b94d77df7c398a88b1a08e3a2c7f0ec7b17276a6a7a70f96af6d8"
+  },
+  {
+    "scene": "S2_perpendicular",
+    "method": "centralized_no_safety",
+    "seed": 43,
+    "steps": 69,
+    "termination": "joint_success",
+    "joint_success": true,
+    "minimum_separation": 0.19941531121730804,
+    "loss_of_separation": true,
+    "collision_proxy": true,
+    "violation_steps": 16,
+    "cumulative_violation": 0.9673728942871094,
+    "substep_minimum_separation": 0.19941531121730804,
+    "substep_loss_of_separation": true,
+    "substep_collision_proxy": true,
+    "safe_joint_success": false,
+    "final_goal_distances": [
+      0.10025510936975479,
+      0.061593279242515564
+    ],
+    "final_speeds": [
+      0.22049283981323242,
+      0.10861793160438538
+    ],
+    "path_lengths": [
+      1.532253623008728,
+      1.5949463844299316
+    ],
+    "mean_planning_ms": 112.02852962318761,
+    "p95_planning_ms": 128.88853179999273,
+    "wall_seconds": 8.294020149999994,
+    "native_replay_max_abs_error": 0.0,
+    "physics": {
+      "dt": 0.1,
+      "substeps": 2,
+      "radii": [
+        0.1,
+        0.1
+      ],
+      "action_limits": [
+        1.0,
+        1.0
+      ],
+      "mass": [
+        1.0,
+        1.0
+      ],
+      "drag": [
+        null,
+        null
+      ],
+      "world_drag": 0.25,
+      "max_speed": [
+        null,
+        null
+      ]
+    },
+    "trajectory_sha256": "5423574cf41239a6a2782025730c1fc1b0f9ca31c5753954b66a0c7896a9398f"
+  },
+  {
+    "scene": "S2_perpendicular",
+    "method": "centralized_no_safety",
+    "seed": 44,
+    "steps": 72,
+    "termination": "joint_success",
+    "joint_success": true,
+    "minimum_separation": 0.20930081605911255,
+    "loss_of_separation": true,
+    "collision_proxy": false,
+    "violation_steps": 24,
+    "cumulative_violation": 1.6633659601211548,
+    "substep_minimum_separation": 0.2088714838027954,
+    "substep_loss_of_separation": true,
+    "substep_collision_proxy": false,
+    "safe_joint_success": false,
+    "final_goal_distances": [
+      0.11279691010713577,
+      0.049595050513744354
+    ],
+    "final_speeds": [
+      0.25362804532051086,
+      0.1010088324546814
+    ],
+    "path_lengths": [
+      1.5487440824508667,
+      1.6176085472106934
+    ],
+    "mean_planning_ms": 121.3179305138878,
+    "p95_planning_ms": 144.67619370001614,
+    "wall_seconds": 9.391530171,
+    "native_replay_max_abs_error": 0.0,
+    "physics": {
+      "dt": 0.1,
+      "substeps": 2,
+      "radii": [
+        0.1,
+        0.1
+      ],
+      "action_limits": [
+        1.0,
+        1.0
+      ],
+      "mass": [
+        1.0,
+        1.0
+      ],
+      "drag": [
+        null,
+        null
+      ],
+      "world_drag": 0.25,
+      "max_speed": [
+        null,
+        null
+      ]
+    },
+    "trajectory_sha256": "9f506c7a1a030df80c1f8bae41e2264a6174b2d1296780935652ed185a4052d5"
+  },
+  {
+    "scene": "S2_perpendicular",
+    "method": "centralized_safety",
+    "seed": 42,
+    "steps": 71,
+    "termination": "joint_success",
+    "joint_success": true,
+    "minimum_separation": 0.29489436745643616,
+    "loss_of_separation": true,
+    "collision_proxy": false,
+    "violation_steps": 5,
+    "cumulative_violation": 0.016489535570144653,
+    "substep_minimum_separation": 0.29376521706581116,
+    "substep_loss_of_separation": true,
+    "substep_collision_proxy": false,
+    "safe_joint_success": false,
+    "final_goal_distances": [
+      0.09954199939966202,
+      0.03968558460474014
+    ],
+    "final_speeds": [
+      0.24393907189369202,
+      0.1744079887866974
+    ],
+    "path_lengths": [
+      1.5626238584518433,
+      1.6731072664260864
+    ],
+    "mean_planning_ms": 107.89855222535039,
+    "p95_planning_ms": 116.67169250000597,
+    "wall_seconds": 8.236106941999992,
+    "native_replay_max_abs_error": 0.0,
+    "physics": {
+      "dt": 0.1,
+      "substeps": 2,
+      "radii": [
+        0.1,
+        0.1
+      ],
+      "action_limits": [
+        1.0,
+        1.0
+      ],
+      "mass": [
+        1.0,
+        1.0
+      ],
+      "drag": [
+        null,
+        null
+      ],
+      "world_drag": 0.25,
+      "max_speed": [
+        null,
+        null
+      ]
+    },
+    "trajectory_sha256": "f7a1209711001423062aaeb034e90d9b7ec684ebf47e1f91a66b453457c20ab5"
+  },
+  {
+    "scene": "S2_perpendicular",
+    "method": "centralized_safety",
+    "seed": 43,
+    "steps": 69,
+    "termination": "joint_success",
+    "joint_success": true,
+    "minimum_separation": 0.29107722640037537,
+    "loss_of_separation": true,
+    "collision_proxy": false,
+    "violation_steps": 6,
+    "cumulative_violation": 0.02293109893798828,
+    "substep_minimum_separation": 0.29107722640037537,
+    "substep_loss_of_separation": true,
+    "substep_collision_proxy": false,
+    "safe_joint_success": false,
+    "final_goal_distances": [
+      0.10602761059999466,
+      0.053836166858673096
+    ],
+    "final_speeds": [
+      0.28305649757385254,
+      0.15398959815502167
+    ],
+    "path_lengths": [
+      1.5343666076660156,
+      1.628449559211731
+    ],
+    "mean_planning_ms": 109.71351336231848,
+    "p95_planning_ms": 119.05948640000474,
+    "wall_seconds": 8.12199177299999,
+    "native_replay_max_abs_error": 0.0,
+    "physics": {
+      "dt": 0.1,
+      "substeps": 2,
+      "radii": [
+        0.1,
+        0.1
+      ],
+      "action_limits": [
+        1.0,
+        1.0
+      ],
+      "mass": [
+        1.0,
+        1.0
+      ],
+      "drag": [
+        null,
+        null
+      ],
+      "world_drag": 0.25,
+      "max_speed": [
+        null,
+        null
+      ]
+    },
+    "trajectory_sha256": "0da407e0c6543df5bc05668592df26a623a7bfbde7c549f8484fc54b635ba4c2"
+  },
+  {
+    "scene": "S2_perpendicular",
+    "method": "centralized_safety",
+    "seed": 44,
+    "steps": 72,
+    "termination": "joint_success",
+    "joint_success": true,
+    "minimum_separation": 0.29883408546447754,
+    "loss_of_separation": true,
+    "collision_proxy": false,
+    "violation_steps": 1,
+    "cumulative_violation": 0.001165926456451416,
+    "substep_minimum_separation": 0.298351526260376,
+    "substep_loss_of_separation": true,
+    "substep_collision_proxy": false,
+    "safe_joint_success": false,
+    "final_goal_distances": [
+      0.11875052750110626,
+      0.042681410908699036
+    ],
+    "final_speeds": [
+      0.250409871339798,
+      0.1211213693022728
+    ],
+    "path_lengths": [
+      1.561764121055603,
+      1.646742582321167
+    ],
+    "mean_planning_ms": 115.46222693055695,
+    "p95_planning_ms": 149.14968184999398,
+    "wall_seconds": 8.909387882000004,
+    "native_replay_max_abs_error": 0.0,
+    "physics": {
+      "dt": 0.1,
+      "substeps": 2,
+      "radii": [
+        0.1,
+        0.1
+      ],
+      "action_limits": [
+        1.0,
+        1.0
+      ],
+      "mass": [
+        1.0,
+        1.0
+      ],
+      "drag": [
+        null,
+        null
+      ],
+      "world_drag": 0.25,
+      "max_speed": [
+        null,
+        null
+      ]
+    },
+    "trajectory_sha256": "8f6a546702017718371c26b274b7835d24a0d16ed5c3e86274a4672d780ecbdb"
+  },
+  {
+    "scene": "S3_asymmetric",
+    "method": "centralized_no_safety",
+    "seed": 42,
+    "steps": 83,
+    "termination": "joint_success",
+    "joint_success": true,
+    "minimum_separation": 0.1947808563709259,
+    "loss_of_separation": true,
+    "collision_proxy": true,
+    "violation_steps": 29,
+    "cumulative_violation": 2.2983901500701904,
+    "substep_minimum_separation": 0.19473950564861298,
+    "substep_loss_of_separation": true,
+    "substep_collision_proxy": true,
+    "safe_joint_success": false,
+    "final_goal_distances": [
+      0.030016234144568443,
+      0.1014314740896225
+    ],
+    "final_speeds": [
+      0.16369767487049103,
+      0.3396933972835541
+    ],
+    "path_lengths": [
+      2.045778512954712,
+      2.1974258422851562
+    ],
+    "mean_planning_ms": 114.31741071084276,
+    "p95_planning_ms": 135.62448659999689,
+    "wall_seconds": 10.165326545999989,
+    "native_replay_max_abs_error": 0.0,
+    "physics": {
+      "dt": 0.1,
+      "substeps": 2,
+      "radii": [
+        0.1,
+        0.1
+      ],
+      "action_limits": [
+        1.0,
+        1.0
+      ],
+      "mass": [
+        1.0,
+        1.0
+      ],
+      "drag": [
+        null,
+        null
+      ],
+      "world_drag": 0.25,
+      "max_speed": [
+        null,
+        null
+      ]
+    },
+    "trajectory_sha256": "e567cd782fe3845bfa90c89d2146eab06ae9e9626b1f3af0cb13318c69c6cd4a"
+  },
+  {
+    "scene": "S3_asymmetric",
+    "method": "centralized_no_safety",
+    "seed": 43,
+    "steps": 81,
+    "termination": "joint_success",
+    "joint_success": true,
+    "minimum_separation": 0.1942955106496811,
+    "loss_of_separation": true,
+    "collision_proxy": true,
+    "violation_steps": 24,
+    "cumulative_violation": 1.8676345348358154,
+    "substep_minimum_separation": 0.1942955106496811,
+    "substep_loss_of_separation": true,
+    "substep_collision_proxy": true,
+    "safe_joint_success": false,
+    "final_goal_distances": [
+      0.043290894478559494,
+      0.10929902642965317
+    ],
+    "final_speeds": [
+      0.09013576805591583,
+      0.3507155179977417
+    ],
+    "path_lengths": [
+      2.029141426086426,
+      2.143308639526367
+    ],
+    "mean_planning_ms": 114.19443430864048,
+    "p95_planning_ms": 135.39040199998453,
+    "wall_seconds": 9.922751052999956,
+    "native_replay_max_abs_error": 0.0,
+    "physics": {
+      "dt": 0.1,
+      "substeps": 2,
+      "radii": [
+        0.1,
+        0.1
+      ],
+      "action_limits": [
+        1.0,
+        1.0
+      ],
+      "mass": [
+        1.0,
+        1.0
+      ],
+      "drag": [
+        null,
+        null
+      ],
+      "world_drag": 0.25,
+      "max_speed": [
+        null,
+        null
+      ]
+    },
+    "trajectory_sha256": "a42545f711ced01f23cf7a9013d3aaa450f14024ea863f79884db4dba208a153"
+  },
+  {
+    "scene": "S3_asymmetric",
+    "method": "centralized_no_safety",
+    "seed": 44,
+    "steps": 79,
+    "termination": "joint_success",
+    "joint_success": true,
+    "minimum_separation": 0.19575287401676178,
+    "loss_of_separation": true,
+    "collision_proxy": true,
+    "violation_steps": 19,
+    "cumulative_violation": 1.2804919481277466,
+    "substep_minimum_separation": 0.19550687074661255,
+    "substep_loss_of_separation": true,
+    "substep_collision_proxy": true,
+    "safe_joint_success": false,
+    "final_goal_distances": [
+      0.02644779533147812,
+      0.09839946031570435
+    ],
+    "final_speeds": [
+      0.07978514581918716,
+      0.23962919414043427
+    ],
+    "path_lengths": [
+      1.9678184986114502,
+      2.1257331371307373
+    ],
+    "mean_planning_ms": 116.29063365823143,
+    "p95_planning_ms": 134.50367229998506,
+    "wall_seconds": 9.836908472999994,
+    "native_replay_max_abs_error": 0.0,
+    "physics": {
+      "dt": 0.1,
+      "substeps": 2,
+      "radii": [
+        0.1,
+        0.1
+      ],
+      "action_limits": [
+        1.0,
+        1.0
+      ],
+      "mass": [
+        1.0,
+        1.0
+      ],
+      "drag": [
+        null,
+        null
+      ],
+      "world_drag": 0.25,
+      "max_speed": [
+        null,
+        null
+      ]
+    },
+    "trajectory_sha256": "f6fa5c70fcc8cdf1c110defba8ec8fa5f35bb523f4cd94948a3d5171b562b153"
+  },
+  {
+    "scene": "S3_asymmetric",
+    "method": "centralized_safety",
+    "seed": 42,
+    "steps": 87,
+    "termination": "joint_success",
+    "joint_success": true,
+    "minimum_separation": 0.288277268409729,
+    "loss_of_separation": true,
+    "collision_proxy": false,
+    "violation_steps": 6,
+    "cumulative_violation": 0.03424212336540222,
+    "substep_minimum_separation": 0.288277268409729,
+    "substep_loss_of_separation": true,
+    "substep_collision_proxy": false,
+    "safe_joint_success": false,
+    "final_goal_distances": [
+      0.0896739661693573,
+      0.10991884022951126
+    ],
+    "final_speeds": [
+      0.24452422559261322,
+      0.18100911378860474
+    ],
+    "path_lengths": [
+      2.017047882080078,
+      2.406391143798828
+    ],
+    "mean_planning_ms": 107.47988171264642,
+    "p95_planning_ms": 115.910279799985,
+    "wall_seconds": 10.044439982,
+    "native_replay_max_abs_error": 0.0,
+    "physics": {
+      "dt": 0.1,
+      "substeps": 2,
+      "radii": [
+        0.1,
+        0.1
+      ],
+      "action_limits": [
+        1.0,
+        1.0
+      ],
+      "mass": [
+        1.0,
+        1.0
+      ],
+      "drag": [
+        null,
+        null
+      ],
+      "world_drag": 0.25,
+      "max_speed": [
+        null,
+        null
+      ]
+    },
+    "trajectory_sha256": "345ed82d7d4453d72f3e26f5e792c401502a7c42b7f2670fd2ad3a21b4a2a9e2"
+  },
+  {
+    "scene": "S3_asymmetric",
+    "method": "centralized_safety",
+    "seed": 43,
+    "steps": 90,
+    "termination": "joint_success",
+    "joint_success": true,
+    "minimum_separation": 0.3087877333164215,
+    "loss_of_separation": false,
+    "collision_proxy": false,
+    "violation_steps": 0,
+    "cumulative_violation": 0.0,
+    "substep_minimum_separation": 0.3083656430244446,
+    "substep_loss_of_separation": false,
+    "substep_collision_proxy": false,
+    "safe_joint_success": true,
+    "final_goal_distances": [
+      0.02332770638167858,
+      0.10403230786323547
+    ],
+    "final_speeds": [
+      0.022395947948098183,
+      0.19287851452827454
+    ],
+    "path_lengths": [
+      2.0691683292388916,
+      2.2685885429382324
+    ],
+    "mean_planning_ms": 109.6884703000032,
+    "p95_planning_ms": 121.28276454999138,
+    "wall_seconds": 10.61031013400003,
+    "native_replay_max_abs_error": 0.0,
+    "physics": {
+      "dt": 0.1,
+      "substeps": 2,
+      "radii": [
+        0.1,
+        0.1
+      ],
+      "action_limits": [
+        1.0,
+        1.0
+      ],
+      "mass": [
+        1.0,
+        1.0
+      ],
+      "drag": [
+        null,
+        null
+      ],
+      "world_drag": 0.25,
+      "max_speed": [
+        null,
+        null
+      ]
+    },
+    "trajectory_sha256": "006b4c9d15ce4ae330f05640de47c75050ce4d41ba2f50a322dc44470e382ea0"
+  },
+  {
+    "scene": "S3_asymmetric",
+    "method": "centralized_safety",
+    "seed": 44,
+    "steps": 83,
+    "termination": "joint_success",
+    "joint_success": true,
+    "minimum_separation": 0.2827758193016052,
+    "loss_of_separation": true,
+    "collision_proxy": false,
+    "violation_steps": 7,
+    "cumulative_violation": 0.06352174282073975,
+    "substep_minimum_separation": 0.2827758193016052,
+    "substep_loss_of_separation": true,
+    "substep_collision_proxy": false,
+    "safe_joint_success": false,
+    "final_goal_distances": [
+      0.029061587527394295,
+      0.10692448168992996
+    ],
+    "final_speeds": [
+      0.028805427253246307,
+      0.3473705053329468
+    ],
+    "path_lengths": [
+      2.015446424484253,
+      2.124462127685547
+    ],
+    "mean_planning_ms": 118.22226057831976,
+    "p95_planning_ms": 144.40122660002996,
+    "wall_seconds": 10.572298753000041,
+    "native_replay_max_abs_error": 0.0,
+    "physics": {
+      "dt": 0.1,
+      "substeps": 2,
+      "radii": [
+        0.1,
+        0.1
+      ],
+      "action_limits": [
+        1.0,
+        1.0
+      ],
+      "mass": [
+        1.0,
+        1.0
+      ],
+      "drag": [
+        null,
+        null
+      ],
+      "world_drag": 0.25,
+      "max_speed": [
+        null,
+        null
+      ]
+    },
+    "trajectory_sha256": "7a4b36aeeb0bb2aa8b8bb6dbffa3b1f2630a0419816bb0204a19e2dd2ab28b08"
+  }
+]

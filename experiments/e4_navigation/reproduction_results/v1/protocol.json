@@ -1,0 +1,224 @@
+{
+  "base_commit": "a4ff32623f4287966aef878d44f01d3521e660af",
+  "config": {
+    "horizon": 8,
+    "population": 64,
+    "iterations": 3,
+    "elite_fraction": 0.125,
+    "max_steps": 200,
+    "goal_weight": 5.0,
+    "action_weight": 0.01,
+    "safety_weight": 100.0,
+    "seed": 42
+  },
+  "scenarios": {
+    "S1_symmetric": [
+      [
+        [
+          -0.8,
+          -0.8
+        ],
+        [
+          -0.8,
+          0.8
+        ]
+      ],
+      [
+        [
+          0.8,
+          0.8
+        ],
+        [
+          0.8,
+          -0.8
+        ]
+      ]
+    ],
+    "S2_perpendicular": [
+      [
+        [
+          -0.8,
+          0
+        ],
+        [
+          0.2,
+          0.8
+        ]
+      ],
+      [
+        [
+          0.8,
+          0
+        ],
+        [
+          0.2,
+          -0.8
+        ]
+      ]
+    ],
+    "S3_asymmetric": [
+      [
+        [
+          -0.8,
+          0.5
+        ],
+        [
+          -0.8,
+          -0.8
+        ]
+      ],
+      [
+        [
+          0.8,
+          -0.5
+        ],
+        [
+          0.8,
+          0.7
+        ]
+      ]
+    ]
+  },
+  "device": "cuda",
+  "step_safety": 0.3,
+  "goal_tolerance": 0.12,
+  "suites": {
+    "smoke": [
+      [
+        "S1_symmetric",
+        "independent_pd",
+        42
+      ],
+      [
+        "S1_symmetric",
+        "priority_pd",
+        42
+      ],
+      [
+        "S1_symmetric",
+        "independent_cem",
+        42
+      ],
+      [
+        "S1_symmetric",
+        "centralized_no_safety",
+        42
+      ],
+      [
+        "S1_symmetric",
+        "centralized_safety",
+        42
+      ]
+    ],
+    "full": [
+      [
+        "S1_symmetric",
+        "centralized_no_safety",
+        42
+      ],
+      [
+        "S1_symmetric",
+        "centralized_safety",
+        42
+      ],
+      [
+        "S1_symmetric",
+        "centralized_no_safety",
+        43
+      ],
+      [
+        "S1_symmetric",
+        "centralized_safety",
+        43
+      ],
+      [
+        "S1_symmetric",
+        "centralized_no_safety",
+        44
+      ],
+      [
+        "S1_symmetric",
+        "centralized_safety",
+        44
+      ],
+      [
+        "S2_perpendicular",
+        "centralized_no_safety",
+        42
+      ],
+      [
+        "S2_perpendicular",
+        "centralized_safety",
+        42
+      ],
+      [
+        "S2_perpendicular",
+        "centralized_no_safety",
+        43
+      ],
+      [
+        "S2_perpendicular",
+        "centralized_safety",
+        43
+      ],
+      [
+        "S2_perpendicular",
+        "centralized_no_safety",
+        44
+      ],
+      [
+        "S2_perpendicular",
+        "centralized_safety",
+        44
+      ],
+      [
+        "S3_asymmetric",
+        "centralized_no_safety",
+        42
+      ],
+      [
+        "S3_asymmetric",
+        "centralized_safety",
+        42
+      ],
+      [
+        "S3_asymmetric",
+        "centralized_no_safety",
+        43
+      ],
+      [
+        "S3_asymmetric",
+        "centralized_safety",
+        43
+      ],
+      [
+        "S3_asymmetric",
+        "centralized_no_safety",
+        44
+      ],
+      [
+        "S3_asymmetric",
+        "centralized_safety",
+        44
+      ]
+    ]
+  },
+  "source_sha256": "aabee00a18b0a2748c5512fa040c56698a7ddb38bc6348d924886d4ebae0cebf",
+  "notebook_sha256": {
+    "03_Centralized_CEM.ipynb": "e3cd4e2601ff557944a01c91f321d97fb274484f0e6f550a9df0eb5ec0e89491",
+    "04_WorldModel_Integration.ipynb": "87af86304125de0b5b0776e13af5b252f4d183847b87e63da14867d40b777b90",
+    "01_PD_Baselines.ipynb": "2af642a7b5da8367fea1a3eab2c9e2d34aeea6688c01d08da68f8ed5ad818c49",
+    "02_Independent_CEM.ipynb": "deadf70c74f62f429a8279715bf1df78b566f2f9c29faab91a5cc4d25e0aaec6"
+  },
+  "versions": {
+    "vmas": "1.5.2",
+    "torch": "2.11.0+cu128",
+    "numpy": "2.2.6"
+  },
+  "notes": [
+    "Original native VMAS: no bounded-acceleration intervention.",
+    "Seeds vary CEM RNG on three fixed geometries, not nine independent scene geometries.",
+    "Substep metrics are additional diagnostics; original position-only success and step metrics preserved.",
+    "True simulator baseline only; no learned Navigation model."
+  ]
+}

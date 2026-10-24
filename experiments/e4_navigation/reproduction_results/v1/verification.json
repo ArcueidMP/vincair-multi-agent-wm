@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "episodes": 21,
+  "all_native_replayed": true,
+  "max_native_replay_error": 0.0,
+  "substep_endpoint_max_error": 0.0,
+  "saved_metric_max_error": 0.0,
+  "input_arrays_finite_and_actions_bounded": true,
+  "independent_numpy_verification": true,
+  "upstream_comparisons": 18,
+  "upstream_matches": 18,
+  "note": "Cached upstream comparison excludes latency; three fixed layouts with three planner RNG seeds are not nine independently sampled geometries."
+}

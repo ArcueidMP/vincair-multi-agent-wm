@@ -1,0 +1,57 @@
+{
+  "centralized_no_safety": {
+    "episodes": 9,
+    "scene_geometries": 3,
+    "successes": 9,
+    "safe_successes": 0,
+    "loss_of_separation_episodes": 9,
+    "collision_proxy_episodes": 6,
+    "mean_steps": 80.66666666666667,
+    "mean_planning_ms": 119.07169285485116,
+    "min_substep_separation": 0.193440780043602
+  },
+  "centralized_safety": {
+    "episodes": 9,
+    "scene_geometries": 3,
+    "successes": 9,
+    "safe_successes": 3,
+    "loss_of_separation_episodes": 6,
+    "collision_proxy_episodes": 0,
+    "mean_steps": 82.55555555555556,
+    "mean_planning_ms": 116.1371599482884,
+    "min_substep_separation": 0.2827758193016052
+  },
+  "independent_cem": {
+    "episodes": 1,
+    "scene_geometries": 1,
+    "successes": 1,
+    "safe_successes": 0,
+    "loss_of_separation_episodes": 1,
+    "collision_proxy_episodes": 1,
+    "mean_steps": 80.0,
+    "mean_planning_ms": 254.36775069999962,
+    "min_substep_separation": 0.1641606241464615
+  },
+  "independent_pd": {
+    "episodes": 1,
+    "scene_geometries": 1,
+    "successes": 0,
+    "safe_successes": 0,
+    "loss_of_separation_episodes": 1,
+    "collision_proxy_episodes": 1,
+    "mean_steps": 200.0,
+    "mean_planning_ms": 0.17130543500030626,
+    "min_substep_separation": 0.14590579271316528
+  },
+  "priority_pd": {
+    "episodes": 1,
+    "scene_geometries": 1,
+    "successes": 1,
+    "safe_successes": 1,
+    "loss_of_separation_episodes": 0,
+    "collision_proxy_episodes": 0,
+    "mean_steps": 150.0,
+    "mean_planning_ms": 0.14193414666702134,
+    "min_substep_separation": 1.0269322395324707
+  }
+}
