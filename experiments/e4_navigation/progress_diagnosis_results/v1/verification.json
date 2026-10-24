@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "snapshots": 126,
+  "candidate_labels": 9072,
+  "parent_episodes": 24,
+  "independent_counterfactual_choices": 630,
+  "max_cost_formula_error": 1.9073486328125e-06,
+  "max_numpy_forward_error": 4.57763671875e-05,
+  "parent_snapshot_matching_exact": true,
+  "split_origin_geometry_aggregation_verified": true,
+  "native_double_replay_error": 0,
+  "no_training": true
+}

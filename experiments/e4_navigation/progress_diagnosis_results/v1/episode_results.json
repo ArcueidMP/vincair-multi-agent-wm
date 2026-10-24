@@ -1,0 +1,842 @@
+[
+  {
+    "geometry": "progress_00",
+    "arm": "invariant_repair",
+    "seed": 2026140000,
+    "steps": 200,
+    "joint_success": false,
+    "minimum_separation": 0.40102261304855347,
+    "loss_of_separation": false,
+    "collision_proxy": false,
+    "violation_steps": 0,
+    "cumulative_violation": 0.0,
+    "substep_minimum_separation": 0.4010002911090851,
+    "substep_loss_of_separation": false,
+    "substep_collision_proxy": false,
+    "safe_joint_success": false,
+    "final_goal_distances": [
+      0.9864449501037598,
+      0.27300840616226196
+    ],
+    "final_speeds": [
+      0.2826496660709381,
+      0.008248502388596535
+    ],
+    "path_lengths": [
+      3.7102415561676025,
+      2.7829296588897705
+    ],
+    "fallback_steps": 1,
+    "mean_planning_ms": 3.1663167949996307,
+    "p95_planning_ms": 3.7659655500092977,
+    "state_replay_error": 0.0,
+    "substep_replay_error": 0.0,
+    "trajectory_sha256": "737dec046d3fc5f0429dadefc84a3ca69dc6866f071edeaa6857bf8a963415bd",
+    "split": "train"
+  },
+  {
+    "geometry": "progress_00",
+    "arm": "true_sim_safety",
+    "seed": 2026140000,
+    "steps": 68,
+    "joint_success": true,
+    "minimum_separation": 0.3106536567211151,
+    "loss_of_separation": false,
+    "collision_proxy": false,
+    "violation_steps": 0,
+    "cumulative_violation": 0.0,
+    "substep_minimum_separation": 0.31060007214546204,
+    "substep_loss_of_separation": false,
+    "substep_collision_proxy": false,
+    "safe_joint_success": true,
+    "final_goal_distances": [
+      0.10848282277584076,
+      0.015156016685068607
+    ],
+    "final_speeds": [
+      0.2421465963125229,
+      0.035884398967027664
+    ],
+    "path_lengths": [
+      1.5845569372177124,
+      1.6454442739486694
+    ],
+    "fallback_steps": 0,
+    "mean_planning_ms": 50.27329985294085,
+    "p95_planning_ms": 59.79155195000345,
+    "state_replay_error": 0.0,
+    "substep_replay_error": 0.0,
+    "trajectory_sha256": "5891527371b196c17fcac63a971129948aedbdaf03a5a2691320b53e59adb5ae",
+    "split": "train"
+  },
+  {
+    "geometry": "progress_01",
+    "arm": "invariant_repair",
+    "seed": 2026141000,
+    "steps": 200,
+    "joint_success": false,
+    "minimum_separation": 0.3596515357494354,
+    "loss_of_separation": false,
+    "collision_proxy": false,
+    "violation_steps": 0,
+    "cumulative_violation": 0.0,
+    "substep_minimum_separation": 0.3596515357494354,
+    "substep_loss_of_separation": false,
+    "substep_collision_proxy": false,
+    "safe_joint_success": false,
+    "final_goal_distances": [
+      1.2721575498580933,
+      0.7893992066383362
+    ],
+    "final_speeds": [
+      0.040747176855802536,
+      0.014472028240561485
+    ],
+    "path_lengths": [
+      1.2347569465637207,
+      1.9467546939849854
+    ],
+    "fallback_steps": 0,
+    "mean_planning_ms": 3.6540186250006457,
+    "p95_planning_ms": 4.820863900000898,
+    "state_replay_error": 0.0,
+    "substep_replay_error": 0.0,
+    "trajectory_sha256": "a510222d708aa757dfdb9d33986d52121af2168c70a1e4937eda666271c141e8",
+    "split": "train"
+  },
+  {
+    "geometry": "progress_01",
+    "arm": "true_sim_safety",
+    "seed": 2026141000,
+    "steps": 58,
+    "joint_success": true,
+    "minimum_separation": 0.31646475195884705,
+    "loss_of_separation": false,
+    "collision_proxy": false,
+    "violation_steps": 0,
+    "cumulative_violation": 0.0,
+    "substep_minimum_separation": 0.31626173853874207,
+    "substep_loss_of_separation": false,
+    "substep_collision_proxy": false,
+    "safe_joint_success": true,
+    "final_goal_distances": [
+      0.1085381731390953,
+      0.007210644893348217
+    ],
+    "final_speeds": [
+      0.1240839883685112,
+      0.03041541948914528
+    ],
+    "path_lengths": [
+      1.4111489057540894,
+      1.5156148672103882
+    ],
+    "fallback_steps": 0,
+    "mean_planning_ms": 53.53210101724254,
+    "p95_planning_ms": 58.16643355001787,
+    "state_replay_error": 0.0,
+    "substep_replay_error": 0.0,
+    "trajectory_sha256": "d94a4e51e91df54160cb55e926f37108ec2c739af6fcbb688c4caa03f191be6d",
+    "split": "train"
+  },
+  {
+    "geometry": "progress_02",
+    "arm": "invariant_repair",
+    "seed": 2026142000,
+    "steps": 200,
+    "joint_success": false,
+    "minimum_separation": 0.3951391577720642,
+    "loss_of_separation": false,
+    "collision_proxy": false,
+    "violation_steps": 0,
+    "cumulative_violation": 0.0,
+    "substep_minimum_separation": 0.3951391577720642,
+    "substep_loss_of_separation": false,
+    "substep_collision_proxy": false,
+    "safe_joint_success": false,
+    "final_goal_distances": [
+      1.0863128900527954,
+      0.4535882771015167
+    ],
+    "final_speeds": [
+      0.15425249934196472,
+      0.08075118809938431
+    ],
+    "path_lengths": [
+      3.0266458988189697,
+      2.068251848220825
+    ],
+    "fallback_steps": 0,
+    "mean_planning_ms": 3.7041035949999923,
+    "p95_planning_ms": 6.12175369999619,
+    "state_replay_error": 0.0,
+    "substep_replay_error": 0.0,
+    "trajectory_sha256": "88dd3cae87f11e71b60d3fd7caa74cf7eda08e5efc4b75679298713f3bb59bf7",
+    "split": "train"
+  },
+  {
+    "geometry": "progress_02",
+    "arm": "true_sim_safety",
+    "seed": 2026142000,
+    "steps": 62,
+    "joint_success": true,
+    "minimum_separation": 0.31236281991004944,
+    "loss_of_separation": false,
+    "collision_proxy": false,
+    "violation_steps": 0,
+    "cumulative_violation": 0.0,
+    "substep_minimum_separation": 0.31236281991004944,
+    "substep_loss_of_separation": false,
+    "substep_collision_proxy": false,
+    "safe_joint_success": true,
+    "final_goal_distances": [
+      0.014756429940462112,
+      0.11924297362565994
+    ],
+    "final_speeds": [
+      0.016342703253030777,
+      0.21806909143924713
+    ],
+    "path_lengths": [
+      1.5296101570129395,
+      1.5227090120315552
+    ],
+    "fallback_steps": 0,
+    "mean_planning_ms": 52.95265161290369,
+    "p95_planning_ms": 57.340613950009356,
+    "state_replay_error": 0.0,
+    "substep_replay_error": 0.0,
+    "trajectory_sha256": "bcb795b140e2c5f47d893fb79b5c2f234304ce4422b6d8beaf1313ce6081f721",
+    "split": "train"
+  },
+  {
+    "geometry": "progress_03",
+    "arm": "invariant_repair",
+    "seed": 2026143000,
+    "steps": 200,
+    "joint_success": false,
+    "minimum_separation": 0.3933480381965637,
+    "loss_of_separation": false,
+    "collision_proxy": false,
+    "violation_steps": 0,
+    "cumulative_violation": 0.0,
+    "substep_minimum_separation": 0.3926079273223877,
+    "substep_loss_of_separation": false,
+    "substep_collision_proxy": false,
+    "safe_joint_success": false,
+    "final_goal_distances": [
+      0.7986239194869995,
+      0.3059918284416199
+    ],
+    "final_speeds": [
+      0.0700111985206604,
+      0.021760080009698868
+    ],
+    "path_lengths": [
+      2.7605316638946533,
+      2.1405391693115234
+    ],
+    "fallback_steps": 0,
+    "mean_planning_ms": 3.9480321999991475,
+    "p95_planning_ms": 4.862140350013533,
+    "state_replay_error": 0.0,
+    "substep_replay_error": 0.0,
+    "trajectory_sha256": "5ac668fa9feda5f14ffc41cf4faf2b952bcc3ed04185160992af656ca4d59f0f",
+    "split": "train"
+  },
+  {
+    "geometry": "progress_03",
+    "arm": "true_sim_safety",
+    "seed": 2026143000,
+    "steps": 65,
+    "joint_success": true,
+    "minimum_separation": 0.3044613301753998,
+    "loss_of_separation": false,
+    "collision_proxy": false,
+    "violation_steps": 0,
+    "cumulative_violation": 0.0,
+    "substep_minimum_separation": 0.3040861189365387,
+    "substep_loss_of_separation": false,
+    "substep_collision_proxy": false,
+    "safe_joint_success": true,
+    "final_goal_distances": [
+      0.10338766127824783,
+      0.025901321321725845
+    ],
+    "final_speeds": [
+      0.25428810715675354,
+      0.02764895372092724
+    ],
+    "path_lengths": [
+      1.6686092615127563,
+      1.6523473262786865
+    ],
+    "fallback_steps": 0,
+    "mean_planning_ms": 54.940384246153734,
+    "p95_planning_ms": 61.373516800011885,
+    "state_replay_error": 0.0,
+    "substep_replay_error": 0.0,
+    "trajectory_sha256": "09f3082fb15ebba5462a49d9023717f2e35e55076ceaf539ab71c86c84d24a91",
+    "split": "train"
+  },
+  {
+    "geometry": "progress_04",
+    "arm": "invariant_repair",
+    "seed": 2026144000,
+    "steps": 200,
+    "joint_success": false,
+    "minimum_separation": 0.3795078992843628,
+    "loss_of_separation": false,
+    "collision_proxy": false,
+    "violation_steps": 0,
+    "cumulative_violation": 0.0,
+    "substep_minimum_separation": 0.3795078992843628,
+    "substep_loss_of_separation": false,
+    "substep_collision_proxy": false,
+    "safe_joint_success": false,
+    "final_goal_distances": [
+      1.7737592458724976,
+      1.3520644903182983
+    ],
+    "final_speeds": [
+      0.2682880461215973,
+      0.21640008687973022
+    ],
+    "path_lengths": [
+      2.3855602741241455,
+      2.8891918659210205
+    ],
+    "fallback_steps": 0,
+    "mean_planning_ms": 3.6356900100008716,
+    "p95_planning_ms": 4.528016699997295,
+    "state_replay_error": 0.0,
+    "substep_replay_error": 0.0,
+    "trajectory_sha256": "9e853278240be7551354791aaa5f656d12f5bfc8fb1c060f18c9f3f29896eee7",
+    "split": "train"
+  },
+  {
+    "geometry": "progress_04",
+    "arm": "true_sim_safety",
+    "seed": 2026144000,
+    "steps": 53,
+    "joint_success": true,
+    "minimum_separation": 0.30837732553482056,
+    "loss_of_separation": false,
+    "collision_proxy": false,
+    "violation_steps": 0,
+    "cumulative_violation": 0.0,
+    "substep_minimum_separation": 0.3082749843597412,
+    "substep_loss_of_separation": false,
+    "substep_collision_proxy": false,
+    "safe_joint_success": true,
+    "final_goal_distances": [
+      0.11468518525362015,
+      0.004138152115046978
+    ],
+    "final_speeds": [
+      0.14957909286022186,
+      0.04721061885356903
+    ],
+    "path_lengths": [
+      1.3981376886367798,
+      1.5182397365570068
+    ],
+    "fallback_steps": 0,
+    "mean_planning_ms": 55.44428894339526,
+    "p95_planning_ms": 60.66778439999325,
+    "state_replay_error": 0.0,
+    "substep_replay_error": 0.0,
+    "trajectory_sha256": "b37c30eb1e0730352f4cdde6293b4a476bb01b552357aefed4598d7b9e7c498c",
+    "split": "train"
+  },
+  {
+    "geometry": "progress_05",
+    "arm": "invariant_repair",
+    "seed": 2026145000,
+    "steps": 200,
+    "joint_success": false,
+    "minimum_separation": 0.3985961973667145,
+    "loss_of_separation": false,
+    "collision_proxy": false,
+    "violation_steps": 0,
+    "cumulative_violation": 0.0,
+    "substep_minimum_separation": 0.39847567677497864,
+    "substep_loss_of_separation": false,
+    "substep_collision_proxy": false,
+    "safe_joint_success": false,
+    "final_goal_distances": [
+      1.0216606855392456,
+      0.19749146699905396
+    ],
+    "final_speeds": [
+      0.04035789519548416,
+      0.0668867975473404
+    ],
+    "path_lengths": [
+      2.0611183643341064,
+      1.8253949880599976
+    ],
+    "fallback_steps": 0,
+    "mean_planning_ms": 4.039397179998758,
+    "p95_planning_ms": 5.902458299992474,
+    "state_replay_error": 0.0,
+    "substep_replay_error": 0.0,
+    "trajectory_sha256": "7190de1540e55a0258e8ac76fa8938f3de811b123d325f89a401c947b620ed18",
+    "split": "train"
+  },
+  {
+    "geometry": "progress_05",
+    "arm": "true_sim_safety",
+    "seed": 2026145000,
+    "steps": 65,
+    "joint_success": true,
+    "minimum_separation": 0.30074524879455566,
+    "loss_of_separation": false,
+    "collision_proxy": false,
+    "violation_steps": 0,
+    "cumulative_violation": 0.0,
+    "substep_minimum_separation": 0.30058860778808594,
+    "substep_loss_of_separation": false,
+    "substep_collision_proxy": false,
+    "safe_joint_success": true,
+    "final_goal_distances": [
+      0.11669519543647766,
+      0.011199070140719414
+    ],
+    "final_speeds": [
+      0.2600248157978058,
+      0.006845500320196152
+    ],
+    "path_lengths": [
+      1.6368191242218018,
+      1.5078924894332886
+    ],
+    "fallback_steps": 0,
+    "mean_planning_ms": 55.88554456923108,
+    "p95_planning_ms": 60.633989199999405,
+    "state_replay_error": 0.0,
+    "substep_replay_error": 0.0,
+    "trajectory_sha256": "f237ea29821c35147734977aec08621c5a14655e5a489b4fb8ec089f21fbabe1",
+    "split": "train"
+  },
+  {
+    "geometry": "progress_06",
+    "arm": "invariant_repair",
+    "seed": 2026146000,
+    "steps": 200,
+    "joint_success": false,
+    "minimum_separation": 0.39983102679252625,
+    "loss_of_separation": false,
+    "collision_proxy": false,
+    "violation_steps": 0,
+    "cumulative_violation": 0.0,
+    "substep_minimum_separation": 0.39983102679252625,
+    "substep_loss_of_separation": false,
+    "substep_collision_proxy": false,
+    "safe_joint_success": false,
+    "final_goal_distances": [
+      1.0050773620605469,
+      0.2294648140668869
+    ],
+    "final_speeds": [
+      0.05260257422924042,
+      0.017723914235830307
+    ],
+    "path_lengths": [
+      1.8705713748931885,
+      1.721116542816162
+    ],
+    "fallback_steps": 0,
+    "mean_planning_ms": 3.775433815000042,
+    "p95_planning_ms": 5.404315199997709,
+    "state_replay_error": 0.0,
+    "substep_replay_error": 0.0,
+    "trajectory_sha256": "bd16fa4211d86414446ccacfacbea609df53f5124be57da71f9655055527ceaf",
+    "split": "train"
+  },
+  {
+    "geometry": "progress_06",
+    "arm": "true_sim_safety",
+    "seed": 2026146000,
+    "steps": 64,
+    "joint_success": true,
+    "minimum_separation": 0.30031660199165344,
+    "loss_of_separation": false,
+    "collision_proxy": false,
+    "violation_steps": 0,
+    "cumulative_violation": 0.0,
+    "substep_minimum_separation": 0.3000437021255493,
+    "substep_loss_of_separation": false,
+    "substep_collision_proxy": false,
+    "safe_joint_success": true,
+    "final_goal_distances": [
+      0.10620180517435074,
+      0.018816828727722168
+    ],
+    "final_speeds": [
+      0.170183926820755,
+      0.04147747904062271
+    ],
+    "path_lengths": [
+      1.613247036933899,
+      1.366011619567871
+    ],
+    "fallback_steps": 0,
+    "mean_planning_ms": 56.378159312500564,
+    "p95_planning_ms": 64.3093662500064,
+    "state_replay_error": 0.0,
+    "substep_replay_error": 0.0,
+    "trajectory_sha256": "ba719b2e2258b541fe94205bb4483c35c7e7afb5b86df8b5fa01537a64cf275e",
+    "split": "train"
+  },
+  {
+    "geometry": "progress_07",
+    "arm": "invariant_repair",
+    "seed": 2026147000,
+    "steps": 200,
+    "joint_success": false,
+    "minimum_separation": 0.3813968896865845,
+    "loss_of_separation": false,
+    "collision_proxy": false,
+    "violation_steps": 0,
+    "cumulative_violation": 0.0,
+    "substep_minimum_separation": 0.3813053369522095,
+    "substep_loss_of_separation": false,
+    "substep_collision_proxy": false,
+    "safe_joint_success": false,
+    "final_goal_distances": [
+      1.296920657157898,
+      0.7893691062927246
+    ],
+    "final_speeds": [
+      0.1032644659280777,
+      0.18253390491008759
+    ],
+    "path_lengths": [
+      1.0174897909164429,
+      1.9804896116256714
+    ],
+    "fallback_steps": 0,
+    "mean_planning_ms": 3.8711716399990337,
+    "p95_planning_ms": 6.021790099994458,
+    "state_replay_error": 0.0,
+    "substep_replay_error": 0.0,
+    "trajectory_sha256": "40a2015c0d1645275811e3f56210d444b622bb32cb95a5272f2ee0550e9d4ccc",
+    "split": "train"
+  },
+  {
+    "geometry": "progress_07",
+    "arm": "true_sim_safety",
+    "seed": 2026147000,
+    "steps": 54,
+    "joint_success": true,
+    "minimum_separation": 0.30874818563461304,
+    "loss_of_separation": false,
+    "collision_proxy": false,
+    "violation_steps": 0,
+    "cumulative_violation": 0.0,
+    "substep_minimum_separation": 0.30874818563461304,
+    "substep_loss_of_separation": false,
+    "substep_collision_proxy": false,
+    "safe_joint_success": true,
+    "final_goal_distances": [
+      0.1076342836022377,
+      0.02773141674697399
+    ],
+    "final_speeds": [
+      0.17070834338665009,
+      0.06128205358982086
+    ],
+    "path_lengths": [
+      1.3344156742095947,
+      1.413864016532898
+    ],
+    "fallback_steps": 0,
+    "mean_planning_ms": 61.213366370370494,
+    "p95_planning_ms": 79.33265995000055,
+    "state_replay_error": 0.0,
+    "substep_replay_error": 0.0,
+    "trajectory_sha256": "2f0407a7318d962ee187fb0b37076e96b873104519103b54493c8f3036d3ac70",
+    "split": "train"
+  },
+  {
+    "geometry": "progress_08",
+    "arm": "invariant_repair",
+    "seed": 2026148000,
+    "steps": 200,
+    "joint_success": false,
+    "minimum_separation": 0.36934995651245117,
+    "loss_of_separation": false,
+    "collision_proxy": false,
+    "violation_steps": 0,
+    "cumulative_violation": 0.0,
+    "substep_minimum_separation": 0.36932075023651123,
+    "substep_loss_of_separation": false,
+    "substep_collision_proxy": false,
+    "safe_joint_success": false,
+    "final_goal_distances": [
+      0.661379873752594,
+      0.42989546060562134
+    ],
+    "final_speeds": [
+      0.0027702231891453266,
+      0.007800139021128416
+    ],
+    "path_lengths": [
+      2.168466806411743,
+      1.78932523727417
+    ],
+    "fallback_steps": 0,
+    "mean_planning_ms": 3.098057250000039,
+    "p95_planning_ms": 3.7694610499983106,
+    "state_replay_error": 0.0,
+    "substep_replay_error": 0.0,
+    "trajectory_sha256": "e1d44384f2a1414f282c9ffb6c7b97c2914870a333b4c91c2c57ddad16989fae",
+    "split": "validation"
+  },
+  {
+    "geometry": "progress_08",
+    "arm": "true_sim_safety",
+    "seed": 2026148000,
+    "steps": 58,
+    "joint_success": true,
+    "minimum_separation": 0.3020033836364746,
+    "loss_of_separation": false,
+    "collision_proxy": false,
+    "violation_steps": 0,
+    "cumulative_violation": 0.0,
+    "substep_minimum_separation": 0.3020033836364746,
+    "substep_loss_of_separation": false,
+    "substep_collision_proxy": false,
+    "safe_joint_success": true,
+    "final_goal_distances": [
+      0.01396183017641306,
+      0.11977772414684296
+    ],
+    "final_speeds": [
+      0.002868660492822528,
+      0.19572113454341888
+    ],
+    "path_lengths": [
+      1.5992344617843628,
+      1.6130132675170898
+    ],
+    "fallback_steps": 0,
+    "mean_planning_ms": 53.405146051721594,
+    "p95_planning_ms": 57.88907570000106,
+    "state_replay_error": 0.0,
+    "substep_replay_error": 0.0,
+    "trajectory_sha256": "984e78b2b83d5b6b13976bb872409b2be848df3c2bf73875f7bf0e5d866259c4",
+    "split": "validation"
+  },
+  {
+    "geometry": "progress_09",
+    "arm": "invariant_repair",
+    "seed": 2026149000,
+    "steps": 200,
+    "joint_success": false,
+    "minimum_separation": 0.3599820137023926,
+    "loss_of_separation": false,
+    "collision_proxy": false,
+    "violation_steps": 0,
+    "cumulative_violation": 0.0,
+    "substep_minimum_separation": 0.3599820137023926,
+    "substep_loss_of_separation": false,
+    "substep_collision_proxy": false,
+    "safe_joint_success": false,
+    "final_goal_distances": [
+      1.7221746444702148,
+      1.3431466817855835
+    ],
+    "final_speeds": [
+      0.08777570724487305,
+      0.2051350474357605
+    ],
+    "path_lengths": [
+      1.1873151063919067,
+      1.999916672706604
+    ],
+    "fallback_steps": 0,
+    "mean_planning_ms": 3.929773965000578,
+    "p95_planning_ms": 6.210848749996952,
+    "state_replay_error": 0.0,
+    "substep_replay_error": 0.0,
+    "trajectory_sha256": "0a813e46c3deb0defd1da0533aefce90d82fcfa7cb492758394873ef6eddfef0",
+    "split": "validation"
+  },
+  {
+    "geometry": "progress_09",
+    "arm": "true_sim_safety",
+    "seed": 2026149000,
+    "steps": 56,
+    "joint_success": true,
+    "minimum_separation": 0.30654481053352356,
+    "loss_of_separation": false,
+    "collision_proxy": false,
+    "violation_steps": 0,
+    "cumulative_violation": 0.0,
+    "substep_minimum_separation": 0.30654260516166687,
+    "substep_loss_of_separation": false,
+    "substep_collision_proxy": false,
+    "safe_joint_success": true,
+    "final_goal_distances": [
+      0.11118154972791672,
+      0.012601250782608986
+    ],
+    "final_speeds": [
+      0.24404771625995636,
+      0.06822043657302856
+    ],
+    "path_lengths": [
+      1.5030791759490967,
+      1.6045594215393066
+    ],
+    "fallback_steps": 0,
+    "mean_planning_ms": 58.781303624996895,
+    "p95_planning_ms": 68.16794725000364,
+    "state_replay_error": 0.0,
+    "substep_replay_error": 0.0,
+    "trajectory_sha256": "7d14dba0740f4147405cedc163bf3bf82a8113d8e5919c5cf551512d8eea069c",
+    "split": "validation"
+  },
+  {
+    "geometry": "progress_10",
+    "arm": "invariant_repair",
+    "seed": 2026150000,
+    "steps": 200,
+    "joint_success": false,
+    "minimum_separation": 0.39077624678611755,
+    "loss_of_separation": false,
+    "collision_proxy": false,
+    "violation_steps": 0,
+    "cumulative_violation": 0.0,
+    "substep_minimum_separation": 0.3895784914493561,
+    "substep_loss_of_separation": false,
+    "substep_collision_proxy": false,
+    "safe_joint_success": false,
+    "final_goal_distances": [
+      0.7736847996711731,
+      0.301752507686615
+    ],
+    "final_speeds": [
+      0.12659452855587006,
+      0.04633960872888565
+    ],
+    "path_lengths": [
+      2.8341729640960693,
+      2.2565505504608154
+    ],
+    "fallback_steps": 0,
+    "mean_planning_ms": 3.625067624999332,
+    "p95_planning_ms": 4.472490449988697,
+    "state_replay_error": 0.0,
+    "substep_replay_error": 0.0,
+    "trajectory_sha256": "6e386d03c4bfae6e16bc3d9d085507c32c63fa2f5490bc5463c9b92ce112a903",
+    "split": "validation"
+  },
+  {
+    "geometry": "progress_10",
+    "arm": "true_sim_safety",
+    "seed": 2026150000,
+    "steps": 62,
+    "joint_success": true,
+    "minimum_separation": 0.30728036165237427,
+    "loss_of_separation": false,
+    "collision_proxy": false,
+    "violation_steps": 0,
+    "cumulative_violation": 0.0,
+    "substep_minimum_separation": 0.30728036165237427,
+    "substep_loss_of_separation": false,
+    "substep_collision_proxy": false,
+    "safe_joint_success": true,
+    "final_goal_distances": [
+      0.11005603522062302,
+      0.010380018502473831
+    ],
+    "final_speeds": [
+      0.22354939579963684,
+      0.032266031950712204
+    ],
+    "path_lengths": [
+      1.6117218732833862,
+      1.6275062561035156
+    ],
+    "fallback_steps": 0,
+    "mean_planning_ms": 54.31411166128991,
+    "p95_planning_ms": 58.76968085000982,
+    "state_replay_error": 0.0,
+    "substep_replay_error": 0.0,
+    "trajectory_sha256": "3c83e7e90840e6f3c6d181e34e5dd4c7d36ad6a508946bc656908f57119ee813",
+    "split": "validation"
+  },
+  {
+    "geometry": "progress_11",
+    "arm": "invariant_repair",
+    "seed": 2026151000,
+    "steps": 200,
+    "joint_success": false,
+    "minimum_separation": 0.35537710785865784,
+    "loss_of_separation": false,
+    "collision_proxy": false,
+    "violation_steps": 0,
+    "cumulative_violation": 0.0,
+    "substep_minimum_separation": 0.35537710785865784,
+    "substep_loss_of_separation": false,
+    "substep_collision_proxy": false,
+    "safe_joint_success": false,
+    "final_goal_distances": [
+      1.4442815780639648,
+      1.1061419248580933
+    ],
+    "final_speeds": [
+      0.0033621604088693857,
+      0.17130465805530548
+    ],
+    "path_lengths": [
+      0.9139489531517029,
+      1.6313858032226562
+    ],
+    "fallback_steps": 0,
+    "mean_planning_ms": 3.6301858599992443,
+    "p95_planning_ms": 4.3836378999870345,
+    "state_replay_error": 0.0,
+    "substep_replay_error": 0.0,
+    "trajectory_sha256": "436276508d1791d7c0c68506a3d8efc6833aab766c8be51310ac88a644e86796",
+    "split": "validation"
+  },
+  {
+    "geometry": "progress_11",
+    "arm": "true_sim_safety",
+    "seed": 2026151000,
+    "steps": 49,
+    "joint_success": true,
+    "minimum_separation": 0.3006454408168793,
+    "loss_of_separation": false,
+    "collision_proxy": false,
+    "violation_steps": 0,
+    "cumulative_violation": 0.0,
+    "substep_minimum_separation": 0.3003748655319214,
+    "substep_loss_of_separation": false,
+    "substep_collision_proxy": false,
+    "safe_joint_success": true,
+    "final_goal_distances": [
+      0.012109953910112381,
+      0.1191069632768631
+    ],
+    "final_speeds": [
+      0.04824542999267578,
+      0.2185707688331604
+    ],
+    "path_lengths": [
+      1.445696234703064,
+      1.3190133571624756
+    ],
+    "fallback_steps": 0,
+    "mean_planning_ms": 55.300166571428534,
+    "p95_planning_ms": 60.7847202000073,
+    "state_replay_error": 0.0,
+    "substep_replay_error": 0.0,
+    "trajectory_sha256": "d29e2b4a353142ba9d0aa675098a2e68d2df61a00e1e09fb84b06e69019b896a",
+    "split": "validation"
+  }
+]
