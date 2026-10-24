@@ -1,0 +1,153 @@
+[
+  {
+    "published_sha256": "02bf7590457fb8b82dc51d8ceb6c7035b74e95b0e265b5bee804fd6a989759d3",
+    "normalization": "UTF-8 LF text; original retained externally",
+    "path": "e0/PHASE3_E0_STATUS.md",
+    "original_sha256": "e33b5804c7730a06be43c95b5faa57d21ccc90ff99b9ecbed4d0233c798b947a",
+    "status": "Historical report migration; not a fresh experiment rerun"
+  },
+  {
+    "published_sha256": "152090f86c29ea59ac35e96bc9c9e0279183464ec6a7d29930dc754024fa63f6",
+    "normalization": "UTF-8 LF text; original retained externally",
+    "path": "e0/multipusht_e0a_15/E0A_15_REPORT.md",
+    "original_sha256": "8ff649668e1e72b1c2bc37ded76f9499cdff3f5025b655f7e597f899356e38eb",
+    "status": "Historical report migration; not a fresh experiment rerun"
+  },
+  {
+    "published_sha256": "5569cd1766d31be902f1edb02685a7093e3a65f4ce4baae3e4fc164b9d8635e8",
+    "normalization": "UTF-8 LF text; original retained externally",
+    "path": "e0/multipusht_e0a_15/summary.json",
+    "original_sha256": "5569cd1766d31be902f1edb02685a7093e3a65f4ce4baae3e4fc164b9d8635e8",
+    "status": "Historical report migration; not a fresh experiment rerun"
+  },
+  {
+    "published_sha256": "4fe477f1562b42b12317b3b81d5c9e2f74965cb44312e13ed146e301faa067ed",
+    "normalization": "UTF-8 LF text; original retained externally",
+    "path": "e0/readout_smoke_v1/READOUT_SMOKE_REPORT.md",
+    "original_sha256": "4fe477f1562b42b12317b3b81d5c9e2f74965cb44312e13ed146e301faa067ed",
+    "status": "Historical report migration; not a fresh experiment rerun"
+  },
+  {
+    "published_sha256": "dd3c8e74f6d888f46914f5b0ef45cbdbb4551f1e0c26b5712b2e49df2505ebcb",
+    "normalization": "UTF-8 LF text; original retained externally",
+    "path": "e1/mixed_ranker_block_v1/MIXED_RANKER_BLOCK_REPORT.md",
+    "original_sha256": "dce9df80c942e5e7d2813f07b5ace55d2565a5fda6b34b6b90db5b65d02dc7df",
+    "status": "Historical report migration; not a fresh experiment rerun"
+  },
+  {
+    "published_sha256": "a871d0bc24e625e5d415f6316d93eec82592858c6720d4f580de59f6ad65db82",
+    "normalization": "UTF-8 LF text; original retained externally",
+    "path": "e1/mixed_ranker_block_v1/DATASET_CARD.md",
+    "original_sha256": "508080e775bed36c5865214e49cad8738fcedd6085d8a22018e1b524facbd8cd",
+    "status": "Historical report migration; not a fresh experiment rerun"
+  },
+  {
+    "published_sha256": "392db528309fe2299934455fd70acd8f9ff1576fd12d4bac1bf85b279e543b48",
+    "normalization": "UTF-8 LF text; original retained externally",
+    "path": "e1/mixed_ranker_block_v1/protocol.json",
+    "original_sha256": "392db528309fe2299934455fd70acd8f9ff1576fd12d4bac1bf85b279e543b48",
+    "status": "Historical report migration; not a fresh experiment rerun"
+  },
+  {
+    "published_sha256": "d6264106dbb4d27e47866bbce307d9ede900dcfd3e1f8f5f8d91d4fb0e724ef1",
+    "normalization": "UTF-8 LF text; original retained externally",
+    "path": "e1/mixed_ranker_block_v1/confirmation_summary.json",
+    "original_sha256": "d6264106dbb4d27e47866bbce307d9ede900dcfd3e1f8f5f8d91d4fb0e724ef1",
+    "status": "Historical report migration; not a fresh experiment rerun"
+  },
+  {
+    "published_sha256": "f12122a12d798308400220aa25d7521152bb4e3cc5e1623d06fa30f67848762f",
+    "normalization": "UTF-8 LF text; original retained externally",
+    "path": "e1/mixed_ranker_block_v1/confirmation_verification.json",
+    "original_sha256": "f12122a12d798308400220aa25d7521152bb4e3cc5e1623d06fa30f67848762f",
+    "status": "Historical report migration; not a fresh experiment rerun"
+  },
+  {
+    "published_sha256": "b0d79602922974ea377657bc4e48aee82a686450c956971f50d02b5ece747150",
+    "normalization": "UTF-8 LF text; original retained externally",
+    "path": "e1/mixed_ranker_block_v1/final_verification.json",
+    "original_sha256": "080014dfb9d536586ece4dc95bd90ac66fa4b414f497c3da1bd3e515636d374c",
+    "status": "Historical report migration; not a fresh experiment rerun"
+  },
+  {
+    "published_sha256": "d6728d715d543f108de35d68fc0dc554c5718f14b97a8016ecc814071ae10bf8",
+    "normalization": "UTF-8 LF text; original retained externally",
+    "path": "e1/mixed_ranker_block_v1/source_sha256.json",
+    "original_sha256": "35c7b524a370211016ac7cc14756618c4e149a7216e1bea5fa3206506516b93d",
+    "status": "Historical report migration; not a fresh experiment rerun"
+  },
+  {
+    "published_sha256": "95b6d7eac6bc409b5216baea2bd0241fa924cdf1058c4f016138bfa37a38737a",
+    "normalization": "UTF-8 LF text; original retained externally",
+    "path": "e1/readout_residual_v1/READOUT_RESIDUAL_REPORT.md",
+    "original_sha256": "62508f2dd647f77ef18d97dac6b7d9c072eccec7160174a82815aae20f57392c",
+    "status": "Historical report migration; not a fresh experiment rerun"
+  },
+  {
+    "published_sha256": "fc30b850a9f44d77ed74635a531b7bb4a52a7b5c60314f5e943bb3f6debf9d67",
+    "normalization": "UTF-8 LF text; original retained externally",
+    "path": "e1/proposal_coverage_v1/PROPOSAL_COVERAGE_REPORT.md",
+    "original_sha256": "c5b35ec9c4f61addcebd516f28e9c190789f7aa23d7ec249f3b3e4b90cb6ba95",
+    "status": "Historical report migration; not a fresh experiment rerun"
+  },
+  {
+    "published_sha256": "c00ad713004be1757355481fd7fa1a65bef65ff3eec5e7a1892098d9cfb5b1e2",
+    "status": "Exact phase22 source hash matches original frozen source manifest; not rerun here",
+    "path": "e1/mixed_ranker_block_v1/source/e1_ranker_common.py",
+    "original_sha256": "c00ad713004be1757355481fd7fa1a65bef65ff3eec5e7a1892098d9cfb5b1e2"
+  },
+  {
+    "published_sha256": "29cc8ac40309c1e0d6e7a199cfa28a96fd04e588677a0e8be32b612dd28dc1a0",
+    "status": "Exact phase22 source hash matches original frozen source manifest; not rerun here",
+    "path": "e1/mixed_ranker_block_v1/source/phase22_closedloop.py",
+    "original_sha256": "29cc8ac40309c1e0d6e7a199cfa28a96fd04e588677a0e8be32b612dd28dc1a0"
+  },
+  {
+    "published_sha256": "bd4d008239e1f9cbbb0c9f9803745f84681abceed434c4b56079d61f117be6de",
+    "status": "Exact phase22 source hash matches original frozen source manifest; not rerun here",
+    "path": "e1/mixed_ranker_block_v1/source/phase22_collect.py",
+    "original_sha256": "bd4d008239e1f9cbbb0c9f9803745f84681abceed434c4b56079d61f117be6de"
+  },
+  {
+    "published_sha256": "78756d88ace364b3f5098d6d16fffbc57ebfe6117f42b20d17726add2115cc7f",
+    "status": "Exact phase22 source hash matches original frozen source manifest; not rerun here",
+    "path": "e1/mixed_ranker_block_v1/source/phase22_common.py",
+    "original_sha256": "78756d88ace364b3f5098d6d16fffbc57ebfe6117f42b20d17726add2115cc7f"
+  },
+  {
+    "published_sha256": "445c290e60f391ee08b9fb02884081bfbc372add37399bbd35226a9df42f627d",
+    "status": "Exact phase22 source hash matches original frozen source manifest; not rerun here",
+    "path": "e1/mixed_ranker_block_v1/source/phase22_evaluate.py",
+    "original_sha256": "445c290e60f391ee08b9fb02884081bfbc372add37399bbd35226a9df42f627d"
+  },
+  {
+    "published_sha256": "91310c0f8da5949a8921fb513d1942d07dcae4a5a407f81563d076f786efdf68",
+    "status": "Exact phase22 source hash matches original frozen source manifest; not rerun here",
+    "path": "e1/mixed_ranker_block_v1/source/phase22_fit.py",
+    "original_sha256": "91310c0f8da5949a8921fb513d1942d07dcae4a5a407f81563d076f786efdf68"
+  },
+  {
+    "published_sha256": "06cc52be29dfc1c1b99b4d531ed01bda757cc25e7ebd5c00c407181cecca39c9",
+    "status": "Exact phase22 source hash matches original frozen source manifest; not rerun here",
+    "path": "e1/mixed_ranker_block_v1/source/phase22_freeze.py",
+    "original_sha256": "06cc52be29dfc1c1b99b4d531ed01bda757cc25e7ebd5c00c407181cecca39c9"
+  },
+  {
+    "published_sha256": "73506b857338751597a6c0a99a9f363bb753a66a071d162b43ac7dbe11ce079d",
+    "status": "Exact phase22 source hash matches original frozen source manifest; not rerun here",
+    "path": "e1/mixed_ranker_block_v1/source/phase22_model_checks.py",
+    "original_sha256": "73506b857338751597a6c0a99a9f363bb753a66a071d162b43ac7dbe11ce079d"
+  },
+  {
+    "published_sha256": "ca770c42ea83abf7a49ea7effdb396b717acf6c267d5be7a3512e96780bef780",
+    "status": "Exact phase22 source hash matches original frozen source manifest; not rerun here",
+    "path": "e1/mixed_ranker_block_v1/source/phase22_report.py",
+    "original_sha256": "ca770c42ea83abf7a49ea7effdb396b717acf6c267d5be7a3512e96780bef780"
+  },
+  {
+    "published_sha256": "2c6e8f696751967ab0ef89b52b1bbb7cdf67b9c5e52432bf2c4b5ed07377dfc4",
+    "status": "Exact phase22 source hash matches original frozen source manifest; not rerun here",
+    "path": "e1/mixed_ranker_block_v1/source/phase22_verify.py",
+    "original_sha256": "2c6e8f696751967ab0ef89b52b1bbb7cdf67b9c5e52432bf2c4b5ed07377dfc4"
+  }
+]

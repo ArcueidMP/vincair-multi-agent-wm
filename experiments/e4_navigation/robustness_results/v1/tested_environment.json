@@ -1,0 +1,11 @@
+{
+  "python": "3.10.22",
+  "packages": {
+    "torch": "2.11.0+cu128",
+    "numpy": "2.2.6",
+    "vmas": "1.5.2",
+    "matplotlib": "3.10.9"
+  },
+  "platform": "WSL2 Ubuntu / RTX4060 Laptop8GB",
+  "device": "cuda"
+}

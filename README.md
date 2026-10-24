@@ -1,5 +1,7 @@
 # Multi-agent Push-T world models (LeWM)
 
+> Collaboration branch: see [COLLABORATION_START_HERE.md](COLLABORATION_START_HERE.md) for current E0/E1/E4 results, portable Navigation reproduction, known limitations, and team tasks. The Navigation hybrid is distinct from the Push-T LeWM models described below.
+
 Can a [LeWM](https://github.com/lucas-maes/le-wm)-style world model (a JEPA that plans with CEM in latent space) plan for
 **two agents that must push a T together**? The T is too heavy for one agent; it moves only when both push. Two
 settings:

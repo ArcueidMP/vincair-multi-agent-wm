@@ -1,0 +1,150 @@
+{
+  "by_condition": {
+    "nominal": {
+      "invariant_repair": {
+        "episodes": 6,
+        "mean": {
+          "joint_success": 0.0,
+          "safe_joint_success": 0.0,
+          "substep_loss_of_separation": 0.0,
+          "substep_collision_proxy": 0.0,
+          "steps": 200.0,
+          "mean_planning_ms": 3.7568230033337286
+        }
+      },
+      "analytic_goal": {
+        "episodes": 6,
+        "mean": {
+          "joint_success": 1.0,
+          "safe_joint_success": 1.0,
+          "substep_loss_of_separation": 0.0,
+          "substep_collision_proxy": 0.0,
+          "steps": 62.333333333333336,
+          "mean_planning_ms": 3.867331781971114
+        }
+      },
+      "true_sim_safety": {
+        "episodes": 6,
+        "mean": {
+          "joint_success": 1.0,
+          "safe_joint_success": 1.0,
+          "substep_loss_of_separation": 0.0,
+          "substep_collision_proxy": 0.0,
+          "steps": 56.833333333333336,
+          "mean_planning_ms": 64.35338280650755
+        }
+      }
+    },
+    "fast_approach": {
+      "invariant_repair": {
+        "episodes": 6,
+        "mean": {
+          "joint_success": 0.0,
+          "safe_joint_success": 0.0,
+          "substep_loss_of_separation": 0.0,
+          "substep_collision_proxy": 0.0,
+          "steps": 200.0,
+          "mean_planning_ms": 3.5931147591666233
+        }
+      },
+      "analytic_goal": {
+        "episodes": 6,
+        "mean": {
+          "joint_success": 1.0,
+          "safe_joint_success": 1.0,
+          "substep_loss_of_separation": 0.0,
+          "substep_collision_proxy": 0.0,
+          "steps": 63.5,
+          "mean_planning_ms": 3.6591577895965233
+        }
+      },
+      "true_sim_safety": {
+        "episodes": 6,
+        "mean": {
+          "joint_success": 1.0,
+          "safe_joint_success": 1.0,
+          "substep_loss_of_separation": 0.0,
+          "substep_collision_proxy": 0.0,
+          "steps": 54.5,
+          "mean_planning_ms": 63.92648452621656
+        }
+      }
+    },
+    "arrival_offset": {
+      "invariant_repair": {
+        "episodes": 6,
+        "mean": {
+          "joint_success": 0.0,
+          "safe_joint_success": 0.0,
+          "substep_loss_of_separation": 0.0,
+          "substep_collision_proxy": 0.0,
+          "steps": 200.0,
+          "mean_planning_ms": 3.661766424167151
+        }
+      },
+      "analytic_goal": {
+        "episodes": 6,
+        "mean": {
+          "joint_success": 1.0,
+          "safe_joint_success": 1.0,
+          "substep_loss_of_separation": 0.0,
+          "substep_collision_proxy": 0.0,
+          "steps": 53.333333333333336,
+          "mean_planning_ms": 3.627282630966184
+        }
+      },
+      "true_sim_safety": {
+        "episodes": 6,
+        "mean": {
+          "joint_success": 1.0,
+          "safe_joint_success": 1.0,
+          "substep_loss_of_separation": 0.0,
+          "substep_collision_proxy": 0.0,
+          "steps": 45.666666666666664,
+          "mean_planning_ms": 62.97374993305012
+        }
+      }
+    },
+    "terminal_neighborhood": {
+      "invariant_repair": {
+        "episodes": 6,
+        "mean": {
+          "joint_success": 0.0,
+          "safe_joint_success": 0.0,
+          "substep_loss_of_separation": 0.0,
+          "substep_collision_proxy": 0.0,
+          "steps": 200.0,
+          "mean_planning_ms": 3.8272074458336145
+        }
+      },
+      "analytic_goal": {
+        "episodes": 6,
+        "mean": {
+          "joint_success": 1.0,
+          "safe_joint_success": 1.0,
+          "substep_loss_of_separation": 0.0,
+          "substep_collision_proxy": 0.0,
+          "steps": 3.6666666666666665,
+          "mean_planning_ms": 3.8760669166703186
+        }
+      },
+      "true_sim_safety": {
+        "episodes": 6,
+        "mean": {
+          "joint_success": 1.0,
+          "safe_joint_success": 1.0,
+          "substep_loss_of_separation": 0.0,
+          "substep_collision_proxy": 0.0,
+          "steps": 3.6666666666666665,
+          "mean_planning_ms": 67.35865708333272
+        }
+      }
+    }
+  },
+  "episodes": 72,
+  "independent_base_geometries": 6,
+  "robustness_gate_passed": true,
+  "model_hashes_unchanged": true,
+  "no_training": true,
+  "wall_seconds": 170.77031581100002
+}

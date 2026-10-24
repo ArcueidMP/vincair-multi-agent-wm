@@ -1,0 +1,16 @@
+{
+  "status": "passed",
+  "episodes": 72,
+  "independent_base_geometries": 6,
+  "executed_steps": 6861,
+  "independent_model_choices": 5897,
+  "independent_oracle_choices": 964,
+  "max_numpy_forward_error": 6.103515625e-05,
+  "max_oracle_cost_error": 1.9073486328125e-06,
+  "physical_outcomes_and_condition_means_verified": true,
+  "native_replay_error": 0,
+  "portable_parameters_exact": true,
+  "portable_three_arm_smoke_arrays_exact": true,
+  "portable_json_sha256": "fe57201a74edee4b8b29b7865c58fb3dc477d9bb50b4ada5392814f78030c527",
+  "no_training": true
+}

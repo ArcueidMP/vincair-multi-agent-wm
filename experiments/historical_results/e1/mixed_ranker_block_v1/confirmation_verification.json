@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "split": "confirmation",
+  "groups": 16,
+  "labeled_candidates": 1024,
+  "max_cost_error": 0.0,
+  "max_feature_error": 0.0,
+  "max_pose_error": 0.0,
+  "input_target_files_separate": true,
+  "feature_formula_independently_rebuilt": true,
+  "native_second_replay_error": 0.0,
+  "checkpoint_hashes_unchanged": true,
+  "old_test_candidate_npz_opened": 0,
+  "verified_utc": "2026-10-24T09:01:31.384487+00:00"
+}

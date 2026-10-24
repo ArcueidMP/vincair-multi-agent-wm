@@ -1,0 +1,284 @@
+{
+  "status": "passed",
+  "selected": "ridge_lambda_1",
+  "results": {
+    "readout": {
+      "mean": {
+        "regret": 5.865984692706076,
+        "PRA": 0.8464622596115658,
+        "T_gain": 18.905932195255517,
+        "global_gain": 54.01204114189419,
+        "T_oracle_gain": 25.137657710511156
+      },
+      "scenes": [
+        {
+          "scene": 0,
+          "seed": 2026103000,
+          "regret": 0.8800164001237931,
+          "PRA": 0.871090679000001,
+          "T_gain": 0.0,
+          "global_gain": 51.05592144109073,
+          "T_oracle_gain": 2.219094652339436
+        },
+        {
+          "scene": 1,
+          "seed": 2026103001,
+          "regret": 1.8959708130013766,
+          "PRA": 0.920667732602406,
+          "T_gain": 12.198165363212034,
+          "global_gain": 73.99080061571942,
+          "T_oracle_gain": 22.774716460664113
+        },
+        {
+          "scene": 2,
+          "seed": 2026103002,
+          "regret": 15.346421009777913,
+          "PRA": 0.6113361563843454,
+          "T_gain": 5.337646552418676,
+          "global_gain": 36.63474902340258,
+          "T_oracle_gain": 7.4095440735709985
+        },
+        {
+          "scene": 3,
+          "seed": 2026103003,
+          "regret": 4.304071588730295,
+          "PRA": 0.8350197759526339,
+          "T_gain": -0.12653425815673813,
+          "global_gain": 24.176976087785675,
+          "T_oracle_gain": 28.596001064079175
+        },
+        {
+          "scene": 4,
+          "seed": 2026103004,
+          "regret": 2.792713782034852,
+          "PRA": 0.9181749194911202,
+          "T_gain": 31.70465894458931,
+          "global_gain": 54.565157784246274,
+          "T_oracle_gain": 31.736075921028803
+        },
+        {
+          "scene": 5,
+          "seed": 2026103005,
+          "regret": 7.142027302289392,
+          "PRA": 0.8025186203511274,
+          "T_gain": 32.06604689383357,
+          "global_gain": 61.81176708685888,
+          "T_oracle_gain": 32.06678553776925
+        },
+        {
+          "scene": 6,
+          "seed": 2026103006,
+          "regret": 11.714919162576876,
+          "PRA": 0.9104374816338525,
+          "T_gain": 36.89038591754226,
+          "global_gain": 71.71172497698893,
+          "T_oracle_gain": 43.0589707354284
+        },
+        {
+          "scene": 7,
+          "seed": 2026103007,
+          "regret": 2.851737483114107,
+          "PRA": 0.9024527114770411,
+          "T_gain": 33.17708814860501,
+          "global_gain": 58.14923211906098,
+          "T_oracle_gain": 33.24007323920911
+        }
+      ]
+    },
+    "selected": {
+      "mean": {
+        "regret": 5.473765214706661,
+        "PRA": 0.8464356855217514,
+        "T_gain": 18.89896890655992,
+        "global_gain": 54.4042606198936,
+        "T_oracle_gain": 25.137657710511156
+      },
+      "scenes": [
+        {
+          "scene": 0,
+          "seed": 2026103000,
+          "regret": 0.17635986547296056,
+          "PRA": 0.8638457973443546,
+          "T_gain": 0.0,
+          "global_gain": 51.759577975741564,
+          "T_oracle_gain": 2.219094652339436
+        },
+        {
+          "scene": 1,
+          "seed": 2026103001,
+          "regret": 1.8959708130013766,
+          "PRA": 0.9128407187452414,
+          "T_gain": 12.198165363212034,
+          "global_gain": 73.99080061571942,
+          "T_oracle_gain": 22.774716460664113
+        },
+        {
+          "scene": 2,
+          "seed": 2026103002,
+          "regret": 15.346421009777913,
+          "PRA": 0.610218138989322,
+          "T_gain": 5.337646552418676,
+          "global_gain": 36.63474902340258,
+          "T_oracle_gain": 7.4095440735709985
+        },
+        {
+          "scene": 3,
+          "seed": 2026103003,
+          "regret": 4.6162801231755,
+          "PRA": 0.8325563923023567,
+          "T_gain": -0.06649343364233573,
+          "global_gain": 23.86476755334047,
+          "T_oracle_gain": 28.596001064079175
+        },
+        {
+          "scene": 4,
+          "seed": 2026103004,
+          "regret": 2.792713782034852,
+          "PRA": 0.9141344896852979,
+          "T_gain": 31.70465894458931,
+          "global_gain": 54.565157784246274,
+          "T_oracle_gain": 31.736075921028803
+        },
+        {
+          "scene": 5,
+          "seed": 2026103005,
+          "regret": 4.3957194784997,
+          "PRA": 0.8117782812203292,
+          "T_gain": 31.950299759754387,
+          "global_gain": 64.55807491064857,
+          "T_oracle_gain": 32.06678553776925
+        },
+        {
+          "scene": 6,
+          "seed": 2026103006,
+          "regret": 11.714919162576876,
+          "PRA": 0.9198072778920561,
+          "T_gain": 36.89038591754226,
+          "global_gain": 71.71172497698893,
+          "T_oracle_gain": 43.0589707354284
+        },
+        {
+          "scene": 7,
+          "seed": 2026103007,
+          "regret": 2.851737483114107,
+          "PRA": 0.9063043879950533,
+          "T_gain": 33.17708814860501,
+          "global_gain": 58.14923211906098,
+          "T_oracle_gain": 33.24007323920911
+        }
+      ]
+    },
+    "real_encoded_diagnostic": {
+      "mean": {
+        "regret": 7.125672875831311,
+        "PRA": 0.8857855495853524,
+        "T_gain": 18.9766253265928,
+        "global_gain": 52.75235295876895,
+        "T_oracle_gain": 25.137657710511156
+      },
+      "scenes": [
+        {
+          "scene": 0,
+          "seed": 2026103000,
+          "regret": 9.213980442558125,
+          "PRA": 0.881894514861689,
+          "T_gain": 0.0,
+          "global_gain": 42.7219573986564,
+          "T_oracle_gain": 2.219094652339436
+        },
+        {
+          "scene": 1,
+          "seed": 2026103001,
+          "regret": 21.16493786148395,
+          "PRA": 0.8264352063347038,
+          "T_gain": 6.091540125092628,
+          "global_gain": 54.72183356723686,
+          "T_oracle_gain": 22.774716460664113
+        },
+        {
+          "scene": 2,
+          "seed": 2026103002,
+          "regret": 18.696185893191,
+          "PRA": 0.6267143694586071,
+          "T_gain": 6.325471085463278,
+          "global_gain": 33.28498413998949,
+          "T_oracle_gain": 7.4095440735709985
+        },
+        {
+          "scene": 3,
+          "seed": 2026103003,
+          "regret": 0.7418455488828641,
+          "PRA": 0.921863494397748,
+          "T_gain": -0.12653425815673813,
+          "global_gain": 27.739202127633106,
+          "T_oracle_gain": 28.596001064079175
+        },
+        {
+          "scene": 4,
+          "seed": 2026103004,
+          "regret": 2.792713782034852,
+          "PRA": 0.9613499984057647,
+          "T_gain": 31.70465894458931,
+          "global_gain": 54.565157784246274,
+          "T_oracle_gain": 31.736075921028803
+        },
+        {
+          "scene": 5,
+          "seed": 2026103005,
+          "regret": 4.3957194784997,
+          "PRA": 0.9185231037286192,
+          "T_gain": 31.950299759754387,
+          "global_gain": 64.55807491064857,
+          "T_oracle_gain": 32.06678553776925
+        },
+        {
+          "scene": 6,
+          "seed": 2026103006,
+          "regret": 0.0,
+          "PRA": 0.9858427612890587,
+          "T_gain": 42.65562740721606,
+          "global_gain": 83.42664413956581,
+          "T_oracle_gain": 43.0589707354284
+        },
+        {
+          "scene": 7,
+          "seed": 2026103007,
+          "regret": 0.0,
+          "PRA": 0.9636609482066285,
+          "T_gain": 33.21193954878348,
+          "global_gain": 61.00096960217509,
+          "T_oracle_gain": 33.24007323920911
+        }
+      ]
+    }
+  },
+  "regret_delta_by_scene": [
+    -0.7036565346508326,
+    0.0,
+    0.0,
+    0.3122085344452046,
+    0.0,
+    -2.7463078237896923,
+    0.0,
+    0.0
+  ],
+  "relative_regret_improvement": 0.06686336541026289,
+  "better_scenes": 2,
+  "worse_scenes": 1,
+  "closed_loop_gate": false,
+  "gate_conditions": {
+    "nonzero_selected": true,
+    "relative_regret_improvement_at_least_10pct": false,
+    "better_at_least_5_scenes": false,
+    "T_gain_not_worse_by_over1": true
+  },
+  "checkpoint_sha256": "671554769045c1689afb42dea5e92e09ab3b9c5f138549b51c48c7b165f8c518",
+  "no_refit_after_confirmation": true,
+  "old_test_candidate_npz_opened": 0,
+  "evaluated_utc": "2026-10-24T09:01:40.982268+00:00",
+  "limitations": [
+    "Eight confirmation scenes, one fitting seed; descriptive local confirmation only.",
+    "Mixed pool contains privileged contact actions; not an image-only planner result.",
+    "T-only secondary does not replace original global task/success contract."
+  ]
+}

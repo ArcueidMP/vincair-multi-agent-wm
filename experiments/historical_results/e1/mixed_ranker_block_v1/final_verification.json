@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "independent_confirmation_score_max_error": 0.0,
+  "scene_regret_recomputed": true,
+  "closed_loop_gate_recomputed": true,
+  "closed_loop_skipped": true,
+  "train_confirmation_seeds_disjoint": true,
+  "hash_checked_input_label_files": 128,
+  "original_weights_unchanged": true,
+  "old_test_candidate_npz_opened": 0
+}
