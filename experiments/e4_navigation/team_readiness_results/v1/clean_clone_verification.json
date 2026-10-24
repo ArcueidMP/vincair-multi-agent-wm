@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "episodes": 72,
+  "metric_differences": [],
+  "latency_compared": false,
+  "exact_array_fields_compared": 720,
+  "model_and_protocol_hash_match": true,
+  "all_native_replay_errors_zero": true,
+  "scope": "Same-machine clean GitHub clone using existing environment; not an independent machine/environment or new confirmation set"
+}

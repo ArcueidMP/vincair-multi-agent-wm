@@ -49,3 +49,11 @@
 ## 共同遵守的实验约束
 
 新方法只在指定训练集拟合、验证集选择；模型/阈值/场景协议冻结后才激活新的确认集。所有已消费的确认/压力场景及其同一几何变体均按已消费处理。双机/三机、PushT/Navigation、直接评分器/LeWM、真实参考/可部署方法分开标注。保存失败尝试与原始 metadata，保持可追溯的小步提交。
+
+## 最新：复现准备与高惯性失败边界
+
+- [个人阶段工作说明](docs/WORK_SUMMARY_2026-10-25.md)归纳截至本轮的贡献、证据、失败和未完成项。
+- [同机干净clone证据](experiments/e4_navigation/team_readiness_results/v1/clean_clone_verification.json)：72集指标匹配、720项数组字段精确一致；队友跨机器复现仍待完成。
+- [最新压力报告](experiments/e4_navigation/pressure_results/v1/REPORT.md)：近距离6/6安全到达，高惯性0/6安全到达，真实仿真参考两条件均6/6。此前24/24成功不能推广成普遍安全结论。
+- [PR评审草案](docs/PR_REVIEW_READY.md)及[外部资产共享清单](docs/ASSET_SHARING.md)已准备；上游main的readout提交同步到个人分支，没有合入main或自动创建PR。
+- 便携复现后可用`verify_shared_reproduction.py`与已发布逐集表比较。模型负责人仍未提供Navigation专用材料，暂不接入LeWM或开展三机模型评估。

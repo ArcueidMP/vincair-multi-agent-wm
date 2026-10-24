@@ -44,3 +44,16 @@ python experiments/e4_navigation/shared_navigation_model.py \
 - 原始作者 LeWM/PushT checkpoint 与大规模数据没有嵌入 JSON。
 - 训练源报告：[safety_repair_results](safety_repair_results/v1/REPORT.md)；目标代价对照：[navigation_cost_results](navigation_cost_results/v1/REPORT.md)；最新鲁棒性：[robustness_results](robustness_results/v1/REPORT.md)。
 - 全套历史实验的原始 NPZ、作者模型与部分旧项目路径仍需共享数据包；当前便携入口只解决这套 E4 混合基线的复现。
+
+## 自动核对逐集结果
+
+```bash
+python experiments/e4_navigation/verify_shared_reproduction.py \
+  --reference experiments/e4_navigation/robustness_results/v1 \
+  --run /tmp/lewm-robustness-repeat-01 \
+  --output /tmp/lewm-repeat-comparison-01
+```
+
+工具核对模型/协议hash、72个geometry/arm/seed键、成功/安全/碰撞proxy、步数和最小间距，延迟不要求一致。`--original-raw`仅供确有原始轨迹时额外逐元素对照；它不是默认依赖。本轮已经完成同机干净clone全套复现，另一台机器/独立环境的团队复现仍待进行。
+
+更难的新压力测试见[pressure_results](pressure_results/v1/REPORT.md)：高惯性条件暴露风险过滤失效，不得仅引用先前24/24成功。其可运行入口为`navigation_pressure.py --output NEW_DIRECTORY`，只使用已发布便携模型。

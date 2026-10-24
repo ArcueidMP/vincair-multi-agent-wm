@@ -1,0 +1,79 @@
+{
+  "by_condition": {
+    "near_conflict": {
+      "invariant_repair": {
+        "episodes": 6,
+        "mean": {
+          "joint_success": 0.0,
+          "safe_joint_success": 0.0,
+          "substep_loss_of_separation": 0.0,
+          "substep_collision_proxy": 0.0,
+          "steps": 200.0,
+          "mean_planning_ms": 4.023697012500473
+        }
+      },
+      "analytic_goal": {
+        "episodes": 6,
+        "mean": {
+          "joint_success": 1.0,
+          "safe_joint_success": 1.0,
+          "substep_loss_of_separation": 0.0,
+          "substep_collision_proxy": 0.0,
+          "steps": 53.5,
+          "mean_planning_ms": 3.789277441955605
+        }
+      },
+      "true_sim_safety": {
+        "episodes": 6,
+        "mean": {
+          "joint_success": 1.0,
+          "safe_joint_success": 1.0,
+          "substep_loss_of_separation": 0.0,
+          "substep_collision_proxy": 0.0,
+          "steps": 44.833333333333336,
+          "mean_planning_ms": 64.87634137116207
+        }
+      }
+    },
+    "high_inertia": {
+      "invariant_repair": {
+        "episodes": 6,
+        "mean": {
+          "joint_success": 0.0,
+          "safe_joint_success": 0.0,
+          "substep_loss_of_separation": 1.0,
+          "substep_collision_proxy": 0.0,
+          "steps": 200.0,
+          "mean_planning_ms": 3.9880367274998227
+        }
+      },
+      "analytic_goal": {
+        "episodes": 6,
+        "mean": {
+          "joint_success": 1.0,
+          "safe_joint_success": 0.0,
+          "substep_loss_of_separation": 1.0,
+          "substep_collision_proxy": 0.0,
+          "steps": 61.0,
+          "mean_planning_ms": 3.8631861904442872
+        }
+      },
+      "true_sim_safety": {
+        "episodes": 6,
+        "mean": {
+          "joint_success": 1.0,
+          "safe_joint_success": 1.0,
+          "substep_loss_of_separation": 0.0,
+          "substep_collision_proxy": 0.0,
+          "steps": 45.666666666666664,
+          "mean_planning_ms": 64.86996432809697
+        }
+      }
+    }
+  },
+  "episodes": 36,
+  "independent_base_geometries": 6,
+  "stress_gate_passed": false,
+  "model_unchanged": true,
+  "wall_seconds": 90.90706598899999
+}

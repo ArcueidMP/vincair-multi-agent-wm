@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "relative_doc_links_checked": 33,
+  "upstream_readout_sources_ast_parse": true,
+  "tests_passed": 51,
+  "clean_clone_repeat_episodes": 72,
+  "pressure_episodes": 36,
+  "artifact_inventory_scope": "Snapshot before pressure completion; new pressure has its own trajectory manifest",
+  "independent_machine_reproduction": false,
+  "navigation_checkpoint_provided": false
+}

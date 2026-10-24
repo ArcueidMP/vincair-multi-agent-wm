@@ -1,0 +1,421 @@
+{
+  "schema": "lewm_external_asset_index_v1",
+  "scan_scope": "Scientific .npz/.pt/.json/.csv/.md/.patch in results/e0,e1,e4; excludes caches/private images and other directories",
+  "files": 3723,
+  "bytes": 345669154,
+  "freshly_hashed_files": 3602,
+  "declared_only_files": 96,
+  "unhashed_files": 25,
+  "run_groups": [
+    {
+      "run": "results/e0/multipusht_e0a_15",
+      "files": 5,
+      "bytes": 17069,
+      "checksum_index_files": [],
+      "consumption": "Historical run-specific protocol/consumption markers govern reuse; never infer untouched test from directory name",
+      "storage": "local_only"
+    },
+    {
+      "run": "results/e0/multipusht_joint_seed0",
+      "files": 53,
+      "bytes": 538212,
+      "checksum_index_files": [],
+      "consumption": "Historical run-specific protocol/consumption markers govern reuse; never infer untouched test from directory name",
+      "storage": "local_only"
+    },
+    {
+      "run": "results/e0/multipusht_joint_seed1",
+      "files": 53,
+      "bytes": 491553,
+      "checksum_index_files": [],
+      "consumption": "Historical run-specific protocol/consumption markers govern reuse; never infer untouched test from directory name",
+      "storage": "local_only"
+    },
+    {
+      "run": "results/e0/multipusht_joint_seed2",
+      "files": 53,
+      "bytes": 594139,
+      "checksum_index_files": [],
+      "consumption": "Historical run-specific protocol/consumption markers govern reuse; never infer untouched test from directory name",
+      "storage": "local_only"
+    },
+    {
+      "run": "results/e0/multipusht_readout_pilot",
+      "files": 3,
+      "bytes": 937188,
+      "checksum_index_files": [],
+      "consumption": "Historical run-specific protocol/consumption markers govern reuse; never infer untouched test from directory name",
+      "storage": "local_only"
+    },
+    {
+      "run": "results/e0/multipusht_scenes",
+      "files": 4,
+      "bytes": 134674,
+      "checksum_index_files": [],
+      "consumption": "Historical run-specific protocol/consumption markers govern reuse; never infer untouched test from directory name",
+      "storage": "local_only"
+    },
+    {
+      "run": "results/e0/multipusht_true_true_pilot",
+      "files": 47,
+      "bytes": 270755,
+      "checksum_index_files": [],
+      "consumption": "Historical run-specific protocol/consumption markers govern reuse; never infer untouched test from directory name",
+      "storage": "local_only"
+    },
+    {
+      "run": "results/e0/readout_smoke_v1",
+      "files": 77,
+      "bytes": 326998,
+      "checksum_index_files": [],
+      "consumption": "Historical run-specific protocol/consumption markers govern reuse; never infer untouched test from directory name",
+      "storage": "local_only"
+    },
+    {
+      "run": "results/e0/vmas_b",
+      "files": 4,
+      "bytes": 390961,
+      "checksum_index_files": [],
+      "consumption": "Historical run-specific protocol/consumption markers govern reuse; never infer untouched test from directory name",
+      "storage": "local_only"
+    },
+    {
+      "run": "results/e0/vmas_c",
+      "files": 4,
+      "bytes": 390956,
+      "checksum_index_files": [],
+      "consumption": "Historical run-specific protocol/consumption markers govern reuse; never infer untouched test from directory name",
+      "storage": "local_only"
+    },
+    {
+      "run": "results/e0/vmas_d",
+      "files": 4,
+      "bytes": 390442,
+      "checksum_index_files": [],
+      "consumption": "Historical run-specific protocol/consumption markers govern reuse; never infer untouched test from directory name",
+      "storage": "local_only"
+    },
+    {
+      "run": "results/e0/vmas_true_true",
+      "files": 4,
+      "bytes": 389927,
+      "checksum_index_files": [],
+      "consumption": "Historical run-specific protocol/consumption markers govern reuse; never infer untouched test from directory name",
+      "storage": "local_only"
+    },
+    {
+      "run": "results/e1/mixed_ranker_block_v1",
+      "files": 249,
+      "bytes": 17655013,
+      "checksum_index_files": [
+        "dataset_sha256.json"
+      ],
+      "consumption": "Historical run-specific protocol/consumption markers govern reuse; never infer untouched test from directory name",
+      "storage": "local_only"
+    },
+    {
+      "run": "results/e1/multipusht_ranker_diagnosis_v1",
+      "files": 8,
+      "bytes": 555497,
+      "checksum_index_files": [],
+      "consumption": "Historical run-specific protocol/consumption markers govern reuse; never infer untouched test from directory name",
+      "storage": "local_only"
+    },
+    {
+      "run": "results/e1/navigation_candidate_audit_v1",
+      "files": 154,
+      "bytes": 4963491,
+      "checksum_index_files": [],
+      "consumption": "Historical run-specific protocol/consumption markers govern reuse; never infer untouched test from directory name",
+      "storage": "local_only"
+    },
+    {
+      "run": "results/e1/navigation_candidate_audit_v1_failed_serialization",
+      "files": 12,
+      "bytes": 265600,
+      "checksum_index_files": [],
+      "consumption": "Historical run-specific protocol/consumption markers govern reuse; never infer untouched test from directory name",
+      "storage": "local_only"
+    },
+    {
+      "run": "results/e1/navigation_pipeline_v1",
+      "files": 3,
+      "bytes": 3359,
+      "checksum_index_files": [],
+      "consumption": "Historical run-specific protocol/consumption markers govern reuse; never infer untouched test from directory name",
+      "storage": "local_only"
+    },
+    {
+      "run": "results/e1/navigation_pipeline_v2",
+      "files": 5,
+      "bytes": 10076,
+      "checksum_index_files": [],
+      "consumption": "Historical run-specific protocol/consumption markers govern reuse; never infer untouched test from directory name",
+      "storage": "local_only"
+    },
+    {
+      "run": "results/e1/navigation_safety_objectives_v1",
+      "files": 13,
+      "bytes": 204895,
+      "checksum_index_files": [],
+      "consumption": "Historical run-specific protocol/consumption markers govern reuse; never infer untouched test from directory name",
+      "storage": "local_only"
+    },
+    {
+      "run": "results/e1/proposal_coverage_v1",
+      "files": 54,
+      "bytes": 3129910,
+      "checksum_index_files": [
+        "dataset_sha256.json"
+      ],
+      "consumption": "Historical run-specific protocol/consumption markers govern reuse; never infer untouched test from directory name",
+      "storage": "local_only"
+    },
+    {
+      "run": "results/e1/ranking_pilot_v1",
+      "files": 64,
+      "bytes": 2288163,
+      "checksum_index_files": [
+        "dataset_sha256.json"
+      ],
+      "consumption": "Historical run-specific protocol/consumption markers govern reuse; never infer untouched test from directory name",
+      "storage": "local_only"
+    },
+    {
+      "run": "results/e1/ranking_v2",
+      "files": 524,
+      "bytes": 18497681,
+      "checksum_index_files": [],
+      "consumption": "Historical run-specific protocol/consumption markers govern reuse; never infer untouched test from directory name",
+      "storage": "local_only"
+    },
+    {
+      "run": "results/e1/readout_residual_v1",
+      "files": 11,
+      "bytes": 381022,
+      "checksum_index_files": [],
+      "consumption": "Historical run-specific protocol/consumption markers govern reuse; never infer untouched test from directory name",
+      "storage": "local_only"
+    },
+    {
+      "run": "results/e4/closed_loop_pilot_v1",
+      "files": 142,
+      "bytes": 66013521,
+      "checksum_index_files": [
+        "trajectory_sha256.json"
+      ],
+      "consumption": "Historical run-specific protocol/consumption markers govern reuse; never infer untouched test from directory name",
+      "storage": "local_only"
+    },
+    {
+      "run": "results/e4/conflict_ranking_v1",
+      "files": 239,
+      "bytes": 5315044,
+      "checksum_index_files": [
+        "dataset_sha256.json"
+      ],
+      "consumption": "Historical run-specific protocol/consumption markers govern reuse; never infer untouched test from directory name",
+      "storage": "local_only"
+    },
+    {
+      "run": "results/e4/navigation_cost_repair_v1",
+      "files": 119,
+      "bytes": 52186018,
+      "checksum_index_files": [
+        "trajectory_sha256.json"
+      ],
+      "consumption": "Historical run-specific protocol/consumption markers govern reuse; never infer untouched test from directory name",
+      "storage": "local_only"
+    },
+    {
+      "run": "results/e4/navigation_intake_v1",
+      "files": 9,
+      "bytes": 11933,
+      "checksum_index_files": [],
+      "consumption": "Historical run-specific protocol/consumption markers govern reuse; never infer untouched test from directory name",
+      "storage": "local_only"
+    },
+    {
+      "run": "results/e4/navigation_stress_v1",
+      "files": 58,
+      "bytes": 335334,
+      "checksum_index_files": [],
+      "consumption": "Historical run-specific protocol/consumption markers govern reuse; never infer untouched test from directory name",
+      "storage": "local_only"
+    },
+    {
+      "run": "results/e4/nominal_residual_v1",
+      "files": 82,
+      "bytes": 525334,
+      "checksum_index_files": [],
+      "consumption": "Historical run-specific protocol/consumption markers govern reuse; never infer untouched test from directory name",
+      "storage": "local_only"
+    },
+    {
+      "run": "results/e4/portable_navigation_smoke_v1",
+      "files": 8,
+      "bytes": 135923,
+      "checksum_index_files": [],
+      "consumption": "Historical run-specific protocol/consumption markers govern reuse; never infer untouched test from directory name",
+      "storage": "local_only"
+    },
+    {
+      "run": "results/e4/progress_diagnosis_v1",
+      "files": 435,
+      "bytes": 33586480,
+      "checksum_index_files": [
+        "dataset_sha256.json"
+      ],
+      "consumption": "Historical run-specific protocol/consumption markers govern reuse; never infer untouched test from directory name",
+      "storage": "local_only"
+    },
+    {
+      "run": "results/e4/robust_navigation_v1",
+      "files": 162,
+      "bytes": 56819746,
+      "checksum_index_files": [
+        "trajectory_sha256.json"
+      ],
+      "consumption": "Historical run-specific protocol/consumption markers govern reuse; never infer untouched test from directory name",
+      "storage": "local_only"
+    },
+    {
+      "run": "results/e4/safety_generalization_v1",
+      "files": 228,
+      "bytes": 4844128,
+      "checksum_index_files": [
+        "dataset_sha256.json"
+      ],
+      "consumption": "Historical run-specific protocol/consumption markers govern reuse; never infer untouched test from directory name",
+      "storage": "local_only"
+    },
+    {
+      "run": "results/e4/safety_repair_v1",
+      "files": 547,
+      "bytes": 15655210,
+      "checksum_index_files": [
+        "dataset_sha256.json"
+      ],
+      "consumption": "Historical run-specific protocol/consumption markers govern reuse; never infer untouched test from directory name",
+      "storage": "local_only"
+    },
+    {
+      "run": "results/e4/state_action_ranker_v1",
+      "files": 14,
+      "bytes": 248915,
+      "checksum_index_files": [],
+      "consumption": "Historical run-specific protocol/consumption markers govern reuse; never infer untouched test from directory name",
+      "storage": "local_only"
+    },
+    {
+      "run": "results/e4/team_readiness_v1",
+      "files": 146,
+      "bytes": 56450262,
+      "checksum_index_files": [],
+      "consumption": "Historical run-specific protocol/consumption markers govern reuse; never infer untouched test from directory name",
+      "storage": "local_only"
+    },
+    {
+      "run": "results/e4/teammate_reproduction_v1",
+      "files": 50,
+      "bytes": 251730,
+      "checksum_index_files": [],
+      "consumption": "Historical run-specific protocol/consumption markers govern reuse; never infer untouched test from directory name",
+      "storage": "local_only"
+    },
+    {
+      "run": "results/e4/true_baselines_v1",
+      "files": 76,
+      "bytes": 461995,
+      "checksum_index_files": [],
+      "consumption": "Historical run-specific protocol/consumption markers govern reuse; never infer untouched test from directory name",
+      "storage": "local_only"
+    }
+  ],
+  "author_weight_inventory": [
+    {
+      "relative_path": "data/checkpoints/lewm_coop2_ftfull/config.json",
+      "bytes": 1015,
+      "sha256": "b3e53c5a848356632bb6738a731bf0b2386fb91f6f73c4efd67ed14d32afaa64",
+      "checksum_status": "freshly_hashed",
+      "model_task": "MultiPushT",
+      "upstream_url": "https://huggingface.co/fuisloy/vincair-multi-agent-wm/resolve/d5e1a7ac841ad859e91de6bcc48fe5abb763bba4/lewm_coop2_ftfull/config.json",
+      "storage": "original upstream plus local copy; NOT uploaded by this inventory",
+      "navigation_compatible": false
+    },
+    {
+      "relative_path": "data/checkpoints/lewm_coop2_ftfull/weights.pt",
+      "bytes": 72298430,
+      "sha256": "4e6972e9d86f9540d2effb497f58051fbf46d4a4dd629c2ca0c8b2c703a3a7fa",
+      "checksum_status": "freshly_hashed",
+      "model_task": "MultiPushT",
+      "upstream_url": "https://huggingface.co/fuisloy/vincair-multi-agent-wm/resolve/d5e1a7ac841ad859e91de6bcc48fe5abb763bba4/lewm_coop2_ftfull/weights.pt",
+      "storage": "original upstream plus local copy; NOT uploaded by this inventory",
+      "navigation_compatible": false
+    },
+    {
+      "relative_path": "data/checkpoints/lewm_coop2_joint/config.json",
+      "bytes": 1039,
+      "sha256": "dbe389ffcf697f42d6da57635a0ba9080a4f3f8cd8c1f6807e1ea2f325d1be20",
+      "checksum_status": "freshly_hashed",
+      "model_task": "MultiPushT",
+      "upstream_url": "https://huggingface.co/fuisloy/vincair-multi-agent-wm/resolve/d5e1a7ac841ad859e91de6bcc48fe5abb763bba4/lewm_coop2_joint/config.json",
+      "storage": "original upstream plus local copy; NOT uploaded by this inventory",
+      "navigation_compatible": false
+    },
+    {
+      "relative_path": "data/checkpoints/lewm_coop2_joint/weights.pt",
+      "bytes": 72330430,
+      "sha256": "7b975572b7542d65223139ffe21d30bfc6c454630d14e831dc24dfaa372f2a1c",
+      "checksum_status": "freshly_hashed",
+      "model_task": "MultiPushT",
+      "upstream_url": "https://huggingface.co/fuisloy/vincair-multi-agent-wm/resolve/d5e1a7ac841ad859e91de6bcc48fe5abb763bba4/lewm_coop2_joint/weights.pt",
+      "storage": "original upstream plus local copy; NOT uploaded by this inventory",
+      "navigation_compatible": false
+    },
+    {
+      "relative_path": "data/vmas_pusht/wm_full_v2.pt",
+      "bytes": 5117496,
+      "sha256": "4d629261786f8e7f3255387afb9738b807f06f4ece1c2cb78515f4a488bce556",
+      "checksum_status": "freshly_hashed",
+      "model_task": "VMAS PushT",
+      "upstream_url": "https://huggingface.co/fuisloy/vincair-multi-agent-wm/resolve/d5e1a7ac841ad859e91de6bcc48fe5abb763bba4/vmas_pusht/wm_full_v2.pt",
+      "storage": "original upstream plus local copy; NOT uploaded by this inventory",
+      "navigation_compatible": false
+    },
+    {
+      "relative_path": "data/vmas_pusht/wm_full_h_agg2.pt",
+      "bytes": 5197908,
+      "sha256": "258d8447b708db617975bdd71f09235b3e35a66f104454d2d26c951e91d8bde7",
+      "checksum_status": "freshly_hashed",
+      "model_task": "VMAS PushT",
+      "upstream_url": "https://huggingface.co/fuisloy/vincair-multi-agent-wm/resolve/d5e1a7ac841ad859e91de6bcc48fe5abb763bba4/vmas_pusht/wm_full_h_agg2.pt",
+      "storage": "original upstream plus local copy; NOT uploaded by this inventory",
+      "navigation_compatible": false
+    },
+    {
+      "relative_path": "data/checkpoints/lewm_coop2_ftfull/readout/cost_probe.pt",
+      "bytes": 1462263,
+      "sha256": "6f92dcf25b1e92637a087737570c585f6234e8f2ac77b13ee9d3d8b5622109dc",
+      "checksum_status": "freshly_hashed",
+      "model_task": "MultiPushT readout; see original intake provenance",
+      "upstream_url": null,
+      "storage": "local copy; source in readout intake report",
+      "navigation_compatible": false
+    },
+    {
+      "relative_path": "data/checkpoints/lewm_coop2_joint/readout/cost_probe.pt",
+      "bytes": 1462263,
+      "sha256": "042f38f1052973bc432ab9d4f6fd51cd4d5fae82960f5102671a68222005a260",
+      "checksum_status": "freshly_hashed",
+      "model_task": "MultiPushT readout; see original intake provenance",
+      "upstream_url": null,
+      "storage": "local copy; source in readout intake report",
+      "navigation_compatible": false
+    }
+  ],
+  "navigation_checkpoint": "Not provided; do not substitute any listed PushT weight",
+  "shared_storage": "No new HF/dataset storage created. Team must choose destination and access; null download links are genuinely pending.",
+  "files_inventory": "assets_files.csv",
+  "privacy": "No private chat images, credentials, HF cache or WSL disk included"
+}

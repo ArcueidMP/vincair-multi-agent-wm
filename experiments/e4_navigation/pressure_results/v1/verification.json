@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "episodes": 36,
+  "executed_steps": 3630,
+  "independent_model_choices": 3087,
+  "independent_oracle_choices": 543,
+  "max_numpy_forward_error": 4.57763671875e-05,
+  "max_oracle_cost_error": 1.9073486328125e-06,
+  "paired_initial_pools_exact": true,
+  "physical_outcomes_and_aggregates_verified": true,
+  "native_replay_error": 0,
+  "portable_model_hash_unchanged": true,
+  "no_training": true
+}

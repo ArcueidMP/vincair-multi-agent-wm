@@ -1,0 +1,8 @@
+{
+  "model_json_sha256": "fe57201a74edee4b8b29b7865c58fb3dc477d9bb50b4ada5392814f78030c527",
+  "source_checkpoint_sha256": "4f9ad7b77a6b2ab3b5848e5277331da9faa0377247251afeb5affbb99d8c8c6d",
+  "full": true,
+  "tasks": 72,
+  "kind": "Portable direct-scorer/analytic hybrid, NOT Navigation LeWM",
+  "original_protocol_sha256": "f814d28be873618aaeda483eea0754fdfa539300a3aba8f18829de0afef9d49e"
+}
