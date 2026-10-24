@@ -1,0 +1,601 @@
+{
+  "methods": {
+    "learned_cost_only": {
+      "mean": {
+        "unsafe_given_safe": 0.16666666666666666,
+        "unsafe_all": 0.16666666666666666,
+        "regret": 0.4916624228159587
+      },
+      "scenes": [
+        {
+          "geometry_id": "S1_symmetric_g4",
+          "unsafe_given_safe": 0.25,
+          "unsafe_all": 0.25,
+          "regret": 0.3836171627044678
+        },
+        {
+          "geometry_id": "S2_perpendicular_g4",
+          "unsafe_given_safe": 0.0,
+          "unsafe_all": 0.0,
+          "regret": 0.7653558254241943
+        },
+        {
+          "geometry_id": "S3_asymmetric_g4",
+          "unsafe_given_safe": 0.25,
+          "unsafe_all": 0.25,
+          "regret": 0.32601428031921387
+        }
+      ]
+    },
+    "learned_safety": {
+      "mean": {
+        "unsafe_given_safe": 0.0,
+        "unsafe_all": 0.0,
+        "regret": 0.6452519098917643
+      },
+      "scenes": [
+        {
+          "geometry_id": "S1_symmetric_g4",
+          "unsafe_given_safe": 0.0,
+          "unsafe_all": 0.0,
+          "regret": 0.6913232803344727
+        },
+        {
+          "geometry_id": "S2_perpendicular_g4",
+          "unsafe_given_safe": 0.0,
+          "unsafe_all": 0.0,
+          "regret": 0.7207272052764893
+        },
+        {
+          "geometry_id": "S3_asymmetric_g4",
+          "unsafe_given_safe": 0.0,
+          "unsafe_all": 0.0,
+          "regret": 0.523705244064331
+        }
+      ]
+    },
+    "true_soft_oracle": {
+      "mean": {
+        "unsafe_given_safe": 0.9166666666666666,
+        "unsafe_all": 0.9166666666666666,
+        "regret": 0.0
+      },
+      "scenes": [
+        {
+          "geometry_id": "S1_symmetric_g4",
+          "unsafe_given_safe": 0.75,
+          "unsafe_all": 0.75,
+          "regret": 0.0
+        },
+        {
+          "geometry_id": "S2_perpendicular_g4",
+          "unsafe_given_safe": 1.0,
+          "unsafe_all": 1.0,
+          "regret": 0.0
+        },
+        {
+          "geometry_id": "S3_asymmetric_g4",
+          "unsafe_given_safe": 1.0,
+          "unsafe_all": 1.0,
+          "regret": 0.0
+        }
+      ]
+    },
+    "true_safety_oracle": {
+      "mean": {
+        "unsafe_given_safe": 0.0,
+        "unsafe_all": 0.0,
+        "regret": 0.3571511109670003
+      },
+      "scenes": [
+        {
+          "geometry_id": "S1_symmetric_g4",
+          "unsafe_given_safe": 0.0,
+          "unsafe_all": 0.0,
+          "regret": 0.5038356781005859
+        },
+        {
+          "geometry_id": "S2_perpendicular_g4",
+          "unsafe_given_safe": 0.0,
+          "unsafe_all": 0.0,
+          "regret": 0.21234416961669922
+        },
+        {
+          "geometry_id": "S3_asymmetric_g4",
+          "unsafe_given_safe": 0.0,
+          "unsafe_all": 0.0,
+          "regret": 0.3552734851837158
+        }
+      ]
+    }
+  },
+  "calibration": {
+    "unsafe_candidates": 349,
+    "false_safe_candidates": 10,
+    "false_unsafe_candidates": 93,
+    "predicted_no_safe_groups": 0,
+    "groups": 12
+  },
+  "groups": [
+    {
+      "method": "learned_cost_only",
+      "geometry_id": "S1_symmetric_g4",
+      "name": "S1_symmetric_g4_o0",
+      "selected": 58,
+      "unsafe": true,
+      "safe_available": true,
+      "regret": 0.021714210510253906,
+      "min_separation": 0.2929879128932953
+    },
+    {
+      "method": "learned_cost_only",
+      "geometry_id": "S1_symmetric_g4",
+      "name": "S1_symmetric_g4_o1",
+      "selected": 34,
+      "unsafe": false,
+      "safe_available": true,
+      "regret": 0.0,
+      "min_separation": 0.3340703248977661
+    },
+    {
+      "method": "learned_cost_only",
+      "geometry_id": "S1_symmetric_g4",
+      "name": "S1_symmetric_g4_o2",
+      "selected": 63,
+      "unsafe": false,
+      "safe_available": true,
+      "regret": 0.5973091125488281,
+      "min_separation": 0.3463471233844757
+    },
+    {
+      "method": "learned_cost_only",
+      "geometry_id": "S1_symmetric_g4",
+      "name": "S1_symmetric_g4_o3",
+      "selected": 19,
+      "unsafe": false,
+      "safe_available": true,
+      "regret": 0.9154453277587891,
+      "min_separation": 0.4220641255378723
+    },
+    {
+      "method": "learned_cost_only",
+      "geometry_id": "S2_perpendicular_g4",
+      "name": "S2_perpendicular_g4_o0",
+      "selected": 11,
+      "unsafe": false,
+      "safe_available": true,
+      "regret": 0.8652362823486328,
+      "min_separation": 0.33237263560295105
+    },
+    {
+      "method": "learned_cost_only",
+      "geometry_id": "S2_perpendicular_g4",
+      "name": "S2_perpendicular_g4_o1",
+      "selected": 47,
+      "unsafe": false,
+      "safe_available": true,
+      "regret": 0.8335866928100586,
+      "min_separation": 0.3772962987422943
+    },
+    {
+      "method": "learned_cost_only",
+      "geometry_id": "S2_perpendicular_g4",
+      "name": "S2_perpendicular_g4_o2",
+      "selected": 33,
+      "unsafe": false,
+      "safe_available": true,
+      "regret": 0.5711135864257812,
+      "min_separation": 0.40832334756851196
+    },
+    {
+      "method": "learned_cost_only",
+      "geometry_id": "S2_perpendicular_g4",
+      "name": "S2_perpendicular_g4_o3",
+      "selected": 7,
+      "unsafe": false,
+      "safe_available": true,
+      "regret": 0.7914867401123047,
+      "min_separation": 0.40757492184638977
+    },
+    {
+      "method": "learned_cost_only",
+      "geometry_id": "S3_asymmetric_g4",
+      "name": "S3_asymmetric_g4_o0",
+      "selected": 50,
+      "unsafe": true,
+      "safe_available": true,
+      "regret": 0.09774112701416016,
+      "min_separation": 0.26399901509284973
+    },
+    {
+      "method": "learned_cost_only",
+      "geometry_id": "S3_asymmetric_g4",
+      "name": "S3_asymmetric_g4_o1",
+      "selected": 22,
+      "unsafe": false,
+      "safe_available": true,
+      "regret": 0.17258834838867188,
+      "min_separation": 0.3095366656780243
+    },
+    {
+      "method": "learned_cost_only",
+      "geometry_id": "S3_asymmetric_g4",
+      "name": "S3_asymmetric_g4_o2",
+      "selected": 50,
+      "unsafe": false,
+      "safe_available": true,
+      "regret": 0.3260669708251953,
+      "min_separation": 0.37268349528312683
+    },
+    {
+      "method": "learned_cost_only",
+      "geometry_id": "S3_asymmetric_g4",
+      "name": "S3_asymmetric_g4_o3",
+      "selected": 19,
+      "unsafe": false,
+      "safe_available": true,
+      "regret": 0.7076606750488281,
+      "min_separation": 0.3695618510246277
+    },
+    {
+      "method": "learned_safety",
+      "geometry_id": "S1_symmetric_g4",
+      "name": "S1_symmetric_g4_o0",
+      "selected": 35,
+      "unsafe": false,
+      "safe_available": true,
+      "regret": 0.8300933837890625,
+      "min_separation": 0.3290242552757263
+    },
+    {
+      "method": "learned_safety",
+      "geometry_id": "S1_symmetric_g4",
+      "name": "S1_symmetric_g4_o1",
+      "selected": 55,
+      "unsafe": false,
+      "safe_available": true,
+      "regret": 0.34368896484375,
+      "min_separation": 0.3246711492538452
+    },
+    {
+      "method": "learned_safety",
+      "geometry_id": "S1_symmetric_g4",
+      "name": "S1_symmetric_g4_o2",
+      "selected": 6,
+      "unsafe": false,
+      "safe_available": true,
+      "regret": 0.6760654449462891,
+      "min_separation": 0.41226932406425476
+    },
+    {
+      "method": "learned_safety",
+      "geometry_id": "S1_symmetric_g4",
+      "name": "S1_symmetric_g4_o3",
+      "selected": 19,
+      "unsafe": false,
+      "safe_available": true,
+      "regret": 0.9154453277587891,
+      "min_separation": 0.4220641255378723
+    },
+    {
+      "method": "learned_safety",
+      "geometry_id": "S2_perpendicular_g4",
+      "name": "S2_perpendicular_g4_o0",
+      "selected": 15,
+      "unsafe": false,
+      "safe_available": true,
+      "regret": 0.6867218017578125,
+      "min_separation": 0.3205430209636688
+    },
+    {
+      "method": "learned_safety",
+      "geometry_id": "S2_perpendicular_g4",
+      "name": "S2_perpendicular_g4_o1",
+      "selected": 47,
+      "unsafe": false,
+      "safe_available": true,
+      "regret": 0.8335866928100586,
+      "min_separation": 0.3772962987422943
+    },
+    {
+      "method": "learned_safety",
+      "geometry_id": "S2_perpendicular_g4",
+      "name": "S2_perpendicular_g4_o2",
+      "selected": 33,
+      "unsafe": false,
+      "safe_available": true,
+      "regret": 0.5711135864257812,
+      "min_separation": 0.40832334756851196
+    },
+    {
+      "method": "learned_safety",
+      "geometry_id": "S2_perpendicular_g4",
+      "name": "S2_perpendicular_g4_o3",
+      "selected": 7,
+      "unsafe": false,
+      "safe_available": true,
+      "regret": 0.7914867401123047,
+      "min_separation": 0.40757492184638977
+    },
+    {
+      "method": "learned_safety",
+      "geometry_id": "S3_asymmetric_g4",
+      "name": "S3_asymmetric_g4_o0",
+      "selected": 39,
+      "unsafe": false,
+      "safe_available": true,
+      "regret": 0.8885049819946289,
+      "min_separation": 0.30023396015167236
+    },
+    {
+      "method": "learned_safety",
+      "geometry_id": "S3_asymmetric_g4",
+      "name": "S3_asymmetric_g4_o1",
+      "selected": 22,
+      "unsafe": false,
+      "safe_available": true,
+      "regret": 0.17258834838867188,
+      "min_separation": 0.3095366656780243
+    },
+    {
+      "method": "learned_safety",
+      "geometry_id": "S3_asymmetric_g4",
+      "name": "S3_asymmetric_g4_o2",
+      "selected": 50,
+      "unsafe": false,
+      "safe_available": true,
+      "regret": 0.3260669708251953,
+      "min_separation": 0.37268349528312683
+    },
+    {
+      "method": "learned_safety",
+      "geometry_id": "S3_asymmetric_g4",
+      "name": "S3_asymmetric_g4_o3",
+      "selected": 19,
+      "unsafe": false,
+      "safe_available": true,
+      "regret": 0.7076606750488281,
+      "min_separation": 0.3695618510246277
+    },
+    {
+      "method": "true_soft_oracle",
+      "geometry_id": "S1_symmetric_g4",
+      "name": "S1_symmetric_g4_o0",
+      "selected": 61,
+      "unsafe": true,
+      "safe_available": true,
+      "regret": 0.0,
+      "min_separation": 0.293944776058197
+    },
+    {
+      "method": "true_soft_oracle",
+      "geometry_id": "S1_symmetric_g4",
+      "name": "S1_symmetric_g4_o1",
+      "selected": 34,
+      "unsafe": false,
+      "safe_available": true,
+      "regret": 0.0,
+      "min_separation": 0.3340703248977661
+    },
+    {
+      "method": "true_soft_oracle",
+      "geometry_id": "S1_symmetric_g4",
+      "name": "S1_symmetric_g4_o2",
+      "selected": 27,
+      "unsafe": true,
+      "safe_available": true,
+      "regret": 0.0,
+      "min_separation": 0.2763814330101013
+    },
+    {
+      "method": "true_soft_oracle",
+      "geometry_id": "S1_symmetric_g4",
+      "name": "S1_symmetric_g4_o3",
+      "selected": 12,
+      "unsafe": true,
+      "safe_available": true,
+      "regret": 0.0,
+      "min_separation": 0.29225945472717285
+    },
+    {
+      "method": "true_soft_oracle",
+      "geometry_id": "S2_perpendicular_g4",
+      "name": "S2_perpendicular_g4_o0",
+      "selected": 9,
+      "unsafe": true,
+      "safe_available": true,
+      "regret": 0.0,
+      "min_separation": 0.2974552810192108
+    },
+    {
+      "method": "true_soft_oracle",
+      "geometry_id": "S2_perpendicular_g4",
+      "name": "S2_perpendicular_g4_o1",
+      "selected": 7,
+      "unsafe": true,
+      "safe_available": true,
+      "regret": 0.0,
+      "min_separation": 0.27884018421173096
+    },
+    {
+      "method": "true_soft_oracle",
+      "geometry_id": "S2_perpendicular_g4",
+      "name": "S2_perpendicular_g4_o2",
+      "selected": 43,
+      "unsafe": true,
+      "safe_available": true,
+      "regret": 0.0,
+      "min_separation": 0.25399699807167053
+    },
+    {
+      "method": "true_soft_oracle",
+      "geometry_id": "S2_perpendicular_g4",
+      "name": "S2_perpendicular_g4_o3",
+      "selected": 4,
+      "unsafe": true,
+      "safe_available": true,
+      "regret": 0.0,
+      "min_separation": 0.2970272898674011
+    },
+    {
+      "method": "true_soft_oracle",
+      "geometry_id": "S3_asymmetric_g4",
+      "name": "S3_asymmetric_g4_o0",
+      "selected": 21,
+      "unsafe": true,
+      "safe_available": true,
+      "regret": 0.0,
+      "min_separation": 0.26647597551345825
+    },
+    {
+      "method": "true_soft_oracle",
+      "geometry_id": "S3_asymmetric_g4",
+      "name": "S3_asymmetric_g4_o1",
+      "selected": 6,
+      "unsafe": true,
+      "safe_available": true,
+      "regret": 0.0,
+      "min_separation": 0.29030841588974
+    },
+    {
+      "method": "true_soft_oracle",
+      "geometry_id": "S3_asymmetric_g4",
+      "name": "S3_asymmetric_g4_o2",
+      "selected": 55,
+      "unsafe": true,
+      "safe_available": true,
+      "regret": 0.0,
+      "min_separation": 0.26558536291122437
+    },
+    {
+      "method": "true_soft_oracle",
+      "geometry_id": "S3_asymmetric_g4",
+      "name": "S3_asymmetric_g4_o3",
+      "selected": 8,
+      "unsafe": true,
+      "safe_available": true,
+      "regret": 0.0,
+      "min_separation": 0.2687537670135498
+    },
+    {
+      "method": "true_safety_oracle",
+      "geometry_id": "S1_symmetric_g4",
+      "name": "S1_symmetric_g4_o0",
+      "selected": 35,
+      "unsafe": false,
+      "safe_available": true,
+      "regret": 0.8300933837890625,
+      "min_separation": 0.3290242552757263
+    },
+    {
+      "method": "true_safety_oracle",
+      "geometry_id": "S1_symmetric_g4",
+      "name": "S1_symmetric_g4_o1",
+      "selected": 34,
+      "unsafe": false,
+      "safe_available": true,
+      "regret": 0.0,
+      "min_separation": 0.3340703248977661
+    },
+    {
+      "method": "true_safety_oracle",
+      "geometry_id": "S1_symmetric_g4",
+      "name": "S1_symmetric_g4_o2",
+      "selected": 15,
+      "unsafe": false,
+      "safe_available": true,
+      "regret": 0.3577136993408203,
+      "min_separation": 0.31206417083740234
+    },
+    {
+      "method": "true_safety_oracle",
+      "geometry_id": "S1_symmetric_g4",
+      "name": "S1_symmetric_g4_o3",
+      "selected": 51,
+      "unsafe": false,
+      "safe_available": true,
+      "regret": 0.8275356292724609,
+      "min_separation": 0.41204744577407837
+    },
+    {
+      "method": "true_safety_oracle",
+      "geometry_id": "S2_perpendicular_g4",
+      "name": "S2_perpendicular_g4_o0",
+      "selected": 27,
+      "unsafe": false,
+      "safe_available": true,
+      "regret": 0.4036750793457031,
+      "min_separation": 0.31183671951293945
+    },
+    {
+      "method": "true_safety_oracle",
+      "geometry_id": "S2_perpendicular_g4",
+      "name": "S2_perpendicular_g4_o1",
+      "selected": 17,
+      "unsafe": false,
+      "safe_available": true,
+      "regret": 0.2618751525878906,
+      "min_separation": 0.3274320363998413
+    },
+    {
+      "method": "true_safety_oracle",
+      "geometry_id": "S2_perpendicular_g4",
+      "name": "S2_perpendicular_g4_o2",
+      "selected": 31,
+      "unsafe": false,
+      "safe_available": true,
+      "regret": 0.1692819595336914,
+      "min_separation": 0.33059215545654297
+    },
+    {
+      "method": "true_safety_oracle",
+      "geometry_id": "S2_perpendicular_g4",
+      "name": "S2_perpendicular_g4_o3",
+      "selected": 8,
+      "unsafe": false,
+      "safe_available": true,
+      "regret": 0.014544486999511719,
+      "min_separation": 0.30320775508880615
+    },
+    {
+      "method": "true_safety_oracle",
+      "geometry_id": "S3_asymmetric_g4",
+      "name": "S3_asymmetric_g4_o0",
+      "selected": 39,
+      "unsafe": false,
+      "safe_available": true,
+      "regret": 0.8885049819946289,
+      "min_separation": 0.30023396015167236
+    },
+    {
+      "method": "true_safety_oracle",
+      "geometry_id": "S3_asymmetric_g4",
+      "name": "S3_asymmetric_g4_o1",
+      "selected": 14,
+      "unsafe": false,
+      "safe_available": true,
+      "regret": 0.08156776428222656,
+      "min_separation": 0.30584102869033813
+    },
+    {
+      "method": "true_safety_oracle",
+      "geometry_id": "S3_asymmetric_g4",
+      "name": "S3_asymmetric_g4_o2",
+      "selected": 29,
+      "unsafe": false,
+      "safe_available": true,
+      "regret": 0.22667217254638672,
+      "min_separation": 0.35722851753234863
+    },
+    {
+      "method": "true_safety_oracle",
+      "geometry_id": "S3_asymmetric_g4",
+      "name": "S3_asymmetric_g4_o3",
+      "selected": 7,
+      "unsafe": false,
+      "safe_available": true,
+      "regret": 0.2243490219116211,
+      "min_separation": 0.30119818449020386
+    }
+  ]
+}

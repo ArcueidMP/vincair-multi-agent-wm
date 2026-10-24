@@ -1,0 +1,782 @@
+[
+  {
+    "split": "train",
+    "name": "S1_symmetric_g0_o0",
+    "feature_keys": [
+      "initial_state",
+      "goals",
+      "actions"
+    ],
+    "supervision_keys": [
+      "total_cost",
+      "substep_minimum_separation"
+    ]
+  },
+  {
+    "split": "train",
+    "name": "S1_symmetric_g0_o1",
+    "feature_keys": [
+      "initial_state",
+      "goals",
+      "actions"
+    ],
+    "supervision_keys": [
+      "total_cost",
+      "substep_minimum_separation"
+    ]
+  },
+  {
+    "split": "train",
+    "name": "S1_symmetric_g0_o2",
+    "feature_keys": [
+      "initial_state",
+      "goals",
+      "actions"
+    ],
+    "supervision_keys": [
+      "total_cost",
+      "substep_minimum_separation"
+    ]
+  },
+  {
+    "split": "train",
+    "name": "S1_symmetric_g0_o3",
+    "feature_keys": [
+      "initial_state",
+      "goals",
+      "actions"
+    ],
+    "supervision_keys": [
+      "total_cost",
+      "substep_minimum_separation"
+    ]
+  },
+  {
+    "split": "train",
+    "name": "S1_symmetric_g1_o0",
+    "feature_keys": [
+      "initial_state",
+      "goals",
+      "actions"
+    ],
+    "supervision_keys": [
+      "total_cost",
+      "substep_minimum_separation"
+    ]
+  },
+  {
+    "split": "train",
+    "name": "S1_symmetric_g1_o1",
+    "feature_keys": [
+      "initial_state",
+      "goals",
+      "actions"
+    ],
+    "supervision_keys": [
+      "total_cost",
+      "substep_minimum_separation"
+    ]
+  },
+  {
+    "split": "train",
+    "name": "S1_symmetric_g1_o2",
+    "feature_keys": [
+      "initial_state",
+      "goals",
+      "actions"
+    ],
+    "supervision_keys": [
+      "total_cost",
+      "substep_minimum_separation"
+    ]
+  },
+  {
+    "split": "train",
+    "name": "S1_symmetric_g1_o3",
+    "feature_keys": [
+      "initial_state",
+      "goals",
+      "actions"
+    ],
+    "supervision_keys": [
+      "total_cost",
+      "substep_minimum_separation"
+    ]
+  },
+  {
+    "split": "train",
+    "name": "S1_symmetric_g2_o0",
+    "feature_keys": [
+      "initial_state",
+      "goals",
+      "actions"
+    ],
+    "supervision_keys": [
+      "total_cost",
+      "substep_minimum_separation"
+    ]
+  },
+  {
+    "split": "train",
+    "name": "S1_symmetric_g2_o1",
+    "feature_keys": [
+      "initial_state",
+      "goals",
+      "actions"
+    ],
+    "supervision_keys": [
+      "total_cost",
+      "substep_minimum_separation"
+    ]
+  },
+  {
+    "split": "train",
+    "name": "S1_symmetric_g2_o2",
+    "feature_keys": [
+      "initial_state",
+      "goals",
+      "actions"
+    ],
+    "supervision_keys": [
+      "total_cost",
+      "substep_minimum_separation"
+    ]
+  },
+  {
+    "split": "train",
+    "name": "S1_symmetric_g2_o3",
+    "feature_keys": [
+      "initial_state",
+      "goals",
+      "actions"
+    ],
+    "supervision_keys": [
+      "total_cost",
+      "substep_minimum_separation"
+    ]
+  },
+  {
+    "split": "train",
+    "name": "S1_symmetric_g3_o0",
+    "feature_keys": [
+      "initial_state",
+      "goals",
+      "actions"
+    ],
+    "supervision_keys": [
+      "total_cost",
+      "substep_minimum_separation"
+    ]
+  },
+  {
+    "split": "train",
+    "name": "S1_symmetric_g3_o1",
+    "feature_keys": [
+      "initial_state",
+      "goals",
+      "actions"
+    ],
+    "supervision_keys": [
+      "total_cost",
+      "substep_minimum_separation"
+    ]
+  },
+  {
+    "split": "train",
+    "name": "S1_symmetric_g3_o2",
+    "feature_keys": [
+      "initial_state",
+      "goals",
+      "actions"
+    ],
+    "supervision_keys": [
+      "total_cost",
+      "substep_minimum_separation"
+    ]
+  },
+  {
+    "split": "train",
+    "name": "S1_symmetric_g3_o3",
+    "feature_keys": [
+      "initial_state",
+      "goals",
+      "actions"
+    ],
+    "supervision_keys": [
+      "total_cost",
+      "substep_minimum_separation"
+    ]
+  },
+  {
+    "split": "train",
+    "name": "S2_perpendicular_g0_o0",
+    "feature_keys": [
+      "initial_state",
+      "goals",
+      "actions"
+    ],
+    "supervision_keys": [
+      "total_cost",
+      "substep_minimum_separation"
+    ]
+  },
+  {
+    "split": "train",
+    "name": "S2_perpendicular_g0_o1",
+    "feature_keys": [
+      "initial_state",
+      "goals",
+      "actions"
+    ],
+    "supervision_keys": [
+      "total_cost",
+      "substep_minimum_separation"
+    ]
+  },
+  {
+    "split": "train",
+    "name": "S2_perpendicular_g0_o2",
+    "feature_keys": [
+      "initial_state",
+      "goals",
+      "actions"
+    ],
+    "supervision_keys": [
+      "total_cost",
+      "substep_minimum_separation"
+    ]
+  },
+  {
+    "split": "train",
+    "name": "S2_perpendicular_g0_o3",
+    "feature_keys": [
+      "initial_state",
+      "goals",
+      "actions"
+    ],
+    "supervision_keys": [
+      "total_cost",
+      "substep_minimum_separation"
+    ]
+  },
+  {
+    "split": "train",
+    "name": "S2_perpendicular_g1_o0",
+    "feature_keys": [
+      "initial_state",
+      "goals",
+      "actions"
+    ],
+    "supervision_keys": [
+      "total_cost",
+      "substep_minimum_separation"
+    ]
+  },
+  {
+    "split": "train",
+    "name": "S2_perpendicular_g1_o1",
+    "feature_keys": [
+      "initial_state",
+      "goals",
+      "actions"
+    ],
+    "supervision_keys": [
+      "total_cost",
+      "substep_minimum_separation"
+    ]
+  },
+  {
+    "split": "train",
+    "name": "S2_perpendicular_g1_o2",
+    "feature_keys": [
+      "initial_state",
+      "goals",
+      "actions"
+    ],
+    "supervision_keys": [
+      "total_cost",
+      "substep_minimum_separation"
+    ]
+  },
+  {
+    "split": "train",
+    "name": "S2_perpendicular_g1_o3",
+    "feature_keys": [
+      "initial_state",
+      "goals",
+      "actions"
+    ],
+    "supervision_keys": [
+      "total_cost",
+      "substep_minimum_separation"
+    ]
+  },
+  {
+    "split": "train",
+    "name": "S2_perpendicular_g2_o0",
+    "feature_keys": [
+      "initial_state",
+      "goals",
+      "actions"
+    ],
+    "supervision_keys": [
+      "total_cost",
+      "substep_minimum_separation"
+    ]
+  },
+  {
+    "split": "train",
+    "name": "S2_perpendicular_g2_o1",
+    "feature_keys": [
+      "initial_state",
+      "goals",
+      "actions"
+    ],
+    "supervision_keys": [
+      "total_cost",
+      "substep_minimum_separation"
+    ]
+  },
+  {
+    "split": "train",
+    "name": "S2_perpendicular_g2_o2",
+    "feature_keys": [
+      "initial_state",
+      "goals",
+      "actions"
+    ],
+    "supervision_keys": [
+      "total_cost",
+      "substep_minimum_separation"
+    ]
+  },
+  {
+    "split": "train",
+    "name": "S2_perpendicular_g2_o3",
+    "feature_keys": [
+      "initial_state",
+      "goals",
+      "actions"
+    ],
+    "supervision_keys": [
+      "total_cost",
+      "substep_minimum_separation"
+    ]
+  },
+  {
+    "split": "train",
+    "name": "S2_perpendicular_g3_o0",
+    "feature_keys": [
+      "initial_state",
+      "goals",
+      "actions"
+    ],
+    "supervision_keys": [
+      "total_cost",
+      "substep_minimum_separation"
+    ]
+  },
+  {
+    "split": "train",
+    "name": "S2_perpendicular_g3_o1",
+    "feature_keys": [
+      "initial_state",
+      "goals",
+      "actions"
+    ],
+    "supervision_keys": [
+      "total_cost",
+      "substep_minimum_separation"
+    ]
+  },
+  {
+    "split": "train",
+    "name": "S2_perpendicular_g3_o2",
+    "feature_keys": [
+      "initial_state",
+      "goals",
+      "actions"
+    ],
+    "supervision_keys": [
+      "total_cost",
+      "substep_minimum_separation"
+    ]
+  },
+  {
+    "split": "train",
+    "name": "S2_perpendicular_g3_o3",
+    "feature_keys": [
+      "initial_state",
+      "goals",
+      "actions"
+    ],
+    "supervision_keys": [
+      "total_cost",
+      "substep_minimum_separation"
+    ]
+  },
+  {
+    "split": "train",
+    "name": "S3_asymmetric_g0_o0",
+    "feature_keys": [
+      "initial_state",
+      "goals",
+      "actions"
+    ],
+    "supervision_keys": [
+      "total_cost",
+      "substep_minimum_separation"
+    ]
+  },
+  {
+    "split": "train",
+    "name": "S3_asymmetric_g0_o1",
+    "feature_keys": [
+      "initial_state",
+      "goals",
+      "actions"
+    ],
+    "supervision_keys": [
+      "total_cost",
+      "substep_minimum_separation"
+    ]
+  },
+  {
+    "split": "train",
+    "name": "S3_asymmetric_g0_o2",
+    "feature_keys": [
+      "initial_state",
+      "goals",
+      "actions"
+    ],
+    "supervision_keys": [
+      "total_cost",
+      "substep_minimum_separation"
+    ]
+  },
+  {
+    "split": "train",
+    "name": "S3_asymmetric_g0_o3",
+    "feature_keys": [
+      "initial_state",
+      "goals",
+      "actions"
+    ],
+    "supervision_keys": [
+      "total_cost",
+      "substep_minimum_separation"
+    ]
+  },
+  {
+    "split": "train",
+    "name": "S3_asymmetric_g1_o0",
+    "feature_keys": [
+      "initial_state",
+      "goals",
+      "actions"
+    ],
+    "supervision_keys": [
+      "total_cost",
+      "substep_minimum_separation"
+    ]
+  },
+  {
+    "split": "train",
+    "name": "S3_asymmetric_g1_o1",
+    "feature_keys": [
+      "initial_state",
+      "goals",
+      "actions"
+    ],
+    "supervision_keys": [
+      "total_cost",
+      "substep_minimum_separation"
+    ]
+  },
+  {
+    "split": "train",
+    "name": "S3_asymmetric_g1_o2",
+    "feature_keys": [
+      "initial_state",
+      "goals",
+      "actions"
+    ],
+    "supervision_keys": [
+      "total_cost",
+      "substep_minimum_separation"
+    ]
+  },
+  {
+    "split": "train",
+    "name": "S3_asymmetric_g1_o3",
+    "feature_keys": [
+      "initial_state",
+      "goals",
+      "actions"
+    ],
+    "supervision_keys": [
+      "total_cost",
+      "substep_minimum_separation"
+    ]
+  },
+  {
+    "split": "train",
+    "name": "S3_asymmetric_g2_o0",
+    "feature_keys": [
+      "initial_state",
+      "goals",
+      "actions"
+    ],
+    "supervision_keys": [
+      "total_cost",
+      "substep_minimum_separation"
+    ]
+  },
+  {
+    "split": "train",
+    "name": "S3_asymmetric_g2_o1",
+    "feature_keys": [
+      "initial_state",
+      "goals",
+      "actions"
+    ],
+    "supervision_keys": [
+      "total_cost",
+      "substep_minimum_separation"
+    ]
+  },
+  {
+    "split": "train",
+    "name": "S3_asymmetric_g2_o2",
+    "feature_keys": [
+      "initial_state",
+      "goals",
+      "actions"
+    ],
+    "supervision_keys": [
+      "total_cost",
+      "substep_minimum_separation"
+    ]
+  },
+  {
+    "split": "train",
+    "name": "S3_asymmetric_g2_o3",
+    "feature_keys": [
+      "initial_state",
+      "goals",
+      "actions"
+    ],
+    "supervision_keys": [
+      "total_cost",
+      "substep_minimum_separation"
+    ]
+  },
+  {
+    "split": "train",
+    "name": "S3_asymmetric_g3_o0",
+    "feature_keys": [
+      "initial_state",
+      "goals",
+      "actions"
+    ],
+    "supervision_keys": [
+      "total_cost",
+      "substep_minimum_separation"
+    ]
+  },
+  {
+    "split": "train",
+    "name": "S3_asymmetric_g3_o1",
+    "feature_keys": [
+      "initial_state",
+      "goals",
+      "actions"
+    ],
+    "supervision_keys": [
+      "total_cost",
+      "substep_minimum_separation"
+    ]
+  },
+  {
+    "split": "train",
+    "name": "S3_asymmetric_g3_o2",
+    "feature_keys": [
+      "initial_state",
+      "goals",
+      "actions"
+    ],
+    "supervision_keys": [
+      "total_cost",
+      "substep_minimum_separation"
+    ]
+  },
+  {
+    "split": "train",
+    "name": "S3_asymmetric_g3_o3",
+    "feature_keys": [
+      "initial_state",
+      "goals",
+      "actions"
+    ],
+    "supervision_keys": [
+      "total_cost",
+      "substep_minimum_separation"
+    ]
+  },
+  {
+    "split": "validation",
+    "name": "S1_symmetric_g4_o0",
+    "feature_keys": [
+      "initial_state",
+      "goals",
+      "actions"
+    ],
+    "supervision_keys": [
+      "total_cost",
+      "substep_minimum_separation"
+    ]
+  },
+  {
+    "split": "validation",
+    "name": "S1_symmetric_g4_o1",
+    "feature_keys": [
+      "initial_state",
+      "goals",
+      "actions"
+    ],
+    "supervision_keys": [
+      "total_cost",
+      "substep_minimum_separation"
+    ]
+  },
+  {
+    "split": "validation",
+    "name": "S1_symmetric_g4_o2",
+    "feature_keys": [
+      "initial_state",
+      "goals",
+      "actions"
+    ],
+    "supervision_keys": [
+      "total_cost",
+      "substep_minimum_separation"
+    ]
+  },
+  {
+    "split": "validation",
+    "name": "S1_symmetric_g4_o3",
+    "feature_keys": [
+      "initial_state",
+      "goals",
+      "actions"
+    ],
+    "supervision_keys": [
+      "total_cost",
+      "substep_minimum_separation"
+    ]
+  },
+  {
+    "split": "validation",
+    "name": "S2_perpendicular_g4_o0",
+    "feature_keys": [
+      "initial_state",
+      "goals",
+      "actions"
+    ],
+    "supervision_keys": [
+      "total_cost",
+      "substep_minimum_separation"
+    ]
+  },
+  {
+    "split": "validation",
+    "name": "S2_perpendicular_g4_o1",
+    "feature_keys": [
+      "initial_state",
+      "goals",
+      "actions"
+    ],
+    "supervision_keys": [
+      "total_cost",
+      "substep_minimum_separation"
+    ]
+  },
+  {
+    "split": "validation",
+    "name": "S2_perpendicular_g4_o2",
+    "feature_keys": [
+      "initial_state",
+      "goals",
+      "actions"
+    ],
+    "supervision_keys": [
+      "total_cost",
+      "substep_minimum_separation"
+    ]
+  },
+  {
+    "split": "validation",
+    "name": "S2_perpendicular_g4_o3",
+    "feature_keys": [
+      "initial_state",
+      "goals",
+      "actions"
+    ],
+    "supervision_keys": [
+      "total_cost",
+      "substep_minimum_separation"
+    ]
+  },
+  {
+    "split": "validation",
+    "name": "S3_asymmetric_g4_o0",
+    "feature_keys": [
+      "initial_state",
+      "goals",
+      "actions"
+    ],
+    "supervision_keys": [
+      "total_cost",
+      "substep_minimum_separation"
+    ]
+  },
+  {
+    "split": "validation",
+    "name": "S3_asymmetric_g4_o1",
+    "feature_keys": [
+      "initial_state",
+      "goals",
+      "actions"
+    ],
+    "supervision_keys": [
+      "total_cost",
+      "substep_minimum_separation"
+    ]
+  },
+  {
+    "split": "validation",
+    "name": "S3_asymmetric_g4_o2",
+    "feature_keys": [
+      "initial_state",
+      "goals",
+      "actions"
+    ],
+    "supervision_keys": [
+      "total_cost",
+      "substep_minimum_separation"
+    ]
+  },
+  {
+    "split": "validation",
+    "name": "S3_asymmetric_g4_o3",
+    "feature_keys": [
+      "initial_state",
+      "goals",
+      "actions"
+    ],
+    "supervision_keys": [
+      "total_cost",
+      "substep_minimum_separation"
+    ]
+  }
+]

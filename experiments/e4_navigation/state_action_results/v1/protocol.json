@@ -1,0 +1,41 @@
+{
+  "status": "frozen",
+  "kind": "direct current-state/action MLP baseline; not LeWM, no WM checkpoint",
+  "architecture": [
+    44,
+    64,
+    32,
+    3
+  ],
+  "heads": [
+    "unsafe_logit",
+    "scaled_soft_cost",
+    "scaled_min_substep_separation"
+  ],
+  "parameter_count": 5059,
+  "data_manifest_sha256": "5060aaa29790f2487b82717ab0ced69c4b14581631e16a1d1824cd6747785448",
+  "source_sha256": "f96b320d2bb17926ecce9e4decb8cb89d0b0831703e2a8fc98b489d36125f02f",
+  "features": "current state8 + relative goals4 + action sequence32. No observed future, true labels, oracle safety or rollout features.",
+  "normalization": "Train-only mean/std floor.01; soft-cost mean/std train-only; separation/.30",
+  "seed": 0,
+  "device": "cpu",
+  "learning_rate": 0.001,
+  "weight_decay": 0.01,
+  "epochs_max": 200,
+  "patience": 30,
+  "batch_groups": 8,
+  "loss": "train-only class-balanced BCE +0.1 scaled soft-cost MSE +scaled min-separation MSE",
+  "risk_thresholds": [
+    0.1,
+    0.25,
+    0.5
+  ],
+  "policy": "Predicted-safe candidates by predicted cost; if none, predicted minsep descending, cost ascending, stable index.",
+  "selection": "Validation scene-mean unsafe-given-safe primary, soft regret secondary, earlier epoch, lower threshold ties. Same network cost head is a scoring-rule ablation, not independently selected competitor.",
+  "test_policy": "Freeze checkpoint+threshold before one test activation; no test tuning/refit or closed-loop in this block.",
+  "predeclared_success": "Test safety selection reduces conditional unsafe vs same-network cost-only by>=10 percentage points and in>=2/3 geometries. Descriptive evidence only.",
+  "limitations": [
+    "Three route families shared across splits.",
+    "Finite H8 dataset performance only; no LeWM transfer or closed-loop guarantee."
+  ]
+}

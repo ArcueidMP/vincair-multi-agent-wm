@@ -1,0 +1,11 @@
+{
+  "status": "frozen",
+  "selected_epoch": 126,
+  "threshold": 0.25,
+  "checkpoint_sha256": "9a02de2912a91190a600eefdde3319fb9c7f910680b152f9da3578123cc3b3a3",
+  "portable_sha256": "c05c947b826e758bf757d2b3c100e406d3e518687dec39a7db38db0cd5081c7e",
+  "protocol_sha256": "eabe0dc1856faffe90151d4d6491fd42f888a8a58897ca03b6ed79ad2f3d82c4",
+  "test_candidate_groups_opened": 0,
+  "frozen_utc": "2026-10-24T10:32:10.006704+00:00",
+  "training_wall_seconds": 3.8318690839999974
+}

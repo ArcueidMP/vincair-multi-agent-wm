@@ -38,3 +38,16 @@ Runs proceed in complete bounded blocks without step-by-step approval; request i
 Source and small audit artifacts: `experiments/e4_navigation/conflict_ranking.py`, `verify_conflict_ranking.py`, `conflict_results/v1/`. Raw NPZs remain external and are identified by hashes. This commit adds no weights or private communications.
 
 The earlier next-block items1-3 are now complete. Next material dependency: Navigation-specific checkpoint, loading API/config/normalization, supported history/frameskip/agents, and a compatible position/velocity state head. Keep the new test split sealed until a scorer and selection rule are frozen. Learned-model training/evaluation and closed-loop safety gains have not been claimed.
+
+
+## Completed: direct observed-state/action safety scorer baseline
+
+Navigation WM weights are still missing (confirmed by user). A separately named5059-parameter44→64→32→3 MLP was actually trained on current state/relative goals/actions only, without any world-model checkpoint or future-feature input. Train-only normalization and cost statistics; CPU seed0, validation-selected epoch126 and risk threshold0.25; checkpoint/policy frozen before one test activation.
+
+Same-network cost-head-only versus safety-policy ablation: validation conditional unsafe selection16.67%→0%; test16.67%→8.33%. Test soft regret0.6822→0.6987. Predeclared success(>=10 percentage-point reduction AND>=2/3 geometries better) was not met. This is limited direct-scoring evidence, not LeWM transfer, a separately optimized cost-only comparison, or a closed-loop improvement. No post-test refit or closed-loop run.
+
+Sixteen targeted tests pass. Independent NumPy forward reconstruction reproduces all selected test candidates/regrets; maximum prediction difference1.91e-6, training statistics exact, frozen checkpoint unchanged. Source/report/provenance in `experiments/e4_navigation/state_action_results/v1/`; raw model weights and predictions remain external with hashes.
+
+**Test status update:** the geometry test split from conflict_ranking_v1 has now been consumed by this frozen experiment. Earlier statements of sealed status describe the preceding block only. Do not reuse it for threshold/feature/model selection; subsequent changes require new confirmation geometries.
+
+Next material dependency remains Navigation checkpoint, loader/config/normalization, history/frameskip/action/agent contract and a compatible state head. Keep the direct scorer as a distinct baseline when those arrive. Do not present its weights as the missing Navigation world model.

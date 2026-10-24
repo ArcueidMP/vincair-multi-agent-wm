@@ -1,0 +1,607 @@
+{
+  "methods": {
+    "learned_cost_only": {
+      "mean": {
+        "unsafe_given_safe": 0.16666666666666666,
+        "unsafe_all": 0.25,
+        "regret": 0.6821770668029785
+      },
+      "scenes": [
+        {
+          "geometry_id": "S1_symmetric_g5",
+          "unsafe_given_safe": 0.5,
+          "unsafe_all": 0.5,
+          "regret": 0.7776329517364502
+        },
+        {
+          "geometry_id": "S2_perpendicular_g5",
+          "unsafe_given_safe": 0.0,
+          "unsafe_all": 0.0,
+          "regret": 0.6094503402709961
+        },
+        {
+          "geometry_id": "S3_asymmetric_g5",
+          "unsafe_given_safe": 0.0,
+          "unsafe_all": 0.25,
+          "regret": 0.6594479084014893
+        }
+      ]
+    },
+    "learned_safety": {
+      "mean": {
+        "unsafe_given_safe": 0.08333333333333333,
+        "unsafe_all": 0.16666666666666666,
+        "regret": 0.6987168788909912
+      },
+      "scenes": [
+        {
+          "geometry_id": "S1_symmetric_g5",
+          "unsafe_given_safe": 0.25,
+          "unsafe_all": 0.25,
+          "regret": 0.15587472915649414
+        },
+        {
+          "geometry_id": "S2_perpendicular_g5",
+          "unsafe_given_safe": 0.0,
+          "unsafe_all": 0.0,
+          "regret": 0.7559149265289307
+        },
+        {
+          "geometry_id": "S3_asymmetric_g5",
+          "unsafe_given_safe": 0.0,
+          "unsafe_all": 0.25,
+          "regret": 1.1843609809875488
+        }
+      ]
+    },
+    "true_soft_oracle": {
+      "mean": {
+        "unsafe_given_safe": 0.9166666666666666,
+        "unsafe_all": 0.9166666666666666,
+        "regret": 0.0
+      },
+      "scenes": [
+        {
+          "geometry_id": "S1_symmetric_g5",
+          "unsafe_given_safe": 0.75,
+          "unsafe_all": 0.75,
+          "regret": 0.0
+        },
+        {
+          "geometry_id": "S2_perpendicular_g5",
+          "unsafe_given_safe": 1.0,
+          "unsafe_all": 1.0,
+          "regret": 0.0
+        },
+        {
+          "geometry_id": "S3_asymmetric_g5",
+          "unsafe_given_safe": 1.0,
+          "unsafe_all": 1.0,
+          "regret": 0.0
+        }
+      ]
+    },
+    "true_safety_oracle": {
+      "mean": {
+        "unsafe_given_safe": 0.0,
+        "unsafe_all": 0.08333333333333333,
+        "regret": 0.28014659881591797
+      },
+      "scenes": [
+        {
+          "geometry_id": "S1_symmetric_g5",
+          "unsafe_given_safe": 0.0,
+          "unsafe_all": 0.0,
+          "regret": 0.10815548896789551
+        },
+        {
+          "geometry_id": "S2_perpendicular_g5",
+          "unsafe_given_safe": 0.0,
+          "unsafe_all": 0.0,
+          "regret": 0.19814705848693848
+        },
+        {
+          "geometry_id": "S3_asymmetric_g5",
+          "unsafe_given_safe": 0.0,
+          "unsafe_all": 0.25,
+          "regret": 0.5341372489929199
+        }
+      ]
+    }
+  },
+  "calibration": {
+    "unsafe_candidates": 333,
+    "false_safe_candidates": 28,
+    "false_unsafe_candidates": 103,
+    "predicted_no_safe_groups": 1,
+    "groups": 12
+  },
+  "groups": [
+    {
+      "method": "learned_cost_only",
+      "geometry_id": "S1_symmetric_g5",
+      "name": "S1_symmetric_g5_o0",
+      "selected": 19,
+      "unsafe": true,
+      "safe_available": true,
+      "regret": 3.0594005584716797,
+      "min_separation": 0.1842460185289383
+    },
+    {
+      "method": "learned_cost_only",
+      "geometry_id": "S1_symmetric_g5",
+      "name": "S1_symmetric_g5_o1",
+      "selected": 14,
+      "unsafe": false,
+      "safe_available": true,
+      "regret": 0.0,
+      "min_separation": 0.3427940607070923
+    },
+    {
+      "method": "learned_cost_only",
+      "geometry_id": "S1_symmetric_g5",
+      "name": "S1_symmetric_g5_o2",
+      "selected": 3,
+      "unsafe": false,
+      "safe_available": true,
+      "regret": 0.012035369873046875,
+      "min_separation": 0.3116261959075928
+    },
+    {
+      "method": "learned_cost_only",
+      "geometry_id": "S1_symmetric_g5",
+      "name": "S1_symmetric_g5_o3",
+      "selected": 36,
+      "unsafe": true,
+      "safe_available": true,
+      "regret": 0.03909587860107422,
+      "min_separation": 0.2828783094882965
+    },
+    {
+      "method": "learned_cost_only",
+      "geometry_id": "S2_perpendicular_g5",
+      "name": "S2_perpendicular_g5_o0",
+      "selected": 19,
+      "unsafe": false,
+      "safe_available": true,
+      "regret": 1.0484809875488281,
+      "min_separation": 0.3371957242488861
+    },
+    {
+      "method": "learned_cost_only",
+      "geometry_id": "S2_perpendicular_g5",
+      "name": "S2_perpendicular_g5_o1",
+      "selected": 51,
+      "unsafe": false,
+      "safe_available": true,
+      "regret": 0.5371809005737305,
+      "min_separation": 0.35965263843536377
+    },
+    {
+      "method": "learned_cost_only",
+      "geometry_id": "S2_perpendicular_g5",
+      "name": "S2_perpendicular_g5_o2",
+      "selected": 57,
+      "unsafe": false,
+      "safe_available": true,
+      "regret": 0.4966316223144531,
+      "min_separation": 0.4115443527698517
+    },
+    {
+      "method": "learned_cost_only",
+      "geometry_id": "S2_perpendicular_g5",
+      "name": "S2_perpendicular_g5_o3",
+      "selected": 7,
+      "unsafe": false,
+      "safe_available": true,
+      "regret": 0.35550785064697266,
+      "min_separation": 0.35651397705078125
+    },
+    {
+      "method": "learned_cost_only",
+      "geometry_id": "S3_asymmetric_g5",
+      "name": "S3_asymmetric_g5_o0",
+      "selected": 31,
+      "unsafe": true,
+      "safe_available": false,
+      "regret": 0.043849945068359375,
+      "min_separation": 0.2858732044696808
+    },
+    {
+      "method": "learned_cost_only",
+      "geometry_id": "S3_asymmetric_g5",
+      "name": "S3_asymmetric_g5_o1",
+      "selected": 35,
+      "unsafe": false,
+      "safe_available": true,
+      "regret": 0.6894121170043945,
+      "min_separation": 0.3296647071838379
+    },
+    {
+      "method": "learned_cost_only",
+      "geometry_id": "S3_asymmetric_g5",
+      "name": "S3_asymmetric_g5_o2",
+      "selected": 35,
+      "unsafe": false,
+      "safe_available": true,
+      "regret": 0.7654953002929688,
+      "min_separation": 0.38827836513519287
+    },
+    {
+      "method": "learned_cost_only",
+      "geometry_id": "S3_asymmetric_g5",
+      "name": "S3_asymmetric_g5_o3",
+      "selected": 27,
+      "unsafe": false,
+      "safe_available": true,
+      "regret": 1.1390342712402344,
+      "min_separation": 0.4260250926017761
+    },
+    {
+      "method": "learned_safety",
+      "geometry_id": "S1_symmetric_g5",
+      "name": "S1_symmetric_g5_o0",
+      "selected": 58,
+      "unsafe": true,
+      "safe_available": true,
+      "regret": 0.12411308288574219,
+      "min_separation": 0.28737178444862366
+    },
+    {
+      "method": "learned_safety",
+      "geometry_id": "S1_symmetric_g5",
+      "name": "S1_symmetric_g5_o1",
+      "selected": 14,
+      "unsafe": false,
+      "safe_available": true,
+      "regret": 0.0,
+      "min_separation": 0.3427940607070923
+    },
+    {
+      "method": "learned_safety",
+      "geometry_id": "S1_symmetric_g5",
+      "name": "S1_symmetric_g5_o2",
+      "selected": 3,
+      "unsafe": false,
+      "safe_available": true,
+      "regret": 0.012035369873046875,
+      "min_separation": 0.3116261959075928
+    },
+    {
+      "method": "learned_safety",
+      "geometry_id": "S1_symmetric_g5",
+      "name": "S1_symmetric_g5_o3",
+      "selected": 3,
+      "unsafe": false,
+      "safe_available": true,
+      "regret": 0.4873504638671875,
+      "min_separation": 0.3609914183616638
+    },
+    {
+      "method": "learned_safety",
+      "geometry_id": "S2_perpendicular_g5",
+      "name": "S2_perpendicular_g5_o0",
+      "selected": 19,
+      "unsafe": false,
+      "safe_available": true,
+      "regret": 1.0484809875488281,
+      "min_separation": 0.3371957242488861
+    },
+    {
+      "method": "learned_safety",
+      "geometry_id": "S2_perpendicular_g5",
+      "name": "S2_perpendicular_g5_o1",
+      "selected": 51,
+      "unsafe": false,
+      "safe_available": true,
+      "regret": 0.5371809005737305,
+      "min_separation": 0.35965263843536377
+    },
+    {
+      "method": "learned_safety",
+      "geometry_id": "S2_perpendicular_g5",
+      "name": "S2_perpendicular_g5_o2",
+      "selected": 57,
+      "unsafe": false,
+      "safe_available": true,
+      "regret": 0.4966316223144531,
+      "min_separation": 0.4115443527698517
+    },
+    {
+      "method": "learned_safety",
+      "geometry_id": "S2_perpendicular_g5",
+      "name": "S2_perpendicular_g5_o3",
+      "selected": 55,
+      "unsafe": false,
+      "safe_available": true,
+      "regret": 0.9413661956787109,
+      "min_separation": 0.44538941979408264
+    },
+    {
+      "method": "learned_safety",
+      "geometry_id": "S3_asymmetric_g5",
+      "name": "S3_asymmetric_g5_o0",
+      "selected": 19,
+      "unsafe": true,
+      "safe_available": false,
+      "regret": 0.6849050521850586,
+      "min_separation": 0.2966870665550232
+    },
+    {
+      "method": "learned_safety",
+      "geometry_id": "S3_asymmetric_g5",
+      "name": "S3_asymmetric_g5_o1",
+      "selected": 19,
+      "unsafe": false,
+      "safe_available": true,
+      "regret": 2.1480093002319336,
+      "min_separation": 0.35538482666015625
+    },
+    {
+      "method": "learned_safety",
+      "geometry_id": "S3_asymmetric_g5",
+      "name": "S3_asymmetric_g5_o2",
+      "selected": 35,
+      "unsafe": false,
+      "safe_available": true,
+      "regret": 0.7654953002929688,
+      "min_separation": 0.38827836513519287
+    },
+    {
+      "method": "learned_safety",
+      "geometry_id": "S3_asymmetric_g5",
+      "name": "S3_asymmetric_g5_o3",
+      "selected": 27,
+      "unsafe": false,
+      "safe_available": true,
+      "regret": 1.1390342712402344,
+      "min_separation": 0.4260250926017761
+    },
+    {
+      "method": "true_soft_oracle",
+      "geometry_id": "S1_symmetric_g5",
+      "name": "S1_symmetric_g5_o0",
+      "selected": 49,
+      "unsafe": true,
+      "safe_available": true,
+      "regret": 0.0,
+      "min_separation": 0.28977835178375244
+    },
+    {
+      "method": "true_soft_oracle",
+      "geometry_id": "S1_symmetric_g5",
+      "name": "S1_symmetric_g5_o1",
+      "selected": 14,
+      "unsafe": false,
+      "safe_available": true,
+      "regret": 0.0,
+      "min_separation": 0.3427940607070923
+    },
+    {
+      "method": "true_soft_oracle",
+      "geometry_id": "S1_symmetric_g5",
+      "name": "S1_symmetric_g5_o2",
+      "selected": 47,
+      "unsafe": true,
+      "safe_available": true,
+      "regret": 0.0,
+      "min_separation": 0.23683540523052216
+    },
+    {
+      "method": "true_soft_oracle",
+      "geometry_id": "S1_symmetric_g5",
+      "name": "S1_symmetric_g5_o3",
+      "selected": 28,
+      "unsafe": true,
+      "safe_available": true,
+      "regret": 0.0,
+      "min_separation": 0.29047131538391113
+    },
+    {
+      "method": "true_soft_oracle",
+      "geometry_id": "S2_perpendicular_g5",
+      "name": "S2_perpendicular_g5_o0",
+      "selected": 26,
+      "unsafe": true,
+      "safe_available": true,
+      "regret": 0.0,
+      "min_separation": 0.296456515789032
+    },
+    {
+      "method": "true_soft_oracle",
+      "geometry_id": "S2_perpendicular_g5",
+      "name": "S2_perpendicular_g5_o1",
+      "selected": 39,
+      "unsafe": true,
+      "safe_available": true,
+      "regret": 0.0,
+      "min_separation": 0.27013495564460754
+    },
+    {
+      "method": "true_soft_oracle",
+      "geometry_id": "S2_perpendicular_g5",
+      "name": "S2_perpendicular_g5_o2",
+      "selected": 51,
+      "unsafe": true,
+      "safe_available": true,
+      "regret": 0.0,
+      "min_separation": 0.2914901673793793
+    },
+    {
+      "method": "true_soft_oracle",
+      "geometry_id": "S2_perpendicular_g5",
+      "name": "S2_perpendicular_g5_o3",
+      "selected": 8,
+      "unsafe": true,
+      "safe_available": true,
+      "regret": 0.0,
+      "min_separation": 0.29138466715812683
+    },
+    {
+      "method": "true_soft_oracle",
+      "geometry_id": "S3_asymmetric_g5",
+      "name": "S3_asymmetric_g5_o0",
+      "selected": 30,
+      "unsafe": true,
+      "safe_available": false,
+      "regret": 0.0,
+      "min_separation": 0.26550906896591187
+    },
+    {
+      "method": "true_soft_oracle",
+      "geometry_id": "S3_asymmetric_g5",
+      "name": "S3_asymmetric_g5_o1",
+      "selected": 49,
+      "unsafe": true,
+      "safe_available": true,
+      "regret": 0.0,
+      "min_separation": 0.29685506224632263
+    },
+    {
+      "method": "true_soft_oracle",
+      "geometry_id": "S3_asymmetric_g5",
+      "name": "S3_asymmetric_g5_o2",
+      "selected": 63,
+      "unsafe": true,
+      "safe_available": true,
+      "regret": 0.0,
+      "min_separation": 0.29040488600730896
+    },
+    {
+      "method": "true_soft_oracle",
+      "geometry_id": "S3_asymmetric_g5",
+      "name": "S3_asymmetric_g5_o3",
+      "selected": 60,
+      "unsafe": true,
+      "safe_available": true,
+      "regret": 0.0,
+      "min_separation": 0.2580457925796509
+    },
+    {
+      "method": "true_safety_oracle",
+      "geometry_id": "S1_symmetric_g5",
+      "name": "S1_symmetric_g5_o0",
+      "selected": 31,
+      "unsafe": false,
+      "safe_available": true,
+      "regret": 0.3203105926513672,
+      "min_separation": 0.3054589331150055
+    },
+    {
+      "method": "true_safety_oracle",
+      "geometry_id": "S1_symmetric_g5",
+      "name": "S1_symmetric_g5_o1",
+      "selected": 14,
+      "unsafe": false,
+      "safe_available": true,
+      "regret": 0.0,
+      "min_separation": 0.3427940607070923
+    },
+    {
+      "method": "true_safety_oracle",
+      "geometry_id": "S1_symmetric_g5",
+      "name": "S1_symmetric_g5_o2",
+      "selected": 3,
+      "unsafe": false,
+      "safe_available": true,
+      "regret": 0.012035369873046875,
+      "min_separation": 0.3116261959075928
+    },
+    {
+      "method": "true_safety_oracle",
+      "geometry_id": "S1_symmetric_g5",
+      "name": "S1_symmetric_g5_o3",
+      "selected": 60,
+      "unsafe": false,
+      "safe_available": true,
+      "regret": 0.10027599334716797,
+      "min_separation": 0.3050938844680786
+    },
+    {
+      "method": "true_safety_oracle",
+      "geometry_id": "S2_perpendicular_g5",
+      "name": "S2_perpendicular_g5_o0",
+      "selected": 63,
+      "unsafe": false,
+      "safe_available": true,
+      "regret": 0.4278116226196289,
+      "min_separation": 0.3105652630329132
+    },
+    {
+      "method": "true_safety_oracle",
+      "geometry_id": "S2_perpendicular_g5",
+      "name": "S2_perpendicular_g5_o1",
+      "selected": 46,
+      "unsafe": false,
+      "safe_available": true,
+      "regret": 0.0803079605102539,
+      "min_separation": 0.3226509392261505
+    },
+    {
+      "method": "true_safety_oracle",
+      "geometry_id": "S2_perpendicular_g5",
+      "name": "S2_perpendicular_g5_o2",
+      "selected": 23,
+      "unsafe": false,
+      "safe_available": true,
+      "regret": 0.2327890396118164,
+      "min_separation": 0.350461483001709
+    },
+    {
+      "method": "true_safety_oracle",
+      "geometry_id": "S2_perpendicular_g5",
+      "name": "S2_perpendicular_g5_o3",
+      "selected": 24,
+      "unsafe": false,
+      "safe_available": true,
+      "regret": 0.05167961120605469,
+      "min_separation": 0.30138254165649414
+    },
+    {
+      "method": "true_safety_oracle",
+      "geometry_id": "S3_asymmetric_g5",
+      "name": "S3_asymmetric_g5_o0",
+      "selected": 35,
+      "unsafe": true,
+      "safe_available": false,
+      "regret": 0.8898715972900391,
+      "min_separation": 0.2985572814941406
+    },
+    {
+      "method": "true_safety_oracle",
+      "geometry_id": "S3_asymmetric_g5",
+      "name": "S3_asymmetric_g5_o1",
+      "selected": 1,
+      "unsafe": false,
+      "safe_available": true,
+      "regret": 0.0060272216796875,
+      "min_separation": 0.3095705509185791
+    },
+    {
+      "method": "true_safety_oracle",
+      "geometry_id": "S3_asymmetric_g5",
+      "name": "S3_asymmetric_g5_o2",
+      "selected": 1,
+      "unsafe": false,
+      "safe_available": true,
+      "regret": 0.48591136932373047,
+      "min_separation": 0.3688635528087616
+    },
+    {
+      "method": "true_safety_oracle",
+      "geometry_id": "S3_asymmetric_g5",
+      "name": "S3_asymmetric_g5_o3",
+      "selected": 15,
+      "unsafe": false,
+      "safe_available": true,
+      "regret": 0.7547388076782227,
+      "min_separation": 0.3635472357273102
+    }
+  ],
+  "criterion_met": false,
+  "conditional_unsafe_reduction": 0.08333333333333333,
+  "better_geometries": 1,
+  "test_consumed": true,
+  "checkpoint_sha256": "9a02de2912a91190a600eefdde3319fb9c7f910680b152f9da3578123cc3b3a3",
+  "refit_after_test": false
+}

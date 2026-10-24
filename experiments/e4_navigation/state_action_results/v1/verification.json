@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "train_only_normalization_exact": true,
+  "input_features_independently_rebuilt": true,
+  "numpy_prediction_max_abs_error": 1.9073486328125e-06,
+  "all_test_choices_and_regrets_reproduced": true,
+  "pretest_candidate_groups": 60,
+  "test_candidate_groups": 12,
+  "checkpoint_unchanged": true,
+  "refit_after_test": false,
+  "test_now_consumed": true,
+  "criterion_met": false
+}
