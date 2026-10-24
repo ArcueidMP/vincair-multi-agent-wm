@@ -1,0 +1,307 @@
+{
+  "created_utc": "2026-10-24T12:37:38.927321+00:00",
+  "source_sha256": "c023a209e91838276f5cc1e03ab27a4bcaf8c074b0e1a7573920b439d2f87964",
+  "parent_commit": "1f73fee5913fa0d420088c69dea1653ffb5ffc4b",
+  "model_sha256": {
+    "original": "9a02de2912a91190a600eefdde3319fb9c7f910680b152f9da3578123cc3b3a3",
+    "raw_repair": "a5fcfda5e0796229a9bf1a57f710875e681469224df2e16c80b1c77f6689bf56",
+    "invariant_repair": "4f9ad7b77a6b2ab3b5848e5277331da9faa0377247251afeb5affbb99d8c8c6d"
+  },
+  "geometry_specs": [
+    {
+      "name": "closed_00",
+      "angle_deg": 98.92140885045404,
+      "directions": [
+        [
+          -0.6984358429908752,
+          0.7156726717948914
+        ],
+        [
+          -0.5987013578414917,
+          -0.8009723424911499
+        ]
+      ],
+      "starts": [
+        [
+          0.6013180751241101,
+          -0.4866693583115568
+        ],
+        [
+          0.5265171963609112,
+          0.6508143576994906
+        ]
+      ],
+      "goals": [
+        [
+          -0.44633571916452525,
+          0.5868396195784579
+        ],
+        [
+          -0.3715348404013264,
+          -0.5506440964325895
+        ]
+      ],
+      "velocity": [
+        [
+          -0.08381230115890502,
+          0.08588072061538696
+        ],
+        [
+          -0.143688325881958,
+          -0.19223336219787596
+        ]
+      ]
+    },
+    {
+      "name": "closed_01",
+      "angle_deg": 79.22824710218907,
+      "directions": [
+        [
+          -0.7431473731994629,
+          0.6691277623176575
+        ],
+        [
+          -0.7962294220924377,
+          -0.6049947738647461
+        ]
+      ],
+      "starts": [
+        [
+          0.5254294023052376,
+          -0.5688269564258762
+        ],
+        [
+          0.5652409538761299,
+          0.38676496061208765
+        ]
+      ],
+      "goals": [
+        [
+          -0.5892916574939567,
+          0.4348647168529324
+        ],
+        [
+          -0.6291032090648491,
+          -0.5207272001850315
+        ]
+      ],
+      "velocity": [
+        [
+          -0.08917768478393555,
+          0.08029533147811889
+        ],
+        [
+          -0.19109506130218507,
+          -0.14519874572753905
+        ]
+      ]
+    },
+    {
+      "name": "closed_02",
+      "angle_deg": 47.040457245981656,
+      "directions": [
+        [
+          -0.9889521598815918,
+          -0.14823520183563232
+        ],
+        [
+          -0.5654691457748413,
+          -0.8247694373130798
+        ]
+      ],
+      "starts": [
+        [
+          0.7285940835294233,
+          0.05801129554383676
+        ],
+        [
+          0.4109818229493605,
+          0.5654119572507612
+        ]
+      ],
+      "goals": [
+        [
+          -0.7548341562929644,
+          -0.16434150720961171
+        ],
+        [
+          -0.4372218957129015,
+          -0.6717421689165362
+        ]
+      ],
+      "velocity": [
+        [
+          -0.11867425918579101,
+          -0.01778822422027588
+        ],
+        [
+          -0.13571259498596192,
+          -0.19794466495513915
+        ]
+      ]
+    },
+    {
+      "name": "closed_03",
+      "angle_deg": 96.09112701499913,
+      "directions": [
+        [
+          -0.7696320414543152,
+          -0.638487696647644
+        ],
+        [
+          0.7165487408638,
+          -0.6975370049476624
+        ]
+      ],
+      "starts": [
+        [
+          0.5536571572751275,
+          0.5453953177975929
+        ],
+        [
+          -0.5609784294634589,
+          0.5896823139237678
+        ]
+      ],
+      "goals": [
+        [
+          -0.6007908751040228,
+          -0.4123362271738732
+        ],
+        [
+          0.5138447116345636,
+          -0.4566232233000481
+        ]
+      ],
+      "velocity": [
+        [
+          -0.09235584497451782,
+          -0.07661852359771729
+        ],
+        [
+          0.171971697807312,
+          -0.16740888118743896
+        ]
+      ]
+    },
+    {
+      "name": "closed_04",
+      "angle_deg": 117.28298971788807,
+      "directions": [
+        [
+          -0.16401922702789307,
+          0.9864571690559387
+        ],
+        [
+          -0.801533043384552,
+          -0.5979505181312561
+        ]
+      ],
+      "starts": [
+        [
+          0.19685342581650261,
+          -0.7423230585015385
+        ],
+        [
+          0.6749888029851581,
+          0.44598273669118005
+        ]
+      ],
+      "goals": [
+        [
+          -0.04917541472533697,
+          0.737362724884692
+        ],
+        [
+          -0.5273107918939923,
+          -0.4509430703080265
+        ]
+      ],
+      "velocity": [
+        [
+          -0.01968230724334717,
+          0.11837486028671264
+        ],
+        [
+          -0.19236793041229247,
+          -0.14350812435150145
+        ]
+      ]
+    },
+    {
+      "name": "closed_05",
+      "angle_deg": 47.295962079586765,
+      "directions": [
+        [
+          -0.851390540599823,
+          0.5245323181152344
+        ],
+        [
+          -0.9628841876983643,
+          -0.26991480588912964
+        ]
+      ],
+      "starts": [
+        [
+          0.7160286215216072,
+          -0.39972017421405837
+        ],
+        [
+          0.7996488717466743,
+          0.19611516878921464
+        ]
+      ],
+      "goals": [
+        [
+          -0.5610571595758049,
+          0.3870783029587932
+        ],
+        [
+          -0.6446774098008721,
+          -0.2087570400444798
+        ]
+      ],
+      "velocity": [
+        [
+          -0.10216686487197875,
+          0.06294387817382813
+        ],
+        [
+          -0.2310922050476074,
+          -0.06477955341339112
+        ]
+      ]
+    }
+  ],
+  "seeds": [
+    2026130000,
+    2026131000
+  ],
+  "arms": [
+    "pd",
+    "original",
+    "raw_repair",
+    "invariant_repair",
+    "true_sim_safety"
+  ],
+  "episodes": 60,
+  "max_steps": 200,
+  "horizon": 8,
+  "candidates": 72,
+  "replan": "Every step, execute first action only; current observed state only",
+  "proposals": "64 route/noise controls +4 previous repair zero/brake +4 current-PD joint/agent0-priority/agent1-priority/half controls, repeated H8; no dynamics rollout for learned arms",
+  "matching": "Same initial states, seed schedule, limits and candidate generation code. Pools diverge when policies visit different states. PD has no candidate pool; oracle has privileged true-simulator rollouts.",
+  "native": "VMAS1.5.2 dt.1 two substeps radius.1 drag.25 action components[-1,1]; separation.30; joint position tolerance.12, no speed criterion",
+  "oracle": "True substep safety-first pool ranking; finite H8 reference, not certified safe or a globally optimal controller; no learned WM",
+  "primary": "Safe joint success by200 steps, averaged seeds within geometry then geometries equally. Also unsafe/collision/goal/latency and all paired geometries.",
+  "gate": "Descriptive pilot only: repair safe-joint-success > original AND substep loss-of-separation <= original; no significance or deployment claim",
+  "smoke": "Separate fixed geometry,5steps per arm; verify finite/legal controls, first-action execution and exact native state+substep replay before full run",
+  "budget": "60 full episodes plus5 smoke; max200 steps each; abort between episodes after900 seconds; preserve partial outputs",
+  "no_training": true,
+  "no_policy_tuning": true,
+  "limitations": [
+    "Only6 independent geometries; two candidate seeds are nested repeats",
+    "Fresh starts farther from conflict than training offsets; PD candidates also shift proposal distribution",
+    "Synthetic two-agent task only, not Navigation LeWM or three-agent transfer"
+  ]
+}

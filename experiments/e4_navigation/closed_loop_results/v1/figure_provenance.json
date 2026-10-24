@@ -1,0 +1,6 @@
+{
+  "selection": "All6 geometry specs; first frozen candidate seed only for trajectories, all60 in tables",
+  "axes": "VMAS coordinates, equal spatial aspect per panel",
+  "svg_change": "Only trailing whitespace stripped; raw export retained",
+  "meaning": "Path solid/dashed agents0/1, terminal dots, start circles, goal stars"
+}

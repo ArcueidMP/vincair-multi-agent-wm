@@ -1,0 +1,605 @@
+{
+  "status": "Post-hoc descriptive diagnostics only; no model or policy changes",
+  "episodes": [
+    {
+      "geometry": "closed_00",
+      "arm": "pd",
+      "seed": 2026130000,
+      "mean_final_goal_distance": 0.111731618642807,
+      "goal_distance_reduction": 1.3882683515548706,
+      "last20_mean_speed": 0.08732111752033234,
+      "zero_brake_fraction": null,
+      "pd_proposal_fraction": null
+    },
+    {
+      "geometry": "closed_00",
+      "arm": "original",
+      "seed": 2026130000,
+      "mean_final_goal_distance": 6.444461822509766,
+      "goal_distance_reduction": -4.944461822509766,
+      "last20_mean_speed": 0.2585267722606659,
+      "zero_brake_fraction": 0.005,
+      "pd_proposal_fraction": 0.0
+    },
+    {
+      "geometry": "closed_00",
+      "arm": "raw_repair",
+      "seed": 2026130000,
+      "mean_final_goal_distance": 3.687717914581299,
+      "goal_distance_reduction": -2.187717914581299,
+      "last20_mean_speed": 0.16560795903205872,
+      "zero_brake_fraction": 0.02,
+      "pd_proposal_fraction": 0.025
+    },
+    {
+      "geometry": "closed_00",
+      "arm": "invariant_repair",
+      "seed": 2026130000,
+      "mean_final_goal_distance": 0.5220894813537598,
+      "goal_distance_reduction": 0.9779105186462402,
+      "last20_mean_speed": 0.10185124725103378,
+      "zero_brake_fraction": 0.16,
+      "pd_proposal_fraction": 0.165
+    },
+    {
+      "geometry": "closed_00",
+      "arm": "true_sim_safety",
+      "seed": 2026130000,
+      "mean_final_goal_distance": 0.06257346272468567,
+      "goal_distance_reduction": 1.4374265670776367,
+      "last20_mean_speed": 0.23690113425254822,
+      "zero_brake_fraction": 0.018518518518518517,
+      "pd_proposal_fraction": 0.24074074074074073
+    },
+    {
+      "geometry": "closed_00",
+      "arm": "pd",
+      "seed": 2026131000,
+      "mean_final_goal_distance": 0.111731618642807,
+      "goal_distance_reduction": 1.3882683515548706,
+      "last20_mean_speed": 0.08732111752033234,
+      "zero_brake_fraction": null,
+      "pd_proposal_fraction": null
+    },
+    {
+      "geometry": "closed_00",
+      "arm": "original",
+      "seed": 2026131000,
+      "mean_final_goal_distance": 6.37306547164917,
+      "goal_distance_reduction": -4.87306547164917,
+      "last20_mean_speed": 0.27492406964302063,
+      "zero_brake_fraction": 0.005,
+      "pd_proposal_fraction": 0.0
+    },
+    {
+      "geometry": "closed_00",
+      "arm": "raw_repair",
+      "seed": 2026131000,
+      "mean_final_goal_distance": 3.7013449668884277,
+      "goal_distance_reduction": -2.2013449668884277,
+      "last20_mean_speed": 0.23992189764976501,
+      "zero_brake_fraction": 0.02,
+      "pd_proposal_fraction": 0.02
+    },
+    {
+      "geometry": "closed_00",
+      "arm": "invariant_repair",
+      "seed": 2026131000,
+      "mean_final_goal_distance": 0.5492585897445679,
+      "goal_distance_reduction": 0.9507414102554321,
+      "last20_mean_speed": 0.07045622915029526,
+      "zero_brake_fraction": 0.185,
+      "pd_proposal_fraction": 0.28
+    },
+    {
+      "geometry": "closed_00",
+      "arm": "true_sim_safety",
+      "seed": 2026131000,
+      "mean_final_goal_distance": 0.06247353181242943,
+      "goal_distance_reduction": 1.4375264644622803,
+      "last20_mean_speed": 0.2364201843738556,
+      "zero_brake_fraction": 0.017857142857142856,
+      "pd_proposal_fraction": 0.125
+    },
+    {
+      "geometry": "closed_01",
+      "arm": "pd",
+      "seed": 2026130000,
+      "mean_final_goal_distance": 0.10607504844665527,
+      "goal_distance_reduction": 1.3939249515533447,
+      "last20_mean_speed": 0.08288784325122833,
+      "zero_brake_fraction": null,
+      "pd_proposal_fraction": null
+    },
+    {
+      "geometry": "closed_01",
+      "arm": "original",
+      "seed": 2026130000,
+      "mean_final_goal_distance": 6.4339752197265625,
+      "goal_distance_reduction": -4.9339752197265625,
+      "last20_mean_speed": 0.2585456073284149,
+      "zero_brake_fraction": 0.005,
+      "pd_proposal_fraction": 0.0
+    },
+    {
+      "geometry": "closed_01",
+      "arm": "raw_repair",
+      "seed": 2026130000,
+      "mean_final_goal_distance": 4.072925090789795,
+      "goal_distance_reduction": -2.572925090789795,
+      "last20_mean_speed": 0.24350304901599884,
+      "zero_brake_fraction": 0.0,
+      "pd_proposal_fraction": 0.045
+    },
+    {
+      "geometry": "closed_01",
+      "arm": "invariant_repair",
+      "seed": 2026130000,
+      "mean_final_goal_distance": 0.6203051209449768,
+      "goal_distance_reduction": 0.8796948790550232,
+      "last20_mean_speed": 0.05429328233003616,
+      "zero_brake_fraction": 0.25,
+      "pd_proposal_fraction": 0.39
+    },
+    {
+      "geometry": "closed_01",
+      "arm": "true_sim_safety",
+      "seed": 2026130000,
+      "mean_final_goal_distance": 0.05860438942909241,
+      "goal_distance_reduction": 1.44139564037323,
+      "last20_mean_speed": 0.2738399803638458,
+      "zero_brake_fraction": 0.017857142857142856,
+      "pd_proposal_fraction": 0.125
+    },
+    {
+      "geometry": "closed_01",
+      "arm": "pd",
+      "seed": 2026131000,
+      "mean_final_goal_distance": 0.10607504844665527,
+      "goal_distance_reduction": 1.3939249515533447,
+      "last20_mean_speed": 0.08288784325122833,
+      "zero_brake_fraction": null,
+      "pd_proposal_fraction": null
+    },
+    {
+      "geometry": "closed_01",
+      "arm": "original",
+      "seed": 2026131000,
+      "mean_final_goal_distance": 6.377216339111328,
+      "goal_distance_reduction": -4.877216339111328,
+      "last20_mean_speed": 0.27650704979896545,
+      "zero_brake_fraction": 0.005,
+      "pd_proposal_fraction": 0.0
+    },
+    {
+      "geometry": "closed_01",
+      "arm": "raw_repair",
+      "seed": 2026131000,
+      "mean_final_goal_distance": 4.019201755523682,
+      "goal_distance_reduction": -2.5192017555236816,
+      "last20_mean_speed": 0.271977961063385,
+      "zero_brake_fraction": 0.005,
+      "pd_proposal_fraction": 0.04
+    },
+    {
+      "geometry": "closed_01",
+      "arm": "invariant_repair",
+      "seed": 2026131000,
+      "mean_final_goal_distance": 0.7144758701324463,
+      "goal_distance_reduction": 0.7855241298675537,
+      "last20_mean_speed": 0.05732271820306778,
+      "zero_brake_fraction": 0.195,
+      "pd_proposal_fraction": 0.2
+    },
+    {
+      "geometry": "closed_01",
+      "arm": "true_sim_safety",
+      "seed": 2026131000,
+      "mean_final_goal_distance": 0.06406716257333755,
+      "goal_distance_reduction": 1.4359328746795654,
+      "last20_mean_speed": 0.26962655782699585,
+      "zero_brake_fraction": 0.01818181818181818,
+      "pd_proposal_fraction": 0.16363636363636364
+    },
+    {
+      "geometry": "closed_02",
+      "arm": "pd",
+      "seed": 2026130000,
+      "mean_final_goal_distance": 0.09923838078975677,
+      "goal_distance_reduction": 1.400761604309082,
+      "last20_mean_speed": 0.07756169140338898,
+      "zero_brake_fraction": null,
+      "pd_proposal_fraction": null
+    },
+    {
+      "geometry": "closed_02",
+      "arm": "original",
+      "seed": 2026130000,
+      "mean_final_goal_distance": 3.4643208980560303,
+      "goal_distance_reduction": -1.9643208980560303,
+      "last20_mean_speed": 0.047977060079574585,
+      "zero_brake_fraction": 0.155,
+      "pd_proposal_fraction": 0.02
+    },
+    {
+      "geometry": "closed_02",
+      "arm": "raw_repair",
+      "seed": 2026130000,
+      "mean_final_goal_distance": 1.0088576078414917,
+      "goal_distance_reduction": 0.4911423921585083,
+      "last20_mean_speed": 0.005228766705840826,
+      "zero_brake_fraction": 0.45,
+      "pd_proposal_fraction": 0.005
+    },
+    {
+      "geometry": "closed_02",
+      "arm": "invariant_repair",
+      "seed": 2026130000,
+      "mean_final_goal_distance": 1.080405592918396,
+      "goal_distance_reduction": 0.419594407081604,
+      "last20_mean_speed": 0.04642907530069351,
+      "zero_brake_fraction": 0.255,
+      "pd_proposal_fraction": 0.185
+    },
+    {
+      "geometry": "closed_02",
+      "arm": "true_sim_safety",
+      "seed": 2026130000,
+      "mean_final_goal_distance": 0.06307750195264816,
+      "goal_distance_reduction": 1.436922550201416,
+      "last20_mean_speed": 0.2681485116481781,
+      "zero_brake_fraction": 0.03773584905660377,
+      "pd_proposal_fraction": 0.22641509433962265
+    },
+    {
+      "geometry": "closed_02",
+      "arm": "pd",
+      "seed": 2026131000,
+      "mean_final_goal_distance": 0.09923838078975677,
+      "goal_distance_reduction": 1.400761604309082,
+      "last20_mean_speed": 0.07756169140338898,
+      "zero_brake_fraction": null,
+      "pd_proposal_fraction": null
+    },
+    {
+      "geometry": "closed_02",
+      "arm": "original",
+      "seed": 2026131000,
+      "mean_final_goal_distance": 3.35050368309021,
+      "goal_distance_reduction": -1.85050368309021,
+      "last20_mean_speed": 0.08323642611503601,
+      "zero_brake_fraction": 0.165,
+      "pd_proposal_fraction": 0.005
+    },
+    {
+      "geometry": "closed_02",
+      "arm": "raw_repair",
+      "seed": 2026131000,
+      "mean_final_goal_distance": 2.825371742248535,
+      "goal_distance_reduction": -1.3253717422485352,
+      "last20_mean_speed": 0.16182608902454376,
+      "zero_brake_fraction": 0.07,
+      "pd_proposal_fraction": 0.005
+    },
+    {
+      "geometry": "closed_02",
+      "arm": "invariant_repair",
+      "seed": 2026131000,
+      "mean_final_goal_distance": 1.145310640335083,
+      "goal_distance_reduction": 0.354689359664917,
+      "last20_mean_speed": 0.04264269396662712,
+      "zero_brake_fraction": 0.28,
+      "pd_proposal_fraction": 0.195
+    },
+    {
+      "geometry": "closed_02",
+      "arm": "true_sim_safety",
+      "seed": 2026131000,
+      "mean_final_goal_distance": 0.06400909274816513,
+      "goal_distance_reduction": 1.4359909296035767,
+      "last20_mean_speed": 0.28143128752708435,
+      "zero_brake_fraction": 0.0,
+      "pd_proposal_fraction": 0.17647058823529413
+    },
+    {
+      "geometry": "closed_03",
+      "arm": "pd",
+      "seed": 2026130000,
+      "mean_final_goal_distance": 0.10965709388256073,
+      "goal_distance_reduction": 1.3903429508209229,
+      "last20_mean_speed": 0.08569668978452682,
+      "zero_brake_fraction": null,
+      "pd_proposal_fraction": null
+    },
+    {
+      "geometry": "closed_03",
+      "arm": "original",
+      "seed": 2026130000,
+      "mean_final_goal_distance": 0.3905984163284302,
+      "goal_distance_reduction": 1.1094015836715698,
+      "last20_mean_speed": 0.10208979994058609,
+      "zero_brake_fraction": 0.12,
+      "pd_proposal_fraction": 0.15
+    },
+    {
+      "geometry": "closed_03",
+      "arm": "raw_repair",
+      "seed": 2026130000,
+      "mean_final_goal_distance": 4.109407901763916,
+      "goal_distance_reduction": -2.609407901763916,
+      "last20_mean_speed": 0.23084107041358948,
+      "zero_brake_fraction": 0.005,
+      "pd_proposal_fraction": 0.045
+    },
+    {
+      "geometry": "closed_03",
+      "arm": "invariant_repair",
+      "seed": 2026130000,
+      "mean_final_goal_distance": 0.5847517251968384,
+      "goal_distance_reduction": 0.9152482748031616,
+      "last20_mean_speed": 0.10205302387475967,
+      "zero_brake_fraction": 0.23,
+      "pd_proposal_fraction": 0.265
+    },
+    {
+      "geometry": "closed_03",
+      "arm": "true_sim_safety",
+      "seed": 2026130000,
+      "mean_final_goal_distance": 0.06387419253587723,
+      "goal_distance_reduction": 1.4361257553100586,
+      "last20_mean_speed": 0.2502428889274597,
+      "zero_brake_fraction": 0.0,
+      "pd_proposal_fraction": 0.10909090909090909
+    },
+    {
+      "geometry": "closed_03",
+      "arm": "pd",
+      "seed": 2026131000,
+      "mean_final_goal_distance": 0.10965709388256073,
+      "goal_distance_reduction": 1.3903429508209229,
+      "last20_mean_speed": 0.08569668978452682,
+      "zero_brake_fraction": null,
+      "pd_proposal_fraction": null
+    },
+    {
+      "geometry": "closed_03",
+      "arm": "original",
+      "seed": 2026131000,
+      "mean_final_goal_distance": 0.30787423253059387,
+      "goal_distance_reduction": 1.1921257972717285,
+      "last20_mean_speed": 0.07975046336650848,
+      "zero_brake_fraction": 0.14,
+      "pd_proposal_fraction": 0.135
+    },
+    {
+      "geometry": "closed_03",
+      "arm": "raw_repair",
+      "seed": 2026131000,
+      "mean_final_goal_distance": 4.233957767486572,
+      "goal_distance_reduction": -2.7339577674865723,
+      "last20_mean_speed": 0.23343601822853088,
+      "zero_brake_fraction": 0.0,
+      "pd_proposal_fraction": 0.025
+    },
+    {
+      "geometry": "closed_03",
+      "arm": "invariant_repair",
+      "seed": 2026131000,
+      "mean_final_goal_distance": 0.5560047626495361,
+      "goal_distance_reduction": 0.9439952373504639,
+      "last20_mean_speed": 0.049173202365636826,
+      "zero_brake_fraction": 0.215,
+      "pd_proposal_fraction": 0.25
+    },
+    {
+      "geometry": "closed_03",
+      "arm": "true_sim_safety",
+      "seed": 2026131000,
+      "mean_final_goal_distance": 0.07050106674432755,
+      "goal_distance_reduction": 1.4294989109039307,
+      "last20_mean_speed": 0.25188910961151123,
+      "zero_brake_fraction": 0.017857142857142856,
+      "pd_proposal_fraction": 0.14285714285714285
+    },
+    {
+      "geometry": "closed_04",
+      "arm": "pd",
+      "seed": 2026130000,
+      "mean_final_goal_distance": 0.10190898180007935,
+      "goal_distance_reduction": 1.3980910778045654,
+      "last20_mean_speed": 0.07964806258678436,
+      "zero_brake_fraction": null,
+      "pd_proposal_fraction": null
+    },
+    {
+      "geometry": "closed_04",
+      "arm": "original",
+      "seed": 2026130000,
+      "mean_final_goal_distance": 0.9664620757102966,
+      "goal_distance_reduction": 0.5335380434989929,
+      "last20_mean_speed": 0.34135881066322327,
+      "zero_brake_fraction": 0.015,
+      "pd_proposal_fraction": 0.22
+    },
+    {
+      "geometry": "closed_04",
+      "arm": "raw_repair",
+      "seed": 2026130000,
+      "mean_final_goal_distance": 1.7508206367492676,
+      "goal_distance_reduction": -0.250820517539978,
+      "last20_mean_speed": 0.07232998311519623,
+      "zero_brake_fraction": 0.055,
+      "pd_proposal_fraction": 0.015
+    },
+    {
+      "geometry": "closed_04",
+      "arm": "invariant_repair",
+      "seed": 2026130000,
+      "mean_final_goal_distance": 0.6237601041793823,
+      "goal_distance_reduction": 0.8762400150299072,
+      "last20_mean_speed": 0.10025596618652344,
+      "zero_brake_fraction": 0.11,
+      "pd_proposal_fraction": 0.135
+    },
+    {
+      "geometry": "closed_04",
+      "arm": "true_sim_safety",
+      "seed": 2026130000,
+      "mean_final_goal_distance": 0.058915819972753525,
+      "goal_distance_reduction": 1.4410842657089233,
+      "last20_mean_speed": 0.17658346891403198,
+      "zero_brake_fraction": 0.0,
+      "pd_proposal_fraction": 0.16129032258064516
+    },
+    {
+      "geometry": "closed_04",
+      "arm": "pd",
+      "seed": 2026131000,
+      "mean_final_goal_distance": 0.10190898180007935,
+      "goal_distance_reduction": 1.3980910778045654,
+      "last20_mean_speed": 0.07964806258678436,
+      "zero_brake_fraction": null,
+      "pd_proposal_fraction": null
+    },
+    {
+      "geometry": "closed_04",
+      "arm": "original",
+      "seed": 2026131000,
+      "mean_final_goal_distance": 2.0425097942352295,
+      "goal_distance_reduction": -0.5425096750259399,
+      "last20_mean_speed": 0.2704620957374573,
+      "zero_brake_fraction": 0.035,
+      "pd_proposal_fraction": 0.08
+    },
+    {
+      "geometry": "closed_04",
+      "arm": "raw_repair",
+      "seed": 2026131000,
+      "mean_final_goal_distance": 1.7986279726028442,
+      "goal_distance_reduction": -0.2986278533935547,
+      "last20_mean_speed": 0.08109597861766815,
+      "zero_brake_fraction": 0.075,
+      "pd_proposal_fraction": 0.02
+    },
+    {
+      "geometry": "closed_04",
+      "arm": "invariant_repair",
+      "seed": 2026131000,
+      "mean_final_goal_distance": 0.5729923248291016,
+      "goal_distance_reduction": 0.927007794380188,
+      "last20_mean_speed": 0.05531008169054985,
+      "zero_brake_fraction": 0.055,
+      "pd_proposal_fraction": 0.125
+    },
+    {
+      "geometry": "closed_04",
+      "arm": "true_sim_safety",
+      "seed": 2026131000,
+      "mean_final_goal_distance": 0.05907449498772621,
+      "goal_distance_reduction": 1.4409255981445312,
+      "last20_mean_speed": 0.18131250143051147,
+      "zero_brake_fraction": 0.0,
+      "pd_proposal_fraction": 0.16393442622950818
+    },
+    {
+      "geometry": "closed_05",
+      "arm": "pd",
+      "seed": 2026130000,
+      "mean_final_goal_distance": 0.09798948466777802,
+      "goal_distance_reduction": 1.4020105600357056,
+      "last20_mean_speed": 0.07658109813928604,
+      "zero_brake_fraction": null,
+      "pd_proposal_fraction": null
+    },
+    {
+      "geometry": "closed_05",
+      "arm": "original",
+      "seed": 2026130000,
+      "mean_final_goal_distance": 6.30325984954834,
+      "goal_distance_reduction": -4.80325984954834,
+      "last20_mean_speed": 0.25661391019821167,
+      "zero_brake_fraction": 0.005,
+      "pd_proposal_fraction": 0.0
+    },
+    {
+      "geometry": "closed_05",
+      "arm": "raw_repair",
+      "seed": 2026130000,
+      "mean_final_goal_distance": 0.7320926785469055,
+      "goal_distance_reduction": 0.7679073214530945,
+      "last20_mean_speed": 0.06826528161764145,
+      "zero_brake_fraction": 0.23,
+      "pd_proposal_fraction": 0.045
+    },
+    {
+      "geometry": "closed_05",
+      "arm": "invariant_repair",
+      "seed": 2026130000,
+      "mean_final_goal_distance": 1.3383698463439941,
+      "goal_distance_reduction": 0.16163015365600586,
+      "last20_mean_speed": 0.05819309502840042,
+      "zero_brake_fraction": 0.135,
+      "pd_proposal_fraction": 0.25
+    },
+    {
+      "geometry": "closed_05",
+      "arm": "true_sim_safety",
+      "seed": 2026130000,
+      "mean_final_goal_distance": 0.05730534344911575,
+      "goal_distance_reduction": 1.4426946640014648,
+      "last20_mean_speed": 0.27597618103027344,
+      "zero_brake_fraction": 0.038461538461538464,
+      "pd_proposal_fraction": 0.09615384615384616
+    },
+    {
+      "geometry": "closed_05",
+      "arm": "pd",
+      "seed": 2026131000,
+      "mean_final_goal_distance": 0.09798948466777802,
+      "goal_distance_reduction": 1.4020105600357056,
+      "last20_mean_speed": 0.07658109813928604,
+      "zero_brake_fraction": null,
+      "pd_proposal_fraction": null
+    },
+    {
+      "geometry": "closed_05",
+      "arm": "original",
+      "seed": 2026131000,
+      "mean_final_goal_distance": 6.28417444229126,
+      "goal_distance_reduction": -4.78417444229126,
+      "last20_mean_speed": 0.27686619758605957,
+      "zero_brake_fraction": 0.005,
+      "pd_proposal_fraction": 0.0
+    },
+    {
+      "geometry": "closed_05",
+      "arm": "raw_repair",
+      "seed": 2026131000,
+      "mean_final_goal_distance": 1.1699491739273071,
+      "goal_distance_reduction": 0.33005082607269287,
+      "last20_mean_speed": 0.1033547967672348,
+      "zero_brake_fraction": 0.07,
+      "pd_proposal_fraction": 0.095
+    },
+    {
+      "geometry": "closed_05",
+      "arm": "invariant_repair",
+      "seed": 2026131000,
+      "mean_final_goal_distance": 1.3630590438842773,
+      "goal_distance_reduction": 0.13694095611572266,
+      "last20_mean_speed": 0.07354959845542908,
+      "zero_brake_fraction": 0.155,
+      "pd_proposal_fraction": 0.175
+    },
+    {
+      "geometry": "closed_05",
+      "arm": "true_sim_safety",
+      "seed": 2026131000,
+      "mean_final_goal_distance": 0.05734222009778023,
+      "goal_distance_reduction": 1.4426578283309937,
+      "last20_mean_speed": 0.26267892122268677,
+      "zero_brake_fraction": 0.0,
+      "pd_proposal_fraction": 0.11320754716981132
+    }
+  ]
+}

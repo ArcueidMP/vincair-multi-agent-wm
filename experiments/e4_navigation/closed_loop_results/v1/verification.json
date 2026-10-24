@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "episodes": 60,
+  "geometries": 6,
+  "executed_steps": 8728,
+  "independent_model_decisions": 7200,
+  "independent_native_oracle_decisions": 664,
+  "max_numpy_forward_error": 3.814697265625e-05,
+  "max_oracle_cost_formula_error": 1.9073486328125e-06,
+  "first_action_execution_exact": true,
+  "metrics_and_aggregate_verified": true,
+  "model_hashes_unchanged": true,
+  "native_replay_error": 0
+}
