@@ -1,0 +1,302 @@
+{
+  "validation": {
+    "groups": 12,
+    "base_geometries": 3,
+    "no_safe_groups": 0,
+    "category_counts": {
+      "no_safe_candidate": 0,
+      "risk_false_accept": 0,
+      "fallback_miss": 0,
+      "safe_optimal": 2,
+      "safe_risk_exclusion": 8,
+      "safe_cost_ranking": 2
+    },
+    "methods": {
+      "learned_safety": {
+        "mean": {
+          "unsafe_given_safe": 0.0,
+          "unsafe_all": 0.0,
+          "regret": 0.6452519098917643
+        },
+        "scenes": [
+          {
+            "base_id": "S1_symmetric_g4",
+            "unsafe_given_safe": 0.0,
+            "unsafe_all": 0.0,
+            "regret": 0.6913232803344727
+          },
+          {
+            "base_id": "S2_perpendicular_g4",
+            "unsafe_given_safe": 0.0,
+            "unsafe_all": 0.0,
+            "regret": 0.7207272052764893
+          },
+          {
+            "base_id": "S3_asymmetric_g4",
+            "unsafe_given_safe": 0.0,
+            "unsafe_all": 0.0,
+            "regret": 0.523705244064331
+          }
+        ]
+      },
+      "learned_cost_only": {
+        "mean": {
+          "unsafe_given_safe": 0.16666666666666666,
+          "unsafe_all": 0.16666666666666666,
+          "regret": 0.4916624228159587
+        },
+        "scenes": [
+          {
+            "base_id": "S1_symmetric_g4",
+            "unsafe_given_safe": 0.25,
+            "unsafe_all": 0.25,
+            "regret": 0.3836171627044678
+          },
+          {
+            "base_id": "S2_perpendicular_g4",
+            "unsafe_given_safe": 0.0,
+            "unsafe_all": 0.0,
+            "regret": 0.7653558254241943
+          },
+          {
+            "base_id": "S3_asymmetric_g4",
+            "unsafe_given_safe": 0.25,
+            "unsafe_all": 0.25,
+            "regret": 0.32601428031921387
+          }
+        ]
+      },
+      "true_risk_predicted_cost": {
+        "mean": {
+          "unsafe_given_safe": 0.0,
+          "unsafe_all": 0.0,
+          "regret": 0.6249243418375651
+        },
+        "scenes": [
+          {
+            "base_id": "S1_symmetric_g4",
+            "unsafe_given_safe": 0.0,
+            "unsafe_all": 0.0,
+            "regret": 0.5857119560241699
+          },
+          {
+            "base_id": "S2_perpendicular_g4",
+            "unsafe_given_safe": 0.0,
+            "unsafe_all": 0.0,
+            "regret": 0.7653558254241943
+          },
+          {
+            "base_id": "S3_asymmetric_g4",
+            "unsafe_given_safe": 0.0,
+            "unsafe_all": 0.0,
+            "regret": 0.523705244064331
+          }
+        ]
+      },
+      "predicted_risk_true_cost": {
+        "mean": {
+          "unsafe_given_safe": 0.25,
+          "unsafe_all": 0.25,
+          "regret": 0.5144303639729818
+        },
+        "scenes": [
+          {
+            "base_id": "S1_symmetric_g4",
+            "unsafe_given_safe": 0.25,
+            "unsafe_all": 0.25,
+            "regret": 0.5519959926605225
+          },
+          {
+            "base_id": "S2_perpendicular_g4",
+            "unsafe_given_safe": 0.0,
+            "unsafe_all": 0.0,
+            "regret": 0.6367175579071045
+          },
+          {
+            "base_id": "S3_asymmetric_g4",
+            "unsafe_given_safe": 0.5,
+            "unsafe_all": 0.5,
+            "regret": 0.35457754135131836
+          }
+        ]
+      },
+      "true_soft_oracle": {
+        "mean": {
+          "unsafe_given_safe": 0.9166666666666666,
+          "unsafe_all": 0.9166666666666666,
+          "regret": 0.0
+        },
+        "scenes": [
+          {
+            "base_id": "S1_symmetric_g4",
+            "unsafe_given_safe": 0.75,
+            "unsafe_all": 0.75,
+            "regret": 0.0
+          },
+          {
+            "base_id": "S2_perpendicular_g4",
+            "unsafe_given_safe": 1.0,
+            "unsafe_all": 1.0,
+            "regret": 0.0
+          },
+          {
+            "base_id": "S3_asymmetric_g4",
+            "unsafe_given_safe": 1.0,
+            "unsafe_all": 1.0,
+            "regret": 0.0
+          }
+        ]
+      }
+    }
+  },
+  "test": {
+    "groups": 12,
+    "base_geometries": 3,
+    "no_safe_groups": 1,
+    "category_counts": {
+      "no_safe_candidate": 1,
+      "risk_false_accept": 1,
+      "fallback_miss": 0,
+      "safe_optimal": 2,
+      "safe_risk_exclusion": 7,
+      "safe_cost_ranking": 1
+    },
+    "methods": {
+      "learned_safety": {
+        "mean": {
+          "unsafe_given_safe": 0.08333333333333333,
+          "unsafe_all": 0.16666666666666666,
+          "regret": 0.6987168788909912
+        },
+        "scenes": [
+          {
+            "base_id": "S1_symmetric_g5",
+            "unsafe_given_safe": 0.25,
+            "unsafe_all": 0.25,
+            "regret": 0.15587472915649414
+          },
+          {
+            "base_id": "S2_perpendicular_g5",
+            "unsafe_given_safe": 0.0,
+            "unsafe_all": 0.0,
+            "regret": 0.7559149265289307
+          },
+          {
+            "base_id": "S3_asymmetric_g5",
+            "unsafe_given_safe": 0.0,
+            "unsafe_all": 0.25,
+            "regret": 1.1843609809875488
+          }
+        ]
+      },
+      "learned_cost_only": {
+        "mean": {
+          "unsafe_given_safe": 0.16666666666666666,
+          "unsafe_all": 0.25,
+          "regret": 0.6821770668029785
+        },
+        "scenes": [
+          {
+            "base_id": "S1_symmetric_g5",
+            "unsafe_given_safe": 0.5,
+            "unsafe_all": 0.5,
+            "regret": 0.7776329517364502
+          },
+          {
+            "base_id": "S2_perpendicular_g5",
+            "unsafe_given_safe": 0.0,
+            "unsafe_all": 0.0,
+            "regret": 0.6094503402709961
+          },
+          {
+            "base_id": "S3_asymmetric_g5",
+            "unsafe_given_safe": 0.0,
+            "unsafe_all": 0.25,
+            "regret": 0.6594479084014893
+          }
+        ]
+      },
+      "true_risk_predicted_cost": {
+        "mean": {
+          "unsafe_given_safe": 0.0,
+          "unsafe_all": 0.08333333333333333,
+          "regret": 0.5721289316813151
+        },
+        "scenes": [
+          {
+            "base_id": "S1_symmetric_g5",
+            "unsafe_given_safe": 0.0,
+            "unsafe_all": 0.0,
+            "regret": 0.28722476959228516
+          },
+          {
+            "base_id": "S2_perpendicular_g5",
+            "unsafe_given_safe": 0.0,
+            "unsafe_all": 0.0,
+            "regret": 0.6094503402709961
+          },
+          {
+            "base_id": "S3_asymmetric_g5",
+            "unsafe_given_safe": 0.0,
+            "unsafe_all": 0.25,
+            "regret": 0.8197116851806641
+          }
+        ]
+      },
+      "predicted_risk_true_cost": {
+        "mean": {
+          "unsafe_given_safe": 0.08333333333333333,
+          "unsafe_all": 0.16666666666666666,
+          "regret": 0.6151307423909506
+        },
+        "scenes": [
+          {
+            "base_id": "S1_symmetric_g5",
+            "unsafe_given_safe": 0.25,
+            "unsafe_all": 0.25,
+            "regret": 0.12802386283874512
+          },
+          {
+            "base_id": "S2_perpendicular_g5",
+            "unsafe_given_safe": 0.0,
+            "unsafe_all": 0.0,
+            "regret": 0.6536307334899902
+          },
+          {
+            "base_id": "S3_asymmetric_g5",
+            "unsafe_given_safe": 0.0,
+            "unsafe_all": 0.25,
+            "regret": 1.0637376308441162
+          }
+        ]
+      },
+      "true_soft_oracle": {
+        "mean": {
+          "unsafe_given_safe": 0.9166666666666666,
+          "unsafe_all": 0.9166666666666666,
+          "regret": 0.0
+        },
+        "scenes": [
+          {
+            "base_id": "S1_symmetric_g5",
+            "unsafe_given_safe": 0.75,
+            "unsafe_all": 0.75,
+            "regret": 0.0
+          },
+          {
+            "base_id": "S2_perpendicular_g5",
+            "unsafe_given_safe": 1.0,
+            "unsafe_all": 1.0,
+            "regret": 0.0
+          },
+          {
+            "base_id": "S3_asymmetric_g5",
+            "unsafe_given_safe": 1.0,
+            "unsafe_all": 1.0,
+            "regret": 0.0
+          }
+        ]
+      }
+    }
+  }
+}

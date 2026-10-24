@@ -51,3 +51,18 @@ Sixteen targeted tests pass. Independent NumPy forward reconstruction reproduces
 **Test status update:** the geometry test split from conflict_ranking_v1 has now been consumed by this frozen experiment. Earlier statements of sealed status describe the preceding block only. Do not reuse it for threshold/feature/model selection; subsequent changes require new confirmation geometries.
 
 Next material dependency remains Navigation checkpoint, loader/config/normalization, history/frameskip/action/agent contract and a compatible state head. Keep the direct scorer as a distinct baseline when those arrive. Do not present its weights as the missing Navigation world model.
+
+
+## Completed: failure diagnosis and frozen new-scenario generalization
+
+User requested both blocks1/2; no retraining or risk-threshold changes. Existing epoch126/threshold0.25/checkpoint unchanged. New specifications were frozen before examining old failures.
+
+Old consumed test:12 states;1 pool has no safe candidate and1 avoidable unsafe choice is a false risk acceptance. Seven safe selections exclude the lowest-cost true-safe alternative. Categories are hierarchical diagnostics, not unique causal attribution.
+
+New12 base geometries with angles45/75/105/135deg and new orientations x3 conditions x2 initial distance indices x64 actions =4608 new candidate labels. Paired conditions share EXACT actions/goals. Conditional unsafe selection(cost-head-only vs safety rule):new angle45.83%→37.50%; velocity asymmetry29.17%→37.50%; arrival offset37.50%→45.83%. All72 pools contain safe candidates. Arrival-offset intervention also changes actual separation; it is not fixed-separation timing isolation.
+
+Among29 new unsafe selections,10 are false accepts and19 occur after predicting every candidate unsafe then choosing an unsafe fallback. All19 fallback choices had predicted minimum separation>=0.30 but actual violation; average optimistic minsep error0.1837 VMAS units. Risk filtering and fallback estimates are unreliable under shift. Coordinate/agent-order sensitivity is a hypothesis, not proven by an invariance intervention.
+
+All4608 trajectories/substeps repeated in fresh native VMAS with0 error; independent features, predictions, choices, labels, pairings and aggregates verified.20 targeted tests pass. All12 geometry pairs and deterministic old-test cases are plotted with raw tables/provenance. Source/results under `experiments/e4_navigation/safety_generalization_results/v1/`; full trajectories/predictions remain external with hashes.
+
+These new stress scenarios are now consumed evaluation data, not a new untouched confirmation set. Do not tune current weights/threshold on them. No closed-loop runs, LeWM-transfer claim, model refit or new Navigation weights. Next repair needs training-only selection and NEW confirmation geometries; dedicated Navigation checkpoint/readout remains missing.

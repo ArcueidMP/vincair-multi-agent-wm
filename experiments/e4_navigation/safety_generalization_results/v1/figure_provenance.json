@@ -1,0 +1,45 @@
+{
+  "destination": "Provisional research/group-meeting figures; publisher requirements not specified",
+  "distribution": "All12 paired base geometry rates for every condition; no smoothing/inferential intervals.",
+  "cases": [
+    {
+      "name": "S1_symmetric_g5_o0",
+      "category": "risk_false_accept",
+      "selected": 58,
+      "oracle_reference": 31
+    },
+    {
+      "name": "S3_asymmetric_g5_o0",
+      "category": "no_safe_candidate",
+      "selected": 19,
+      "oracle_reference": null
+    },
+    {
+      "name": "S1_symmetric_g5_o1",
+      "category": "safe_optimal",
+      "selected": 14,
+      "oracle_reference": 14
+    }
+  ],
+  "case_rule": "Old test: lexicographically first unsafe selected case with safe option, first all-unsafe, first safe selection (deduplicated). No best-looking selection.",
+  "scope": "Local H8 trajectories, not closed-loop routes; oracle reference uses future labels.",
+  "svg_processing": "Remove trailing line spaces only for Git hygiene; original SVG exports preserved separately, coordinates unchanged.",
+  "exports": {
+    "generalization_pairs.png": {
+      "sha256": "325e4a1f89573525957bdf70d51bdddcad22dda0f646baf0cd99180f550e7d4e",
+      "bytes": 144487
+    },
+    "generalization_pairs.svg": {
+      "sha256": "5018ec0df0b5557df0d1753eee149cbc8aebf1a52d4363fea7dde2afdaa7d0dd",
+      "bytes": 43117
+    },
+    "old_test_cases.png": {
+      "sha256": "3fb581453896532259b3b6fd8b0dc641015fdae2d18a5f14d3b6dd528b13cbfe",
+      "bytes": 148897
+    },
+    "old_test_cases.svg": {
+      "sha256": "9ebac55f46879aa6bdea6982dbdc50587e4c4eba01f5b44357a0f6b762165bb4",
+      "bytes": 79962
+    }
+  }
+}

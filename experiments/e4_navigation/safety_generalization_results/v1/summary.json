@@ -1,0 +1,1692 @@
+{
+  "status": "passed",
+  "conditions": {
+    "angle_orientation": {
+      "groups": 24,
+      "base_geometries": 12,
+      "no_safe_groups": 0,
+      "category_counts": {
+        "no_safe_candidate": 0,
+        "risk_false_accept": 3,
+        "fallback_miss": 6,
+        "safe_optimal": 0,
+        "safe_risk_exclusion": 13,
+        "safe_cost_ranking": 2
+      },
+      "methods": {
+        "learned_safety": {
+          "mean": {
+            "unsafe_given_safe": 0.375,
+            "unsafe_all": 0.375,
+            "regret": 1.870398720105489
+          },
+          "scenes": [
+            {
+              "base_id": "angle105_rep0",
+              "unsafe_given_safe": 0.5,
+              "unsafe_all": 0.5,
+              "regret": 1.140289306640625
+            },
+            {
+              "base_id": "angle105_rep1",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 1.2228083610534668
+            },
+            {
+              "base_id": "angle105_rep2",
+              "unsafe_given_safe": 0.5,
+              "unsafe_all": 0.5,
+              "regret": 0.06701850891113281
+            },
+            {
+              "base_id": "angle135_rep0",
+              "unsafe_given_safe": 1.0,
+              "unsafe_all": 1.0,
+              "regret": 5.537548542022705
+            },
+            {
+              "base_id": "angle135_rep1",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 1.3127117156982422
+            },
+            {
+              "base_id": "angle135_rep2",
+              "unsafe_given_safe": 1.0,
+              "unsafe_all": 1.0,
+              "regret": 5.563976764678955
+            },
+            {
+              "base_id": "angle45_rep0",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 2.757823944091797
+            },
+            {
+              "base_id": "angle45_rep1",
+              "unsafe_given_safe": 1.0,
+              "unsafe_all": 1.0,
+              "regret": 0.39963436126708984
+            },
+            {
+              "base_id": "angle45_rep2",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 2.8110270500183105
+            },
+            {
+              "base_id": "angle75_rep0",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 0.8102478981018066
+            },
+            {
+              "base_id": "angle75_rep1",
+              "unsafe_given_safe": 0.5,
+              "unsafe_all": 0.5,
+              "regret": 0.2701730728149414
+            },
+            {
+              "base_id": "angle75_rep2",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 0.5515251159667969
+            }
+          ]
+        },
+        "learned_cost_only": {
+          "mean": {
+            "unsafe_given_safe": 0.4583333333333333,
+            "unsafe_all": 0.4583333333333333,
+            "regret": 0.7917169729868571
+          },
+          "scenes": [
+            {
+              "base_id": "angle105_rep0",
+              "unsafe_given_safe": 1.0,
+              "unsafe_all": 1.0,
+              "regret": 3.0928750038146973
+            },
+            {
+              "base_id": "angle105_rep1",
+              "unsafe_given_safe": 0.5,
+              "unsafe_all": 0.5,
+              "regret": 0.3231620788574219
+            },
+            {
+              "base_id": "angle105_rep2",
+              "unsafe_given_safe": 0.5,
+              "unsafe_all": 0.5,
+              "regret": 0.7726764678955078
+            },
+            {
+              "base_id": "angle135_rep0",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 0.9410524368286133
+            },
+            {
+              "base_id": "angle135_rep1",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 1.177933692932129
+            },
+            {
+              "base_id": "angle135_rep2",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 0.38413095474243164
+            },
+            {
+              "base_id": "angle45_rep0",
+              "unsafe_given_safe": 1.0,
+              "unsafe_all": 1.0,
+              "regret": 0.03180551528930664
+            },
+            {
+              "base_id": "angle45_rep1",
+              "unsafe_given_safe": 1.0,
+              "unsafe_all": 1.0,
+              "regret": 0.39963436126708984
+            },
+            {
+              "base_id": "angle45_rep2",
+              "unsafe_given_safe": 1.0,
+              "unsafe_all": 1.0,
+              "regret": 0.06247091293334961
+            },
+            {
+              "base_id": "angle75_rep0",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 0.5862550735473633
+            },
+            {
+              "base_id": "angle75_rep1",
+              "unsafe_given_safe": 0.5,
+              "unsafe_all": 0.5,
+              "regret": 0.24248218536376953
+            },
+            {
+              "base_id": "angle75_rep2",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 1.4861249923706055
+            }
+          ]
+        },
+        "true_risk_predicted_cost": {
+          "mean": {
+            "unsafe_given_safe": 0.0,
+            "unsafe_all": 0.0,
+            "regret": 0.799268921216329
+          },
+          "scenes": [
+            {
+              "base_id": "angle105_rep0",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 0.6069698333740234
+            },
+            {
+              "base_id": "angle105_rep1",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 0.19605493545532227
+            },
+            {
+              "base_id": "angle105_rep2",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 1.0954627990722656
+            },
+            {
+              "base_id": "angle135_rep0",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 0.9410524368286133
+            },
+            {
+              "base_id": "angle135_rep1",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 1.177933692932129
+            },
+            {
+              "base_id": "angle135_rep2",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 0.38413095474243164
+            },
+            {
+              "base_id": "angle45_rep0",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 0.8012404441833496
+            },
+            {
+              "base_id": "angle45_rep1",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 0.43675756454467773
+            },
+            {
+              "base_id": "angle45_rep2",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 0.8657097816467285
+            },
+            {
+              "base_id": "angle75_rep0",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 0.5862550735473633
+            },
+            {
+              "base_id": "angle75_rep1",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 1.0135345458984375
+            },
+            {
+              "base_id": "angle75_rep2",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 1.4861249923706055
+            }
+          ]
+        },
+        "predicted_risk_true_cost": {
+          "mean": {
+            "unsafe_given_safe": 0.4583333333333333,
+            "unsafe_all": 0.4583333333333333,
+            "regret": 1.6351981163024902
+          },
+          "scenes": [
+            {
+              "base_id": "angle105_rep0",
+              "unsafe_given_safe": 0.5,
+              "unsafe_all": 0.5,
+              "regret": 0.08491039276123047
+            },
+            {
+              "base_id": "angle105_rep1",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 1.2228083610534668
+            },
+            {
+              "base_id": "angle105_rep2",
+              "unsafe_given_safe": 0.5,
+              "unsafe_all": 0.5,
+              "regret": 0.06701850891113281
+            },
+            {
+              "base_id": "angle135_rep0",
+              "unsafe_given_safe": 1.0,
+              "unsafe_all": 1.0,
+              "regret": 5.537548542022705
+            },
+            {
+              "base_id": "angle135_rep1",
+              "unsafe_given_safe": 1.0,
+              "unsafe_all": 1.0,
+              "regret": 0.0110321044921875
+            },
+            {
+              "base_id": "angle135_rep2",
+              "unsafe_given_safe": 1.0,
+              "unsafe_all": 1.0,
+              "regret": 5.563976764678955
+            },
+            {
+              "base_id": "angle45_rep0",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 2.757823944091797
+            },
+            {
+              "base_id": "angle45_rep1",
+              "unsafe_given_safe": 1.0,
+              "unsafe_all": 1.0,
+              "regret": 0.0
+            },
+            {
+              "base_id": "angle45_rep2",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 2.8110270500183105
+            },
+            {
+              "base_id": "angle75_rep0",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 0.7445335388183594
+            },
+            {
+              "base_id": "angle75_rep1",
+              "unsafe_given_safe": 0.5,
+              "unsafe_all": 0.5,
+              "regret": 0.2701730728149414
+            },
+            {
+              "base_id": "angle75_rep2",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 0.5515251159667969
+            }
+          ]
+        },
+        "true_soft_oracle": {
+          "mean": {
+            "unsafe_given_safe": 1.0,
+            "unsafe_all": 1.0,
+            "regret": 0.0
+          },
+          "scenes": [
+            {
+              "base_id": "angle105_rep0",
+              "unsafe_given_safe": 1.0,
+              "unsafe_all": 1.0,
+              "regret": 0.0
+            },
+            {
+              "base_id": "angle105_rep1",
+              "unsafe_given_safe": 1.0,
+              "unsafe_all": 1.0,
+              "regret": 0.0
+            },
+            {
+              "base_id": "angle105_rep2",
+              "unsafe_given_safe": 1.0,
+              "unsafe_all": 1.0,
+              "regret": 0.0
+            },
+            {
+              "base_id": "angle135_rep0",
+              "unsafe_given_safe": 1.0,
+              "unsafe_all": 1.0,
+              "regret": 0.0
+            },
+            {
+              "base_id": "angle135_rep1",
+              "unsafe_given_safe": 1.0,
+              "unsafe_all": 1.0,
+              "regret": 0.0
+            },
+            {
+              "base_id": "angle135_rep2",
+              "unsafe_given_safe": 1.0,
+              "unsafe_all": 1.0,
+              "regret": 0.0
+            },
+            {
+              "base_id": "angle45_rep0",
+              "unsafe_given_safe": 1.0,
+              "unsafe_all": 1.0,
+              "regret": 0.0
+            },
+            {
+              "base_id": "angle45_rep1",
+              "unsafe_given_safe": 1.0,
+              "unsafe_all": 1.0,
+              "regret": 0.0
+            },
+            {
+              "base_id": "angle45_rep2",
+              "unsafe_given_safe": 1.0,
+              "unsafe_all": 1.0,
+              "regret": 0.0
+            },
+            {
+              "base_id": "angle75_rep0",
+              "unsafe_given_safe": 1.0,
+              "unsafe_all": 1.0,
+              "regret": 0.0
+            },
+            {
+              "base_id": "angle75_rep1",
+              "unsafe_given_safe": 1.0,
+              "unsafe_all": 1.0,
+              "regret": 0.0
+            },
+            {
+              "base_id": "angle75_rep2",
+              "unsafe_given_safe": 1.0,
+              "unsafe_all": 1.0,
+              "regret": 0.0
+            }
+          ]
+        }
+      }
+    },
+    "velocity_asymmetry": {
+      "groups": 24,
+      "base_geometries": 12,
+      "no_safe_groups": 0,
+      "category_counts": {
+        "no_safe_candidate": 0,
+        "risk_false_accept": 3,
+        "fallback_miss": 6,
+        "safe_optimal": 1,
+        "safe_risk_exclusion": 11,
+        "safe_cost_ranking": 3
+      },
+      "methods": {
+        "learned_safety": {
+          "mean": {
+            "unsafe_given_safe": 0.375,
+            "unsafe_all": 0.375,
+            "regret": 2.1614211002985635
+          },
+          "scenes": [
+            {
+              "base_id": "angle105_rep0",
+              "unsafe_given_safe": 0.5,
+              "unsafe_all": 0.5,
+              "regret": 2.420424461364746
+            },
+            {
+              "base_id": "angle105_rep1",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 1.6050357818603516
+            },
+            {
+              "base_id": "angle105_rep2",
+              "unsafe_given_safe": 0.5,
+              "unsafe_all": 0.5,
+              "regret": 0.24481821060180664
+            },
+            {
+              "base_id": "angle135_rep0",
+              "unsafe_given_safe": 1.0,
+              "unsafe_all": 1.0,
+              "regret": 5.523916721343994
+            },
+            {
+              "base_id": "angle135_rep1",
+              "unsafe_given_safe": 0.5,
+              "unsafe_all": 0.5,
+              "regret": 2.216330051422119
+            },
+            {
+              "base_id": "angle135_rep2",
+              "unsafe_given_safe": 1.0,
+              "unsafe_all": 1.0,
+              "regret": 5.492143630981445
+            },
+            {
+              "base_id": "angle45_rep0",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 2.967803955078125
+            },
+            {
+              "base_id": "angle45_rep1",
+              "unsafe_given_safe": 0.5,
+              "unsafe_all": 0.5,
+              "regret": 0.9647469520568848
+            },
+            {
+              "base_id": "angle45_rep2",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 2.9032812118530273
+            },
+            {
+              "base_id": "angle75_rep0",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 0.5972061157226562
+            },
+            {
+              "base_id": "angle75_rep1",
+              "unsafe_given_safe": 0.5,
+              "unsafe_all": 0.5,
+              "regret": 0.4766407012939453
+            },
+            {
+              "base_id": "angle75_rep2",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 0.5247054100036621
+            }
+          ]
+        },
+        "learned_cost_only": {
+          "mean": {
+            "unsafe_given_safe": 0.2916666666666667,
+            "unsafe_all": 0.2916666666666667,
+            "regret": 1.0080256462097168
+          },
+          "scenes": [
+            {
+              "base_id": "angle105_rep0",
+              "unsafe_given_safe": 0.5,
+              "unsafe_all": 0.5,
+              "regret": 2.420424461364746
+            },
+            {
+              "base_id": "angle105_rep1",
+              "unsafe_given_safe": 0.5,
+              "unsafe_all": 0.5,
+              "regret": 1.023299217224121
+            },
+            {
+              "base_id": "angle105_rep2",
+              "unsafe_given_safe": 0.5,
+              "unsafe_all": 0.5,
+              "regret": 0.938380241394043
+            },
+            {
+              "base_id": "angle135_rep0",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 1.035210132598877
+            },
+            {
+              "base_id": "angle135_rep1",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 1.3150591850280762
+            },
+            {
+              "base_id": "angle135_rep2",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 0.7358007431030273
+            },
+            {
+              "base_id": "angle45_rep0",
+              "unsafe_given_safe": 0.5,
+              "unsafe_all": 0.5,
+              "regret": 0.5170674324035645
+            },
+            {
+              "base_id": "angle45_rep1",
+              "unsafe_given_safe": 0.5,
+              "unsafe_all": 0.5,
+              "regret": 0.9647469520568848
+            },
+            {
+              "base_id": "angle45_rep2",
+              "unsafe_given_safe": 0.5,
+              "unsafe_all": 0.5,
+              "regret": 0.5081758499145508
+            },
+            {
+              "base_id": "angle75_rep0",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 0.6663837432861328
+            },
+            {
+              "base_id": "angle75_rep1",
+              "unsafe_given_safe": 0.5,
+              "unsafe_all": 0.5,
+              "regret": 0.4764533042907715
+            },
+            {
+              "base_id": "angle75_rep2",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 1.4953064918518066
+            }
+          ]
+        },
+        "true_risk_predicted_cost": {
+          "mean": {
+            "unsafe_given_safe": 0.0,
+            "unsafe_all": 0.0,
+            "regret": 0.8206649621327718
+          },
+          "scenes": [
+            {
+              "base_id": "angle105_rep0",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 1.4413785934448242
+            },
+            {
+              "base_id": "angle105_rep1",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 0.7099967002868652
+            },
+            {
+              "base_id": "angle105_rep2",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 1.2796878814697266
+            },
+            {
+              "base_id": "angle135_rep0",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 1.035210132598877
+            },
+            {
+              "base_id": "angle135_rep1",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 1.3150591850280762
+            },
+            {
+              "base_id": "angle135_rep2",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 0.7358007431030273
+            },
+            {
+              "base_id": "angle45_rep0",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 0.030128955841064453
+            },
+            {
+              "base_id": "angle45_rep1",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 0.268496036529541
+            },
+            {
+              "base_id": "angle45_rep2",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 0.2984328269958496
+            },
+            {
+              "base_id": "angle75_rep0",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 0.6663837432861328
+            },
+            {
+              "base_id": "angle75_rep1",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 0.5720982551574707
+            },
+            {
+              "base_id": "angle75_rep2",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 1.4953064918518066
+            }
+          ]
+        },
+        "predicted_risk_true_cost": {
+          "mean": {
+            "unsafe_given_safe": 0.5416666666666666,
+            "unsafe_all": 0.5416666666666666,
+            "regret": 1.7507710456848145
+          },
+          "scenes": [
+            {
+              "base_id": "angle105_rep0",
+              "unsafe_given_safe": 1.0,
+              "unsafe_all": 1.0,
+              "regret": 0.033823490142822266
+            },
+            {
+              "base_id": "angle105_rep1",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 1.6050357818603516
+            },
+            {
+              "base_id": "angle105_rep2",
+              "unsafe_given_safe": 0.5,
+              "unsafe_all": 0.5,
+              "regret": 0.24481821060180664
+            },
+            {
+              "base_id": "angle135_rep0",
+              "unsafe_given_safe": 1.0,
+              "unsafe_all": 1.0,
+              "regret": 5.523916721343994
+            },
+            {
+              "base_id": "angle135_rep1",
+              "unsafe_given_safe": 1.0,
+              "unsafe_all": 1.0,
+              "regret": 1.0516390800476074
+            },
+            {
+              "base_id": "angle135_rep2",
+              "unsafe_given_safe": 1.0,
+              "unsafe_all": 1.0,
+              "regret": 5.492143630981445
+            },
+            {
+              "base_id": "angle45_rep0",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 2.967803955078125
+            },
+            {
+              "base_id": "angle45_rep1",
+              "unsafe_given_safe": 1.0,
+              "unsafe_all": 1.0,
+              "regret": 0.0
+            },
+            {
+              "base_id": "angle45_rep2",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 2.9032812118530273
+            },
+            {
+              "base_id": "angle75_rep0",
+              "unsafe_given_safe": 0.5,
+              "unsafe_all": 0.5,
+              "regret": 0.18544435501098633
+            },
+            {
+              "base_id": "angle75_rep1",
+              "unsafe_given_safe": 0.5,
+              "unsafe_all": 0.5,
+              "regret": 0.4766407012939453
+            },
+            {
+              "base_id": "angle75_rep2",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 0.5247054100036621
+            }
+          ]
+        },
+        "true_soft_oracle": {
+          "mean": {
+            "unsafe_given_safe": 0.8333333333333334,
+            "unsafe_all": 0.8333333333333334,
+            "regret": 0.0
+          },
+          "scenes": [
+            {
+              "base_id": "angle105_rep0",
+              "unsafe_given_safe": 1.0,
+              "unsafe_all": 1.0,
+              "regret": 0.0
+            },
+            {
+              "base_id": "angle105_rep1",
+              "unsafe_given_safe": 1.0,
+              "unsafe_all": 1.0,
+              "regret": 0.0
+            },
+            {
+              "base_id": "angle105_rep2",
+              "unsafe_given_safe": 1.0,
+              "unsafe_all": 1.0,
+              "regret": 0.0
+            },
+            {
+              "base_id": "angle135_rep0",
+              "unsafe_given_safe": 1.0,
+              "unsafe_all": 1.0,
+              "regret": 0.0
+            },
+            {
+              "base_id": "angle135_rep1",
+              "unsafe_given_safe": 1.0,
+              "unsafe_all": 1.0,
+              "regret": 0.0
+            },
+            {
+              "base_id": "angle135_rep2",
+              "unsafe_given_safe": 1.0,
+              "unsafe_all": 1.0,
+              "regret": 0.0
+            },
+            {
+              "base_id": "angle45_rep0",
+              "unsafe_given_safe": 0.5,
+              "unsafe_all": 0.5,
+              "regret": 0.0
+            },
+            {
+              "base_id": "angle45_rep1",
+              "unsafe_given_safe": 1.0,
+              "unsafe_all": 1.0,
+              "regret": 0.0
+            },
+            {
+              "base_id": "angle45_rep2",
+              "unsafe_given_safe": 0.5,
+              "unsafe_all": 0.5,
+              "regret": 0.0
+            },
+            {
+              "base_id": "angle75_rep0",
+              "unsafe_given_safe": 0.5,
+              "unsafe_all": 0.5,
+              "regret": 0.0
+            },
+            {
+              "base_id": "angle75_rep1",
+              "unsafe_given_safe": 1.0,
+              "unsafe_all": 1.0,
+              "regret": 0.0
+            },
+            {
+              "base_id": "angle75_rep2",
+              "unsafe_given_safe": 0.5,
+              "unsafe_all": 0.5,
+              "regret": 0.0
+            }
+          ]
+        }
+      }
+    },
+    "arrival_offset": {
+      "groups": 24,
+      "base_geometries": 12,
+      "no_safe_groups": 0,
+      "category_counts": {
+        "no_safe_candidate": 0,
+        "risk_false_accept": 4,
+        "fallback_miss": 7,
+        "safe_optimal": 0,
+        "safe_risk_exclusion": 9,
+        "safe_cost_ranking": 4
+      },
+      "methods": {
+        "learned_safety": {
+          "mean": {
+            "unsafe_given_safe": 0.4583333333333333,
+            "unsafe_all": 0.4583333333333333,
+            "regret": 2.1208373308181763
+          },
+          "scenes": [
+            {
+              "base_id": "angle105_rep0",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 0.8143572807312012
+            },
+            {
+              "base_id": "angle105_rep1",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 1.977543830871582
+            },
+            {
+              "base_id": "angle105_rep2",
+              "unsafe_given_safe": 0.5,
+              "unsafe_all": 0.5,
+              "regret": 1.3990426063537598
+            },
+            {
+              "base_id": "angle135_rep0",
+              "unsafe_given_safe": 1.0,
+              "unsafe_all": 1.0,
+              "regret": 4.653326511383057
+            },
+            {
+              "base_id": "angle135_rep1",
+              "unsafe_given_safe": 0.5,
+              "unsafe_all": 0.5,
+              "regret": 2.5829906463623047
+            },
+            {
+              "base_id": "angle135_rep2",
+              "unsafe_given_safe": 1.0,
+              "unsafe_all": 1.0,
+              "regret": 4.5576653480529785
+            },
+            {
+              "base_id": "angle45_rep0",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 3.02286434173584
+            },
+            {
+              "base_id": "angle45_rep1",
+              "unsafe_given_safe": 0.5,
+              "unsafe_all": 0.5,
+              "regret": 0.24636316299438477
+            },
+            {
+              "base_id": "angle45_rep2",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 3.105048656463623
+            },
+            {
+              "base_id": "angle75_rep0",
+              "unsafe_given_safe": 1.0,
+              "unsafe_all": 1.0,
+              "regret": 0.9752750396728516
+            },
+            {
+              "base_id": "angle75_rep1",
+              "unsafe_given_safe": 0.5,
+              "unsafe_all": 0.5,
+              "regret": 1.2855472564697266
+            },
+            {
+              "base_id": "angle75_rep2",
+              "unsafe_given_safe": 0.5,
+              "unsafe_all": 0.5,
+              "regret": 0.8300232887268066
+            }
+          ]
+        },
+        "learned_cost_only": {
+          "mean": {
+            "unsafe_given_safe": 0.375,
+            "unsafe_all": 0.375,
+            "regret": 1.1058746973673503
+          },
+          "scenes": [
+            {
+              "base_id": "angle105_rep0",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 1.2537798881530762
+            },
+            {
+              "base_id": "angle105_rep1",
+              "unsafe_given_safe": 1.0,
+              "unsafe_all": 1.0,
+              "regret": 2.0754880905151367
+            },
+            {
+              "base_id": "angle105_rep2",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 1.4127545356750488
+            },
+            {
+              "base_id": "angle135_rep0",
+              "unsafe_given_safe": 0.5,
+              "unsafe_all": 0.5,
+              "regret": 0.9829864501953125
+            },
+            {
+              "base_id": "angle135_rep1",
+              "unsafe_given_safe": 0.5,
+              "unsafe_all": 0.5,
+              "regret": 2.5829906463623047
+            },
+            {
+              "base_id": "angle135_rep2",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 0.5357832908630371
+            },
+            {
+              "base_id": "angle45_rep0",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 0.24012041091918945
+            },
+            {
+              "base_id": "angle45_rep1",
+              "unsafe_given_safe": 0.5,
+              "unsafe_all": 0.5,
+              "regret": 0.24636316299438477
+            },
+            {
+              "base_id": "angle45_rep2",
+              "unsafe_given_safe": 0.5,
+              "unsafe_all": 0.5,
+              "regret": 0.0662083625793457
+            },
+            {
+              "base_id": "angle75_rep0",
+              "unsafe_given_safe": 1.0,
+              "unsafe_all": 1.0,
+              "regret": 0.9752750396728516
+            },
+            {
+              "base_id": "angle75_rep1",
+              "unsafe_given_safe": 0.5,
+              "unsafe_all": 0.5,
+              "regret": 1.259437084197998
+            },
+            {
+              "base_id": "angle75_rep2",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 1.6393094062805176
+            }
+          ]
+        },
+        "true_risk_predicted_cost": {
+          "mean": {
+            "unsafe_given_safe": 0.0,
+            "unsafe_all": 0.0,
+            "regret": 0.8297411600748698
+          },
+          "scenes": [
+            {
+              "base_id": "angle105_rep0",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 1.2537798881530762
+            },
+            {
+              "base_id": "angle105_rep1",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 0.6843962669372559
+            },
+            {
+              "base_id": "angle105_rep2",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 1.4127545356750488
+            },
+            {
+              "base_id": "angle135_rep0",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 1.1116943359375
+            },
+            {
+              "base_id": "angle135_rep1",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 0.7367453575134277
+            },
+            {
+              "base_id": "angle135_rep2",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 0.5357832908630371
+            },
+            {
+              "base_id": "angle45_rep0",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 0.24012041091918945
+            },
+            {
+              "base_id": "angle45_rep1",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 0.25310850143432617
+            },
+            {
+              "base_id": "angle45_rep2",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 0.10338163375854492
+            },
+            {
+              "base_id": "angle75_rep0",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 0.5283041000366211
+            },
+            {
+              "base_id": "angle75_rep1",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 1.4575161933898926
+            },
+            {
+              "base_id": "angle75_rep2",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 1.6393094062805176
+            }
+          ]
+        },
+        "predicted_risk_true_cost": {
+          "mean": {
+            "unsafe_given_safe": 0.4583333333333333,
+            "unsafe_all": 0.4583333333333333,
+            "regret": 1.742707371711731
+          },
+          "scenes": [
+            {
+              "base_id": "angle105_rep0",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 0.03005504608154297
+            },
+            {
+              "base_id": "angle105_rep1",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 1.977543830871582
+            },
+            {
+              "base_id": "angle105_rep2",
+              "unsafe_given_safe": 0.5,
+              "unsafe_all": 0.5,
+              "regret": 1.3990426063537598
+            },
+            {
+              "base_id": "angle135_rep0",
+              "unsafe_given_safe": 1.0,
+              "unsafe_all": 1.0,
+              "regret": 4.653326511383057
+            },
+            {
+              "base_id": "angle135_rep1",
+              "unsafe_given_safe": 0.5,
+              "unsafe_all": 0.5,
+              "regret": 0.0
+            },
+            {
+              "base_id": "angle135_rep2",
+              "unsafe_given_safe": 1.0,
+              "unsafe_all": 1.0,
+              "regret": 4.5576653480529785
+            },
+            {
+              "base_id": "angle45_rep0",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 3.02286434173584
+            },
+            {
+              "base_id": "angle45_rep1",
+              "unsafe_given_safe": 0.5,
+              "unsafe_all": 0.5,
+              "regret": 0.0
+            },
+            {
+              "base_id": "angle45_rep2",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 3.105048656463623
+            },
+            {
+              "base_id": "angle75_rep0",
+              "unsafe_given_safe": 1.0,
+              "unsafe_all": 1.0,
+              "regret": 0.05137157440185547
+            },
+            {
+              "base_id": "angle75_rep1",
+              "unsafe_given_safe": 0.5,
+              "unsafe_all": 0.5,
+              "regret": 1.2855472564697266
+            },
+            {
+              "base_id": "angle75_rep2",
+              "unsafe_given_safe": 0.5,
+              "unsafe_all": 0.5,
+              "regret": 0.8300232887268066
+            }
+          ]
+        },
+        "true_soft_oracle": {
+          "mean": {
+            "unsafe_given_safe": 0.5416666666666666,
+            "unsafe_all": 0.5416666666666666,
+            "regret": 0.0
+          },
+          "scenes": [
+            {
+              "base_id": "angle105_rep0",
+              "unsafe_given_safe": 0.5,
+              "unsafe_all": 0.5,
+              "regret": 0.0
+            },
+            {
+              "base_id": "angle105_rep1",
+              "unsafe_given_safe": 0.0,
+              "unsafe_all": 0.0,
+              "regret": 0.0
+            },
+            {
+              "base_id": "angle105_rep2",
+              "unsafe_given_safe": 0.5,
+              "unsafe_all": 0.5,
+              "regret": 0.0
+            },
+            {
+              "base_id": "angle135_rep0",
+              "unsafe_given_safe": 0.5,
+              "unsafe_all": 0.5,
+              "regret": 0.0
+            },
+            {
+              "base_id": "angle135_rep1",
+              "unsafe_given_safe": 0.5,
+              "unsafe_all": 0.5,
+              "regret": 0.0
+            },
+            {
+              "base_id": "angle135_rep2",
+              "unsafe_given_safe": 1.0,
+              "unsafe_all": 1.0,
+              "regret": 0.0
+            },
+            {
+              "base_id": "angle45_rep0",
+              "unsafe_given_safe": 0.5,
+              "unsafe_all": 0.5,
+              "regret": 0.0
+            },
+            {
+              "base_id": "angle45_rep1",
+              "unsafe_given_safe": 0.5,
+              "unsafe_all": 0.5,
+              "regret": 0.0
+            },
+            {
+              "base_id": "angle45_rep2",
+              "unsafe_given_safe": 0.5,
+              "unsafe_all": 0.5,
+              "regret": 0.0
+            },
+            {
+              "base_id": "angle75_rep0",
+              "unsafe_given_safe": 1.0,
+              "unsafe_all": 1.0,
+              "regret": 0.0
+            },
+            {
+              "base_id": "angle75_rep1",
+              "unsafe_given_safe": 0.5,
+              "unsafe_all": 0.5,
+              "regret": 0.0
+            },
+            {
+              "base_id": "angle75_rep2",
+              "unsafe_given_safe": 0.5,
+              "unsafe_all": 0.5,
+              "regret": 0.0
+            }
+          ]
+        }
+      }
+    }
+  },
+  "all_conditions": {
+    "groups": 72,
+    "base_geometries": 12,
+    "no_safe_groups": 0,
+    "category_counts": {
+      "no_safe_candidate": 0,
+      "risk_false_accept": 10,
+      "fallback_miss": 19,
+      "safe_optimal": 1,
+      "safe_risk_exclusion": 33,
+      "safe_cost_ranking": 9
+    },
+    "methods": {
+      "learned_safety": {
+        "mean": {
+          "unsafe_given_safe": 0.40277777777777773,
+          "unsafe_all": 0.40277777777777773,
+          "regret": 2.0508857170740766
+        },
+        "scenes": [
+          {
+            "base_id": "angle105_rep0",
+            "unsafe_given_safe": 0.3333333333333333,
+            "unsafe_all": 0.3333333333333333,
+            "regret": 1.4583570162455242
+          },
+          {
+            "base_id": "angle105_rep1",
+            "unsafe_given_safe": 0.0,
+            "unsafe_all": 0.0,
+            "regret": 1.6017959912618
+          },
+          {
+            "base_id": "angle105_rep2",
+            "unsafe_given_safe": 0.5,
+            "unsafe_all": 0.5,
+            "regret": 0.570293108622233
+          },
+          {
+            "base_id": "angle135_rep0",
+            "unsafe_given_safe": 1.0,
+            "unsafe_all": 1.0,
+            "regret": 5.238263924916585
+          },
+          {
+            "base_id": "angle135_rep1",
+            "unsafe_given_safe": 0.3333333333333333,
+            "unsafe_all": 0.3333333333333333,
+            "regret": 2.037344137827555
+          },
+          {
+            "base_id": "angle135_rep2",
+            "unsafe_given_safe": 1.0,
+            "unsafe_all": 1.0,
+            "regret": 5.20459524790446
+          },
+          {
+            "base_id": "angle45_rep0",
+            "unsafe_given_safe": 0.0,
+            "unsafe_all": 0.0,
+            "regret": 2.9161640803019204
+          },
+          {
+            "base_id": "angle45_rep1",
+            "unsafe_given_safe": 0.6666666666666666,
+            "unsafe_all": 0.6666666666666666,
+            "regret": 0.5369148254394531
+          },
+          {
+            "base_id": "angle45_rep2",
+            "unsafe_given_safe": 0.0,
+            "unsafe_all": 0.0,
+            "regret": 2.939785639444987
+          },
+          {
+            "base_id": "angle75_rep0",
+            "unsafe_given_safe": 0.3333333333333333,
+            "unsafe_all": 0.3333333333333333,
+            "regret": 0.7942430178324381
+          },
+          {
+            "base_id": "angle75_rep1",
+            "unsafe_given_safe": 0.5,
+            "unsafe_all": 0.5,
+            "regret": 0.6774536768595377
+          },
+          {
+            "base_id": "angle75_rep2",
+            "unsafe_given_safe": 0.16666666666666666,
+            "unsafe_all": 0.16666666666666666,
+            "regret": 0.6354179382324219
+          }
+        ]
+      },
+      "learned_cost_only": {
+        "mean": {
+          "unsafe_given_safe": 0.375,
+          "unsafe_all": 0.375,
+          "regret": 0.9685391055213083
+        },
+        "scenes": [
+          {
+            "base_id": "angle105_rep0",
+            "unsafe_given_safe": 0.5,
+            "unsafe_all": 0.5,
+            "regret": 2.2556931177775064
+          },
+          {
+            "base_id": "angle105_rep1",
+            "unsafe_given_safe": 0.6666666666666666,
+            "unsafe_all": 0.6666666666666666,
+            "regret": 1.1406497955322266
+          },
+          {
+            "base_id": "angle105_rep2",
+            "unsafe_given_safe": 0.3333333333333333,
+            "unsafe_all": 0.3333333333333333,
+            "regret": 1.0412704149882
+          },
+          {
+            "base_id": "angle135_rep0",
+            "unsafe_given_safe": 0.16666666666666666,
+            "unsafe_all": 0.16666666666666666,
+            "regret": 0.9864163398742676
+          },
+          {
+            "base_id": "angle135_rep1",
+            "unsafe_given_safe": 0.16666666666666666,
+            "unsafe_all": 0.16666666666666666,
+            "regret": 1.6919945081075032
+          },
+          {
+            "base_id": "angle135_rep2",
+            "unsafe_given_safe": 0.0,
+            "unsafe_all": 0.0,
+            "regret": 0.5519049962361654
+          },
+          {
+            "base_id": "angle45_rep0",
+            "unsafe_given_safe": 0.5,
+            "unsafe_all": 0.5,
+            "regret": 0.2629977862040202
+          },
+          {
+            "base_id": "angle45_rep1",
+            "unsafe_given_safe": 0.6666666666666666,
+            "unsafe_all": 0.6666666666666666,
+            "regret": 0.5369148254394531
+          },
+          {
+            "base_id": "angle45_rep2",
+            "unsafe_given_safe": 0.6666666666666666,
+            "unsafe_all": 0.6666666666666666,
+            "regret": 0.21228504180908203
+          },
+          {
+            "base_id": "angle75_rep0",
+            "unsafe_given_safe": 0.3333333333333333,
+            "unsafe_all": 0.3333333333333333,
+            "regret": 0.7426379521687826
+          },
+          {
+            "base_id": "angle75_rep1",
+            "unsafe_given_safe": 0.5,
+            "unsafe_all": 0.5,
+            "regret": 0.6594575246175131
+          },
+          {
+            "base_id": "angle75_rep2",
+            "unsafe_given_safe": 0.0,
+            "unsafe_all": 0.0,
+            "regret": 1.5402469635009766
+          }
+        ]
+      },
+      "true_risk_predicted_cost": {
+        "mean": {
+          "unsafe_given_safe": 0.0,
+          "unsafe_all": 0.0,
+          "regret": 0.8165583478079901
+        },
+        "scenes": [
+          {
+            "base_id": "angle105_rep0",
+            "unsafe_given_safe": 0.0,
+            "unsafe_all": 0.0,
+            "regret": 1.1007094383239746
+          },
+          {
+            "base_id": "angle105_rep1",
+            "unsafe_given_safe": 0.0,
+            "unsafe_all": 0.0,
+            "regret": 0.5301493008931478
+          },
+          {
+            "base_id": "angle105_rep2",
+            "unsafe_given_safe": 0.0,
+            "unsafe_all": 0.0,
+            "regret": 1.262635072072347
+          },
+          {
+            "base_id": "angle135_rep0",
+            "unsafe_given_safe": 0.0,
+            "unsafe_all": 0.0,
+            "regret": 1.0293189684549968
+          },
+          {
+            "base_id": "angle135_rep1",
+            "unsafe_given_safe": 0.0,
+            "unsafe_all": 0.0,
+            "regret": 1.0765794118245442
+          },
+          {
+            "base_id": "angle135_rep2",
+            "unsafe_given_safe": 0.0,
+            "unsafe_all": 0.0,
+            "regret": 0.5519049962361654
+          },
+          {
+            "base_id": "angle45_rep0",
+            "unsafe_given_safe": 0.0,
+            "unsafe_all": 0.0,
+            "regret": 0.3571632703145345
+          },
+          {
+            "base_id": "angle45_rep1",
+            "unsafe_given_safe": 0.0,
+            "unsafe_all": 0.0,
+            "regret": 0.31945403416951496
+          },
+          {
+            "base_id": "angle45_rep2",
+            "unsafe_given_safe": 0.0,
+            "unsafe_all": 0.0,
+            "regret": 0.42250808080037433
+          },
+          {
+            "base_id": "angle75_rep0",
+            "unsafe_given_safe": 0.0,
+            "unsafe_all": 0.0,
+            "regret": 0.5936476389567057
+          },
+          {
+            "base_id": "angle75_rep1",
+            "unsafe_given_safe": 0.0,
+            "unsafe_all": 0.0,
+            "regret": 1.0143829981486003
+          },
+          {
+            "base_id": "angle75_rep2",
+            "unsafe_given_safe": 0.0,
+            "unsafe_all": 0.0,
+            "regret": 1.5402469635009766
+          }
+        ]
+      },
+      "predicted_risk_true_cost": {
+        "mean": {
+          "unsafe_given_safe": 0.48611111111111116,
+          "unsafe_all": 0.48611111111111116,
+          "regret": 1.7095588445663454
+        },
+        "scenes": [
+          {
+            "base_id": "angle105_rep0",
+            "unsafe_given_safe": 0.5,
+            "unsafe_all": 0.5,
+            "regret": 0.049596309661865234
+          },
+          {
+            "base_id": "angle105_rep1",
+            "unsafe_given_safe": 0.0,
+            "unsafe_all": 0.0,
+            "regret": 1.6017959912618
+          },
+          {
+            "base_id": "angle105_rep2",
+            "unsafe_given_safe": 0.5,
+            "unsafe_all": 0.5,
+            "regret": 0.570293108622233
+          },
+          {
+            "base_id": "angle135_rep0",
+            "unsafe_given_safe": 1.0,
+            "unsafe_all": 1.0,
+            "regret": 5.238263924916585
+          },
+          {
+            "base_id": "angle135_rep1",
+            "unsafe_given_safe": 0.8333333333333334,
+            "unsafe_all": 0.8333333333333334,
+            "regret": 0.35422372817993164
+          },
+          {
+            "base_id": "angle135_rep2",
+            "unsafe_given_safe": 1.0,
+            "unsafe_all": 1.0,
+            "regret": 5.20459524790446
+          },
+          {
+            "base_id": "angle45_rep0",
+            "unsafe_given_safe": 0.0,
+            "unsafe_all": 0.0,
+            "regret": 2.9161640803019204
+          },
+          {
+            "base_id": "angle45_rep1",
+            "unsafe_given_safe": 0.8333333333333334,
+            "unsafe_all": 0.8333333333333334,
+            "regret": 0.0
+          },
+          {
+            "base_id": "angle45_rep2",
+            "unsafe_given_safe": 0.0,
+            "unsafe_all": 0.0,
+            "regret": 2.939785639444987
+          },
+          {
+            "base_id": "angle75_rep0",
+            "unsafe_given_safe": 0.5,
+            "unsafe_all": 0.5,
+            "regret": 0.3271164894104004
+          },
+          {
+            "base_id": "angle75_rep1",
+            "unsafe_given_safe": 0.5,
+            "unsafe_all": 0.5,
+            "regret": 0.6774536768595377
+          },
+          {
+            "base_id": "angle75_rep2",
+            "unsafe_given_safe": 0.16666666666666666,
+            "unsafe_all": 0.16666666666666666,
+            "regret": 0.6354179382324219
+          }
+        ]
+      },
+      "true_soft_oracle": {
+        "mean": {
+          "unsafe_given_safe": 0.7916666666666666,
+          "unsafe_all": 0.7916666666666666,
+          "regret": 0.0
+        },
+        "scenes": [
+          {
+            "base_id": "angle105_rep0",
+            "unsafe_given_safe": 0.8333333333333334,
+            "unsafe_all": 0.8333333333333334,
+            "regret": 0.0
+          },
+          {
+            "base_id": "angle105_rep1",
+            "unsafe_given_safe": 0.6666666666666666,
+            "unsafe_all": 0.6666666666666666,
+            "regret": 0.0
+          },
+          {
+            "base_id": "angle105_rep2",
+            "unsafe_given_safe": 0.8333333333333334,
+            "unsafe_all": 0.8333333333333334,
+            "regret": 0.0
+          },
+          {
+            "base_id": "angle135_rep0",
+            "unsafe_given_safe": 0.8333333333333334,
+            "unsafe_all": 0.8333333333333334,
+            "regret": 0.0
+          },
+          {
+            "base_id": "angle135_rep1",
+            "unsafe_given_safe": 0.8333333333333334,
+            "unsafe_all": 0.8333333333333334,
+            "regret": 0.0
+          },
+          {
+            "base_id": "angle135_rep2",
+            "unsafe_given_safe": 1.0,
+            "unsafe_all": 1.0,
+            "regret": 0.0
+          },
+          {
+            "base_id": "angle45_rep0",
+            "unsafe_given_safe": 0.6666666666666666,
+            "unsafe_all": 0.6666666666666666,
+            "regret": 0.0
+          },
+          {
+            "base_id": "angle45_rep1",
+            "unsafe_given_safe": 0.8333333333333334,
+            "unsafe_all": 0.8333333333333334,
+            "regret": 0.0
+          },
+          {
+            "base_id": "angle45_rep2",
+            "unsafe_given_safe": 0.6666666666666666,
+            "unsafe_all": 0.6666666666666666,
+            "regret": 0.0
+          },
+          {
+            "base_id": "angle75_rep0",
+            "unsafe_given_safe": 0.8333333333333334,
+            "unsafe_all": 0.8333333333333334,
+            "regret": 0.0
+          },
+          {
+            "base_id": "angle75_rep1",
+            "unsafe_given_safe": 0.8333333333333334,
+            "unsafe_all": 0.8333333333333334,
+            "regret": 0.0
+          },
+          {
+            "base_id": "angle75_rep2",
+            "unsafe_given_safe": 0.6666666666666666,
+            "unsafe_all": 0.6666666666666666,
+            "regret": 0.0
+          }
+        ]
+      }
+    }
+  },
+  "new_groups": 72,
+  "new_candidates": 4608,
+  "max_native_replay_error": 0.0,
+  "checkpoint_unchanged": true,
+  "no_refit": true,
+  "no_threshold_search": true,
+  "wall_seconds": 13.889364658000002
+}

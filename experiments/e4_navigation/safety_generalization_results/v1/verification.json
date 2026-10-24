@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "new_groups": 72,
+  "new_candidates": 4608,
+  "paired_action_goal_groups": 24,
+  "independent_decisions_checked": 72,
+  "max_cost_formula_error": 1.9073486328125e-06,
+  "max_numpy_prediction_error": 3.814697265625e-06,
+  "native_second_replay_error": 0,
+  "checkpoint_unchanged": true,
+  "no_refit": true,
+  "no_threshold_search": true,
+  "aggregate_rates_reproduced": true,
+  "input_feature_formula_exact": true
+}
