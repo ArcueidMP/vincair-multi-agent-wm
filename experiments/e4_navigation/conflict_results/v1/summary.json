@@ -1,0 +1,198 @@
+{
+  "status": "passed",
+  "splits": {
+    "public_pilot": {
+      "geometries": 3,
+      "groups": 12,
+      "mixed_groups": 12,
+      "no_safe_groups": 0,
+      "soft_unsafe_given_safe_available_scene_mean": 0.8333333333333334,
+      "safety_unsafe_given_safe_available_scene_mean": 0.0,
+      "step_substep_disagreements": 0,
+      "scene_metrics": [
+        {
+          "geometry_id": "S1_symmetric",
+          "groups": 4,
+          "mixed_groups": 4,
+          "no_safe_groups": 0,
+          "soft_unsafe_given_safe_available": 0.75,
+          "safety_unsafe_given_safe_available": 0.0
+        },
+        {
+          "geometry_id": "S2_perpendicular",
+          "groups": 4,
+          "mixed_groups": 4,
+          "no_safe_groups": 0,
+          "soft_unsafe_given_safe_available": 1.0,
+          "safety_unsafe_given_safe_available": 0.0
+        },
+        {
+          "geometry_id": "S3_asymmetric",
+          "groups": 4,
+          "mixed_groups": 4,
+          "no_safe_groups": 0,
+          "soft_unsafe_given_safe_available": 0.75,
+          "safety_unsafe_given_safe_available": 0.0
+        }
+      ]
+    },
+    "train": {
+      "geometries": 12,
+      "groups": 48,
+      "mixed_groups": 47,
+      "no_safe_groups": 1,
+      "soft_unsafe_given_safe_available_scene_mean": 0.75,
+      "safety_unsafe_given_safe_available_scene_mean": 0.0,
+      "step_substep_disagreements": 1,
+      "scene_metrics": [
+        {
+          "geometry_id": "S1_symmetric_g0",
+          "groups": 4,
+          "mixed_groups": 4,
+          "no_safe_groups": 0,
+          "soft_unsafe_given_safe_available": 0.75,
+          "safety_unsafe_given_safe_available": 0.0
+        },
+        {
+          "geometry_id": "S1_symmetric_g1",
+          "groups": 4,
+          "mixed_groups": 4,
+          "no_safe_groups": 0,
+          "soft_unsafe_given_safe_available": 0.75,
+          "safety_unsafe_given_safe_available": 0.0
+        },
+        {
+          "geometry_id": "S1_symmetric_g2",
+          "groups": 4,
+          "mixed_groups": 4,
+          "no_safe_groups": 0,
+          "soft_unsafe_given_safe_available": 1.0,
+          "safety_unsafe_given_safe_available": 0.0
+        },
+        {
+          "geometry_id": "S1_symmetric_g3",
+          "groups": 4,
+          "mixed_groups": 4,
+          "no_safe_groups": 0,
+          "soft_unsafe_given_safe_available": 0.75,
+          "safety_unsafe_given_safe_available": 0.0
+        },
+        {
+          "geometry_id": "S2_perpendicular_g0",
+          "groups": 4,
+          "mixed_groups": 4,
+          "no_safe_groups": 0,
+          "soft_unsafe_given_safe_available": 0.75,
+          "safety_unsafe_given_safe_available": 0.0
+        },
+        {
+          "geometry_id": "S2_perpendicular_g1",
+          "groups": 4,
+          "mixed_groups": 4,
+          "no_safe_groups": 0,
+          "soft_unsafe_given_safe_available": 1.0,
+          "safety_unsafe_given_safe_available": 0.0
+        },
+        {
+          "geometry_id": "S2_perpendicular_g2",
+          "groups": 4,
+          "mixed_groups": 4,
+          "no_safe_groups": 0,
+          "soft_unsafe_given_safe_available": 0.5,
+          "safety_unsafe_given_safe_available": 0.0
+        },
+        {
+          "geometry_id": "S2_perpendicular_g3",
+          "groups": 4,
+          "mixed_groups": 4,
+          "no_safe_groups": 0,
+          "soft_unsafe_given_safe_available": 0.75,
+          "safety_unsafe_given_safe_available": 0.0
+        },
+        {
+          "geometry_id": "S3_asymmetric_g0",
+          "groups": 4,
+          "mixed_groups": 4,
+          "no_safe_groups": 0,
+          "soft_unsafe_given_safe_available": 0.5,
+          "safety_unsafe_given_safe_available": 0.0
+        },
+        {
+          "geometry_id": "S3_asymmetric_g1",
+          "groups": 4,
+          "mixed_groups": 4,
+          "no_safe_groups": 0,
+          "soft_unsafe_given_safe_available": 0.75,
+          "safety_unsafe_given_safe_available": 0.0
+        },
+        {
+          "geometry_id": "S3_asymmetric_g2",
+          "groups": 4,
+          "mixed_groups": 4,
+          "no_safe_groups": 0,
+          "soft_unsafe_given_safe_available": 0.5,
+          "safety_unsafe_given_safe_available": 0.0
+        },
+        {
+          "geometry_id": "S3_asymmetric_g3",
+          "groups": 4,
+          "mixed_groups": 3,
+          "no_safe_groups": 1,
+          "soft_unsafe_given_safe_available": 1.0,
+          "safety_unsafe_given_safe_available": 0.0
+        }
+      ]
+    },
+    "validation": {
+      "geometries": 3,
+      "groups": 12,
+      "mixed_groups": 12,
+      "no_safe_groups": 0,
+      "soft_unsafe_given_safe_available_scene_mean": 0.9166666666666666,
+      "safety_unsafe_given_safe_available_scene_mean": 0.0,
+      "step_substep_disagreements": 0,
+      "scene_metrics": [
+        {
+          "geometry_id": "S1_symmetric_g4",
+          "groups": 4,
+          "mixed_groups": 4,
+          "no_safe_groups": 0,
+          "soft_unsafe_given_safe_available": 0.75,
+          "safety_unsafe_given_safe_available": 0.0
+        },
+        {
+          "geometry_id": "S2_perpendicular_g4",
+          "groups": 4,
+          "mixed_groups": 4,
+          "no_safe_groups": 0,
+          "soft_unsafe_given_safe_available": 1.0,
+          "safety_unsafe_given_safe_available": 0.0
+        },
+        {
+          "geometry_id": "S3_asymmetric_g4",
+          "groups": 4,
+          "mixed_groups": 4,
+          "no_safe_groups": 0,
+          "soft_unsafe_given_safe_available": 1.0,
+          "safety_unsafe_given_safe_available": 0.0
+        }
+      ]
+    }
+  },
+  "preference_pair_counts": {
+    "train": 96737,
+    "validation": 24186
+  },
+  "groups": 84,
+  "labeled_candidates": 5376,
+  "new_groups": 72,
+  "new_labeled_candidates": 4608,
+  "max_native_replay_error": 0.0,
+  "test_method_evaluations": 0,
+  "wall_seconds": 15.960220836000001,
+  "limitations": [
+    "Oracle targets, not learned scoring.",
+    "Finite H8 candidate safety is not closed-loop safety.",
+    "Layouts are transformations of three route families; not held-out-family generalization."
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "groups": 84,
+  "candidates": 5376,
+  "max_cost_formula_abs_error": 1.9073486328125e-06,
+  "max_substep_separation_abs_error": 0.0,
+  "scene_split_disjoint": true,
+  "inputs_targets_separate": true,
+  "preference_pairs": {
+    "train": 96737,
+    "validation": 24186
+  },
+  "preference_order_independent_comparator": true,
+  "native_fresh_replay_error": 0.0,
+  "test_method_evaluations": 0,
+  "test_preferences_generated": false
+}

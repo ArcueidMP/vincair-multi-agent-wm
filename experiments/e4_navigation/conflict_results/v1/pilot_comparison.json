@@ -1,0 +1,50 @@
+[
+  {
+    "name": "S1_symmetric_o0",
+    "match": true
+  },
+  {
+    "name": "S1_symmetric_o1",
+    "match": true
+  },
+  {
+    "name": "S1_symmetric_o2",
+    "match": true
+  },
+  {
+    "name": "S1_symmetric_o3",
+    "match": true
+  },
+  {
+    "name": "S2_perpendicular_o0",
+    "match": true
+  },
+  {
+    "name": "S2_perpendicular_o1",
+    "match": true
+  },
+  {
+    "name": "S2_perpendicular_o2",
+    "match": true
+  },
+  {
+    "name": "S2_perpendicular_o3",
+    "match": true
+  },
+  {
+    "name": "S3_asymmetric_o0",
+    "match": true
+  },
+  {
+    "name": "S3_asymmetric_o1",
+    "match": true
+  },
+  {
+    "name": "S3_asymmetric_o2",
+    "match": true
+  },
+  {
+    "name": "S3_asymmetric_o3",
+    "match": true
+  }
+]

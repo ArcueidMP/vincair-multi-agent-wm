@@ -24,3 +24,17 @@ MultiPushT mixed-proposal work used24 training scenes and8 new confirmation scen
 4. Integrate learned Navigation rollout/readout only after a matching checkpoint and metadata are supplied. The current notebook adapter raises NotImplementedError. Existing PushT weights are not Navigation weights.
 
 Runs proceed in complete bounded blocks without step-by-step approval; request input for missing essential materials, irreversible actions or a changed resource budget. No Navigation learned-model experiment or three-agent claim is included in this reproduction.
+
+
+## Completed: E4 conflict data and safety-ranking targets
+
+- Rebuilt the12-state/768-candidate public pilot from the notebook rather than claiming to own the missing original NPZ; all12 cached pilot comparisons match.
+- Generated18 new transformed geometries with four conflict offsets each:4608 candidates. Geometry-grouped split:train12 geometries/3072 candidates, validation3/768, sealed test3/768. Shared route families are a limitation; this is not held-out-family transfer.
+- Preserved original step soft labels and added initial+native-substep safety labels and deterministic all-unsafe fallback. Train includes one all-unsafe pool; it is explicitly not safe.
+- Under substep labels, scene-mean soft-cost unsafe selection conditional on a safe option is75% train and91.67% validation. Safety-first oracle is0% by definition, not a learned result.
+- Input and future-supervision NPZs are separate. Train96737 and validation24186 preference pairs are group-correlated. No test preference pairs or method metrics were generated.
+- All5376 candidates (including pilot) were rolled out twice with fresh native VMAS, replay error0. Independent cost/safety/order/pair/split/hash checks pass; maximum independent cost difference1.91e-6. Nine targeted unit tests pass.
+
+Source and small audit artifacts: `experiments/e4_navigation/conflict_ranking.py`, `verify_conflict_ranking.py`, `conflict_results/v1/`. Raw NPZs remain external and are identified by hashes. This commit adds no weights or private communications.
+
+The earlier next-block items1-3 are now complete. Next material dependency: Navigation-specific checkpoint, loading API/config/normalization, supported history/frameskip/agents, and a compatible position/velocity state head. Keep the new test split sealed until a scorer and selection rule are frozen. Learned-model training/evaluation and closed-loop safety gains have not been claimed.
