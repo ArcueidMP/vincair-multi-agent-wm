@@ -1,0 +1,38 @@
+[
+  {
+    "lambda_value": 0.0001,
+    "unsafe": 0.11904761904761904,
+    "safe_progress": 0.8080357142857143,
+    "goal_cost_regret": 0.9774464006934847
+  },
+  {
+    "lambda_value": 0.001,
+    "unsafe": 0.11904761904761904,
+    "safe_progress": 0.8080357142857143,
+    "goal_cost_regret": 0.9775706763778413
+  },
+  {
+    "lambda_value": 0.01,
+    "unsafe": 0.11904761904761904,
+    "safe_progress": 0.8080357142857143,
+    "goal_cost_regret": 0.9803165048360825
+  },
+  {
+    "lambda_value": 0.1,
+    "unsafe": 0.05952380952380952,
+    "safe_progress": 0.8675595238095237,
+    "goal_cost_regret": 1.033757501414844
+  },
+  {
+    "lambda_value": 1.0,
+    "unsafe": 0.05952380952380952,
+    "safe_progress": 0.7113095238095238,
+    "goal_cost_regret": 1.3891187700487317
+  },
+  {
+    "lambda_value": 10.0,
+    "unsafe": 0.0,
+    "safe_progress": 0.5357142857142857,
+    "goal_cost_regret": 2.3298716637350263
+  }
+]

@@ -1,0 +1,445 @@
+{
+  "mean": {
+    "unsafe": 0.0,
+    "safe_progress": 0.5357142857142857,
+    "goal_cost_regret": 2.3298716637350263
+  },
+  "scenes": [
+    {
+      "geometry": "progress_08",
+      "unsafe": 0.0,
+      "safe_progress": 0.2857142857142857,
+      "goal_cost_regret": 2.7791612091518587
+    },
+    {
+      "geometry": "progress_09",
+      "unsafe": 0.0,
+      "safe_progress": 0.7857142857142857,
+      "goal_cost_regret": 2.2478688671475364
+    },
+    {
+      "geometry": "progress_10",
+      "unsafe": 0.0,
+      "safe_progress": 0.35714285714285715,
+      "goal_cost_regret": 2.2536294545446123
+    },
+    {
+      "geometry": "progress_11",
+      "unsafe": 0.0,
+      "safe_progress": 0.7142857142857143,
+      "goal_cost_regret": 2.0388271240960982
+    }
+  ],
+  "records": [
+    {
+      "name": "progress_08_invariant_repair_t000",
+      "geometry": "progress_08",
+      "origin": "invariant_repair",
+      "selected": 66,
+      "unsafe": false,
+      "safe_progress": false,
+      "goal_cost_regret": 4.029358863830566,
+      "fallback": false
+    },
+    {
+      "name": "progress_08_invariant_repair_t010",
+      "geometry": "progress_08",
+      "origin": "invariant_repair",
+      "selected": 66,
+      "unsafe": false,
+      "safe_progress": false,
+      "goal_cost_regret": 3.863950729370117,
+      "fallback": false
+    },
+    {
+      "name": "progress_08_invariant_repair_t030",
+      "geometry": "progress_08",
+      "origin": "invariant_repair",
+      "selected": 15,
+      "unsafe": false,
+      "safe_progress": false,
+      "goal_cost_regret": 2.016223907470703,
+      "fallback": false
+    },
+    {
+      "name": "progress_08_invariant_repair_t060",
+      "geometry": "progress_08",
+      "origin": "invariant_repair",
+      "selected": 60,
+      "unsafe": false,
+      "safe_progress": true,
+      "goal_cost_regret": 0.0,
+      "fallback": false
+    },
+    {
+      "name": "progress_08_invariant_repair_t100",
+      "geometry": "progress_08",
+      "origin": "invariant_repair",
+      "selected": 20,
+      "unsafe": false,
+      "safe_progress": true,
+      "goal_cost_regret": 0.07009625434875488,
+      "fallback": false
+    },
+    {
+      "name": "progress_08_invariant_repair_t150",
+      "geometry": "progress_08",
+      "origin": "invariant_repair",
+      "selected": 52,
+      "unsafe": false,
+      "safe_progress": true,
+      "goal_cost_regret": 0.0,
+      "fallback": false
+    },
+    {
+      "name": "progress_08_invariant_repair_t199",
+      "geometry": "progress_08",
+      "origin": "invariant_repair",
+      "selected": 28,
+      "unsafe": false,
+      "safe_progress": true,
+      "goal_cost_regret": 0.0,
+      "fallback": false
+    },
+    {
+      "name": "progress_08_true_sim_safety_t000",
+      "geometry": "progress_08",
+      "origin": "true_sim_safety",
+      "selected": 66,
+      "unsafe": false,
+      "safe_progress": false,
+      "goal_cost_regret": 4.029358863830566,
+      "fallback": false
+    },
+    {
+      "name": "progress_08_true_sim_safety_t010",
+      "geometry": "progress_08",
+      "origin": "true_sim_safety",
+      "selected": 66,
+      "unsafe": false,
+      "safe_progress": false,
+      "goal_cost_regret": 3.7235870361328125,
+      "fallback": false
+    },
+    {
+      "name": "progress_08_true_sim_safety_t030",
+      "geometry": "progress_08",
+      "origin": "true_sim_safety",
+      "selected": 65,
+      "unsafe": false,
+      "safe_progress": false,
+      "goal_cost_regret": 4.6450371742248535,
+      "fallback": false
+    },
+    {
+      "name": "progress_09_invariant_repair_t000",
+      "geometry": "progress_09",
+      "origin": "invariant_repair",
+      "selected": 70,
+      "unsafe": false,
+      "safe_progress": true,
+      "goal_cost_regret": 2.5723018646240234,
+      "fallback": false
+    },
+    {
+      "name": "progress_09_invariant_repair_t010",
+      "geometry": "progress_09",
+      "origin": "invariant_repair",
+      "selected": 54,
+      "unsafe": false,
+      "safe_progress": true,
+      "goal_cost_regret": 1.6348257064819336,
+      "fallback": false
+    },
+    {
+      "name": "progress_09_invariant_repair_t030",
+      "geometry": "progress_09",
+      "origin": "invariant_repair",
+      "selected": 34,
+      "unsafe": false,
+      "safe_progress": true,
+      "goal_cost_regret": 1.8077926635742188,
+      "fallback": false
+    },
+    {
+      "name": "progress_09_invariant_repair_t060",
+      "geometry": "progress_09",
+      "origin": "invariant_repair",
+      "selected": 23,
+      "unsafe": false,
+      "safe_progress": false,
+      "goal_cost_regret": 2.5254669189453125,
+      "fallback": false
+    },
+    {
+      "name": "progress_09_invariant_repair_t100",
+      "geometry": "progress_09",
+      "origin": "invariant_repair",
+      "selected": 6,
+      "unsafe": false,
+      "safe_progress": true,
+      "goal_cost_regret": 1.8531780242919922,
+      "fallback": false
+    },
+    {
+      "name": "progress_09_invariant_repair_t150",
+      "geometry": "progress_09",
+      "origin": "invariant_repair",
+      "selected": 27,
+      "unsafe": false,
+      "safe_progress": false,
+      "goal_cost_regret": 2.5281620025634766,
+      "fallback": false
+    },
+    {
+      "name": "progress_09_invariant_repair_t199",
+      "geometry": "progress_09",
+      "origin": "invariant_repair",
+      "selected": 43,
+      "unsafe": false,
+      "safe_progress": false,
+      "goal_cost_regret": 2.4152584075927734,
+      "fallback": false
+    },
+    {
+      "name": "progress_09_true_sim_safety_t000",
+      "geometry": "progress_09",
+      "origin": "true_sim_safety",
+      "selected": 70,
+      "unsafe": false,
+      "safe_progress": true,
+      "goal_cost_regret": 2.5723018646240234,
+      "fallback": false
+    },
+    {
+      "name": "progress_09_true_sim_safety_t010",
+      "geometry": "progress_09",
+      "origin": "true_sim_safety",
+      "selected": 14,
+      "unsafe": false,
+      "safe_progress": true,
+      "goal_cost_regret": 1.6771049499511719,
+      "fallback": false
+    },
+    {
+      "name": "progress_09_true_sim_safety_t030",
+      "geometry": "progress_09",
+      "origin": "true_sim_safety",
+      "selected": 70,
+      "unsafe": false,
+      "safe_progress": true,
+      "goal_cost_regret": 2.6648125648498535,
+      "fallback": false
+    },
+    {
+      "name": "progress_10_invariant_repair_t000",
+      "geometry": "progress_10",
+      "origin": "invariant_repair",
+      "selected": 65,
+      "unsafe": false,
+      "safe_progress": false,
+      "goal_cost_regret": 4.776453018188477,
+      "fallback": false
+    },
+    {
+      "name": "progress_10_invariant_repair_t010",
+      "geometry": "progress_10",
+      "origin": "invariant_repair",
+      "selected": 67,
+      "unsafe": false,
+      "safe_progress": false,
+      "goal_cost_regret": 3.6076154708862305,
+      "fallback": false
+    },
+    {
+      "name": "progress_10_invariant_repair_t030",
+      "geometry": "progress_10",
+      "origin": "invariant_repair",
+      "selected": 46,
+      "unsafe": false,
+      "safe_progress": true,
+      "goal_cost_regret": 1.5861573219299316,
+      "fallback": false
+    },
+    {
+      "name": "progress_10_invariant_repair_t060",
+      "geometry": "progress_10",
+      "origin": "invariant_repair",
+      "selected": 4,
+      "unsafe": false,
+      "safe_progress": true,
+      "goal_cost_regret": 0.04778766632080078,
+      "fallback": false
+    },
+    {
+      "name": "progress_10_invariant_repair_t100",
+      "geometry": "progress_10",
+      "origin": "invariant_repair",
+      "selected": 8,
+      "unsafe": false,
+      "safe_progress": true,
+      "goal_cost_regret": 0.08593988418579102,
+      "fallback": false
+    },
+    {
+      "name": "progress_10_invariant_repair_t150",
+      "geometry": "progress_10",
+      "origin": "invariant_repair",
+      "selected": 4,
+      "unsafe": false,
+      "safe_progress": true,
+      "goal_cost_regret": 0.01874089241027832,
+      "fallback": false
+    },
+    {
+      "name": "progress_10_invariant_repair_t199",
+      "geometry": "progress_10",
+      "origin": "invariant_repair",
+      "selected": 24,
+      "unsafe": false,
+      "safe_progress": true,
+      "goal_cost_regret": 0.0,
+      "fallback": false
+    },
+    {
+      "name": "progress_10_true_sim_safety_t000",
+      "geometry": "progress_10",
+      "origin": "true_sim_safety",
+      "selected": 65,
+      "unsafe": false,
+      "safe_progress": false,
+      "goal_cost_regret": 4.776453018188477,
+      "fallback": false
+    },
+    {
+      "name": "progress_10_true_sim_safety_t010",
+      "geometry": "progress_10",
+      "origin": "true_sim_safety",
+      "selected": 67,
+      "unsafe": false,
+      "safe_progress": false,
+      "goal_cost_regret": 3.544546127319336,
+      "fallback": false
+    },
+    {
+      "name": "progress_10_true_sim_safety_t030",
+      "geometry": "progress_10",
+      "origin": "true_sim_safety",
+      "selected": 70,
+      "unsafe": false,
+      "safe_progress": false,
+      "goal_cost_regret": 2.761317729949951,
+      "fallback": true
+    },
+    {
+      "name": "progress_10_true_sim_safety_t060",
+      "geometry": "progress_10",
+      "origin": "true_sim_safety",
+      "selected": 56,
+      "unsafe": false,
+      "safe_progress": false,
+      "goal_cost_regret": 1.1623220443725586,
+      "fallback": false
+    },
+    {
+      "name": "progress_11_invariant_repair_t000",
+      "geometry": "progress_11",
+      "origin": "invariant_repair",
+      "selected": 30,
+      "unsafe": false,
+      "safe_progress": true,
+      "goal_cost_regret": 1.8589582443237305,
+      "fallback": false
+    },
+    {
+      "name": "progress_11_invariant_repair_t010",
+      "geometry": "progress_11",
+      "origin": "invariant_repair",
+      "selected": 62,
+      "unsafe": false,
+      "safe_progress": true,
+      "goal_cost_regret": 1.718902587890625,
+      "fallback": false
+    },
+    {
+      "name": "progress_11_invariant_repair_t030",
+      "geometry": "progress_11",
+      "origin": "invariant_repair",
+      "selected": 23,
+      "unsafe": false,
+      "safe_progress": false,
+      "goal_cost_regret": 2.189596176147461,
+      "fallback": false
+    },
+    {
+      "name": "progress_11_invariant_repair_t060",
+      "geometry": "progress_11",
+      "origin": "invariant_repair",
+      "selected": 43,
+      "unsafe": false,
+      "safe_progress": false,
+      "goal_cost_regret": 2.2803258895874023,
+      "fallback": false
+    },
+    {
+      "name": "progress_11_invariant_repair_t100",
+      "geometry": "progress_11",
+      "origin": "invariant_repair",
+      "selected": 54,
+      "unsafe": false,
+      "safe_progress": true,
+      "goal_cost_regret": 1.918808937072754,
+      "fallback": false
+    },
+    {
+      "name": "progress_11_invariant_repair_t150",
+      "geometry": "progress_11",
+      "origin": "invariant_repair",
+      "selected": 43,
+      "unsafe": false,
+      "safe_progress": false,
+      "goal_cost_regret": 2.2988548278808594,
+      "fallback": false
+    },
+    {
+      "name": "progress_11_invariant_repair_t199",
+      "geometry": "progress_11",
+      "origin": "invariant_repair",
+      "selected": 35,
+      "unsafe": false,
+      "safe_progress": false,
+      "goal_cost_regret": 2.736837387084961,
+      "fallback": false
+    },
+    {
+      "name": "progress_11_true_sim_safety_t000",
+      "geometry": "progress_11",
+      "origin": "true_sim_safety",
+      "selected": 30,
+      "unsafe": false,
+      "safe_progress": true,
+      "goal_cost_regret": 1.8589582443237305,
+      "fallback": false
+    },
+    {
+      "name": "progress_11_true_sim_safety_t010",
+      "geometry": "progress_11",
+      "origin": "true_sim_safety",
+      "selected": 35,
+      "unsafe": false,
+      "safe_progress": true,
+      "goal_cost_regret": 2.5266551971435547,
+      "fallback": false
+    },
+    {
+      "name": "progress_11_true_sim_safety_t030",
+      "geometry": "progress_11",
+      "origin": "true_sim_safety",
+      "selected": 49,
+      "unsafe": false,
+      "safe_progress": true,
+      "goal_cost_regret": 1.4177989959716797,
+      "fallback": false
+    }
+  ]
+}

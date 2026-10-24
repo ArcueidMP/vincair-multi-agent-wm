@@ -1,0 +1,272 @@
+{
+  "methods": {
+    "invariant_repair": {
+      "scenes": [
+        {
+          "geometry": "cost_confirm_00",
+          "joint_success": 0.0,
+          "safe_joint_success": 0.0,
+          "substep_loss_of_separation": 0.0,
+          "substep_collision_proxy": 0.0,
+          "steps": 200.0,
+          "mean_planning_ms": 3.493498027500017
+        },
+        {
+          "geometry": "cost_confirm_01",
+          "joint_success": 0.0,
+          "safe_joint_success": 0.0,
+          "substep_loss_of_separation": 0.0,
+          "substep_collision_proxy": 0.0,
+          "steps": 200.0,
+          "mean_planning_ms": 3.847131507500041
+        },
+        {
+          "geometry": "cost_confirm_02",
+          "joint_success": 0.0,
+          "safe_joint_success": 0.0,
+          "substep_loss_of_separation": 0.0,
+          "substep_collision_proxy": 0.0,
+          "steps": 200.0,
+          "mean_planning_ms": 3.8246845825003817
+        },
+        {
+          "geometry": "cost_confirm_03",
+          "joint_success": 0.0,
+          "safe_joint_success": 0.0,
+          "substep_loss_of_separation": 0.0,
+          "substep_collision_proxy": 0.0,
+          "steps": 200.0,
+          "mean_planning_ms": 3.7254181575001155
+        },
+        {
+          "geometry": "cost_confirm_04",
+          "joint_success": 0.0,
+          "safe_joint_success": 0.0,
+          "substep_loss_of_separation": 0.0,
+          "substep_collision_proxy": 0.0,
+          "steps": 200.0,
+          "mean_planning_ms": 3.789160334999835
+        },
+        {
+          "geometry": "cost_confirm_05",
+          "joint_success": 0.0,
+          "safe_joint_success": 0.0,
+          "substep_loss_of_separation": 0.0,
+          "substep_collision_proxy": 0.0,
+          "steps": 200.0,
+          "mean_planning_ms": 3.8366525749996327
+        }
+      ],
+      "mean": {
+        "joint_success": 0.0,
+        "safe_joint_success": 0.0,
+        "substep_loss_of_separation": 0.0,
+        "substep_collision_proxy": 0.0,
+        "steps": 200.0,
+        "mean_planning_ms": 3.752757530833337
+      }
+    },
+    "analytic_goal": {
+      "scenes": [
+        {
+          "geometry": "cost_confirm_00",
+          "joint_success": 1.0,
+          "safe_joint_success": 1.0,
+          "substep_loss_of_separation": 0.0,
+          "substep_collision_proxy": 0.0,
+          "steps": 56.0,
+          "mean_planning_ms": 3.7331877484845384
+        },
+        {
+          "geometry": "cost_confirm_01",
+          "joint_success": 1.0,
+          "safe_joint_success": 1.0,
+          "substep_loss_of_separation": 0.0,
+          "substep_collision_proxy": 0.0,
+          "steps": 75.5,
+          "mean_planning_ms": 3.6146742059648895
+        },
+        {
+          "geometry": "cost_confirm_02",
+          "joint_success": 1.0,
+          "safe_joint_success": 1.0,
+          "substep_loss_of_separation": 0.0,
+          "substep_collision_proxy": 0.0,
+          "steps": 70.5,
+          "mean_planning_ms": 3.8363670485343615
+        },
+        {
+          "geometry": "cost_confirm_03",
+          "joint_success": 1.0,
+          "safe_joint_success": 1.0,
+          "substep_loss_of_separation": 0.0,
+          "substep_collision_proxy": 0.0,
+          "steps": 76.0,
+          "mean_planning_ms": 3.714897664474374
+        },
+        {
+          "geometry": "cost_confirm_04",
+          "joint_success": 1.0,
+          "safe_joint_success": 1.0,
+          "substep_loss_of_separation": 0.0,
+          "substep_collision_proxy": 0.0,
+          "steps": 56.0,
+          "mean_planning_ms": 3.8607584375000163
+        },
+        {
+          "geometry": "cost_confirm_05",
+          "joint_success": 1.0,
+          "safe_joint_success": 1.0,
+          "substep_loss_of_separation": 0.0,
+          "substep_collision_proxy": 0.0,
+          "steps": 57.5,
+          "mean_planning_ms": 3.566780105566264
+        }
+      ],
+      "mean": {
+        "joint_success": 1.0,
+        "safe_joint_success": 1.0,
+        "substep_loss_of_separation": 0.0,
+        "substep_collision_proxy": 0.0,
+        "steps": 65.25,
+        "mean_planning_ms": 3.7211108684207406
+      }
+    },
+    "ridge_goal": {
+      "scenes": [
+        {
+          "geometry": "cost_confirm_00",
+          "joint_success": 0.0,
+          "safe_joint_success": 0.0,
+          "substep_loss_of_separation": 0.0,
+          "substep_collision_proxy": 0.0,
+          "steps": 200.0,
+          "mean_planning_ms": 4.0655860624999995
+        },
+        {
+          "geometry": "cost_confirm_01",
+          "joint_success": 0.0,
+          "safe_joint_success": 0.0,
+          "substep_loss_of_separation": 0.0,
+          "substep_collision_proxy": 0.0,
+          "steps": 200.0,
+          "mean_planning_ms": 4.477701205000031
+        },
+        {
+          "geometry": "cost_confirm_02",
+          "joint_success": 0.0,
+          "safe_joint_success": 0.0,
+          "substep_loss_of_separation": 0.0,
+          "substep_collision_proxy": 0.0,
+          "steps": 200.0,
+          "mean_planning_ms": 4.395916510000042
+        },
+        {
+          "geometry": "cost_confirm_03",
+          "joint_success": 0.0,
+          "safe_joint_success": 0.0,
+          "substep_loss_of_separation": 0.0,
+          "substep_collision_proxy": 0.0,
+          "steps": 200.0,
+          "mean_planning_ms": 4.40829480000005
+        },
+        {
+          "geometry": "cost_confirm_04",
+          "joint_success": 0.0,
+          "safe_joint_success": 0.0,
+          "substep_loss_of_separation": 0.0,
+          "substep_collision_proxy": 0.0,
+          "steps": 200.0,
+          "mean_planning_ms": 4.7063505499997405
+        },
+        {
+          "geometry": "cost_confirm_05",
+          "joint_success": 0.0,
+          "safe_joint_success": 0.0,
+          "substep_loss_of_separation": 0.0,
+          "substep_collision_proxy": 0.0,
+          "steps": 200.0,
+          "mean_planning_ms": 4.3342761400000285
+        }
+      ],
+      "mean": {
+        "joint_success": 0.0,
+        "safe_joint_success": 0.0,
+        "substep_loss_of_separation": 0.0,
+        "substep_collision_proxy": 0.0,
+        "steps": 200.0,
+        "mean_planning_ms": 4.3980208779166485
+      }
+    },
+    "true_sim_safety": {
+      "scenes": [
+        {
+          "geometry": "cost_confirm_00",
+          "joint_success": 1.0,
+          "safe_joint_success": 1.0,
+          "substep_loss_of_separation": 0.0,
+          "substep_collision_proxy": 0.0,
+          "steps": 51.5,
+          "mean_planning_ms": 57.88701980656114
+        },
+        {
+          "geometry": "cost_confirm_01",
+          "joint_success": 1.0,
+          "safe_joint_success": 1.0,
+          "substep_loss_of_separation": 0.0,
+          "substep_collision_proxy": 0.0,
+          "steps": 60.0,
+          "mean_planning_ms": 60.86802307499977
+        },
+        {
+          "geometry": "cost_confirm_02",
+          "joint_success": 1.0,
+          "safe_joint_success": 1.0,
+          "substep_loss_of_separation": 0.0,
+          "substep_collision_proxy": 0.0,
+          "steps": 58.5,
+          "mean_planning_ms": 58.49292642631532
+        },
+        {
+          "geometry": "cost_confirm_03",
+          "joint_success": 1.0,
+          "safe_joint_success": 1.0,
+          "substep_loss_of_separation": 0.0,
+          "substep_collision_proxy": 0.0,
+          "steps": 61.5,
+          "mean_planning_ms": 60.327363875065444
+        },
+        {
+          "geometry": "cost_confirm_04",
+          "joint_success": 1.0,
+          "safe_joint_success": 1.0,
+          "substep_loss_of_separation": 0.0,
+          "substep_collision_proxy": 0.0,
+          "steps": 51.0,
+          "mean_planning_ms": 66.61785728846024
+        },
+        {
+          "geometry": "cost_confirm_05",
+          "joint_success": 1.0,
+          "safe_joint_success": 1.0,
+          "substep_loss_of_separation": 0.0,
+          "substep_collision_proxy": 0.0,
+          "steps": 49.0,
+          "mean_planning_ms": 62.04154751020409
+        }
+      ],
+      "mean": {
+        "joint_success": 1.0,
+        "safe_joint_success": 1.0,
+        "substep_loss_of_separation": 0.0,
+        "substep_collision_proxy": 0.0,
+        "steps": 55.25,
+        "mean_planning_ms": 61.03912299693434
+      }
+    }
+  },
+  "episodes": 48,
+  "gate_passed": false,
+  "model_hashes_unchanged": true,
+  "wall_seconds": 137.396750054
+}

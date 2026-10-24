@@ -1,0 +1,15 @@
+{
+  "status": "frozen",
+  "protocol_sha256": "c82ad784aca22bb74f1c8babe16851b3291ae239671941ba83023479e4ae18b0",
+  "correction_sha256": "67717a6bfe0dc06e8f8e95c809f8282dd7d96b5d664ca004ceced4f673371873",
+  "risk_sha256": "4f9ad7b77a6b2ab3b5848e5277331da9faa0377247251afeb5affbb99d8c8c6d",
+  "lambda_value": 10.0,
+  "train_snapshots": 85,
+  "validation_snapshots": 41,
+  "validation_key": [
+    0.0,
+    -0.5357142857142857,
+    2.3298716637350263,
+    10.0
+  ]
+}

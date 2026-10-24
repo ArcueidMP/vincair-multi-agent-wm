@@ -1,0 +1,12 @@
+{
+  "analytic_goal": {
+    "unsafe": 0.11904761904761904,
+    "safe_progress": 0.8080357142857143,
+    "goal_cost_regret": 0.9774464006934847
+  },
+  "invariant_repair": {
+    "unsafe": 0.05952380952380952,
+    "safe_progress": 0.6101190476190477,
+    "goal_cost_regret": 1.6619111350959257
+  }
+}

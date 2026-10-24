@@ -1,0 +1,306 @@
+{
+  "created_utc": "2026-10-24T16:25:45.169929+00:00",
+  "source_sha256": "b223aa3e54a243f30e80b3174caa7bb632e9d5deafe75601ae79070cfa719bea",
+  "parent_commit": "15453877e0148d550c438e765d20d83e0b8980e1",
+  "data_records_sha256": "2c2283368ede1b7a6fce00a3c18858f6eaee830f28a2932c98f289ab042bc721",
+  "risk_model_sha256": "4f9ad7b77a6b2ab3b5848e5277331da9faa0377247251afeb5affbb99d8c8c6d",
+  "geometry_specs": [
+    {
+      "name": "cost_confirm_00",
+      "angle_deg": 41.4371746829847,
+      "directions": [
+        [
+          -0.6046648025512695,
+          0.7964800596237183
+        ],
+        [
+          -0.9804154634475708,
+          0.19694045186042786
+        ]
+      ],
+      "starts": [
+        [
+          0.4020044210672437,
+          -0.6188576704942766
+        ],
+        [
+          0.6920192244768201,
+          -0.15611631042595545
+        ]
+      ],
+      "goals": [
+        [
+          -0.5181913372754993,
+          0.5932478421247419
+        ],
+        [
+          -0.8000043627500476,
+          0.14359317355517706
+        ]
+      ],
+      "velocity": [
+        [
+          -0.11299514520864214,
+          0.14884011705863934
+        ],
+        [
+          -0.2105310867124664,
+          0.04229032373889857
+        ]
+      ]
+    },
+    {
+      "name": "cost_confirm_01",
+      "angle_deg": 108.79535626122853,
+      "directions": [
+        [
+          0.7287005186080933,
+          -0.6848325133323669
+        ],
+        [
+          0.4135347902774811,
+          0.9104883074760437
+        ]
+      ],
+      "starts": [
+        [
+          -0.6857890056590972,
+          0.6349951335905708
+        ],
+        [
+          -0.42344843020247785,
+          -0.6929328730584465
+        ]
+      ],
+      "goals": [
+        [
+          0.46729884872627886,
+          -0.4486764958382927
+        ],
+        [
+          0.2309245897312227,
+          0.7478140899656929
+        ]
+      ],
+      "velocity": [
+        [
+          0.11517180297456554,
+          -0.10823842344280156
+        ],
+        [
+          0.09447928057202452,
+          0.20801703334768057
+        ]
+      ]
+    },
+    {
+      "name": "cost_confirm_02",
+      "angle_deg": 91.6817409778958,
+      "directions": [
+        [
+          0.6532499194145203,
+          -0.7571423649787903
+        ],
+        [
+          0.7376448512077332,
+          0.6751888990402222
+        ]
+      ],
+      "starts": [
+        [
+          -0.5548326002391244,
+          0.6515047561210883
+        ],
+        [
+          -0.629194222572651,
+          -0.6105436671691644
+        ]
+      ],
+      "goals": [
+        [
+          0.510693050738964,
+          -0.5834814299064386
+        ],
+        [
+          0.5739892495838737,
+          0.49076700320665956
+        ]
+      ],
+      "velocity": [
+        [
+          0.13045310803036006,
+          -0.15120028613469272
+        ],
+        [
+          0.10524590174844256,
+          0.09633479365263595
+        ]
+      ]
+    },
+    {
+      "name": "cost_confirm_03",
+      "angle_deg": 117.70398606900791,
+      "directions": [
+        [
+          -0.8377819657325745,
+          0.5460048913955688
+        ],
+        [
+          -0.09392369538545609,
+          -0.9955794215202332
+        ]
+      ],
+      "starts": [
+        [
+          0.7164384308269137,
+          -0.3960770811255033
+        ],
+        [
+          0.12538435636068523,
+          0.8288332973306124
+        ]
+      ],
+      "goals": [
+        [
+          -0.5775819239208585,
+          0.4472705577199404
+        ],
+        [
+          -0.019688208122003656,
+          -0.7089176620657499
+        ]
+      ],
+      "velocity": [
+        [
+          -0.194031414412251,
+          0.12645545701243602
+        ],
+        [
+          -0.0146221826691689,
+          -0.15499330710308235
+        ]
+      ]
+    },
+    {
+      "name": "cost_confirm_04",
+      "angle_deg": 87.53577934873488,
+      "directions": [
+        [
+          0.8438055515289307,
+          -0.5366489887237549
+        ],
+        [
+          0.5724325776100159,
+          0.8199517726898193
+        ]
+      ],
+      "starts": [
+        [
+          -0.48426899610815044,
+          0.300345539104017
+        ],
+        [
+          -0.3149287730341911,
+          -0.5461907992252981
+        ]
+      ],
+      "goals": [
+        [
+          0.6751306921357155,
+          -0.43701708411070467
+        ],
+        [
+          0.4716009765976906,
+          0.580433486949476
+        ]
+      ],
+      "velocity": [
+        [
+          0.17191559306671558,
+          -0.10933600637958628
+        ],
+        [
+          0.14009436263536396,
+          0.200671005599153
+        ]
+      ]
+    },
+    {
+      "name": "cost_confirm_05",
+      "angle_deg": 65.22289395690717,
+      "directions": [
+        [
+          -0.33963117003440857,
+          0.940558671951294
+        ],
+        [
+          -0.996311366558075,
+          0.08581168949604034
+        ]
+      ],
+      "starts": [
+        [
+          0.2860024666530529,
+          -0.5411539424254201
+        ],
+        [
+          0.707803750608627,
+          0.00787031538350362
+        ]
+      ],
+      "goals": [
+        [
+          -0.18687406721287575,
+          0.7684082042382456
+        ],
+        [
+          -0.6793842071550449,
+          0.12734797112209578
+        ]
+      ],
+      "velocity": [
+        [
+          -0.06699246713801797,
+          0.18552580411182876
+        ],
+        [
+          -0.151301863110481,
+          0.013031537060811189
+        ]
+      ]
+    }
+  ],
+  "lambdas": [
+    0.0001,
+    0.001,
+    0.01,
+    0.1,
+    1.0,
+    10.0
+  ],
+  "target": "True H8 terminal goal cost5*sum distances+.01*mean actions^2; no soft safety cost in correction target",
+  "features": "92: mean canonical44, mean squared canonical44, free-motion goal cost/minsep, frozen cost prediction, free-motion progress",
+  "analytic": "Known dt.1/substeps2/drag.25/mass1 recurrence; ignores contact forces. Hand-coded physics baseline, NOT a learned WM",
+  "fit": "Weighted ridge residual to frozen cost, train8 whole geometries only; equal geometry/origin/snapshot/candidate weights; train-only weighted moments; weighted unpenalized intercept",
+  "selection": "Validation4 geometries only; unsafe rate primary, negative safe-progress rate secondary, goal-cost regret third, lambda fourth; equal geometry and origin means",
+  "invariants": "Frozen risk/minsep heads, threshold, margin and fallback; same72-proposal generator. Only cost ranking changes, including fallback cost tie-break.",
+  "confirmation": "Freeze coefficients,lambda,protocol and model hashes before any NEW confirmation rollout;6 geometries x2 seeds x4 arms=48 episodes max200 steps, H8/72",
+  "arms": [
+    "invariant_repair",
+    "analytic_goal",
+    "ridge_goal",
+    "true_sim_safety"
+  ],
+  "seeds": [
+    2026150000,
+    2026151000
+  ],
+  "gate": "Ridge safe-joint-success > frozen invariant AND episode separation violation <= frozen invariant; descriptive only. Report analytic competitor regardless of outcome.",
+  "budget": "Four5-step smoke runs, then48 episodes;900s between-episode wall cap; no post-confirmation tuning",
+  "limitations": [
+    "One fitted model and6 confirmation geometries",
+    "Simple analytic baseline knows native free-motion parameters",
+    "Risk remains imperfect; ranking changes can increase unsafe choices",
+    "Local validation ranking does not establish closed-loop success"
+  ]
+}

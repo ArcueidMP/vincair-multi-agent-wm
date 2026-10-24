@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "episodes": 48,
+  "executed_steps": 6246,
+  "independent_model_choices": 5583,
+  "independent_oracle_choices": 663,
+  "train_only_weighted_moments_exact": true,
+  "ridge_normal_equation_max_error": 1.9984014443252818e-14,
+  "validation_grid_and_selection_verified": true,
+  "max_feature_formula_difference": 4.76837158203125e-07,
+  "max_numpy_prediction_difference": 0.00018310546875,
+  "max_oracle_cost_error": 1.9073486328125e-06,
+  "frozen_risk_heads_verified": true,
+  "first_action_execution_exact": true,
+  "physical_metrics_and_aggregates_verified": true,
+  "native_replay_error": 0
+}
