@@ -21,6 +21,7 @@ bash scripts/install.sh              # .venv + all checkpoints under ./data (~22
 bash scripts/install.sh /big/disk    # or keep data elsewhere, linked as ./data
 source .venv/bin/activate
 python scripts/download.py --vmas-data   # VMAS data (~300 MB): needed by wm_full_v2's probe cost and for retraining
+python scripts/download.py --coop-heldout   # held-out MultiPush-T scenes (700 MB): only to refit the readouts
 ```
 
 ## Checkpoints
@@ -29,6 +30,7 @@ python scripts/download.py --vmas-data   # VMAS data (~300 MB): needed by wm_ful
 |---|---|---|
 | `lewm_coop2_ftfull` | Pixel LeWM (ViT-tiny, 224 px), fine-tuned on cooperative data, own action | baseline planning, rollout-error analysis |
 | `lewm_coop2_joint` | Same, action = [self, partner] | centralized planning, cross-agent counterfactuals |
+| `lewm_coop2_*/readout/cost_probe.pt` | State readout of each pixel model: MLP probe z → [self xy, T xy, T angle] | readout cost, cost diagnostics |
 | `wm_full_v2` | VMAS entity-token LeWM, full attention over agent and T tokens | planning, scalability |
 | `wm_full_h_agg2` | Same, plus a jointly trained state readout head; trained on scripted + planner-visited data | cost function, decision fidelity |
 
@@ -53,6 +55,32 @@ Load either in Python (run from the repo root, so that `jepa.JEPA` resolves):
 import stable_worldmodel as swm                              # reads $STABLEWM_HOME/checkpoints/<name>/{weights.pt,config.json}
 model = swm.wm.utils.load_pretrained("lewm_coop2_joint").eval()
 ```
+
+### State readout of the pixel models
+Each coop2 model has an MLP probe (`readout.py`) from its latent z (encoder CLS + projector, as the planner
+encodes frames) to the success test's quantities: this agent's xy, T xy, T angle (sin, cos), in px. It was fit on
+the model's encoder latents of the 100 held-out coop scenes, split by scene 70/10/20. Test scenes:
+
+| readout | r (self xy / T xy / T angle) | median error: self, T, angle |
+|---|---|---|
+| `lewm_coop2_ftfull` | 0.97–0.98 / 0.95 / 0.96–0.97 | 11.7 px, 9.1 px, 3.9° |
+| `lewm_coop2_joint` | 0.98 / 0.95–0.96 / 0.96–0.98 | 11.4 px, 8.4 px, 3.0° |
+
+```bash
+python plan.py policy=lewm_coop2_ftfull cost=probe           # plan on the readout cost instead of ||z_hat - z_goal||^2
+python scripts/cost_audit.py                                 # true vs readout vs latent cost along the scripted team's eval episodes
+python scripts/fit_readout.py lewm_coop2_ftfull              # refit (needs download.py --coop-heldout)
+```
+```python
+from readout import load_probe, pose_cost, state_pose
+probe, info = load_probe("data/checkpoints/lewm_coop2_ftfull/readout/cost_probe.pt")  # info: test metrics, split
+pose = probe(z)                                              # (..., 6): self x, y, T x, y, sin, cos
+readout_cost = pose_cost(probe(z), probe(z_goal))            # the cost=probe cost, px^2; latent cost: ((z - z_goal)**2).sum(-1)
+true_cost = pose_cost(state_pose(env.state(), agent), state_pose(env.core.goal_state, agent))
+```
+All three costs use one form, |Δself xy|² + |ΔT xy|² + (Δangle · 20 px / 20°)². Agent 1's goal spot is its start.
+The readout was fit on encoder latents of real frames. With `cost=probe` it reads the predictor's output, so
+the probe also sees the model's prediction error.
 
 ### `wm_full_v2`
 ```bash
@@ -184,6 +212,7 @@ python -m vmas_pusht.train --attn full --head 1 --data data/vmas_pusht/train_agg
 | `world.py` | `MultiPushT`: N-agent Push-T, force-threshold physics, per-agent views |
 | `policies.py`, `collect.py` | Scripted team and data recording in the layout of LeWM's Push-T dataset |
 | `jepa.py`, `module.py` | The LeWM world model, unchanged from the official code |
+| `readout.py` | State readout of the pixel models (probe, pose cost); `scripts/fit_readout.py`, `scripts/cost_audit.py` |
 | `train.py`, `plan.py` | Fine-tuning (joint actions, scene-level validation split); MPC with CEM for two agents |
 | `vmas_pusht/` | VMAS scenario, scripted team, entity-token model (`model.py`), training, planner, subgoals |
 | `config/`, `scripts/` | Hydra configs; install, download, diagnostics, upload |
@@ -195,6 +224,7 @@ python -m vmas_pusht.train --attn full --head 1 --data data/vmas_pusht/train_agg
   45 px × the angle difference. The reset path renders at the current pose and was not affected; code that renders
   subgoals or goals from the live env was.
 - Add the VMAS Push-T code and the two VMAS checkpoints; `scripts/download.py` points at the released weights.
+- Add the state readouts of the two pixel models with their fit script, `plan.py cost=probe` and the cost audit.
 
 ## Acknowledgements
 

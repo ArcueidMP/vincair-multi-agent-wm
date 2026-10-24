@@ -6,12 +6,14 @@ defaults:
 
 policy: lewm_coop2_ftfull  # checkpoint folder under $STABLEWM_HOME/checkpoints (lewm/pusht = official LeWM)
 planning: independent      # independent | decentralized | centralized (the last two need a joint-action checkpoint)
+cost: latent               # latent: ||z_hat - z_goal||^2 | probe: readout cost, success-test quantities read by readout.py
+cost_probe: null           # probe file for cost=probe (default: checkpoints/<policy>/readout/cost_probe.pt)
 seed: 0                    # eval seed: 0, 1, 2 or 42 (assets/eval_episodes.npz)
 num_episodes: 50
 budget: 150                # env steps; both agents must walk to the T first, so 50 (LeWM's budget) is too short
 video: true
 img_size: 224
-run_name: ${policy}_${planning}_s${seed}
+run_name: ${policy}_${planning}_${cost}_s${seed}
 
 env: # world.MultiPushT kwargs, as config/collect.yaml
   n_agents: 2

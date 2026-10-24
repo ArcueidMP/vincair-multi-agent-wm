@@ -10,6 +10,7 @@ goal spot; agent 1's goal spot is its start). Three ways to plan:
     python plan.py policy=lewm/pusht                                        # zero-shot single-agent LeWM
     python plan.py policy=lewm_coop2_ftfull
     python plan.py policy=lewm_coop2_joint planning=centralized seed=1
+    python plan.py policy=lewm_coop2_ftfull cost=probe                      # readout cost (readout.py) instead of the latent one
 -> $STABLEWM_HOME/plan/<run>/results.json (+ one video per episode)
 """
 
@@ -35,6 +36,7 @@ from sklearn.preprocessing import StandardScaler
 from torchvision.transforms import v2 as transforms
 
 from episodes import eval_episodes, reset
+from readout import load_probe, pose_cost
 from utils import pusht_stats
 from world import MultiPushT
 
@@ -71,11 +73,27 @@ def img_transform(size):
     ])
 
 
+def use_probe_cost(model, path):
+    """Replace the planning cost ||z_hat - z_goal||^2 by the readout cost: the success test's quantities read off the
+    predicted and the goal latent by the model's probe (readout.py), |self xy|^2 + |T xy|^2 + (ANGLE_W * T angle)^2.
+    The probe was fit on encoder latents of real frames; here it reads the predictor's output."""
+    probe, _ = load_probe(path, "cuda")
+
+    def criterion(info_dict):
+        pred = probe(info_dict["predicted_emb"][..., -1, :])  # (B, S, 6)
+        goal = probe(info_dict["goal_emb"][..., -1, :]).expand_as(pred)
+        return pose_cost(pred, goal)
+
+    model.criterion = criterion
+
+
 def load_planner(cfg, n_envs, seed, action_dim):
     """One LeWM planner: its own model instance and CEM solver, batched over the n_envs episodes."""
     model = swm.wm.utils.load_pretrained(cfg.policy).to("cuda").eval()
     model.requires_grad_(False)
     model.interpolate_pos_encoding = True
+    if cfg.cost == "probe":
+        use_probe_cost(model, cfg.cost_probe or Path(os.environ["STABLEWM_HOME"], "checkpoints", cfg.policy, "readout", "cost_probe.pt"))
     solver = hydra.utils.instantiate(cfg.solver, model=model, seed=seed)
     tf = img_transform(cfg.img_size)
     policy = LazyWorldModelPolicy(solver=solver, config=swm.PlanConfig(**cfg.plan_config),
@@ -114,6 +132,7 @@ def panel(env, obs, goal_img, text, size=448):
 @hydra.main(version_base=None, config_path="./config", config_name="plan")
 def run(cfg: DictConfig):
     assert cfg.planning in ("independent", "decentralized", "centralized"), cfg.planning
+    assert cfg.cost in ("latent", "probe"), cfg.cost
     assert cfg.plan_config.horizon * cfg.plan_config.action_block <= cfg.budget
     states, goal_states = eval_episodes(cfg.seed)
     n = min(cfg.num_episodes, len(states))
