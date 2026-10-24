@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "groups": 264,
+  "candidates": 17952,
+  "confirmation_groups": 72,
+  "independent_selected_indices": 576,
+  "max_cost_error": 1.9073486328125e-06,
+  "max_numpy_forward_error": 2.2411346435546875e-05,
+  "translation_prediction_max_error": 2.09808349609375e-05,
+  "native_replay_error": 0,
+  "train_only_statistics_verified": true,
+  "input_label_hashes_verified": true,
+  "paired_original_actions_verified": true,
+  "all_aggregate_metrics_verified": true
+}

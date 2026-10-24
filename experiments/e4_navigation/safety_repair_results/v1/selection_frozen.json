@@ -1,0 +1,23 @@
+{
+  "status": "frozen",
+  "protocol_sha256": "a8fe137eea5df9c9eaf1e2cf3abd53e6428ebc307bda8d8a599e814d48bd52ef",
+  "baseline_sha256": "9a02de2912a91190a600eefdde3319fb9c7f910680b152f9da3578123cc3b3a3",
+  "models": {
+    "raw": {
+      "checkpoint_sha256": "a5fcfda5e0796229a9bf1a57f710875e681469224df2e16c80b1c77f6689bf56",
+      "epoch": 56,
+      "policy": {
+        "threshold": 0.1,
+        "margin": 0.06
+      }
+    },
+    "invariant": {
+      "checkpoint_sha256": "4f9ad7b77a6b2ab3b5848e5277331da9faa0377247251afeb5affbb99d8c8c6d",
+      "epoch": 63,
+      "policy": {
+        "threshold": 0.5,
+        "margin": 0.0
+      }
+    }
+  }
+}

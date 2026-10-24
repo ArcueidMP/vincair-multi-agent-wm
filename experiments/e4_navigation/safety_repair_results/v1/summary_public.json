@@ -1,0 +1,666 @@
+{
+  "geometry_wins": 9,
+  "unsafe_reduction": 0.2361111111111111,
+  "gate_passed": true,
+  "groups": 72,
+  "candidates_total": 17952,
+  "max_native_replay_error": 0.0,
+  "wall_seconds": 61.77861224999998,
+  "confirmation_consumed": true,
+  "no_closed_loop": true,
+  "no_world_model": true,
+  "methods": {
+    "old_safety_64": {
+      "mean": {
+        "unsafe_given_safe": 0.3055555555555555,
+        "unsafe_all": 0.3055555555555555,
+        "regret": 1.1619991858800252
+      },
+      "scenes": [
+        {
+          "base_id": "confirmation_00",
+          "unsafe_given_safe": 0.3333333333333333,
+          "unsafe_all": 0.3333333333333333,
+          "regret": 1.5123813947041829
+        },
+        {
+          "base_id": "confirmation_01",
+          "unsafe_given_safe": 0.3333333333333333,
+          "unsafe_all": 0.3333333333333333,
+          "regret": 0.21963723500569662
+        },
+        {
+          "base_id": "confirmation_02",
+          "unsafe_given_safe": 0.16666666666666666,
+          "unsafe_all": 0.16666666666666666,
+          "regret": 1.1218748092651367
+        },
+        {
+          "base_id": "confirmation_03",
+          "unsafe_given_safe": 0.5,
+          "unsafe_all": 0.5,
+          "regret": 3.1785593032836914
+        },
+        {
+          "base_id": "confirmation_04",
+          "unsafe_given_safe": 0.0,
+          "unsafe_all": 0.0,
+          "regret": 1.4004071553548176
+        },
+        {
+          "base_id": "confirmation_05",
+          "unsafe_given_safe": 0.3333333333333333,
+          "unsafe_all": 0.3333333333333333,
+          "regret": 0.882784366607666
+        },
+        {
+          "base_id": "confirmation_06",
+          "unsafe_given_safe": 0.5,
+          "unsafe_all": 0.5,
+          "regret": 0.7996840476989746
+        },
+        {
+          "base_id": "confirmation_07",
+          "unsafe_given_safe": 0.16666666666666666,
+          "unsafe_all": 0.16666666666666666,
+          "regret": 1.2155351638793945
+        },
+        {
+          "base_id": "confirmation_08",
+          "unsafe_given_safe": 0.3333333333333333,
+          "unsafe_all": 0.3333333333333333,
+          "regret": 0.8870641390482584
+        },
+        {
+          "base_id": "confirmation_09",
+          "unsafe_given_safe": 0.0,
+          "unsafe_all": 0.0,
+          "regret": 1.2860223452250164
+        },
+        {
+          "base_id": "confirmation_10",
+          "unsafe_given_safe": 0.3333333333333333,
+          "unsafe_all": 0.3333333333333333,
+          "regret": 0.35088173548380536
+        },
+        {
+          "base_id": "confirmation_11",
+          "unsafe_given_safe": 0.6666666666666666,
+          "unsafe_all": 0.6666666666666666,
+          "regret": 1.089158535003662
+        }
+      ]
+    },
+    "old_safety_68": {
+      "mean": {
+        "unsafe_given_safe": 0.18055555555555555,
+        "unsafe_all": 0.18055555555555555,
+        "regret": 1.5360734860102336
+      },
+      "scenes": [
+        {
+          "base_id": "confirmation_00",
+          "unsafe_given_safe": 0.3333333333333333,
+          "unsafe_all": 0.3333333333333333,
+          "regret": 2.1771372159322104
+        },
+        {
+          "base_id": "confirmation_01",
+          "unsafe_given_safe": 0.16666666666666666,
+          "unsafe_all": 0.16666666666666666,
+          "regret": 0.3985317548116048
+        },
+        {
+          "base_id": "confirmation_02",
+          "unsafe_given_safe": 0.0,
+          "unsafe_all": 0.0,
+          "regret": 2.3655289014180503
+        },
+        {
+          "base_id": "confirmation_03",
+          "unsafe_given_safe": 0.16666666666666666,
+          "unsafe_all": 0.16666666666666666,
+          "regret": 2.5668222109476724
+        },
+        {
+          "base_id": "confirmation_04",
+          "unsafe_given_safe": 0.0,
+          "unsafe_all": 0.0,
+          "regret": 1.4462243715922039
+        },
+        {
+          "base_id": "confirmation_05",
+          "unsafe_given_safe": 0.3333333333333333,
+          "unsafe_all": 0.3333333333333333,
+          "regret": 0.882784366607666
+        },
+        {
+          "base_id": "confirmation_06",
+          "unsafe_given_safe": 0.3333333333333333,
+          "unsafe_all": 0.3333333333333333,
+          "regret": 1.8219051361083984
+        },
+        {
+          "base_id": "confirmation_07",
+          "unsafe_given_safe": 0.0,
+          "unsafe_all": 0.0,
+          "regret": 2.8162558873494468
+        },
+        {
+          "base_id": "confirmation_08",
+          "unsafe_given_safe": 0.3333333333333333,
+          "unsafe_all": 0.3333333333333333,
+          "regret": 0.8870641390482584
+        },
+        {
+          "base_id": "confirmation_09",
+          "unsafe_given_safe": 0.0,
+          "unsafe_all": 0.0,
+          "regret": 1.2860223452250164
+        },
+        {
+          "base_id": "confirmation_10",
+          "unsafe_given_safe": 0.3333333333333333,
+          "unsafe_all": 0.3333333333333333,
+          "regret": 0.35088173548380536
+        },
+        {
+          "base_id": "confirmation_11",
+          "unsafe_given_safe": 0.16666666666666666,
+          "unsafe_all": 0.16666666666666666,
+          "regret": 1.43372376759847
+        }
+      ]
+    },
+    "raw_consistent_64": {
+      "mean": {
+        "unsafe_given_safe": 0.06944444444444443,
+        "unsafe_all": 0.06944444444444443,
+        "regret": 0.6853071053822836
+      },
+      "scenes": [
+        {
+          "base_id": "confirmation_00",
+          "unsafe_given_safe": 0.0,
+          "unsafe_all": 0.0,
+          "regret": 0.6614087422688802
+        },
+        {
+          "base_id": "confirmation_01",
+          "unsafe_given_safe": 0.16666666666666666,
+          "unsafe_all": 0.16666666666666666,
+          "regret": 0.4996786117553711
+        },
+        {
+          "base_id": "confirmation_02",
+          "unsafe_given_safe": 0.0,
+          "unsafe_all": 0.0,
+          "regret": 0.8939164479573568
+        },
+        {
+          "base_id": "confirmation_03",
+          "unsafe_given_safe": 0.0,
+          "unsafe_all": 0.0,
+          "regret": 0.8664336204528809
+        },
+        {
+          "base_id": "confirmation_04",
+          "unsafe_given_safe": 0.16666666666666666,
+          "unsafe_all": 0.16666666666666666,
+          "regret": 0.38448556264241535
+        },
+        {
+          "base_id": "confirmation_05",
+          "unsafe_given_safe": 0.0,
+          "unsafe_all": 0.0,
+          "regret": 1.0128146807352703
+        },
+        {
+          "base_id": "confirmation_06",
+          "unsafe_given_safe": 0.0,
+          "unsafe_all": 0.0,
+          "regret": 0.686967690785726
+        },
+        {
+          "base_id": "confirmation_07",
+          "unsafe_given_safe": 0.0,
+          "unsafe_all": 0.0,
+          "regret": 0.9551297823588053
+        },
+        {
+          "base_id": "confirmation_08",
+          "unsafe_given_safe": 0.16666666666666666,
+          "unsafe_all": 0.16666666666666666,
+          "regret": 0.6485012372334799
+        },
+        {
+          "base_id": "confirmation_09",
+          "unsafe_given_safe": 0.0,
+          "unsafe_all": 0.0,
+          "regret": 0.6231594085693359
+        },
+        {
+          "base_id": "confirmation_10",
+          "unsafe_given_safe": 0.16666666666666666,
+          "unsafe_all": 0.16666666666666666,
+          "regret": 0.35835838317871094
+        },
+        {
+          "base_id": "confirmation_11",
+          "unsafe_given_safe": 0.16666666666666666,
+          "unsafe_all": 0.16666666666666666,
+          "regret": 0.6328310966491699
+        }
+      ],
+      "fallback_groups": 2
+    },
+    "raw_consistent_68": {
+      "mean": {
+        "unsafe_given_safe": 0.06944444444444443,
+        "unsafe_all": 0.06944444444444443,
+        "regret": 0.6944302982754177
+      },
+      "scenes": [
+        {
+          "base_id": "confirmation_00",
+          "unsafe_given_safe": 0.0,
+          "unsafe_all": 0.0,
+          "regret": 0.6614087422688802
+        },
+        {
+          "base_id": "confirmation_01",
+          "unsafe_given_safe": 0.16666666666666666,
+          "unsafe_all": 0.16666666666666666,
+          "regret": 0.4996786117553711
+        },
+        {
+          "base_id": "confirmation_02",
+          "unsafe_given_safe": 0.0,
+          "unsafe_all": 0.0,
+          "regret": 0.8939164479573568
+        },
+        {
+          "base_id": "confirmation_03",
+          "unsafe_given_safe": 0.0,
+          "unsafe_all": 0.0,
+          "regret": 1.023729960123698
+        },
+        {
+          "base_id": "confirmation_04",
+          "unsafe_given_safe": 0.16666666666666666,
+          "unsafe_all": 0.16666666666666666,
+          "regret": 0.38448556264241535
+        },
+        {
+          "base_id": "confirmation_05",
+          "unsafe_given_safe": 0.0,
+          "unsafe_all": 0.0,
+          "regret": 0.9686384201049805
+        },
+        {
+          "base_id": "confirmation_06",
+          "unsafe_given_safe": 0.0,
+          "unsafe_all": 0.0,
+          "regret": 0.686967690785726
+        },
+        {
+          "base_id": "confirmation_07",
+          "unsafe_given_safe": 0.0,
+          "unsafe_all": 0.0,
+          "regret": 0.875288168589274
+        },
+        {
+          "base_id": "confirmation_08",
+          "unsafe_given_safe": 0.16666666666666666,
+          "unsafe_all": 0.16666666666666666,
+          "regret": 0.7247010866800944
+        },
+        {
+          "base_id": "confirmation_09",
+          "unsafe_given_safe": 0.0,
+          "unsafe_all": 0.0,
+          "regret": 0.6231594085693359
+        },
+        {
+          "base_id": "confirmation_10",
+          "unsafe_given_safe": 0.16666666666666666,
+          "unsafe_all": 0.16666666666666666,
+          "regret": 0.35835838317871094
+        },
+        {
+          "base_id": "confirmation_11",
+          "unsafe_given_safe": 0.16666666666666666,
+          "unsafe_all": 0.16666666666666666,
+          "regret": 0.6328310966491699
+        }
+      ],
+      "fallback_groups": 2
+    },
+    "raw_legacy_selector_64": {
+      "mean": {
+        "unsafe_given_safe": 0.125,
+        "unsafe_all": 0.125,
+        "regret": 0.6144593689176772
+      },
+      "scenes": [
+        {
+          "base_id": "confirmation_00",
+          "unsafe_given_safe": 0.5,
+          "unsafe_all": 0.5,
+          "regret": 0.42943795522054035
+        },
+        {
+          "base_id": "confirmation_01",
+          "unsafe_given_safe": 0.16666666666666666,
+          "unsafe_all": 0.16666666666666666,
+          "regret": 0.37506739298502606
+        },
+        {
+          "base_id": "confirmation_02",
+          "unsafe_given_safe": 0.0,
+          "unsafe_all": 0.0,
+          "regret": 0.8939164479573568
+        },
+        {
+          "base_id": "confirmation_03",
+          "unsafe_given_safe": 0.16666666666666666,
+          "unsafe_all": 0.16666666666666666,
+          "regret": 0.6980511347452799
+        },
+        {
+          "base_id": "confirmation_04",
+          "unsafe_given_safe": 0.16666666666666666,
+          "unsafe_all": 0.16666666666666666,
+          "regret": 0.38448556264241535
+        },
+        {
+          "base_id": "confirmation_05",
+          "unsafe_given_safe": 0.0,
+          "unsafe_all": 0.0,
+          "regret": 0.7491952578226725
+        },
+        {
+          "base_id": "confirmation_06",
+          "unsafe_given_safe": 0.0,
+          "unsafe_all": 0.0,
+          "regret": 0.686967690785726
+        },
+        {
+          "base_id": "confirmation_07",
+          "unsafe_given_safe": 0.0,
+          "unsafe_all": 0.0,
+          "regret": 0.8860783576965332
+        },
+        {
+          "base_id": "confirmation_08",
+          "unsafe_given_safe": 0.16666666666666666,
+          "unsafe_all": 0.16666666666666666,
+          "regret": 0.6485012372334799
+        },
+        {
+          "base_id": "confirmation_09",
+          "unsafe_given_safe": 0.0,
+          "unsafe_all": 0.0,
+          "regret": 0.6231594085693359
+        },
+        {
+          "base_id": "confirmation_10",
+          "unsafe_given_safe": 0.16666666666666666,
+          "unsafe_all": 0.16666666666666666,
+          "regret": 0.36582088470458984
+        },
+        {
+          "base_id": "confirmation_11",
+          "unsafe_given_safe": 0.16666666666666666,
+          "unsafe_all": 0.16666666666666666,
+          "regret": 0.6328310966491699
+        }
+      ]
+    },
+    "invariant_consistent_64": {
+      "mean": {
+        "unsafe_given_safe": 0.06944444444444443,
+        "unsafe_all": 0.06944444444444443,
+        "regret": 0.3096872038311429
+      },
+      "scenes": [
+        {
+          "base_id": "confirmation_00",
+          "unsafe_given_safe": 0.16666666666666666,
+          "unsafe_all": 0.16666666666666666,
+          "regret": 0.3392152786254883
+        },
+        {
+          "base_id": "confirmation_01",
+          "unsafe_given_safe": 0.0,
+          "unsafe_all": 0.0,
+          "regret": 0.3054644266764323
+        },
+        {
+          "base_id": "confirmation_02",
+          "unsafe_given_safe": 0.16666666666666666,
+          "unsafe_all": 0.16666666666666666,
+          "regret": 0.3509635925292969
+        },
+        {
+          "base_id": "confirmation_03",
+          "unsafe_given_safe": 0.0,
+          "unsafe_all": 0.0,
+          "regret": 0.31926854451497394
+        },
+        {
+          "base_id": "confirmation_04",
+          "unsafe_given_safe": 0.0,
+          "unsafe_all": 0.0,
+          "regret": 0.20324150721232095
+        },
+        {
+          "base_id": "confirmation_05",
+          "unsafe_given_safe": 0.0,
+          "unsafe_all": 0.0,
+          "regret": 0.22141345342000326
+        },
+        {
+          "base_id": "confirmation_06",
+          "unsafe_given_safe": 0.0,
+          "unsafe_all": 0.0,
+          "regret": 0.3058748245239258
+        },
+        {
+          "base_id": "confirmation_07",
+          "unsafe_given_safe": 0.0,
+          "unsafe_all": 0.0,
+          "regret": 0.47908512751261395
+        },
+        {
+          "base_id": "confirmation_08",
+          "unsafe_given_safe": 0.16666666666666666,
+          "unsafe_all": 0.16666666666666666,
+          "regret": 0.383211612701416
+        },
+        {
+          "base_id": "confirmation_09",
+          "unsafe_given_safe": 0.16666666666666666,
+          "unsafe_all": 0.16666666666666666,
+          "regret": 0.19190009435017905
+        },
+        {
+          "base_id": "confirmation_10",
+          "unsafe_given_safe": 0.16666666666666666,
+          "unsafe_all": 0.16666666666666666,
+          "regret": 0.405393123626709
+        },
+        {
+          "base_id": "confirmation_11",
+          "unsafe_given_safe": 0.0,
+          "unsafe_all": 0.0,
+          "regret": 0.21121486028035483
+        }
+      ],
+      "fallback_groups": 0
+    },
+    "invariant_consistent_68": {
+      "mean": {
+        "unsafe_given_safe": 0.06944444444444443,
+        "unsafe_all": 0.06944444444444443,
+        "regret": 0.3126490116119385
+      },
+      "scenes": [
+        {
+          "base_id": "confirmation_00",
+          "unsafe_given_safe": 0.16666666666666666,
+          "unsafe_all": 0.16666666666666666,
+          "regret": 0.3747569719950358
+        },
+        {
+          "base_id": "confirmation_01",
+          "unsafe_given_safe": 0.0,
+          "unsafe_all": 0.0,
+          "regret": 0.3054644266764323
+        },
+        {
+          "base_id": "confirmation_02",
+          "unsafe_given_safe": 0.16666666666666666,
+          "unsafe_all": 0.16666666666666666,
+          "regret": 0.3509635925292969
+        },
+        {
+          "base_id": "confirmation_03",
+          "unsafe_given_safe": 0.0,
+          "unsafe_all": 0.0,
+          "regret": 0.31926854451497394
+        },
+        {
+          "base_id": "confirmation_04",
+          "unsafe_given_safe": 0.0,
+          "unsafe_all": 0.0,
+          "regret": 0.20324150721232095
+        },
+        {
+          "base_id": "confirmation_05",
+          "unsafe_given_safe": 0.0,
+          "unsafe_all": 0.0,
+          "regret": 0.22141345342000326
+        },
+        {
+          "base_id": "confirmation_06",
+          "unsafe_given_safe": 0.0,
+          "unsafe_all": 0.0,
+          "regret": 0.3058748245239258
+        },
+        {
+          "base_id": "confirmation_07",
+          "unsafe_given_safe": 0.0,
+          "unsafe_all": 0.0,
+          "regret": 0.47908512751261395
+        },
+        {
+          "base_id": "confirmation_08",
+          "unsafe_given_safe": 0.16666666666666666,
+          "unsafe_all": 0.16666666666666666,
+          "regret": 0.383211612701416
+        },
+        {
+          "base_id": "confirmation_09",
+          "unsafe_given_safe": 0.16666666666666666,
+          "unsafe_all": 0.16666666666666666,
+          "regret": 0.19190009435017905
+        },
+        {
+          "base_id": "confirmation_10",
+          "unsafe_given_safe": 0.16666666666666666,
+          "unsafe_all": 0.16666666666666666,
+          "regret": 0.405393123626709
+        },
+        {
+          "base_id": "confirmation_11",
+          "unsafe_given_safe": 0.0,
+          "unsafe_all": 0.0,
+          "regret": 0.21121486028035483
+        }
+      ],
+      "fallback_groups": 0
+    },
+    "invariant_legacy_selector_64": {
+      "mean": {
+        "unsafe_given_safe": 0.06944444444444443,
+        "unsafe_all": 0.06944444444444443,
+        "regret": 0.28145519892374676
+      },
+      "scenes": [
+        {
+          "base_id": "confirmation_00",
+          "unsafe_given_safe": 0.16666666666666666,
+          "unsafe_all": 0.16666666666666666,
+          "regret": 0.3392152786254883
+        },
+        {
+          "base_id": "confirmation_01",
+          "unsafe_given_safe": 0.0,
+          "unsafe_all": 0.0,
+          "regret": 0.3054644266764323
+        },
+        {
+          "base_id": "confirmation_02",
+          "unsafe_given_safe": 0.16666666666666666,
+          "unsafe_all": 0.16666666666666666,
+          "regret": 0.3509635925292969
+        },
+        {
+          "base_id": "confirmation_03",
+          "unsafe_given_safe": 0.0,
+          "unsafe_all": 0.0,
+          "regret": 0.2628866831461589
+        },
+        {
+          "base_id": "confirmation_04",
+          "unsafe_given_safe": 0.0,
+          "unsafe_all": 0.0,
+          "regret": 0.12822230656941733
+        },
+        {
+          "base_id": "confirmation_05",
+          "unsafe_given_safe": 0.0,
+          "unsafe_all": 0.0,
+          "regret": 0.18894831339518228
+        },
+        {
+          "base_id": "confirmation_06",
+          "unsafe_given_safe": 0.0,
+          "unsafe_all": 0.0,
+          "regret": 0.3058748245239258
+        },
+        {
+          "base_id": "confirmation_07",
+          "unsafe_given_safe": 0.0,
+          "unsafe_all": 0.0,
+          "regret": 0.3041672706604004
+        },
+        {
+          "base_id": "confirmation_08",
+          "unsafe_given_safe": 0.16666666666666666,
+          "unsafe_all": 0.16666666666666666,
+          "regret": 0.383211612701416
+        },
+        {
+          "base_id": "confirmation_09",
+          "unsafe_given_safe": 0.16666666666666666,
+          "unsafe_all": 0.16666666666666666,
+          "regret": 0.19190009435017905
+        },
+        {
+          "base_id": "confirmation_10",
+          "unsafe_given_safe": 0.16666666666666666,
+          "unsafe_all": 0.16666666666666666,
+          "regret": 0.405393123626709
+        },
+        {
+          "base_id": "confirmation_11",
+          "unsafe_given_safe": 0.0,
+          "unsafe_all": 0.0,
+          "regret": 0.21121486028035483
+        }
+      ]
+    }
+  }
+}

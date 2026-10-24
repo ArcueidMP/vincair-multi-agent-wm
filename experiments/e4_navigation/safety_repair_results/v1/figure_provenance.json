@@ -1,0 +1,14 @@
+{
+  "source": "summary.json: all12 confirmation geometries; no filtering",
+  "panels": [
+    "unsafe given safe",
+    "soft regret"
+  ],
+  "dots": "geometry means",
+  "bars": "equal geometry mean",
+  "svg_change": "trailing whitespace stripped only; original retained in raw_svg_exports",
+  "exports": [
+    "PNG180dpi",
+    "SVG vector text"
+  ]
+}
