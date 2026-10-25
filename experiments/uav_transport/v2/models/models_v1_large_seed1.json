@@ -1,0 +1,499 @@
+{
+  "format_version": 1,
+  "feature_names": [
+    "payload_height",
+    "payload_velocity_x",
+    "payload_velocity_y",
+    "payload_velocity_z",
+    "uav_relative_position_0_0",
+    "uav_relative_position_0_1",
+    "uav_relative_position_0_2",
+    "uav_relative_position_1_0",
+    "uav_relative_position_1_1",
+    "uav_relative_position_1_2",
+    "uav_relative_position_2_0",
+    "uav_relative_position_2_1",
+    "uav_relative_position_2_2",
+    "uav_relative_velocity_0_0",
+    "uav_relative_velocity_0_1",
+    "uav_relative_velocity_0_2",
+    "uav_relative_velocity_1_0",
+    "uav_relative_velocity_1_1",
+    "uav_relative_velocity_1_2",
+    "uav_relative_velocity_2_0",
+    "uav_relative_velocity_2_1",
+    "uav_relative_velocity_2_2",
+    "uav_body_to_world_rotation_0_0",
+    "uav_body_to_world_rotation_0_1",
+    "uav_body_to_world_rotation_0_2",
+    "uav_body_to_world_rotation_0_3",
+    "uav_body_to_world_rotation_0_4",
+    "uav_body_to_world_rotation_0_5",
+    "uav_body_to_world_rotation_0_6",
+    "uav_body_to_world_rotation_0_7",
+    "uav_body_to_world_rotation_0_8",
+    "uav_body_to_world_rotation_1_0",
+    "uav_body_to_world_rotation_1_1",
+    "uav_body_to_world_rotation_1_2",
+    "uav_body_to_world_rotation_1_3",
+    "uav_body_to_world_rotation_1_4",
+    "uav_body_to_world_rotation_1_5",
+    "uav_body_to_world_rotation_1_6",
+    "uav_body_to_world_rotation_1_7",
+    "uav_body_to_world_rotation_1_8",
+    "uav_body_to_world_rotation_2_0",
+    "uav_body_to_world_rotation_2_1",
+    "uav_body_to_world_rotation_2_2",
+    "uav_body_to_world_rotation_2_3",
+    "uav_body_to_world_rotation_2_4",
+    "uav_body_to_world_rotation_2_5",
+    "uav_body_to_world_rotation_2_6",
+    "uav_body_to_world_rotation_2_7",
+    "uav_body_to_world_rotation_2_8",
+    "uav_body_angular_velocity_0_0",
+    "uav_body_angular_velocity_0_1",
+    "uav_body_angular_velocity_0_2",
+    "uav_body_angular_velocity_1_0",
+    "uav_body_angular_velocity_1_1",
+    "uav_body_angular_velocity_1_2",
+    "uav_body_angular_velocity_2_0",
+    "uav_body_angular_velocity_2_1",
+    "uav_body_angular_velocity_2_2",
+    "motor_activation_0_0",
+    "motor_activation_0_1",
+    "motor_activation_0_2",
+    "motor_activation_0_3",
+    "motor_activation_1_0",
+    "motor_activation_1_1",
+    "motor_activation_1_2",
+    "motor_activation_1_3",
+    "motor_activation_2_0",
+    "motor_activation_2_1",
+    "motor_activation_2_2",
+    "motor_activation_2_3",
+    "cable_gap_0",
+    "cable_gap_1",
+    "cable_gap_2",
+    "cable_tension_0",
+    "cable_tension_1",
+    "cable_tension_2",
+    "external_force_0_x",
+    "external_force_0_y",
+    "external_force_0_z",
+    "external_force_1_x",
+    "external_force_1_y",
+    "external_force_1_z",
+    "external_force_2_x",
+    "external_force_2_y",
+    "external_force_2_z",
+    "external_force_3_x",
+    "external_force_3_y",
+    "external_force_3_z",
+    "donor_onehot_0",
+    "donor_onehot_1",
+    "donor_onehot_2",
+    "calibrated_dt",
+    "calibrated_control_dt",
+    "calibrated_drone_mass",
+    "calibrated_payload_mass",
+    "calibrated_rotor_max",
+    "calibrated_motor_tau",
+    "calibrated_cable_length",
+    "calibrated_formation_radius",
+    "calibrated_gravity",
+    "calibrated_arm_length",
+    "calibrated_yaw_torque_ratio",
+    "calibrated_inertia_x",
+    "calibrated_inertia_y",
+    "calibrated_inertia_z",
+    "calibrated_cable_solref_0",
+    "calibrated_cable_solref_1",
+    "calibrated_cable_solimp_0",
+    "calibrated_cable_solimp_1",
+    "calibrated_cable_solimp_2",
+    "formation_yaw_sin",
+    "formation_yaw_cos",
+    "operation_rearrange_seconds",
+    "operation_settle_seconds",
+    "operation_unload_seconds",
+    "operation_hold_seconds",
+    "operation_retension_seconds",
+    "operation_restore_seconds",
+    "operation_verify_seconds",
+    "operation_contact_confirm_seconds",
+    "operation_gate_timeout_seconds",
+    "operation_slack_distance",
+    "operation_retension_microarc_deg",
+    "operation_contact_threshold",
+    "operation_support_threshold",
+    "operation_gap_tolerance",
+    "operation_closing_speed_limit",
+    "operation_payload_speed_limit",
+    "operation_payload_error_limit",
+    "operation_reconfigure",
+    "controller_payload_integral_x",
+    "controller_payload_integral_y",
+    "controller_payload_integral_z",
+    "controller_position_integral_0_x",
+    "controller_position_integral_0_y",
+    "controller_position_integral_0_z",
+    "controller_position_integral_1_x",
+    "controller_position_integral_1_y",
+    "controller_position_integral_1_z",
+    "controller_position_integral_2_x",
+    "controller_position_integral_2_y",
+    "controller_position_integral_2_z",
+    "controller_memory_observed"
+  ],
+  "target_names": [
+    "peak_payload_excursion",
+    "peak_donor_tension",
+    "elapsed_seconds",
+    "absolute_actuator_work",
+    "total_squared_thrust_integral",
+    "final_payload_error",
+    "final_payload_speed",
+    "completion"
+  ],
+  "target_units": [
+    "m",
+    "N",
+    "s",
+    "J",
+    "N^2 s",
+    "m",
+    "m/s",
+    "indicator"
+  ],
+  "width": 128,
+  "seed": 1,
+  "steps": 1500,
+  "batch_size": 128,
+  "learning_rate": 0.002,
+  "best_step": 650,
+  "best_validation_loss": 0.1520688831806183,
+  "validation_every": 50,
+  "parameters": 35976,
+  "train_cases": 432,
+  "validation_cases": 144,
+  "normalization": "training split only",
+  "regression": "seven standardized physical outcomes; negative predictions clipped to zero at inference",
+  "completion": "sigmoid completion score trained with binary cross entropy",
+  "controller_conditioning": "observed integral memory; controller gains are fixed by the dataset registration",
+  "checkpoint_selection": "minimum validation standardized-MSE plus completion-BCE; no test or mission labels",
+  "constant_training_features": [
+    "external_force_0_x",
+    "external_force_0_y",
+    "external_force_0_z",
+    "external_force_1_x",
+    "external_force_1_y",
+    "external_force_1_z",
+    "external_force_2_x",
+    "external_force_2_y",
+    "external_force_2_z",
+    "external_force_3_x",
+    "external_force_3_y",
+    "external_force_3_z",
+    "calibrated_dt",
+    "calibrated_control_dt",
+    "calibrated_drone_mass",
+    "calibrated_rotor_max",
+    "calibrated_motor_tau",
+    "calibrated_cable_length",
+    "calibrated_gravity",
+    "calibrated_arm_length",
+    "calibrated_yaw_torque_ratio",
+    "calibrated_inertia_x",
+    "calibrated_inertia_y",
+    "calibrated_inertia_z",
+    "calibrated_cable_solref_0",
+    "calibrated_cable_solref_1",
+    "calibrated_cable_solimp_0",
+    "calibrated_cable_solimp_1",
+    "calibrated_cable_solimp_2",
+    "operation_settle_seconds",
+    "operation_unload_seconds",
+    "operation_hold_seconds",
+    "operation_restore_seconds",
+    "operation_verify_seconds",
+    "operation_contact_confirm_seconds",
+    "operation_gate_timeout_seconds",
+    "operation_retension_microarc_deg",
+    "operation_contact_threshold",
+    "operation_support_threshold",
+    "operation_gap_tolerance",
+    "operation_closing_speed_limit",
+    "operation_payload_speed_limit",
+    "operation_payload_error_limit",
+    "controller_memory_observed"
+  ],
+  "data_sha256": {
+    "Xtrain": "0f6e9204d9b53fb2895595bdaed7a0413298b4b1dac0b8dbb6abb0a3c46bba54",
+    "Ytrain": "31bace10be4b43ee75b521aaa82ccf7172afd4df5e3c78dcc7d184f6b93efcad",
+    "Xval": "297095cdc65430999a863842fe6a21026b941f95ff7884103621df4b002de949",
+    "Yval": "326aebee01768aebbefa1d1ade7cdbe2cd83646c21af2f9ef1678d302ae9d82f"
+  },
+  "history": [
+    {
+      "step": 0,
+      "train_batch_loss": null,
+      "validation_loss": 1.6259596347808838
+    },
+    {
+      "step": 50,
+      "train_batch_loss": 0.15996262431144714,
+      "validation_loss": 0.29052481055259705
+    },
+    {
+      "step": 100,
+      "train_batch_loss": 0.0674646720290184,
+      "validation_loss": 0.2508503794670105
+    },
+    {
+      "step": 150,
+      "train_batch_loss": 0.03554883599281311,
+      "validation_loss": 0.18954317271709442
+    },
+    {
+      "step": 200,
+      "train_batch_loss": 0.017116473987698555,
+      "validation_loss": 0.1785726249217987
+    },
+    {
+      "step": 250,
+      "train_batch_loss": 0.011322718113660812,
+      "validation_loss": 0.17271661758422852
+    },
+    {
+      "step": 300,
+      "train_batch_loss": 0.007888655178248882,
+      "validation_loss": 0.1644040048122406
+    },
+    {
+      "step": 350,
+      "train_batch_loss": 0.005611311178654432,
+      "validation_loss": 0.1603413075208664
+    },
+    {
+      "step": 400,
+      "train_batch_loss": 0.004411764908581972,
+      "validation_loss": 0.1626480221748352
+    },
+    {
+      "step": 450,
+      "train_batch_loss": 0.004298205021768808,
+      "validation_loss": 0.15570135414600372
+    },
+    {
+      "step": 500,
+      "train_batch_loss": 0.003799574449658394,
+      "validation_loss": 0.15571509301662445
+    },
+    {
+      "step": 550,
+      "train_batch_loss": 0.0038636247627437115,
+      "validation_loss": 0.15309040248394012
+    },
+    {
+      "step": 600,
+      "train_batch_loss": 0.0026542337145656347,
+      "validation_loss": 0.1530698835849762
+    },
+    {
+      "step": 650,
+      "train_batch_loss": 0.0024155438877642155,
+      "validation_loss": 0.1520688831806183
+    },
+    {
+      "step": 700,
+      "train_batch_loss": 0.002676871372386813,
+      "validation_loss": 0.16118206083774567
+    },
+    {
+      "step": 750,
+      "train_batch_loss": 0.0028064404614269733,
+      "validation_loss": 0.15359598398208618
+    },
+    {
+      "step": 800,
+      "train_batch_loss": 0.0021151357796043158,
+      "validation_loss": 0.15299955010414124
+    },
+    {
+      "step": 850,
+      "train_batch_loss": 0.0022731011267751455,
+      "validation_loss": 0.15632712841033936
+    },
+    {
+      "step": 900,
+      "train_batch_loss": 0.002186886267736554,
+      "validation_loss": 0.15647391974925995
+    },
+    {
+      "step": 950,
+      "train_batch_loss": 0.002137582516297698,
+      "validation_loss": 0.16403935849666595
+    },
+    {
+      "step": 1000,
+      "train_batch_loss": 0.0017148820916190743,
+      "validation_loss": 0.15710832178592682
+    },
+    {
+      "step": 1050,
+      "train_batch_loss": 0.0016095706960186362,
+      "validation_loss": 0.15838688611984253
+    },
+    {
+      "step": 1100,
+      "train_batch_loss": 0.0017934483475983143,
+      "validation_loss": 0.16059190034866333
+    },
+    {
+      "step": 1150,
+      "train_batch_loss": 0.0019782467279583216,
+      "validation_loss": 0.15431758761405945
+    },
+    {
+      "step": 1200,
+      "train_batch_loss": 0.0014642567839473486,
+      "validation_loss": 0.15374736487865448
+    },
+    {
+      "step": 1250,
+      "train_batch_loss": 0.0017208005301654339,
+      "validation_loss": 0.15846645832061768
+    },
+    {
+      "step": 1300,
+      "train_batch_loss": 0.0013448294484987855,
+      "validation_loss": 0.15837383270263672
+    },
+    {
+      "step": 1350,
+      "train_batch_loss": 0.0016777055570855737,
+      "validation_loss": 0.1536954939365387
+    },
+    {
+      "step": 1400,
+      "train_batch_loss": 0.0016745399916544557,
+      "validation_loss": 0.15667147934436798
+    },
+    {
+      "step": 1450,
+      "train_batch_loss": 0.0013956623151898384,
+      "validation_loss": 0.16267871856689453
+    },
+    {
+      "step": 1500,
+      "train_batch_loss": 0.0012111524119973183,
+      "validation_loss": 0.15895438194274902
+    }
+  ],
+  "training_seconds": 1.5134625869977754,
+  "numpy_torch_max_absolute_difference": 9.5367431640625e-07,
+  "training_metrics": {
+    "cases": 432,
+    "rmse": {
+      "peak_payload_excursion": 0.0029649354983121157,
+      "peak_donor_tension": 0.04086863249540329,
+      "elapsed_seconds": 0.023791957646608353,
+      "absolute_actuator_work": 0.0015019873389974236,
+      "total_squared_thrust_integral": 0.0037583212833851576,
+      "final_payload_error": 5.6989934819284827e-05,
+      "final_payload_speed": 0.000161495350766927
+    },
+    "mean_absolute_error": {
+      "peak_payload_excursion": 0.00234683183953166,
+      "peak_donor_tension": 0.03329727426171303,
+      "elapsed_seconds": 0.019118543714284897,
+      "absolute_actuator_work": 0.001193571137264371,
+      "total_squared_thrust_integral": 0.0029769334942102432,
+      "final_payload_error": 4.4504933612188324e-05,
+      "final_payload_speed": 0.00012921189772896469
+    },
+    "completion_accuracy": 1.0,
+    "completion_brier_score": 1.815848360564587e-09,
+    "completion_positive_labels": 432,
+    "completion_negative_labels": 0
+  },
+  "validation_metrics": {
+    "cases": 144,
+    "rmse": {
+      "peak_payload_excursion": 0.023750897496938705,
+      "peak_donor_tension": 0.18013973534107208,
+      "elapsed_seconds": 0.3289952874183655,
+      "absolute_actuator_work": 0.01618780568242073,
+      "total_squared_thrust_integral": 0.04997787997126579,
+      "final_payload_error": 0.0004674529191106558,
+      "final_payload_speed": 0.0010319688590243459
+    },
+    "mean_absolute_error": {
+      "peak_payload_excursion": 0.019430406391620636,
+      "peak_donor_tension": 0.13886791467666626,
+      "elapsed_seconds": 0.2767447829246521,
+      "absolute_actuator_work": 0.013466307893395424,
+      "total_squared_thrust_integral": 0.04049353301525116,
+      "final_payload_error": 0.00038953524199314415,
+      "final_payload_speed": 0.0007515973993577063
+    },
+    "completion_accuracy": 1.0,
+    "completion_brier_score": 1.3068984117126092e-07,
+    "completion_positive_labels": 144,
+    "completion_negative_labels": 0
+  },
+  "dataset_path": "data/uav_transport/local_v1.npz",
+  "dataset_sha256": "dc7c1a1f34ea3da551936c6d86625b9a6563d7468921c95ac0fbfd6c6d4e05b0",
+  "test_metrics": {
+    "cases": 216,
+    "rmse": {
+      "peak_payload_excursion": 0.0188203793902183,
+      "peak_donor_tension": 0.18913120400368488,
+      "elapsed_seconds": 0.5246001123028387,
+      "absolute_actuator_work": 0.01212270061627811,
+      "total_squared_thrust_integral": 0.07073284295658236,
+      "final_payload_error": 0.0006312985403157109,
+      "final_payload_speed": 0.0011548571688091574
+    },
+    "mean_absolute_error": {
+      "peak_payload_excursion": 0.014949638006580819,
+      "peak_donor_tension": 0.1402535160319753,
+      "elapsed_seconds": 0.4525327591542844,
+      "absolute_actuator_work": 0.009807484188184985,
+      "total_squared_thrust_integral": 0.06255021173939056,
+      "final_payload_error": 0.0005005490052429483,
+      "final_payload_speed": 0.0009386612255836429
+    },
+    "completion_accuracy": 1.0,
+    "completion_brier_score": 2.394095615252554e-07,
+    "completion_positive_labels": 216,
+    "completion_negative_labels": 0
+  },
+  "test_action_metrics": {
+    "cases": 96,
+    "rmse": {
+      "peak_payload_excursion": 0.0196025725473185,
+      "peak_donor_tension": 0.20388177181408354,
+      "elapsed_seconds": 0.5271689372800425,
+      "absolute_actuator_work": 0.011741799475547486,
+      "total_squared_thrust_integral": 0.07130181834391444,
+      "final_payload_error": 0.0006251215836827323,
+      "final_payload_speed": 0.0011479580426706003
+    },
+    "mean_absolute_error": {
+      "peak_payload_excursion": 0.015490268632835697,
+      "peak_donor_tension": 0.15681751020431117,
+      "elapsed_seconds": 0.46021601021289854,
+      "absolute_actuator_work": 0.00972484841165875,
+      "total_squared_thrust_integral": 0.06373094718838458,
+      "final_payload_error": 0.0004993596740753633,
+      "final_payload_speed": 0.0009172493532412363
+    },
+    "completion_accuracy": 1.0,
+    "completion_brier_score": 3.137191803744462e-07,
+    "completion_positive_labels": 96,
+    "completion_negative_labels": 0
+  },
+  "array_file": "models_v1_large_seed1.npz",
+  "array_sha256": "cd4ec76549397c2382804842e2a312e1ccdb4b88a06f0737eef5e7a83fdeea75"
+}

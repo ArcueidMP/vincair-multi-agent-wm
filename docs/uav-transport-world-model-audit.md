@@ -2,6 +2,8 @@
 
 2026-10-25, `codex/novelty`.
 
+[Branch overview](../README.md) · [Published evidence and models](../experiments/uav_transport/v2/README.md)
+
 **Executable load-sharing geometry controls the quality of cooperative aerial
 transport. Frozen local models can predict recovery outcomes and select joint
 maneuvers for three UAVs, transferring from isolated operation data to complete
@@ -10,8 +12,10 @@ transport missions.**
 This aviation experiment combines a physical multi-agent system, learned joint
 operation models, and closed-loop motor execution. The sequence is transport,
 controlled unloading, load redistribution, re-tension, and further transport.
-It extends the [predictor-by-interface study](predictor-interface-factorial-audit.md)
-to a flight task with propulsion limits and cable-force transients.
+Together with the [joint multi-agent Push-T study](planned-helper-audit.md), it
+establishes executable interaction geometry as a planning capability across
+ground contact and aerial load sharing. The flight task adds propulsion limits,
+cable-force transients, and complete constrained transport missions.
 
 ## 1. Physical team and control architecture
 
@@ -91,7 +95,7 @@ discrepancy is 0.0006381 m; maximum peak-tension relative change is 9.61%; maxim
 impulse discrepancy is 0.0000835 Ns. All trajectories remain finite and clear of
 collisions, with rotor force at most 0.12995 N and UAV tilt at most 9.04 degrees.
 
-Report: [registered physical audit](../data/uav_transport/physics_v1.json).
+Report: [registered physical-audit summary](../experiments/uav_transport/v2/summary.json).
 
 ## 3. The learned team-level world model
 
@@ -146,8 +150,8 @@ excursion, tension, time, and effort supply the principal decision signal.
 
 Implementation and data: [local models](../uav_transport/local_model.py),
 [data collection](../uav_transport/collect.py),
-[dataset report](../data/uav_transport/local_v1.json),
-[frozen model manifest](../data/uav_transport/models_v1_manifest.json).
+[dataset summary](../experiments/uav_transport/v2/summary.json),
+[frozen model manifest](../experiments/uav_transport/v2/models/models_v1_manifest.json).
 
 ## 4. Held-out local decisions at matched candidate budgets
 
@@ -178,7 +182,7 @@ class (1 s / 3 s) and exceed the donor-tension limit, with actual peaks of
 The audit preserves all candidate predictions, ranking errors, and constraint
 margin coverage.
 
-Report: [held-out action-selection audit](../data/uav_transport/selection_v1.json).
+Report: [held-out action-selection summary](../experiments/uav_transport/v2/summary.json).
 
 ## 5. Complete aviation missions
 
@@ -260,8 +264,8 @@ predicted-violation selection is used in 54/72 small-model and 66/72 large-model
 expanded decisions; those choices still follow the learned outcome ranking.
 The observed task counts above come from actual dynamics and measured limits.
 
-Reports: [final mission matrix](../data/uav_transport/mission_v2.json) and
-[paired-state, prediction-provenance, cost, and latency audit](../data/uav_transport/mission_v2_analysis.json).
+Reports: [final mission matrix](../experiments/uav_transport/v2/mission_v2.json) and
+[paired-state, prediction-provenance, cost, and latency summary](../experiments/uav_transport/v2/summary.json).
 
 ## 6. Whole-mission numerical verification
 
@@ -285,9 +289,9 @@ the refinement result separately. The stricter arrival guard removes the
 waypoint-window sensitivity observed in the earlier protocol while preserving
 the original external task requirements and charging every extra control step.
 
-Reports: [complete final replay](../data/uav_transport/mission_v2_replay.json),
-[earlier protocol control](../data/uav_transport/mission_v1_replay.json), and
-[targeted tension-boundary replay](../data/uav_transport/mission_v2_boundary_dt0005.log).
+Reports: [final replay summary](../experiments/uav_transport/v2/summary.json),
+earlier protocol control (`data/uav_transport/mission_v1_replay.json`), and
+[targeted tension-boundary replay](../experiments/uav_transport/v2/mission_v2_boundary_dt0005.log).
 
 **The resulting system combines physical multi-agent cooperation with learned
 joint outcome prediction: locally trained, frozen models select executed
@@ -326,11 +330,16 @@ OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 data/uav_transport/.venv/bin/python \
 
 Train each width/seed with the existing Torch environment, then use the frozen
 NPZ models from the lightweight simulator environment. Fresh output prefixes
-preserve earlier artifacts. Chinese summaries and raw results remain local.
+preserve earlier artifacts. [Compact evidence and all six frozen model files](../experiments/uav_transport/v2/README.md)
+are published with source hashes. Full raw trajectories, candidate arrays,
+historical protocol archives, and Chinese working notes remain under the local
+`data/uav_transport/` tree. The evidence guide also provides a direct model-restore
+path for mission evaluation.
 
-The original Torch/VMAS environment passes **257 tests**, with optional MuJoCo
-tests skipped there. The UAV environment passes **83 tests**; its two optional
-Torch-training tests pass in the original environment. The training launcher
+The combined branch passes **269 tests** in the Torch/VMAS environment, with
+eight optional MuJoCo checks skipped. The UAV environment passes **83 tests**;
+its two optional Torch-training tests run in the first environment. The original
+UAV run provenance retains its stage-specific 257/83 test counts. The training launcher
 also reproduces both seed-0 model sizes' complete weight and normalization
 arrays bitwise.
 

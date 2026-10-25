@@ -2,6 +2,9 @@
 
 2026-10-25, `codex/novelty`.
 
+Follow-ups: [jointly planned helper](planned-helper-audit.md) and
+[three-UAV aerial transport](uav-transport-world-model-audit.md).
+
 **Executable contact coverage is a causal determinant of composed manipulation
 capability. Its bottleneck persists with an elevenfold increase in network
 capacity and with exact simulator option prediction. Expanding contact modes

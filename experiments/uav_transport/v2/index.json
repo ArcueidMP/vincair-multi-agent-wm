@@ -1,0 +1,254 @@
+{
+  "scope": "Existing UAV study organized for branch documentation; copied fields retain their original values.",
+  "current_mission_protocol": "mission_v2",
+  "source_files": {
+    "data/uav_transport/physics_v1.json": {
+      "sha256": "0b58d7ab8086e36b1d7e0b20d85b4e355f359b3626a319dee87209a5d7a73054",
+      "selected_fields": [
+        "cases",
+        "arms",
+        "plant_config",
+        "recovery_config",
+        "nominal_dt",
+        "replay_dt",
+        "control_dt",
+        "tolerances",
+        "comparisons",
+        "refinement",
+        "paired",
+        "versions",
+        "verified_frozen_sources"
+      ]
+    },
+    "data/uav_transport/local_v1.json": {
+      "sha256": "0f0e7405cd1ace87b2cf460cf13706bc1f7f56b2ddf3ebebfd2606a74c80a0dc",
+      "selected_fields": [
+        "contexts",
+        "examples",
+        "examples_by_split",
+        "completed",
+        "split_unit",
+        "supervision",
+        "candidates",
+        "feature_names",
+        "target_names",
+        "array_path",
+        "array_sha256"
+      ]
+    },
+    "data/uav_transport/selection_v1.json": {
+      "sha256": "4555ee17bc71b56a0f1c5008a9c13b927f66a8d49d1a0f34c8f69a1a6a420dda",
+      "selected_fields": [
+        "audit",
+        "mission_config",
+        "split_checks",
+        "banks",
+        "allocation",
+        "local_decisions",
+        "summary",
+        "paired",
+        "prediction_diagnostics",
+        "verified_input_files",
+        "no_training_or_margin_tuning",
+        "additional_physics_steps"
+      ]
+    },
+    "data/uav_transport/mission_v2_analysis.json": {
+      "sha256": "9dff8188b39033ee1c6724ae184f62bf33e03286f1199e87804b7d5d825973c7",
+      "selected_fields": [
+        "missions",
+        "summary",
+        "per_seed",
+        "paired_summary",
+        "all_execution_scores_reproduced",
+        "all_decisions_verified",
+        "all_paired_prefixes_bitwise",
+        "validation_margins",
+        "latency_note",
+        "outcome_note"
+      ]
+    },
+    "data/uav_transport/mission_v2_replay.json": {
+      "sha256": "29e37fb8d73a1b8d34164ab4385d9cf3d8f8c200532c23f3866747c3212d448b",
+      "selected_fields": [
+        "missions",
+        "fine_dt",
+        "control_dt",
+        "tolerances",
+        "scoring",
+        "replay",
+        "completed",
+        "complete",
+        "summary",
+        "changed_scores",
+        "verified_frozen_inputs",
+        "nominal_valid"
+      ]
+    },
+    "data/uav_transport/uav_v2_provenance.json": {
+      "sha256": "49fd08e069fe31cfb284b9df22784a44daab55463ab3fd48f105de4bf1d81b57",
+      "copy": "experiments/uav_transport/v2/uav_v2_provenance.json"
+    },
+    "data/uav_transport/mission_v2.json": {
+      "sha256": "ced098e19149c07c6ab5314ed30c13e4009d61549fdd3269cb77c1dc858a8500",
+      "copy": "experiments/uav_transport/v2/mission_v2.json"
+    },
+    "data/uav_transport/mission_v2_boundary_dt0005.log": {
+      "sha256": "7dcaf53894933a429ed02689b766d8454984ea34e5ce7c364ec04f79e56f3eeb",
+      "copy": "experiments/uav_transport/v2/mission_v2_boundary_dt0005.log",
+      "formatting": "Extra trailing blank line removed; recorded scientific text unchanged."
+    },
+    "data/uav_transport/models_v1_manifest.json": {
+      "sha256": "def6784ed4be9d490c1d3c476e41f80c12807885dd2c3b3aaf915e5248d3fdf9",
+      "copy": "experiments/uav_transport/v2/models/models_v1_manifest.json"
+    },
+    "data/uav_transport/models_v1_registration.json": {
+      "sha256": "acc9ba1df8112fe50384cebc5b742bcb135a7cd6745aa5dfa60ae233f7c9440b",
+      "copy": "experiments/uav_transport/v2/models/models_v1_registration.json"
+    },
+    "data/uav_transport/models_v1_large_seed0.json": {
+      "sha256": "4ce05d799498b335318f5f7e3fd9ca3f3724050124f2e8c8114c71aad6ae79a4",
+      "copy": "experiments/uav_transport/v2/models/models_v1_large_seed0.json"
+    },
+    "data/uav_transport/models_v1_large_seed0.npz": {
+      "sha256": "9998349428a7074abde76c25b3d24f036c97202dd89872d5dd16207fb992c2be",
+      "copy": "experiments/uav_transport/v2/models/models_v1_large_seed0.npz"
+    },
+    "data/uav_transport/models_v1_large_seed1.json": {
+      "sha256": "5d58b3020657048acf169d00a918ec00b807eab643fe55dd8c8ee0f58c26a96f",
+      "copy": "experiments/uav_transport/v2/models/models_v1_large_seed1.json"
+    },
+    "data/uav_transport/models_v1_large_seed1.npz": {
+      "sha256": "cd4ec76549397c2382804842e2a312e1ccdb4b88a06f0737eef5e7a83fdeea75",
+      "copy": "experiments/uav_transport/v2/models/models_v1_large_seed1.npz"
+    },
+    "data/uav_transport/models_v1_large_seed2.json": {
+      "sha256": "be282e98c57753998189f98702ae7c2188257f3a1b6bd14e6a91065783b5e731",
+      "copy": "experiments/uav_transport/v2/models/models_v1_large_seed2.json"
+    },
+    "data/uav_transport/models_v1_large_seed2.npz": {
+      "sha256": "4b4e9b17d340664b8038f936029fa57df0e2ab73c51eba5fde35054f5beb4ac5",
+      "copy": "experiments/uav_transport/v2/models/models_v1_large_seed2.npz"
+    },
+    "data/uav_transport/models_v1_small_seed0.json": {
+      "sha256": "95ba5ef9ba532bcc8838a6286573f4093e9611ab387563ce7a178bf23ff7f05f",
+      "copy": "experiments/uav_transport/v2/models/models_v1_small_seed0.json"
+    },
+    "data/uav_transport/models_v1_small_seed0.npz": {
+      "sha256": "a988b27788b5f4e5f20d693f42af1a2324bb5f6b66dfcb726081ad9ede28f0fe",
+      "copy": "experiments/uav_transport/v2/models/models_v1_small_seed0.npz"
+    },
+    "data/uav_transport/models_v1_small_seed1.json": {
+      "sha256": "55bf2bcd7c25bf11610222682efac3952634bc7eefcf9572bf9d5fb952859d44",
+      "copy": "experiments/uav_transport/v2/models/models_v1_small_seed1.json"
+    },
+    "data/uav_transport/models_v1_small_seed1.npz": {
+      "sha256": "5cbcf50b571481fc3f7c9503120d772df235039b4a8c305ba58b331c58ae3fee",
+      "copy": "experiments/uav_transport/v2/models/models_v1_small_seed1.npz"
+    },
+    "data/uav_transport/models_v1_small_seed2.json": {
+      "sha256": "df0142bad2f28011d7510965807293e62b3af58cbc101777f92c33099d5f9b25",
+      "copy": "experiments/uav_transport/v2/models/models_v1_small_seed2.json"
+    },
+    "data/uav_transport/models_v1_small_seed2.npz": {
+      "sha256": "5a02aceb2d567116722f7dc443a76eaa0efda595379b7adb4bd0746299948cbd",
+      "copy": "experiments/uav_transport/v2/models/models_v1_small_seed2.npz"
+    }
+  },
+  "branch_validation": {
+    "date": "2026-10-25",
+    "cpu": {
+      "passed": 269,
+      "skipped": 8
+    },
+    "uav": {
+      "passed": 83,
+      "skipped": 2
+    }
+  },
+  "raw_artifacts": "Full datasets, trajectories and historical protocol archives remain under data/uav_transport/.",
+  "files": {
+    "README.md": {
+      "sha256": "41ab5b85f7820fdb895fac16f2b336cee42b27b2300b76e793c34ddaa70b510b",
+      "bytes": 3026
+    },
+    "mission_v2.json": {
+      "sha256": "ced098e19149c07c6ab5314ed30c13e4009d61549fdd3269cb77c1dc858a8500",
+      "bytes": 486701
+    },
+    "mission_v2_boundary_dt0005.log": {
+      "sha256": "64bca7952c58c7edae218d72910a95d83c433a70867e55a41e529304f111d80a",
+      "bytes": 3541
+    },
+    "models/models_v1_large_seed0.json": {
+      "sha256": "4ce05d799498b335318f5f7e3fd9ca3f3724050124f2e8c8114c71aad6ae79a4",
+      "bytes": 15733
+    },
+    "models/models_v1_large_seed0.npz": {
+      "sha256": "9998349428a7074abde76c25b3d24f036c97202dd89872d5dd16207fb992c2be",
+      "bytes": 135745
+    },
+    "models/models_v1_large_seed1.json": {
+      "sha256": "5d58b3020657048acf169d00a918ec00b807eab643fe55dd8c8ee0f58c26a96f",
+      "bytes": 15725
+    },
+    "models/models_v1_large_seed1.npz": {
+      "sha256": "cd4ec76549397c2382804842e2a312e1ccdb4b88a06f0737eef5e7a83fdeea75",
+      "bytes": 135827
+    },
+    "models/models_v1_large_seed2.json": {
+      "sha256": "be282e98c57753998189f98702ae7c2188257f3a1b6bd14e6a91065783b5e731",
+      "bytes": 15729
+    },
+    "models/models_v1_large_seed2.npz": {
+      "sha256": "4b4e9b17d340664b8038f936029fa57df0e2ab73c51eba5fde35054f5beb4ac5",
+      "bytes": 135792
+    },
+    "models/models_v1_manifest.json": {
+      "sha256": "def6784ed4be9d490c1d3c476e41f80c12807885dd2c3b3aaf915e5248d3fdf9",
+      "bytes": 3571
+    },
+    "models/models_v1_registration.json": {
+      "sha256": "acc9ba1df8112fe50384cebc5b742bcb135a7cd6745aa5dfa60ae233f7c9440b",
+      "bytes": 1154
+    },
+    "models/models_v1_small_seed0.json": {
+      "sha256": "95ba5ef9ba532bcc8838a6286573f4093e9611ab387563ce7a178bf23ff7f05f",
+      "bytes": 15696
+    },
+    "models/models_v1_small_seed0.npz": {
+      "sha256": "a988b27788b5f4e5f20d693f42af1a2324bb5f6b66dfcb726081ad9ede28f0fe",
+      "bytes": 24985
+    },
+    "models/models_v1_small_seed1.json": {
+      "sha256": "55bf2bcd7c25bf11610222682efac3952634bc7eefcf9572bf9d5fb952859d44",
+      "bytes": 15676
+    },
+    "models/models_v1_small_seed1.npz": {
+      "sha256": "5cbcf50b571481fc3f7c9503120d772df235039b4a8c305ba58b331c58ae3fee",
+      "bytes": 24977
+    },
+    "models/models_v1_small_seed2.json": {
+      "sha256": "df0142bad2f28011d7510965807293e62b3af58cbc101777f92c33099d5f9b25",
+      "bytes": 15681
+    },
+    "models/models_v1_small_seed2.npz": {
+      "sha256": "5a02aceb2d567116722f7dc443a76eaa0efda595379b7adb4bd0746299948cbd",
+      "bytes": 24980
+    },
+    "summary.json": {
+      "sha256": "1dfb8bd33635827951c93cbb572890173d59be9bd2647f3f00814d9f9a6baa31",
+      "bytes": 349646
+    },
+    "uav_v2_provenance.json": {
+      "sha256": "49fd08e069fe31cfb284b9df22784a44daab55463ab3fd48f105de4bf1d81b57",
+      "bytes": 220184
+    }
+  },
+  "model_copy_checks": {
+    "models": 6,
+    "weights_and_metadata_match_original_hashes": true,
+    "all_models_load": true,
+    "all_parameter_and_normalization_arrays_identical": true
+  }
+}

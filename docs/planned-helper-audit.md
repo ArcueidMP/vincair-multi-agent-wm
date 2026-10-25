@@ -1,5 +1,7 @@
 # Contact-Mode Coverage Bottlenecks Joint Multi-Agent World-Model Planning
 
+[Branch overview](../README.md) · [Companion aerial-transport study](uav-transport-world-model-audit.md)
+
 **Executable contact transitions are a structural determinant of joint
 planning capability. The bottleneck persists when both agents are planned
 and when outcomes are predicted by the true simulator. Expanding contact-mode
@@ -147,7 +149,8 @@ exactly. Replaying the first and last complete collection batches per support
 reproduces 9,984 sampled local outcomes, input features and all 24D endpoints
 bit for bit.
 
-The regression suite passes **247 tests**. The new tests cover physical helper
+The study's original regression run passed **247 tests**; current combined-branch
+validation is listed in the [overview](../README.md#environments-and-checks). The new tests cover physical helper
 actuation, force bounds, exact fixed-helper compatibility, controller-memory
 forks, candidate-budget preservation, goal-free inputs, simulator-free learned
 selection, context splits, and portable-weight reconstruction.
