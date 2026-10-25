@@ -1,0 +1,9 @@
+{
+  "status": "superseded_by_v2",
+  "reason": "Native VMAS creation resets global CUDA RNG to42. First run manual_seed(0) preceded collection, so training CUDA projection RNG did not remain seed0.",
+  "preservation": "Original data/checkpoint/metrics/protocol retained; exact three source snapshots preserved.",
+  "observed_before_cuda": 0,
+  "observed_after_create_cpu": 0,
+  "observed_after_create_cuda": 42,
+  "observed_before_cpu": 0
+}

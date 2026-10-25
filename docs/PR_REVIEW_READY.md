@@ -48,3 +48,7 @@
 - 在另一台机器/独立环境运行smoke与全套复现，提交版本、结果及差异；使用`verify_shared_reproduction.py`对表。
 - E4负责人核对任务定义、原生物理与公平对照口径；模型负责人补交Navigation材料。
 - 全员审核阶段工作说明中的贡献归属和实验结论，再决定合并。不要跳过评审直接把分支重置成main。
+
+## 最新增补：数值Navigation训练pilot
+
+新增独立`vmas_navigation/`，实际采集64集并训练500步Entity-Token JEPA本地原型，59项测试及独立审计通过；位置预测未优于persistence，未接planner。当前已有本地初版模型，但队友的新架构/采集协议尚未对齐，不得把“模型文件存在”写成正式Navigation LeWM或三机效果。详见[补充计划](NAVIGATION_TRAINING_PLAN.md)和[训练报告](../experiments/e4_navigation/navigation_training_results/v1/REPORT.md)。原始研究计划未覆盖，checkpoint/原始数组仍在本地并由hash索引。

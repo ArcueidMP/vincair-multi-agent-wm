@@ -99,3 +99,7 @@
 4. **大文件共享与旧实验移植：**团队确定数据存储与访问方式后，按run提供SHA256及split/consumption记录；移植旧路径时保留原归档，不能覆盖冻结源文件。
 
 **当前状态：**可继续推进直接评分/风险校准、数据与工程协作；Navigation LeWM接入受材料缺失限制。没有把材料等待或未完成事项写成已完成结果。
+
+## 补充：组员建议后的本地训练里程碑
+
+已按新的执行方向主动适配数值Navigation Entity-Token JEPA，采集64集并实际训练500步。原始计划保持不变；这是本地协议原型，尚未与队友collector/config/架构commit对齐。工程闭环通过，物理位置预测未优于persistence，不能接入规划或声称已完成Navigation LeWM基准。状态从“仅有直接评分/解析基线”更新为“已有本地可训练初版模型，仍待预测质量与团队协议对齐”。详见[训练报告](../experiments/e4_navigation/navigation_training_results/v1/REPORT.md)和[补充计划](NAVIGATION_TRAINING_PLAN.md)。

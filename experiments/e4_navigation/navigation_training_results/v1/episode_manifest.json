@@ -1,0 +1,450 @@
+[
+  {
+    "episode_id": "nav_trainpilot_00_noisy_pd",
+    "geometry_id": "nav_trainpilot_00",
+    "split": "train",
+    "policy": "noisy_pd",
+    "seed": 2026180000
+  },
+  {
+    "episode_id": "nav_trainpilot_00_priority_pd",
+    "geometry_id": "nav_trainpilot_00",
+    "split": "train",
+    "policy": "priority_pd",
+    "seed": 2026180000
+  },
+  {
+    "episode_id": "nav_trainpilot_00_yield_pd",
+    "geometry_id": "nav_trainpilot_00",
+    "split": "train",
+    "policy": "yield_pd",
+    "seed": 2026180000
+  },
+  {
+    "episode_id": "nav_trainpilot_00_random_ou",
+    "geometry_id": "nav_trainpilot_00",
+    "split": "train",
+    "policy": "random_ou",
+    "seed": 2026180000
+  },
+  {
+    "episode_id": "nav_trainpilot_01_noisy_pd",
+    "geometry_id": "nav_trainpilot_01",
+    "split": "train",
+    "policy": "noisy_pd",
+    "seed": 2026180001
+  },
+  {
+    "episode_id": "nav_trainpilot_01_priority_pd",
+    "geometry_id": "nav_trainpilot_01",
+    "split": "train",
+    "policy": "priority_pd",
+    "seed": 2026180001
+  },
+  {
+    "episode_id": "nav_trainpilot_01_yield_pd",
+    "geometry_id": "nav_trainpilot_01",
+    "split": "train",
+    "policy": "yield_pd",
+    "seed": 2026180001
+  },
+  {
+    "episode_id": "nav_trainpilot_01_random_ou",
+    "geometry_id": "nav_trainpilot_01",
+    "split": "train",
+    "policy": "random_ou",
+    "seed": 2026180001
+  },
+  {
+    "episode_id": "nav_trainpilot_02_noisy_pd",
+    "geometry_id": "nav_trainpilot_02",
+    "split": "train",
+    "policy": "noisy_pd",
+    "seed": 2026180002
+  },
+  {
+    "episode_id": "nav_trainpilot_02_priority_pd",
+    "geometry_id": "nav_trainpilot_02",
+    "split": "train",
+    "policy": "priority_pd",
+    "seed": 2026180002
+  },
+  {
+    "episode_id": "nav_trainpilot_02_yield_pd",
+    "geometry_id": "nav_trainpilot_02",
+    "split": "train",
+    "policy": "yield_pd",
+    "seed": 2026180002
+  },
+  {
+    "episode_id": "nav_trainpilot_02_random_ou",
+    "geometry_id": "nav_trainpilot_02",
+    "split": "train",
+    "policy": "random_ou",
+    "seed": 2026180002
+  },
+  {
+    "episode_id": "nav_trainpilot_03_noisy_pd",
+    "geometry_id": "nav_trainpilot_03",
+    "split": "train",
+    "policy": "noisy_pd",
+    "seed": 2026180003
+  },
+  {
+    "episode_id": "nav_trainpilot_03_priority_pd",
+    "geometry_id": "nav_trainpilot_03",
+    "split": "train",
+    "policy": "priority_pd",
+    "seed": 2026180003
+  },
+  {
+    "episode_id": "nav_trainpilot_03_yield_pd",
+    "geometry_id": "nav_trainpilot_03",
+    "split": "train",
+    "policy": "yield_pd",
+    "seed": 2026180003
+  },
+  {
+    "episode_id": "nav_trainpilot_03_random_ou",
+    "geometry_id": "nav_trainpilot_03",
+    "split": "train",
+    "policy": "random_ou",
+    "seed": 2026180003
+  },
+  {
+    "episode_id": "nav_trainpilot_04_noisy_pd",
+    "geometry_id": "nav_trainpilot_04",
+    "split": "train",
+    "policy": "noisy_pd",
+    "seed": 2026180004
+  },
+  {
+    "episode_id": "nav_trainpilot_04_priority_pd",
+    "geometry_id": "nav_trainpilot_04",
+    "split": "train",
+    "policy": "priority_pd",
+    "seed": 2026180004
+  },
+  {
+    "episode_id": "nav_trainpilot_04_yield_pd",
+    "geometry_id": "nav_trainpilot_04",
+    "split": "train",
+    "policy": "yield_pd",
+    "seed": 2026180004
+  },
+  {
+    "episode_id": "nav_trainpilot_04_random_ou",
+    "geometry_id": "nav_trainpilot_04",
+    "split": "train",
+    "policy": "random_ou",
+    "seed": 2026180004
+  },
+  {
+    "episode_id": "nav_trainpilot_05_noisy_pd",
+    "geometry_id": "nav_trainpilot_05",
+    "split": "train",
+    "policy": "noisy_pd",
+    "seed": 2026180005
+  },
+  {
+    "episode_id": "nav_trainpilot_05_priority_pd",
+    "geometry_id": "nav_trainpilot_05",
+    "split": "train",
+    "policy": "priority_pd",
+    "seed": 2026180005
+  },
+  {
+    "episode_id": "nav_trainpilot_05_yield_pd",
+    "geometry_id": "nav_trainpilot_05",
+    "split": "train",
+    "policy": "yield_pd",
+    "seed": 2026180005
+  },
+  {
+    "episode_id": "nav_trainpilot_05_random_ou",
+    "geometry_id": "nav_trainpilot_05",
+    "split": "train",
+    "policy": "random_ou",
+    "seed": 2026180005
+  },
+  {
+    "episode_id": "nav_trainpilot_06_noisy_pd",
+    "geometry_id": "nav_trainpilot_06",
+    "split": "train",
+    "policy": "noisy_pd",
+    "seed": 2026180006
+  },
+  {
+    "episode_id": "nav_trainpilot_06_priority_pd",
+    "geometry_id": "nav_trainpilot_06",
+    "split": "train",
+    "policy": "priority_pd",
+    "seed": 2026180006
+  },
+  {
+    "episode_id": "nav_trainpilot_06_yield_pd",
+    "geometry_id": "nav_trainpilot_06",
+    "split": "train",
+    "policy": "yield_pd",
+    "seed": 2026180006
+  },
+  {
+    "episode_id": "nav_trainpilot_06_random_ou",
+    "geometry_id": "nav_trainpilot_06",
+    "split": "train",
+    "policy": "random_ou",
+    "seed": 2026180006
+  },
+  {
+    "episode_id": "nav_trainpilot_07_noisy_pd",
+    "geometry_id": "nav_trainpilot_07",
+    "split": "train",
+    "policy": "noisy_pd",
+    "seed": 2026180007
+  },
+  {
+    "episode_id": "nav_trainpilot_07_priority_pd",
+    "geometry_id": "nav_trainpilot_07",
+    "split": "train",
+    "policy": "priority_pd",
+    "seed": 2026180007
+  },
+  {
+    "episode_id": "nav_trainpilot_07_yield_pd",
+    "geometry_id": "nav_trainpilot_07",
+    "split": "train",
+    "policy": "yield_pd",
+    "seed": 2026180007
+  },
+  {
+    "episode_id": "nav_trainpilot_07_random_ou",
+    "geometry_id": "nav_trainpilot_07",
+    "split": "train",
+    "policy": "random_ou",
+    "seed": 2026180007
+  },
+  {
+    "episode_id": "nav_trainpilot_08_noisy_pd",
+    "geometry_id": "nav_trainpilot_08",
+    "split": "train",
+    "policy": "noisy_pd",
+    "seed": 2026180008
+  },
+  {
+    "episode_id": "nav_trainpilot_08_priority_pd",
+    "geometry_id": "nav_trainpilot_08",
+    "split": "train",
+    "policy": "priority_pd",
+    "seed": 2026180008
+  },
+  {
+    "episode_id": "nav_trainpilot_08_yield_pd",
+    "geometry_id": "nav_trainpilot_08",
+    "split": "train",
+    "policy": "yield_pd",
+    "seed": 2026180008
+  },
+  {
+    "episode_id": "nav_trainpilot_08_random_ou",
+    "geometry_id": "nav_trainpilot_08",
+    "split": "train",
+    "policy": "random_ou",
+    "seed": 2026180008
+  },
+  {
+    "episode_id": "nav_trainpilot_09_noisy_pd",
+    "geometry_id": "nav_trainpilot_09",
+    "split": "train",
+    "policy": "noisy_pd",
+    "seed": 2026180009
+  },
+  {
+    "episode_id": "nav_trainpilot_09_priority_pd",
+    "geometry_id": "nav_trainpilot_09",
+    "split": "train",
+    "policy": "priority_pd",
+    "seed": 2026180009
+  },
+  {
+    "episode_id": "nav_trainpilot_09_yield_pd",
+    "geometry_id": "nav_trainpilot_09",
+    "split": "train",
+    "policy": "yield_pd",
+    "seed": 2026180009
+  },
+  {
+    "episode_id": "nav_trainpilot_09_random_ou",
+    "geometry_id": "nav_trainpilot_09",
+    "split": "train",
+    "policy": "random_ou",
+    "seed": 2026180009
+  },
+  {
+    "episode_id": "nav_trainpilot_10_noisy_pd",
+    "geometry_id": "nav_trainpilot_10",
+    "split": "train",
+    "policy": "noisy_pd",
+    "seed": 2026180010
+  },
+  {
+    "episode_id": "nav_trainpilot_10_priority_pd",
+    "geometry_id": "nav_trainpilot_10",
+    "split": "train",
+    "policy": "priority_pd",
+    "seed": 2026180010
+  },
+  {
+    "episode_id": "nav_trainpilot_10_yield_pd",
+    "geometry_id": "nav_trainpilot_10",
+    "split": "train",
+    "policy": "yield_pd",
+    "seed": 2026180010
+  },
+  {
+    "episode_id": "nav_trainpilot_10_random_ou",
+    "geometry_id": "nav_trainpilot_10",
+    "split": "train",
+    "policy": "random_ou",
+    "seed": 2026180010
+  },
+  {
+    "episode_id": "nav_trainpilot_11_noisy_pd",
+    "geometry_id": "nav_trainpilot_11",
+    "split": "train",
+    "policy": "noisy_pd",
+    "seed": 2026180011
+  },
+  {
+    "episode_id": "nav_trainpilot_11_priority_pd",
+    "geometry_id": "nav_trainpilot_11",
+    "split": "train",
+    "policy": "priority_pd",
+    "seed": 2026180011
+  },
+  {
+    "episode_id": "nav_trainpilot_11_yield_pd",
+    "geometry_id": "nav_trainpilot_11",
+    "split": "train",
+    "policy": "yield_pd",
+    "seed": 2026180011
+  },
+  {
+    "episode_id": "nav_trainpilot_11_random_ou",
+    "geometry_id": "nav_trainpilot_11",
+    "split": "train",
+    "policy": "random_ou",
+    "seed": 2026180011
+  },
+  {
+    "episode_id": "nav_trainpilot_12_noisy_pd",
+    "geometry_id": "nav_trainpilot_12",
+    "split": "validation",
+    "policy": "noisy_pd",
+    "seed": 2026180012
+  },
+  {
+    "episode_id": "nav_trainpilot_12_priority_pd",
+    "geometry_id": "nav_trainpilot_12",
+    "split": "validation",
+    "policy": "priority_pd",
+    "seed": 2026180012
+  },
+  {
+    "episode_id": "nav_trainpilot_12_yield_pd",
+    "geometry_id": "nav_trainpilot_12",
+    "split": "validation",
+    "policy": "yield_pd",
+    "seed": 2026180012
+  },
+  {
+    "episode_id": "nav_trainpilot_12_random_ou",
+    "geometry_id": "nav_trainpilot_12",
+    "split": "validation",
+    "policy": "random_ou",
+    "seed": 2026180012
+  },
+  {
+    "episode_id": "nav_trainpilot_13_noisy_pd",
+    "geometry_id": "nav_trainpilot_13",
+    "split": "validation",
+    "policy": "noisy_pd",
+    "seed": 2026180013
+  },
+  {
+    "episode_id": "nav_trainpilot_13_priority_pd",
+    "geometry_id": "nav_trainpilot_13",
+    "split": "validation",
+    "policy": "priority_pd",
+    "seed": 2026180013
+  },
+  {
+    "episode_id": "nav_trainpilot_13_yield_pd",
+    "geometry_id": "nav_trainpilot_13",
+    "split": "validation",
+    "policy": "yield_pd",
+    "seed": 2026180013
+  },
+  {
+    "episode_id": "nav_trainpilot_13_random_ou",
+    "geometry_id": "nav_trainpilot_13",
+    "split": "validation",
+    "policy": "random_ou",
+    "seed": 2026180013
+  },
+  {
+    "episode_id": "nav_trainpilot_14_noisy_pd",
+    "geometry_id": "nav_trainpilot_14",
+    "split": "validation",
+    "policy": "noisy_pd",
+    "seed": 2026180014
+  },
+  {
+    "episode_id": "nav_trainpilot_14_priority_pd",
+    "geometry_id": "nav_trainpilot_14",
+    "split": "validation",
+    "policy": "priority_pd",
+    "seed": 2026180014
+  },
+  {
+    "episode_id": "nav_trainpilot_14_yield_pd",
+    "geometry_id": "nav_trainpilot_14",
+    "split": "validation",
+    "policy": "yield_pd",
+    "seed": 2026180014
+  },
+  {
+    "episode_id": "nav_trainpilot_14_random_ou",
+    "geometry_id": "nav_trainpilot_14",
+    "split": "validation",
+    "policy": "random_ou",
+    "seed": 2026180014
+  },
+  {
+    "episode_id": "nav_trainpilot_15_noisy_pd",
+    "geometry_id": "nav_trainpilot_15",
+    "split": "validation",
+    "policy": "noisy_pd",
+    "seed": 2026180015
+  },
+  {
+    "episode_id": "nav_trainpilot_15_priority_pd",
+    "geometry_id": "nav_trainpilot_15",
+    "split": "validation",
+    "policy": "priority_pd",
+    "seed": 2026180015
+  },
+  {
+    "episode_id": "nav_trainpilot_15_yield_pd",
+    "geometry_id": "nav_trainpilot_15",
+    "split": "validation",
+    "policy": "yield_pd",
+    "seed": 2026180015
+  },
+  {
+    "episode_id": "nav_trainpilot_15_random_ou",
+    "geometry_id": "nav_trainpilot_15",
+    "split": "validation",
+    "policy": "random_ou",
+    "seed": 2026180015
+  }
+]

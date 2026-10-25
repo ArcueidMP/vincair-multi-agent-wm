@@ -1,0 +1,16 @@
+{
+  "status": "passed",
+  "episodes": 64,
+  "transitions": 8192,
+  "whole_geometry_train_validation_disjoint": true,
+  "train_only_normalization_verified": true,
+  "raw_observation_state_subset_exact": true,
+  "independent_native_replay_error": 0.0,
+  "validation_windows_exact": 80,
+  "max_numpy_physical_metric_error": 4.470348358154297e-08,
+  "cpu_context_only_vs_saved_gpu_prediction_error": 5.103647708892822e-07,
+  "no_future_target_frames_needed_for_prediction": true,
+  "checkpoint_optimizer_rng_present": true,
+  "training_cpu_cuda_seed0_verified": true,
+  "position_gate_verified": true
+}

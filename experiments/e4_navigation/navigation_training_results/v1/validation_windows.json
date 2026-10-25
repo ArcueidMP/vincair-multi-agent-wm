@@ -1,0 +1,482 @@
+[
+  {
+    "episode_id": "nav_trainpilot_12_noisy_pd",
+    "geometry_id": "nav_trainpilot_12",
+    "policy": "noisy_pd",
+    "start": 0
+  },
+  {
+    "episode_id": "nav_trainpilot_12_noisy_pd",
+    "geometry_id": "nav_trainpilot_12",
+    "policy": "noisy_pd",
+    "start": 20
+  },
+  {
+    "episode_id": "nav_trainpilot_12_noisy_pd",
+    "geometry_id": "nav_trainpilot_12",
+    "policy": "noisy_pd",
+    "start": 50
+  },
+  {
+    "episode_id": "nav_trainpilot_12_noisy_pd",
+    "geometry_id": "nav_trainpilot_12",
+    "policy": "noisy_pd",
+    "start": 80
+  },
+  {
+    "episode_id": "nav_trainpilot_12_noisy_pd",
+    "geometry_id": "nav_trainpilot_12",
+    "policy": "noisy_pd",
+    "start": 110
+  },
+  {
+    "episode_id": "nav_trainpilot_12_priority_pd",
+    "geometry_id": "nav_trainpilot_12",
+    "policy": "priority_pd",
+    "start": 0
+  },
+  {
+    "episode_id": "nav_trainpilot_12_priority_pd",
+    "geometry_id": "nav_trainpilot_12",
+    "policy": "priority_pd",
+    "start": 20
+  },
+  {
+    "episode_id": "nav_trainpilot_12_priority_pd",
+    "geometry_id": "nav_trainpilot_12",
+    "policy": "priority_pd",
+    "start": 50
+  },
+  {
+    "episode_id": "nav_trainpilot_12_priority_pd",
+    "geometry_id": "nav_trainpilot_12",
+    "policy": "priority_pd",
+    "start": 80
+  },
+  {
+    "episode_id": "nav_trainpilot_12_priority_pd",
+    "geometry_id": "nav_trainpilot_12",
+    "policy": "priority_pd",
+    "start": 110
+  },
+  {
+    "episode_id": "nav_trainpilot_12_yield_pd",
+    "geometry_id": "nav_trainpilot_12",
+    "policy": "yield_pd",
+    "start": 0
+  },
+  {
+    "episode_id": "nav_trainpilot_12_yield_pd",
+    "geometry_id": "nav_trainpilot_12",
+    "policy": "yield_pd",
+    "start": 20
+  },
+  {
+    "episode_id": "nav_trainpilot_12_yield_pd",
+    "geometry_id": "nav_trainpilot_12",
+    "policy": "yield_pd",
+    "start": 50
+  },
+  {
+    "episode_id": "nav_trainpilot_12_yield_pd",
+    "geometry_id": "nav_trainpilot_12",
+    "policy": "yield_pd",
+    "start": 80
+  },
+  {
+    "episode_id": "nav_trainpilot_12_yield_pd",
+    "geometry_id": "nav_trainpilot_12",
+    "policy": "yield_pd",
+    "start": 110
+  },
+  {
+    "episode_id": "nav_trainpilot_12_random_ou",
+    "geometry_id": "nav_trainpilot_12",
+    "policy": "random_ou",
+    "start": 0
+  },
+  {
+    "episode_id": "nav_trainpilot_12_random_ou",
+    "geometry_id": "nav_trainpilot_12",
+    "policy": "random_ou",
+    "start": 20
+  },
+  {
+    "episode_id": "nav_trainpilot_12_random_ou",
+    "geometry_id": "nav_trainpilot_12",
+    "policy": "random_ou",
+    "start": 50
+  },
+  {
+    "episode_id": "nav_trainpilot_12_random_ou",
+    "geometry_id": "nav_trainpilot_12",
+    "policy": "random_ou",
+    "start": 80
+  },
+  {
+    "episode_id": "nav_trainpilot_12_random_ou",
+    "geometry_id": "nav_trainpilot_12",
+    "policy": "random_ou",
+    "start": 110
+  },
+  {
+    "episode_id": "nav_trainpilot_13_noisy_pd",
+    "geometry_id": "nav_trainpilot_13",
+    "policy": "noisy_pd",
+    "start": 0
+  },
+  {
+    "episode_id": "nav_trainpilot_13_noisy_pd",
+    "geometry_id": "nav_trainpilot_13",
+    "policy": "noisy_pd",
+    "start": 20
+  },
+  {
+    "episode_id": "nav_trainpilot_13_noisy_pd",
+    "geometry_id": "nav_trainpilot_13",
+    "policy": "noisy_pd",
+    "start": 50
+  },
+  {
+    "episode_id": "nav_trainpilot_13_noisy_pd",
+    "geometry_id": "nav_trainpilot_13",
+    "policy": "noisy_pd",
+    "start": 80
+  },
+  {
+    "episode_id": "nav_trainpilot_13_noisy_pd",
+    "geometry_id": "nav_trainpilot_13",
+    "policy": "noisy_pd",
+    "start": 110
+  },
+  {
+    "episode_id": "nav_trainpilot_13_priority_pd",
+    "geometry_id": "nav_trainpilot_13",
+    "policy": "priority_pd",
+    "start": 0
+  },
+  {
+    "episode_id": "nav_trainpilot_13_priority_pd",
+    "geometry_id": "nav_trainpilot_13",
+    "policy": "priority_pd",
+    "start": 20
+  },
+  {
+    "episode_id": "nav_trainpilot_13_priority_pd",
+    "geometry_id": "nav_trainpilot_13",
+    "policy": "priority_pd",
+    "start": 50
+  },
+  {
+    "episode_id": "nav_trainpilot_13_priority_pd",
+    "geometry_id": "nav_trainpilot_13",
+    "policy": "priority_pd",
+    "start": 80
+  },
+  {
+    "episode_id": "nav_trainpilot_13_priority_pd",
+    "geometry_id": "nav_trainpilot_13",
+    "policy": "priority_pd",
+    "start": 110
+  },
+  {
+    "episode_id": "nav_trainpilot_13_yield_pd",
+    "geometry_id": "nav_trainpilot_13",
+    "policy": "yield_pd",
+    "start": 0
+  },
+  {
+    "episode_id": "nav_trainpilot_13_yield_pd",
+    "geometry_id": "nav_trainpilot_13",
+    "policy": "yield_pd",
+    "start": 20
+  },
+  {
+    "episode_id": "nav_trainpilot_13_yield_pd",
+    "geometry_id": "nav_trainpilot_13",
+    "policy": "yield_pd",
+    "start": 50
+  },
+  {
+    "episode_id": "nav_trainpilot_13_yield_pd",
+    "geometry_id": "nav_trainpilot_13",
+    "policy": "yield_pd",
+    "start": 80
+  },
+  {
+    "episode_id": "nav_trainpilot_13_yield_pd",
+    "geometry_id": "nav_trainpilot_13",
+    "policy": "yield_pd",
+    "start": 110
+  },
+  {
+    "episode_id": "nav_trainpilot_13_random_ou",
+    "geometry_id": "nav_trainpilot_13",
+    "policy": "random_ou",
+    "start": 0
+  },
+  {
+    "episode_id": "nav_trainpilot_13_random_ou",
+    "geometry_id": "nav_trainpilot_13",
+    "policy": "random_ou",
+    "start": 20
+  },
+  {
+    "episode_id": "nav_trainpilot_13_random_ou",
+    "geometry_id": "nav_trainpilot_13",
+    "policy": "random_ou",
+    "start": 50
+  },
+  {
+    "episode_id": "nav_trainpilot_13_random_ou",
+    "geometry_id": "nav_trainpilot_13",
+    "policy": "random_ou",
+    "start": 80
+  },
+  {
+    "episode_id": "nav_trainpilot_13_random_ou",
+    "geometry_id": "nav_trainpilot_13",
+    "policy": "random_ou",
+    "start": 110
+  },
+  {
+    "episode_id": "nav_trainpilot_14_noisy_pd",
+    "geometry_id": "nav_trainpilot_14",
+    "policy": "noisy_pd",
+    "start": 0
+  },
+  {
+    "episode_id": "nav_trainpilot_14_noisy_pd",
+    "geometry_id": "nav_trainpilot_14",
+    "policy": "noisy_pd",
+    "start": 20
+  },
+  {
+    "episode_id": "nav_trainpilot_14_noisy_pd",
+    "geometry_id": "nav_trainpilot_14",
+    "policy": "noisy_pd",
+    "start": 50
+  },
+  {
+    "episode_id": "nav_trainpilot_14_noisy_pd",
+    "geometry_id": "nav_trainpilot_14",
+    "policy": "noisy_pd",
+    "start": 80
+  },
+  {
+    "episode_id": "nav_trainpilot_14_noisy_pd",
+    "geometry_id": "nav_trainpilot_14",
+    "policy": "noisy_pd",
+    "start": 110
+  },
+  {
+    "episode_id": "nav_trainpilot_14_priority_pd",
+    "geometry_id": "nav_trainpilot_14",
+    "policy": "priority_pd",
+    "start": 0
+  },
+  {
+    "episode_id": "nav_trainpilot_14_priority_pd",
+    "geometry_id": "nav_trainpilot_14",
+    "policy": "priority_pd",
+    "start": 20
+  },
+  {
+    "episode_id": "nav_trainpilot_14_priority_pd",
+    "geometry_id": "nav_trainpilot_14",
+    "policy": "priority_pd",
+    "start": 50
+  },
+  {
+    "episode_id": "nav_trainpilot_14_priority_pd",
+    "geometry_id": "nav_trainpilot_14",
+    "policy": "priority_pd",
+    "start": 80
+  },
+  {
+    "episode_id": "nav_trainpilot_14_priority_pd",
+    "geometry_id": "nav_trainpilot_14",
+    "policy": "priority_pd",
+    "start": 110
+  },
+  {
+    "episode_id": "nav_trainpilot_14_yield_pd",
+    "geometry_id": "nav_trainpilot_14",
+    "policy": "yield_pd",
+    "start": 0
+  },
+  {
+    "episode_id": "nav_trainpilot_14_yield_pd",
+    "geometry_id": "nav_trainpilot_14",
+    "policy": "yield_pd",
+    "start": 20
+  },
+  {
+    "episode_id": "nav_trainpilot_14_yield_pd",
+    "geometry_id": "nav_trainpilot_14",
+    "policy": "yield_pd",
+    "start": 50
+  },
+  {
+    "episode_id": "nav_trainpilot_14_yield_pd",
+    "geometry_id": "nav_trainpilot_14",
+    "policy": "yield_pd",
+    "start": 80
+  },
+  {
+    "episode_id": "nav_trainpilot_14_yield_pd",
+    "geometry_id": "nav_trainpilot_14",
+    "policy": "yield_pd",
+    "start": 110
+  },
+  {
+    "episode_id": "nav_trainpilot_14_random_ou",
+    "geometry_id": "nav_trainpilot_14",
+    "policy": "random_ou",
+    "start": 0
+  },
+  {
+    "episode_id": "nav_trainpilot_14_random_ou",
+    "geometry_id": "nav_trainpilot_14",
+    "policy": "random_ou",
+    "start": 20
+  },
+  {
+    "episode_id": "nav_trainpilot_14_random_ou",
+    "geometry_id": "nav_trainpilot_14",
+    "policy": "random_ou",
+    "start": 50
+  },
+  {
+    "episode_id": "nav_trainpilot_14_random_ou",
+    "geometry_id": "nav_trainpilot_14",
+    "policy": "random_ou",
+    "start": 80
+  },
+  {
+    "episode_id": "nav_trainpilot_14_random_ou",
+    "geometry_id": "nav_trainpilot_14",
+    "policy": "random_ou",
+    "start": 110
+  },
+  {
+    "episode_id": "nav_trainpilot_15_noisy_pd",
+    "geometry_id": "nav_trainpilot_15",
+    "policy": "noisy_pd",
+    "start": 0
+  },
+  {
+    "episode_id": "nav_trainpilot_15_noisy_pd",
+    "geometry_id": "nav_trainpilot_15",
+    "policy": "noisy_pd",
+    "start": 20
+  },
+  {
+    "episode_id": "nav_trainpilot_15_noisy_pd",
+    "geometry_id": "nav_trainpilot_15",
+    "policy": "noisy_pd",
+    "start": 50
+  },
+  {
+    "episode_id": "nav_trainpilot_15_noisy_pd",
+    "geometry_id": "nav_trainpilot_15",
+    "policy": "noisy_pd",
+    "start": 80
+  },
+  {
+    "episode_id": "nav_trainpilot_15_noisy_pd",
+    "geometry_id": "nav_trainpilot_15",
+    "policy": "noisy_pd",
+    "start": 110
+  },
+  {
+    "episode_id": "nav_trainpilot_15_priority_pd",
+    "geometry_id": "nav_trainpilot_15",
+    "policy": "priority_pd",
+    "start": 0
+  },
+  {
+    "episode_id": "nav_trainpilot_15_priority_pd",
+    "geometry_id": "nav_trainpilot_15",
+    "policy": "priority_pd",
+    "start": 20
+  },
+  {
+    "episode_id": "nav_trainpilot_15_priority_pd",
+    "geometry_id": "nav_trainpilot_15",
+    "policy": "priority_pd",
+    "start": 50
+  },
+  {
+    "episode_id": "nav_trainpilot_15_priority_pd",
+    "geometry_id": "nav_trainpilot_15",
+    "policy": "priority_pd",
+    "start": 80
+  },
+  {
+    "episode_id": "nav_trainpilot_15_priority_pd",
+    "geometry_id": "nav_trainpilot_15",
+    "policy": "priority_pd",
+    "start": 110
+  },
+  {
+    "episode_id": "nav_trainpilot_15_yield_pd",
+    "geometry_id": "nav_trainpilot_15",
+    "policy": "yield_pd",
+    "start": 0
+  },
+  {
+    "episode_id": "nav_trainpilot_15_yield_pd",
+    "geometry_id": "nav_trainpilot_15",
+    "policy": "yield_pd",
+    "start": 20
+  },
+  {
+    "episode_id": "nav_trainpilot_15_yield_pd",
+    "geometry_id": "nav_trainpilot_15",
+    "policy": "yield_pd",
+    "start": 50
+  },
+  {
+    "episode_id": "nav_trainpilot_15_yield_pd",
+    "geometry_id": "nav_trainpilot_15",
+    "policy": "yield_pd",
+    "start": 80
+  },
+  {
+    "episode_id": "nav_trainpilot_15_yield_pd",
+    "geometry_id": "nav_trainpilot_15",
+    "policy": "yield_pd",
+    "start": 110
+  },
+  {
+    "episode_id": "nav_trainpilot_15_random_ou",
+    "geometry_id": "nav_trainpilot_15",
+    "policy": "random_ou",
+    "start": 0
+  },
+  {
+    "episode_id": "nav_trainpilot_15_random_ou",
+    "geometry_id": "nav_trainpilot_15",
+    "policy": "random_ou",
+    "start": 20
+  },
+  {
+    "episode_id": "nav_trainpilot_15_random_ou",
+    "geometry_id": "nav_trainpilot_15",
+    "policy": "random_ou",
+    "start": 50
+  },
+  {
+    "episode_id": "nav_trainpilot_15_random_ou",
+    "geometry_id": "nav_trainpilot_15",
+    "policy": "random_ou",
+    "start": 80
+  },
+  {
+    "episode_id": "nav_trainpilot_15_random_ou",
+    "geometry_id": "nav_trainpilot_15",
+    "policy": "random_ou",
+    "start": 110
+  }
+]

@@ -1,0 +1,18 @@
+{
+  "collection.json": "83d6926e2c594b185b71ef9b1768a6fd4035a482e238f0de7005c053837760a7",
+  "dataset.pt": "67ca0f99b10fec9f347223f47f2cbf9ee42a5ad9e530a312bebb2f14e185cb83",
+  "environment.json": "95290f49b20d88eb185d2f34c44a516292021f0e2cf7cb6b823860b5059eb318",
+  "episode_manifest.json": "1c69a71ec0ccb0733adf95533ed2213beb1b5b415c915cc38c482d8efc9471f3",
+  "native_safety_diagnostics.json": "804a8781c7dc97dcd279cdfb481c6e51a78141a47a61a0197ca15cc00af2eac8",
+  "navigation_jepa_pilot.pt": "5ace73ce1ec9df8a040ff3557a6681a1e3f78b0427ea32e8d47d83b506e62b70",
+  "prediction_metrics.csv": "082e3d10eddf30df4fe0353984ad8815e259444b66c7fa7acdbfec33cef8cd1d",
+  "protocol.json": "4eae0da0b179374ee4efb34e91c2544c2e8228a9c588b701339bd06e1df129fe",
+  "REPORT.md": "d0377223908c374d88cc6f98388dfaf2da89df884f85337ca3ccab9265d9c808",
+  "summary.json": "9be471f377f5483adc806014e02923540d1e6d57c6c3c110c4835fcd9ab675ca",
+  "training_history.json": "cd55635a4d9381e8cdd830701587ed445b073439be0f0f11738d529c5e34d0e1",
+  "validation.json": "697f9b78f540058c75dab0b4e95ea2d8f394231722a0ef73c98a9d633ce38fae",
+  "validation_predictions.npz": "a9bc866f5df89e7a70a8b5589e36ef7236d735962db756480c844db60bc4cbd8",
+  "validation_step0.json": "8163be0074212eb078e70dbf8b9a84048921401479fd71057de9bab6e659749e",
+  "validation_windows.json": "7dccecee50fd1e5354004c202696fa1aca9cfdc27e1da08a4f8d279c6b5a80d7",
+  "verification.json": "37a09637086c7471d5a0286899fddc0d224683cec303973e06c15bc9a11007eb"
+}

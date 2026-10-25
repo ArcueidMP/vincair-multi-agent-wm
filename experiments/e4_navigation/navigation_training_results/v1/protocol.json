@@ -1,0 +1,625 @@
+{
+  "created_utc": "2026-10-25T00:48:11.928013+00:00",
+  "protocol_id": "LOCAL_NAV_NUMERIC_PILOT_V1",
+  "parent_commit": "55c634c1d10ca99bad46d88cdb598f470444ed62",
+  "source_sha256": {
+    "pilot.py": "9d45e9e70cf32ee2e0c035cb8c31e3273e208b190cc20d4b12ce733dd710ff16",
+    "data.py": "37b6bcb4b2a4028428df291b000ddf8523cdebf465b7f38743fe33df78b1f8b9",
+    "model.py": "fd5612d9623364f3a3db1897e9ae6175f18b76360faf1125ed14b069b9bcfb51"
+  },
+  "geometry_specs": [
+    {
+      "geometry_id": "nav_trainpilot_00",
+      "split": "train",
+      "angle_deg": 111.29681094027738,
+      "starts": [
+        [
+          0.5831268429756165,
+          0.24397100508213043
+        ],
+        [
+          -0.436914324760437,
+          0.34362825751304626
+        ]
+      ],
+      "goals": [
+        [
+          -0.6183596253395081,
+          -0.4157750606536865
+        ],
+        [
+          0.6141577959060669,
+          -0.5361911058425903
+        ]
+      ],
+      "velocity": [
+        [
+          -0.09210563451051712,
+          -0.05057596042752266
+        ],
+        [
+          0.08180099725723267,
+          -0.06847304105758667
+        ]
+      ]
+    },
+    {
+      "geometry_id": "nav_trainpilot_01",
+      "split": "train",
+      "angle_deg": 110.52384435920764,
+      "starts": [
+        [
+          -0.41939082741737366,
+          -0.24820712208747864
+        ],
+        [
+          0.40075114369392395,
+          -0.21605288982391357
+        ]
+      ],
+      "goals": [
+        [
+          0.5786405801773071,
+          0.5034061074256897
+        ],
+        [
+          -0.6530614495277405,
+          0.4551163911819458
+        ]
+      ],
+      "velocity": [
+        [
+          0.18427728116512299,
+          0.1387784481048584
+        ],
+        [
+          -0.18625782430171967,
+          0.1186269149184227
+        ]
+      ]
+    },
+    {
+      "geometry_id": "nav_trainpilot_02",
+      "split": "train",
+      "angle_deg": 84.44413632957259,
+      "starts": [
+        [
+          -0.470188707113266,
+          0.34077468514442444
+        ],
+        [
+          -0.2791864573955536,
+          -0.4130922853946686
+        ]
+      ],
+      "goals": [
+        [
+          0.7028729915618896,
+          -0.2830740213394165
+        ],
+        [
+          0.45530298352241516,
+          0.6940599679946899
+        ]
+      ],
+      "velocity": [
+        [
+          0.199705570936203,
+          -0.10620589554309845
+        ],
+        [
+          0.0043127406388521194,
+          0.006500924937427044
+        ]
+      ]
+    },
+    {
+      "geometry_id": "nav_trainpilot_03",
+      "split": "train",
+      "angle_deg": 126.48145757885112,
+      "starts": [
+        [
+          -0.055229391902685165,
+          0.5166995525360107
+        ],
+        [
+          -0.45899108052253723,
+          -0.29329410195350647
+        ]
+      ],
+      "goals": [
+        [
+          -0.04943505674600601,
+          -0.7400866150856018
+        ],
+        [
+          0.5480818748474121,
+          0.4586028754711151
+        ]
+      ],
+      "velocity": [
+        [
+          0.00027771800523623824,
+          -0.060236796736717224
+        ],
+        [
+          0.33534735441207886,
+          0.25037574768066406
+        ]
+      ]
+    },
+    {
+      "geometry_id": "nav_trainpilot_04",
+      "split": "train",
+      "angle_deg": 61.6933003659622,
+      "starts": [
+        [
+          0.2139076143503189,
+          -0.32707294821739197
+        ],
+        [
+          0.35433632135391235,
+          0.0717034861445427
+        ]
+      ],
+      "goals": [
+        [
+          -0.5293529033660889,
+          0.5664836764335632
+        ],
+        [
+          -0.7848181128501892,
+          -0.15896263718605042
+        ]
+      ],
+      "velocity": [
+        [
+          -0.17016935348510742,
+          0.20457962155342102
+        ],
+        [
+          -0.3757496178150177,
+          -0.07608512789011002
+        ]
+      ]
+    },
+    {
+      "geometry_id": "nav_trainpilot_05",
+      "split": "train",
+      "angle_deg": 49.061681774829076,
+      "starts": [
+        [
+          -0.4372069537639618,
+          0.3313126564025879
+        ],
+        [
+          -0.5678668022155762,
+          -0.17320342361927032
+        ]
+      ],
+      "goals": [
+        [
+          0.6326488852500916,
+          -0.5365967154502869
+        ],
+        [
+          0.7887842059135437,
+          0.06628787517547607
+        ]
+      ],
+      "velocity": [
+        [
+          0.2171587347984314,
+          -0.17616775631904602
+        ],
+        [
+          0.290996253490448,
+          0.05136993154883385
+        ]
+      ]
+    },
+    {
+      "geometry_id": "nav_trainpilot_06",
+      "split": "train",
+      "angle_deg": 103.89907406755914,
+      "starts": [
+        [
+          -0.41582992672920227,
+          -0.5068185925483704
+        ],
+        [
+          0.6098293662071228,
+          -0.4001345634460449
+        ]
+      ],
+      "goals": [
+        [
+          0.5948559641838074,
+          0.4688054025173187
+        ],
+        [
+          -0.5800079703330994,
+          0.3466018736362457
+        ]
+      ],
+      "velocity": [
+        [
+          0.2640500068664551,
+          0.2548897862434387
+        ],
+        [
+          -0.21188290417194366,
+          0.1329767405986786
+        ]
+      ]
+    },
+    {
+      "geometry_id": "nav_trainpilot_07",
+      "split": "train",
+      "angle_deg": 68.22291442968414,
+      "starts": [
+        [
+          0.8269060254096985,
+          -0.16206462681293488
+        ],
+        [
+          0.4292699098587036,
+          0.6378069519996643
+        ]
+      ],
+      "goals": [
+        [
+          -0.7056357264518738,
+          0.04455326870083809
+        ],
+        [
+          -0.33117014169692993,
+          -0.7087092995643616
+        ]
+      ],
+      "velocity": [
+        [
+          -0.32959941029548645,
+          0.044436726719141006
+        ],
+        [
+          -0.02801620028913021,
+          -0.049608469009399414
+        ]
+      ]
+    },
+    {
+      "geometry_id": "nav_trainpilot_08",
+      "split": "train",
+      "angle_deg": 89.2585747304173,
+      "starts": [
+        [
+          0.030143631622195244,
+          -0.2349594235420227
+        ],
+        [
+          0.33822306990623474,
+          -0.007307195570319891
+        ]
+      ],
+      "goals": [
+        [
+          0.17542020976543427,
+          0.7773062586784363
+        ],
+        [
+          -0.6720779538154602,
+          0.15105588734149933
+        ]
+      ],
+      "velocity": [
+        [
+          0.05580148845911026,
+          0.3888165056705475
+        ],
+        [
+          -0.3747399151325226,
+          0.05873988941311836
+        ]
+      ]
+    },
+    {
+      "geometry_id": "nav_trainpilot_09",
+      "split": "train",
+      "angle_deg": 84.86171952456908,
+      "starts": [
+        [
+          -0.223223477602005,
+          -0.4212520718574524
+        ],
+        [
+          0.4381825029850006,
+          -0.3419055938720703
+        ]
+      ],
+      "goals": [
+        [
+          0.5005643367767334,
+          0.5900975465774536
+        ],
+        [
+          -0.504280686378479,
+          0.46954989433288574
+        ]
+      ],
+      "velocity": [
+        [
+          0.22223496437072754,
+          0.3105291724205017
+        ],
+        [
+          -0.2774996757507324,
+          0.23892566561698914
+        ]
+      ]
+    },
+    {
+      "geometry_id": "nav_trainpilot_10",
+      "split": "train",
+      "angle_deg": 131.78061855342668,
+      "starts": [
+        [
+          0.33067816495895386,
+          -0.40945854783058167
+        ],
+        [
+          -0.030780620872974396,
+          0.5183380842208862
+        ]
+      ],
+      "goals": [
+        [
+          -0.591630756855011,
+          0.5002202987670898
+        ],
+        [
+          -0.09461326152086258,
+          -0.7755300402641296
+        ]
+      ],
+      "velocity": [
+        [
+          -0.23588141798973083,
+          0.2326512634754181
+        ],
+        [
+          -0.019053326919674873,
+          -0.38620513677597046
+        ]
+      ]
+    },
+    {
+      "geometry_id": "nav_trainpilot_11",
+      "split": "train",
+      "angle_deg": 99.8898076319112,
+      "starts": [
+        [
+          -0.2636840045452118,
+          0.48419278860092163
+        ],
+        [
+          -0.4960941672325134,
+          -0.2770480215549469
+        ]
+      ],
+      "goals": [
+        [
+          0.23409472405910492,
+          -0.684107780456543
+        ],
+        [
+          0.5693499445915222,
+          0.413993775844574
+        ]
+      ],
+      "velocity": [
+        [
+          0.13245853781700134,
+          -0.31088390946388245
+        ],
+        [
+          0.0003590956039261073,
+          0.00023290763783734292
+        ]
+      ]
+    },
+    {
+      "geometry_id": "nav_trainpilot_12",
+      "split": "validation",
+      "angle_deg": 73.0114145699813,
+      "starts": [
+        [
+          0.43457621335983276,
+          -0.42778173089027405
+        ],
+        [
+          0.5916623473167419,
+          0.36273127794265747
+        ]
+      ],
+      "goals": [
+        [
+          -0.5252535939216614,
+          0.6287151575088501
+        ],
+        [
+          -0.6991764307022095,
+          -0.24652600288391113
+        ]
+      ],
+      "velocity": [
+        [
+          -0.13317225873470306,
+          0.1465843915939331
+        ],
+        [
+          -0.33656296133995056,
+          -0.15885286033153534
+        ]
+      ]
+    },
+    {
+      "geometry_id": "nav_trainpilot_13",
+      "split": "validation",
+      "angle_deg": 55.20414481516887,
+      "starts": [
+        [
+          -0.24542589485645294,
+          -0.6623128652572632
+        ],
+        [
+          0.3562772572040558,
+          -0.6397832036018372
+        ]
+      ],
+      "goals": [
+        [
+          0.3562638759613037,
+          0.6015542149543762
+        ],
+        [
+          -0.3382415771484375,
+          0.5755497217178345
+        ]
+      ],
+      "velocity": [
+        [
+          0.06044555827975273,
+          0.1269676834344864
+        ],
+        [
+          -0.13232317566871643,
+          0.23155124485492706
+        ]
+      ]
+    },
+    {
+      "geometry_id": "nav_trainpilot_14",
+      "split": "validation",
+      "angle_deg": 113.80786371875062,
+      "starts": [
+        [
+          -0.3571755588054657,
+          -0.20996993780136108
+        ],
+        [
+          0.4598090350627899,
+          -0.21147754788398743
+        ]
+      ],
+      "goals": [
+        [
+          0.6808798909187317,
+          0.4639022946357727
+        ],
+        [
+          -0.5757522583007812,
+          0.4662211835384369
+        ]
+      ],
+      "velocity": [
+        [
+          0.009311064146459103,
+          0.006044443696737289
+        ],
+        [
+          -0.1277036964893341,
+          0.08357268571853638
+        ]
+      ]
+    },
+    {
+      "geometry_id": "nav_trainpilot_15",
+      "split": "validation",
+      "angle_deg": 64.4230684536208,
+      "starts": [
+        [
+          0.44384536147117615,
+          0.26928552985191345
+        ],
+        [
+          -0.1374732106924057,
+          0.5346136689186096
+        ]
+      ],
+      "goals": [
+        [
+          -0.6845632791519165,
+          -0.4706818759441376
+        ],
+        [
+          0.04282258450984955,
+          -0.8026787638664246
+        ]
+      ],
+      "velocity": [
+        [
+          -0.11224968731403351,
+          -0.07360906898975372
+        ],
+        [
+          0.05368784815073013,
+          -0.3982142210006714
+        ]
+      ]
+    }
+  ],
+  "teammate_alignment": "Pending: collection/config/architecture commit not supplied. Local pilot, NOT identical-protocol reproduction.",
+  "original_plan_preserved": true,
+  "input": "Centralized set of each agents own observed [x,y,vx,vy], first4 of native18D observation; full18D saved; goals metadata only, not model input",
+  "targets": "Same physical4D observations at future frames, separated from planner inputs; shared agent head on encoded and predicted latents",
+  "physics": "Native VMAS1.5.2 dt.1 substeps2 radius.1 mass1 world_drag.25, component action bounds1; no maxspeed, no reset at success",
+  "episodes": 64,
+  "episode_steps": 128,
+  "policies": [
+    "noisy_pd",
+    "priority_pd",
+    "yield_pd",
+    "random_ou"
+  ],
+  "split": "Whole geometry12 train/4 validation;48 train/16 validation episodes. No test set in this pilot.",
+  "model_config": {
+    "history": 3,
+    "dim": 64,
+    "latent": 32,
+    "enc_layers": 1,
+    "pred_layers": 2,
+    "heads": 4,
+    "sigreg_projections": 64
+  },
+  "frameskip": 1,
+  "model_dt": 0.1,
+  "train_rollout_k": 3,
+  "validation_rollout_k": 8,
+  "trainer": {
+    "seed": 0,
+    "device": "cuda",
+    "batch": 128,
+    "steps": 500,
+    "optimizer": "AdamW",
+    "lr": 0.0003,
+    "weight_decay": 0.001,
+    "gradient_clip": 1.0
+  },
+  "loss": "latentMSE+.09*SIGReg64+encoded_stateMSE+predicted_stateMSE+.1*normalized_deltaMSE; both encoder/predictor targets receive gradients as existing JEPA recipe",
+  "selection": "Fixed500-step last checkpoint; validation at step0,100,...500 for diagnostics only. No hyperparameter/model selection or untouched test claim.",
+  "baselines": [
+    "persistence",
+    "constant_velocity",
+    "known_free_analytic",
+    "encoded_readout"
+  ],
+  "pilot_gate": "Pipeline: finite data/loss/gradient, legal actions, exact replay, train-only moments, end-to-end save/reload. Qualification separately requires positionL2 at k1 AND k8 < persistence.",
+  "limitations": [
+    "Small local architecture differs from team defaults:dim64 vs PushT128 and SIGReg64 vs1024",
+    "Numerical agent encoder is a new adaptation, not transferred image weights",
+    "No confirmed native MARL collection parity",
+    "Dynamic agent shapes/equivariance unit tests do not establish three-agent generalization"
+  ],
+  "budget": "CollectionCPU +500 short GPU updates; wall cap900s checked per training step after collection. No full training or planner in this block."
+}

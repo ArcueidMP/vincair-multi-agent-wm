@@ -1,0 +1,8 @@
+{
+  "wall_seconds": 5.648900593999997,
+  "cpu_process_seconds": 5.630893239000001,
+  "native_state_and_substep_replay_error": 0,
+  "episodes": 64,
+  "transitions": 8192,
+  "native_observation_dim": 18
+}

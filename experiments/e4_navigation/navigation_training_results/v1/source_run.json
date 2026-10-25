@@ -1,0 +1,9 @@
+{
+  "training_cuda_initial_seed": 0,
+  "superseded_raw_run": "navigation_jepa_pilot_v1",
+  "training_cpu_initial_seed": 0,
+  "raw_run": "navigation_jepa_pilot_v2",
+  "reason": "Isolate training RNG after VMAS collection; v1 raw artifacts and exact source snapshots preserved.",
+  "published_release": "navigation_training_results/v1",
+  "v1_v2_collected_dataset_tensors_exactly_equal": true
+}

@@ -1,0 +1,37 @@
+{
+  "jepa": {
+    "predicted_unsafe_windows": 19,
+    "true_native_unsafe_windows": 13,
+    "false_safe_vs_native": 0,
+    "false_unsafe_vs_native": 6,
+    "note": "Post-hoc endpoint-prediction vs true native-substep diagnostic; not a certified safe rollout"
+  },
+  "persistence": {
+    "predicted_unsafe_windows": 9,
+    "true_native_unsafe_windows": 13,
+    "false_safe_vs_native": 4,
+    "false_unsafe_vs_native": 0,
+    "note": "Post-hoc endpoint-prediction vs true native-substep diagnostic; not a certified safe rollout"
+  },
+  "constant_velocity": {
+    "predicted_unsafe_windows": 11,
+    "true_native_unsafe_windows": 13,
+    "false_safe_vs_native": 2,
+    "false_unsafe_vs_native": 0,
+    "note": "Post-hoc endpoint-prediction vs true native-substep diagnostic; not a certified safe rollout"
+  },
+  "free_analytic": {
+    "predicted_unsafe_windows": 13,
+    "true_native_unsafe_windows": 13,
+    "false_safe_vs_native": 0,
+    "false_unsafe_vs_native": 0,
+    "note": "Post-hoc endpoint-prediction vs true native-substep diagnostic; not a certified safe rollout"
+  },
+  "encoded_readout": {
+    "predicted_unsafe_windows": 18,
+    "true_native_unsafe_windows": 13,
+    "false_safe_vs_native": 0,
+    "false_unsafe_vs_native": 5,
+    "note": "Post-hoc endpoint-prediction vs true native-substep diagnostic; not a certified safe rollout"
+  }
+}

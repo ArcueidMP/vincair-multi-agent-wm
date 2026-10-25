@@ -57,3 +57,7 @@
 - [最新压力报告](experiments/e4_navigation/pressure_results/v1/REPORT.md)：近距离6/6安全到达，高惯性0/6安全到达，真实仿真参考两条件均6/6。此前24/24成功不能推广成普遍安全结论。
 - [PR评审草案](docs/PR_REVIEW_READY.md)及[外部资产共享清单](docs/ASSET_SHARING.md)已准备；上游main的readout提交同步到个人分支，没有合入main或自动创建PR。
 - 便携复现后可用`verify_shared_reproduction.py`与已发布逐集表比较。模型负责人仍未提供Navigation专用材料，暂不接入LeWM或开展三机模型评估。
+
+## 最新：本地数值Navigation训练已启动
+
+根据组员建议，主线改为主动采集/训练，权重等待并行处理。新增[训练执行补充计划](docs/NAVIGATION_TRAINING_PLAN.md)、[独立Navigation模块](vmas_navigation/README.md)、[本地pilot报告](experiments/e4_navigation/navigation_training_results/v1/REPORT.md)。已真实完成64集/500步小模型训练和独立审计，工程闭环通过但位置预测资格失败，暂不接planner。我们现在有本地初版Navigation模型；队友当前架构、采集和训练配置仍待对齐，不得混称已取得其匹配模型。原研究计划不覆盖，既有解析/真仿真与失败基线完整保留。
