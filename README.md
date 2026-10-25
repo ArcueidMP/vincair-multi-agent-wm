@@ -197,6 +197,25 @@ more candidates. Navigation effort and fixed-action numerical sensitivity are re
 .venv/bin/python -m vmas_pusht.abstraction_transfer
 ```
 
+## Cooperative aerial transport
+
+The [aerial load-recovery experiment](docs/uav-transport-world-model-audit.md) adds three full-dynamics UAVs,
+twelve bounded motors, tension-only cables, and frozen team-level local outcome models. Models trained on
+isolated recovery operations select joint maneuvers in complete three-waypoint, two-recovery missions.
+At the nominal timestep, expanding support geometry raises constrained mission completion from 0/36 to
+35/36 for the small model and 0/36 to 36/36 for the larger model. Complete geometric feedback and exact-option
+simulation baselines, matched-budget local selection, physical costs, and whole-mission refinement are included.
+
+The CPU simulator uses an isolated environment:
+
+```bash
+uv venv --python .venv/bin/python data/uav_transport/.venv
+uv pip install --python data/uav_transport/.venv/bin/python -r requirements-uav.txt
+```
+
+Training uses the existing Torch environment; runtime inference uses NumPy. The report includes the complete
+reproduction commands and distinguishes delivery from satisfying cargo-motion and cable-tension budgets.
+
 ## Reproduce
 
 ```bash
