@@ -99,7 +99,7 @@ def run_group(*, profile="dry_light", substeps=160, model_pack=None,
               prelude_steps=10, rotation_steps=60, retreat_steps=20, max_recovery=80,
               goal_dwell=GOAL_DWELL, retreat_dwell=RETREAT_DWELL,
               recovery_dwell=RECOVERY_DWELL, observe=True, capture_counterfactual=True,
-              option_selector=None, expanded_final_interface=None):
+              option_selector=None, expanded_final_interface=None, interface_factory=None):
     """Execute every stage, retaining failed prefixes and exact physical clocks.
 
     The selector reads task goals; the action interface and recovery controller
@@ -107,6 +107,8 @@ def run_group(*, profile="dry_light", substeps=160, model_pack=None,
     exits. Interrupted outcomes are saved but not treated as full option labels.
     An optional selector and final-interface override support controlled planner
     audits without changing the physical task, checkpoints, or scoring rules.
+    A compatible interface_factory can extend option/controller memory while
+    retaining the same stepwise task runner and scoring contract.
     """
     from vmas_pusht.action_interface import ActionInterface
 
@@ -185,7 +187,8 @@ def run_group(*, profile="dry_light", substeps=160, model_pack=None,
 
         initial_pose = env.scenario.t_pose().clone()
         initial_force = force_integral.clone()
-        interface = ActionInterface(env, support_names, anchor)
+        factory = ActionInterface if interface_factory is None else interface_factory
+        interface = factory(env, support_names, anchor)
         recovery = RebraceController(env, support_names, max_steps=max_recovery, confirm_steps=recovery_dwell)
         phase = torch.zeros(n, dtype=torch.long)
         phase_age = torch.zeros_like(phase)

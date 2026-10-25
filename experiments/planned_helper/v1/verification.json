@@ -1,0 +1,38 @@
+{
+  "cases": 1152,
+  "model_audit": {
+    "rows": 295680,
+    "train_rows": 262080,
+    "training_moments_exact": true,
+    "split_counts": {
+      "train": 262080,
+      "val": 20160,
+      "test_action": 6720,
+      "test_context": 6720
+    },
+    "independent_numpy_rows_per_seed": 4096,
+    "max_numpy_errors": {
+      "0": 1.430511474609375e-06,
+      "1": 1.430511474609375e-06,
+      "2": 1.430511474609375e-06
+    },
+    "data_hashes_verified": true,
+    "tolerance": 1e-05,
+    "model_sha256": "185b558f19e9f28858b899ee95601bca4010c56f6f846d00efd8b26522e2ffc2"
+  },
+  "local_replay_cases": 9984,
+  "local_replays_exact": true,
+  "all_nominal_replays_bitwise": true,
+  "all_nominal_scores_reproduced": true,
+  "active_refinement_passes": 1149,
+  "max_position_discrepancy": 0.000556417100597173,
+  "max_angle_discrepancy": 0.0034291744232177734,
+  "ordered_lost": 9,
+  "ordered_gained": 0,
+  "all_prefixes_match": true,
+  "max_prefix_state_error": 2.7939677238464355e-07,
+  "max_prefix_action_error": 7.450580596923828e-08,
+  "post_hoc_finer_groups": 2,
+  "post_hoc_320_640_all_pass": false,
+  "post_hoc_320_640_ordered_changes": 0
+}

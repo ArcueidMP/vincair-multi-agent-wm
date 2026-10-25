@@ -1,0 +1,1234 @@
+{
+  "frozen": {
+    "model_path": "data/novelty/planned_helper_v1/local/models.pt",
+    "model_sha256": "185b558f19e9f28858b899ee95601bca4010c56f6f846d00efd8b26522e2ffc2",
+    "source_sha256": {
+      "vmas_pusht/joint_interface.py": "c1b2ef1bf53b535048523f761dff1afb06efd01aa4b19d7b089d9bc6daf196da",
+      "vmas_pusht/joint_models.py": "a606752306ae3bfec93a0cfe95f7ba34d268fbaa61d8e473040197f1f034ddbb",
+      "vmas_pusht/joint_planner.py": "4e3e7320391ecf348b615b1ff06513e3b1c9f4a0cc0b01be855d2ccc2011eae1",
+      "vmas_pusht/joint_experiment.py": "21e3cceffd89660a2c2b9a39015c97080955e18418179b761a068acf3a3d7e0b",
+      "vmas_pusht/interface_composition.py": "1598bfe8ad681d7445f5237384974cd32efc7645e501d11d0915708cdfae6817",
+      "vmas_pusht/action_interface.py": "23b0e87afc55537c2791ee172cd757e5edb5322fbe29defe1ce82944e20f8dc4",
+      "vmas_pusht/recovery_primitives.py": "3f15bb20fb1c43c8ad131fd31a77e79c88fc6d2a93e84135c2b6cd401f3a9d95",
+      "vmas_pusht/rebrace.py": "7955887ace05e2499dc91296a21aaaaed55ed8fc0f62dd48f2fb0334cbbd603a",
+      "vmas_pusht/option_models.py": "d19af1b063efbc3f2d4fb7f56431c599b0b3c491fb7c8e0ffd701dc6f6c2f8f4",
+      "vmas_pusht/option_planner.py": "0fae1cfb532e0faa88271e3cd9579a2dd33f2108d0c5d8088ff2ba7007eee077",
+      "vmas_pusht/stable_composition.py": "6dd859d35afea79a6df07fc9ff8fde12393289ddb583421865a3920b3cc50991",
+      "vmas_pusht/stable_local_wm.py": "fc4baca0457e7a673f946db4d83f60761f9b08893a4bddf997a3b76d2c6ffee0",
+      "vmas_pusht/physical_abstraction.py": "200454825e5630a6ffd0ef5cfd4ae02a98142b632e208322a1a1fc6c45931954",
+      "vmas_pusht/snapshot.py": "e2984de87b1f1ed7883093d3260a8540f75eac22591d6cd7ce3c9e25d96189ca",
+      "vmas_pusht/scenario.py": "5f56bc1c26f556bc564cc633eaee172d016615bc6e998fd6add5383d56f4a1dd",
+      "vmas_pusht/physics_profiles.py": "ad7f3e1b3b819324b93fcef5f69cc423b63645f627fcd853560d78ef67ec1fda",
+      "vmas_pusht/abstraction_models.py": "7f184ebbceb262039d68703b922b55f1e032c68c7c14a8f03cde17bb3168fea8",
+      "vmas_pusht/abstraction_transfer.py": "659ce7cf70d78158cda40f1e3b529c97dce1d9943ae1c91e3da5a39fca37b428",
+      "vmas_pusht/recovery_attribution.py": "9549508d21e8ee4dbc6e00b71626954b91caace2de571a72bc893dd5357dab13",
+      "vmas_pusht/boundary.py": "ef9d47117d61915beac0ee76ed403790056aeb28e7a5e1e27b0660d8ef0961c5",
+      "vmas_pusht/abstraction_composition.py": "da4a7ffa9e3a01cf1826c7717b71a38eb4f87a4041668ae4275c9af440e7e4b8",
+      "vmas_pusht/interface_experiment.py": "017386a2995cd16b3f4285c8cc4e8a72b8ce27bea9f0f06e839de22c34c4a449"
+    },
+    "registration_sha256": "9a9d894cafa06131b3f2028ef93303d820aaa1f6a88f072378fb627b92de6e08",
+    "git_head": "22f55fece6723e5e0bb18ca17f8e5676c3182568",
+    "versions": {
+      "torch": "2.11.0+cpu",
+      "vmas": "1.5.2",
+      "numpy": "2.2.6"
+    }
+  },
+  "audit_source_sha256": {
+    "vmas_pusht/joint_audit.py": "7901dbb2b265eab9000955a7248cf57d82382c27d1c57e2e2f5bb19b91ccef18"
+  },
+  "report_source_sha256": {
+    "vmas_pusht/joint_report.py": "c10dac77c0a4159fc6a3c79be3c60eda4f16f5a0873e0180ce94296b9ebffe4d"
+  },
+  "raw_manifest": {
+    "path": "data/novelty/planned_helper_v1/manifest.json",
+    "sha256": "93eaa325a5e67ad79eee640cafe6ea6427e57ee36c6dea3a620ddbd026b44761"
+  },
+  "raw_verification": {
+    "path": "data/novelty/planned_helper_v1/verification.json",
+    "sha256": "7c9795d3ee165d206633a9c3b8a91b2c0ddefaf4d1a39322b4d93d1965e6b789"
+  },
+  "raw_groups": [
+    {
+      "job": [
+        "learned",
+        0,
+        "holdout",
+        false,
+        false,
+        0
+      ],
+      "path": "data/novelty/planned_helper_v1/tasks/learned_fixed_direct_seed0_holdout.pt",
+      "sha256": "10486222ba296816f2b52d2c173564893a4aa7c632307e1930456bafea6f92c1"
+    },
+    {
+      "job": [
+        "learned",
+        0,
+        "holdout",
+        false,
+        true,
+        0
+      ],
+      "path": "data/novelty/planned_helper_v1/tasks/learned_fixed_expanded_s0_seed0_holdout.pt",
+      "sha256": "ce89d8d53f63bd9533c0c93ab398952be4d7c9b6e13b5a9e968d1af4efa451ae"
+    },
+    {
+      "job": [
+        "learned",
+        0,
+        "holdout",
+        false,
+        true,
+        1
+      ],
+      "path": "data/novelty/planned_helper_v1/tasks/learned_fixed_expanded_s1_seed0_holdout.pt",
+      "sha256": "0bd523e6e5b52c71a030427216d05619d8ea9a249bf60deb16fd0d5f2b0ba525"
+    },
+    {
+      "job": [
+        "learned",
+        0,
+        "holdout",
+        false,
+        true,
+        2
+      ],
+      "path": "data/novelty/planned_helper_v1/tasks/learned_fixed_expanded_s2_seed0_holdout.pt",
+      "sha256": "430f396798ce2c774bf49678b0d2ec00d4786d0ea5d2155cf10bc3064d7162ac"
+    },
+    {
+      "job": [
+        "learned",
+        0,
+        "holdout",
+        true,
+        false,
+        0
+      ],
+      "path": "data/novelty/planned_helper_v1/tasks/learned_joint_direct_seed0_holdout.pt",
+      "sha256": "eb904d162271347f8042404108b180162ac22125a8d55afeec5a893796b256ba"
+    },
+    {
+      "job": [
+        "learned",
+        0,
+        "holdout",
+        true,
+        true,
+        0
+      ],
+      "path": "data/novelty/planned_helper_v1/tasks/learned_joint_expanded_s0_seed0_holdout.pt",
+      "sha256": "58fe599f7ea4a2f9170c02892c69359ccd8f5ce257b97f566611c3bc43f8a580"
+    },
+    {
+      "job": [
+        "learned",
+        0,
+        "holdout",
+        true,
+        true,
+        1
+      ],
+      "path": "data/novelty/planned_helper_v1/tasks/learned_joint_expanded_s1_seed0_holdout.pt",
+      "sha256": "1ede52de7b08ffd567f48d02b834e46f0e5789d9b32a3895558e110a3036bfae"
+    },
+    {
+      "job": [
+        "learned",
+        0,
+        "holdout",
+        true,
+        true,
+        2
+      ],
+      "path": "data/novelty/planned_helper_v1/tasks/learned_joint_expanded_s2_seed0_holdout.pt",
+      "sha256": "401d9a4674ac131a50d67599be3389baf135e1498ef8562b52d1813d1f74c7c4"
+    },
+    {
+      "job": [
+        "learned",
+        0,
+        "standard",
+        false,
+        false,
+        0
+      ],
+      "path": "data/novelty/planned_helper_v1/tasks/learned_fixed_direct_seed0_standard.pt",
+      "sha256": "5f9e2afdc840386763b4d9176cce22212ddf0c0f0d347d5882080d0b32ad11de"
+    },
+    {
+      "job": [
+        "learned",
+        0,
+        "standard",
+        false,
+        true,
+        0
+      ],
+      "path": "data/novelty/planned_helper_v1/tasks/learned_fixed_expanded_s0_seed0_standard.pt",
+      "sha256": "714951ab086e0d5d4340c542fa8e343d481184c0f3fcc219066c4bd93a59e29b"
+    },
+    {
+      "job": [
+        "learned",
+        0,
+        "standard",
+        false,
+        true,
+        1
+      ],
+      "path": "data/novelty/planned_helper_v1/tasks/learned_fixed_expanded_s1_seed0_standard.pt",
+      "sha256": "d2601a12a793866971832abbddab6bfeb13034aeadf41a38a4975b697a31f19b"
+    },
+    {
+      "job": [
+        "learned",
+        0,
+        "standard",
+        false,
+        true,
+        2
+      ],
+      "path": "data/novelty/planned_helper_v1/tasks/learned_fixed_expanded_s2_seed0_standard.pt",
+      "sha256": "42a1b2cb617eb59ab5804c40d40f111ebddbe56dbe64f0380417a81cb2e57c4e"
+    },
+    {
+      "job": [
+        "learned",
+        0,
+        "standard",
+        true,
+        false,
+        0
+      ],
+      "path": "data/novelty/planned_helper_v1/tasks/learned_joint_direct_seed0_standard.pt",
+      "sha256": "cf1ed192c80150d74c525678654fefb1e572021569959f23d7ad745cc9e733d1"
+    },
+    {
+      "job": [
+        "learned",
+        0,
+        "standard",
+        true,
+        true,
+        0
+      ],
+      "path": "data/novelty/planned_helper_v1/tasks/learned_joint_expanded_s0_seed0_standard.pt",
+      "sha256": "de1fabd1f297e6dc1d303ef3d9a2b94b6abe895094258c11b6c88e8d6e57b7cf"
+    },
+    {
+      "job": [
+        "learned",
+        0,
+        "standard",
+        true,
+        true,
+        1
+      ],
+      "path": "data/novelty/planned_helper_v1/tasks/learned_joint_expanded_s1_seed0_standard.pt",
+      "sha256": "a0ad10611c9ea4cfbaa9a9bf94fb3f7dd2b4a9c684351a28531c618f5fac7334"
+    },
+    {
+      "job": [
+        "learned",
+        0,
+        "standard",
+        true,
+        true,
+        2
+      ],
+      "path": "data/novelty/planned_helper_v1/tasks/learned_joint_expanded_s2_seed0_standard.pt",
+      "sha256": "0ba24bb81207dcac82bedf687d5235d9b5dcf4eadcc3242a6cab0b5430655d1b"
+    },
+    {
+      "job": [
+        "learned",
+        1,
+        "holdout",
+        false,
+        false,
+        0
+      ],
+      "path": "data/novelty/planned_helper_v1/tasks/learned_fixed_direct_seed1_holdout.pt",
+      "sha256": "539821e9c7156336efd4d91a7feb0d0f27b043293362dc8cdb27853c51cc1fe4"
+    },
+    {
+      "job": [
+        "learned",
+        1,
+        "holdout",
+        false,
+        true,
+        0
+      ],
+      "path": "data/novelty/planned_helper_v1/tasks/learned_fixed_expanded_s0_seed1_holdout.pt",
+      "sha256": "6f34640cb25a3a48af3525dd1ac5287e2d034b6d23c821a6623899cebe2e0751"
+    },
+    {
+      "job": [
+        "learned",
+        1,
+        "holdout",
+        false,
+        true,
+        1
+      ],
+      "path": "data/novelty/planned_helper_v1/tasks/learned_fixed_expanded_s1_seed1_holdout.pt",
+      "sha256": "445709274004bbe130be7bd4fddc13fa2496dd5452f2837fa01d1d65dc1b447f"
+    },
+    {
+      "job": [
+        "learned",
+        1,
+        "holdout",
+        false,
+        true,
+        2
+      ],
+      "path": "data/novelty/planned_helper_v1/tasks/learned_fixed_expanded_s2_seed1_holdout.pt",
+      "sha256": "caa681192f818d9c30d516b003343898881199762d92aa81a322b16b5d23985d"
+    },
+    {
+      "job": [
+        "learned",
+        1,
+        "holdout",
+        true,
+        false,
+        0
+      ],
+      "path": "data/novelty/planned_helper_v1/tasks/learned_joint_direct_seed1_holdout.pt",
+      "sha256": "f2a545f2fbfbf0d1dde8ea03cf7ba8240f7ce355e770d4e26cc16a144705d985"
+    },
+    {
+      "job": [
+        "learned",
+        1,
+        "holdout",
+        true,
+        true,
+        0
+      ],
+      "path": "data/novelty/planned_helper_v1/tasks/learned_joint_expanded_s0_seed1_holdout.pt",
+      "sha256": "3ea05f08f15a49ca2afc53d36c97db8613d7cb5bb6f42f0c8507c1e6f506968b"
+    },
+    {
+      "job": [
+        "learned",
+        1,
+        "holdout",
+        true,
+        true,
+        1
+      ],
+      "path": "data/novelty/planned_helper_v1/tasks/learned_joint_expanded_s1_seed1_holdout.pt",
+      "sha256": "84fa12a317b3a1472dd4e03bb21750f4049596fa024cea5567154bc50954aa53"
+    },
+    {
+      "job": [
+        "learned",
+        1,
+        "holdout",
+        true,
+        true,
+        2
+      ],
+      "path": "data/novelty/planned_helper_v1/tasks/learned_joint_expanded_s2_seed1_holdout.pt",
+      "sha256": "35be0726d16d16283eae2803994c39fb86d1ec55332b59b1540b3423813ba3f5"
+    },
+    {
+      "job": [
+        "learned",
+        1,
+        "standard",
+        false,
+        false,
+        0
+      ],
+      "path": "data/novelty/planned_helper_v1/tasks/learned_fixed_direct_seed1_standard.pt",
+      "sha256": "36ae28876b1d46bb35d3be72021ee31a83eb350fd80912acb663f530c242648e"
+    },
+    {
+      "job": [
+        "learned",
+        1,
+        "standard",
+        false,
+        true,
+        0
+      ],
+      "path": "data/novelty/planned_helper_v1/tasks/learned_fixed_expanded_s0_seed1_standard.pt",
+      "sha256": "9a470ce912da19f773afcbde1ea4fc1289d5df84fc790cbe5d486e075ad1c521"
+    },
+    {
+      "job": [
+        "learned",
+        1,
+        "standard",
+        false,
+        true,
+        1
+      ],
+      "path": "data/novelty/planned_helper_v1/tasks/learned_fixed_expanded_s1_seed1_standard.pt",
+      "sha256": "4b1a93c50033fd516c21e45f5ed5ab93de15c8b41b81211ed65d16b13a3aa423"
+    },
+    {
+      "job": [
+        "learned",
+        1,
+        "standard",
+        false,
+        true,
+        2
+      ],
+      "path": "data/novelty/planned_helper_v1/tasks/learned_fixed_expanded_s2_seed1_standard.pt",
+      "sha256": "e3cf7526847803d0ab07e5f7018d37c1e70f8c48f43dbc223d6ba7d59bdf54bd"
+    },
+    {
+      "job": [
+        "learned",
+        1,
+        "standard",
+        true,
+        false,
+        0
+      ],
+      "path": "data/novelty/planned_helper_v1/tasks/learned_joint_direct_seed1_standard.pt",
+      "sha256": "39a26dd8849d02c05f2e07d3f3a223632a2ffe49d85109fa51885743de3764d7"
+    },
+    {
+      "job": [
+        "learned",
+        1,
+        "standard",
+        true,
+        true,
+        0
+      ],
+      "path": "data/novelty/planned_helper_v1/tasks/learned_joint_expanded_s0_seed1_standard.pt",
+      "sha256": "aec4b967a576009f2d4dcd3c537a2325f43b85d8c4b1e7280d225c128442a12e"
+    },
+    {
+      "job": [
+        "learned",
+        1,
+        "standard",
+        true,
+        true,
+        1
+      ],
+      "path": "data/novelty/planned_helper_v1/tasks/learned_joint_expanded_s1_seed1_standard.pt",
+      "sha256": "9257c4c1692f5e90896ced60d10ca7cc30850f4ea5974d7000997fc2b8aa973f"
+    },
+    {
+      "job": [
+        "learned",
+        1,
+        "standard",
+        true,
+        true,
+        2
+      ],
+      "path": "data/novelty/planned_helper_v1/tasks/learned_joint_expanded_s2_seed1_standard.pt",
+      "sha256": "91a8518ee76f3fb4c3c3c0027e600d79039bd79ba5c3e679779ebc7169664b26"
+    },
+    {
+      "job": [
+        "learned",
+        2,
+        "holdout",
+        false,
+        false,
+        0
+      ],
+      "path": "data/novelty/planned_helper_v1/tasks/learned_fixed_direct_seed2_holdout.pt",
+      "sha256": "b9ac37dd39bc8f8bfbe055c6d7249fae5bc0d90562a738d9b6fa52ec96571302"
+    },
+    {
+      "job": [
+        "learned",
+        2,
+        "holdout",
+        false,
+        true,
+        0
+      ],
+      "path": "data/novelty/planned_helper_v1/tasks/learned_fixed_expanded_s0_seed2_holdout.pt",
+      "sha256": "cdd256d61d7a5b8a52b7937e96f564474fb5b31c927aa5afd9a4610dab11607e"
+    },
+    {
+      "job": [
+        "learned",
+        2,
+        "holdout",
+        false,
+        true,
+        1
+      ],
+      "path": "data/novelty/planned_helper_v1/tasks/learned_fixed_expanded_s1_seed2_holdout.pt",
+      "sha256": "0399005e0e6068a6139127fc41f094686a8e1afa623bd43c93c4c52f7628cfb8"
+    },
+    {
+      "job": [
+        "learned",
+        2,
+        "holdout",
+        false,
+        true,
+        2
+      ],
+      "path": "data/novelty/planned_helper_v1/tasks/learned_fixed_expanded_s2_seed2_holdout.pt",
+      "sha256": "4b3bb66938cef639531ae75bcdfae3bd61a70ac11d69aeab2c4174e6c706f074"
+    },
+    {
+      "job": [
+        "learned",
+        2,
+        "holdout",
+        true,
+        false,
+        0
+      ],
+      "path": "data/novelty/planned_helper_v1/tasks/learned_joint_direct_seed2_holdout.pt",
+      "sha256": "8f67d2edbbd2dbf7e6c6975e5e00f7e9b19068b5e4136b9973bb22def78bc8be"
+    },
+    {
+      "job": [
+        "learned",
+        2,
+        "holdout",
+        true,
+        true,
+        0
+      ],
+      "path": "data/novelty/planned_helper_v1/tasks/learned_joint_expanded_s0_seed2_holdout.pt",
+      "sha256": "0028d407cc835ac169408721f3e2aee3fbd1e389cee00d48a50475bd50e8328d"
+    },
+    {
+      "job": [
+        "learned",
+        2,
+        "holdout",
+        true,
+        true,
+        1
+      ],
+      "path": "data/novelty/planned_helper_v1/tasks/learned_joint_expanded_s1_seed2_holdout.pt",
+      "sha256": "15c76a690053484fabe81a4a3a3f408d82a7c6f2e51e0384dad8760739ff7ce5"
+    },
+    {
+      "job": [
+        "learned",
+        2,
+        "holdout",
+        true,
+        true,
+        2
+      ],
+      "path": "data/novelty/planned_helper_v1/tasks/learned_joint_expanded_s2_seed2_holdout.pt",
+      "sha256": "880f04eba3da0eeb9f5825bb1534c181c2c7061bdd5f30fc069557dfd5379811"
+    },
+    {
+      "job": [
+        "learned",
+        2,
+        "standard",
+        false,
+        false,
+        0
+      ],
+      "path": "data/novelty/planned_helper_v1/tasks/learned_fixed_direct_seed2_standard.pt",
+      "sha256": "53abcfa484f2e415e33ca01dc2141a496bb50d278d7bc00bba25bcc1624a74e6"
+    },
+    {
+      "job": [
+        "learned",
+        2,
+        "standard",
+        false,
+        true,
+        0
+      ],
+      "path": "data/novelty/planned_helper_v1/tasks/learned_fixed_expanded_s0_seed2_standard.pt",
+      "sha256": "a0dcdb7de75941eddcbb60bb1e68dabb47c332a27331acd107925501fe2262ca"
+    },
+    {
+      "job": [
+        "learned",
+        2,
+        "standard",
+        false,
+        true,
+        1
+      ],
+      "path": "data/novelty/planned_helper_v1/tasks/learned_fixed_expanded_s1_seed2_standard.pt",
+      "sha256": "d3e6d84f4b68e0637abc62f375af94c01293ceacf74f320e59abf1a6aa6b62c9"
+    },
+    {
+      "job": [
+        "learned",
+        2,
+        "standard",
+        false,
+        true,
+        2
+      ],
+      "path": "data/novelty/planned_helper_v1/tasks/learned_fixed_expanded_s2_seed2_standard.pt",
+      "sha256": "f60077a506210e53819bbd94e2b0142ea1ee1b8dee59986fc4f92148073c6097"
+    },
+    {
+      "job": [
+        "learned",
+        2,
+        "standard",
+        true,
+        false,
+        0
+      ],
+      "path": "data/novelty/planned_helper_v1/tasks/learned_joint_direct_seed2_standard.pt",
+      "sha256": "6907206c4385dabc6f19213aeccd8544ed049fb01be9888374f482037d831b29"
+    },
+    {
+      "job": [
+        "learned",
+        2,
+        "standard",
+        true,
+        true,
+        0
+      ],
+      "path": "data/novelty/planned_helper_v1/tasks/learned_joint_expanded_s0_seed2_standard.pt",
+      "sha256": "0b51ff29c1d5da8bb58ca02220b2520ec47e44a0a1a713dd0f33f42debd2c3de"
+    },
+    {
+      "job": [
+        "learned",
+        2,
+        "standard",
+        true,
+        true,
+        1
+      ],
+      "path": "data/novelty/planned_helper_v1/tasks/learned_joint_expanded_s1_seed2_standard.pt",
+      "sha256": "f8627e987f40ac8017d3be6031fe808191989c5a438eb15fdd14cbf3a2080919"
+    },
+    {
+      "job": [
+        "learned",
+        2,
+        "standard",
+        true,
+        true,
+        2
+      ],
+      "path": "data/novelty/planned_helper_v1/tasks/learned_joint_expanded_s2_seed2_standard.pt",
+      "sha256": "2aa78cdfdaa2f26ec0616ccde75e483f3814a9b490145aa489ff56225ba1851c"
+    },
+    {
+      "job": [
+        "oracle",
+        0,
+        "holdout",
+        false,
+        false,
+        0
+      ],
+      "path": "data/novelty/planned_helper_v1/tasks/oracle_fixed_direct_seed0_holdout.pt",
+      "sha256": "280a016955b991bdc2e51e5108ebcf034d5746c9e06d3f57177046035146d1d4"
+    },
+    {
+      "job": [
+        "oracle",
+        0,
+        "holdout",
+        false,
+        true,
+        0
+      ],
+      "path": "data/novelty/planned_helper_v1/tasks/oracle_fixed_expanded_s0_seed0_holdout.pt",
+      "sha256": "e0841c1018bfba83aaa6c57406affb4a243155b74cac2fa5f0b356a605bb3e6d"
+    },
+    {
+      "job": [
+        "oracle",
+        0,
+        "holdout",
+        false,
+        true,
+        1
+      ],
+      "path": "data/novelty/planned_helper_v1/tasks/oracle_fixed_expanded_s1_seed0_holdout.pt",
+      "sha256": "13b82284024702fa42b0d256de98cce47c11a52149faefee3a110bf2de67fbeb"
+    },
+    {
+      "job": [
+        "oracle",
+        0,
+        "holdout",
+        false,
+        true,
+        2
+      ],
+      "path": "data/novelty/planned_helper_v1/tasks/oracle_fixed_expanded_s2_seed0_holdout.pt",
+      "sha256": "1c20a1b2a2fb26f72f71332fbae220f22612362338a1e376453f17c6d85b6fdb"
+    },
+    {
+      "job": [
+        "oracle",
+        0,
+        "holdout",
+        true,
+        false,
+        0
+      ],
+      "path": "data/novelty/planned_helper_v1/tasks/oracle_joint_direct_seed0_holdout.pt",
+      "sha256": "29004e71d843529eb055f769c343a663566f8a4bf4b0ba295ace8eedca0c2505"
+    },
+    {
+      "job": [
+        "oracle",
+        0,
+        "holdout",
+        true,
+        true,
+        0
+      ],
+      "path": "data/novelty/planned_helper_v1/tasks/oracle_joint_expanded_s0_seed0_holdout.pt",
+      "sha256": "6bdea780c20bd3077301ee7b7026d9c5b52715c9c21b5adf324e172dc050f780"
+    },
+    {
+      "job": [
+        "oracle",
+        0,
+        "holdout",
+        true,
+        true,
+        1
+      ],
+      "path": "data/novelty/planned_helper_v1/tasks/oracle_joint_expanded_s1_seed0_holdout.pt",
+      "sha256": "f3acacdbcf8e0c030079d7b3bb68873aa8b468c073d86c3c8b1456ac530edfb1"
+    },
+    {
+      "job": [
+        "oracle",
+        0,
+        "holdout",
+        true,
+        true,
+        2
+      ],
+      "path": "data/novelty/planned_helper_v1/tasks/oracle_joint_expanded_s2_seed0_holdout.pt",
+      "sha256": "b63fdd110a87def42a929743ea29e049726c6c4165c53af023d13b609678164d"
+    },
+    {
+      "job": [
+        "oracle",
+        0,
+        "standard",
+        false,
+        false,
+        0
+      ],
+      "path": "data/novelty/planned_helper_v1/tasks/oracle_fixed_direct_seed0_standard.pt",
+      "sha256": "aebe16f7f32a7f9ec86531f73a685382b8669df271eefb6417f8b14cded0eaa2"
+    },
+    {
+      "job": [
+        "oracle",
+        0,
+        "standard",
+        false,
+        true,
+        0
+      ],
+      "path": "data/novelty/planned_helper_v1/tasks/oracle_fixed_expanded_s0_seed0_standard.pt",
+      "sha256": "19d27159d37eb7ac61db1fc030a6bcf15e2a3f7b523b7d805411c74f122442b3"
+    },
+    {
+      "job": [
+        "oracle",
+        0,
+        "standard",
+        false,
+        true,
+        1
+      ],
+      "path": "data/novelty/planned_helper_v1/tasks/oracle_fixed_expanded_s1_seed0_standard.pt",
+      "sha256": "efb0f1e3df0a62013ea25c097d7d0d1582f35f5db1bce28bcede16cfb1d808fb"
+    },
+    {
+      "job": [
+        "oracle",
+        0,
+        "standard",
+        false,
+        true,
+        2
+      ],
+      "path": "data/novelty/planned_helper_v1/tasks/oracle_fixed_expanded_s2_seed0_standard.pt",
+      "sha256": "f6903ac2ae8aaee42753ba159cf206b88397e2e0a42b8e9b2a5e78a738082cfa"
+    },
+    {
+      "job": [
+        "oracle",
+        0,
+        "standard",
+        true,
+        false,
+        0
+      ],
+      "path": "data/novelty/planned_helper_v1/tasks/oracle_joint_direct_seed0_standard.pt",
+      "sha256": "8a86ce8746cfe3d78378b5491932e27e62fba761d4aa78c327a6efb3bb91e99c"
+    },
+    {
+      "job": [
+        "oracle",
+        0,
+        "standard",
+        true,
+        true,
+        0
+      ],
+      "path": "data/novelty/planned_helper_v1/tasks/oracle_joint_expanded_s0_seed0_standard.pt",
+      "sha256": "190eb355a8159cefbb19dcc8b8597686295bac1ae86e175bb07af9e340d7c8f7"
+    },
+    {
+      "job": [
+        "oracle",
+        0,
+        "standard",
+        true,
+        true,
+        1
+      ],
+      "path": "data/novelty/planned_helper_v1/tasks/oracle_joint_expanded_s1_seed0_standard.pt",
+      "sha256": "0eb67c34f0a920dff456e743fa4b790e42133484363277cdf4c0f06ebf13976b"
+    },
+    {
+      "job": [
+        "oracle",
+        0,
+        "standard",
+        true,
+        true,
+        2
+      ],
+      "path": "data/novelty/planned_helper_v1/tasks/oracle_joint_expanded_s2_seed0_standard.pt",
+      "sha256": "7266faf6887be3586a489614f5097c97343253b1f4661b88506a950a0bd977d5"
+    }
+  ],
+  "raw_numerical": [
+    {
+      "source_path": "data/novelty/planned_helper_v1/tasks/learned_fixed_direct_seed0_holdout.pt",
+      "raw_path": "data/novelty/planned_helper_v1/numerics/learned_fixed_direct_seed0_holdout.pt",
+      "raw_sha256": "35cea9bd1f7f850a17d1b54312644535b8d467adf2bd9ec3ab07e19df5980d57"
+    },
+    {
+      "source_path": "data/novelty/planned_helper_v1/tasks/learned_fixed_expanded_s0_seed0_holdout.pt",
+      "raw_path": "data/novelty/planned_helper_v1/numerics/learned_fixed_expanded_s0_seed0_holdout.pt",
+      "raw_sha256": "614c805112ee648698ea129788a1453c47d3c8b75c5f2ab23833fb703a3c0476"
+    },
+    {
+      "source_path": "data/novelty/planned_helper_v1/tasks/learned_fixed_expanded_s1_seed0_holdout.pt",
+      "raw_path": "data/novelty/planned_helper_v1/numerics/learned_fixed_expanded_s1_seed0_holdout.pt",
+      "raw_sha256": "d9388375430ab7ae159c8d0c7d1e219dd960606e8569ee8aba20892d7ba366b6"
+    },
+    {
+      "source_path": "data/novelty/planned_helper_v1/tasks/learned_fixed_expanded_s2_seed0_holdout.pt",
+      "raw_path": "data/novelty/planned_helper_v1/numerics/learned_fixed_expanded_s2_seed0_holdout.pt",
+      "raw_sha256": "ab10f121d29c8cb068ec2d93cedb647426d3576406a65bd4c92350587e03b363"
+    },
+    {
+      "source_path": "data/novelty/planned_helper_v1/tasks/learned_joint_direct_seed0_holdout.pt",
+      "raw_path": "data/novelty/planned_helper_v1/numerics/learned_joint_direct_seed0_holdout.pt",
+      "raw_sha256": "6215cec61a04ef72e80fcd781483b26b5302268e18a46faff81e7b25e5409230"
+    },
+    {
+      "source_path": "data/novelty/planned_helper_v1/tasks/learned_joint_expanded_s0_seed0_holdout.pt",
+      "raw_path": "data/novelty/planned_helper_v1/numerics/learned_joint_expanded_s0_seed0_holdout.pt",
+      "raw_sha256": "67d12255133520a641a035cbc8d3eeb4fb26a218d0252da051f0651d37723e64"
+    },
+    {
+      "source_path": "data/novelty/planned_helper_v1/tasks/learned_joint_expanded_s1_seed0_holdout.pt",
+      "raw_path": "data/novelty/planned_helper_v1/numerics/learned_joint_expanded_s1_seed0_holdout.pt",
+      "raw_sha256": "5d9c0f5c82653dca68186084d8cd2d094add6520f29bf7fa8c5241a0d1a58364"
+    },
+    {
+      "source_path": "data/novelty/planned_helper_v1/tasks/learned_joint_expanded_s2_seed0_holdout.pt",
+      "raw_path": "data/novelty/planned_helper_v1/numerics/learned_joint_expanded_s2_seed0_holdout.pt",
+      "raw_sha256": "ee2474d095c0e05234fc8de28a6194d06f7a59e5ebe90121ec0042d64da8fb22"
+    },
+    {
+      "source_path": "data/novelty/planned_helper_v1/tasks/learned_fixed_direct_seed0_standard.pt",
+      "raw_path": "data/novelty/planned_helper_v1/numerics/learned_fixed_direct_seed0_standard.pt",
+      "raw_sha256": "bc768ade8b568aa1db4b843769bb1b30bc4da5e1cb5c0a5d292522b20a6e4deb"
+    },
+    {
+      "source_path": "data/novelty/planned_helper_v1/tasks/learned_fixed_expanded_s0_seed0_standard.pt",
+      "raw_path": "data/novelty/planned_helper_v1/numerics/learned_fixed_expanded_s0_seed0_standard.pt",
+      "raw_sha256": "1ccc98d04288c479997bae2f3ce9b61f26d871aeca332455b48ab53aca0d9483"
+    },
+    {
+      "source_path": "data/novelty/planned_helper_v1/tasks/learned_fixed_expanded_s1_seed0_standard.pt",
+      "raw_path": "data/novelty/planned_helper_v1/numerics/learned_fixed_expanded_s1_seed0_standard.pt",
+      "raw_sha256": "72c3e92ada6a737715cdb72bc6bc847bb46582030f15247209700a56554d20ba"
+    },
+    {
+      "source_path": "data/novelty/planned_helper_v1/tasks/learned_fixed_expanded_s2_seed0_standard.pt",
+      "raw_path": "data/novelty/planned_helper_v1/numerics/learned_fixed_expanded_s2_seed0_standard.pt",
+      "raw_sha256": "c9f90ee04edab4dbeb3a59ca1c57f226bfab14f5ea9021cc93d5d36c070907e7"
+    },
+    {
+      "source_path": "data/novelty/planned_helper_v1/tasks/learned_joint_direct_seed0_standard.pt",
+      "raw_path": "data/novelty/planned_helper_v1/numerics/learned_joint_direct_seed0_standard.pt",
+      "raw_sha256": "8d92085115685300e7bcdc9c30eafa2450af46e35bc19307e87c52bc5b1e7bba"
+    },
+    {
+      "source_path": "data/novelty/planned_helper_v1/tasks/learned_joint_expanded_s0_seed0_standard.pt",
+      "raw_path": "data/novelty/planned_helper_v1/numerics/learned_joint_expanded_s0_seed0_standard.pt",
+      "raw_sha256": "2028d0d4b48ad7f245099d0b0e3f05507fc30e5f92fa2a6f1d84396af8011493"
+    },
+    {
+      "source_path": "data/novelty/planned_helper_v1/tasks/learned_joint_expanded_s1_seed0_standard.pt",
+      "raw_path": "data/novelty/planned_helper_v1/numerics/learned_joint_expanded_s1_seed0_standard.pt",
+      "raw_sha256": "849957467a60ec1b55aee6dd0132fb44b5d0de479342b40f0126b9887a085061"
+    },
+    {
+      "source_path": "data/novelty/planned_helper_v1/tasks/learned_joint_expanded_s2_seed0_standard.pt",
+      "raw_path": "data/novelty/planned_helper_v1/numerics/learned_joint_expanded_s2_seed0_standard.pt",
+      "raw_sha256": "ee1c0075eab37c07cd65776ec7711d58c6105daec628a9bd44303ef6b6dc949f"
+    },
+    {
+      "source_path": "data/novelty/planned_helper_v1/tasks/learned_fixed_direct_seed1_holdout.pt",
+      "raw_path": "data/novelty/planned_helper_v1/numerics/learned_fixed_direct_seed1_holdout.pt",
+      "raw_sha256": "962f55228a4f38fbb5e8e573c896a5985f050eedd5491c1eaf4e2e4fe89e6d2d"
+    },
+    {
+      "source_path": "data/novelty/planned_helper_v1/tasks/learned_fixed_expanded_s0_seed1_holdout.pt",
+      "raw_path": "data/novelty/planned_helper_v1/numerics/learned_fixed_expanded_s0_seed1_holdout.pt",
+      "raw_sha256": "25a18a7fc8742527d6bb215b2821f6702c9fe39a52aedbe394e8b03006dc82ba"
+    },
+    {
+      "source_path": "data/novelty/planned_helper_v1/tasks/learned_fixed_expanded_s1_seed1_holdout.pt",
+      "raw_path": "data/novelty/planned_helper_v1/numerics/learned_fixed_expanded_s1_seed1_holdout.pt",
+      "raw_sha256": "4d88ecbd539295e88bf4982bdacf5c839c8aa5b59fbf6d5a3de5be4d50a3269a"
+    },
+    {
+      "source_path": "data/novelty/planned_helper_v1/tasks/learned_fixed_expanded_s2_seed1_holdout.pt",
+      "raw_path": "data/novelty/planned_helper_v1/numerics/learned_fixed_expanded_s2_seed1_holdout.pt",
+      "raw_sha256": "9b64e98cf8cecc381f94cb7005d0d3e52ac09f76d1ac05acf6fdb43d9ae004e3"
+    },
+    {
+      "source_path": "data/novelty/planned_helper_v1/tasks/learned_joint_direct_seed1_holdout.pt",
+      "raw_path": "data/novelty/planned_helper_v1/numerics/learned_joint_direct_seed1_holdout.pt",
+      "raw_sha256": "c717a27b942ddfa2d2b4dcf7eda79ce6bfdefc1eaf876002e31ac270f302127b"
+    },
+    {
+      "source_path": "data/novelty/planned_helper_v1/tasks/learned_joint_expanded_s1_seed1_holdout.pt",
+      "raw_path": "data/novelty/planned_helper_v1/numerics/learned_joint_expanded_s1_seed1_holdout.pt",
+      "raw_sha256": "96de0975fa61789a555fd34ed748960eeebdaaab1aa974b7ef5486cceeae6352"
+    },
+    {
+      "source_path": "data/novelty/planned_helper_v1/tasks/learned_joint_expanded_s2_seed1_holdout.pt",
+      "raw_path": "data/novelty/planned_helper_v1/numerics/learned_joint_expanded_s2_seed1_holdout.pt",
+      "raw_sha256": "10790841501ebcd733a4a42f87a04fc1411b809412d29c662823fa7a04cb87a3"
+    },
+    {
+      "source_path": "data/novelty/planned_helper_v1/tasks/learned_fixed_direct_seed1_standard.pt",
+      "raw_path": "data/novelty/planned_helper_v1/numerics/learned_fixed_direct_seed1_standard.pt",
+      "raw_sha256": "ed7f4002d4dea54dbc1fd32bf37218efb2416db6194bc343b98103866dbe0c25"
+    },
+    {
+      "source_path": "data/novelty/planned_helper_v1/tasks/learned_fixed_expanded_s0_seed1_standard.pt",
+      "raw_path": "data/novelty/planned_helper_v1/numerics/learned_fixed_expanded_s0_seed1_standard.pt",
+      "raw_sha256": "091b657b261ebbef880b73223c02c732bc1514bd477147618d8db8f78f53765c"
+    },
+    {
+      "source_path": "data/novelty/planned_helper_v1/tasks/learned_fixed_expanded_s1_seed1_standard.pt",
+      "raw_path": "data/novelty/planned_helper_v1/numerics/learned_fixed_expanded_s1_seed1_standard.pt",
+      "raw_sha256": "59a2f23a0f72979593d5bae9fae1fca076c174299e156819520ab3ab889886f2"
+    },
+    {
+      "source_path": "data/novelty/planned_helper_v1/tasks/learned_fixed_expanded_s2_seed1_standard.pt",
+      "raw_path": "data/novelty/planned_helper_v1/numerics/learned_fixed_expanded_s2_seed1_standard.pt",
+      "raw_sha256": "f91e7fbbed140d0b25ac9b8388d8427c5eb5c4add62d8b9ca8a51e297fbdfc0e"
+    },
+    {
+      "source_path": "data/novelty/planned_helper_v1/tasks/learned_joint_direct_seed1_standard.pt",
+      "raw_path": "data/novelty/planned_helper_v1/numerics/learned_joint_direct_seed1_standard.pt",
+      "raw_sha256": "f338b541f4fdff6e21cad3d76dd3492d6efa20cec0700bf9d9487070adebc701"
+    },
+    {
+      "source_path": "data/novelty/planned_helper_v1/tasks/learned_joint_expanded_s0_seed1_standard.pt",
+      "raw_path": "data/novelty/planned_helper_v1/numerics/learned_joint_expanded_s0_seed1_standard.pt",
+      "raw_sha256": "122557325782b4da4841aac778d4f0569618077f67edb90e062c4faa0351c7de"
+    },
+    {
+      "source_path": "data/novelty/planned_helper_v1/tasks/learned_joint_expanded_s1_seed1_standard.pt",
+      "raw_path": "data/novelty/planned_helper_v1/numerics/learned_joint_expanded_s1_seed1_standard.pt",
+      "raw_sha256": "99db938e66f327719bae3e6fa99d646fac5f9694af25d3d02f6c847267f5e8d9"
+    },
+    {
+      "source_path": "data/novelty/planned_helper_v1/tasks/learned_joint_expanded_s2_seed1_standard.pt",
+      "raw_path": "data/novelty/planned_helper_v1/numerics/learned_joint_expanded_s2_seed1_standard.pt",
+      "raw_sha256": "a923e4e11b1ae78a26525f443722ff8c13c878ecc5cb469a223657ad371db418"
+    },
+    {
+      "source_path": "data/novelty/planned_helper_v1/tasks/learned_fixed_direct_seed2_standard.pt",
+      "raw_path": "data/novelty/planned_helper_v1/numerics/learned_fixed_direct_seed2_standard.pt",
+      "raw_sha256": "e2ed3f022e84382abf917094f7736351434ead4c14e7954f2ade1895d2bf6f2e"
+    },
+    {
+      "source_path": "data/novelty/planned_helper_v1/tasks/learned_fixed_expanded_s0_seed2_standard.pt",
+      "raw_path": "data/novelty/planned_helper_v1/numerics/learned_fixed_expanded_s0_seed2_standard.pt",
+      "raw_sha256": "9208b7a4cf90532dbb588dbd77f711dae29b6a4a5ace1141d2f194c1c1e18931"
+    },
+    {
+      "source_path": "data/novelty/planned_helper_v1/tasks/learned_fixed_expanded_s1_seed2_standard.pt",
+      "raw_path": "data/novelty/planned_helper_v1/numerics/learned_fixed_expanded_s1_seed2_standard.pt",
+      "raw_sha256": "f919be11efb251ec5e08191a8d10a014180bf7ebf7a31305e87534cd3f369428"
+    },
+    {
+      "source_path": "data/novelty/planned_helper_v1/tasks/learned_fixed_expanded_s2_seed2_standard.pt",
+      "raw_path": "data/novelty/planned_helper_v1/numerics/learned_fixed_expanded_s2_seed2_standard.pt",
+      "raw_sha256": "f7d089887d384ce128d8269e6a7dd5b5315e0aa1debca0ccc2dce67ad9a48cd9"
+    },
+    {
+      "source_path": "data/novelty/planned_helper_v1/tasks/oracle_fixed_direct_seed0_holdout.pt",
+      "raw_path": "data/novelty/planned_helper_v1/numerics/oracle_fixed_direct_seed0_holdout.pt",
+      "raw_sha256": "981c5ba36c3fa0d3badf9789f4bf4b6c2b7c99c6d320df181c66ebb3e3394b72"
+    },
+    {
+      "source_path": "data/novelty/planned_helper_v1/tasks/oracle_fixed_expanded_s0_seed0_holdout.pt",
+      "raw_path": "data/novelty/planned_helper_v1/numerics/oracle_fixed_expanded_s0_seed0_holdout.pt",
+      "raw_sha256": "af0540332a1be2bfa4c1e9bd68d8aadefab17a69bf0d350fe6d621234f3d0513"
+    },
+    {
+      "source_path": "data/novelty/planned_helper_v1/tasks/oracle_fixed_expanded_s1_seed0_holdout.pt",
+      "raw_path": "data/novelty/planned_helper_v1/numerics/oracle_fixed_expanded_s1_seed0_holdout.pt",
+      "raw_sha256": "aa1028e5eca20f95bee794993f5ca9be8305893c3a7076b6d2c8c704ed3adba0"
+    },
+    {
+      "source_path": "data/novelty/planned_helper_v1/tasks/oracle_fixed_expanded_s2_seed0_holdout.pt",
+      "raw_path": "data/novelty/planned_helper_v1/numerics/oracle_fixed_expanded_s2_seed0_holdout.pt",
+      "raw_sha256": "7b75ffc291703e2e0c6efd171a336407272f76ec78d646e05cb1e50b80ae0ccc"
+    },
+    {
+      "source_path": "data/novelty/planned_helper_v1/tasks/oracle_joint_direct_seed0_holdout.pt",
+      "raw_path": "data/novelty/planned_helper_v1/numerics/oracle_joint_direct_seed0_holdout.pt",
+      "raw_sha256": "f1566f46f29a583934f444941c915b0711e66b97f4d5434a2458d0cf668717cc"
+    },
+    {
+      "source_path": "data/novelty/planned_helper_v1/tasks/oracle_joint_expanded_s0_seed0_holdout.pt",
+      "raw_path": "data/novelty/planned_helper_v1/numerics/oracle_joint_expanded_s0_seed0_holdout.pt",
+      "raw_sha256": "d362c2a34c7ccd8dfb11c67ba70fffe1d6de641f557fe6b7a2b460bec5c5fcc2"
+    },
+    {
+      "source_path": "data/novelty/planned_helper_v1/tasks/oracle_joint_expanded_s1_seed0_holdout.pt",
+      "raw_path": "data/novelty/planned_helper_v1/numerics/oracle_joint_expanded_s1_seed0_holdout.pt",
+      "raw_sha256": "87f16bc84106b7776d1586e10b2ac0c8733170372b3843484be96a2cc7d4270b"
+    },
+    {
+      "source_path": "data/novelty/planned_helper_v1/tasks/oracle_joint_expanded_s2_seed0_holdout.pt",
+      "raw_path": "data/novelty/planned_helper_v1/numerics/oracle_joint_expanded_s2_seed0_holdout.pt",
+      "raw_sha256": "c35071f628252a40e310b89a4a23f49ad3409adfc6f9de3660b9ba29c3e1a137"
+    },
+    {
+      "source_path": "data/novelty/planned_helper_v1/tasks/oracle_fixed_direct_seed0_standard.pt",
+      "raw_path": "data/novelty/planned_helper_v1/numerics/oracle_fixed_direct_seed0_standard.pt",
+      "raw_sha256": "771f7707f80492ed1004f7b36757e9adc90da8e81a45a39796b9e3da37f9fbcc"
+    },
+    {
+      "source_path": "data/novelty/planned_helper_v1/tasks/oracle_fixed_expanded_s0_seed0_standard.pt",
+      "raw_path": "data/novelty/planned_helper_v1/numerics/oracle_fixed_expanded_s0_seed0_standard.pt",
+      "raw_sha256": "0f064092a0519fb3eb88722ce17a38108609357ffa67c9110200c88d103c7ee4"
+    },
+    {
+      "source_path": "data/novelty/planned_helper_v1/tasks/oracle_fixed_expanded_s1_seed0_standard.pt",
+      "raw_path": "data/novelty/planned_helper_v1/numerics/oracle_fixed_expanded_s1_seed0_standard.pt",
+      "raw_sha256": "9d529770828f320c70fc3e08b28d29ea630252148a059b6e245f76828eff6a08"
+    },
+    {
+      "source_path": "data/novelty/planned_helper_v1/tasks/oracle_fixed_expanded_s2_seed0_standard.pt",
+      "raw_path": "data/novelty/planned_helper_v1/numerics/oracle_fixed_expanded_s2_seed0_standard.pt",
+      "raw_sha256": "f4e6883de11fa75219f24ad0ec16fc87af0344aea19b46b0ca56eea858ef9c03"
+    },
+    {
+      "source_path": "data/novelty/planned_helper_v1/tasks/oracle_joint_direct_seed0_standard.pt",
+      "raw_path": "data/novelty/planned_helper_v1/numerics/oracle_joint_direct_seed0_standard.pt",
+      "raw_sha256": "f9aa41d1f40aee8002fb7a9c4d7a32e8642216c7bd155dc346a23ecdfc526903"
+    },
+    {
+      "source_path": "data/novelty/planned_helper_v1/tasks/oracle_joint_expanded_s0_seed0_standard.pt",
+      "raw_path": "data/novelty/planned_helper_v1/numerics/oracle_joint_expanded_s0_seed0_standard.pt",
+      "raw_sha256": "428dc2f954002a2447e422b195aaae3aabd0992b0803faf72d9238e1f2dd0ff2"
+    },
+    {
+      "source_path": "data/novelty/planned_helper_v1/tasks/oracle_joint_expanded_s1_seed0_standard.pt",
+      "raw_path": "data/novelty/planned_helper_v1/numerics/oracle_joint_expanded_s1_seed0_standard.pt",
+      "raw_sha256": "ee498cf24609004bf90f93e048d37d2f897d0d9362064c1b63d108c5da9e6183"
+    },
+    {
+      "source_path": "data/novelty/planned_helper_v1/tasks/oracle_joint_expanded_s2_seed0_standard.pt",
+      "raw_path": "data/novelty/planned_helper_v1/numerics/oracle_joint_expanded_s2_seed0_standard.pt",
+      "raw_sha256": "f898c62ebe4dccad82ab0297a420ce27e41185e863b9e3a644df10daa0de0bce"
+    },
+    {
+      "source_path": "data/novelty/planned_helper_v1/tasks/learned_fixed_expanded_s0_seed2_holdout.pt",
+      "raw_path": "data/novelty/planned_helper_v1/numerics/learned_fixed_expanded_s0_seed2_holdout.pt",
+      "raw_sha256": "b523eec98f4be8b95ab471599b5b218ae9466c24d9c5c44cdc014fe383d8a289"
+    },
+    {
+      "source_path": "data/novelty/planned_helper_v1/tasks/learned_fixed_expanded_s1_seed2_holdout.pt",
+      "raw_path": "data/novelty/planned_helper_v1/numerics/learned_fixed_expanded_s1_seed2_holdout.pt",
+      "raw_sha256": "1186d9d3d8d5e24754571f64d55dc0cf31de2b2bef3fbcdf3d52b83bc31f221c"
+    },
+    {
+      "source_path": "data/novelty/planned_helper_v1/tasks/learned_joint_expanded_s0_seed1_holdout.pt",
+      "raw_path": "data/novelty/planned_helper_v1/numerics/learned_joint_expanded_s0_seed1_holdout.pt",
+      "raw_sha256": "49471828d5ebd4ccefeef6ca0e7a547d2a7b535eb6cd4f42537320e7a23cacd8"
+    },
+    {
+      "source_path": "data/novelty/planned_helper_v1/tasks/learned_fixed_direct_seed2_holdout.pt",
+      "raw_path": "data/novelty/planned_helper_v1/numerics/learned_fixed_direct_seed2_holdout.pt",
+      "raw_sha256": "eeac83c0715ccd1dac09a5c1f7db1671220b3fe40e37d4276f79ca2f43714368"
+    },
+    {
+      "source_path": "data/novelty/planned_helper_v1/tasks/learned_fixed_expanded_s2_seed2_holdout.pt",
+      "raw_path": "data/novelty/planned_helper_v1/numerics/learned_fixed_expanded_s2_seed2_holdout.pt",
+      "raw_sha256": "4c9ff9983b1f513cfa9a7b26f81e7717575b652795c28bd8ef5b9a6257a0e29b"
+    },
+    {
+      "source_path": "data/novelty/planned_helper_v1/tasks/learned_joint_expanded_s1_seed2_holdout.pt",
+      "raw_path": "data/novelty/planned_helper_v1/numerics/learned_joint_expanded_s1_seed2_holdout.pt",
+      "raw_sha256": "f3269b9a58e041c5cbe4bb9635ed75f46d39e63ab39f39112e4fe8d374d89803"
+    },
+    {
+      "source_path": "data/novelty/planned_helper_v1/tasks/learned_joint_direct_seed2_holdout.pt",
+      "raw_path": "data/novelty/planned_helper_v1/numerics/learned_joint_direct_seed2_holdout.pt",
+      "raw_sha256": "81ce464e81f6e25ef5db13e08ae7ebce0b9698608fe8af0a02a82dcad885ce4a"
+    },
+    {
+      "source_path": "data/novelty/planned_helper_v1/tasks/learned_joint_expanded_s0_seed2_holdout.pt",
+      "raw_path": "data/novelty/planned_helper_v1/numerics/learned_joint_expanded_s0_seed2_holdout.pt",
+      "raw_sha256": "4b854e46c4cbbc17009b2d38b1e163fabf4bc1834b7704fb693fae1c0e54721e"
+    },
+    {
+      "source_path": "data/novelty/planned_helper_v1/tasks/learned_joint_expanded_s0_seed2_standard.pt",
+      "raw_path": "data/novelty/planned_helper_v1/numerics/learned_joint_expanded_s0_seed2_standard.pt",
+      "raw_sha256": "a3f0a15872cd3218fb3a534cf131ef51e21b5f5d01c6f02ea4d8d4d7bf1e3993"
+    },
+    {
+      "source_path": "data/novelty/planned_helper_v1/tasks/learned_joint_direct_seed2_standard.pt",
+      "raw_path": "data/novelty/planned_helper_v1/numerics/learned_joint_direct_seed2_standard.pt",
+      "raw_sha256": "fd932c42910426afa5797c35b24ba970e806171f7a7b92a87da36949b66551d4"
+    },
+    {
+      "source_path": "data/novelty/planned_helper_v1/tasks/learned_joint_expanded_s1_seed2_standard.pt",
+      "raw_path": "data/novelty/planned_helper_v1/numerics/learned_joint_expanded_s1_seed2_standard.pt",
+      "raw_sha256": "85af3393594bd02036d7b6076bc2680e66725c00009307aa5e88bf23f8870704"
+    },
+    {
+      "source_path": "data/novelty/planned_helper_v1/tasks/learned_joint_expanded_s2_seed2_standard.pt",
+      "raw_path": "data/novelty/planned_helper_v1/numerics/learned_joint_expanded_s2_seed2_standard.pt",
+      "raw_sha256": "a3267ea5006ae17c41582ab8737f5b2d4fa3ffe2b9588a088b6bc5f103709dc3"
+    },
+    {
+      "source_path": "data/novelty/planned_helper_v1/tasks/learned_joint_expanded_s2_seed2_holdout.pt",
+      "raw_path": "data/novelty/planned_helper_v1/numerics/learned_joint_expanded_s2_seed2_holdout.pt",
+      "raw_sha256": "cbdb5fa87081e97366679e7c6e6b742095359f12c3ded1c5ce28893d2b8e0ef7"
+    }
+  ],
+  "raw_data_location": "gitignored data/novelty/planned_helper_v1; not included in the compact evidence",
+  "published_sha256": {
+    "portability_verification.json": "2914e0332135ea71c684e2218c22f89dd6dcd163d62f5c56e51a3382b532b094",
+    "verification.json": "910a839003b65d6f3977b25eaf5364adb9ef522f4069664c2f3446de11ee0540",
+    "protocol.json": "9a9d894cafa06131b3f2028ef93303d820aaa1f6a88f072378fb627b92de6e08",
+    "compute.json": "0ef3d59ed72cf72e491e492148bfa96d7cc0781645f78756c6b03154f221964c",
+    "finer_diagnostics.json": "17021bda744666b89c78d4ab327428b63861768415479ee1e18143f0ef645045",
+    "frozen_models.json": "4c057c547bfff86a319ba7bbae70ef1dd66a8efc4149a2727f17ba4093b6d535",
+    "summary.json": "707d618722f15e5dc4b8320163b2efa22089c589646f39f2b4216114778d424a",
+    "training.json": "9f7a2e6d1e9e404c81c0e3b7c32fe41b3f1b8df6da3a7f966f28b6b37647af1b",
+    "episodes.csv": "d768b9fe1afd14f2f99fcb9f4f6d3c5b579765facf803eac9771552e2a352010",
+    "paired_results.json": "88a52bf78aeaecee23ce08f491e1af10033947bed7ca2b33a72531c72636a046"
+  },
+  "collection_source_archive": {
+    "vmas_pusht/joint_interface.py": {
+      "archived_path": "data/novelty/planned_helper_v1/collection_sources/vmas_pusht/joint_interface.py",
+      "sha256": "c1b2ef1bf53b535048523f761dff1afb06efd01aa4b19d7b089d9bc6daf196da"
+    },
+    "vmas_pusht/joint_models.py": {
+      "archived_path": "data/novelty/planned_helper_v1/collection_sources/vmas_pusht/joint_models.py",
+      "sha256": "a606752306ae3bfec93a0cfe95f7ba34d268fbaa61d8e473040197f1f034ddbb"
+    },
+    "vmas_pusht/joint_planner.py": {
+      "archived_path": "data/novelty/planned_helper_v1/collection_sources/vmas_pusht/joint_planner.py",
+      "sha256": "4e3e7320391ecf348b615b1ff06513e3b1c9f4a0cc0b01be855d2ccc2011eae1"
+    },
+    "vmas_pusht/joint_experiment.py": {
+      "archived_path": "data/novelty/planned_helper_v1/collection_sources/vmas_pusht/joint_experiment.py",
+      "sha256": "7a1903bc769d81820193e1284532ba037fa6f39c019d68bdf9402a831ddc0416"
+    },
+    "vmas_pusht/interface_composition.py": {
+      "archived_path": "data/novelty/planned_helper_v1/collection_sources/vmas_pusht/interface_composition.py",
+      "sha256": "ef78eaf2d2ace5e82cd0d5fd393239fc1a5c2b1b4c0c1fe102080a204d8eb072"
+    },
+    "vmas_pusht/action_interface.py": {
+      "archived_path": "data/novelty/planned_helper_v1/collection_sources/vmas_pusht/action_interface.py",
+      "sha256": "23b0e87afc55537c2791ee172cd757e5edb5322fbe29defe1ce82944e20f8dc4"
+    },
+    "vmas_pusht/recovery_primitives.py": {
+      "archived_path": "data/novelty/planned_helper_v1/collection_sources/vmas_pusht/recovery_primitives.py",
+      "sha256": "3f15bb20fb1c43c8ad131fd31a77e79c88fc6d2a93e84135c2b6cd401f3a9d95"
+    },
+    "vmas_pusht/rebrace.py": {
+      "archived_path": "data/novelty/planned_helper_v1/collection_sources/vmas_pusht/rebrace.py",
+      "sha256": "7955887ace05e2499dc91296a21aaaaed55ed8fc0f62dd48f2fb0334cbbd603a"
+    },
+    "vmas_pusht/option_models.py": {
+      "archived_path": "data/novelty/planned_helper_v1/collection_sources/vmas_pusht/option_models.py",
+      "sha256": "d19af1b063efbc3f2d4fb7f56431c599b0b3c491fb7c8e0ffd701dc6f6c2f8f4"
+    },
+    "vmas_pusht/option_planner.py": {
+      "archived_path": "data/novelty/planned_helper_v1/collection_sources/vmas_pusht/option_planner.py",
+      "sha256": "0fae1cfb532e0faa88271e3cd9579a2dd33f2108d0c5d8088ff2ba7007eee077"
+    },
+    "vmas_pusht/stable_composition.py": {
+      "archived_path": "data/novelty/planned_helper_v1/collection_sources/vmas_pusht/stable_composition.py",
+      "sha256": "6dd859d35afea79a6df07fc9ff8fde12393289ddb583421865a3920b3cc50991"
+    },
+    "vmas_pusht/stable_local_wm.py": {
+      "archived_path": "data/novelty/planned_helper_v1/collection_sources/vmas_pusht/stable_local_wm.py",
+      "sha256": "fc4baca0457e7a673f946db4d83f60761f9b08893a4bddf997a3b76d2c6ffee0"
+    },
+    "vmas_pusht/physical_abstraction.py": {
+      "archived_path": "data/novelty/planned_helper_v1/collection_sources/vmas_pusht/physical_abstraction.py",
+      "sha256": "200454825e5630a6ffd0ef5cfd4ae02a98142b632e208322a1a1fc6c45931954"
+    },
+    "vmas_pusht/snapshot.py": {
+      "archived_path": "data/novelty/planned_helper_v1/collection_sources/vmas_pusht/snapshot.py",
+      "sha256": "e2984de87b1f1ed7883093d3260a8540f75eac22591d6cd7ce3c9e25d96189ca"
+    },
+    "vmas_pusht/scenario.py": {
+      "archived_path": "data/novelty/planned_helper_v1/collection_sources/vmas_pusht/scenario.py",
+      "sha256": "5f56bc1c26f556bc564cc633eaee172d016615bc6e998fd6add5383d56f4a1dd"
+    },
+    "vmas_pusht/physics_profiles.py": {
+      "archived_path": "data/novelty/planned_helper_v1/collection_sources/vmas_pusht/physics_profiles.py",
+      "sha256": "ad7f3e1b3b819324b93fcef5f69cc423b63645f627fcd853560d78ef67ec1fda"
+    },
+    "vmas_pusht/abstraction_models.py": {
+      "archived_path": "data/novelty/planned_helper_v1/collection_sources/vmas_pusht/abstraction_models.py",
+      "sha256": "7f184ebbceb262039d68703b922b55f1e032c68c7c14a8f03cde17bb3168fea8"
+    },
+    "vmas_pusht/abstraction_transfer.py": {
+      "archived_path": "data/novelty/planned_helper_v1/collection_sources/vmas_pusht/abstraction_transfer.py",
+      "sha256": "659ce7cf70d78158cda40f1e3b529c97dce1d9943ae1c91e3da5a39fca37b428"
+    },
+    "vmas_pusht/recovery_attribution.py": {
+      "archived_path": "data/novelty/planned_helper_v1/collection_sources/vmas_pusht/recovery_attribution.py",
+      "sha256": "9549508d21e8ee4dbc6e00b71626954b91caace2de571a72bc893dd5357dab13"
+    }
+  }
+}

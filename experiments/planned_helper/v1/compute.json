@@ -1,0 +1,1317 @@
+[
+  {
+    "job": [
+      "learned",
+      0,
+      "holdout",
+      false,
+      false,
+      0
+    ],
+    "decisions": 121,
+    "evaluated_candidates": 4719,
+    "active_simulator_steps": 0,
+    "padded_simulator_steps": 0,
+    "selector_seconds": 0.052217201999155805,
+    "helper_choices": {
+      "fixed_support": 121
+    }
+  },
+  {
+    "job": [
+      "learned",
+      0,
+      "holdout",
+      false,
+      true,
+      0
+    ],
+    "decisions": 102,
+    "evaluated_candidates": 3978,
+    "active_simulator_steps": 0,
+    "padded_simulator_steps": 0,
+    "selector_seconds": 0.04385703500156524,
+    "helper_choices": {
+      "fixed_support": 102
+    }
+  },
+  {
+    "job": [
+      "learned",
+      0,
+      "holdout",
+      false,
+      true,
+      1
+    ],
+    "decisions": 103,
+    "evaluated_candidates": 4017,
+    "active_simulator_steps": 0,
+    "padded_simulator_steps": 0,
+    "selector_seconds": 0.05035499499354046,
+    "helper_choices": {
+      "fixed_support": 103
+    }
+  },
+  {
+    "job": [
+      "learned",
+      0,
+      "holdout",
+      false,
+      true,
+      2
+    ],
+    "decisions": 129,
+    "evaluated_candidates": 5031,
+    "active_simulator_steps": 0,
+    "padded_simulator_steps": 0,
+    "selector_seconds": 0.06060526399232913,
+    "helper_choices": {
+      "fixed_support": 129
+    }
+  },
+  {
+    "job": [
+      "learned",
+      0,
+      "holdout",
+      true,
+      false,
+      0
+    ],
+    "decisions": 111,
+    "evaluated_candidates": 30303,
+    "active_simulator_steps": 0,
+    "padded_simulator_steps": 0,
+    "selector_seconds": 0.14849408200825565,
+    "helper_choices": {
+      "track_contact": 19,
+      "fixed_support": 11,
+      "release": 49,
+      "withdraw_corner": 23,
+      "slide_negative": 9
+    }
+  },
+  {
+    "job": [
+      "learned",
+      0,
+      "holdout",
+      true,
+      true,
+      0
+    ],
+    "decisions": 105,
+    "evaluated_candidates": 28665,
+    "active_simulator_steps": 0,
+    "padded_simulator_steps": 0,
+    "selector_seconds": 0.15999735599325504,
+    "helper_choices": {
+      "track_contact": 24,
+      "fixed_support": 19,
+      "release": 32,
+      "withdraw_corner": 15,
+      "slide_negative": 9,
+      "slide_positive": 6
+    }
+  },
+  {
+    "job": [
+      "learned",
+      0,
+      "holdout",
+      true,
+      true,
+      1
+    ],
+    "decisions": 115,
+    "evaluated_candidates": 31395,
+    "active_simulator_steps": 0,
+    "padded_simulator_steps": 0,
+    "selector_seconds": 0.17218092300754506,
+    "helper_choices": {
+      "track_contact": 23,
+      "fixed_support": 25,
+      "release": 35,
+      "withdraw_corner": 16,
+      "slide_negative": 9,
+      "slide_positive": 7
+    }
+  },
+  {
+    "job": [
+      "learned",
+      0,
+      "holdout",
+      true,
+      true,
+      2
+    ],
+    "decisions": 108,
+    "evaluated_candidates": 29484,
+    "active_simulator_steps": 0,
+    "padded_simulator_steps": 0,
+    "selector_seconds": 0.16513725697586779,
+    "helper_choices": {
+      "track_contact": 29,
+      "fixed_support": 22,
+      "release": 24,
+      "withdraw_corner": 17,
+      "slide_negative": 9,
+      "slide_positive": 7
+    }
+  },
+  {
+    "job": [
+      "learned",
+      0,
+      "standard",
+      false,
+      false,
+      0
+    ],
+    "decisions": 72,
+    "evaluated_candidates": 2808,
+    "active_simulator_steps": 0,
+    "padded_simulator_steps": 0,
+    "selector_seconds": 0.031264868004655,
+    "helper_choices": {
+      "fixed_support": 72
+    }
+  },
+  {
+    "job": [
+      "learned",
+      0,
+      "standard",
+      false,
+      true,
+      0
+    ],
+    "decisions": 52,
+    "evaluated_candidates": 2028,
+    "active_simulator_steps": 0,
+    "padded_simulator_steps": 0,
+    "selector_seconds": 0.02719405298557831,
+    "helper_choices": {
+      "fixed_support": 52
+    }
+  },
+  {
+    "job": [
+      "learned",
+      0,
+      "standard",
+      false,
+      true,
+      1
+    ],
+    "decisions": 44,
+    "evaluated_candidates": 1716,
+    "active_simulator_steps": 0,
+    "padded_simulator_steps": 0,
+    "selector_seconds": 0.021223170988378115,
+    "helper_choices": {
+      "fixed_support": 44
+    }
+  },
+  {
+    "job": [
+      "learned",
+      0,
+      "standard",
+      false,
+      true,
+      2
+    ],
+    "decisions": 81,
+    "evaluated_candidates": 3159,
+    "active_simulator_steps": 0,
+    "padded_simulator_steps": 0,
+    "selector_seconds": 0.05453125699568773,
+    "helper_choices": {
+      "fixed_support": 81
+    }
+  },
+  {
+    "job": [
+      "learned",
+      0,
+      "standard",
+      true,
+      false,
+      0
+    ],
+    "decisions": 95,
+    "evaluated_candidates": 25935,
+    "active_simulator_steps": 0,
+    "padded_simulator_steps": 0,
+    "selector_seconds": 0.14341297199280234,
+    "helper_choices": {
+      "withdraw_corner": 13,
+      "track_contact": 11,
+      "fixed_support": 20,
+      "release": 45,
+      "slide_negative": 6
+    }
+  },
+  {
+    "job": [
+      "learned",
+      0,
+      "standard",
+      true,
+      true,
+      0
+    ],
+    "decisions": 89,
+    "evaluated_candidates": 24297,
+    "active_simulator_steps": 0,
+    "padded_simulator_steps": 0,
+    "selector_seconds": 0.14092854896443896,
+    "helper_choices": {
+      "withdraw_corner": 26,
+      "track_contact": 14,
+      "fixed_support": 24,
+      "release": 15,
+      "slide_negative": 6,
+      "slide_positive": 4
+    }
+  },
+  {
+    "job": [
+      "learned",
+      0,
+      "standard",
+      true,
+      true,
+      1
+    ],
+    "decisions": 86,
+    "evaluated_candidates": 23478,
+    "active_simulator_steps": 0,
+    "padded_simulator_steps": 0,
+    "selector_seconds": 0.13759364595171064,
+    "helper_choices": {
+      "withdraw_corner": 26,
+      "track_contact": 18,
+      "fixed_support": 22,
+      "release": 12,
+      "slide_negative": 6,
+      "slide_positive": 2
+    }
+  },
+  {
+    "job": [
+      "learned",
+      0,
+      "standard",
+      true,
+      true,
+      2
+    ],
+    "decisions": 76,
+    "evaluated_candidates": 20748,
+    "active_simulator_steps": 0,
+    "padded_simulator_steps": 0,
+    "selector_seconds": 0.1308233959862264,
+    "helper_choices": {
+      "withdraw_corner": 19,
+      "track_contact": 18,
+      "fixed_support": 19,
+      "release": 11,
+      "slide_negative": 6,
+      "slide_positive": 3
+    }
+  },
+  {
+    "job": [
+      "learned",
+      1,
+      "holdout",
+      false,
+      false,
+      0
+    ],
+    "decisions": 174,
+    "evaluated_candidates": 6786,
+    "active_simulator_steps": 0,
+    "padded_simulator_steps": 0,
+    "selector_seconds": 0.08768837701063603,
+    "helper_choices": {
+      "fixed_support": 174
+    }
+  },
+  {
+    "job": [
+      "learned",
+      1,
+      "holdout",
+      false,
+      true,
+      0
+    ],
+    "decisions": 96,
+    "evaluated_candidates": 3744,
+    "active_simulator_steps": 0,
+    "padded_simulator_steps": 0,
+    "selector_seconds": 0.04292214300221531,
+    "helper_choices": {
+      "fixed_support": 96
+    }
+  },
+  {
+    "job": [
+      "learned",
+      1,
+      "holdout",
+      false,
+      true,
+      1
+    ],
+    "decisions": 86,
+    "evaluated_candidates": 3354,
+    "active_simulator_steps": 0,
+    "padded_simulator_steps": 0,
+    "selector_seconds": 0.03265790399746038,
+    "helper_choices": {
+      "fixed_support": 86
+    }
+  },
+  {
+    "job": [
+      "learned",
+      1,
+      "holdout",
+      false,
+      true,
+      2
+    ],
+    "decisions": 101,
+    "evaluated_candidates": 3939,
+    "active_simulator_steps": 0,
+    "padded_simulator_steps": 0,
+    "selector_seconds": 0.04744913501053816,
+    "helper_choices": {
+      "fixed_support": 101
+    }
+  },
+  {
+    "job": [
+      "learned",
+      1,
+      "holdout",
+      true,
+      false,
+      0
+    ],
+    "decisions": 108,
+    "evaluated_candidates": 29484,
+    "active_simulator_steps": 0,
+    "padded_simulator_steps": 0,
+    "selector_seconds": 0.14444980498228688,
+    "helper_choices": {
+      "release": 13,
+      "press_corner": 2,
+      "fixed_support": 22,
+      "track_contact": 34,
+      "withdraw_corner": 15,
+      "slide_negative": 22
+    }
+  },
+  {
+    "job": [
+      "learned",
+      1,
+      "holdout",
+      true,
+      true,
+      0
+    ],
+    "decisions": 96,
+    "evaluated_candidates": 26208,
+    "active_simulator_steps": 0,
+    "padded_simulator_steps": 0,
+    "selector_seconds": 0.2248796979765757,
+    "helper_choices": {
+      "release": 21,
+      "press_corner": 2,
+      "fixed_support": 31,
+      "track_contact": 12,
+      "withdraw_corner": 23,
+      "slide_negative": 5,
+      "slide_positive": 2
+    }
+  },
+  {
+    "job": [
+      "learned",
+      1,
+      "holdout",
+      true,
+      true,
+      1
+    ],
+    "decisions": 98,
+    "evaluated_candidates": 26754,
+    "active_simulator_steps": 0,
+    "padded_simulator_steps": 0,
+    "selector_seconds": 0.149379291011428,
+    "helper_choices": {
+      "release": 25,
+      "press_corner": 2,
+      "fixed_support": 29,
+      "track_contact": 9,
+      "withdraw_corner": 22,
+      "slide_negative": 5,
+      "slide_positive": 6
+    }
+  },
+  {
+    "job": [
+      "learned",
+      1,
+      "holdout",
+      true,
+      true,
+      2
+    ],
+    "decisions": 99,
+    "evaluated_candidates": 27027,
+    "active_simulator_steps": 0,
+    "padded_simulator_steps": 0,
+    "selector_seconds": 0.13210106702899793,
+    "helper_choices": {
+      "release": 13,
+      "press_corner": 2,
+      "fixed_support": 33,
+      "track_contact": 9,
+      "withdraw_corner": 31,
+      "slide_negative": 5,
+      "slide_positive": 6
+    }
+  },
+  {
+    "job": [
+      "learned",
+      1,
+      "standard",
+      false,
+      false,
+      0
+    ],
+    "decisions": 130,
+    "evaluated_candidates": 5070,
+    "active_simulator_steps": 0,
+    "padded_simulator_steps": 0,
+    "selector_seconds": 0.047257515994715504,
+    "helper_choices": {
+      "fixed_support": 130
+    }
+  },
+  {
+    "job": [
+      "learned",
+      1,
+      "standard",
+      false,
+      true,
+      0
+    ],
+    "decisions": 51,
+    "evaluated_candidates": 1989,
+    "active_simulator_steps": 0,
+    "padded_simulator_steps": 0,
+    "selector_seconds": 0.020291856009862386,
+    "helper_choices": {
+      "fixed_support": 51
+    }
+  },
+  {
+    "job": [
+      "learned",
+      1,
+      "standard",
+      false,
+      true,
+      1
+    ],
+    "decisions": 45,
+    "evaluated_candidates": 1755,
+    "active_simulator_steps": 0,
+    "padded_simulator_steps": 0,
+    "selector_seconds": 0.019809722987702116,
+    "helper_choices": {
+      "fixed_support": 45
+    }
+  },
+  {
+    "job": [
+      "learned",
+      1,
+      "standard",
+      false,
+      true,
+      2
+    ],
+    "decisions": 44,
+    "evaluated_candidates": 1716,
+    "active_simulator_steps": 0,
+    "padded_simulator_steps": 0,
+    "selector_seconds": 0.017862246008007787,
+    "helper_choices": {
+      "fixed_support": 44
+    }
+  },
+  {
+    "job": [
+      "learned",
+      1,
+      "standard",
+      true,
+      false,
+      0
+    ],
+    "decisions": 100,
+    "evaluated_candidates": 27300,
+    "active_simulator_steps": 0,
+    "padded_simulator_steps": 0,
+    "selector_seconds": 0.22909053701005178,
+    "helper_choices": {
+      "track_contact": 44,
+      "withdraw_corner": 14,
+      "fixed_support": 14,
+      "release": 5,
+      "slide_negative": 23
+    }
+  },
+  {
+    "job": [
+      "learned",
+      1,
+      "standard",
+      true,
+      true,
+      0
+    ],
+    "decisions": 93,
+    "evaluated_candidates": 25389,
+    "active_simulator_steps": 0,
+    "padded_simulator_steps": 0,
+    "selector_seconds": 0.13187456100422423,
+    "helper_choices": {
+      "track_contact": 20,
+      "withdraw_corner": 22,
+      "fixed_support": 27,
+      "release": 14,
+      "slide_negative": 5,
+      "slide_positive": 3,
+      "press_corner": 2
+    }
+  },
+  {
+    "job": [
+      "learned",
+      1,
+      "standard",
+      true,
+      true,
+      1
+    ],
+    "decisions": 86,
+    "evaluated_candidates": 23478,
+    "active_simulator_steps": 0,
+    "padded_simulator_steps": 0,
+    "selector_seconds": 0.14083001802646322,
+    "helper_choices": {
+      "track_contact": 17,
+      "withdraw_corner": 25,
+      "fixed_support": 20,
+      "release": 18,
+      "slide_negative": 5,
+      "slide_positive": 1
+    }
+  },
+  {
+    "job": [
+      "learned",
+      1,
+      "standard",
+      true,
+      true,
+      2
+    ],
+    "decisions": 80,
+    "evaluated_candidates": 21840,
+    "active_simulator_steps": 0,
+    "padded_simulator_steps": 0,
+    "selector_seconds": 0.1259013369854074,
+    "helper_choices": {
+      "track_contact": 16,
+      "withdraw_corner": 22,
+      "fixed_support": 19,
+      "release": 15,
+      "slide_negative": 5,
+      "slide_positive": 3
+    }
+  },
+  {
+    "job": [
+      "learned",
+      2,
+      "holdout",
+      false,
+      false,
+      0
+    ],
+    "decisions": 129,
+    "evaluated_candidates": 5031,
+    "active_simulator_steps": 0,
+    "padded_simulator_steps": 0,
+    "selector_seconds": 0.09325109899509698,
+    "helper_choices": {
+      "fixed_support": 129
+    }
+  },
+  {
+    "job": [
+      "learned",
+      2,
+      "holdout",
+      false,
+      true,
+      0
+    ],
+    "decisions": 120,
+    "evaluated_candidates": 4680,
+    "active_simulator_steps": 0,
+    "padded_simulator_steps": 0,
+    "selector_seconds": 0.08613039299962111,
+    "helper_choices": {
+      "fixed_support": 120
+    }
+  },
+  {
+    "job": [
+      "learned",
+      2,
+      "holdout",
+      false,
+      true,
+      1
+    ],
+    "decisions": 106,
+    "evaluated_candidates": 4134,
+    "active_simulator_steps": 0,
+    "padded_simulator_steps": 0,
+    "selector_seconds": 0.05327144700277131,
+    "helper_choices": {
+      "fixed_support": 106
+    }
+  },
+  {
+    "job": [
+      "learned",
+      2,
+      "holdout",
+      false,
+      true,
+      2
+    ],
+    "decisions": 120,
+    "evaluated_candidates": 4680,
+    "active_simulator_steps": 0,
+    "padded_simulator_steps": 0,
+    "selector_seconds": 0.09294755099108443,
+    "helper_choices": {
+      "fixed_support": 120
+    }
+  },
+  {
+    "job": [
+      "learned",
+      2,
+      "holdout",
+      true,
+      false,
+      0
+    ],
+    "decisions": 96,
+    "evaluated_candidates": 26208,
+    "active_simulator_steps": 0,
+    "padded_simulator_steps": 0,
+    "selector_seconds": 0.19848309999360936,
+    "helper_choices": {
+      "track_contact": 13,
+      "withdraw_corner": 9,
+      "release": 51,
+      "fixed_support": 20,
+      "slide_negative": 3
+    }
+  },
+  {
+    "job": [
+      "learned",
+      2,
+      "holdout",
+      true,
+      true,
+      0
+    ],
+    "decisions": 88,
+    "evaluated_candidates": 24024,
+    "active_simulator_steps": 0,
+    "padded_simulator_steps": 0,
+    "selector_seconds": 0.1822445090074325,
+    "helper_choices": {
+      "track_contact": 14,
+      "withdraw_corner": 21,
+      "release": 22,
+      "fixed_support": 20,
+      "slide_negative": 3,
+      "press_corner": 2,
+      "slide_positive": 6
+    }
+  },
+  {
+    "job": [
+      "learned",
+      2,
+      "holdout",
+      true,
+      true,
+      1
+    ],
+    "decisions": 100,
+    "evaluated_candidates": 27300,
+    "active_simulator_steps": 0,
+    "padded_simulator_steps": 0,
+    "selector_seconds": 0.21661537202453474,
+    "helper_choices": {
+      "track_contact": 15,
+      "withdraw_corner": 23,
+      "release": 29,
+      "fixed_support": 13,
+      "slide_negative": 3,
+      "slide_positive": 17
+    }
+  },
+  {
+    "job": [
+      "learned",
+      2,
+      "holdout",
+      true,
+      true,
+      2
+    ],
+    "decisions": 71,
+    "evaluated_candidates": 19383,
+    "active_simulator_steps": 0,
+    "padded_simulator_steps": 0,
+    "selector_seconds": 0.16993666501366533,
+    "helper_choices": {
+      "track_contact": 14,
+      "withdraw_corner": 19,
+      "release": 22,
+      "fixed_support": 13,
+      "slide_negative": 3
+    }
+  },
+  {
+    "job": [
+      "learned",
+      2,
+      "standard",
+      false,
+      false,
+      0
+    ],
+    "decisions": 76,
+    "evaluated_candidates": 2964,
+    "active_simulator_steps": 0,
+    "padded_simulator_steps": 0,
+    "selector_seconds": 0.03663603000313742,
+    "helper_choices": {
+      "fixed_support": 76
+    }
+  },
+  {
+    "job": [
+      "learned",
+      2,
+      "standard",
+      false,
+      true,
+      0
+    ],
+    "decisions": 54,
+    "evaluated_candidates": 2106,
+    "active_simulator_steps": 0,
+    "padded_simulator_steps": 0,
+    "selector_seconds": 0.038795023974671494,
+    "helper_choices": {
+      "fixed_support": 54
+    }
+  },
+  {
+    "job": [
+      "learned",
+      2,
+      "standard",
+      false,
+      true,
+      1
+    ],
+    "decisions": 45,
+    "evaluated_candidates": 1755,
+    "active_simulator_steps": 0,
+    "padded_simulator_steps": 0,
+    "selector_seconds": 0.03035586601617979,
+    "helper_choices": {
+      "fixed_support": 45
+    }
+  },
+  {
+    "job": [
+      "learned",
+      2,
+      "standard",
+      false,
+      true,
+      2
+    ],
+    "decisions": 57,
+    "evaluated_candidates": 2223,
+    "active_simulator_steps": 0,
+    "padded_simulator_steps": 0,
+    "selector_seconds": 0.03828364800574491,
+    "helper_choices": {
+      "fixed_support": 57
+    }
+  },
+  {
+    "job": [
+      "learned",
+      2,
+      "standard",
+      true,
+      false,
+      0
+    ],
+    "decisions": 75,
+    "evaluated_candidates": 20475,
+    "active_simulator_steps": 0,
+    "padded_simulator_steps": 0,
+    "selector_seconds": 0.08746322199294809,
+    "helper_choices": {
+      "fixed_support": 31,
+      "release": 38,
+      "track_contact": 3,
+      "withdraw_corner": 2,
+      "slide_negative": 1
+    }
+  },
+  {
+    "job": [
+      "learned",
+      2,
+      "standard",
+      true,
+      true,
+      0
+    ],
+    "decisions": 56,
+    "evaluated_candidates": 15288,
+    "active_simulator_steps": 0,
+    "padded_simulator_steps": 0,
+    "selector_seconds": 0.10539132000121754,
+    "helper_choices": {
+      "fixed_support": 25,
+      "release": 9,
+      "track_contact": 5,
+      "withdraw_corner": 12,
+      "slide_negative": 1,
+      "slide_positive": 4
+    }
+  },
+  {
+    "job": [
+      "learned",
+      2,
+      "standard",
+      true,
+      true,
+      1
+    ],
+    "decisions": 59,
+    "evaluated_candidates": 16107,
+    "active_simulator_steps": 0,
+    "padded_simulator_steps": 0,
+    "selector_seconds": 0.11334194301161915,
+    "helper_choices": {
+      "fixed_support": 24,
+      "release": 4,
+      "track_contact": 6,
+      "withdraw_corner": 21,
+      "slide_negative": 1,
+      "slide_positive": 3
+    }
+  },
+  {
+    "job": [
+      "learned",
+      2,
+      "standard",
+      true,
+      true,
+      2
+    ],
+    "decisions": 49,
+    "evaluated_candidates": 13377,
+    "active_simulator_steps": 0,
+    "padded_simulator_steps": 0,
+    "selector_seconds": 0.10912149398791371,
+    "helper_choices": {
+      "fixed_support": 16,
+      "release": 7,
+      "track_contact": 4,
+      "withdraw_corner": 18,
+      "slide_negative": 1,
+      "slide_positive": 3
+    }
+  },
+  {
+    "job": [
+      "oracle",
+      0,
+      "holdout",
+      false,
+      false,
+      0
+    ],
+    "decisions": 204,
+    "evaluated_candidates": 7280,
+    "active_simulator_steps": 84370,
+    "padded_simulator_steps": 143715,
+    "selector_seconds": 237.48300009198283,
+    "helper_choices": {
+      "fixed_support": 204
+    }
+  },
+  {
+    "job": [
+      "oracle",
+      0,
+      "holdout",
+      false,
+      true,
+      0
+    ],
+    "decisions": 72,
+    "evaluated_candidates": 2756,
+    "active_simulator_steps": 44638,
+    "padded_simulator_steps": 78507,
+    "selector_seconds": 105.88338606501202,
+    "helper_choices": {
+      "fixed_support": 72
+    }
+  },
+  {
+    "job": [
+      "oracle",
+      0,
+      "holdout",
+      false,
+      true,
+      1
+    ],
+    "decisions": 71,
+    "evaluated_candidates": 2717,
+    "active_simulator_steps": 44183,
+    "padded_simulator_steps": 77727,
+    "selector_seconds": 97.77371313803451,
+    "helper_choices": {
+      "fixed_support": 71
+    }
+  },
+  {
+    "job": [
+      "oracle",
+      0,
+      "holdout",
+      false,
+      true,
+      2
+    ],
+    "decisions": 74,
+    "evaluated_candidates": 2834,
+    "active_simulator_steps": 45548,
+    "padded_simulator_steps": 80067,
+    "selector_seconds": 106.9208130640036,
+    "helper_choices": {
+      "fixed_support": 74
+    }
+  },
+  {
+    "job": [
+      "oracle",
+      0,
+      "holdout",
+      true,
+      false,
+      0
+    ],
+    "decisions": 104,
+    "evaluated_candidates": 26936,
+    "active_simulator_steps": 331240,
+    "padded_simulator_steps": 524160,
+    "selector_seconds": 157.3061865320269,
+    "helper_choices": {
+      "track_contact": 12,
+      "press_corner": 1,
+      "withdraw_corner": 13,
+      "release": 12,
+      "fixed_support": 12,
+      "slide_negative": 54
+    }
+  },
+  {
+    "job": [
+      "oracle",
+      0,
+      "holdout",
+      true,
+      true,
+      0
+    ],
+    "decisions": 52,
+    "evaluated_candidates": 13650,
+    "active_simulator_steps": 249437,
+    "padded_simulator_steps": 433797,
+    "selector_seconds": 128.11771005999617,
+    "helper_choices": {
+      "track_contact": 9,
+      "press_corner": 1,
+      "withdraw_corner": 11,
+      "release": 19,
+      "fixed_support": 9,
+      "slide_negative": 1,
+      "slide_positive": 2
+    }
+  },
+  {
+    "job": [
+      "oracle",
+      0,
+      "holdout",
+      true,
+      true,
+      1
+    ],
+    "decisions": 52,
+    "evaluated_candidates": 14196,
+    "active_simulator_steps": 253532,
+    "padded_simulator_steps": 446082,
+    "selector_seconds": 126.29429282400088,
+    "helper_choices": {
+      "track_contact": 12,
+      "press_corner": 2,
+      "withdraw_corner": 9,
+      "release": 18,
+      "fixed_support": 7,
+      "slide_negative": 1,
+      "slide_positive": 3
+    }
+  },
+  {
+    "job": [
+      "oracle",
+      0,
+      "holdout",
+      true,
+      true,
+      2
+    ],
+    "decisions": 51,
+    "evaluated_candidates": 13923,
+    "active_simulator_steps": 250347,
+    "padded_simulator_steps": 440622,
+    "selector_seconds": 134.90986646600504,
+    "helper_choices": {
+      "track_contact": 11,
+      "press_corner": 1,
+      "withdraw_corner": 9,
+      "release": 26,
+      "fixed_support": 2,
+      "slide_negative": 1,
+      "slide_positive": 1
+    }
+  },
+  {
+    "job": [
+      "oracle",
+      0,
+      "standard",
+      false,
+      false,
+      0
+    ],
+    "decisions": 184,
+    "evaluated_candidates": 6552,
+    "active_simulator_steps": 75920,
+    "padded_simulator_steps": 127140,
+    "selector_seconds": 125.78975797798194,
+    "helper_choices": {
+      "fixed_support": 184
+    }
+  },
+  {
+    "job": [
+      "oracle",
+      0,
+      "standard",
+      false,
+      true,
+      0
+    ],
+    "decisions": 54,
+    "evaluated_candidates": 2106,
+    "active_simulator_steps": 37098,
+    "padded_simulator_steps": 64584,
+    "selector_seconds": 82.49178092399961,
+    "helper_choices": {
+      "fixed_support": 54
+    }
+  },
+  {
+    "job": [
+      "oracle",
+      0,
+      "standard",
+      false,
+      true,
+      1
+    ],
+    "decisions": 52,
+    "evaluated_candidates": 2028,
+    "active_simulator_steps": 36188,
+    "padded_simulator_steps": 63024,
+    "selector_seconds": 54.01431728900934,
+    "helper_choices": {
+      "fixed_support": 52
+    }
+  },
+  {
+    "job": [
+      "oracle",
+      0,
+      "standard",
+      false,
+      true,
+      2
+    ],
+    "decisions": 53,
+    "evaluated_candidates": 2067,
+    "active_simulator_steps": 36643,
+    "padded_simulator_steps": 63804,
+    "selector_seconds": 81.98902937000821,
+    "helper_choices": {
+      "fixed_support": 53
+    }
+  },
+  {
+    "job": [
+      "oracle",
+      0,
+      "standard",
+      true,
+      false,
+      0
+    ],
+    "decisions": 99,
+    "evaluated_candidates": 25571,
+    "active_simulator_steps": 310765,
+    "padded_simulator_steps": 498225,
+    "selector_seconds": 222.88342675302556,
+    "helper_choices": {
+      "fixed_support": 15,
+      "slide_negative": 54,
+      "release": 5,
+      "withdraw_corner": 13,
+      "track_contact": 12
+    }
+  },
+  {
+    "job": [
+      "oracle",
+      0,
+      "standard",
+      true,
+      true,
+      0
+    ],
+    "decisions": 61,
+    "evaluated_candidates": 14924,
+    "active_simulator_steps": 271004,
+    "padded_simulator_steps": 455637,
+    "selector_seconds": 231.20003002700832,
+    "helper_choices": {
+      "fixed_support": 15,
+      "slide_negative": 3,
+      "release": 14,
+      "withdraw_corner": 17,
+      "track_contact": 8,
+      "press_corner": 1,
+      "slide_positive": 3
+    }
+  },
+  {
+    "job": [
+      "oracle",
+      0,
+      "standard",
+      true,
+      true,
+      1
+    ],
+    "decisions": 66,
+    "evaluated_candidates": 16835,
+    "active_simulator_steps": 297121,
+    "padded_simulator_steps": 495222,
+    "selector_seconds": 202.94463969300705,
+    "helper_choices": {
+      "fixed_support": 16,
+      "slide_negative": 3,
+      "release": 15,
+      "withdraw_corner": 19,
+      "track_contact": 9,
+      "press_corner": 3,
+      "slide_positive": 1
+    }
+  },
+  {
+    "job": [
+      "oracle",
+      0,
+      "standard",
+      true,
+      true,
+      2
+    ],
+    "decisions": 54,
+    "evaluated_candidates": 13650,
+    "active_simulator_steps": 267273,
+    "padded_simulator_steps": 432432,
+    "selector_seconds": 127.37406341599853,
+    "helper_choices": {
+      "fixed_support": 14,
+      "slide_negative": 3,
+      "release": 6,
+      "withdraw_corner": 22,
+      "track_contact": 4,
+      "slide_positive": 5
+    }
+  }
+]

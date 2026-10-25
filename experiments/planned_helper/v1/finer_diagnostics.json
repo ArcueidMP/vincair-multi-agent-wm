@@ -1,0 +1,363 @@
+{
+  "post_hoc": true,
+  "selection": "Every source group with at least one failed registered 160/320 trajectory",
+  "primary_thresholds_unchanged": true,
+  "source_sha256": "211fb5e498cac4ce9d7e532f9520af4d72733312ff9ef1719647282fc89118fc",
+  "reports": [
+    {
+      "primary_report": "data/novelty/planned_helper_v1/numerics/learned_joint_direct_seed1_holdout.json",
+      "primary_report_sha256": "6b3d6cb7d5eda9e84127932b822a9bba17c3ada93a061ad7042d39e6e666cae0",
+      "original_160_320_failed_rows": [
+        3
+      ],
+      "cases": 18,
+      "rows": [
+        {
+          "row": 0,
+          "previously_failed": false,
+          "max_320_640_xy": 0.00022682393318973482,
+          "max_320_640_angle": 0.0014760494232177734,
+          "passes_320_640": true,
+          "ordered_320": false,
+          "ordered_640": false
+        },
+        {
+          "row": 1,
+          "previously_failed": false,
+          "max_320_640_xy": 0.00012537541624624282,
+          "max_320_640_angle": 0.0013113021850585938,
+          "passes_320_640": true,
+          "ordered_320": false,
+          "ordered_640": false
+        },
+        {
+          "row": 2,
+          "previously_failed": false,
+          "max_320_640_xy": 0.0004928151611238718,
+          "max_320_640_angle": 0.0007355213165283203,
+          "passes_320_640": true,
+          "ordered_320": false,
+          "ordered_640": false
+        },
+        {
+          "row": 3,
+          "previously_failed": true,
+          "max_320_640_xy": 0.00012102790060453117,
+          "max_320_640_angle": 0.001720428466796875,
+          "passes_320_640": true,
+          "ordered_320": false,
+          "ordered_640": false
+        },
+        {
+          "row": 4,
+          "previously_failed": false,
+          "max_320_640_xy": 9.938463335856795e-05,
+          "max_320_640_angle": 0.001964569091796875,
+          "passes_320_640": true,
+          "ordered_320": false,
+          "ordered_640": false
+        },
+        {
+          "row": 5,
+          "previously_failed": false,
+          "max_320_640_xy": 0.00019659963436424732,
+          "max_320_640_angle": 0.003172159194946289,
+          "passes_320_640": false,
+          "ordered_320": false,
+          "ordered_640": false
+        },
+        {
+          "row": 6,
+          "previously_failed": false,
+          "max_320_640_xy": 0.0002592750533949584,
+          "max_320_640_angle": 0.0009229183197021484,
+          "passes_320_640": true,
+          "ordered_320": false,
+          "ordered_640": false
+        },
+        {
+          "row": 7,
+          "previously_failed": false,
+          "max_320_640_xy": 0.00012704751861747354,
+          "max_320_640_angle": 0.0002906322479248047,
+          "passes_320_640": true,
+          "ordered_320": false,
+          "ordered_640": false
+        },
+        {
+          "row": 8,
+          "previously_failed": false,
+          "max_320_640_xy": 0.00012160171172581613,
+          "max_320_640_angle": 0.0002548694610595703,
+          "passes_320_640": true,
+          "ordered_320": false,
+          "ordered_640": false
+        },
+        {
+          "row": 9,
+          "previously_failed": false,
+          "max_320_640_xy": 0.0002859474334400147,
+          "max_320_640_angle": 0.0017240047454833984,
+          "passes_320_640": true,
+          "ordered_320": false,
+          "ordered_640": false
+        },
+        {
+          "row": 10,
+          "previously_failed": false,
+          "max_320_640_xy": 0.0002044591383310035,
+          "max_320_640_angle": 0.0002205371856689453,
+          "passes_320_640": true,
+          "ordered_320": false,
+          "ordered_640": false
+        },
+        {
+          "row": 11,
+          "previously_failed": false,
+          "max_320_640_xy": 6.700326048303396e-05,
+          "max_320_640_angle": 0.000644683837890625,
+          "passes_320_640": true,
+          "ordered_320": false,
+          "ordered_640": false
+        },
+        {
+          "row": 12,
+          "previously_failed": false,
+          "max_320_640_xy": 9.235517791239545e-05,
+          "max_320_640_angle": 0.00025653839111328125,
+          "passes_320_640": true,
+          "ordered_320": false,
+          "ordered_640": false
+        },
+        {
+          "row": 13,
+          "previously_failed": false,
+          "max_320_640_xy": 0.00018376950174570084,
+          "max_320_640_angle": 0.0002815723419189453,
+          "passes_320_640": true,
+          "ordered_320": false,
+          "ordered_640": false
+        },
+        {
+          "row": 14,
+          "previously_failed": false,
+          "max_320_640_xy": 0.00017793603183235973,
+          "max_320_640_angle": 0.0013992786407470703,
+          "passes_320_640": true,
+          "ordered_320": false,
+          "ordered_640": false
+        },
+        {
+          "row": 15,
+          "previously_failed": false,
+          "max_320_640_xy": 6.688013672828674e-05,
+          "max_320_640_angle": 0.0004546642303466797,
+          "passes_320_640": true,
+          "ordered_320": false,
+          "ordered_640": false
+        },
+        {
+          "row": 16,
+          "previously_failed": false,
+          "max_320_640_xy": 0.00020942366973031312,
+          "max_320_640_angle": 0.0004558563232421875,
+          "passes_320_640": true,
+          "ordered_320": false,
+          "ordered_640": false
+        },
+        {
+          "row": 17,
+          "previously_failed": false,
+          "max_320_640_xy": 0.00021627124806400388,
+          "max_320_640_angle": 0.0008442401885986328,
+          "passes_320_640": true,
+          "ordered_320": false,
+          "ordered_640": false
+        }
+      ],
+      "raw_path": "data/novelty/planned_helper_v1/finer_diagnostics/learned_joint_direct_seed1_holdout.pt",
+      "raw_sha256": "12ecf38fd03d04a3bd78eb01d5b65daca1274b93b3613df5392b946d2355b871",
+      "preserves_primary_failures": true,
+      "planner_queries": 0,
+      "original_recorded_actions_and_stopping_times": true
+    },
+    {
+      "primary_report": "data/novelty/planned_helper_v1/numerics/learned_joint_direct_seed1_standard.json",
+      "primary_report_sha256": "6e76eb7816409058278a11e7bde266713a1c588d9536cfd60d12e1d0bcf1971a",
+      "original_160_320_failed_rows": [
+        0,
+        5
+      ],
+      "cases": 18,
+      "rows": [
+        {
+          "row": 0,
+          "previously_failed": true,
+          "max_320_640_xy": 0.00023732513363938779,
+          "max_320_640_angle": 0.0017728805541992188,
+          "passes_320_640": true,
+          "ordered_320": false,
+          "ordered_640": false
+        },
+        {
+          "row": 1,
+          "previously_failed": false,
+          "max_320_640_xy": 0.0001995323837036267,
+          "max_320_640_angle": 0.0012238025665283203,
+          "passes_320_640": true,
+          "ordered_320": false,
+          "ordered_640": false
+        },
+        {
+          "row": 2,
+          "previously_failed": false,
+          "max_320_640_xy": 0.00030806020367890596,
+          "max_320_640_angle": 0.0015330314636230469,
+          "passes_320_640": true,
+          "ordered_320": false,
+          "ordered_640": false
+        },
+        {
+          "row": 3,
+          "previously_failed": false,
+          "max_320_640_xy": 0.00015178216563072056,
+          "max_320_640_angle": 0.0017802715301513672,
+          "passes_320_640": true,
+          "ordered_320": false,
+          "ordered_640": false
+        },
+        {
+          "row": 4,
+          "previously_failed": false,
+          "max_320_640_xy": 0.000331003509927541,
+          "max_320_640_angle": 0.0025191307067871094,
+          "passes_320_640": true,
+          "ordered_320": false,
+          "ordered_640": false
+        },
+        {
+          "row": 5,
+          "previously_failed": true,
+          "max_320_640_xy": 0.00012397488171700388,
+          "max_320_640_angle": 0.0015153884887695312,
+          "passes_320_640": true,
+          "ordered_320": false,
+          "ordered_640": false
+        },
+        {
+          "row": 6,
+          "previously_failed": false,
+          "max_320_640_xy": 0.00019894036813639104,
+          "max_320_640_angle": 0.0007419586181640625,
+          "passes_320_640": true,
+          "ordered_320": false,
+          "ordered_640": false
+        },
+        {
+          "row": 7,
+          "previously_failed": false,
+          "max_320_640_xy": 0.00019792640523519367,
+          "max_320_640_angle": 0.0002338886260986328,
+          "passes_320_640": true,
+          "ordered_320": false,
+          "ordered_640": false
+        },
+        {
+          "row": 8,
+          "previously_failed": false,
+          "max_320_640_xy": 0.0001877541362773627,
+          "max_320_640_angle": 0.00030517578125,
+          "passes_320_640": true,
+          "ordered_320": false,
+          "ordered_640": false
+        },
+        {
+          "row": 9,
+          "previously_failed": false,
+          "max_320_640_xy": 0.0001688927150098607,
+          "max_320_640_angle": 0.00047850608825683594,
+          "passes_320_640": true,
+          "ordered_320": false,
+          "ordered_640": false
+        },
+        {
+          "row": 10,
+          "previously_failed": false,
+          "max_320_640_xy": 7.978759822435677e-05,
+          "max_320_640_angle": 0.0002834796905517578,
+          "passes_320_640": true,
+          "ordered_320": false,
+          "ordered_640": false
+        },
+        {
+          "row": 11,
+          "previously_failed": false,
+          "max_320_640_xy": 0.00019743535085581243,
+          "max_320_640_angle": 0.00046753883361816406,
+          "passes_320_640": true,
+          "ordered_320": false,
+          "ordered_640": false
+        },
+        {
+          "row": 12,
+          "previously_failed": false,
+          "max_320_640_xy": 0.0002067485183943063,
+          "max_320_640_angle": 0.0009539127349853516,
+          "passes_320_640": true,
+          "ordered_320": false,
+          "ordered_640": false
+        },
+        {
+          "row": 13,
+          "previously_failed": false,
+          "max_320_640_xy": 0.00017767740064300597,
+          "max_320_640_angle": 0.00025200843811035156,
+          "passes_320_640": true,
+          "ordered_320": false,
+          "ordered_640": false
+        },
+        {
+          "row": 14,
+          "previously_failed": false,
+          "max_320_640_xy": 0.00017327492241747677,
+          "max_320_640_angle": 0.0004284381866455078,
+          "passes_320_640": true,
+          "ordered_320": false,
+          "ordered_640": false
+        },
+        {
+          "row": 15,
+          "previously_failed": false,
+          "max_320_640_xy": 0.00016734289238229394,
+          "max_320_640_angle": 0.0005631446838378906,
+          "passes_320_640": true,
+          "ordered_320": false,
+          "ordered_640": false
+        },
+        {
+          "row": 16,
+          "previously_failed": false,
+          "max_320_640_xy": 0.00019366292690392584,
+          "max_320_640_angle": 0.00026869773864746094,
+          "passes_320_640": true,
+          "ordered_320": false,
+          "ordered_640": false
+        },
+        {
+          "row": 17,
+          "previously_failed": false,
+          "max_320_640_xy": 0.00014173726958688349,
+          "max_320_640_angle": 0.0003235340118408203,
+          "passes_320_640": true,
+          "ordered_320": false,
+          "ordered_640": false
+        }
+      ],
+      "raw_path": "data/novelty/planned_helper_v1/finer_diagnostics/learned_joint_direct_seed1_standard.pt",
+      "raw_sha256": "86075c664311e38b26e16042e077987d42ff33bcf42d8631bc21d8a761a2f653",
+      "preserves_primary_failures": true,
+      "planner_queries": 0,
+      "original_recorded_actions_and_stopping_times": true
+    }
+  ]
+}

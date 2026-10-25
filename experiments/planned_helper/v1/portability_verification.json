@@ -1,0 +1,9 @@
+{
+  "three_checkpoints_and_normalization_tensors_bitwise_equal": true,
+  "predictions_per_seed": 1024,
+  "predictions_bitwise_equal": true,
+  "episode_rows": 1152,
+  "unique_episode_keys": true,
+  "csv_summary_counts_match": true,
+  "model_json_sha256": "4c057c547bfff86a319ba7bbae70ef1dd66a8efc4149a2727f17ba4093b6d535"
+}

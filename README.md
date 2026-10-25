@@ -190,6 +190,17 @@ matched-model, larger-model, and true-option simulator controls. Direct-to-expan
 force/duration program marginals and retain the interface advantage, separating it from simply evaluating
 more candidates. Navigation effort and fixed-action numerical sensitivity are reported explicitly.
 
+The [joint-planning experiment](docs/planned-helper-audit.md) establishes that
+**contact-mode coverage remains a structural bottleneck when both agents are
+planned**. With 273 primary/helper candidates per decision, expanding contact
+routes raises learned-model success from **0/108 to 68–81/108**, and true-simulator
+planning from **0/36 to 32–34/36**, across all three prespecified allocations.
+The 1,152-task study holds weights, force/duration/helper programs and task
+budgets fixed within each interface comparison. All 864 paired comparisons
+retain zero regressions at both numerical resolutions. Compact results,
+per-episode evidence and portable frozen weights are included in
+[`experiments/planned_helper/v1/`](experiments/planned_helper/v1/).
+
 ```bash
 .venv/bin/python -m vmas_pusht.physical_abstraction
 .venv/bin/python -m vmas_pusht.abstraction_models

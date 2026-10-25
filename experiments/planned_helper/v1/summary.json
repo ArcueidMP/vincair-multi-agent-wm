@@ -1,0 +1,432 @@
+[
+  {
+    "planner": "learned_fixed_direct",
+    "predictor": "learned",
+    "planned_helper": false,
+    "candidate_slots": 39,
+    "cases": 108,
+    "first": 77,
+    "ordered": 2,
+    "fine_ordered": 2,
+    "refinement_passes": 108,
+    "finite_all": true,
+    "wall_cases": 0,
+    "failed_options": 0,
+    "helper_nonfixed_options": 0,
+    "episodes_with_helper_switches": 0,
+    "helper_choices": {
+      "fixed_support": 702
+    },
+    "mean_steps": 134.09259259259258,
+    "mean_actuator_absolute_work": [
+      0.03542951077947186,
+      0.13179706375080127
+    ]
+  },
+  {
+    "planner": "learned_fixed_expanded_s0",
+    "predictor": "learned",
+    "planned_helper": false,
+    "candidate_slots": 39,
+    "cases": 108,
+    "first": 77,
+    "ordered": 75,
+    "fine_ordered": 75,
+    "refinement_passes": 108,
+    "finite_all": true,
+    "wall_cases": 0,
+    "failed_options": 0,
+    "helper_nonfixed_options": 0,
+    "episodes_with_helper_switches": 0,
+    "helper_choices": {
+      "fixed_support": 475
+    },
+    "mean_steps": 118.06481481481481,
+    "mean_actuator_absolute_work": [
+      0.4529718252381793,
+      0.1330657517882409
+    ]
+  },
+  {
+    "planner": "learned_fixed_expanded_s1",
+    "predictor": "learned",
+    "planned_helper": false,
+    "candidate_slots": 39,
+    "cases": 108,
+    "first": 77,
+    "ordered": 71,
+    "fine_ordered": 71,
+    "refinement_passes": 108,
+    "finite_all": true,
+    "wall_cases": 0,
+    "failed_options": 0,
+    "helper_nonfixed_options": 0,
+    "episodes_with_helper_switches": 0,
+    "helper_choices": {
+      "fixed_support": 429
+    },
+    "mean_steps": 114.21296296296296,
+    "mean_actuator_absolute_work": [
+      0.409855203634059,
+      0.1334152657676626
+    ]
+  },
+  {
+    "planner": "learned_fixed_expanded_s2",
+    "predictor": "learned",
+    "planned_helper": false,
+    "candidate_slots": 39,
+    "cases": 108,
+    "first": 77,
+    "ordered": 66,
+    "fine_ordered": 66,
+    "refinement_passes": 108,
+    "finite_all": true,
+    "wall_cases": 0,
+    "failed_options": 0,
+    "helper_nonfixed_options": 0,
+    "episodes_with_helper_switches": 0,
+    "helper_choices": {
+      "fixed_support": 532
+    },
+    "mean_steps": 117.06481481481481,
+    "mean_actuator_absolute_work": [
+      0.4459063598403224,
+      0.13366034640758126
+    ]
+  },
+  {
+    "planner": "learned_joint_direct",
+    "predictor": "learned",
+    "planned_helper": true,
+    "candidate_slots": 273,
+    "cases": 108,
+    "first": 87,
+    "ordered": 0,
+    "fine_ordered": 0,
+    "refinement_passes": 105,
+    "finite_all": true,
+    "wall_cases": 0,
+    "failed_options": 0,
+    "helper_nonfixed_options": 467,
+    "episodes_with_helper_switches": 100,
+    "helper_choices": {
+      "track_contact": 124,
+      "release": 201,
+      "withdraw_corner": 76,
+      "slide_negative": 64,
+      "fixed_support": 118,
+      "press_corner": 2
+    },
+    "mean_steps": 133.7314814814815,
+    "mean_actuator_absolute_work": [
+      0.042699903120390244,
+      0.1852315217256546
+    ]
+  },
+  {
+    "planner": "learned_joint_expanded_s0",
+    "predictor": "learned",
+    "planned_helper": true,
+    "candidate_slots": 273,
+    "cases": 108,
+    "first": 87,
+    "ordered": 71,
+    "fine_ordered": 69,
+    "refinement_passes": 108,
+    "finite_all": true,
+    "wall_cases": 0,
+    "failed_options": 0,
+    "helper_nonfixed_options": 381,
+    "episodes_with_helper_switches": 100,
+    "helper_choices": {
+      "track_contact": 89,
+      "fixed_support": 146,
+      "release": 113,
+      "withdraw_corner": 119,
+      "slide_negative": 29,
+      "slide_positive": 25,
+      "press_corner": 6
+    },
+    "mean_steps": 117.23148148148148,
+    "mean_actuator_absolute_work": [
+      0.4413928259509029,
+      0.19863129648621436
+    ]
+  },
+  {
+    "planner": "learned_joint_expanded_s1",
+    "predictor": "learned",
+    "planned_helper": true,
+    "candidate_slots": 273,
+    "cases": 108,
+    "first": 87,
+    "ordered": 68,
+    "fine_ordered": 68,
+    "refinement_passes": 108,
+    "finite_all": true,
+    "wall_cases": 0,
+    "failed_options": 0,
+    "helper_nonfixed_options": 411,
+    "episodes_with_helper_switches": 101,
+    "helper_choices": {
+      "track_contact": 88,
+      "release": 123,
+      "withdraw_corner": 133,
+      "slide_negative": 29,
+      "fixed_support": 133,
+      "slide_positive": 36,
+      "press_corner": 2
+    },
+    "mean_steps": 118.08333333333333,
+    "mean_actuator_absolute_work": [
+      0.44713470870973887,
+      0.20298059671013444
+    ]
+  },
+  {
+    "planner": "learned_joint_expanded_s2",
+    "predictor": "learned",
+    "planned_helper": true,
+    "candidate_slots": 273,
+    "cases": 108,
+    "first": 87,
+    "ordered": 81,
+    "fine_ordered": 80,
+    "refinement_passes": 108,
+    "finite_all": true,
+    "wall_cases": 0,
+    "failed_options": 0,
+    "helper_nonfixed_options": 361,
+    "episodes_with_helper_switches": 106,
+    "helper_choices": {
+      "track_contact": 90,
+      "release": 92,
+      "withdraw_corner": 126,
+      "slide_negative": 29,
+      "fixed_support": 122,
+      "slide_positive": 22,
+      "press_corner": 2
+    },
+    "mean_steps": 115.30555555555556,
+    "mean_actuator_absolute_work": [
+      0.4449438395461551,
+      0.1934406398623078
+    ]
+  },
+  {
+    "planner": "oracle_fixed_direct",
+    "predictor": "oracle",
+    "planned_helper": false,
+    "candidate_slots": 39,
+    "cases": 36,
+    "first": 35,
+    "ordered": 1,
+    "fine_ordered": 1,
+    "refinement_passes": 36,
+    "finite_all": true,
+    "wall_cases": 0,
+    "failed_options": 0,
+    "helper_nonfixed_options": 0,
+    "episodes_with_helper_switches": 0,
+    "helper_choices": {
+      "fixed_support": 388
+    },
+    "mean_steps": 120.88888888888889,
+    "mean_actuator_absolute_work": [
+      0.0336436600320869,
+      0.1316117528412077
+    ]
+  },
+  {
+    "planner": "oracle_fixed_expanded_s0",
+    "predictor": "oracle",
+    "planned_helper": false,
+    "candidate_slots": 39,
+    "cases": 36,
+    "first": 35,
+    "ordered": 35,
+    "fine_ordered": 34,
+    "refinement_passes": 36,
+    "finite_all": true,
+    "wall_cases": 0,
+    "failed_options": 0,
+    "helper_nonfixed_options": 0,
+    "episodes_with_helper_switches": 0,
+    "helper_choices": {
+      "fixed_support": 126
+    },
+    "mean_steps": 94.80555555555556,
+    "mean_actuator_absolute_work": [
+      0.39365238199631375,
+      0.1345763276848528
+    ]
+  },
+  {
+    "planner": "oracle_fixed_expanded_s1",
+    "predictor": "oracle",
+    "planned_helper": false,
+    "candidate_slots": 39,
+    "cases": 36,
+    "first": 35,
+    "ordered": 35,
+    "fine_ordered": 34,
+    "refinement_passes": 36,
+    "finite_all": true,
+    "wall_cases": 0,
+    "failed_options": 0,
+    "helper_nonfixed_options": 0,
+    "episodes_with_helper_switches": 0,
+    "helper_choices": {
+      "fixed_support": 123
+    },
+    "mean_steps": 100.05555555555556,
+    "mean_actuator_absolute_work": [
+      0.4936108547780249,
+      0.13220900524821547
+    ]
+  },
+  {
+    "planner": "oracle_fixed_expanded_s2",
+    "predictor": "oracle",
+    "planned_helper": false,
+    "candidate_slots": 39,
+    "cases": 36,
+    "first": 35,
+    "ordered": 35,
+    "fine_ordered": 34,
+    "refinement_passes": 36,
+    "finite_all": true,
+    "wall_cases": 0,
+    "failed_options": 0,
+    "helper_nonfixed_options": 0,
+    "episodes_with_helper_switches": 0,
+    "helper_choices": {
+      "fixed_support": 127
+    },
+    "mean_steps": 96.75,
+    "mean_actuator_absolute_work": [
+      0.4177350252866745,
+      0.1334724991271893
+    ]
+  },
+  {
+    "planner": "oracle_joint_direct",
+    "predictor": "oracle",
+    "planned_helper": true,
+    "candidate_slots": 273,
+    "cases": 36,
+    "first": 36,
+    "ordered": 0,
+    "fine_ordered": 0,
+    "refinement_passes": 36,
+    "finite_all": true,
+    "wall_cases": 0,
+    "failed_options": 0,
+    "helper_nonfixed_options": 176,
+    "episodes_with_helper_switches": 36,
+    "helper_choices": {
+      "track_contact": 24,
+      "slide_negative": 108,
+      "withdraw_corner": 26,
+      "fixed_support": 27,
+      "press_corner": 1,
+      "release": 17
+    },
+    "mean_steps": 121.11111111111111,
+    "mean_actuator_absolute_work": [
+      0.028899347875267267,
+      0.19860124215483665
+    ]
+  },
+  {
+    "planner": "oracle_joint_expanded_s0",
+    "predictor": "oracle",
+    "planned_helper": true,
+    "candidate_slots": 273,
+    "cases": 36,
+    "first": 36,
+    "ordered": 32,
+    "fine_ordered": 31,
+    "refinement_passes": 36,
+    "finite_all": true,
+    "wall_cases": 0,
+    "failed_options": 0,
+    "helper_nonfixed_options": 89,
+    "episodes_with_helper_switches": 35,
+    "helper_choices": {
+      "track_contact": 17,
+      "fixed_support": 24,
+      "press_corner": 2,
+      "withdraw_corner": 28,
+      "slide_negative": 4,
+      "release": 33,
+      "slide_positive": 5
+    },
+    "mean_steps": 98.72222222222223,
+    "mean_actuator_absolute_work": [
+      0.45122233695454067,
+      0.16374314659171635
+    ]
+  },
+  {
+    "planner": "oracle_joint_expanded_s1",
+    "predictor": "oracle",
+    "planned_helper": true,
+    "candidate_slots": 273,
+    "cases": 36,
+    "first": 36,
+    "ordered": 34,
+    "fine_ordered": 33,
+    "refinement_passes": 36,
+    "finite_all": true,
+    "wall_cases": 0,
+    "failed_options": 0,
+    "helper_nonfixed_options": 95,
+    "episodes_with_helper_switches": 36,
+    "helper_choices": {
+      "track_contact": 21,
+      "fixed_support": 23,
+      "press_corner": 5,
+      "withdraw_corner": 28,
+      "release": 33,
+      "slide_negative": 4,
+      "slide_positive": 4
+    },
+    "mean_steps": 97.02777777777777,
+    "mean_actuator_absolute_work": [
+      0.438080055018266,
+      0.16541290345291296
+    ]
+  },
+  {
+    "planner": "oracle_joint_expanded_s2",
+    "predictor": "oracle",
+    "planned_helper": true,
+    "candidate_slots": 273,
+    "cases": 36,
+    "first": 36,
+    "ordered": 34,
+    "fine_ordered": 33,
+    "refinement_passes": 36,
+    "finite_all": true,
+    "wall_cases": 0,
+    "failed_options": 0,
+    "helper_nonfixed_options": 89,
+    "episodes_with_helper_switches": 31,
+    "helper_choices": {
+      "track_contact": 15,
+      "release": 32,
+      "press_corner": 1,
+      "withdraw_corner": 31,
+      "slide_negative": 4,
+      "fixed_support": 16,
+      "slide_positive": 6
+    },
+    "mean_steps": 98.80555555555556,
+    "mean_actuator_absolute_work": [
+      0.44555522832605576,
+      0.16391893020934528
+    ]
+  }
+]
