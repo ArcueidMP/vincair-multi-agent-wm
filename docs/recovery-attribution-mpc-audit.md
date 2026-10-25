@@ -5,6 +5,11 @@
 **Result: recovery overshoot is driven mainly by helper actuation and the closed-loop interaction between the agents. Adding physically executed side changes and reverse contact raises true-simulator MPC recovery from 0/108 to 108/108 among cases that passed the first goal.**
 All 108 successes persist when the same actions are replayed at 320 substeps. The original handoff states can therefore be corrected within the original remaining time and force limits. The old action interface imposes a substantial restriction; this does not yet establish a reusable physical abstraction for the frozen small WM.
 
+The [2026-10-25 learned-interface follow-up](completed-action-interface-audit.md) now reruns complete tasks
+from their initial scenes after local, goal-free option-model training. It reports 6/108 versus 64/108 for
+direct-only versus expanded actions using matched frozen weights. Those paired model-seed executions are
+distinct from the stored-handoff simulator recovery population below.
+
 ## 1. Separating recovery actuation from identical retreat endpoints
 
 We use all 216 cases from the previous `dry_light` experiment at 160 substeps, including first-goal failures and passive controls.

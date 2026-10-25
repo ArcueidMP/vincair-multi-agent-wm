@@ -178,6 +178,12 @@ agents' recovery drives from identical complete retreat snapshots. It then compa
 physically executed reverse-contact routes under the same remaining task budget, using receding-horizon true
 simulation and the original ordered-goal scoring. No world model is retrained for these diagnostics.
 
+The [completed-interface and learned-model rerun](docs/completed-action-interface-audit.md) integrates those
+physical options into complete tasks, trains endpoint models on independent goal-free local data, and freezes
+them before evaluation. In a matched-weight comparison across three model seeds, adding side-change options
+raises complete ordered success from 6/108 to 64/108. Fixed-action numerical checks preserve that comparison;
+other policies retain explicitly reported dwell-boundary sensitivity.
+
 ```bash
 .venv/bin/python -m vmas_pusht.physical_abstraction
 .venv/bin/python -m vmas_pusht.abstraction_models
