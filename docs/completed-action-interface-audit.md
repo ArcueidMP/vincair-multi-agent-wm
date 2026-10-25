@@ -6,6 +6,11 @@
 
 This round starts each complete task from its initial scene. It is distinct from the earlier [108/108 true-simulator recovery result](recovery-attribution-mpc-audit.md), which replaced continuations from stored handoff states. The new learned planners do not query future simulator states.
 
+Follow-up: the [predictor-by-interface factorial audit](predictor-interface-factorial-audit.md) adds the missing
+larger-model and true-option direct controls, repeats the existing cells, and tests three prespecified
+39-candidate expanded allocations without retraining. It reports the resulting interface bottleneck and
+its numerical and physical-cost limits separately from the broader physical-abstraction hypothesis.
+
 ## 1. Executable contact options
 
 [action_interface.py](../vmas_pusht/action_interface.py) exposes a finite, task-independent interface:

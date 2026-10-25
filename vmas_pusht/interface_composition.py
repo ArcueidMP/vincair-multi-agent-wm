@@ -98,12 +98,15 @@ def run_group(*, profile="dry_light", substeps=160, model_pack=None,
               nuisances=((0., 0., 0.), (.045, 0., .3), (-.045, 0., -.3)),
               prelude_steps=10, rotation_steps=60, retreat_steps=20, max_recovery=80,
               goal_dwell=GOAL_DWELL, retreat_dwell=RETREAT_DWELL,
-              recovery_dwell=RECOVERY_DWELL, observe=True, capture_counterfactual=True):
+              recovery_dwell=RECOVERY_DWELL, observe=True, capture_counterfactual=True,
+              option_selector=None, expanded_final_interface=None):
     """Execute every stage, retaining failed prefixes and exact physical clocks.
 
     The selector reads task goals; the action interface and recovery controller
     do not. Options are atomic except for the original goal-dwell and deadline
     exits. Interrupted outcomes are saved but not treated as full option labels.
+    An optional selector and final-interface override support controlled planner
+    audits without changing the physical task, checkpoints, or scoring rules.
     """
     from vmas_pusht.action_interface import ActionInterface
 
@@ -120,6 +123,9 @@ def run_group(*, profile="dry_light", substeps=160, model_pack=None,
     if substeps < 1:
         raise ValueError("Substeps must be positive")
     checkpoints = _validate_models(model_pack, supports, planners, model_seed)
+    if expanded_final_interface is not None and not isinstance(expanded_final_interface, bool):
+        raise ValueError("The final-interface override must be a boolean")
+    selector = select_options if option_selector is None else option_selector
     before_digest = checkpoint_digest(checkpoints)
     profile = get_profile(profile)
     rows = [dict(support=support, planner=planner, initial_angle_deg=angle,
@@ -128,7 +134,8 @@ def run_group(*, profile="dry_light", substeps=160, model_pack=None,
         nuisance_id=nid, initial_velocity=list(nuisance[:2]), initial_angular_velocity=nuisance[2],
         task="rotate_retreat_rebrace_rotate", variant="guarded_all_with_atomic_options",
         candidate_bank="atomic_bank13_push_durations_5_10_20",
-        model_kind=MODEL_KINDS.get(planner), expanded_final_interface=planner != "wm_full_direct")
+        model_kind=MODEL_KINDS.get(planner), expanded_final_interface=(planner != "wm_full_direct"
+            if expanded_final_interface is None else expanded_final_interface))
         for support, planner, angle, (nid, nuisance) in
         itertools.product(supports, planners, angles_deg, enumerate(nuisances))]
     n = len(rows)
@@ -239,8 +246,8 @@ def run_group(*, profile="dry_light", substeps=160, model_pack=None,
             remaining = torch.where(rotating, rotation_steps-phase_age, torch.zeros_like(phase_age))
             query_mask = rotating & ~interface.busy
             if query_mask.any():
-                routes_allowed = rotating & (phase == 3) & torch.tensor([r["planner"] != "wm_full_direct" for r in rows])
-                options, diagnostics = select_options(env, interface, rows, initial_pose, goals,
+                routes_allowed = rotating & (phase == 3) & torch.tensor([r["expanded_final_interface"] for r in rows])
+                options, diagnostics = selector(env, interface, rows, initial_pose, goals,
                     remaining, history_inputs(geometry, history_actions), query_mask,
                     model_pack=model_pack, allow_routes=routes_allowed)
                 start_mode = interface.mode.clone()

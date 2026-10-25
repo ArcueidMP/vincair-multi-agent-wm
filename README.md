@@ -184,6 +184,12 @@ them before evaluation. In a matched-weight comparison across three model seeds,
 raises complete ordered success from 6/108 to 64/108. Fixed-action numerical checks preserve that comparison;
 other policies retain explicitly reported dwell-boundary sensitivity.
 
+The [predictor-by-interface factorial audit](docs/predictor-interface-factorial-audit.md) completes the frozen
+matched-model, larger-model, and true-option simulator controls. Direct-to-expanded ordered success is
+6/108→64/108, 1/108→64/108, and 1/36→35/36 respectively. Three prespecified 39-candidate allocations preserve the
+force/duration program marginals and retain the interface advantage, separating it from simply evaluating
+more candidates. Navigation effort and fixed-action numerical sensitivity are reported explicitly.
+
 ```bash
 .venv/bin/python -m vmas_pusht.physical_abstraction
 .venv/bin/python -m vmas_pusht.abstraction_models
