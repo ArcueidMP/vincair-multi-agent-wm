@@ -14,7 +14,7 @@ from pathlib import Path
 
 import numpy as np
 
-from .local_model import FrozenPredictor, fit_model, load_dataset, prediction_metrics, save_model
+from .local_model import FrozenPredictor, fit_model, load_dataset, prediction_metrics, save_model, dataset_family
 
 
 def sha(path):return hashlib.sha256(Path(path).read_bytes()).hexdigest()
@@ -25,7 +25,8 @@ def worker(dataset_path,dataset_hash,output,name,width,seed,steps):
     data=load_dataset(dataset_path)
     pack=fit_model(data['X_train'],data['Y_train'],data['X_val'],data['Y_val'],
         width=width,seed=seed,steps=steps)
-    pack['metadata'].update(dataset_path=str(dataset_path),dataset_sha256=dataset_hash)
+    pack['metadata'].update(dataset_path=str(dataset_path),dataset_sha256=dataset_hash,
+                            plant_family=dataset_family(data))
     predictor=FrozenPredictor(pack)
     for split in ('test','test_action'):
         if 'X_'+split in data:
@@ -48,7 +49,7 @@ def main():
     args=parser.parse_args()
     if not 1<=args.workers<=6 or args.steps<1 or len(args.seeds)!=len(set(args.seeds)):
         raise ValueError('Use1..6workers, positive training steps and unique seeds')
-    load_dataset(args.data)
+    plant_family=dataset_family(load_dataset(args.data))
     registration=args.out.with_name(args.out.name+'_registration.json')
     manifest=args.out.with_name(args.out.name+'_manifest.json')
     schedule=[(name,width,seed) for name,width in (('small',32),('large',128)) for seed in args.seeds]
@@ -58,7 +59,7 @@ def main():
     args.out.parent.mkdir(parents=True,exist_ok=True)
     sources={str(Path(__file__)):sha(__file__),'uav_transport/local_model.py':sha('uav_transport/local_model.py')}
     data_hash=sha(args.data)
-    protocol=dict(dataset_path=str(args.data),dataset_sha256=data_hash,source_sha256=sources,
+    protocol=dict(plant_family=plant_family,dataset_path=str(args.data),dataset_sha256=data_hash,source_sha256=sources,
         schedule=[dict(name=n,width=w,seed=s,steps=args.steps) for n,w,s in schedule],
         checkpoint_selection='Validation only; all fit seeds retained',
         constraint_margins='Validation-only q95 positive underprediction residual, first two physical targets',
@@ -73,7 +74,7 @@ def main():
             print(json.dumps(dict(model=key,**entry)),flush=True)
     for path,digest in {str(args.data):data_hash,**sources}.items():
         if sha(path)!=digest:raise AssertionError('Frozen training input changed: '+path)
-    report=dict(models={key:models[key] for key in sorted(models)},dataset_path=str(args.data),
+    report=dict(plant_family=plant_family,models={key:models[key] for key in sorted(models)},dataset_path=str(args.data),
         dataset_sha256=data_hash,source_sha256=sources,training_registration_path=str(registration),
         training_registration_sha256=sha(registration),model_status='Allmodelsfrozenbeforecomposedmissionevaluation')
     manifest.write_text(json.dumps(report,indent=2)+'\n')

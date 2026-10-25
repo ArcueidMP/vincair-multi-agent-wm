@@ -1,0 +1,4230 @@
+{
+  "plant_family": "menagerie_crazyflie_2",
+  "controller_family": "upstream_lee_position_attitude_shared_payload_allocator",
+  "planners": [
+    "rule_fixed",
+    "rule_reconfigure"
+  ],
+  "model_seeds": [
+    0
+  ],
+  "mission_count": 24,
+  "physical_cases": 12,
+  "cases": [
+    {
+      "case_id": "mass026_donor0_route0",
+      "payload_mass": 0.026,
+      "donor": 0,
+      "route_template": 0,
+      "formation_yaw": 0.5235987755982988,
+      "slack_distance": 0.07,
+      "waypoint_offsets": [
+        [
+          0.2,
+          0.1,
+          0.05
+        ],
+        [
+          0.35,
+          -0.1,
+          0.0
+        ],
+        [
+          0.5,
+          0.0,
+          -0.05
+        ]
+      ]
+    },
+    {
+      "case_id": "mass026_donor0_route1",
+      "payload_mass": 0.026,
+      "donor": 0,
+      "route_template": 1,
+      "formation_yaw": -1.0471975511965976,
+      "slack_distance": 0.09,
+      "waypoint_offsets": [
+        [
+          -0.1,
+          0.2,
+          0.05
+        ],
+        [
+          0.1,
+          0.35,
+          0.0
+        ],
+        [
+          0.0,
+          0.5,
+          -0.05
+        ]
+      ]
+    },
+    {
+      "case_id": "mass026_donor1_route0",
+      "payload_mass": 0.026,
+      "donor": 1,
+      "route_template": 0,
+      "formation_yaw": 0.5235987755982988,
+      "slack_distance": 0.07,
+      "waypoint_offsets": [
+        [
+          0.2,
+          0.1,
+          0.05
+        ],
+        [
+          0.35,
+          -0.1,
+          0.0
+        ],
+        [
+          0.5,
+          0.0,
+          -0.05
+        ]
+      ]
+    },
+    {
+      "case_id": "mass026_donor1_route1",
+      "payload_mass": 0.026,
+      "donor": 1,
+      "route_template": 1,
+      "formation_yaw": -1.0471975511965976,
+      "slack_distance": 0.09,
+      "waypoint_offsets": [
+        [
+          -0.1,
+          0.2,
+          0.05
+        ],
+        [
+          0.1,
+          0.35,
+          0.0
+        ],
+        [
+          0.0,
+          0.5,
+          -0.05
+        ]
+      ]
+    },
+    {
+      "case_id": "mass026_donor2_route0",
+      "payload_mass": 0.026,
+      "donor": 2,
+      "route_template": 0,
+      "formation_yaw": 0.5235987755982988,
+      "slack_distance": 0.07,
+      "waypoint_offsets": [
+        [
+          0.2,
+          0.1,
+          0.05
+        ],
+        [
+          0.35,
+          -0.1,
+          0.0
+        ],
+        [
+          0.5,
+          0.0,
+          -0.05
+        ]
+      ]
+    },
+    {
+      "case_id": "mass026_donor2_route1",
+      "payload_mass": 0.026,
+      "donor": 2,
+      "route_template": 1,
+      "formation_yaw": -1.0471975511965976,
+      "slack_distance": 0.09,
+      "waypoint_offsets": [
+        [
+          -0.1,
+          0.2,
+          0.05
+        ],
+        [
+          0.1,
+          0.35,
+          0.0
+        ],
+        [
+          0.0,
+          0.5,
+          -0.05
+        ]
+      ]
+    },
+    {
+      "case_id": "mass034_donor0_route0",
+      "payload_mass": 0.034,
+      "donor": 0,
+      "route_template": 0,
+      "formation_yaw": 0.5235987755982988,
+      "slack_distance": 0.07,
+      "waypoint_offsets": [
+        [
+          0.2,
+          0.1,
+          0.05
+        ],
+        [
+          0.35,
+          -0.1,
+          0.0
+        ],
+        [
+          0.5,
+          0.0,
+          -0.05
+        ]
+      ]
+    },
+    {
+      "case_id": "mass034_donor0_route1",
+      "payload_mass": 0.034,
+      "donor": 0,
+      "route_template": 1,
+      "formation_yaw": -1.0471975511965976,
+      "slack_distance": 0.09,
+      "waypoint_offsets": [
+        [
+          -0.1,
+          0.2,
+          0.05
+        ],
+        [
+          0.1,
+          0.35,
+          0.0
+        ],
+        [
+          0.0,
+          0.5,
+          -0.05
+        ]
+      ]
+    },
+    {
+      "case_id": "mass034_donor1_route0",
+      "payload_mass": 0.034,
+      "donor": 1,
+      "route_template": 0,
+      "formation_yaw": 0.5235987755982988,
+      "slack_distance": 0.07,
+      "waypoint_offsets": [
+        [
+          0.2,
+          0.1,
+          0.05
+        ],
+        [
+          0.35,
+          -0.1,
+          0.0
+        ],
+        [
+          0.5,
+          0.0,
+          -0.05
+        ]
+      ]
+    },
+    {
+      "case_id": "mass034_donor1_route1",
+      "payload_mass": 0.034,
+      "donor": 1,
+      "route_template": 1,
+      "formation_yaw": -1.0471975511965976,
+      "slack_distance": 0.09,
+      "waypoint_offsets": [
+        [
+          -0.1,
+          0.2,
+          0.05
+        ],
+        [
+          0.1,
+          0.35,
+          0.0
+        ],
+        [
+          0.0,
+          0.5,
+          -0.05
+        ]
+      ]
+    },
+    {
+      "case_id": "mass034_donor2_route0",
+      "payload_mass": 0.034,
+      "donor": 2,
+      "route_template": 0,
+      "formation_yaw": 0.5235987755982988,
+      "slack_distance": 0.07,
+      "waypoint_offsets": [
+        [
+          0.2,
+          0.1,
+          0.05
+        ],
+        [
+          0.35,
+          -0.1,
+          0.0
+        ],
+        [
+          0.5,
+          0.0,
+          -0.05
+        ]
+      ]
+    },
+    {
+      "case_id": "mass034_donor2_route1",
+      "payload_mass": 0.034,
+      "donor": 2,
+      "route_template": 1,
+      "formation_yaw": -1.0471975511965976,
+      "slack_distance": 0.09,
+      "waypoint_offsets": [
+        [
+          -0.1,
+          0.2,
+          0.05
+        ],
+        [
+          0.1,
+          0.35,
+          0.0
+        ],
+        [
+          0.0,
+          0.5,
+          -0.05
+        ]
+      ]
+    }
+  ],
+  "mission_config": {
+    "settle_seconds": 2.0,
+    "move_seconds": 3.0,
+    "leg_budget_seconds": 6.0,
+    "goal_dwell_seconds": 0.3,
+    "position_tolerance": 0.025,
+    "speed_tolerance": 0.05,
+    "termination_position_tolerance": 0.02,
+    "termination_speed_tolerance": 0.04,
+    "option_budget_seconds": 18.0,
+    "required_slack_seconds": 0.1,
+    "payload_excursion_limit": 0.05,
+    "donor_tension_limit": 0.6
+  },
+  "source_sha256": {
+    "/home/wangyuzhe/Research/multiagentWM/uav_transport/external_experiment.py": "9c85f0f0e1170e4abdf8a8059cf0c39b9f5920b11eef591e0ee879a02844bea0",
+    "/home/wangyuzhe/Research/multiagentWM/uav_transport/external_controller.py": "f50910567e5cdeedd0618f3fe06cd5877994c246dca5684910084816d3579447",
+    "uav_transport/mission.py": "5a5ed817067898f68991d050f30f874e0790d4366babfdf94da6e09176afbf92",
+    "uav_transport/collect.py": "252c4821d021f190d3514970fc9f440ae6fd55cea781f6b71b2d46df313835fc",
+    "uav_transport/local_model.py": "7156956382a273fa00e53726aaf8eafef0a42119b296fb8563d41961fd120170",
+    "uav_transport/control.py": "eb83ad7f838ec707725fc3fab008b31854f5c33b495524d88aa1e19191192cc8",
+    "uav_transport/evaluation.py": "79868fd8f775f1a618ebb5bca51c53c8848542aede3462c71c1be1906dab5ff2",
+    "uav_transport/snapshot.py": "bee8a2e151cdb0bef90b0dfd0769858384087689345b3761ec1e7eefd59aea6c",
+    "/home/wangyuzhe/Research/multiagentWM/uav_transport/environment.py": "47a76a5d031e1d0af7ba2687784ac390beecb65a98033a9f17b6157da0bbd91e",
+    "/home/wangyuzhe/Research/multiagentWM/uav_transport/plant.py": "220fa13b2797296c2decbbd80be092764e2d8fcd0d8ae4723cface5822e164af",
+    "/home/wangyuzhe/Research/multiagentWM/uav_transport/menagerie.py": "af2764767a4b4915cfa891647e0d507167ea982eec77e4a0c2a15d60ddd71b0a",
+    "/home/wangyuzhe/Research/multiagentWM/third_party/menagerie/bitcraze_crazyflie_2/LICENSE": "fc2e3286b47f415c0724d1f82047501d738ef60cff3779b2f3998ea75d8aae99",
+    "/home/wangyuzhe/Research/multiagentWM/third_party/menagerie/bitcraze_crazyflie_2/UPSTREAM.json": "de268445f3b5f6fab4f5c4e835d20ae098ab3b8d77e58d4b8a841b873c7d6226",
+    "/home/wangyuzhe/Research/multiagentWM/third_party/menagerie/bitcraze_crazyflie_2/assets/cf2_0.obj": "b6e1424d8752f110324c22d06c40fb83cedf0de4cec3423560a7c411e1c2a8d4",
+    "/home/wangyuzhe/Research/multiagentWM/third_party/menagerie/bitcraze_crazyflie_2/assets/cf2_1.obj": "d28a2c6ebca05dc62f39334669c014a8ceb1a73ea1072d22d208a5f4fe5f0bc9",
+    "/home/wangyuzhe/Research/multiagentWM/third_party/menagerie/bitcraze_crazyflie_2/assets/cf2_2.obj": "712bee75469773c0d34bb09d3ae5af405617c1f0992be2ff2e80b0f436c323f2",
+    "/home/wangyuzhe/Research/multiagentWM/third_party/menagerie/bitcraze_crazyflie_2/assets/cf2_3.obj": "b8af754045ad9d4652072584b4fdfa127527c3de9d34c64614995c462b69fdc8",
+    "/home/wangyuzhe/Research/multiagentWM/third_party/menagerie/bitcraze_crazyflie_2/assets/cf2_4.obj": "c60f8c2b3c74bf7b9d300ed71ba983cedc79da817bafe2baba56e2daa5003d78",
+    "/home/wangyuzhe/Research/multiagentWM/third_party/menagerie/bitcraze_crazyflie_2/assets/cf2_5.obj": "88bd391a4c7fce1a07950799291123a952756903d4b648f5b6163ec94990e36f",
+    "/home/wangyuzhe/Research/multiagentWM/third_party/menagerie/bitcraze_crazyflie_2/assets/cf2_6.obj": "99063e076f297125c67ab49f86bac648f338667518b2f824005349d0ef2ab673",
+    "/home/wangyuzhe/Research/multiagentWM/third_party/menagerie/bitcraze_crazyflie_2/assets/cf2_collision_0.obj": "2715202cd2c831ae6b99a5b0fb35648e2a0e0218d73553c3eaf0689a18119cfc",
+    "/home/wangyuzhe/Research/multiagentWM/third_party/menagerie/bitcraze_crazyflie_2/assets/cf2_collision_1.obj": "e1c99d02815a006fe5c362fa0d28b8db4c2424c22774ec3eba2670cb78b29914",
+    "/home/wangyuzhe/Research/multiagentWM/third_party/menagerie/bitcraze_crazyflie_2/assets/cf2_collision_10.obj": "fd49af478603928f08d50d60b4fadbb17a4455241ba8879e24287c7ac623ea94",
+    "/home/wangyuzhe/Research/multiagentWM/third_party/menagerie/bitcraze_crazyflie_2/assets/cf2_collision_11.obj": "d01b42d54389e2cdd20c1b3b0837dffb966617b74d35d2575ba1aa7907b3dfdf",
+    "/home/wangyuzhe/Research/multiagentWM/third_party/menagerie/bitcraze_crazyflie_2/assets/cf2_collision_12.obj": "ee5c880102440ad8fa574b9921a53dc97cca237b8e1610c2a195fdbe7cbe6494",
+    "/home/wangyuzhe/Research/multiagentWM/third_party/menagerie/bitcraze_crazyflie_2/assets/cf2_collision_13.obj": "1fc029cdb38637252963983a54590fc560fa2c79fc9890c63d60f6e1f63342c7",
+    "/home/wangyuzhe/Research/multiagentWM/third_party/menagerie/bitcraze_crazyflie_2/assets/cf2_collision_14.obj": "d04ca1e3f96f625b3c7a8455e19541dc3a3e925cfa6f4a8a2dd252eaa81c08f5",
+    "/home/wangyuzhe/Research/multiagentWM/third_party/menagerie/bitcraze_crazyflie_2/assets/cf2_collision_15.obj": "5d6787aa1ca17e48d43fa1e9875027bb36038015a0827e1488336487c337167b",
+    "/home/wangyuzhe/Research/multiagentWM/third_party/menagerie/bitcraze_crazyflie_2/assets/cf2_collision_16.obj": "f2cc9bfe84e09eef87790440096c7580f33ad7cd805fc5cdc7b2f7549302e854",
+    "/home/wangyuzhe/Research/multiagentWM/third_party/menagerie/bitcraze_crazyflie_2/assets/cf2_collision_17.obj": "eedadc86582d4f654e80d9913eef414012ed4b597fc975546003a8756308cb1f",
+    "/home/wangyuzhe/Research/multiagentWM/third_party/menagerie/bitcraze_crazyflie_2/assets/cf2_collision_18.obj": "fddcebffa7e4ce1f22239fec38a0912edf0e9e8836eba50cfe34f1a508075b17",
+    "/home/wangyuzhe/Research/multiagentWM/third_party/menagerie/bitcraze_crazyflie_2/assets/cf2_collision_19.obj": "23bfdbfd15d57b11b0b26306854a66a5faffaf10d63a59896f14e25a1f7bf565",
+    "/home/wangyuzhe/Research/multiagentWM/third_party/menagerie/bitcraze_crazyflie_2/assets/cf2_collision_2.obj": "86c18490088f823d2d0233d7be7a88bb1871a4093f48f429ce586892899f7e20",
+    "/home/wangyuzhe/Research/multiagentWM/third_party/menagerie/bitcraze_crazyflie_2/assets/cf2_collision_20.obj": "07793f71fad9248e44361fa56e9d5105229a171a220a63c78baf0219dd4d38e6",
+    "/home/wangyuzhe/Research/multiagentWM/third_party/menagerie/bitcraze_crazyflie_2/assets/cf2_collision_21.obj": "673b7779025d0839c246bb75a6bc4a76ad0a09f4aa2ea812818589722c4bcbf4",
+    "/home/wangyuzhe/Research/multiagentWM/third_party/menagerie/bitcraze_crazyflie_2/assets/cf2_collision_22.obj": "af15e2f7908c692a12155e8e69b3b33ef2d5d97c5dddde31e6d428788024beb4",
+    "/home/wangyuzhe/Research/multiagentWM/third_party/menagerie/bitcraze_crazyflie_2/assets/cf2_collision_23.obj": "8fd369711d523faf77904bfbf6a5f2a48714be9ade0aa26007ca3c2c9a90ab3d",
+    "/home/wangyuzhe/Research/multiagentWM/third_party/menagerie/bitcraze_crazyflie_2/assets/cf2_collision_24.obj": "1608b7173ab5655a00949d2c2a839c7a4043674ba2b53e2d479efaeffd0150da",
+    "/home/wangyuzhe/Research/multiagentWM/third_party/menagerie/bitcraze_crazyflie_2/assets/cf2_collision_25.obj": "db849bb0a87cf2b33fa6fd731f4a73b0730e2766caae5bde802c8979058e06dc",
+    "/home/wangyuzhe/Research/multiagentWM/third_party/menagerie/bitcraze_crazyflie_2/assets/cf2_collision_26.obj": "4a026f1d2c670d8a2357578efc18339e57ceba5fd72ac02e49572af148dc0af2",
+    "/home/wangyuzhe/Research/multiagentWM/third_party/menagerie/bitcraze_crazyflie_2/assets/cf2_collision_27.obj": "5ecec9966aa5a7d4c86fa96e2ced9065a1dc627cdd305af8bf154bd5087c3456",
+    "/home/wangyuzhe/Research/multiagentWM/third_party/menagerie/bitcraze_crazyflie_2/assets/cf2_collision_28.obj": "00229becda358865dc960e79c2a5a79de6b7fe771f65642ea3eae31357c72062",
+    "/home/wangyuzhe/Research/multiagentWM/third_party/menagerie/bitcraze_crazyflie_2/assets/cf2_collision_29.obj": "38f50fcc582c222a77b5b0f8a7667818f25b12a9b9e245af91aa1cd1e7d5b98c",
+    "/home/wangyuzhe/Research/multiagentWM/third_party/menagerie/bitcraze_crazyflie_2/assets/cf2_collision_3.obj": "01a3484e552fbe40d6813b425c76e51b2112ec92272d471895c62b270d4a2e8f",
+    "/home/wangyuzhe/Research/multiagentWM/third_party/menagerie/bitcraze_crazyflie_2/assets/cf2_collision_30.obj": "e44b805232a0a2acc79abf7a7f2d54d58fc32350219fa41acb1e528881460f15",
+    "/home/wangyuzhe/Research/multiagentWM/third_party/menagerie/bitcraze_crazyflie_2/assets/cf2_collision_31.obj": "c60a0fb12811b6251cf217f6e4258141055c0f735c98aa720fe888ae96ab30fb",
+    "/home/wangyuzhe/Research/multiagentWM/third_party/menagerie/bitcraze_crazyflie_2/assets/cf2_collision_4.obj": "7d06b50d215fb704a80b2488a4dc0cbeaca442c7ef1a09fbc1b53bbe182f7e46",
+    "/home/wangyuzhe/Research/multiagentWM/third_party/menagerie/bitcraze_crazyflie_2/assets/cf2_collision_5.obj": "d0ebb7fe50429cb7e80cbf3a6716c6a3984face949c60e6c9fa00dbb87682fa1",
+    "/home/wangyuzhe/Research/multiagentWM/third_party/menagerie/bitcraze_crazyflie_2/assets/cf2_collision_6.obj": "e874be08ff9957735759f1dcb71d86633e9b82f3f0ab904be2147b1df15a34de",
+    "/home/wangyuzhe/Research/multiagentWM/third_party/menagerie/bitcraze_crazyflie_2/assets/cf2_collision_7.obj": "92c6c4d56b0437cc9fb13feaef345a3a5565b06628e1a8f431b6b4c44df74ee8",
+    "/home/wangyuzhe/Research/multiagentWM/third_party/menagerie/bitcraze_crazyflie_2/assets/cf2_collision_8.obj": "d5497b2c1bec62802320932f03985cb56c6928e576206324ffd543a8161790da",
+    "/home/wangyuzhe/Research/multiagentWM/third_party/menagerie/bitcraze_crazyflie_2/assets/cf2_collision_9.obj": "914364e62252bf21f920861be13abf2e1e6c7a1814542095c25ff243ccf968a3",
+    "/home/wangyuzhe/Research/multiagentWM/third_party/menagerie/bitcraze_crazyflie_2/cf2.xml": "c1260dd47cded49edd5c1c02226529a5452a73f70000515f83bf223814037933",
+    "/home/wangyuzhe/Research/multiagentWM/third_party/crazyflie_firmware_lee/imu_types.h": "c2aef811602a33a6df7e9b704155ca830df76a0faf7dc319006a2991c1c0f952",
+    "/home/wangyuzhe/Research/multiagentWM/third_party/crazyflie_firmware_lee/LICENSE.txt": "c53a65c2fd561c87eaabf1072ef5dcab8653042bc15308465f52413585eb6271",
+    "/home/wangyuzhe/Research/multiagentWM/third_party/crazyflie_firmware_lee/controller_lee.c": "d9dba75f5d3925514a72d55424baa8c97cd8ce0b561a51738ae191cd9f0a0774",
+    "/home/wangyuzhe/Research/multiagentWM/third_party/crazyflie_firmware_lee/stabilizer_types.h": "18bad51e7ebc75717636a87e0abfb9a3e4a56a74614b06ec4ed2d647f7eef61a",
+    "/home/wangyuzhe/Research/multiagentWM/third_party/crazyflie_firmware_lee/controller_lee.h": "2ec0c7b15d16ab6c52f5db12e2cba6f058e2cb50057262cc638d00fcc7c4bfc8",
+    "/home/wangyuzhe/Research/multiagentWM/third_party/crazyflie_firmware_lee/lighthouse_types.h": "a06eb46a41b1ed8f97adfb1a11d5fdbcff3f8a21c6611a722a424ebf6255f1b3",
+    "/home/wangyuzhe/Research/multiagentWM/third_party/crazyflie_firmware_lee/UPSTREAM.json": "dd4ecbfa5f54f87cbb12a537674ee0d3d49a2711d4c9a765e6087fd88e63a195",
+    "/home/wangyuzhe/Research/multiagentWM/third_party/crazyflie_firmware_lee/math3d.h": "5ac652863230d3a4397fd6b5f2bc32f0cd9465f0bdf3cbb54cd847405601a801",
+    "/home/wangyuzhe/Research/multiagentWM/third_party/crazyflie_firmware_lee/README.md": "d0e8106a813b7db14e6474805f77d8aacd68da7a3fc8c5a61f8da57940f87904"
+  },
+  "model_sha256": {},
+  "upstream": {
+    "repository": "https://github.com/IMRCLab/crazyflie-firmware",
+    "commit": "b08d9f3cbcc581d8e7f988cabad22c26d35f4a58",
+    "pin_source": "https://github.com/IMRCLab/coltrans-planning/tree/146b205e33e20ac26975993d32ec89b140754550/deps/crazyflie-firmware",
+    "controller": "controller_lee.c",
+    "algorithm": "Upstream geometric position and attitude controller",
+    "files": [
+      {
+        "path": "controller_lee.c",
+        "upstream_path": "src/modules/src/controller_lee.c",
+        "git_blob_sha": "a92036bed746a146125abaacab45e6e56575c2bd",
+        "sha256": "d9dba75f5d3925514a72d55424baa8c97cd8ce0b561a51738ae191cd9f0a0774",
+        "bytes": 12520,
+        "modified": false,
+        "license_notice": "MIT (file-level notice retained)"
+      },
+      {
+        "path": "controller_lee.h",
+        "upstream_path": "src/modules/interface/controller_lee.h",
+        "git_blob_sha": "d61bd5040989dae4c64f0533d2d586b961851bca",
+        "sha256": "2ec0c7b15d16ab6c52f5db12e2cba6f058e2cb50057262cc638d00fcc7c4bfc8",
+        "bytes": 2651,
+        "modified": false,
+        "license_notice": "GPL-3.0 (file/repository notice retained)"
+      },
+      {
+        "path": "stabilizer_types.h",
+        "upstream_path": "src/modules/interface/stabilizer_types.h",
+        "git_blob_sha": "0bf406eeada3d1e85ece8a9f2be1a53cc4d4d587",
+        "sha256": "18bad51e7ebc75717636a87e0abfb9a3e4a56a74614b06ec4ed2d647f7eef61a",
+        "bytes": 9710,
+        "modified": false,
+        "license_notice": "GPL-3.0 (file/repository notice retained)"
+      },
+      {
+        "path": "math3d.h",
+        "upstream_path": "src/modules/interface/math3d.h",
+        "git_blob_sha": "7f732d606e1aa694f4e994ddae276ba6f8e28ac7",
+        "sha256": "5ac652863230d3a4397fd6b5f2bc32f0cd9465f0bdf3cbb54cd847405601a801",
+        "bytes": 36633,
+        "modified": false,
+        "license_notice": "MIT (file-level notice retained)"
+      },
+      {
+        "path": "imu_types.h",
+        "upstream_path": "src/hal/interface/imu_types.h",
+        "git_blob_sha": "f027b7b0cb2198105fe1ab296520195bfd493d75",
+        "sha256": "c2aef811602a33a6df7e9b704155ca830df76a0faf7dc319006a2991c1c0f952",
+        "bytes": 1559,
+        "modified": false,
+        "license_notice": "GPL-3.0 (file/repository notice retained)"
+      },
+      {
+        "path": "lighthouse_types.h",
+        "upstream_path": "src/utils/interface/lighthouse/lighthouse_types.h",
+        "git_blob_sha": "f9df5267d5702970d2a212c1bf201a3fdad85fd7",
+        "sha256": "a06eb46a41b1ed8f97adfb1a11d5fdbcff3f8a21c6611a722a424ebf6255f1b3",
+        "bytes": 976,
+        "modified": false,
+        "license_notice": "No file-level license header; repository GPL-3.0 license retained"
+      },
+      {
+        "path": "LICENSE.txt",
+        "upstream_path": "LICENSE.txt",
+        "git_blob_sha": "20d40b6bceca3a6c0237d7455ebf1820aeff3680",
+        "sha256": "c53a65c2fd561c87eaabf1072ef5dcab8653042bc15308465f52413585eb6271",
+        "bytes": 35146,
+        "modified": false,
+        "license_notice": "GPL-3.0 (file/repository notice retained)"
+      }
+    ],
+    "licenses": "MIT notice in controller_lee.c; GPL-3.0 notices in associated firmware headers; original notices and LICENSE.txt retained.",
+    "modifications": "Official file bytes are unchanged. The local wrapper configures the scheduler frequency, supplies physical mass/inertia, and marshals inputs/outputs.",
+    "bundle_license_note": "This native bundle is not labeled MIT-only: GPL-3.0 firmware headers and the full upstream GPL license accompany the MIT-noticed controller and math header."
+  },
+  "controller_configuration": {
+    "family": "upstream_lee_position_attitude_shared_payload_allocator",
+    "upstream_commit": "b08d9f3cbcc581d8e7f988cabad22c26d35f4a58",
+    "upstream_controller": "controller_lee.c",
+    "upstream_parameters": {
+      "mass": 0.027000000700354576,
+      "inertia": [
+        2.3950999093358405e-05,
+        2.3950999093358405e-05,
+        3.2347001251764596e-05
+      ],
+      "Kpos_P": [
+        9.0,
+        9.0,
+        9.0
+      ],
+      "Kpos_D": [
+        7.0,
+        7.0,
+        7.0
+      ],
+      "Kpos_I": [
+        5.0,
+        5.0,
+        5.0
+      ],
+      "KR": [
+        0.005499999970197678,
+        0.005499999970197678,
+        0.009999999776482582
+      ],
+      "Komega": [
+        0.0013000000035390258,
+        0.0013000000035390258,
+        0.0020000000949949026
+      ],
+      "KI": [
+        0.012000000104308128,
+        0.017999999225139618,
+        0.014999999664723873
+      ],
+      "control_dt": 0.019999999552965164
+    },
+    "upstream_default_attitude_rate_hz": 500,
+    "executed_control_rate_hz": 50,
+    "shared_allocator": {
+      "payload_kp": 2.5,
+      "payload_kd": 2.5,
+      "payload_ki": 0.12,
+      "integral_limit": 0.35,
+      "tension_thrust_fraction": 0.9,
+      "heading": 0.0
+    },
+    "roles": "Study payload/tension allocation, formation and recovery references; upstream C position/attitude feedback; shared bounded motor mixing",
+    "source_sha256": {
+      "controller_lee.c": "d9dba75f5d3925514a72d55424baa8c97cd8ce0b561a51738ae191cd9f0a0774",
+      "controller_lee.h": "2ec0c7b15d16ab6c52f5db12e2cba6f058e2cb50057262cc638d00fcc7c4bfc8",
+      "stabilizer_types.h": "18bad51e7ebc75717636a87e0abfb9a3e4a56a74614b06ec4ed2d647f7eef61a",
+      "math3d.h": "5ac652863230d3a4397fd6b5f2bc32f0cd9465f0bdf3cbb54cd847405601a801",
+      "imu_types.h": "c2aef811602a33a6df7e9b704155ca830df76a0faf7dc319006a2991c1c0f952",
+      "lighthouse_types.h": "a06eb46a41b1ed8f97adfb1a11d5fdbcff3f8a21c6611a722a424ebf6255f1b3",
+      "LICENSE.txt": "c53a65c2fd561c87eaabf1072ef5dcab8653042bc15308465f52413585eb6271"
+    },
+    "native_build_key": "700862fd5fa41f81da8da5b5e6e396573bb1959a9464484506469f73a4ac33ce"
+  },
+  "role_separation": "Shared study payload/tension allocation and recovery/formation references; pinned unchanged upstream Lee C position/attitude feedback; shared bounded rotor mixer",
+  "clock_adaptation": "The wrapper configures the source scheduler for the 50Hz study control period; upstream default is500Hz. Published feedback gains remain unchanged.",
+  "calibration": "Mass and diagonal inertia are supplied from the official Menagerie Crazyflie2 body model",
+  "allowed_planners": "rule_fixed and rule_reconfigure only; no learned or exact-option predictions with an external controller",
+  "score": "Original three-waypoint/two-operation delivery and registered excursion/donor-tension limits",
+  "no_training_or_gain_search": true,
+  "registration_path": "data/uav_transport/menagerie_external_lee_v1_registration.json",
+  "registration_sha256": "7edd1de520e2f51b4570baf608a2cba826fc1dbd73ad9c6720348a1c9b94e82a",
+  "results": [
+    {
+      "summary": {
+        "case_id": "mass026_donor0_route0",
+        "planner": "rule_fixed",
+        "model_seed": 0,
+        "plant_family": "menagerie_crazyflie_2",
+        "controller_family": "upstream_lee_position_attitude_shared_payload_allocator",
+        "payload_mass": 0.026,
+        "donor": 0,
+        "route_template": 0,
+        "slack_distance": 0.07,
+        "dt": 0.002,
+        "control_dt": 0.02,
+        "delivery_completion": true,
+        "constrained_completion": false,
+        "waypoint_successes": [
+          true,
+          true,
+          true
+        ],
+        "option_completions": [
+          true,
+          true
+        ],
+        "actual_slack_successes": [
+          true,
+          true
+        ],
+        "option_peak_excursions": [
+          0.19474203250622993,
+          0.1974783457002543
+        ],
+        "option_peak_donor_tensions": [
+          1.4604390868506623,
+          1.3445000900053699
+        ],
+        "option_slack_seconds": [
+          0.756,
+          0.74
+        ],
+        "selected_reconfigurations": [
+          false,
+          false
+        ],
+        "selected_durations": [
+          [
+            2.0,
+            2.0
+          ],
+          [
+            2.0,
+            2.0
+          ]
+        ],
+        "total_seconds": 30.72,
+        "control_steps": 1536,
+        "physics_steps": 15360,
+        "maximum_seconds": 56.0,
+        "absolute_actuator_work": 0.4378559290646867,
+        "total_squared_thrust_integral": 2.8665263008001833,
+        "rotor_force_integral": 32.448498992353116,
+        "uav_path_length": 4.017571653986182,
+        "maximum_rotor_force": 0.099608691779561,
+        "motor_bound_seconds": 0.0,
+        "peak_uav_tilt": 0.1472750091048136,
+        "minimum_body_height": 1.14635199214439,
+        "minimum_uav_separation": 0.3847192221523204,
+        "flight_tracking_rmse": 0.01621779110020878,
+        "finite": true,
+        "collision": false,
+        "warning_count": 0,
+        "predictor_evaluations": 0,
+        "simulated_candidate_control_steps": 0,
+        "simulated_candidate_physics_steps": 0,
+        "total_decision_seconds": 0.0009458249987801537,
+        "minimum_risk_fallbacks": 0,
+        "feasible_candidate_counts": [
+          0,
+          0
+        ],
+        "stop_reason": "mission_sequence_end",
+        "model_kind": null
+      },
+      "raw_path": "data/uav_transport/menagerie_external_lee_v1_rule_fixed_seed0_mass026_donor0_route0.pkl",
+      "raw_sha256": "e4c67b93c985514e363401d7e3e75fb45a267485ee0b075a3c039c0362e86996",
+      "controller_configuration": {
+        "family": "upstream_lee_position_attitude_shared_payload_allocator",
+        "upstream_commit": "b08d9f3cbcc581d8e7f988cabad22c26d35f4a58",
+        "upstream_controller": "controller_lee.c",
+        "upstream_parameters": {
+          "mass": 0.027000000700354576,
+          "inertia": [
+            2.3950999093358405e-05,
+            2.3950999093358405e-05,
+            3.2347001251764596e-05
+          ],
+          "Kpos_P": [
+            9.0,
+            9.0,
+            9.0
+          ],
+          "Kpos_D": [
+            7.0,
+            7.0,
+            7.0
+          ],
+          "Kpos_I": [
+            5.0,
+            5.0,
+            5.0
+          ],
+          "KR": [
+            0.005499999970197678,
+            0.005499999970197678,
+            0.009999999776482582
+          ],
+          "Komega": [
+            0.0013000000035390258,
+            0.0013000000035390258,
+            0.0020000000949949026
+          ],
+          "KI": [
+            0.012000000104308128,
+            0.017999999225139618,
+            0.014999999664723873
+          ],
+          "control_dt": 0.019999999552965164
+        },
+        "upstream_default_attitude_rate_hz": 500,
+        "executed_control_rate_hz": 50,
+        "shared_allocator": {
+          "payload_kp": 2.5,
+          "payload_kd": 2.5,
+          "payload_ki": 0.12,
+          "integral_limit": 0.35,
+          "tension_thrust_fraction": 0.9,
+          "heading": 0.0
+        },
+        "roles": "Study payload/tension allocation, formation and recovery references; upstream C position/attitude feedback; shared bounded motor mixing",
+        "source_sha256": {
+          "controller_lee.c": "d9dba75f5d3925514a72d55424baa8c97cd8ce0b561a51738ae191cd9f0a0774",
+          "controller_lee.h": "2ec0c7b15d16ab6c52f5db12e2cba6f058e2cb50057262cc638d00fcc7c4bfc8",
+          "stabilizer_types.h": "18bad51e7ebc75717636a87e0abfb9a3e4a56a74614b06ec4ed2d647f7eef61a",
+          "math3d.h": "5ac652863230d3a4397fd6b5f2bc32f0cd9465f0bdf3cbb54cd847405601a801",
+          "imu_types.h": "c2aef811602a33a6df7e9b704155ca830df76a0faf7dc319006a2991c1c0f952",
+          "lighthouse_types.h": "a06eb46a41b1ed8f97adfb1a11d5fdbcff3f8a21c6611a722a424ebf6255f1b3",
+          "LICENSE.txt": "c53a65c2fd561c87eaabf1072ef5dcab8653042bc15308465f52413585eb6271"
+        },
+        "native_build_key": "700862fd5fa41f81da8da5b5e6e396573bb1959a9464484506469f73a4ac33ce"
+      },
+      "wall_seconds": 5.4738447350027855
+    },
+    {
+      "summary": {
+        "case_id": "mass026_donor0_route1",
+        "planner": "rule_fixed",
+        "model_seed": 0,
+        "plant_family": "menagerie_crazyflie_2",
+        "controller_family": "upstream_lee_position_attitude_shared_payload_allocator",
+        "payload_mass": 0.026,
+        "donor": 0,
+        "route_template": 1,
+        "slack_distance": 0.09,
+        "dt": 0.002,
+        "control_dt": 0.02,
+        "delivery_completion": true,
+        "constrained_completion": false,
+        "waypoint_successes": [
+          true,
+          true,
+          true
+        ],
+        "option_completions": [
+          true,
+          true
+        ],
+        "actual_slack_successes": [
+          true,
+          true
+        ],
+        "option_peak_excursions": [
+          0.2025975489907679,
+          0.19782189545486145
+        ],
+        "option_peak_donor_tensions": [
+          1.6175780084344298,
+          1.6638727581844388
+        ],
+        "option_slack_seconds": [
+          0.932,
+          0.924
+        ],
+        "selected_reconfigurations": [
+          false,
+          false
+        ],
+        "selected_durations": [
+          [
+            2.0,
+            2.0
+          ],
+          [
+            2.0,
+            2.0
+          ]
+        ],
+        "total_seconds": 30.900000000000002,
+        "control_steps": 1545,
+        "physics_steps": 15450,
+        "maximum_seconds": 56.0,
+        "absolute_actuator_work": 0.4557877377481352,
+        "total_squared_thrust_integral": 2.884035812001876,
+        "rotor_force_integral": 32.63818350863783,
+        "uav_path_length": 4.068075070011952,
+        "maximum_rotor_force": 0.0996991767615293,
+        "motor_bound_seconds": 0.0,
+        "peak_uav_tilt": 0.14851062290599984,
+        "minimum_body_height": 1.1462653710949844,
+        "minimum_uav_separation": 0.3788065556532578,
+        "flight_tracking_rmse": 0.01584699050179012,
+        "finite": true,
+        "collision": false,
+        "warning_count": 0,
+        "predictor_evaluations": 0,
+        "simulated_candidate_control_steps": 0,
+        "simulated_candidate_physics_steps": 0,
+        "total_decision_seconds": 0.0009370469997520559,
+        "minimum_risk_fallbacks": 0,
+        "feasible_candidate_counts": [
+          0,
+          0
+        ],
+        "stop_reason": "mission_sequence_end",
+        "model_kind": null
+      },
+      "raw_path": "data/uav_transport/menagerie_external_lee_v1_rule_fixed_seed0_mass026_donor0_route1.pkl",
+      "raw_sha256": "7ef2e881a6324843aeb16010937e422b1bbe2a607db2e09938dd37afdf2593ef",
+      "controller_configuration": {
+        "family": "upstream_lee_position_attitude_shared_payload_allocator",
+        "upstream_commit": "b08d9f3cbcc581d8e7f988cabad22c26d35f4a58",
+        "upstream_controller": "controller_lee.c",
+        "upstream_parameters": {
+          "mass": 0.027000000700354576,
+          "inertia": [
+            2.3950999093358405e-05,
+            2.3950999093358405e-05,
+            3.2347001251764596e-05
+          ],
+          "Kpos_P": [
+            9.0,
+            9.0,
+            9.0
+          ],
+          "Kpos_D": [
+            7.0,
+            7.0,
+            7.0
+          ],
+          "Kpos_I": [
+            5.0,
+            5.0,
+            5.0
+          ],
+          "KR": [
+            0.005499999970197678,
+            0.005499999970197678,
+            0.009999999776482582
+          ],
+          "Komega": [
+            0.0013000000035390258,
+            0.0013000000035390258,
+            0.0020000000949949026
+          ],
+          "KI": [
+            0.012000000104308128,
+            0.017999999225139618,
+            0.014999999664723873
+          ],
+          "control_dt": 0.019999999552965164
+        },
+        "upstream_default_attitude_rate_hz": 500,
+        "executed_control_rate_hz": 50,
+        "shared_allocator": {
+          "payload_kp": 2.5,
+          "payload_kd": 2.5,
+          "payload_ki": 0.12,
+          "integral_limit": 0.35,
+          "tension_thrust_fraction": 0.9,
+          "heading": 0.0
+        },
+        "roles": "Study payload/tension allocation, formation and recovery references; upstream C position/attitude feedback; shared bounded motor mixing",
+        "source_sha256": {
+          "controller_lee.c": "d9dba75f5d3925514a72d55424baa8c97cd8ce0b561a51738ae191cd9f0a0774",
+          "controller_lee.h": "2ec0c7b15d16ab6c52f5db12e2cba6f058e2cb50057262cc638d00fcc7c4bfc8",
+          "stabilizer_types.h": "18bad51e7ebc75717636a87e0abfb9a3e4a56a74614b06ec4ed2d647f7eef61a",
+          "math3d.h": "5ac652863230d3a4397fd6b5f2bc32f0cd9465f0bdf3cbb54cd847405601a801",
+          "imu_types.h": "c2aef811602a33a6df7e9b704155ca830df76a0faf7dc319006a2991c1c0f952",
+          "lighthouse_types.h": "a06eb46a41b1ed8f97adfb1a11d5fdbcff3f8a21c6611a722a424ebf6255f1b3",
+          "LICENSE.txt": "c53a65c2fd561c87eaabf1072ef5dcab8653042bc15308465f52413585eb6271"
+        },
+        "native_build_key": "700862fd5fa41f81da8da5b5e6e396573bb1959a9464484506469f73a4ac33ce"
+      },
+      "wall_seconds": 5.387588484001753
+    },
+    {
+      "summary": {
+        "case_id": "mass026_donor1_route0",
+        "planner": "rule_fixed",
+        "model_seed": 0,
+        "plant_family": "menagerie_crazyflie_2",
+        "controller_family": "upstream_lee_position_attitude_shared_payload_allocator",
+        "payload_mass": 0.026,
+        "donor": 1,
+        "route_template": 0,
+        "slack_distance": 0.07,
+        "dt": 0.002,
+        "control_dt": 0.02,
+        "delivery_completion": true,
+        "constrained_completion": false,
+        "waypoint_successes": [
+          true,
+          true,
+          true
+        ],
+        "option_completions": [
+          true,
+          true
+        ],
+        "actual_slack_successes": [
+          true,
+          true
+        ],
+        "option_peak_excursions": [
+          0.19782037531683497,
+          0.19460570470954333
+        ],
+        "option_peak_donor_tensions": [
+          1.4417989547495997,
+          1.4091016064140973
+        ],
+        "option_slack_seconds": [
+          0.756,
+          0.746
+        ],
+        "selected_reconfigurations": [
+          false,
+          false
+        ],
+        "selected_durations": [
+          [
+            2.0,
+            2.0
+          ],
+          [
+            2.0,
+            2.0
+          ]
+        ],
+        "total_seconds": 30.46,
+        "control_steps": 1523,
+        "physics_steps": 15230,
+        "maximum_seconds": 56.0,
+        "absolute_actuator_work": 0.4312815637667047,
+        "total_squared_thrust_integral": 2.842210608210502,
+        "rotor_force_integral": 32.173730592307884,
+        "uav_path_length": 3.9564070459095886,
+        "maximum_rotor_force": 0.09968979030782014,
+        "motor_bound_seconds": 0.0,
+        "peak_uav_tilt": 0.14848312387511475,
+        "minimum_body_height": 1.146239569329719,
+        "minimum_uav_separation": 0.38354294885886975,
+        "flight_tracking_rmse": 0.016477355859827285,
+        "finite": true,
+        "collision": false,
+        "warning_count": 0,
+        "predictor_evaluations": 0,
+        "simulated_candidate_control_steps": 0,
+        "simulated_candidate_physics_steps": 0,
+        "total_decision_seconds": 0.0009117399968090467,
+        "minimum_risk_fallbacks": 0,
+        "feasible_candidate_counts": [
+          0,
+          0
+        ],
+        "stop_reason": "mission_sequence_end",
+        "model_kind": null
+      },
+      "raw_path": "data/uav_transport/menagerie_external_lee_v1_rule_fixed_seed0_mass026_donor1_route0.pkl",
+      "raw_sha256": "53e8fb09e4eb8e51533834043f99d3c1d67174b31c6694afd42d47000a6d7b06",
+      "controller_configuration": {
+        "family": "upstream_lee_position_attitude_shared_payload_allocator",
+        "upstream_commit": "b08d9f3cbcc581d8e7f988cabad22c26d35f4a58",
+        "upstream_controller": "controller_lee.c",
+        "upstream_parameters": {
+          "mass": 0.027000000700354576,
+          "inertia": [
+            2.3950999093358405e-05,
+            2.3950999093358405e-05,
+            3.2347001251764596e-05
+          ],
+          "Kpos_P": [
+            9.0,
+            9.0,
+            9.0
+          ],
+          "Kpos_D": [
+            7.0,
+            7.0,
+            7.0
+          ],
+          "Kpos_I": [
+            5.0,
+            5.0,
+            5.0
+          ],
+          "KR": [
+            0.005499999970197678,
+            0.005499999970197678,
+            0.009999999776482582
+          ],
+          "Komega": [
+            0.0013000000035390258,
+            0.0013000000035390258,
+            0.0020000000949949026
+          ],
+          "KI": [
+            0.012000000104308128,
+            0.017999999225139618,
+            0.014999999664723873
+          ],
+          "control_dt": 0.019999999552965164
+        },
+        "upstream_default_attitude_rate_hz": 500,
+        "executed_control_rate_hz": 50,
+        "shared_allocator": {
+          "payload_kp": 2.5,
+          "payload_kd": 2.5,
+          "payload_ki": 0.12,
+          "integral_limit": 0.35,
+          "tension_thrust_fraction": 0.9,
+          "heading": 0.0
+        },
+        "roles": "Study payload/tension allocation, formation and recovery references; upstream C position/attitude feedback; shared bounded motor mixing",
+        "source_sha256": {
+          "controller_lee.c": "d9dba75f5d3925514a72d55424baa8c97cd8ce0b561a51738ae191cd9f0a0774",
+          "controller_lee.h": "2ec0c7b15d16ab6c52f5db12e2cba6f058e2cb50057262cc638d00fcc7c4bfc8",
+          "stabilizer_types.h": "18bad51e7ebc75717636a87e0abfb9a3e4a56a74614b06ec4ed2d647f7eef61a",
+          "math3d.h": "5ac652863230d3a4397fd6b5f2bc32f0cd9465f0bdf3cbb54cd847405601a801",
+          "imu_types.h": "c2aef811602a33a6df7e9b704155ca830df76a0faf7dc319006a2991c1c0f952",
+          "lighthouse_types.h": "a06eb46a41b1ed8f97adfb1a11d5fdbcff3f8a21c6611a722a424ebf6255f1b3",
+          "LICENSE.txt": "c53a65c2fd561c87eaabf1072ef5dcab8653042bc15308465f52413585eb6271"
+        },
+        "native_build_key": "700862fd5fa41f81da8da5b5e6e396573bb1959a9464484506469f73a4ac33ce"
+      },
+      "wall_seconds": 5.46954265399836
+    },
+    {
+      "summary": {
+        "case_id": "mass026_donor1_route1",
+        "planner": "rule_fixed",
+        "model_seed": 0,
+        "plant_family": "menagerie_crazyflie_2",
+        "controller_family": "upstream_lee_position_attitude_shared_payload_allocator",
+        "payload_mass": 0.026,
+        "donor": 1,
+        "route_template": 1,
+        "slack_distance": 0.09,
+        "dt": 0.002,
+        "control_dt": 0.02,
+        "delivery_completion": true,
+        "constrained_completion": false,
+        "waypoint_successes": [
+          true,
+          true,
+          true
+        ],
+        "option_completions": [
+          true,
+          true
+        ],
+        "actual_slack_successes": [
+          true,
+          true
+        ],
+        "option_peak_excursions": [
+          0.20004496945071656,
+          0.20058061170855498
+        ],
+        "option_peak_donor_tensions": [
+          1.715866979700922,
+          1.601923599611545
+        ],
+        "option_slack_seconds": [
+          0.9380000000000001,
+          0.9
+        ],
+        "selected_reconfigurations": [
+          false,
+          false
+        ],
+        "selected_durations": [
+          [
+            2.0,
+            2.0
+          ],
+          [
+            2.0,
+            2.0
+          ]
+        ],
+        "total_seconds": 31.16,
+        "control_steps": 1558,
+        "physics_steps": 15580,
+        "maximum_seconds": 56.0,
+        "absolute_actuator_work": 0.46382593036439607,
+        "total_squared_thrust_integral": 2.9084893831966565,
+        "rotor_force_integral": 32.91316290815335,
+        "uav_path_length": 4.166558040118194,
+        "maximum_rotor_force": 0.09968623944323841,
+        "motor_bound_seconds": 0.0,
+        "peak_uav_tilt": 0.15920972947502438,
+        "minimum_body_height": 1.146579355502695,
+        "minimum_uav_separation": 0.3791517422104026,
+        "flight_tracking_rmse": 0.01577991489960307,
+        "finite": true,
+        "collision": false,
+        "warning_count": 0,
+        "predictor_evaluations": 0,
+        "simulated_candidate_control_steps": 0,
+        "simulated_candidate_physics_steps": 0,
+        "total_decision_seconds": 0.0009503530018264428,
+        "minimum_risk_fallbacks": 0,
+        "feasible_candidate_counts": [
+          0,
+          0
+        ],
+        "stop_reason": "mission_sequence_end",
+        "model_kind": null
+      },
+      "raw_path": "data/uav_transport/menagerie_external_lee_v1_rule_fixed_seed0_mass026_donor1_route1.pkl",
+      "raw_sha256": "d7a6bbc40eb70730e52c8c620f89be6e09d24b5ac6ada7351a8615ca9430ca06",
+      "controller_configuration": {
+        "family": "upstream_lee_position_attitude_shared_payload_allocator",
+        "upstream_commit": "b08d9f3cbcc581d8e7f988cabad22c26d35f4a58",
+        "upstream_controller": "controller_lee.c",
+        "upstream_parameters": {
+          "mass": 0.027000000700354576,
+          "inertia": [
+            2.3950999093358405e-05,
+            2.3950999093358405e-05,
+            3.2347001251764596e-05
+          ],
+          "Kpos_P": [
+            9.0,
+            9.0,
+            9.0
+          ],
+          "Kpos_D": [
+            7.0,
+            7.0,
+            7.0
+          ],
+          "Kpos_I": [
+            5.0,
+            5.0,
+            5.0
+          ],
+          "KR": [
+            0.005499999970197678,
+            0.005499999970197678,
+            0.009999999776482582
+          ],
+          "Komega": [
+            0.0013000000035390258,
+            0.0013000000035390258,
+            0.0020000000949949026
+          ],
+          "KI": [
+            0.012000000104308128,
+            0.017999999225139618,
+            0.014999999664723873
+          ],
+          "control_dt": 0.019999999552965164
+        },
+        "upstream_default_attitude_rate_hz": 500,
+        "executed_control_rate_hz": 50,
+        "shared_allocator": {
+          "payload_kp": 2.5,
+          "payload_kd": 2.5,
+          "payload_ki": 0.12,
+          "integral_limit": 0.35,
+          "tension_thrust_fraction": 0.9,
+          "heading": 0.0
+        },
+        "roles": "Study payload/tension allocation, formation and recovery references; upstream C position/attitude feedback; shared bounded motor mixing",
+        "source_sha256": {
+          "controller_lee.c": "d9dba75f5d3925514a72d55424baa8c97cd8ce0b561a51738ae191cd9f0a0774",
+          "controller_lee.h": "2ec0c7b15d16ab6c52f5db12e2cba6f058e2cb50057262cc638d00fcc7c4bfc8",
+          "stabilizer_types.h": "18bad51e7ebc75717636a87e0abfb9a3e4a56a74614b06ec4ed2d647f7eef61a",
+          "math3d.h": "5ac652863230d3a4397fd6b5f2bc32f0cd9465f0bdf3cbb54cd847405601a801",
+          "imu_types.h": "c2aef811602a33a6df7e9b704155ca830df76a0faf7dc319006a2991c1c0f952",
+          "lighthouse_types.h": "a06eb46a41b1ed8f97adfb1a11d5fdbcff3f8a21c6611a722a424ebf6255f1b3",
+          "LICENSE.txt": "c53a65c2fd561c87eaabf1072ef5dcab8653042bc15308465f52413585eb6271"
+        },
+        "native_build_key": "700862fd5fa41f81da8da5b5e6e396573bb1959a9464484506469f73a4ac33ce"
+      },
+      "wall_seconds": 5.608534765000513
+    },
+    {
+      "summary": {
+        "case_id": "mass026_donor2_route0",
+        "planner": "rule_fixed",
+        "model_seed": 0,
+        "plant_family": "menagerie_crazyflie_2",
+        "controller_family": "upstream_lee_position_attitude_shared_payload_allocator",
+        "payload_mass": 0.026,
+        "donor": 2,
+        "route_template": 0,
+        "slack_distance": 0.07,
+        "dt": 0.002,
+        "control_dt": 0.02,
+        "delivery_completion": true,
+        "constrained_completion": false,
+        "waypoint_successes": [
+          true,
+          true,
+          true
+        ],
+        "option_completions": [
+          true,
+          true
+        ],
+        "actual_slack_successes": [
+          true,
+          true
+        ],
+        "option_peak_excursions": [
+          0.19807294445887508,
+          0.19503928822107913
+        ],
+        "option_peak_donor_tensions": [
+          1.3415558684544993,
+          1.4193600595731712
+        ],
+        "option_slack_seconds": [
+          0.758,
+          0.742
+        ],
+        "selected_reconfigurations": [
+          false,
+          false
+        ],
+        "selected_durations": [
+          [
+            2.0,
+            2.0
+          ],
+          [
+            2.0,
+            2.0
+          ]
+        ],
+        "total_seconds": 31.26,
+        "control_steps": 1563,
+        "physics_steps": 15630,
+        "maximum_seconds": 56.0,
+        "absolute_actuator_work": 0.43420046159778314,
+        "total_squared_thrust_integral": 2.9164570933478284,
+        "rotor_force_integral": 33.018397207919136,
+        "uav_path_length": 3.9647225419334884,
+        "maximum_rotor_force": 0.09965487439060813,
+        "motor_bound_seconds": 0.0,
+        "peak_uav_tilt": 0.14648235483752442,
+        "minimum_body_height": 1.1464216725410934,
+        "minimum_uav_separation": 0.38308034127106233,
+        "flight_tracking_rmse": 0.015747165563059457,
+        "finite": true,
+        "collision": false,
+        "warning_count": 0,
+        "predictor_evaluations": 0,
+        "simulated_candidate_control_steps": 0,
+        "simulated_candidate_physics_steps": 0,
+        "total_decision_seconds": 0.0009079439987544902,
+        "minimum_risk_fallbacks": 0,
+        "feasible_candidate_counts": [
+          0,
+          0
+        ],
+        "stop_reason": "mission_sequence_end",
+        "model_kind": null
+      },
+      "raw_path": "data/uav_transport/menagerie_external_lee_v1_rule_fixed_seed0_mass026_donor2_route0.pkl",
+      "raw_sha256": "447bb283b78f1d4ba6454b17cdb551c74b5b0c21202dc90bda21deff54c84bd5",
+      "controller_configuration": {
+        "family": "upstream_lee_position_attitude_shared_payload_allocator",
+        "upstream_commit": "b08d9f3cbcc581d8e7f988cabad22c26d35f4a58",
+        "upstream_controller": "controller_lee.c",
+        "upstream_parameters": {
+          "mass": 0.027000000700354576,
+          "inertia": [
+            2.3950999093358405e-05,
+            2.3950999093358405e-05,
+            3.2347001251764596e-05
+          ],
+          "Kpos_P": [
+            9.0,
+            9.0,
+            9.0
+          ],
+          "Kpos_D": [
+            7.0,
+            7.0,
+            7.0
+          ],
+          "Kpos_I": [
+            5.0,
+            5.0,
+            5.0
+          ],
+          "KR": [
+            0.005499999970197678,
+            0.005499999970197678,
+            0.009999999776482582
+          ],
+          "Komega": [
+            0.0013000000035390258,
+            0.0013000000035390258,
+            0.0020000000949949026
+          ],
+          "KI": [
+            0.012000000104308128,
+            0.017999999225139618,
+            0.014999999664723873
+          ],
+          "control_dt": 0.019999999552965164
+        },
+        "upstream_default_attitude_rate_hz": 500,
+        "executed_control_rate_hz": 50,
+        "shared_allocator": {
+          "payload_kp": 2.5,
+          "payload_kd": 2.5,
+          "payload_ki": 0.12,
+          "integral_limit": 0.35,
+          "tension_thrust_fraction": 0.9,
+          "heading": 0.0
+        },
+        "roles": "Study payload/tension allocation, formation and recovery references; upstream C position/attitude feedback; shared bounded motor mixing",
+        "source_sha256": {
+          "controller_lee.c": "d9dba75f5d3925514a72d55424baa8c97cd8ce0b561a51738ae191cd9f0a0774",
+          "controller_lee.h": "2ec0c7b15d16ab6c52f5db12e2cba6f058e2cb50057262cc638d00fcc7c4bfc8",
+          "stabilizer_types.h": "18bad51e7ebc75717636a87e0abfb9a3e4a56a74614b06ec4ed2d647f7eef61a",
+          "math3d.h": "5ac652863230d3a4397fd6b5f2bc32f0cd9465f0bdf3cbb54cd847405601a801",
+          "imu_types.h": "c2aef811602a33a6df7e9b704155ca830df76a0faf7dc319006a2991c1c0f952",
+          "lighthouse_types.h": "a06eb46a41b1ed8f97adfb1a11d5fdbcff3f8a21c6611a722a424ebf6255f1b3",
+          "LICENSE.txt": "c53a65c2fd561c87eaabf1072ef5dcab8653042bc15308465f52413585eb6271"
+        },
+        "native_build_key": "700862fd5fa41f81da8da5b5e6e396573bb1959a9464484506469f73a4ac33ce"
+      },
+      "wall_seconds": 5.40438282899413
+    },
+    {
+      "summary": {
+        "case_id": "mass026_donor2_route1",
+        "planner": "rule_fixed",
+        "model_seed": 0,
+        "plant_family": "menagerie_crazyflie_2",
+        "controller_family": "upstream_lee_position_attitude_shared_payload_allocator",
+        "payload_mass": 0.026,
+        "donor": 2,
+        "route_template": 1,
+        "slack_distance": 0.09,
+        "dt": 0.002,
+        "control_dt": 0.02,
+        "delivery_completion": true,
+        "constrained_completion": false,
+        "waypoint_successes": [
+          true,
+          true,
+          true
+        ],
+        "option_completions": [
+          true,
+          true
+        ],
+        "actual_slack_successes": [
+          true,
+          true
+        ],
+        "option_peak_excursions": [
+          0.19887898727341127,
+          0.1993586890066812
+        ],
+        "option_peak_donor_tensions": [
+          1.6960615333012319,
+          1.5562901438353354
+        ],
+        "option_slack_seconds": [
+          0.926,
+          0.922
+        ],
+        "selected_reconfigurations": [
+          false,
+          false
+        ],
+        "selected_durations": [
+          [
+            2.0,
+            2.0
+          ],
+          [
+            2.0,
+            2.0
+          ]
+        ],
+        "total_seconds": 30.48,
+        "control_steps": 1524,
+        "physics_steps": 15240,
+        "maximum_seconds": 56.0,
+        "absolute_actuator_work": 0.45875594679942394,
+        "total_squared_thrust_integral": 2.8453540905414205,
+        "rotor_force_integral": 32.195053581583046,
+        "uav_path_length": 4.0991227369927135,
+        "maximum_rotor_force": 0.09952595743304778,
+        "motor_bound_seconds": 0.0,
+        "peak_uav_tilt": 0.15955073072232714,
+        "minimum_body_height": 1.1462222206840613,
+        "minimum_uav_separation": 0.38010991242496517,
+        "flight_tracking_rmse": 0.016349057553193554,
+        "finite": true,
+        "collision": false,
+        "warning_count": 0,
+        "predictor_evaluations": 0,
+        "simulated_candidate_control_steps": 0,
+        "simulated_candidate_physics_steps": 0,
+        "total_decision_seconds": 0.0009158070097328164,
+        "minimum_risk_fallbacks": 0,
+        "feasible_candidate_counts": [
+          0,
+          0
+        ],
+        "stop_reason": "mission_sequence_end",
+        "model_kind": null
+      },
+      "raw_path": "data/uav_transport/menagerie_external_lee_v1_rule_fixed_seed0_mass026_donor2_route1.pkl",
+      "raw_sha256": "311256ea269e0833fca513828cc304e19a6d03a846c40c9bf4158fb0f939f579",
+      "controller_configuration": {
+        "family": "upstream_lee_position_attitude_shared_payload_allocator",
+        "upstream_commit": "b08d9f3cbcc581d8e7f988cabad22c26d35f4a58",
+        "upstream_controller": "controller_lee.c",
+        "upstream_parameters": {
+          "mass": 0.027000000700354576,
+          "inertia": [
+            2.3950999093358405e-05,
+            2.3950999093358405e-05,
+            3.2347001251764596e-05
+          ],
+          "Kpos_P": [
+            9.0,
+            9.0,
+            9.0
+          ],
+          "Kpos_D": [
+            7.0,
+            7.0,
+            7.0
+          ],
+          "Kpos_I": [
+            5.0,
+            5.0,
+            5.0
+          ],
+          "KR": [
+            0.005499999970197678,
+            0.005499999970197678,
+            0.009999999776482582
+          ],
+          "Komega": [
+            0.0013000000035390258,
+            0.0013000000035390258,
+            0.0020000000949949026
+          ],
+          "KI": [
+            0.012000000104308128,
+            0.017999999225139618,
+            0.014999999664723873
+          ],
+          "control_dt": 0.019999999552965164
+        },
+        "upstream_default_attitude_rate_hz": 500,
+        "executed_control_rate_hz": 50,
+        "shared_allocator": {
+          "payload_kp": 2.5,
+          "payload_kd": 2.5,
+          "payload_ki": 0.12,
+          "integral_limit": 0.35,
+          "tension_thrust_fraction": 0.9,
+          "heading": 0.0
+        },
+        "roles": "Study payload/tension allocation, formation and recovery references; upstream C position/attitude feedback; shared bounded motor mixing",
+        "source_sha256": {
+          "controller_lee.c": "d9dba75f5d3925514a72d55424baa8c97cd8ce0b561a51738ae191cd9f0a0774",
+          "controller_lee.h": "2ec0c7b15d16ab6c52f5db12e2cba6f058e2cb50057262cc638d00fcc7c4bfc8",
+          "stabilizer_types.h": "18bad51e7ebc75717636a87e0abfb9a3e4a56a74614b06ec4ed2d647f7eef61a",
+          "math3d.h": "5ac652863230d3a4397fd6b5f2bc32f0cd9465f0bdf3cbb54cd847405601a801",
+          "imu_types.h": "c2aef811602a33a6df7e9b704155ca830df76a0faf7dc319006a2991c1c0f952",
+          "lighthouse_types.h": "a06eb46a41b1ed8f97adfb1a11d5fdbcff3f8a21c6611a722a424ebf6255f1b3",
+          "LICENSE.txt": "c53a65c2fd561c87eaabf1072ef5dcab8653042bc15308465f52413585eb6271"
+        },
+        "native_build_key": "700862fd5fa41f81da8da5b5e6e396573bb1959a9464484506469f73a4ac33ce"
+      },
+      "wall_seconds": 5.378247982000175
+    },
+    {
+      "summary": {
+        "case_id": "mass034_donor0_route0",
+        "planner": "rule_fixed",
+        "model_seed": 0,
+        "plant_family": "menagerie_crazyflie_2",
+        "controller_family": "upstream_lee_position_attitude_shared_payload_allocator",
+        "payload_mass": 0.034,
+        "donor": 0,
+        "route_template": 0,
+        "slack_distance": 0.07,
+        "dt": 0.002,
+        "control_dt": 0.02,
+        "delivery_completion": true,
+        "constrained_completion": false,
+        "waypoint_successes": [
+          true,
+          true,
+          true
+        ],
+        "option_completions": [
+          true,
+          true
+        ],
+        "actual_slack_successes": [
+          true,
+          true
+        ],
+        "option_peak_excursions": [
+          0.20983198754092516,
+          0.21280869674974665
+        ],
+        "option_peak_donor_tensions": [
+          1.748956352790804,
+          1.7737559386770978
+        ],
+        "option_slack_seconds": [
+          0.794,
+          0.786
+        ],
+        "selected_reconfigurations": [
+          false,
+          false
+        ],
+        "selected_durations": [
+          [
+            2.0,
+            2.0
+          ],
+          [
+            2.0,
+            2.0
+          ]
+        ],
+        "total_seconds": 30.96,
+        "control_steps": 1548,
+        "physics_steps": 15480,
+        "maximum_seconds": 56.0,
+        "absolute_actuator_work": 0.536717957810624,
+        "total_squared_thrust_integral": 3.365608737518723,
+        "rotor_force_integral": 35.25422961860044,
+        "uav_path_length": 4.816361500538724,
+        "maximum_rotor_force": 0.11049381398801521,
+        "motor_bound_seconds": 0.0,
+        "peak_uav_tilt": 0.20727873759176405,
+        "minimum_body_height": 1.1465215315819106,
+        "minimum_uav_separation": 0.3717564828889037,
+        "flight_tracking_rmse": 0.018973952109606434,
+        "finite": true,
+        "collision": false,
+        "warning_count": 0,
+        "predictor_evaluations": 0,
+        "simulated_candidate_control_steps": 0,
+        "simulated_candidate_physics_steps": 0,
+        "total_decision_seconds": 0.0008783079974818975,
+        "minimum_risk_fallbacks": 0,
+        "feasible_candidate_counts": [
+          0,
+          0
+        ],
+        "stop_reason": "mission_sequence_end",
+        "model_kind": null
+      },
+      "raw_path": "data/uav_transport/menagerie_external_lee_v1_rule_fixed_seed0_mass034_donor0_route0.pkl",
+      "raw_sha256": "2056367f800d9f45e744eda3e5d0a4499bb52b3cd000fb2da20053531328c612",
+      "controller_configuration": {
+        "family": "upstream_lee_position_attitude_shared_payload_allocator",
+        "upstream_commit": "b08d9f3cbcc581d8e7f988cabad22c26d35f4a58",
+        "upstream_controller": "controller_lee.c",
+        "upstream_parameters": {
+          "mass": 0.027000000700354576,
+          "inertia": [
+            2.3950999093358405e-05,
+            2.3950999093358405e-05,
+            3.2347001251764596e-05
+          ],
+          "Kpos_P": [
+            9.0,
+            9.0,
+            9.0
+          ],
+          "Kpos_D": [
+            7.0,
+            7.0,
+            7.0
+          ],
+          "Kpos_I": [
+            5.0,
+            5.0,
+            5.0
+          ],
+          "KR": [
+            0.005499999970197678,
+            0.005499999970197678,
+            0.009999999776482582
+          ],
+          "Komega": [
+            0.0013000000035390258,
+            0.0013000000035390258,
+            0.0020000000949949026
+          ],
+          "KI": [
+            0.012000000104308128,
+            0.017999999225139618,
+            0.014999999664723873
+          ],
+          "control_dt": 0.019999999552965164
+        },
+        "upstream_default_attitude_rate_hz": 500,
+        "executed_control_rate_hz": 50,
+        "shared_allocator": {
+          "payload_kp": 2.5,
+          "payload_kd": 2.5,
+          "payload_ki": 0.12,
+          "integral_limit": 0.35,
+          "tension_thrust_fraction": 0.9,
+          "heading": 0.0
+        },
+        "roles": "Study payload/tension allocation, formation and recovery references; upstream C position/attitude feedback; shared bounded motor mixing",
+        "source_sha256": {
+          "controller_lee.c": "d9dba75f5d3925514a72d55424baa8c97cd8ce0b561a51738ae191cd9f0a0774",
+          "controller_lee.h": "2ec0c7b15d16ab6c52f5db12e2cba6f058e2cb50057262cc638d00fcc7c4bfc8",
+          "stabilizer_types.h": "18bad51e7ebc75717636a87e0abfb9a3e4a56a74614b06ec4ed2d647f7eef61a",
+          "math3d.h": "5ac652863230d3a4397fd6b5f2bc32f0cd9465f0bdf3cbb54cd847405601a801",
+          "imu_types.h": "c2aef811602a33a6df7e9b704155ca830df76a0faf7dc319006a2991c1c0f952",
+          "lighthouse_types.h": "a06eb46a41b1ed8f97adfb1a11d5fdbcff3f8a21c6611a722a424ebf6255f1b3",
+          "LICENSE.txt": "c53a65c2fd561c87eaabf1072ef5dcab8653042bc15308465f52413585eb6271"
+        },
+        "native_build_key": "700862fd5fa41f81da8da5b5e6e396573bb1959a9464484506469f73a4ac33ce"
+      },
+      "wall_seconds": 5.402721993996238
+    },
+    {
+      "summary": {
+        "case_id": "mass034_donor0_route1",
+        "planner": "rule_fixed",
+        "model_seed": 0,
+        "plant_family": "menagerie_crazyflie_2",
+        "controller_family": "upstream_lee_position_attitude_shared_payload_allocator",
+        "payload_mass": 0.034,
+        "donor": 0,
+        "route_template": 1,
+        "slack_distance": 0.09,
+        "dt": 0.002,
+        "control_dt": 0.02,
+        "delivery_completion": true,
+        "constrained_completion": false,
+        "waypoint_successes": [
+          true,
+          true,
+          true
+        ],
+        "option_completions": [
+          true,
+          true
+        ],
+        "actual_slack_successes": [
+          true,
+          true
+        ],
+        "option_peak_excursions": [
+          0.2179398224852578,
+          0.2124576755605069
+        ],
+        "option_peak_donor_tensions": [
+          2.0476415011163267,
+          1.932477149467203
+        ],
+        "option_slack_seconds": [
+          0.9400000000000001,
+          0.934
+        ],
+        "selected_reconfigurations": [
+          false,
+          false
+        ],
+        "selected_durations": [
+          [
+            2.0,
+            2.0
+          ],
+          [
+            2.0,
+            2.0
+          ]
+        ],
+        "total_seconds": 31.32,
+        "control_steps": 1566,
+        "physics_steps": 15660,
+        "maximum_seconds": 56.0,
+        "absolute_actuator_work": 0.5443784230130498,
+        "total_squared_thrust_integral": 3.4052604091315035,
+        "rotor_force_integral": 35.663202891014706,
+        "uav_path_length": 4.823129110855631,
+        "maximum_rotor_force": 0.11071825798465797,
+        "motor_bound_seconds": 0.0,
+        "peak_uav_tilt": 0.20269906529007772,
+        "minimum_body_height": 1.1464497363394697,
+        "minimum_uav_separation": 0.3650681392711366,
+        "flight_tracking_rmse": 0.01792833728564656,
+        "finite": true,
+        "collision": false,
+        "warning_count": 0,
+        "predictor_evaluations": 0,
+        "simulated_candidate_control_steps": 0,
+        "simulated_candidate_physics_steps": 0,
+        "total_decision_seconds": 0.0008853499894030392,
+        "minimum_risk_fallbacks": 0,
+        "feasible_candidate_counts": [
+          0,
+          0
+        ],
+        "stop_reason": "mission_sequence_end",
+        "model_kind": null
+      },
+      "raw_path": "data/uav_transport/menagerie_external_lee_v1_rule_fixed_seed0_mass034_donor0_route1.pkl",
+      "raw_sha256": "49b8e914d8ad3f573f2e1332b6e3ea467f7d7a5fa1b39c6a54f84d133e66aa2b",
+      "controller_configuration": {
+        "family": "upstream_lee_position_attitude_shared_payload_allocator",
+        "upstream_commit": "b08d9f3cbcc581d8e7f988cabad22c26d35f4a58",
+        "upstream_controller": "controller_lee.c",
+        "upstream_parameters": {
+          "mass": 0.027000000700354576,
+          "inertia": [
+            2.3950999093358405e-05,
+            2.3950999093358405e-05,
+            3.2347001251764596e-05
+          ],
+          "Kpos_P": [
+            9.0,
+            9.0,
+            9.0
+          ],
+          "Kpos_D": [
+            7.0,
+            7.0,
+            7.0
+          ],
+          "Kpos_I": [
+            5.0,
+            5.0,
+            5.0
+          ],
+          "KR": [
+            0.005499999970197678,
+            0.005499999970197678,
+            0.009999999776482582
+          ],
+          "Komega": [
+            0.0013000000035390258,
+            0.0013000000035390258,
+            0.0020000000949949026
+          ],
+          "KI": [
+            0.012000000104308128,
+            0.017999999225139618,
+            0.014999999664723873
+          ],
+          "control_dt": 0.019999999552965164
+        },
+        "upstream_default_attitude_rate_hz": 500,
+        "executed_control_rate_hz": 50,
+        "shared_allocator": {
+          "payload_kp": 2.5,
+          "payload_kd": 2.5,
+          "payload_ki": 0.12,
+          "integral_limit": 0.35,
+          "tension_thrust_fraction": 0.9,
+          "heading": 0.0
+        },
+        "roles": "Study payload/tension allocation, formation and recovery references; upstream C position/attitude feedback; shared bounded motor mixing",
+        "source_sha256": {
+          "controller_lee.c": "d9dba75f5d3925514a72d55424baa8c97cd8ce0b561a51738ae191cd9f0a0774",
+          "controller_lee.h": "2ec0c7b15d16ab6c52f5db12e2cba6f058e2cb50057262cc638d00fcc7c4bfc8",
+          "stabilizer_types.h": "18bad51e7ebc75717636a87e0abfb9a3e4a56a74614b06ec4ed2d647f7eef61a",
+          "math3d.h": "5ac652863230d3a4397fd6b5f2bc32f0cd9465f0bdf3cbb54cd847405601a801",
+          "imu_types.h": "c2aef811602a33a6df7e9b704155ca830df76a0faf7dc319006a2991c1c0f952",
+          "lighthouse_types.h": "a06eb46a41b1ed8f97adfb1a11d5fdbcff3f8a21c6611a722a424ebf6255f1b3",
+          "LICENSE.txt": "c53a65c2fd561c87eaabf1072ef5dcab8653042bc15308465f52413585eb6271"
+        },
+        "native_build_key": "700862fd5fa41f81da8da5b5e6e396573bb1959a9464484506469f73a4ac33ce"
+      },
+      "wall_seconds": 5.446557124996616
+    },
+    {
+      "summary": {
+        "case_id": "mass034_donor1_route0",
+        "planner": "rule_fixed",
+        "model_seed": 0,
+        "plant_family": "menagerie_crazyflie_2",
+        "controller_family": "upstream_lee_position_attitude_shared_payload_allocator",
+        "payload_mass": 0.034,
+        "donor": 1,
+        "route_template": 0,
+        "slack_distance": 0.07,
+        "dt": 0.002,
+        "control_dt": 0.02,
+        "delivery_completion": true,
+        "constrained_completion": false,
+        "waypoint_successes": [
+          true,
+          true,
+          true
+        ],
+        "option_completions": [
+          true,
+          true
+        ],
+        "actual_slack_successes": [
+          true,
+          true
+        ],
+        "option_peak_excursions": [
+          0.21327273030607768,
+          0.20941399996667495
+        ],
+        "option_peak_donor_tensions": [
+          1.9805982886016513,
+          1.6557501577982108
+        ],
+        "option_slack_seconds": [
+          0.794,
+          0.792
+        ],
+        "selected_reconfigurations": [
+          false,
+          false
+        ],
+        "selected_durations": [
+          [
+            2.0,
+            2.0
+          ],
+          [
+            2.0,
+            2.0
+          ]
+        ],
+        "total_seconds": 30.28,
+        "control_steps": 1514,
+        "physics_steps": 15140,
+        "maximum_seconds": 56.0,
+        "absolute_actuator_work": 0.5180134668103173,
+        "total_squared_thrust_integral": 3.2915135873346735,
+        "rotor_force_integral": 34.47926886284383,
+        "uav_path_length": 4.680611046103342,
+        "maximum_rotor_force": 0.11059804337405867,
+        "motor_bound_seconds": 0.0,
+        "peak_uav_tilt": 0.2086609301668682,
+        "minimum_body_height": 1.1463813033805919,
+        "minimum_uav_separation": 0.369893219670997,
+        "flight_tracking_rmse": 0.01935614799018575,
+        "finite": true,
+        "collision": false,
+        "warning_count": 0,
+        "predictor_evaluations": 0,
+        "simulated_candidate_control_steps": 0,
+        "simulated_candidate_physics_steps": 0,
+        "total_decision_seconds": 0.0008949589973781258,
+        "minimum_risk_fallbacks": 0,
+        "feasible_candidate_counts": [
+          0,
+          0
+        ],
+        "stop_reason": "mission_sequence_end",
+        "model_kind": null
+      },
+      "raw_path": "data/uav_transport/menagerie_external_lee_v1_rule_fixed_seed0_mass034_donor1_route0.pkl",
+      "raw_sha256": "c4565af29514d5b0087de8619165fccafe2dbfc560b58ce3933f60f52925022d",
+      "controller_configuration": {
+        "family": "upstream_lee_position_attitude_shared_payload_allocator",
+        "upstream_commit": "b08d9f3cbcc581d8e7f988cabad22c26d35f4a58",
+        "upstream_controller": "controller_lee.c",
+        "upstream_parameters": {
+          "mass": 0.027000000700354576,
+          "inertia": [
+            2.3950999093358405e-05,
+            2.3950999093358405e-05,
+            3.2347001251764596e-05
+          ],
+          "Kpos_P": [
+            9.0,
+            9.0,
+            9.0
+          ],
+          "Kpos_D": [
+            7.0,
+            7.0,
+            7.0
+          ],
+          "Kpos_I": [
+            5.0,
+            5.0,
+            5.0
+          ],
+          "KR": [
+            0.005499999970197678,
+            0.005499999970197678,
+            0.009999999776482582
+          ],
+          "Komega": [
+            0.0013000000035390258,
+            0.0013000000035390258,
+            0.0020000000949949026
+          ],
+          "KI": [
+            0.012000000104308128,
+            0.017999999225139618,
+            0.014999999664723873
+          ],
+          "control_dt": 0.019999999552965164
+        },
+        "upstream_default_attitude_rate_hz": 500,
+        "executed_control_rate_hz": 50,
+        "shared_allocator": {
+          "payload_kp": 2.5,
+          "payload_kd": 2.5,
+          "payload_ki": 0.12,
+          "integral_limit": 0.35,
+          "tension_thrust_fraction": 0.9,
+          "heading": 0.0
+        },
+        "roles": "Study payload/tension allocation, formation and recovery references; upstream C position/attitude feedback; shared bounded motor mixing",
+        "source_sha256": {
+          "controller_lee.c": "d9dba75f5d3925514a72d55424baa8c97cd8ce0b561a51738ae191cd9f0a0774",
+          "controller_lee.h": "2ec0c7b15d16ab6c52f5db12e2cba6f058e2cb50057262cc638d00fcc7c4bfc8",
+          "stabilizer_types.h": "18bad51e7ebc75717636a87e0abfb9a3e4a56a74614b06ec4ed2d647f7eef61a",
+          "math3d.h": "5ac652863230d3a4397fd6b5f2bc32f0cd9465f0bdf3cbb54cd847405601a801",
+          "imu_types.h": "c2aef811602a33a6df7e9b704155ca830df76a0faf7dc319006a2991c1c0f952",
+          "lighthouse_types.h": "a06eb46a41b1ed8f97adfb1a11d5fdbcff3f8a21c6611a722a424ebf6255f1b3",
+          "LICENSE.txt": "c53a65c2fd561c87eaabf1072ef5dcab8653042bc15308465f52413585eb6271"
+        },
+        "native_build_key": "700862fd5fa41f81da8da5b5e6e396573bb1959a9464484506469f73a4ac33ce"
+      },
+      "wall_seconds": 5.2364840109949
+    },
+    {
+      "summary": {
+        "case_id": "mass034_donor1_route1",
+        "planner": "rule_fixed",
+        "model_seed": 0,
+        "plant_family": "menagerie_crazyflie_2",
+        "controller_family": "upstream_lee_position_attitude_shared_payload_allocator",
+        "payload_mass": 0.034,
+        "donor": 1,
+        "route_template": 1,
+        "slack_distance": 0.09,
+        "dt": 0.002,
+        "control_dt": 0.02,
+        "delivery_completion": true,
+        "constrained_completion": false,
+        "waypoint_successes": [
+          true,
+          true,
+          true
+        ],
+        "option_completions": [
+          true,
+          true
+        ],
+        "actual_slack_successes": [
+          true,
+          true
+        ],
+        "option_peak_excursions": [
+          0.21506221796396427,
+          0.21485772707727951
+        ],
+        "option_peak_donor_tensions": [
+          2.0683040779188624,
+          2.0179194626692896
+        ],
+        "option_slack_seconds": [
+          0.9440000000000001,
+          0.91
+        ],
+        "selected_reconfigurations": [
+          false,
+          false
+        ],
+        "selected_durations": [
+          [
+            2.0,
+            2.0
+          ],
+          [
+            2.0,
+            2.0
+          ]
+        ],
+        "total_seconds": 31.82,
+        "control_steps": 1591,
+        "physics_steps": 15910,
+        "maximum_seconds": 56.0,
+        "absolute_actuator_work": 0.5611246151110625,
+        "total_squared_thrust_integral": 3.4601754680454517,
+        "rotor_force_integral": 36.23368510393682,
+        "uav_path_length": 4.9422606432070335,
+        "maximum_rotor_force": 0.11067976229472958,
+        "motor_bound_seconds": 0.0,
+        "peak_uav_tilt": 0.22690620661537123,
+        "minimum_body_height": 1.1468943720276723,
+        "minimum_uav_separation": 0.36555737627737156,
+        "flight_tracking_rmse": 0.01807685855066965,
+        "finite": true,
+        "collision": false,
+        "warning_count": 0,
+        "predictor_evaluations": 0,
+        "simulated_candidate_control_steps": 0,
+        "simulated_candidate_physics_steps": 0,
+        "total_decision_seconds": 0.0009069320003618486,
+        "minimum_risk_fallbacks": 0,
+        "feasible_candidate_counts": [
+          0,
+          0
+        ],
+        "stop_reason": "mission_sequence_end",
+        "model_kind": null
+      },
+      "raw_path": "data/uav_transport/menagerie_external_lee_v1_rule_fixed_seed0_mass034_donor1_route1.pkl",
+      "raw_sha256": "421143f4e7336e1b4aee91251db3fa6d56a5b5ec92629c24782fa61d8be14600",
+      "controller_configuration": {
+        "family": "upstream_lee_position_attitude_shared_payload_allocator",
+        "upstream_commit": "b08d9f3cbcc581d8e7f988cabad22c26d35f4a58",
+        "upstream_controller": "controller_lee.c",
+        "upstream_parameters": {
+          "mass": 0.027000000700354576,
+          "inertia": [
+            2.3950999093358405e-05,
+            2.3950999093358405e-05,
+            3.2347001251764596e-05
+          ],
+          "Kpos_P": [
+            9.0,
+            9.0,
+            9.0
+          ],
+          "Kpos_D": [
+            7.0,
+            7.0,
+            7.0
+          ],
+          "Kpos_I": [
+            5.0,
+            5.0,
+            5.0
+          ],
+          "KR": [
+            0.005499999970197678,
+            0.005499999970197678,
+            0.009999999776482582
+          ],
+          "Komega": [
+            0.0013000000035390258,
+            0.0013000000035390258,
+            0.0020000000949949026
+          ],
+          "KI": [
+            0.012000000104308128,
+            0.017999999225139618,
+            0.014999999664723873
+          ],
+          "control_dt": 0.019999999552965164
+        },
+        "upstream_default_attitude_rate_hz": 500,
+        "executed_control_rate_hz": 50,
+        "shared_allocator": {
+          "payload_kp": 2.5,
+          "payload_kd": 2.5,
+          "payload_ki": 0.12,
+          "integral_limit": 0.35,
+          "tension_thrust_fraction": 0.9,
+          "heading": 0.0
+        },
+        "roles": "Study payload/tension allocation, formation and recovery references; upstream C position/attitude feedback; shared bounded motor mixing",
+        "source_sha256": {
+          "controller_lee.c": "d9dba75f5d3925514a72d55424baa8c97cd8ce0b561a51738ae191cd9f0a0774",
+          "controller_lee.h": "2ec0c7b15d16ab6c52f5db12e2cba6f058e2cb50057262cc638d00fcc7c4bfc8",
+          "stabilizer_types.h": "18bad51e7ebc75717636a87e0abfb9a3e4a56a74614b06ec4ed2d647f7eef61a",
+          "math3d.h": "5ac652863230d3a4397fd6b5f2bc32f0cd9465f0bdf3cbb54cd847405601a801",
+          "imu_types.h": "c2aef811602a33a6df7e9b704155ca830df76a0faf7dc319006a2991c1c0f952",
+          "lighthouse_types.h": "a06eb46a41b1ed8f97adfb1a11d5fdbcff3f8a21c6611a722a424ebf6255f1b3",
+          "LICENSE.txt": "c53a65c2fd561c87eaabf1072ef5dcab8653042bc15308465f52413585eb6271"
+        },
+        "native_build_key": "700862fd5fa41f81da8da5b5e6e396573bb1959a9464484506469f73a4ac33ce"
+      },
+      "wall_seconds": 5.645453041004657
+    },
+    {
+      "summary": {
+        "case_id": "mass034_donor2_route0",
+        "planner": "rule_fixed",
+        "model_seed": 0,
+        "plant_family": "menagerie_crazyflie_2",
+        "controller_family": "upstream_lee_position_attitude_shared_payload_allocator",
+        "payload_mass": 0.034,
+        "donor": 2,
+        "route_template": 0,
+        "slack_distance": 0.07,
+        "dt": 0.002,
+        "control_dt": 0.02,
+        "delivery_completion": true,
+        "constrained_completion": false,
+        "waypoint_successes": [
+          true,
+          true,
+          true
+        ],
+        "option_completions": [
+          true,
+          true
+        ],
+        "actual_slack_successes": [
+          true,
+          true
+        ],
+        "option_peak_excursions": [
+          0.2138026010228304,
+          0.21035848908151228
+        ],
+        "option_peak_donor_tensions": [
+          1.9426222144832903,
+          1.7966233493215091
+        ],
+        "option_slack_seconds": [
+          0.8,
+          0.784
+        ],
+        "selected_reconfigurations": [
+          false,
+          false
+        ],
+        "selected_durations": [
+          [
+            2.0,
+            2.0
+          ],
+          [
+            2.0,
+            2.0
+          ]
+        ],
+        "total_seconds": 31.98,
+        "control_steps": 1599,
+        "physics_steps": 15990,
+        "maximum_seconds": 56.0,
+        "absolute_actuator_work": 0.5262352082345565,
+        "total_squared_thrust_integral": 3.474847527979226,
+        "rotor_force_integral": 36.414196458310926,
+        "uav_path_length": 4.689704285957595,
+        "maximum_rotor_force": 0.11065402092789334,
+        "motor_bound_seconds": 0.0,
+        "peak_uav_tilt": 0.20522573771299,
+        "minimum_body_height": 1.1466751633318735,
+        "minimum_uav_separation": 0.36890885809707424,
+        "flight_tracking_rmse": 0.018051780935579322,
+        "finite": true,
+        "collision": false,
+        "warning_count": 0,
+        "predictor_evaluations": 0,
+        "simulated_candidate_control_steps": 0,
+        "simulated_candidate_physics_steps": 0,
+        "total_decision_seconds": 0.0008730080007808283,
+        "minimum_risk_fallbacks": 0,
+        "feasible_candidate_counts": [
+          0,
+          0
+        ],
+        "stop_reason": "mission_sequence_end",
+        "model_kind": null
+      },
+      "raw_path": "data/uav_transport/menagerie_external_lee_v1_rule_fixed_seed0_mass034_donor2_route0.pkl",
+      "raw_sha256": "5f0c411506b3a31af65f5016cd5355519fa789c51396ade71ac31474901bcf35",
+      "controller_configuration": {
+        "family": "upstream_lee_position_attitude_shared_payload_allocator",
+        "upstream_commit": "b08d9f3cbcc581d8e7f988cabad22c26d35f4a58",
+        "upstream_controller": "controller_lee.c",
+        "upstream_parameters": {
+          "mass": 0.027000000700354576,
+          "inertia": [
+            2.3950999093358405e-05,
+            2.3950999093358405e-05,
+            3.2347001251764596e-05
+          ],
+          "Kpos_P": [
+            9.0,
+            9.0,
+            9.0
+          ],
+          "Kpos_D": [
+            7.0,
+            7.0,
+            7.0
+          ],
+          "Kpos_I": [
+            5.0,
+            5.0,
+            5.0
+          ],
+          "KR": [
+            0.005499999970197678,
+            0.005499999970197678,
+            0.009999999776482582
+          ],
+          "Komega": [
+            0.0013000000035390258,
+            0.0013000000035390258,
+            0.0020000000949949026
+          ],
+          "KI": [
+            0.012000000104308128,
+            0.017999999225139618,
+            0.014999999664723873
+          ],
+          "control_dt": 0.019999999552965164
+        },
+        "upstream_default_attitude_rate_hz": 500,
+        "executed_control_rate_hz": 50,
+        "shared_allocator": {
+          "payload_kp": 2.5,
+          "payload_kd": 2.5,
+          "payload_ki": 0.12,
+          "integral_limit": 0.35,
+          "tension_thrust_fraction": 0.9,
+          "heading": 0.0
+        },
+        "roles": "Study payload/tension allocation, formation and recovery references; upstream C position/attitude feedback; shared bounded motor mixing",
+        "source_sha256": {
+          "controller_lee.c": "d9dba75f5d3925514a72d55424baa8c97cd8ce0b561a51738ae191cd9f0a0774",
+          "controller_lee.h": "2ec0c7b15d16ab6c52f5db12e2cba6f058e2cb50057262cc638d00fcc7c4bfc8",
+          "stabilizer_types.h": "18bad51e7ebc75717636a87e0abfb9a3e4a56a74614b06ec4ed2d647f7eef61a",
+          "math3d.h": "5ac652863230d3a4397fd6b5f2bc32f0cd9465f0bdf3cbb54cd847405601a801",
+          "imu_types.h": "c2aef811602a33a6df7e9b704155ca830df76a0faf7dc319006a2991c1c0f952",
+          "lighthouse_types.h": "a06eb46a41b1ed8f97adfb1a11d5fdbcff3f8a21c6611a722a424ebf6255f1b3",
+          "LICENSE.txt": "c53a65c2fd561c87eaabf1072ef5dcab8653042bc15308465f52413585eb6271"
+        },
+        "native_build_key": "700862fd5fa41f81da8da5b5e6e396573bb1959a9464484506469f73a4ac33ce"
+      },
+      "wall_seconds": 5.551518275999115
+    },
+    {
+      "summary": {
+        "case_id": "mass034_donor2_route1",
+        "planner": "rule_fixed",
+        "model_seed": 0,
+        "plant_family": "menagerie_crazyflie_2",
+        "controller_family": "upstream_lee_position_attitude_shared_payload_allocator",
+        "payload_mass": 0.034,
+        "donor": 2,
+        "route_template": 1,
+        "slack_distance": 0.09,
+        "dt": 0.002,
+        "control_dt": 0.02,
+        "delivery_completion": true,
+        "constrained_completion": false,
+        "waypoint_successes": [
+          true,
+          true,
+          true
+        ],
+        "option_completions": [
+          true,
+          true
+        ],
+        "actual_slack_successes": [
+          true,
+          true
+        ],
+        "option_peak_excursions": [
+          0.21369247539307262,
+          0.21427232026970153
+        ],
+        "option_peak_donor_tensions": [
+          2.040977801445671,
+          2.1171415714938044
+        ],
+        "option_slack_seconds": [
+          0.926,
+          0.932
+        ],
+        "selected_reconfigurations": [
+          false,
+          false
+        ],
+        "selected_durations": [
+          [
+            2.0,
+            2.0
+          ],
+          [
+            2.0,
+            2.0
+          ]
+        ],
+        "total_seconds": 30.26,
+        "control_steps": 1513,
+        "physics_steps": 15130,
+        "maximum_seconds": 56.0,
+        "absolute_actuator_work": 0.550022339630883,
+        "total_squared_thrust_integral": 3.291925024150737,
+        "rotor_force_integral": 34.45784933612576,
+        "uav_path_length": 4.867079127597273,
+        "maximum_rotor_force": 0.11017284033844216,
+        "motor_bound_seconds": 0.0,
+        "peak_uav_tilt": 0.22825254394966524,
+        "minimum_body_height": 1.1464592737155863,
+        "minimum_uav_separation": 0.3669762167258969,
+        "flight_tracking_rmse": 0.019143546469939515,
+        "finite": true,
+        "collision": false,
+        "warning_count": 0,
+        "predictor_evaluations": 0,
+        "simulated_candidate_control_steps": 0,
+        "simulated_candidate_physics_steps": 0,
+        "total_decision_seconds": 0.0008690399918123148,
+        "minimum_risk_fallbacks": 0,
+        "feasible_candidate_counts": [
+          0,
+          0
+        ],
+        "stop_reason": "mission_sequence_end",
+        "model_kind": null
+      },
+      "raw_path": "data/uav_transport/menagerie_external_lee_v1_rule_fixed_seed0_mass034_donor2_route1.pkl",
+      "raw_sha256": "1d2d790e38ece7031f1d7b2aac654acb7c51dcdbc1a720d8f04fc48bdfc63353",
+      "controller_configuration": {
+        "family": "upstream_lee_position_attitude_shared_payload_allocator",
+        "upstream_commit": "b08d9f3cbcc581d8e7f988cabad22c26d35f4a58",
+        "upstream_controller": "controller_lee.c",
+        "upstream_parameters": {
+          "mass": 0.027000000700354576,
+          "inertia": [
+            2.3950999093358405e-05,
+            2.3950999093358405e-05,
+            3.2347001251764596e-05
+          ],
+          "Kpos_P": [
+            9.0,
+            9.0,
+            9.0
+          ],
+          "Kpos_D": [
+            7.0,
+            7.0,
+            7.0
+          ],
+          "Kpos_I": [
+            5.0,
+            5.0,
+            5.0
+          ],
+          "KR": [
+            0.005499999970197678,
+            0.005499999970197678,
+            0.009999999776482582
+          ],
+          "Komega": [
+            0.0013000000035390258,
+            0.0013000000035390258,
+            0.0020000000949949026
+          ],
+          "KI": [
+            0.012000000104308128,
+            0.017999999225139618,
+            0.014999999664723873
+          ],
+          "control_dt": 0.019999999552965164
+        },
+        "upstream_default_attitude_rate_hz": 500,
+        "executed_control_rate_hz": 50,
+        "shared_allocator": {
+          "payload_kp": 2.5,
+          "payload_kd": 2.5,
+          "payload_ki": 0.12,
+          "integral_limit": 0.35,
+          "tension_thrust_fraction": 0.9,
+          "heading": 0.0
+        },
+        "roles": "Study payload/tension allocation, formation and recovery references; upstream C position/attitude feedback; shared bounded motor mixing",
+        "source_sha256": {
+          "controller_lee.c": "d9dba75f5d3925514a72d55424baa8c97cd8ce0b561a51738ae191cd9f0a0774",
+          "controller_lee.h": "2ec0c7b15d16ab6c52f5db12e2cba6f058e2cb50057262cc638d00fcc7c4bfc8",
+          "stabilizer_types.h": "18bad51e7ebc75717636a87e0abfb9a3e4a56a74614b06ec4ed2d647f7eef61a",
+          "math3d.h": "5ac652863230d3a4397fd6b5f2bc32f0cd9465f0bdf3cbb54cd847405601a801",
+          "imu_types.h": "c2aef811602a33a6df7e9b704155ca830df76a0faf7dc319006a2991c1c0f952",
+          "lighthouse_types.h": "a06eb46a41b1ed8f97adfb1a11d5fdbcff3f8a21c6611a722a424ebf6255f1b3",
+          "LICENSE.txt": "c53a65c2fd561c87eaabf1072ef5dcab8653042bc15308465f52413585eb6271"
+        },
+        "native_build_key": "700862fd5fa41f81da8da5b5e6e396573bb1959a9464484506469f73a4ac33ce"
+      },
+      "wall_seconds": 5.299736318993382
+    },
+    {
+      "summary": {
+        "case_id": "mass026_donor0_route0",
+        "planner": "rule_reconfigure",
+        "model_seed": 0,
+        "plant_family": "menagerie_crazyflie_2",
+        "controller_family": "upstream_lee_position_attitude_shared_payload_allocator",
+        "payload_mass": 0.026,
+        "donor": 0,
+        "route_template": 0,
+        "slack_distance": 0.07,
+        "dt": 0.002,
+        "control_dt": 0.02,
+        "delivery_completion": true,
+        "constrained_completion": true,
+        "waypoint_successes": [
+          true,
+          true,
+          true
+        ],
+        "option_completions": [
+          true,
+          true
+        ],
+        "actual_slack_successes": [
+          true,
+          true
+        ],
+        "option_peak_excursions": [
+          0.012432665082539183,
+          0.012292864327432358
+        ],
+        "option_peak_donor_tensions": [
+          0.1640117048769597,
+          0.3111484040848814
+        ],
+        "option_slack_seconds": [
+          2.884,
+          2.74
+        ],
+        "selected_reconfigurations": [
+          true,
+          true
+        ],
+        "selected_durations": [
+          [
+            2.0,
+            2.0
+          ],
+          [
+            2.0,
+            2.0
+          ]
+        ],
+        "total_seconds": 30.76,
+        "control_steps": 1538,
+        "physics_steps": 15380,
+        "maximum_seconds": 56.0,
+        "absolute_actuator_work": 0.34256477394891355,
+        "total_squared_thrust_integral": 2.896628044635215,
+        "rotor_force_integral": 32.5145009641358,
+        "uav_path_length": 4.520147312126696,
+        "maximum_rotor_force": 0.0997765420319281,
+        "motor_bound_seconds": 0.0,
+        "peak_uav_tilt": 0.1553560986399618,
+        "minimum_body_height": 1.1461123560953306,
+        "minimum_uav_separation": 0.3295821106278774,
+        "flight_tracking_rmse": 0.015315773698711158,
+        "finite": true,
+        "collision": false,
+        "warning_count": 0,
+        "predictor_evaluations": 0,
+        "simulated_candidate_control_steps": 0,
+        "simulated_candidate_physics_steps": 0,
+        "total_decision_seconds": 0.0008494740031892434,
+        "minimum_risk_fallbacks": 0,
+        "feasible_candidate_counts": [
+          0,
+          0
+        ],
+        "stop_reason": "mission_sequence_end",
+        "model_kind": null
+      },
+      "raw_path": "data/uav_transport/menagerie_external_lee_v1_rule_reconfigure_seed0_mass026_donor0_route0.pkl",
+      "raw_sha256": "a5cfe685384dba2da4ac001e984a833e4ec861555c8d78727ef7551796718fe0",
+      "controller_configuration": {
+        "family": "upstream_lee_position_attitude_shared_payload_allocator",
+        "upstream_commit": "b08d9f3cbcc581d8e7f988cabad22c26d35f4a58",
+        "upstream_controller": "controller_lee.c",
+        "upstream_parameters": {
+          "mass": 0.027000000700354576,
+          "inertia": [
+            2.3950999093358405e-05,
+            2.3950999093358405e-05,
+            3.2347001251764596e-05
+          ],
+          "Kpos_P": [
+            9.0,
+            9.0,
+            9.0
+          ],
+          "Kpos_D": [
+            7.0,
+            7.0,
+            7.0
+          ],
+          "Kpos_I": [
+            5.0,
+            5.0,
+            5.0
+          ],
+          "KR": [
+            0.005499999970197678,
+            0.005499999970197678,
+            0.009999999776482582
+          ],
+          "Komega": [
+            0.0013000000035390258,
+            0.0013000000035390258,
+            0.0020000000949949026
+          ],
+          "KI": [
+            0.012000000104308128,
+            0.017999999225139618,
+            0.014999999664723873
+          ],
+          "control_dt": 0.019999999552965164
+        },
+        "upstream_default_attitude_rate_hz": 500,
+        "executed_control_rate_hz": 50,
+        "shared_allocator": {
+          "payload_kp": 2.5,
+          "payload_kd": 2.5,
+          "payload_ki": 0.12,
+          "integral_limit": 0.35,
+          "tension_thrust_fraction": 0.9,
+          "heading": 0.0
+        },
+        "roles": "Study payload/tension allocation, formation and recovery references; upstream C position/attitude feedback; shared bounded motor mixing",
+        "source_sha256": {
+          "controller_lee.c": "d9dba75f5d3925514a72d55424baa8c97cd8ce0b561a51738ae191cd9f0a0774",
+          "controller_lee.h": "2ec0c7b15d16ab6c52f5db12e2cba6f058e2cb50057262cc638d00fcc7c4bfc8",
+          "stabilizer_types.h": "18bad51e7ebc75717636a87e0abfb9a3e4a56a74614b06ec4ed2d647f7eef61a",
+          "math3d.h": "5ac652863230d3a4397fd6b5f2bc32f0cd9465f0bdf3cbb54cd847405601a801",
+          "imu_types.h": "c2aef811602a33a6df7e9b704155ca830df76a0faf7dc319006a2991c1c0f952",
+          "lighthouse_types.h": "a06eb46a41b1ed8f97adfb1a11d5fdbcff3f8a21c6611a722a424ebf6255f1b3",
+          "LICENSE.txt": "c53a65c2fd561c87eaabf1072ef5dcab8653042bc15308465f52413585eb6271"
+        },
+        "native_build_key": "700862fd5fa41f81da8da5b5e6e396573bb1959a9464484506469f73a4ac33ce"
+      },
+      "wall_seconds": 5.2483643279992975
+    },
+    {
+      "summary": {
+        "case_id": "mass026_donor0_route1",
+        "planner": "rule_reconfigure",
+        "model_seed": 0,
+        "plant_family": "menagerie_crazyflie_2",
+        "controller_family": "upstream_lee_position_attitude_shared_payload_allocator",
+        "payload_mass": 0.026,
+        "donor": 0,
+        "route_template": 1,
+        "slack_distance": 0.09,
+        "dt": 0.002,
+        "control_dt": 0.02,
+        "delivery_completion": true,
+        "constrained_completion": true,
+        "waypoint_successes": [
+          true,
+          true,
+          true
+        ],
+        "option_completions": [
+          true,
+          true
+        ],
+        "actual_slack_successes": [
+          true,
+          true
+        ],
+        "option_peak_excursions": [
+          0.012106479200152943,
+          0.012477337141886593
+        ],
+        "option_peak_donor_tensions": [
+          0.357195832874867,
+          0.26175717346826066
+        ],
+        "option_slack_seconds": [
+          2.846,
+          2.92
+        ],
+        "selected_reconfigurations": [
+          true,
+          true
+        ],
+        "selected_durations": [
+          [
+            2.0,
+            2.0
+          ],
+          [
+            2.0,
+            2.0
+          ]
+        ],
+        "total_seconds": 30.68,
+        "control_steps": 1534,
+        "physics_steps": 15340,
+        "maximum_seconds": 56.0,
+        "absolute_actuator_work": 0.3670203056795632,
+        "total_squared_thrust_integral": 2.88903130618741,
+        "rotor_force_integral": 32.42976899115756,
+        "uav_path_length": 4.550541942280676,
+        "maximum_rotor_force": 0.09991295640500678,
+        "motor_bound_seconds": 0.0,
+        "peak_uav_tilt": 0.1536451775204268,
+        "minimum_body_height": 1.1461219605190465,
+        "minimum_uav_separation": 0.32534638328082727,
+        "flight_tracking_rmse": 0.015298119982828994,
+        "finite": true,
+        "collision": false,
+        "warning_count": 0,
+        "predictor_evaluations": 0,
+        "simulated_candidate_control_steps": 0,
+        "simulated_candidate_physics_steps": 0,
+        "total_decision_seconds": 0.0008473589987261221,
+        "minimum_risk_fallbacks": 0,
+        "feasible_candidate_counts": [
+          0,
+          0
+        ],
+        "stop_reason": "mission_sequence_end",
+        "model_kind": null
+      },
+      "raw_path": "data/uav_transport/menagerie_external_lee_v1_rule_reconfigure_seed0_mass026_donor0_route1.pkl",
+      "raw_sha256": "c6acb18730368433721d44192ea58219f0fb5460d50de2e3e91c54bbb6bb5877",
+      "controller_configuration": {
+        "family": "upstream_lee_position_attitude_shared_payload_allocator",
+        "upstream_commit": "b08d9f3cbcc581d8e7f988cabad22c26d35f4a58",
+        "upstream_controller": "controller_lee.c",
+        "upstream_parameters": {
+          "mass": 0.027000000700354576,
+          "inertia": [
+            2.3950999093358405e-05,
+            2.3950999093358405e-05,
+            3.2347001251764596e-05
+          ],
+          "Kpos_P": [
+            9.0,
+            9.0,
+            9.0
+          ],
+          "Kpos_D": [
+            7.0,
+            7.0,
+            7.0
+          ],
+          "Kpos_I": [
+            5.0,
+            5.0,
+            5.0
+          ],
+          "KR": [
+            0.005499999970197678,
+            0.005499999970197678,
+            0.009999999776482582
+          ],
+          "Komega": [
+            0.0013000000035390258,
+            0.0013000000035390258,
+            0.0020000000949949026
+          ],
+          "KI": [
+            0.012000000104308128,
+            0.017999999225139618,
+            0.014999999664723873
+          ],
+          "control_dt": 0.019999999552965164
+        },
+        "upstream_default_attitude_rate_hz": 500,
+        "executed_control_rate_hz": 50,
+        "shared_allocator": {
+          "payload_kp": 2.5,
+          "payload_kd": 2.5,
+          "payload_ki": 0.12,
+          "integral_limit": 0.35,
+          "tension_thrust_fraction": 0.9,
+          "heading": 0.0
+        },
+        "roles": "Study payload/tension allocation, formation and recovery references; upstream C position/attitude feedback; shared bounded motor mixing",
+        "source_sha256": {
+          "controller_lee.c": "d9dba75f5d3925514a72d55424baa8c97cd8ce0b561a51738ae191cd9f0a0774",
+          "controller_lee.h": "2ec0c7b15d16ab6c52f5db12e2cba6f058e2cb50057262cc638d00fcc7c4bfc8",
+          "stabilizer_types.h": "18bad51e7ebc75717636a87e0abfb9a3e4a56a74614b06ec4ed2d647f7eef61a",
+          "math3d.h": "5ac652863230d3a4397fd6b5f2bc32f0cd9465f0bdf3cbb54cd847405601a801",
+          "imu_types.h": "c2aef811602a33a6df7e9b704155ca830df76a0faf7dc319006a2991c1c0f952",
+          "lighthouse_types.h": "a06eb46a41b1ed8f97adfb1a11d5fdbcff3f8a21c6611a722a424ebf6255f1b3",
+          "LICENSE.txt": "c53a65c2fd561c87eaabf1072ef5dcab8653042bc15308465f52413585eb6271"
+        },
+        "native_build_key": "700862fd5fa41f81da8da5b5e6e396573bb1959a9464484506469f73a4ac33ce"
+      },
+      "wall_seconds": 5.377143590005289
+    },
+    {
+      "summary": {
+        "case_id": "mass026_donor1_route0",
+        "planner": "rule_reconfigure",
+        "model_seed": 0,
+        "plant_family": "menagerie_crazyflie_2",
+        "controller_family": "upstream_lee_position_attitude_shared_payload_allocator",
+        "payload_mass": 0.026,
+        "donor": 1,
+        "route_template": 0,
+        "slack_distance": 0.07,
+        "dt": 0.002,
+        "control_dt": 0.02,
+        "delivery_completion": true,
+        "constrained_completion": true,
+        "waypoint_successes": [
+          true,
+          true,
+          true
+        ],
+        "option_completions": [
+          true,
+          true
+        ],
+        "actual_slack_successes": [
+          true,
+          true
+        ],
+        "option_peak_excursions": [
+          0.011143324771365759,
+          0.013213068066394978
+        ],
+        "option_peak_donor_tensions": [
+          0.21157948337842175,
+          0.2732293268101508
+        ],
+        "option_slack_seconds": [
+          2.836,
+          2.81
+        ],
+        "selected_reconfigurations": [
+          true,
+          true
+        ],
+        "selected_durations": [
+          [
+            2.0,
+            2.0
+          ],
+          [
+            2.0,
+            2.0
+          ]
+        ],
+        "total_seconds": 30.78,
+        "control_steps": 1539,
+        "physics_steps": 15390,
+        "maximum_seconds": 56.0,
+        "absolute_actuator_work": 0.33859995113827124,
+        "total_squared_thrust_integral": 2.8984501517170838,
+        "rotor_force_integral": 32.535283288710076,
+        "uav_path_length": 4.41681177848368,
+        "maximum_rotor_force": 0.09985616252998393,
+        "motor_bound_seconds": 0.0,
+        "peak_uav_tilt": 0.15480034189164543,
+        "minimum_body_height": 1.1462001515702667,
+        "minimum_uav_separation": 0.32747039122553584,
+        "flight_tracking_rmse": 0.015280924782979984,
+        "finite": true,
+        "collision": false,
+        "warning_count": 0,
+        "predictor_evaluations": 0,
+        "simulated_candidate_control_steps": 0,
+        "simulated_candidate_physics_steps": 0,
+        "total_decision_seconds": 0.0008632800017949194,
+        "minimum_risk_fallbacks": 0,
+        "feasible_candidate_counts": [
+          0,
+          0
+        ],
+        "stop_reason": "mission_sequence_end",
+        "model_kind": null
+      },
+      "raw_path": "data/uav_transport/menagerie_external_lee_v1_rule_reconfigure_seed0_mass026_donor1_route0.pkl",
+      "raw_sha256": "dd8bc2b67e22d1829b7fe41cb2e54855940de750662bdb443767c990312c6489",
+      "controller_configuration": {
+        "family": "upstream_lee_position_attitude_shared_payload_allocator",
+        "upstream_commit": "b08d9f3cbcc581d8e7f988cabad22c26d35f4a58",
+        "upstream_controller": "controller_lee.c",
+        "upstream_parameters": {
+          "mass": 0.027000000700354576,
+          "inertia": [
+            2.3950999093358405e-05,
+            2.3950999093358405e-05,
+            3.2347001251764596e-05
+          ],
+          "Kpos_P": [
+            9.0,
+            9.0,
+            9.0
+          ],
+          "Kpos_D": [
+            7.0,
+            7.0,
+            7.0
+          ],
+          "Kpos_I": [
+            5.0,
+            5.0,
+            5.0
+          ],
+          "KR": [
+            0.005499999970197678,
+            0.005499999970197678,
+            0.009999999776482582
+          ],
+          "Komega": [
+            0.0013000000035390258,
+            0.0013000000035390258,
+            0.0020000000949949026
+          ],
+          "KI": [
+            0.012000000104308128,
+            0.017999999225139618,
+            0.014999999664723873
+          ],
+          "control_dt": 0.019999999552965164
+        },
+        "upstream_default_attitude_rate_hz": 500,
+        "executed_control_rate_hz": 50,
+        "shared_allocator": {
+          "payload_kp": 2.5,
+          "payload_kd": 2.5,
+          "payload_ki": 0.12,
+          "integral_limit": 0.35,
+          "tension_thrust_fraction": 0.9,
+          "heading": 0.0
+        },
+        "roles": "Study payload/tension allocation, formation and recovery references; upstream C position/attitude feedback; shared bounded motor mixing",
+        "source_sha256": {
+          "controller_lee.c": "d9dba75f5d3925514a72d55424baa8c97cd8ce0b561a51738ae191cd9f0a0774",
+          "controller_lee.h": "2ec0c7b15d16ab6c52f5db12e2cba6f058e2cb50057262cc638d00fcc7c4bfc8",
+          "stabilizer_types.h": "18bad51e7ebc75717636a87e0abfb9a3e4a56a74614b06ec4ed2d647f7eef61a",
+          "math3d.h": "5ac652863230d3a4397fd6b5f2bc32f0cd9465f0bdf3cbb54cd847405601a801",
+          "imu_types.h": "c2aef811602a33a6df7e9b704155ca830df76a0faf7dc319006a2991c1c0f952",
+          "lighthouse_types.h": "a06eb46a41b1ed8f97adfb1a11d5fdbcff3f8a21c6611a722a424ebf6255f1b3",
+          "LICENSE.txt": "c53a65c2fd561c87eaabf1072ef5dcab8653042bc15308465f52413585eb6271"
+        },
+        "native_build_key": "700862fd5fa41f81da8da5b5e6e396573bb1959a9464484506469f73a4ac33ce"
+      },
+      "wall_seconds": 5.3538769540027715
+    },
+    {
+      "summary": {
+        "case_id": "mass026_donor1_route1",
+        "planner": "rule_reconfigure",
+        "model_seed": 0,
+        "plant_family": "menagerie_crazyflie_2",
+        "controller_family": "upstream_lee_position_attitude_shared_payload_allocator",
+        "payload_mass": 0.026,
+        "donor": 1,
+        "route_template": 1,
+        "slack_distance": 0.09,
+        "dt": 0.002,
+        "control_dt": 0.02,
+        "delivery_completion": true,
+        "constrained_completion": true,
+        "waypoint_successes": [
+          true,
+          true,
+          true
+        ],
+        "option_completions": [
+          true,
+          true
+        ],
+        "actual_slack_successes": [
+          true,
+          true
+        ],
+        "option_peak_excursions": [
+          0.011953352058812552,
+          0.011464486049264028
+        ],
+        "option_peak_donor_tensions": [
+          0.25049614162854017,
+          0.26158094349219074
+        ],
+        "option_slack_seconds": [
+          2.93,
+          2.892
+        ],
+        "selected_reconfigurations": [
+          true,
+          true
+        ],
+        "selected_durations": [
+          [
+            2.0,
+            2.0
+          ],
+          [
+            2.0,
+            2.0
+          ]
+        ],
+        "total_seconds": 30.66,
+        "control_steps": 1533,
+        "physics_steps": 15330,
+        "maximum_seconds": 56.0,
+        "absolute_actuator_work": 0.3653946294845307,
+        "total_squared_thrust_integral": 2.8872088540931395,
+        "rotor_force_integral": 32.409072508317294,
+        "uav_path_length": 4.591888580763904,
+        "maximum_rotor_force": 0.09988116995961537,
+        "motor_bound_seconds": 0.0,
+        "peak_uav_tilt": 0.15350067343448995,
+        "minimum_body_height": 1.1460221827110915,
+        "minimum_uav_separation": 0.32597510642925487,
+        "flight_tracking_rmse": 0.015282650700058822,
+        "finite": true,
+        "collision": false,
+        "warning_count": 0,
+        "predictor_evaluations": 0,
+        "simulated_candidate_control_steps": 0,
+        "simulated_candidate_physics_steps": 0,
+        "total_decision_seconds": 0.0008900289976736531,
+        "minimum_risk_fallbacks": 0,
+        "feasible_candidate_counts": [
+          0,
+          0
+        ],
+        "stop_reason": "mission_sequence_end",
+        "model_kind": null
+      },
+      "raw_path": "data/uav_transport/menagerie_external_lee_v1_rule_reconfigure_seed0_mass026_donor1_route1.pkl",
+      "raw_sha256": "006e6f6538b1194ad27873d217e731b5cddeb925102c7152a39a44e28c23a8ef",
+      "controller_configuration": {
+        "family": "upstream_lee_position_attitude_shared_payload_allocator",
+        "upstream_commit": "b08d9f3cbcc581d8e7f988cabad22c26d35f4a58",
+        "upstream_controller": "controller_lee.c",
+        "upstream_parameters": {
+          "mass": 0.027000000700354576,
+          "inertia": [
+            2.3950999093358405e-05,
+            2.3950999093358405e-05,
+            3.2347001251764596e-05
+          ],
+          "Kpos_P": [
+            9.0,
+            9.0,
+            9.0
+          ],
+          "Kpos_D": [
+            7.0,
+            7.0,
+            7.0
+          ],
+          "Kpos_I": [
+            5.0,
+            5.0,
+            5.0
+          ],
+          "KR": [
+            0.005499999970197678,
+            0.005499999970197678,
+            0.009999999776482582
+          ],
+          "Komega": [
+            0.0013000000035390258,
+            0.0013000000035390258,
+            0.0020000000949949026
+          ],
+          "KI": [
+            0.012000000104308128,
+            0.017999999225139618,
+            0.014999999664723873
+          ],
+          "control_dt": 0.019999999552965164
+        },
+        "upstream_default_attitude_rate_hz": 500,
+        "executed_control_rate_hz": 50,
+        "shared_allocator": {
+          "payload_kp": 2.5,
+          "payload_kd": 2.5,
+          "payload_ki": 0.12,
+          "integral_limit": 0.35,
+          "tension_thrust_fraction": 0.9,
+          "heading": 0.0
+        },
+        "roles": "Study payload/tension allocation, formation and recovery references; upstream C position/attitude feedback; shared bounded motor mixing",
+        "source_sha256": {
+          "controller_lee.c": "d9dba75f5d3925514a72d55424baa8c97cd8ce0b561a51738ae191cd9f0a0774",
+          "controller_lee.h": "2ec0c7b15d16ab6c52f5db12e2cba6f058e2cb50057262cc638d00fcc7c4bfc8",
+          "stabilizer_types.h": "18bad51e7ebc75717636a87e0abfb9a3e4a56a74614b06ec4ed2d647f7eef61a",
+          "math3d.h": "5ac652863230d3a4397fd6b5f2bc32f0cd9465f0bdf3cbb54cd847405601a801",
+          "imu_types.h": "c2aef811602a33a6df7e9b704155ca830df76a0faf7dc319006a2991c1c0f952",
+          "lighthouse_types.h": "a06eb46a41b1ed8f97adfb1a11d5fdbcff3f8a21c6611a722a424ebf6255f1b3",
+          "LICENSE.txt": "c53a65c2fd561c87eaabf1072ef5dcab8653042bc15308465f52413585eb6271"
+        },
+        "native_build_key": "700862fd5fa41f81da8da5b5e6e396573bb1959a9464484506469f73a4ac33ce"
+      },
+      "wall_seconds": 5.366656917998625
+    },
+    {
+      "summary": {
+        "case_id": "mass026_donor2_route0",
+        "planner": "rule_reconfigure",
+        "model_seed": 0,
+        "plant_family": "menagerie_crazyflie_2",
+        "controller_family": "upstream_lee_position_attitude_shared_payload_allocator",
+        "payload_mass": 0.026,
+        "donor": 2,
+        "route_template": 0,
+        "slack_distance": 0.07,
+        "dt": 0.002,
+        "control_dt": 0.02,
+        "delivery_completion": true,
+        "constrained_completion": true,
+        "waypoint_successes": [
+          true,
+          true,
+          true
+        ],
+        "option_completions": [
+          true,
+          true
+        ],
+        "actual_slack_successes": [
+          true,
+          true
+        ],
+        "option_peak_excursions": [
+          0.013296529572457675,
+          0.01282005991868883
+        ],
+        "option_peak_donor_tensions": [
+          0.37659313882001527,
+          0.21109199159647088
+        ],
+        "option_slack_seconds": [
+          2.758,
+          2.7840000000000003
+        ],
+        "selected_reconfigurations": [
+          true,
+          true
+        ],
+        "selected_durations": [
+          [
+            2.0,
+            2.0
+          ],
+          [
+            2.0,
+            2.0
+          ]
+        ],
+        "total_seconds": 30.68,
+        "control_steps": 1534,
+        "physics_steps": 15340,
+        "maximum_seconds": 56.0,
+        "absolute_actuator_work": 0.3454511291266393,
+        "total_squared_thrust_integral": 2.8891665004422413,
+        "rotor_force_integral": 32.429807032223835,
+        "uav_path_length": 4.461584400123625,
+        "maximum_rotor_force": 0.09984348331954743,
+        "motor_bound_seconds": 0.0,
+        "peak_uav_tilt": 0.15532236512258898,
+        "minimum_body_height": 1.1460656100345594,
+        "minimum_uav_separation": 0.3281655342062273,
+        "flight_tracking_rmse": 0.01532595014631998,
+        "finite": true,
+        "collision": false,
+        "warning_count": 0,
+        "predictor_evaluations": 0,
+        "simulated_candidate_control_steps": 0,
+        "simulated_candidate_physics_steps": 0,
+        "total_decision_seconds": 0.0008531499988748692,
+        "minimum_risk_fallbacks": 0,
+        "feasible_candidate_counts": [
+          0,
+          0
+        ],
+        "stop_reason": "mission_sequence_end",
+        "model_kind": null
+      },
+      "raw_path": "data/uav_transport/menagerie_external_lee_v1_rule_reconfigure_seed0_mass026_donor2_route0.pkl",
+      "raw_sha256": "33f93adead966a46a0580527ea1cc2b22e0640ee879f20af905d0cdbd52bf9fa",
+      "controller_configuration": {
+        "family": "upstream_lee_position_attitude_shared_payload_allocator",
+        "upstream_commit": "b08d9f3cbcc581d8e7f988cabad22c26d35f4a58",
+        "upstream_controller": "controller_lee.c",
+        "upstream_parameters": {
+          "mass": 0.027000000700354576,
+          "inertia": [
+            2.3950999093358405e-05,
+            2.3950999093358405e-05,
+            3.2347001251764596e-05
+          ],
+          "Kpos_P": [
+            9.0,
+            9.0,
+            9.0
+          ],
+          "Kpos_D": [
+            7.0,
+            7.0,
+            7.0
+          ],
+          "Kpos_I": [
+            5.0,
+            5.0,
+            5.0
+          ],
+          "KR": [
+            0.005499999970197678,
+            0.005499999970197678,
+            0.009999999776482582
+          ],
+          "Komega": [
+            0.0013000000035390258,
+            0.0013000000035390258,
+            0.0020000000949949026
+          ],
+          "KI": [
+            0.012000000104308128,
+            0.017999999225139618,
+            0.014999999664723873
+          ],
+          "control_dt": 0.019999999552965164
+        },
+        "upstream_default_attitude_rate_hz": 500,
+        "executed_control_rate_hz": 50,
+        "shared_allocator": {
+          "payload_kp": 2.5,
+          "payload_kd": 2.5,
+          "payload_ki": 0.12,
+          "integral_limit": 0.35,
+          "tension_thrust_fraction": 0.9,
+          "heading": 0.0
+        },
+        "roles": "Study payload/tension allocation, formation and recovery references; upstream C position/attitude feedback; shared bounded motor mixing",
+        "source_sha256": {
+          "controller_lee.c": "d9dba75f5d3925514a72d55424baa8c97cd8ce0b561a51738ae191cd9f0a0774",
+          "controller_lee.h": "2ec0c7b15d16ab6c52f5db12e2cba6f058e2cb50057262cc638d00fcc7c4bfc8",
+          "stabilizer_types.h": "18bad51e7ebc75717636a87e0abfb9a3e4a56a74614b06ec4ed2d647f7eef61a",
+          "math3d.h": "5ac652863230d3a4397fd6b5f2bc32f0cd9465f0bdf3cbb54cd847405601a801",
+          "imu_types.h": "c2aef811602a33a6df7e9b704155ca830df76a0faf7dc319006a2991c1c0f952",
+          "lighthouse_types.h": "a06eb46a41b1ed8f97adfb1a11d5fdbcff3f8a21c6611a722a424ebf6255f1b3",
+          "LICENSE.txt": "c53a65c2fd561c87eaabf1072ef5dcab8653042bc15308465f52413585eb6271"
+        },
+        "native_build_key": "700862fd5fa41f81da8da5b5e6e396573bb1959a9464484506469f73a4ac33ce"
+      },
+      "wall_seconds": 5.243570334998367
+    },
+    {
+      "summary": {
+        "case_id": "mass026_donor2_route1",
+        "planner": "rule_reconfigure",
+        "model_seed": 0,
+        "plant_family": "menagerie_crazyflie_2",
+        "controller_family": "upstream_lee_position_attitude_shared_payload_allocator",
+        "payload_mass": 0.026,
+        "donor": 2,
+        "route_template": 1,
+        "slack_distance": 0.09,
+        "dt": 0.002,
+        "control_dt": 0.02,
+        "delivery_completion": true,
+        "constrained_completion": true,
+        "waypoint_successes": [
+          true,
+          true,
+          true
+        ],
+        "option_completions": [
+          true,
+          true
+        ],
+        "actual_slack_successes": [
+          true,
+          true
+        ],
+        "option_peak_excursions": [
+          0.011249853867635613,
+          0.013916164870247875
+        ],
+        "option_peak_donor_tensions": [
+          0.179624416683264,
+          0.3451744897545155
+        ],
+        "option_slack_seconds": [
+          3.004,
+          2.81
+        ],
+        "selected_reconfigurations": [
+          true,
+          true
+        ],
+        "selected_durations": [
+          [
+            2.0,
+            2.0
+          ],
+          [
+            2.0,
+            2.0
+          ]
+        ],
+        "total_seconds": 30.88,
+        "control_steps": 1544,
+        "physics_steps": 15440,
+        "maximum_seconds": 56.0,
+        "absolute_actuator_work": 0.3693963695613738,
+        "total_squared_thrust_integral": 2.907669439087017,
+        "rotor_force_integral": 32.641185136822116,
+        "uav_path_length": 4.6040993173137945,
+        "maximum_rotor_force": 0.09999671526859577,
+        "motor_bound_seconds": 0.0,
+        "peak_uav_tilt": 0.1564892901456658,
+        "minimum_body_height": 1.1461464764872158,
+        "minimum_uav_separation": 0.32444558532733414,
+        "flight_tracking_rmse": 0.015317313078026612,
+        "finite": true,
+        "collision": false,
+        "warning_count": 0,
+        "predictor_evaluations": 0,
+        "simulated_candidate_control_steps": 0,
+        "simulated_candidate_physics_steps": 0,
+        "total_decision_seconds": 0.0008858419969328679,
+        "minimum_risk_fallbacks": 0,
+        "feasible_candidate_counts": [
+          0,
+          0
+        ],
+        "stop_reason": "mission_sequence_end",
+        "model_kind": null
+      },
+      "raw_path": "data/uav_transport/menagerie_external_lee_v1_rule_reconfigure_seed0_mass026_donor2_route1.pkl",
+      "raw_sha256": "65fa2414f9dd7707045262fecee378561b78e69a6865564d14db8f9420df2305",
+      "controller_configuration": {
+        "family": "upstream_lee_position_attitude_shared_payload_allocator",
+        "upstream_commit": "b08d9f3cbcc581d8e7f988cabad22c26d35f4a58",
+        "upstream_controller": "controller_lee.c",
+        "upstream_parameters": {
+          "mass": 0.027000000700354576,
+          "inertia": [
+            2.3950999093358405e-05,
+            2.3950999093358405e-05,
+            3.2347001251764596e-05
+          ],
+          "Kpos_P": [
+            9.0,
+            9.0,
+            9.0
+          ],
+          "Kpos_D": [
+            7.0,
+            7.0,
+            7.0
+          ],
+          "Kpos_I": [
+            5.0,
+            5.0,
+            5.0
+          ],
+          "KR": [
+            0.005499999970197678,
+            0.005499999970197678,
+            0.009999999776482582
+          ],
+          "Komega": [
+            0.0013000000035390258,
+            0.0013000000035390258,
+            0.0020000000949949026
+          ],
+          "KI": [
+            0.012000000104308128,
+            0.017999999225139618,
+            0.014999999664723873
+          ],
+          "control_dt": 0.019999999552965164
+        },
+        "upstream_default_attitude_rate_hz": 500,
+        "executed_control_rate_hz": 50,
+        "shared_allocator": {
+          "payload_kp": 2.5,
+          "payload_kd": 2.5,
+          "payload_ki": 0.12,
+          "integral_limit": 0.35,
+          "tension_thrust_fraction": 0.9,
+          "heading": 0.0
+        },
+        "roles": "Study payload/tension allocation, formation and recovery references; upstream C position/attitude feedback; shared bounded motor mixing",
+        "source_sha256": {
+          "controller_lee.c": "d9dba75f5d3925514a72d55424baa8c97cd8ce0b561a51738ae191cd9f0a0774",
+          "controller_lee.h": "2ec0c7b15d16ab6c52f5db12e2cba6f058e2cb50057262cc638d00fcc7c4bfc8",
+          "stabilizer_types.h": "18bad51e7ebc75717636a87e0abfb9a3e4a56a74614b06ec4ed2d647f7eef61a",
+          "math3d.h": "5ac652863230d3a4397fd6b5f2bc32f0cd9465f0bdf3cbb54cd847405601a801",
+          "imu_types.h": "c2aef811602a33a6df7e9b704155ca830df76a0faf7dc319006a2991c1c0f952",
+          "lighthouse_types.h": "a06eb46a41b1ed8f97adfb1a11d5fdbcff3f8a21c6611a722a424ebf6255f1b3",
+          "LICENSE.txt": "c53a65c2fd561c87eaabf1072ef5dcab8653042bc15308465f52413585eb6271"
+        },
+        "native_build_key": "700862fd5fa41f81da8da5b5e6e396573bb1959a9464484506469f73a4ac33ce"
+      },
+      "wall_seconds": 5.449152373999823
+    },
+    {
+      "summary": {
+        "case_id": "mass034_donor0_route0",
+        "planner": "rule_reconfigure",
+        "model_seed": 0,
+        "plant_family": "menagerie_crazyflie_2",
+        "controller_family": "upstream_lee_position_attitude_shared_payload_allocator",
+        "payload_mass": 0.034,
+        "donor": 0,
+        "route_template": 0,
+        "slack_distance": 0.07,
+        "dt": 0.002,
+        "control_dt": 0.02,
+        "delivery_completion": true,
+        "constrained_completion": true,
+        "waypoint_successes": [
+          true,
+          true,
+          true
+        ],
+        "option_completions": [
+          true,
+          true
+        ],
+        "actual_slack_successes": [
+          true,
+          true
+        ],
+        "option_peak_excursions": [
+          0.014770065925028228,
+          0.013423287858840121
+        ],
+        "option_peak_donor_tensions": [
+          0.35412672424102526,
+          0.5991887043680915
+        ],
+        "option_slack_seconds": [
+          2.734,
+          2.674
+        ],
+        "selected_reconfigurations": [
+          true,
+          true
+        ],
+        "selected_durations": [
+          [
+            2.0,
+            2.0
+          ],
+          [
+            2.0,
+            2.0
+          ]
+        ],
+        "total_seconds": 31.0,
+        "control_steps": 1550,
+        "physics_steps": 15500,
+        "maximum_seconds": 56.0,
+        "absolute_actuator_work": 0.38401642601816727,
+        "total_squared_thrust_integral": 3.4116666819040007,
+        "rotor_force_integral": 35.329587768670926,
+        "uav_path_length": 4.595667854918322,
+        "maximum_rotor_force": 0.11049705587567753,
+        "motor_bound_seconds": 0.0,
+        "peak_uav_tilt": 0.1815382310334944,
+        "minimum_body_height": 1.1459859239706125,
+        "minimum_uav_separation": 0.3284352214234809,
+        "flight_tracking_rmse": 0.016089670914979187,
+        "finite": true,
+        "collision": false,
+        "warning_count": 0,
+        "predictor_evaluations": 0,
+        "simulated_candidate_control_steps": 0,
+        "simulated_candidate_physics_steps": 0,
+        "total_decision_seconds": 0.0008753820002311841,
+        "minimum_risk_fallbacks": 0,
+        "feasible_candidate_counts": [
+          0,
+          0
+        ],
+        "stop_reason": "mission_sequence_end",
+        "model_kind": null
+      },
+      "raw_path": "data/uav_transport/menagerie_external_lee_v1_rule_reconfigure_seed0_mass034_donor0_route0.pkl",
+      "raw_sha256": "47fcc70aa97370e4025146d1b4c52b6aac7c34680677cb8e68c225c2ed808779",
+      "controller_configuration": {
+        "family": "upstream_lee_position_attitude_shared_payload_allocator",
+        "upstream_commit": "b08d9f3cbcc581d8e7f988cabad22c26d35f4a58",
+        "upstream_controller": "controller_lee.c",
+        "upstream_parameters": {
+          "mass": 0.027000000700354576,
+          "inertia": [
+            2.3950999093358405e-05,
+            2.3950999093358405e-05,
+            3.2347001251764596e-05
+          ],
+          "Kpos_P": [
+            9.0,
+            9.0,
+            9.0
+          ],
+          "Kpos_D": [
+            7.0,
+            7.0,
+            7.0
+          ],
+          "Kpos_I": [
+            5.0,
+            5.0,
+            5.0
+          ],
+          "KR": [
+            0.005499999970197678,
+            0.005499999970197678,
+            0.009999999776482582
+          ],
+          "Komega": [
+            0.0013000000035390258,
+            0.0013000000035390258,
+            0.0020000000949949026
+          ],
+          "KI": [
+            0.012000000104308128,
+            0.017999999225139618,
+            0.014999999664723873
+          ],
+          "control_dt": 0.019999999552965164
+        },
+        "upstream_default_attitude_rate_hz": 500,
+        "executed_control_rate_hz": 50,
+        "shared_allocator": {
+          "payload_kp": 2.5,
+          "payload_kd": 2.5,
+          "payload_ki": 0.12,
+          "integral_limit": 0.35,
+          "tension_thrust_fraction": 0.9,
+          "heading": 0.0
+        },
+        "roles": "Study payload/tension allocation, formation and recovery references; upstream C position/attitude feedback; shared bounded motor mixing",
+        "source_sha256": {
+          "controller_lee.c": "d9dba75f5d3925514a72d55424baa8c97cd8ce0b561a51738ae191cd9f0a0774",
+          "controller_lee.h": "2ec0c7b15d16ab6c52f5db12e2cba6f058e2cb50057262cc638d00fcc7c4bfc8",
+          "stabilizer_types.h": "18bad51e7ebc75717636a87e0abfb9a3e4a56a74614b06ec4ed2d647f7eef61a",
+          "math3d.h": "5ac652863230d3a4397fd6b5f2bc32f0cd9465f0bdf3cbb54cd847405601a801",
+          "imu_types.h": "c2aef811602a33a6df7e9b704155ca830df76a0faf7dc319006a2991c1c0f952",
+          "lighthouse_types.h": "a06eb46a41b1ed8f97adfb1a11d5fdbcff3f8a21c6611a722a424ebf6255f1b3",
+          "LICENSE.txt": "c53a65c2fd561c87eaabf1072ef5dcab8653042bc15308465f52413585eb6271"
+        },
+        "native_build_key": "700862fd5fa41f81da8da5b5e6e396573bb1959a9464484506469f73a4ac33ce"
+      },
+      "wall_seconds": 5.383998548997624
+    },
+    {
+      "summary": {
+        "case_id": "mass034_donor0_route1",
+        "planner": "rule_reconfigure",
+        "model_seed": 0,
+        "plant_family": "menagerie_crazyflie_2",
+        "controller_family": "upstream_lee_position_attitude_shared_payload_allocator",
+        "payload_mass": 0.034,
+        "donor": 0,
+        "route_template": 1,
+        "slack_distance": 0.09,
+        "dt": 0.002,
+        "control_dt": 0.02,
+        "delivery_completion": true,
+        "constrained_completion": false,
+        "waypoint_successes": [
+          true,
+          true,
+          true
+        ],
+        "option_completions": [
+          true,
+          true
+        ],
+        "actual_slack_successes": [
+          true,
+          true
+        ],
+        "option_peak_excursions": [
+          0.01320214868282407,
+          0.014372927128309896
+        ],
+        "option_peak_donor_tensions": [
+          0.6306572504913825,
+          0.5579077292851736
+        ],
+        "option_slack_seconds": [
+          2.794,
+          2.826
+        ],
+        "selected_reconfigurations": [
+          true,
+          true
+        ],
+        "selected_durations": [
+          [
+            2.0,
+            2.0
+          ],
+          [
+            2.0,
+            2.0
+          ]
+        ],
+        "total_seconds": 30.92,
+        "control_steps": 1546,
+        "physics_steps": 15460,
+        "maximum_seconds": 56.0,
+        "absolute_actuator_work": 0.40734377731523036,
+        "total_squared_thrust_integral": 3.402921157398393,
+        "rotor_force_integral": 35.238492905778365,
+        "uav_path_length": 4.641386239505827,
+        "maximum_rotor_force": 0.11053833933074907,
+        "motor_bound_seconds": 0.0,
+        "peak_uav_tilt": 0.1814669181423594,
+        "minimum_body_height": 1.145883540634563,
+        "minimum_uav_separation": 0.3237200140392026,
+        "flight_tracking_rmse": 0.016066969000177133,
+        "finite": true,
+        "collision": false,
+        "warning_count": 0,
+        "predictor_evaluations": 0,
+        "simulated_candidate_control_steps": 0,
+        "simulated_candidate_physics_steps": 0,
+        "total_decision_seconds": 0.0008972740033641458,
+        "minimum_risk_fallbacks": 0,
+        "feasible_candidate_counts": [
+          0,
+          0
+        ],
+        "stop_reason": "mission_sequence_end",
+        "model_kind": null
+      },
+      "raw_path": "data/uav_transport/menagerie_external_lee_v1_rule_reconfigure_seed0_mass034_donor0_route1.pkl",
+      "raw_sha256": "6184847fb0e3ba0a57e8d5a74d8e42c613b781364ef8b55c4018c533b480a5fa",
+      "controller_configuration": {
+        "family": "upstream_lee_position_attitude_shared_payload_allocator",
+        "upstream_commit": "b08d9f3cbcc581d8e7f988cabad22c26d35f4a58",
+        "upstream_controller": "controller_lee.c",
+        "upstream_parameters": {
+          "mass": 0.027000000700354576,
+          "inertia": [
+            2.3950999093358405e-05,
+            2.3950999093358405e-05,
+            3.2347001251764596e-05
+          ],
+          "Kpos_P": [
+            9.0,
+            9.0,
+            9.0
+          ],
+          "Kpos_D": [
+            7.0,
+            7.0,
+            7.0
+          ],
+          "Kpos_I": [
+            5.0,
+            5.0,
+            5.0
+          ],
+          "KR": [
+            0.005499999970197678,
+            0.005499999970197678,
+            0.009999999776482582
+          ],
+          "Komega": [
+            0.0013000000035390258,
+            0.0013000000035390258,
+            0.0020000000949949026
+          ],
+          "KI": [
+            0.012000000104308128,
+            0.017999999225139618,
+            0.014999999664723873
+          ],
+          "control_dt": 0.019999999552965164
+        },
+        "upstream_default_attitude_rate_hz": 500,
+        "executed_control_rate_hz": 50,
+        "shared_allocator": {
+          "payload_kp": 2.5,
+          "payload_kd": 2.5,
+          "payload_ki": 0.12,
+          "integral_limit": 0.35,
+          "tension_thrust_fraction": 0.9,
+          "heading": 0.0
+        },
+        "roles": "Study payload/tension allocation, formation and recovery references; upstream C position/attitude feedback; shared bounded motor mixing",
+        "source_sha256": {
+          "controller_lee.c": "d9dba75f5d3925514a72d55424baa8c97cd8ce0b561a51738ae191cd9f0a0774",
+          "controller_lee.h": "2ec0c7b15d16ab6c52f5db12e2cba6f058e2cb50057262cc638d00fcc7c4bfc8",
+          "stabilizer_types.h": "18bad51e7ebc75717636a87e0abfb9a3e4a56a74614b06ec4ed2d647f7eef61a",
+          "math3d.h": "5ac652863230d3a4397fd6b5f2bc32f0cd9465f0bdf3cbb54cd847405601a801",
+          "imu_types.h": "c2aef811602a33a6df7e9b704155ca830df76a0faf7dc319006a2991c1c0f952",
+          "lighthouse_types.h": "a06eb46a41b1ed8f97adfb1a11d5fdbcff3f8a21c6611a722a424ebf6255f1b3",
+          "LICENSE.txt": "c53a65c2fd561c87eaabf1072ef5dcab8653042bc15308465f52413585eb6271"
+        },
+        "native_build_key": "700862fd5fa41f81da8da5b5e6e396573bb1959a9464484506469f73a4ac33ce"
+      },
+      "wall_seconds": 5.40546927700052
+    },
+    {
+      "summary": {
+        "case_id": "mass034_donor1_route0",
+        "planner": "rule_reconfigure",
+        "model_seed": 0,
+        "plant_family": "menagerie_crazyflie_2",
+        "controller_family": "upstream_lee_position_attitude_shared_payload_allocator",
+        "payload_mass": 0.034,
+        "donor": 1,
+        "route_template": 0,
+        "slack_distance": 0.07,
+        "dt": 0.002,
+        "control_dt": 0.02,
+        "delivery_completion": true,
+        "constrained_completion": true,
+        "waypoint_successes": [
+          true,
+          true,
+          true
+        ],
+        "option_completions": [
+          true,
+          true
+        ],
+        "actual_slack_successes": [
+          true,
+          true
+        ],
+        "option_peak_excursions": [
+          0.012814075526189161,
+          0.014423829130644886
+        ],
+        "option_peak_donor_tensions": [
+          0.3919840855426773,
+          0.5574382826015795
+        ],
+        "option_slack_seconds": [
+          2.7640000000000002,
+          2.762
+        ],
+        "selected_reconfigurations": [
+          true,
+          true
+        ],
+        "selected_durations": [
+          [
+            2.0,
+            2.0
+          ],
+          [
+            2.0,
+            2.0
+          ]
+        ],
+        "total_seconds": 31.02,
+        "control_steps": 1551,
+        "physics_steps": 15510,
+        "maximum_seconds": 56.0,
+        "absolute_actuator_work": 0.37600345057390966,
+        "total_squared_thrust_integral": 3.4139643434861795,
+        "rotor_force_integral": 35.35229458390594,
+        "uav_path_length": 4.491621968950681,
+        "maximum_rotor_force": 0.11030537596342276,
+        "motor_bound_seconds": 0.0,
+        "peak_uav_tilt": 0.18183951734347,
+        "minimum_body_height": 1.1458837254387857,
+        "minimum_uav_separation": 0.3263921768865254,
+        "flight_tracking_rmse": 0.01593563447529205,
+        "finite": true,
+        "collision": false,
+        "warning_count": 0,
+        "predictor_evaluations": 0,
+        "simulated_candidate_control_steps": 0,
+        "simulated_candidate_physics_steps": 0,
+        "total_decision_seconds": 0.0010258740003337152,
+        "minimum_risk_fallbacks": 0,
+        "feasible_candidate_counts": [
+          0,
+          0
+        ],
+        "stop_reason": "mission_sequence_end",
+        "model_kind": null
+      },
+      "raw_path": "data/uav_transport/menagerie_external_lee_v1_rule_reconfigure_seed0_mass034_donor1_route0.pkl",
+      "raw_sha256": "dade7c40ec0397ea0be8b5cdd0219cd19ddd600e887c43f4ad458c8bab5a191c",
+      "controller_configuration": {
+        "family": "upstream_lee_position_attitude_shared_payload_allocator",
+        "upstream_commit": "b08d9f3cbcc581d8e7f988cabad22c26d35f4a58",
+        "upstream_controller": "controller_lee.c",
+        "upstream_parameters": {
+          "mass": 0.027000000700354576,
+          "inertia": [
+            2.3950999093358405e-05,
+            2.3950999093358405e-05,
+            3.2347001251764596e-05
+          ],
+          "Kpos_P": [
+            9.0,
+            9.0,
+            9.0
+          ],
+          "Kpos_D": [
+            7.0,
+            7.0,
+            7.0
+          ],
+          "Kpos_I": [
+            5.0,
+            5.0,
+            5.0
+          ],
+          "KR": [
+            0.005499999970197678,
+            0.005499999970197678,
+            0.009999999776482582
+          ],
+          "Komega": [
+            0.0013000000035390258,
+            0.0013000000035390258,
+            0.0020000000949949026
+          ],
+          "KI": [
+            0.012000000104308128,
+            0.017999999225139618,
+            0.014999999664723873
+          ],
+          "control_dt": 0.019999999552965164
+        },
+        "upstream_default_attitude_rate_hz": 500,
+        "executed_control_rate_hz": 50,
+        "shared_allocator": {
+          "payload_kp": 2.5,
+          "payload_kd": 2.5,
+          "payload_ki": 0.12,
+          "integral_limit": 0.35,
+          "tension_thrust_fraction": 0.9,
+          "heading": 0.0
+        },
+        "roles": "Study payload/tension allocation, formation and recovery references; upstream C position/attitude feedback; shared bounded motor mixing",
+        "source_sha256": {
+          "controller_lee.c": "d9dba75f5d3925514a72d55424baa8c97cd8ce0b561a51738ae191cd9f0a0774",
+          "controller_lee.h": "2ec0c7b15d16ab6c52f5db12e2cba6f058e2cb50057262cc638d00fcc7c4bfc8",
+          "stabilizer_types.h": "18bad51e7ebc75717636a87e0abfb9a3e4a56a74614b06ec4ed2d647f7eef61a",
+          "math3d.h": "5ac652863230d3a4397fd6b5f2bc32f0cd9465f0bdf3cbb54cd847405601a801",
+          "imu_types.h": "c2aef811602a33a6df7e9b704155ca830df76a0faf7dc319006a2991c1c0f952",
+          "lighthouse_types.h": "a06eb46a41b1ed8f97adfb1a11d5fdbcff3f8a21c6611a722a424ebf6255f1b3",
+          "LICENSE.txt": "c53a65c2fd561c87eaabf1072ef5dcab8653042bc15308465f52413585eb6271"
+        },
+        "native_build_key": "700862fd5fa41f81da8da5b5e6e396573bb1959a9464484506469f73a4ac33ce"
+      },
+      "wall_seconds": 5.333757451000565
+    },
+    {
+      "summary": {
+        "case_id": "mass034_donor1_route1",
+        "planner": "rule_reconfigure",
+        "model_seed": 0,
+        "plant_family": "menagerie_crazyflie_2",
+        "controller_family": "upstream_lee_position_attitude_shared_payload_allocator",
+        "payload_mass": 0.034,
+        "donor": 1,
+        "route_template": 1,
+        "slack_distance": 0.09,
+        "dt": 0.002,
+        "control_dt": 0.02,
+        "delivery_completion": true,
+        "constrained_completion": true,
+        "waypoint_successes": [
+          true,
+          true,
+          true
+        ],
+        "option_completions": [
+          true,
+          true
+        ],
+        "actual_slack_successes": [
+          true,
+          true
+        ],
+        "option_peak_excursions": [
+          0.013785711016263122,
+          0.012248576083050461
+        ],
+        "option_peak_donor_tensions": [
+          0.5069039346057325,
+          0.4989047038403503
+        ],
+        "option_slack_seconds": [
+          2.848,
+          2.81
+        ],
+        "selected_reconfigurations": [
+          true,
+          true
+        ],
+        "selected_durations": [
+          [
+            2.0,
+            2.0
+          ],
+          [
+            2.0,
+            2.0
+          ]
+        ],
+        "total_seconds": 30.92,
+        "control_steps": 1546,
+        "physics_steps": 15460,
+        "maximum_seconds": 56.0,
+        "absolute_actuator_work": 0.40745620939199473,
+        "total_squared_thrust_integral": 3.4028501457866716,
+        "rotor_force_integral": 35.23876778458853,
+        "uav_path_length": 4.688869463806073,
+        "maximum_rotor_force": 0.11044033936094234,
+        "motor_bound_seconds": 0.0,
+        "peak_uav_tilt": 0.1798954789611334,
+        "minimum_body_height": 1.1459979530291478,
+        "minimum_uav_separation": 0.32472437447275593,
+        "flight_tracking_rmse": 0.0161471518467156,
+        "finite": true,
+        "collision": false,
+        "warning_count": 0,
+        "predictor_evaluations": 0,
+        "simulated_candidate_control_steps": 0,
+        "simulated_candidate_physics_steps": 0,
+        "total_decision_seconds": 0.0008618560095783323,
+        "minimum_risk_fallbacks": 0,
+        "feasible_candidate_counts": [
+          0,
+          0
+        ],
+        "stop_reason": "mission_sequence_end",
+        "model_kind": null
+      },
+      "raw_path": "data/uav_transport/menagerie_external_lee_v1_rule_reconfigure_seed0_mass034_donor1_route1.pkl",
+      "raw_sha256": "f03611eaca74e01dcdcfbbf2c74708e58129e0beb02b544f1e525a19f2d5d73f",
+      "controller_configuration": {
+        "family": "upstream_lee_position_attitude_shared_payload_allocator",
+        "upstream_commit": "b08d9f3cbcc581d8e7f988cabad22c26d35f4a58",
+        "upstream_controller": "controller_lee.c",
+        "upstream_parameters": {
+          "mass": 0.027000000700354576,
+          "inertia": [
+            2.3950999093358405e-05,
+            2.3950999093358405e-05,
+            3.2347001251764596e-05
+          ],
+          "Kpos_P": [
+            9.0,
+            9.0,
+            9.0
+          ],
+          "Kpos_D": [
+            7.0,
+            7.0,
+            7.0
+          ],
+          "Kpos_I": [
+            5.0,
+            5.0,
+            5.0
+          ],
+          "KR": [
+            0.005499999970197678,
+            0.005499999970197678,
+            0.009999999776482582
+          ],
+          "Komega": [
+            0.0013000000035390258,
+            0.0013000000035390258,
+            0.0020000000949949026
+          ],
+          "KI": [
+            0.012000000104308128,
+            0.017999999225139618,
+            0.014999999664723873
+          ],
+          "control_dt": 0.019999999552965164
+        },
+        "upstream_default_attitude_rate_hz": 500,
+        "executed_control_rate_hz": 50,
+        "shared_allocator": {
+          "payload_kp": 2.5,
+          "payload_kd": 2.5,
+          "payload_ki": 0.12,
+          "integral_limit": 0.35,
+          "tension_thrust_fraction": 0.9,
+          "heading": 0.0
+        },
+        "roles": "Study payload/tension allocation, formation and recovery references; upstream C position/attitude feedback; shared bounded motor mixing",
+        "source_sha256": {
+          "controller_lee.c": "d9dba75f5d3925514a72d55424baa8c97cd8ce0b561a51738ae191cd9f0a0774",
+          "controller_lee.h": "2ec0c7b15d16ab6c52f5db12e2cba6f058e2cb50057262cc638d00fcc7c4bfc8",
+          "stabilizer_types.h": "18bad51e7ebc75717636a87e0abfb9a3e4a56a74614b06ec4ed2d647f7eef61a",
+          "math3d.h": "5ac652863230d3a4397fd6b5f2bc32f0cd9465f0bdf3cbb54cd847405601a801",
+          "imu_types.h": "c2aef811602a33a6df7e9b704155ca830df76a0faf7dc319006a2991c1c0f952",
+          "lighthouse_types.h": "a06eb46a41b1ed8f97adfb1a11d5fdbcff3f8a21c6611a722a424ebf6255f1b3",
+          "LICENSE.txt": "c53a65c2fd561c87eaabf1072ef5dcab8653042bc15308465f52413585eb6271"
+        },
+        "native_build_key": "700862fd5fa41f81da8da5b5e6e396573bb1959a9464484506469f73a4ac33ce"
+      },
+      "wall_seconds": 5.3432977170014055
+    },
+    {
+      "summary": {
+        "case_id": "mass034_donor2_route0",
+        "planner": "rule_reconfigure",
+        "model_seed": 0,
+        "plant_family": "menagerie_crazyflie_2",
+        "controller_family": "upstream_lee_position_attitude_shared_payload_allocator",
+        "payload_mass": 0.034,
+        "donor": 2,
+        "route_template": 0,
+        "slack_distance": 0.07,
+        "dt": 0.002,
+        "control_dt": 0.02,
+        "delivery_completion": true,
+        "constrained_completion": true,
+        "waypoint_successes": [
+          true,
+          true,
+          true
+        ],
+        "option_completions": [
+          true,
+          true
+        ],
+        "actual_slack_successes": [
+          true,
+          true
+        ],
+        "option_peak_excursions": [
+          0.014198163527288555,
+          0.014314221346080137
+        ],
+        "option_peak_donor_tensions": [
+          0.5998692280804929,
+          0.4893281430714086
+        ],
+        "option_slack_seconds": [
+          2.724,
+          2.688
+        ],
+        "selected_reconfigurations": [
+          true,
+          true
+        ],
+        "selected_durations": [
+          [
+            2.0,
+            2.0
+          ],
+          [
+            2.0,
+            2.0
+          ]
+        ],
+        "total_seconds": 30.82,
+        "control_steps": 1541,
+        "physics_steps": 15410,
+        "maximum_seconds": 56.0,
+        "absolute_actuator_work": 0.3826461478123524,
+        "total_squared_thrust_integral": 3.3923520800119698,
+        "rotor_force_integral": 35.12466861373718,
+        "uav_path_length": 4.5342444467400345,
+        "maximum_rotor_force": 0.1104466535271797,
+        "motor_bound_seconds": 0.0,
+        "peak_uav_tilt": 0.18139036862567323,
+        "minimum_body_height": 1.1459575954029777,
+        "minimum_uav_separation": 0.32695313388672903,
+        "flight_tracking_rmse": 0.016165856066509197,
+        "finite": true,
+        "collision": false,
+        "warning_count": 0,
+        "predictor_evaluations": 0,
+        "simulated_candidate_control_steps": 0,
+        "simulated_candidate_physics_steps": 0,
+        "total_decision_seconds": 0.0008780969947110862,
+        "minimum_risk_fallbacks": 0,
+        "feasible_candidate_counts": [
+          0,
+          0
+        ],
+        "stop_reason": "mission_sequence_end",
+        "model_kind": null
+      },
+      "raw_path": "data/uav_transport/menagerie_external_lee_v1_rule_reconfigure_seed0_mass034_donor2_route0.pkl",
+      "raw_sha256": "efe9b1f9c24f06f9a9a515fb3ab1bea1b734a9248707d3b47e9a83372b5cb586",
+      "controller_configuration": {
+        "family": "upstream_lee_position_attitude_shared_payload_allocator",
+        "upstream_commit": "b08d9f3cbcc581d8e7f988cabad22c26d35f4a58",
+        "upstream_controller": "controller_lee.c",
+        "upstream_parameters": {
+          "mass": 0.027000000700354576,
+          "inertia": [
+            2.3950999093358405e-05,
+            2.3950999093358405e-05,
+            3.2347001251764596e-05
+          ],
+          "Kpos_P": [
+            9.0,
+            9.0,
+            9.0
+          ],
+          "Kpos_D": [
+            7.0,
+            7.0,
+            7.0
+          ],
+          "Kpos_I": [
+            5.0,
+            5.0,
+            5.0
+          ],
+          "KR": [
+            0.005499999970197678,
+            0.005499999970197678,
+            0.009999999776482582
+          ],
+          "Komega": [
+            0.0013000000035390258,
+            0.0013000000035390258,
+            0.0020000000949949026
+          ],
+          "KI": [
+            0.012000000104308128,
+            0.017999999225139618,
+            0.014999999664723873
+          ],
+          "control_dt": 0.019999999552965164
+        },
+        "upstream_default_attitude_rate_hz": 500,
+        "executed_control_rate_hz": 50,
+        "shared_allocator": {
+          "payload_kp": 2.5,
+          "payload_kd": 2.5,
+          "payload_ki": 0.12,
+          "integral_limit": 0.35,
+          "tension_thrust_fraction": 0.9,
+          "heading": 0.0
+        },
+        "roles": "Study payload/tension allocation, formation and recovery references; upstream C position/attitude feedback; shared bounded motor mixing",
+        "source_sha256": {
+          "controller_lee.c": "d9dba75f5d3925514a72d55424baa8c97cd8ce0b561a51738ae191cd9f0a0774",
+          "controller_lee.h": "2ec0c7b15d16ab6c52f5db12e2cba6f058e2cb50057262cc638d00fcc7c4bfc8",
+          "stabilizer_types.h": "18bad51e7ebc75717636a87e0abfb9a3e4a56a74614b06ec4ed2d647f7eef61a",
+          "math3d.h": "5ac652863230d3a4397fd6b5f2bc32f0cd9465f0bdf3cbb54cd847405601a801",
+          "imu_types.h": "c2aef811602a33a6df7e9b704155ca830df76a0faf7dc319006a2991c1c0f952",
+          "lighthouse_types.h": "a06eb46a41b1ed8f97adfb1a11d5fdbcff3f8a21c6611a722a424ebf6255f1b3",
+          "LICENSE.txt": "c53a65c2fd561c87eaabf1072ef5dcab8653042bc15308465f52413585eb6271"
+        },
+        "native_build_key": "700862fd5fa41f81da8da5b5e6e396573bb1959a9464484506469f73a4ac33ce"
+      },
+      "wall_seconds": 5.451699181001459
+    },
+    {
+      "summary": {
+        "case_id": "mass034_donor2_route1",
+        "planner": "rule_reconfigure",
+        "model_seed": 0,
+        "plant_family": "menagerie_crazyflie_2",
+        "controller_family": "upstream_lee_position_attitude_shared_payload_allocator",
+        "payload_mass": 0.034,
+        "donor": 2,
+        "route_template": 1,
+        "slack_distance": 0.09,
+        "dt": 0.002,
+        "control_dt": 0.02,
+        "delivery_completion": true,
+        "constrained_completion": false,
+        "waypoint_successes": [
+          true,
+          true,
+          true
+        ],
+        "option_completions": [
+          true,
+          true
+        ],
+        "actual_slack_successes": [
+          true,
+          true
+        ],
+        "option_peak_excursions": [
+          0.013329330383137007,
+          0.014624820268416647
+        ],
+        "option_peak_donor_tensions": [
+          0.27934456981629724,
+          0.7065029754562155
+        ],
+        "option_slack_seconds": [
+          2.878,
+          2.732
+        ],
+        "selected_reconfigurations": [
+          true,
+          true
+        ],
+        "selected_durations": [
+          [
+            2.0,
+            2.0
+          ],
+          [
+            2.0,
+            2.0
+          ]
+        ],
+        "total_seconds": 31.12,
+        "control_steps": 1556,
+        "physics_steps": 15560,
+        "maximum_seconds": 56.0,
+        "absolute_actuator_work": 0.4146187555675635,
+        "total_squared_thrust_integral": 3.4243943595373656,
+        "rotor_force_integral": 35.46626212565862,
+        "uav_path_length": 4.705696638447744,
+        "maximum_rotor_force": 0.11036403590347311,
+        "motor_bound_seconds": 0.0,
+        "peak_uav_tilt": 0.18242312605149724,
+        "minimum_body_height": 1.1458523180474698,
+        "minimum_uav_separation": 0.3234313263158684,
+        "flight_tracking_rmse": 0.015986753595510824,
+        "finite": true,
+        "collision": false,
+        "warning_count": 0,
+        "predictor_evaluations": 0,
+        "simulated_candidate_control_steps": 0,
+        "simulated_candidate_physics_steps": 0,
+        "total_decision_seconds": 0.0008675780045450665,
+        "minimum_risk_fallbacks": 0,
+        "feasible_candidate_counts": [
+          0,
+          0
+        ],
+        "stop_reason": "mission_sequence_end",
+        "model_kind": null
+      },
+      "raw_path": "data/uav_transport/menagerie_external_lee_v1_rule_reconfigure_seed0_mass034_donor2_route1.pkl",
+      "raw_sha256": "d134f37dcd9a65a04ad5c1f040600067dd231841d7ac8d74bf9a5328fe5e7366",
+      "controller_configuration": {
+        "family": "upstream_lee_position_attitude_shared_payload_allocator",
+        "upstream_commit": "b08d9f3cbcc581d8e7f988cabad22c26d35f4a58",
+        "upstream_controller": "controller_lee.c",
+        "upstream_parameters": {
+          "mass": 0.027000000700354576,
+          "inertia": [
+            2.3950999093358405e-05,
+            2.3950999093358405e-05,
+            3.2347001251764596e-05
+          ],
+          "Kpos_P": [
+            9.0,
+            9.0,
+            9.0
+          ],
+          "Kpos_D": [
+            7.0,
+            7.0,
+            7.0
+          ],
+          "Kpos_I": [
+            5.0,
+            5.0,
+            5.0
+          ],
+          "KR": [
+            0.005499999970197678,
+            0.005499999970197678,
+            0.009999999776482582
+          ],
+          "Komega": [
+            0.0013000000035390258,
+            0.0013000000035390258,
+            0.0020000000949949026
+          ],
+          "KI": [
+            0.012000000104308128,
+            0.017999999225139618,
+            0.014999999664723873
+          ],
+          "control_dt": 0.019999999552965164
+        },
+        "upstream_default_attitude_rate_hz": 500,
+        "executed_control_rate_hz": 50,
+        "shared_allocator": {
+          "payload_kp": 2.5,
+          "payload_kd": 2.5,
+          "payload_ki": 0.12,
+          "integral_limit": 0.35,
+          "tension_thrust_fraction": 0.9,
+          "heading": 0.0
+        },
+        "roles": "Study payload/tension allocation, formation and recovery references; upstream C position/attitude feedback; shared bounded motor mixing",
+        "source_sha256": {
+          "controller_lee.c": "d9dba75f5d3925514a72d55424baa8c97cd8ce0b561a51738ae191cd9f0a0774",
+          "controller_lee.h": "2ec0c7b15d16ab6c52f5db12e2cba6f058e2cb50057262cc638d00fcc7c4bfc8",
+          "stabilizer_types.h": "18bad51e7ebc75717636a87e0abfb9a3e4a56a74614b06ec4ed2d647f7eef61a",
+          "math3d.h": "5ac652863230d3a4397fd6b5f2bc32f0cd9465f0bdf3cbb54cd847405601a801",
+          "imu_types.h": "c2aef811602a33a6df7e9b704155ca830df76a0faf7dc319006a2991c1c0f952",
+          "lighthouse_types.h": "a06eb46a41b1ed8f97adfb1a11d5fdbcff3f8a21c6611a722a424ebf6255f1b3",
+          "LICENSE.txt": "c53a65c2fd561c87eaabf1072ef5dcab8653042bc15308465f52413585eb6271"
+        },
+        "native_build_key": "700862fd5fa41f81da8da5b5e6e396573bb1959a9464484506469f73a4ac33ce"
+      },
+      "wall_seconds": 5.402993272000458
+    }
+  ],
+  "summary": [
+    {
+      "planner": "rule_fixed",
+      "controller_family": "upstream_lee_position_attitude_shared_payload_allocator",
+      "missions": 12,
+      "delivery_completion": 12,
+      "constrained_completion": 0,
+      "mean_mission_seconds": 30.96666666666667,
+      "mean_actuator_work": 0.4931832983293019,
+      "maximum_operation_excursion": 0.2179398224852578,
+      "maximum_donor_tension": 2.1171415714938044,
+      "maximum_rotor_force": 0.11071825798465797,
+      "minimum_uav_separation": 0.3650681392711366,
+      "all_finite": true,
+      "collisions": 0,
+      "warnings": 0,
+      "predictor_evaluations": 0
+    },
+    {
+      "planner": "rule_reconfigure",
+      "controller_family": "upstream_lee_position_attitude_shared_payload_allocator",
+      "missions": 12,
+      "delivery_completion": 12,
+      "constrained_completion": 10,
+      "mean_mission_seconds": 30.853333333333335,
+      "mean_actuator_work": 0.3750426604682091,
+      "maximum_operation_excursion": 0.014770065925028228,
+      "maximum_donor_tension": 0.7065029754562155,
+      "maximum_rotor_force": 0.11053833933074907,
+      "minimum_uav_separation": 0.3234313263158684,
+      "all_finite": true,
+      "collisions": 0,
+      "warnings": 0,
+      "predictor_evaluations": 0
+    }
+  ],
+  "verified_frozen_inputs": true,
+  "wall_seconds": 33.01172721200419
+}

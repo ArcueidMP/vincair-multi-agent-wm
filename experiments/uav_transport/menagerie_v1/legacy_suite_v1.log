@@ -1,0 +1,17 @@
+............................................................s........... [ 26%]
+........................................................................ [ 52%]
+........................................................................ [ 78%]
+................................................s...........             [100%]
+=============================== warnings summary ===============================
+.venv/lib/python3.10/site-packages/_pytest/pathlib.py:95
+  /home/wangyuzhe/Research/multiagentWM/.venv/lib/python3.10/site-packages/_pytest/pathlib.py:95: PytestWarning: (rm_rf) error removing /tmp/pytest-of-wangyuzhe/garbage-55d061ed-94f5-44ff-a306-51797f8e0ed5/test_ensure_profile_writable_r1
+  <class 'OSError'>: [Errno 39] Directory not empty: 'test_ensure_profile_writable_r1'
+    warnings.warn(
+
+.venv/lib/python3.10/site-packages/_pytest/pathlib.py:95
+  /home/wangyuzhe/Research/multiagentWM/.venv/lib/python3.10/site-packages/_pytest/pathlib.py:95: PytestWarning: (rm_rf) error removing /tmp/pytest-of-wangyuzhe/garbage-55d061ed-94f5-44ff-a306-51797f8e0ed5
+  <class 'OSError'>: [Errno 39] Directory not empty: '/tmp/pytest-of-wangyuzhe/garbage-55d061ed-94f5-44ff-a306-51797f8e0ed5'
+    warnings.warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+274 passed, 12 skipped, 2 warnings in 36.22s

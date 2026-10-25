@@ -1,0 +1,80 @@
+{
+  "plant_family": "menagerie_crazyflie_2",
+  "models": {
+    "large/seed0": {
+      "prefix": "data/uav_transport_external/models_menagerie_v1_large_seed0",
+      "weights_sha256": "a54ce11ad984e7843ab74dab056acc98f8a9109b08af50711c693aba7735f84c",
+      "metadata_sha256": "c8a657a241c532e4ca96bf42294ddf48a3e82bd7052e36ca36716feb4390e8be",
+      "parameters": 35976,
+      "margins": [
+        0.05067851595585011,
+        0.40117046344523305
+      ],
+      "margin_method": "Validation-only marginal q95 positive underprediction residual: peak excursion and peak tension"
+    },
+    "large/seed1": {
+      "prefix": "data/uav_transport_external/models_menagerie_v1_large_seed1",
+      "weights_sha256": "d51871fda92486671670e76b5e16fd3869448438ecd9902b9d573a50529f2c86",
+      "metadata_sha256": "36467f7a1a3fc9864bb4cc8ae0088019305f06445f868630fde911a50d2dc239",
+      "parameters": 35976,
+      "margins": [
+        0.030346423836249903,
+        0.3515266012242897
+      ],
+      "margin_method": "Validation-only marginal q95 positive underprediction residual: peak excursion and peak tension"
+    },
+    "large/seed2": {
+      "prefix": "data/uav_transport_external/models_menagerie_v1_large_seed2",
+      "weights_sha256": "79775f27f49557d649c4a236bf91ee4cffa8dacd382f6047ef00c6dca4a14522",
+      "metadata_sha256": "e4e7e7830e0272000639e9b09baf6d0e476e5a6858719a4dcf557740d79ab22a",
+      "parameters": 35976,
+      "margins": [
+        0.05633720759160564,
+        0.3492558405082517
+      ],
+      "margin_method": "Validation-only marginal q95 positive underprediction residual: peak excursion and peak tension"
+    },
+    "small/seed0": {
+      "prefix": "data/uav_transport_external/models_menagerie_v1_small_seed0",
+      "weights_sha256": "306e787b0d0bf3b6de18ff7499d244fdab2fb32abf1ba94bfab1313ef6d5ce86",
+      "metadata_sha256": "935456e370f921d9794016b3394075cf9116bcd9089b580ca7098600470e757a",
+      "parameters": 5928,
+      "margins": [
+        0.046374153683170764,
+        0.4193468916222628
+      ],
+      "margin_method": "Validation-only marginal q95 positive underprediction residual: peak excursion and peak tension"
+    },
+    "small/seed1": {
+      "prefix": "data/uav_transport_external/models_menagerie_v1_small_seed1",
+      "weights_sha256": "2d6d0ca483e62771f600fb35eb471e66e8f77a17b5777ecbd6fabaaf8ae55f34",
+      "metadata_sha256": "4d266e7546d6cee4edd4c41d52755cf40d9e7d35528f13bf42e01019ecf6c2f9",
+      "parameters": 5928,
+      "margins": [
+        0.04987898000696435,
+        0.3305571524608338
+      ],
+      "margin_method": "Validation-only marginal q95 positive underprediction residual: peak excursion and peak tension"
+    },
+    "small/seed2": {
+      "prefix": "data/uav_transport_external/models_menagerie_v1_small_seed2",
+      "weights_sha256": "2975cecda11bf80296a6c8865aea61dee7f8a42b6869193f1ef39a1d8ca0afb0",
+      "metadata_sha256": "9b5dcfcb778c14fffe9140f64e59bd5bca0f0e40627b04bcd381cd122ccf6d5b",
+      "parameters": 5928,
+      "margins": [
+        0.0734381360561098,
+        0.47021209030837924
+      ],
+      "margin_method": "Validation-only marginal q95 positive underprediction residual: peak excursion and peak tension"
+    }
+  },
+  "dataset_path": "data/uav_transport_external/local_menagerie_v1.npz",
+  "dataset_sha256": "8a99a50baefd2f44753769be4ba92445c3db3159b0f4601e34bfe4546467279a",
+  "source_sha256": {
+    "/home/wangyuzhe/Research/multiagentWM/uav_transport/train.py": "96fff21ee4d87bc7a9f7f51c06ca5bc756590f455a38d70427a906bfd7edff2a",
+    "uav_transport/local_model.py": "7156956382a273fa00e53726aaf8eafef0a42119b296fb8563d41961fd120170"
+  },
+  "training_registration_path": "data/uav_transport_external/models_menagerie_v1_registration.json",
+  "training_registration_sha256": "41c27525f9e0cbfe2a661e56bbe00d556a339041e2240014db84cbbc6fb480ea",
+  "model_status": "Allmodelsfrozenbeforecomposedmissionevaluation"
+}

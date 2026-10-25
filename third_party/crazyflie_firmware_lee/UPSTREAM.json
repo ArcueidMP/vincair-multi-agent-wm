@@ -1,0 +1,75 @@
+{
+  "repository": "https://github.com/IMRCLab/crazyflie-firmware",
+  "commit": "b08d9f3cbcc581d8e7f988cabad22c26d35f4a58",
+  "pin_source": "https://github.com/IMRCLab/coltrans-planning/tree/146b205e33e20ac26975993d32ec89b140754550/deps/crazyflie-firmware",
+  "controller": "controller_lee.c",
+  "algorithm": "Upstream geometric position and attitude controller",
+  "files": [
+    {
+      "path": "controller_lee.c",
+      "upstream_path": "src/modules/src/controller_lee.c",
+      "git_blob_sha": "a92036bed746a146125abaacab45e6e56575c2bd",
+      "sha256": "d9dba75f5d3925514a72d55424baa8c97cd8ce0b561a51738ae191cd9f0a0774",
+      "bytes": 12520,
+      "modified": false,
+      "license_notice": "MIT (file-level notice retained)"
+    },
+    {
+      "path": "controller_lee.h",
+      "upstream_path": "src/modules/interface/controller_lee.h",
+      "git_blob_sha": "d61bd5040989dae4c64f0533d2d586b961851bca",
+      "sha256": "2ec0c7b15d16ab6c52f5db12e2cba6f058e2cb50057262cc638d00fcc7c4bfc8",
+      "bytes": 2651,
+      "modified": false,
+      "license_notice": "GPL-3.0 (file/repository notice retained)"
+    },
+    {
+      "path": "stabilizer_types.h",
+      "upstream_path": "src/modules/interface/stabilizer_types.h",
+      "git_blob_sha": "0bf406eeada3d1e85ece8a9f2be1a53cc4d4d587",
+      "sha256": "18bad51e7ebc75717636a87e0abfb9a3e4a56a74614b06ec4ed2d647f7eef61a",
+      "bytes": 9710,
+      "modified": false,
+      "license_notice": "GPL-3.0 (file/repository notice retained)"
+    },
+    {
+      "path": "math3d.h",
+      "upstream_path": "src/modules/interface/math3d.h",
+      "git_blob_sha": "7f732d606e1aa694f4e994ddae276ba6f8e28ac7",
+      "sha256": "5ac652863230d3a4397fd6b5f2bc32f0cd9465f0bdf3cbb54cd847405601a801",
+      "bytes": 36633,
+      "modified": false,
+      "license_notice": "MIT (file-level notice retained)"
+    },
+    {
+      "path": "imu_types.h",
+      "upstream_path": "src/hal/interface/imu_types.h",
+      "git_blob_sha": "f027b7b0cb2198105fe1ab296520195bfd493d75",
+      "sha256": "c2aef811602a33a6df7e9b704155ca830df76a0faf7dc319006a2991c1c0f952",
+      "bytes": 1559,
+      "modified": false,
+      "license_notice": "GPL-3.0 (file/repository notice retained)"
+    },
+    {
+      "path": "lighthouse_types.h",
+      "upstream_path": "src/utils/interface/lighthouse/lighthouse_types.h",
+      "git_blob_sha": "f9df5267d5702970d2a212c1bf201a3fdad85fd7",
+      "sha256": "a06eb46a41b1ed8f97adfb1a11d5fdbcff3f8a21c6611a722a424ebf6255f1b3",
+      "bytes": 976,
+      "modified": false,
+      "license_notice": "No file-level license header; repository GPL-3.0 license retained"
+    },
+    {
+      "path": "LICENSE.txt",
+      "upstream_path": "LICENSE.txt",
+      "git_blob_sha": "20d40b6bceca3a6c0237d7455ebf1820aeff3680",
+      "sha256": "c53a65c2fd561c87eaabf1072ef5dcab8653042bc15308465f52413585eb6271",
+      "bytes": 35146,
+      "modified": false,
+      "license_notice": "GPL-3.0 (file/repository notice retained)"
+    }
+  ],
+  "licenses": "MIT notice in controller_lee.c; GPL-3.0 notices in associated firmware headers; original notices and LICENSE.txt retained.",
+  "modifications": "Official file bytes are unchanged. The local wrapper configures the scheduler frequency, supplies physical mass/inertia, and marshals inputs/outputs.",
+  "bundle_license_note": "This native bundle is not labeled MIT-only: GPL-3.0 firmware headers and the full upstream GPL license accompany the MIT-noticed controller and math header."
+}

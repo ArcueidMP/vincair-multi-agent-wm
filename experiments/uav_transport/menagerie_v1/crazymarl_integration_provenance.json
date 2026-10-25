@@ -1,0 +1,31 @@
+{
+  "source_sha256": {
+    "scripts/setup_crazymarl.py": "6f3cdce2b43e21508ec18732faec85c320174d77554dbe18ecc5f21654b9e5e4",
+    "requirements-crazymarl.txt": "3eb58ff293a9187a957fcf9ec80a0a7cc5b75bbc1a2853f02cd28ecac1c3940f",
+    "requirements-crazymarl-gpu.txt": "cb8c480b50923c8e42da74604fc39bbc691b4b3ab934c5edaa87a9ebd708be8a",
+    "uav_transport/crazymarl_baseline.py": "a0e93c3073022ed68066f5b010a781f18d65434cd34c656ac43d00ab44de560c",
+    "tests/test_crazymarl_baseline.py": "52ed7730a3735cd0634afa33a29444425a5409b12cc01da21ec06a7d940842fc"
+  },
+  "outputs": {
+    "cpu": {
+      "report_path": "data/uav_transport_external/crazymarl_ippo_cpu_smoke_v3.json",
+      "report_sha256": "4efa58a9a4cda38150024fa580f27d9435d0a790ea2b72787bd283bc12cf42e1",
+      "optimizer_steps": 4,
+      "checkpoint_reload_exact": true,
+      "training_status": "smoke_unconverged",
+      "backend": "cpu"
+    },
+    "gpu": {
+      "report_path": "data/uav_transport_external/crazymarl_ippo_gpu_smoke_v3.json",
+      "report_sha256": "4181d9565e2c4cf4a1a0f38416d2f7c72eb0d1bb1139f21d0eb60946490dea90",
+      "optimizer_steps": 4,
+      "checkpoint_reload_exact": true,
+      "training_status": "smoke_unconverged",
+      "backend": "gpu"
+    }
+  },
+  "availability_report": {
+    "path": "data/uav_transport_external/crazymarl_checkpoint_availability.json",
+    "sha256": "f0f99804dc1572147c82537d6588966418409e55ec9f959d540a366c121d84ed"
+  }
+}

@@ -23,6 +23,7 @@ import numpy as np
 from .collect import plain
 from .evaluation import _SubstepObserver, _stack_records
 from .plant import TransportConfig, TransportEnv
+from .environment import config_from_dict, make_env, family, source_paths
 from .snapshot import integration_state, physical_state, restore
 
 
@@ -190,9 +191,9 @@ def trajectory_errors(source,replayed,tolerances=TOLERANCES):
 
 def replay_mission(result,dt=None):
     base,count=validate_clock(result)
-    config=TransportConfig(**result["plant_config"])
+    config=config_from_dict(result["plant_config"])
     if dt is not None:config=replace(config,dt=float(dt))
-    env=TransportEnv(config)
+    env=make_env(config)
     restore(env,result["initial_snapshot"],allow_timestep_change=dt is not None)
     trace=result["trace"]
     states=[physical_state(env)];observations=[_compact_observation(env.observe())]
@@ -279,6 +280,7 @@ def main():
     args.out.parent.mkdir(parents=True,exist_ok=True)
     sources={str(p):sha(p) for p in [Path(__file__)]+[Path("uav_transport")/(n+".py")
         for n in ("plant","snapshot","evaluation","control","collect")]}
+    sources.update({str(p):sha(p) for p in source_paths(family(manifest))})
     inputs={entry["raw_path"]:entry["raw_sha256"] for entry in entries}
     inputs[str(args.manifest)]=sha(args.manifest)
     for path,digest in inputs.items():

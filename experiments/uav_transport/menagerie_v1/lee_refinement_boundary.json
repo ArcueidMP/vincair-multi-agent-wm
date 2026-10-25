@@ -1,0 +1,298 @@
+{
+  "cases": [
+    {
+      "identity": {
+        "case_id": "mass034_donor0_route0",
+        "planner": "rule_reconfigure",
+        "model_seed": 0,
+        "payload_mass": 0.034,
+        "donor": 0,
+        "route_template": 0
+      },
+      "source_path": "data/uav_transport/menagerie_external_lee_v1_rule_reconfigure_seed0_mass034_donor0_route0.pkl",
+      "source_sha256": "47fcc70aa97370e4025146d1b4c52b6aac7c34680677cb8e68c225c2ed808779",
+      "nominal_to_1ms": {
+        "maximum_body_position_m": 0.0022097544888933407,
+        "maximum_payload_position_m": 0.000832851193419248,
+        "maximum_uav_position_m": 0.0022097544888933407,
+        "maximum_body_attitude_rad": 0.00043366258663148674,
+        "per_body_position_max": [
+          0.000832851193419248,
+          0.0008585952568664533,
+          0.0022097544888933407,
+          0.0009317328157145637
+        ],
+        "per_body_attitude_max": [
+          4.337122512127343e-15,
+          0.00043366258663148674,
+          0.0004221395971519091,
+          0.0002309909898560165
+        ],
+        "position_pass": false,
+        "attitude_pass": true,
+        "passes": false
+      },
+      "nominal_to_0_5ms": {
+        "maximum_body_position_m": 0.0006819514973420301,
+        "maximum_payload_position_m": 0.0006547947226592919,
+        "maximum_uav_position_m": 0.0006819514973420301,
+        "maximum_body_attitude_rad": 0.0006514248001574616,
+        "per_body_position_max": [
+          0.0006547947226592919,
+          0.0006511652616371332,
+          0.0006819514973420301,
+          0.0006652449122910142
+        ],
+        "per_body_attitude_max": [
+          5.1606353216254726e-15,
+          0.0006514248001574616,
+          0.0006339813022613278,
+          0.00034689631961461393
+        ],
+        "position_pass": true,
+        "attitude_pass": true,
+        "passes": true
+      },
+      "one_ms_to_half_ms": {
+        "maximum_body_position_m": 0.0026941323174048838,
+        "maximum_payload_position_m": 0.0008704512894192966,
+        "maximum_uav_position_m": 0.0026941323174048838,
+        "maximum_body_attitude_rad": 0.00021776221412303978,
+        "per_body_position_max": [
+          0.0008704512894192966,
+          0.0007799515176302331,
+          0.0026941323174048838,
+          0.0008048496403660515
+        ],
+        "per_body_attitude_max": [
+          8.24795937353454e-16,
+          0.00021776221412303978,
+          0.000211841707771384,
+          0.0001159053298353654
+        ],
+        "position_pass": false,
+        "attitude_pass": true,
+        "passes": false
+      },
+      "one_ms_score": {
+        "delivery_completion": true,
+        "constrained_completion": true,
+        "waypoint_successes": [
+          true,
+          true,
+          true
+        ],
+        "option_completions": [
+          true,
+          true
+        ],
+        "actual_slack_successes": [
+          true,
+          true
+        ],
+        "finite": true,
+        "collision": false,
+        "warning_count": 0,
+        "legs": [
+          {
+            "name": "leg_1",
+            "present": true,
+            "success": true,
+            "begin_step": 100,
+            "end_step": 286,
+            "required_dwell_steps": 15,
+            "qualifying_states": 15,
+            "reference_finished": true,
+            "final_position_error": 0.015259066690561224,
+            "final_speed": 0.015467268113098306
+          },
+          {
+            "name": "leg_2",
+            "present": true,
+            "success": true,
+            "begin_step": 736,
+            "end_step": 927,
+            "required_dwell_steps": 15,
+            "qualifying_states": 15,
+            "reference_finished": true,
+            "final_position_error": 0.01473312674470687,
+            "final_speed": 0.01573663775964051
+          },
+          {
+            "name": "leg_3",
+            "present": true,
+            "success": true,
+            "begin_step": 1377,
+            "end_step": 1550,
+            "required_dwell_steps": 15,
+            "qualifying_states": 15,
+            "reference_finished": true,
+            "final_position_error": 0.015665397222690527,
+            "final_speed": 0.013559816866421135
+          }
+        ],
+        "operations": [
+          {
+            "name": "operation_1",
+            "present": true,
+            "completion": true,
+            "slack_success": true,
+            "protocol_finished": true,
+            "original_protocol_failed": false,
+            "original_failure_reason": null,
+            "verified_final_dwell": true,
+            "begin_step": 286,
+            "end_step": 736,
+            "donor": 0,
+            "required_dwell_steps": 15,
+            "peak_payload_excursion": 0.014850687091702553,
+            "peak_donor_tension": 0.33829920596812263,
+            "donor_slack_seconds": 2.735,
+            "finite": true,
+            "collision": false,
+            "excursion_within_limit": true,
+            "tension_within_limit": true
+          },
+          {
+            "name": "operation_2",
+            "present": true,
+            "completion": true,
+            "slack_success": true,
+            "protocol_finished": true,
+            "original_protocol_failed": false,
+            "original_failure_reason": null,
+            "verified_final_dwell": true,
+            "begin_step": 927,
+            "end_step": 1377,
+            "donor": 1,
+            "required_dwell_steps": 15,
+            "peak_payload_excursion": 0.013031444790410305,
+            "peak_donor_tension": 0.5920974674972357,
+            "donor_slack_seconds": 2.6550000000000002,
+            "finite": true,
+            "collision": false,
+            "excursion_within_limit": true,
+            "tension_within_limit": true
+          }
+        ],
+        "control_steps": 1550,
+        "physics_steps": 31000,
+        "total_seconds": 31.0,
+        "maximum_uav_tilt": 0.18153828809623568,
+        "minimum_body_height": 1.1460330163590449,
+        "minimum_uav_separation": 0.3284320867171192
+      },
+      "half_ms_score": {
+        "delivery_completion": true,
+        "constrained_completion": true,
+        "waypoint_successes": [
+          true,
+          true,
+          true
+        ],
+        "option_completions": [
+          true,
+          true
+        ],
+        "actual_slack_successes": [
+          true,
+          true
+        ],
+        "finite": true,
+        "collision": false,
+        "warning_count": 0,
+        "legs": [
+          {
+            "name": "leg_1",
+            "present": true,
+            "success": true,
+            "begin_step": 100,
+            "end_step": 286,
+            "required_dwell_steps": 15,
+            "qualifying_states": 15,
+            "reference_finished": true,
+            "final_position_error": 0.015267287266224436,
+            "final_speed": 0.015469653165227465
+          },
+          {
+            "name": "leg_2",
+            "present": true,
+            "success": true,
+            "begin_step": 736,
+            "end_step": 927,
+            "required_dwell_steps": 15,
+            "qualifying_states": 15,
+            "reference_finished": true,
+            "final_position_error": 0.014751443347299237,
+            "final_speed": 0.0156593511884522
+          },
+          {
+            "name": "leg_3",
+            "present": true,
+            "success": true,
+            "begin_step": 1377,
+            "end_step": 1550,
+            "required_dwell_steps": 15,
+            "qualifying_states": 15,
+            "reference_finished": true,
+            "final_position_error": 0.015748391586045362,
+            "final_speed": 0.013746773121332332
+          }
+        ],
+        "operations": [
+          {
+            "name": "operation_1",
+            "present": true,
+            "completion": true,
+            "slack_success": true,
+            "protocol_finished": true,
+            "original_protocol_failed": false,
+            "original_failure_reason": null,
+            "verified_final_dwell": true,
+            "begin_step": 286,
+            "end_step": 736,
+            "donor": 0,
+            "required_dwell_steps": 15,
+            "peak_payload_excursion": 0.014768606620481793,
+            "peak_donor_tension": 0.3380929498313423,
+            "donor_slack_seconds": 2.735,
+            "finite": true,
+            "collision": false,
+            "excursion_within_limit": true,
+            "tension_within_limit": true
+          },
+          {
+            "name": "operation_2",
+            "present": true,
+            "completion": true,
+            "slack_success": true,
+            "protocol_finished": true,
+            "original_protocol_failed": false,
+            "original_failure_reason": null,
+            "verified_final_dwell": true,
+            "begin_step": 927,
+            "end_step": 1377,
+            "donor": 1,
+            "required_dwell_steps": 15,
+            "peak_payload_excursion": 0.013761562580096877,
+            "peak_donor_tension": 0.5524111768940152,
+            "donor_slack_seconds": 2.677,
+            "finite": true,
+            "collision": false,
+            "excursion_within_limit": true,
+            "tension_within_limit": true
+          }
+        ],
+        "control_steps": 1550,
+        "physics_steps": 62000,
+        "total_seconds": 31.0,
+        "maximum_uav_tilt": 0.18153834073457756,
+        "minimum_body_height": 1.1459722991140293,
+        "minimum_uav_separation": 0.3284303855502711
+      },
+      "half_ms_score_changes": {}
+    }
+  ],
+  "source_replay_report": "data/uav_transport_external/mission_external_lee_v1_replay.json",
+  "note": "Additional fixed-action refinement of the case exceeding the registered 2mm nominal-to-fine position threshold; original failed check is retained."
+}

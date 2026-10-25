@@ -1,0 +1,50 @@
+{
+  "plant_family": "menagerie_crazyflie_2",
+  "dataset_path": "data/uav_transport_external/local_menagerie_v1.npz",
+  "dataset_sha256": "8a99a50baefd2f44753769be4ba92445c3db3159b0f4601e34bfe4546467279a",
+  "source_sha256": {
+    "/home/wangyuzhe/Research/multiagentWM/uav_transport/train.py": "96fff21ee4d87bc7a9f7f51c06ca5bc756590f455a38d70427a906bfd7edff2a",
+    "uav_transport/local_model.py": "7156956382a273fa00e53726aaf8eafef0a42119b296fb8563d41961fd120170"
+  },
+  "schedule": [
+    {
+      "name": "small",
+      "width": 32,
+      "seed": 0,
+      "steps": 1500
+    },
+    {
+      "name": "small",
+      "width": 32,
+      "seed": 1,
+      "steps": 1500
+    },
+    {
+      "name": "small",
+      "width": 32,
+      "seed": 2,
+      "steps": 1500
+    },
+    {
+      "name": "large",
+      "width": 128,
+      "seed": 0,
+      "steps": 1500
+    },
+    {
+      "name": "large",
+      "width": 128,
+      "seed": 1,
+      "steps": 1500
+    },
+    {
+      "name": "large",
+      "width": 128,
+      "seed": 2,
+      "steps": 1500
+    }
+  ],
+  "checkpoint_selection": "Validation only; all fit seeds retained",
+  "constraint_margins": "Validation-only q95 positive underprediction residual, first two physical targets",
+  "training_scope": "Independent local recovery operations; all complete missions remain outside model fitting"
+}

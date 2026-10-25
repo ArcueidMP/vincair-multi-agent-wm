@@ -1,0 +1,130 @@
+{
+  "mode": "replay",
+  "package_path": "repo/uav_transport",
+  "package_import_is_archived": true,
+  "model_family": "self-built MuJoCo quadrotor baseline v2",
+  "case_id": "mass026_donor0_route0",
+  "original_raw_reference": "data/uav_transport/mission_v2_wm_small_seed0_mass026_donor0_route0.pkl",
+  "original_raw_sha256": "0331ff3d329d888fe3489e8ba80520767609164854e2e693cf3b31308e2f8766",
+  "versions": {
+    "python": "3.10.21",
+    "mujoco": "3.3.0",
+    "numpy": "2.2.6"
+  },
+  "wall_seconds": 4.0584408750000875,
+  "checks": {
+    "physical_states_bitwise": true,
+    "integration_states_bitwise": true,
+    "scores_reproduced": true,
+    "score": {
+      "delivery_completion": true,
+      "constrained_completion": true,
+      "waypoint_successes": [
+        true,
+        true,
+        true
+      ],
+      "option_completions": [
+        true,
+        true
+      ],
+      "actual_slack_successes": [
+        true,
+        true
+      ],
+      "finite": true,
+      "collision": false,
+      "warning_count": 0,
+      "legs": [
+        {
+          "name": "leg_1",
+          "present": true,
+          "success": true,
+          "begin_step": 100,
+          "end_step": 281,
+          "required_dwell_steps": 15,
+          "qualifying_states": 15,
+          "reference_finished": true,
+          "final_position_error": 0.013411091382480662,
+          "final_speed": 0.022090621875573282
+        },
+        {
+          "name": "leg_2",
+          "present": true,
+          "success": true,
+          "begin_step": 731,
+          "end_step": 917,
+          "required_dwell_steps": 15,
+          "qualifying_states": 15,
+          "reference_finished": true,
+          "final_position_error": 0.012551929957072414,
+          "final_speed": 0.02216197664741514
+        },
+        {
+          "name": "leg_3",
+          "present": true,
+          "success": true,
+          "begin_step": 1367,
+          "end_step": 1533,
+          "required_dwell_steps": 15,
+          "qualifying_states": 15,
+          "reference_finished": true,
+          "final_position_error": 0.016301258816916638,
+          "final_speed": 0.0184980137834815
+        }
+      ],
+      "operations": [
+        {
+          "name": "operation_1",
+          "present": true,
+          "completion": true,
+          "slack_success": true,
+          "protocol_finished": true,
+          "original_protocol_failed": false,
+          "original_failure_reason": null,
+          "verified_final_dwell": true,
+          "begin_step": 281,
+          "end_step": 731,
+          "donor": 0,
+          "required_dwell_steps": 15,
+          "peak_payload_excursion": 0.013659802230940118,
+          "peak_donor_tension": 0.37440528868180656,
+          "donor_slack_seconds": 2.868,
+          "finite": true,
+          "collision": false,
+          "excursion_within_limit": true,
+          "tension_within_limit": true
+        },
+        {
+          "name": "operation_2",
+          "present": true,
+          "completion": true,
+          "slack_success": true,
+          "protocol_finished": true,
+          "original_protocol_failed": false,
+          "original_failure_reason": null,
+          "verified_final_dwell": true,
+          "begin_step": 917,
+          "end_step": 1367,
+          "donor": 1,
+          "required_dwell_steps": 15,
+          "peak_payload_excursion": 0.013176129329766537,
+          "peak_donor_tension": 0.3680905713648158,
+          "donor_slack_seconds": 2.876,
+          "finite": true,
+          "collision": false,
+          "excursion_within_limit": true,
+          "tension_within_limit": true
+        }
+      ],
+      "control_steps": 1533,
+      "physics_steps": 15330,
+      "total_seconds": 30.66,
+      "maximum_uav_tilt": 0.12831580342251725,
+      "minimum_body_height": 1.1460924766960705,
+      "minimum_uav_separation": 0.3361601719027238
+    },
+    "control_steps": 1533,
+    "physics_steps": 15330
+  }
+}

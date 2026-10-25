@@ -15,6 +15,7 @@ import time
 import numpy as np
 
 from .plant import TransportConfig, TransportEnv
+from .environment import FAMILIES, LEGACY, make_config, make_env, source_paths
 from .control import TransportController, RecoveryConfig, smooth_transition
 from .evaluation import fork, run_option
 from .local_model import features, FEATURE_NAMES, TARGET_NAMES
@@ -44,11 +45,11 @@ def candidate_bank(depth, *, expanded=True, holdout=False):
         for mode,a,b in itertools.product((False,True) if expanded else (False,),rearrange,retension)]
 
 
-def contexts(seed=20261025, counts=(24,8,12)):
+def contexts(seed=20261025, counts=(24,8,12), *, plant_family=LEGACY):
     rng=np.random.default_rng(seed);out=[]
     for split,count,offset in zip(("train","val","test"),counts,(0,100,200)):
         for index in range(count):
-            cfg=TransportConfig(payload_mass=float(rng.uniform(.024,.036)),
+            cfg=make_config(plant_family, payload_mass=float(rng.uniform(.024,.036)),
                 formation_radius=float(rng.uniform(.22,.27)),formation_yaw=float(rng.uniform(-np.pi,np.pi)),
                 payload_height=float(rng.uniform(1.05,1.35)),initial_velocity=tuple(rng.uniform(-.03,.03,3)))
             out.append(dict(context_id=offset+index,split=split,plant_config=asdict(cfg),donor=index%3,
@@ -59,7 +60,7 @@ def contexts(seed=20261025, counts=(24,8,12)):
 
 
 def prepare_context(spec):
-    env=TransportEnv(TransportConfig(**spec["plant_config"]));controller=TransportController(env.config)
+    env=make_env(spec["plant_config"]);controller=TransportController(env.config)
     obs=env.observe();origin=obs["payload_pos"].copy();states=[physical_state(env)];actions=[];forces=[]
     steps=round(2./env.config.control_dt)
     for step in range(steps):
@@ -103,14 +104,16 @@ def main():
     parser.add_argument("--workers",type=int,default=8)
     parser.add_argument("--counts",type=int,nargs=3,default=[24,8,12])
     parser.add_argument("--seed",type=int,default=20261025)
+    parser.add_argument("--plant",choices=FAMILIES,default=LEGACY)
     args=parser.parse_args()
     if not 1<=args.workers<=8 or min(args.counts)<1:raise ValueError("Use1..8workers andpositive split counts")
     args.out.parent.mkdir(parents=True,exist_ok=True)
     if args.out.with_suffix(".npz").exists() or args.out.with_suffix(".json").exists():raise FileExistsError(args.out)
-    specs=contexts(args.seed,tuple(args.counts))
+    specs=contexts(args.seed,tuple(args.counts),plant_family=args.plant)
     paths=[Path(__file__)]+[Path("uav_transport")/(name+".py") for name in ("plant","snapshot","control","evaluation","local_model")]
+    paths += source_paths(args.plant)
     hashes={str(p):sha(p) for p in paths}
-    registration=dict(contexts=specs,source_sha256=hashes,feature_names=FEATURE_NAMES,target_names=TARGET_NAMES,
+    registration=dict(plant_family=args.plant,contexts=specs,source_sha256=hashes,feature_names=FEATURE_NAMES,target_names=TARGET_NAMES,
         max_option_seconds=MAX_OPTION_SECONDS,seed=args.seed,controller_gains="fixed defaults; calibrated masses supplied to every controller and predictor",
         supervision="Complete local recovery options after independent physical preludes; no composed mission trajectories or mission goals",
         candidates=dict(rearrange_seconds=REARRANGE,retension_seconds=RETENSION,reconfigure=[False,True]),
@@ -132,6 +135,7 @@ def main():
                 arrays.setdefault(key+"_"+split,[]).append(value)
             rows.append(row)
     arrays={key:np.asarray(value) for key,value in arrays.items()}
+    arrays["plant_family"]=np.asarray(args.plant)
     np.savez_compressed(args.out.with_suffix(".npz"),**arrays)
     for path,digest in hashes.items():
         if sha(path)!=digest:raise AssertionError("Source changed during collection: "+path)

@@ -14,6 +14,7 @@ import numpy as np
 
 from .control import RecoveryConfig, RecoveryProtocol, TransportController
 from .plant import TransportConfig, TransportEnv
+from .environment import config_from_dict, make_env
 from .snapshot import capture, restore, integration_state, physical_state
 
 
@@ -234,9 +235,9 @@ def replay_option(result, dt=None):
     trace=result["trace"]
     if trace is None:
         raise ValueError("Fixed-action replay requires a recorded option")
-    cfg=TransportConfig(**result["plant_config"])
+    cfg=config_from_dict(result["plant_config"])
     if dt is not None:cfg=replace(cfg,dt=float(dt))
-    env=TransportEnv(cfg)
+    env=make_env(cfg)
     restore(env,result["start_snapshot"],allow_timestep_change=dt is not None)
     resources_before=deepcopy(env.metrics)
     initial=env.observe();states=[physical_state(env)];integrations=[integration_state(env)]

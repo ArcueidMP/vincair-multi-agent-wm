@@ -1,0 +1,48 @@
+{
+  "data_path": "data/uav_transport/local_v1.npz",
+  "data_sha256": "dc7c1a1f34ea3da551936c6d86625b9a6563d7468921c95ac0fbfd6c6d4e05b0",
+  "data_report_sha256": "0f0e7405cd1ace87b2cf460cf13706bc1f7f56b2ddf3ebebfd2606a74c80a0dc",
+  "source_sha256": {
+    "uav_transport/local_model.py": "0c77cd14cd86ebb29366db5421453544f157632ec7118398eb99d9846193287b"
+  },
+  "models": [
+    {
+      "name": "small",
+      "width": 32,
+      "seed": 0,
+      "steps": 1500
+    },
+    {
+      "name": "small",
+      "width": 32,
+      "seed": 1,
+      "steps": 1500
+    },
+    {
+      "name": "small",
+      "width": 32,
+      "seed": 2,
+      "steps": 1500
+    },
+    {
+      "name": "large",
+      "width": 128,
+      "seed": 0,
+      "steps": 1500
+    },
+    {
+      "name": "large",
+      "width": 128,
+      "seed": 1,
+      "steps": 1500
+    },
+    {
+      "name": "large",
+      "width": 128,
+      "seed": 2,
+      "steps": 1500
+    }
+  ],
+  "selection": "Validationonly; allthreefitseedsreported; no composed-missionlabels",
+  "constraint_margins": "Validation-only 95th quantile of positive underprediction residual for peak excursion and peak donor tension"
+}

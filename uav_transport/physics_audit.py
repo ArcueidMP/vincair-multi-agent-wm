@@ -24,6 +24,7 @@ import numpy as np
 from .control import RecoveryConfig, TransportController
 from .evaluation import fork, replay_option, run_option
 from .plant import TransportConfig, TransportEnv
+from .environment import FAMILIES, LEGACY, make_config, make_env, source_paths
 from .snapshot import capture, integration_state, physical_state
 
 
@@ -122,14 +123,14 @@ def write_pickle(path,value):
     return dict(path=str(path),sha256=sha(path))
 
 
-def worker(case,output,hashes):
+def worker(case,output,hashes,plant_family=LEGACY):
     for path,digest in hashes.items():
         if sha(path)!=digest:raise AssertionError("Registered source changed before simulation: "+path)
     started=time.perf_counter()
     prefix=Path(f"{output}_case{case['case_id']:02d}")
     report_path=prefix.with_suffix(".json")
     if report_path.exists():raise FileExistsError("Preserve existing physical cases")
-    env=TransportEnv(TransportConfig(payload_mass=case["payload_mass"],formation_yaw=case["formation_yaw"]))
+    env=make_env(make_config(plant_family,payload_mass=case["payload_mass"],formation_yaw=case["formation_yaw"]))
     controller=TransportController(env.config)
     goal=env.observe()["payload_pos"].copy()
     prelude=dict(start_snapshot=capture(env),start_controller_memory=controller.capture_memory(),
@@ -180,13 +181,15 @@ def main():
     parser.add_argument("--output",type=Path,default=Path("data/uav_transport/physics_v1"))
     parser.add_argument("--workers",type=int,default=4)
     parser.add_argument("--register-only",action="store_true")
+    parser.add_argument("--plant",choices=FAMILIES,default=LEGACY)
     args=parser.parse_args()
     if not 1<=args.workers<=4:raise ValueError("Use one through four independent workers")
     args.output.parent.mkdir(parents=True,exist_ok=True)
     paths=[Path(__file__)]+[Path("uav_transport")/(x+".py") for x in ("plant","control","snapshot","evaluation")]
+    paths += source_paths(args.plant)
     hashes={str(path):sha(path) for path in paths}
-    declaration=dict(source_sha256=hashes,cases=case_matrix(),arms=ARMS,
-        plant_config=asdict(TransportConfig()),recovery_config=asdict(RecoveryConfig()),
+    declaration=dict(plant_family=args.plant,source_sha256=hashes,cases=case_matrix(),arms=ARMS,
+        plant_config=asdict(make_config(args.plant)),recovery_config=asdict(RecoveryConfig()),
         physical_model="Three free rigid quadrotors with a common central payload attachment in 3D",
         prelude_seconds=2.,maximum_option_seconds=18.,nominal_dt=.002,replay_dt=[.002,.001,.0005],
         control_dt=.02,tolerances=TOLERANCES,comparisons="Both original support geometry and physically reconfigured geometry use the full frozen feedback controller.",
@@ -201,7 +204,7 @@ def main():
     if args.output.with_suffix(".json").exists():raise FileExistsError("Preserve completed physical audit")
     started=time.perf_counter();completed=[]
     with ProcessPoolExecutor(max_workers=args.workers,mp_context=multiprocessing.get_context("spawn")) as pool:
-        futures=[pool.submit(worker,case,args.output,hashes) for case in case_matrix()]
+        futures=[pool.submit(worker,case,args.output,hashes,args.plant) for case in case_matrix()]
         for future in as_completed(futures):
             path=Path(future.result());part=json.loads(path.read_text())
             completed.append(dict(path=str(path),sha256=sha(path),**part))

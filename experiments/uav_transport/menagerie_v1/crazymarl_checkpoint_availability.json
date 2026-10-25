@@ -1,0 +1,56 @@
+{
+  "checked_date": "2026-10-25",
+  "repository": "https://github.com/IMRCLab/CrazyMARL",
+  "commit": "fca7b6e05f3b5e816be7c982c91d69eb92925f91",
+  "github_releases": [],
+  "tracked_checkpoint_extensions_found": [],
+  "release_issue": {
+    "url": "https://github.com/IMRCLab/CrazyMARL/issues/1",
+    "title": "Release CrazyMARL policies on Hugging Face",
+    "comments": 0
+  },
+  "hugging_face_model_searches": {
+    "CrazyMARL": [],
+    "viktorlorentz": []
+  },
+  "workflow_runs": [
+    {
+      "id": 26716697194,
+      "name": "pages build and deployment",
+      "branch": "page",
+      "url": "https://github.com/IMRCLab/CrazyMARL/actions/runs/26716697194",
+      "artifact_count": 0,
+      "artifacts": []
+    },
+    {
+      "id": 26716102478,
+      "name": "pages build and deployment",
+      "branch": "page",
+      "url": "https://github.com/IMRCLab/CrazyMARL/actions/runs/26716102478",
+      "artifact_count": 0,
+      "artifacts": []
+    },
+    {
+      "id": 22689991038,
+      "name": "pages build and deployment",
+      "branch": "page",
+      "url": "https://github.com/IMRCLab/CrazyMARL/actions/runs/22689991038",
+      "artifact_count": 0,
+      "artifacts": []
+    },
+    {
+      "id": 22689903427,
+      "name": "pages build and deployment",
+      "branch": "page",
+      "url": "https://github.com/IMRCLab/CrazyMARL/actions/runs/22689903427",
+      "artifact_count": 0,
+      "artifacts": []
+    }
+  ],
+  "conclusion": "No trained checkpoint was found in the pinned source tree, GitHub Releases, listed workflow artifacts, or the two named Hugging Face searches. Upstream training code is available; local short-run checkpoints must be labeled smoke/unconverged.",
+  "page_branch_checkpoint_candidates": [],
+  "checked_git_branches": [
+    "main",
+    "page"
+  ]
+}

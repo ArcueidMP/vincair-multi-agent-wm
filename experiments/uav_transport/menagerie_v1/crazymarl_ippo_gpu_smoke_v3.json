@@ -1,0 +1,222 @@
+{
+  "kind": "official_upstream_ippo_training_smoke",
+  "training_status": "smoke_unconverged",
+  "performance_baseline_ready": false,
+  "upstream": {
+    "url": "https://github.com/IMRCLab/CrazyMARL.git",
+    "commit": "fca7b6e05f3b5e816be7c982c91d69eb92925f91",
+    "checkout": "/home/wangyuzhe/Research/multiagentWM/data/external/CrazyMARL",
+    "license": "Apache-2.0",
+    "core_source_sha256": {
+      "crazymarl/envs/multi_quad_env.py": "e27b15b49b4a05e8af4c7523258180f89e41f84f147a9b63f821ba2bcf33675d",
+      "crazymarl/builders/quad_env_builder.py": "6cf9dd9bfb856309d606191aed7306ac92e11b8fd9b89571674369f9cfc4d823",
+      "crazymarl/observations/multi_quad_observation.py": "75b5b805a6a2ccc435a47a27e0d394af854285d21b7828dd99ed04f676e5c6ba",
+      "crazymarl/rewards/multi_quad_reward.py": "a63b796c60bb88306b67a4e517f1f7146c12044005ab042bffb7fb5b70680837",
+      "crazymarl/utils/multi_quad_sampling.py": "1e7d2adf33148e39acf91c9de7170d54b5db5b34028d9e7134f2fd623a6faee1",
+      "crazymarl/utils/multi_quad_utils.py": "df3d1d7a089f6ef8f296d9c8bfbd1821762ea0c132691eb432dc2e6f488ed56b",
+      "jaxmarl/environments/mabrax/mabrax_env.py": "3075cd15b80c68c283572ce0c563d52fe3fbbf7a6d4bcf926cd64d70d22683dc",
+      "baselines/IPPO/ippo_ff_mabrax.py": "f6817ed6fe385049a11b9ec493e9c33b6872b924b050acf279339ebbf36dfcec",
+      "crazymarl/configs/defaults/training.yaml": "ae71057950f283246a2ae35c38aa94b1ddd8613e173af09adb24261007e33c17",
+      "crazymarl/train/configs/three_quad.yaml": "eda2909f98a2dd0ccc5b267dc3746ffcca34882d0f7f1f529a5cab8ec2e86f76",
+      "LICENSE": "194e94abef030f092fde5f16e9966ba07f1c83455467a7f2cf9f9282335288c4"
+    },
+    "tracked_source_unchanged": true,
+    "tracked_checkpoints": [],
+    "checkpoint_release_issue": "https://github.com/IMRCLab/CrazyMARL/issues/1"
+  },
+  "adapter": {
+    "source_sha256": "f6817ed6fe385049a11b9ec493e9c33b6872b924b050acf279339ebbf36dfcec",
+    "omitted_unused_import": "from jax2onnx import to_onnx, onnx_function",
+    "omitted_line": 28,
+    "algorithm_bodies_sha256": {
+      "EarlyTermination": "6deff59003eb2e699d0490324f4e1e7ef887a42e3829ace252afaeb46f2dfb51",
+      "ActorModule": "87d202784830029a89748d6ddd32222d15975b2feee91fb2384fd70b255141c9",
+      "CriticModule": "414cb5a4d9b45f438d7da3655e273d546bd0bbfa9b5861b03c474928f0e39d08",
+      "ActorCritic": "5d4f963415de7ab2a27517d7b6aabf6787c6b3c1344b389c4df1646895c39ac0",
+      "Transition": "d2bda0da9ed82e706a47f0354be5611c453cf4877451f25a80d5660b5b74a40b",
+      "batchify": "d7b763907a6579aefd2f76028c3702c2338a3ef7949e29d1d67aea2661978052",
+      "unbatchify": "c63ae1d8a84788dc7a0d5714f971ffc924227968ea320c8f9449f788e0849e0a",
+      "make_train": "f9033f03d92ae8a368d40ec287c5a1e6923ce96b0e3739285e9f41f4332b96c3",
+      "main": "abf8000a13eb3b064668df706a8cc87f73bf78039e3c41049613c7c74e9bc28a"
+    },
+    "training_and_network_bodies_unchanged": true
+  },
+  "config": {
+    "ENV_NAME": "multiquad_ix4",
+    "ENV_KWARGS": {
+      "reward_coeffs": {
+        "distance_reward_coef": 1.0,
+        "velocity_reward_coef": 1.0,
+        "safe_distance_coef": 1.0,
+        "up_reward_coef": 20.0,
+        "linvel_reward_coef": 1.0,
+        "ang_vel_reward_coef": 10.0,
+        "linvel_quad_reward_coef": 1.0,
+        "taut_reward_coef": 1.0,
+        "collision_penalty_coef": -20.0,
+        "out_of_bounds_penalty_coef": -10.0,
+        "smooth_action_coef": -10.0,
+        "action_energy_coef": -1.0
+      },
+      "obs_noise": 1.0,
+      "act_noise": 0.0,
+      "max_thrust_range": 0.15,
+      "num_quads": 3,
+      "episode_length": 3072,
+      "cable_length": 0.4,
+      "payload": true,
+      "payload_mass": 0.01,
+      "policy_freq": 250,
+      "target_start_ratio": 0.2,
+      "sim_steps_per_action": 1,
+      "trajectory": "random"
+    },
+    "TOTAL_TIMESTEPS": 64,
+    "NUM_ENVS": 2,
+    "NUM_STEPS": 16,
+    "NUM_MINIBATCHES": 2,
+    "UPDATE_EPOCHS": 1,
+    "ANNEAL_LR": false,
+    "LR": 0.0004,
+    "ACTIVATION": "tanh",
+    "MAX_GRAD_NORM": 0.5,
+    "CLIP_EPS": 0.2,
+    "VF_COEF": 0.5,
+    "ENT_COEF": 0.01,
+    "GAMMA": 0.997,
+    "GAE_LAMBDA": 0.95,
+    "SEED": 0,
+    "ACTOR_ARCH": [
+      64,
+      64,
+      64
+    ],
+    "CRITIC_ARCH": [
+      128,
+      128,
+      128
+    ],
+    "DISABLE_JIT": false,
+    "PROJECT": "crazymarl",
+    "NAME": "quad_marl",
+    "WANDB_MODE": "disabled",
+    "NUM_ACTORS": 6,
+    "NUM_UPDATES": 2,
+    "MINIBATCH_SIZE": 48
+  },
+  "official_full_config_path": "/home/wangyuzhe/Research/multiagentWM/data/uav_transport_external/crazymarl_ippo_gpu_smoke_v3_official_full_config.json",
+  "smoke_config_path": "/home/wangyuzhe/Research/multiagentWM/data/uav_transport_external/crazymarl_ippo_gpu_smoke_v3_smoke_config.json",
+  "requested_environment_transitions": 64,
+  "agent_transitions": 192,
+  "optimizer_steps": 4,
+  "parameter_update_l2": 0.25957414394236006,
+  "parameter_count": 48457,
+  "checkpoint_path": "/home/wangyuzhe/Research/multiagentWM/data/uav_transport_external/crazymarl_ippo_gpu_smoke_v3.msgpack",
+  "checkpoint_sha256": "35f374e1d68459a86bd1e68ac896b1009f1be1f83f87f4463f31301dea444b38",
+  "checkpoint_reload_exact": true,
+  "raw_path": "/home/wangyuzhe/Research/multiagentWM/data/uav_transport_external/crazymarl_ippo_gpu_smoke_v3.npz",
+  "raw_sha256": "9172f4b7158981c572254147b8240243bbed4c4bb616d03749f6301966cc2eaf",
+  "training_compile_and_execution_seconds": 55.38199675299984,
+  "total_wall_seconds": 91.16855547799787,
+  "jax_backend": "gpu",
+  "devices": [
+    "cuda:0"
+  ],
+  "versions": {
+    "jax": "0.5.2",
+    "jaxlib": "0.5.1",
+    "brax": "0.12.1",
+    "mujoco": "3.3.0",
+    "mujoco-mjx": "3.3.0",
+    "flax": "0.10.4",
+    "optax": "0.2.4",
+    "numpy": "1.26.4",
+    "scipy": "1.12.0"
+  },
+  "evaluation_cases": [
+    {
+      "seed": 101,
+      "executed_steps": 153,
+      "simulated_seconds": 0.6120005249977112,
+      "terminated": true,
+      "finite_states": true,
+      "finite_rewards": true,
+      "final_payload_error": 2.3071939945220947,
+      "reward_sum": 76.81185604631901,
+      "wall_seconds": 19.640705637000792,
+      "status": "short-trained upstream IPPO smoke; unconverged"
+    },
+    {
+      "seed": 102,
+      "executed_steps": 103,
+      "simulated_seconds": 0.4120001196861267,
+      "terminated": true,
+      "finite_states": true,
+      "finite_rewards": true,
+      "final_payload_error": 1.340588927268982,
+      "reward_sum": 65.14167055487633,
+      "wall_seconds": 0.22847186300350586,
+      "status": "short-trained upstream IPPO smoke; unconverged"
+    },
+    {
+      "seed": 103,
+      "executed_steps": 145,
+      "simulated_seconds": 0.5800004601478577,
+      "terminated": true,
+      "finite_states": true,
+      "finite_rewards": true,
+      "final_payload_error": 1.3426382541656494,
+      "reward_sum": 94.49372424185276,
+      "wall_seconds": 0.34069629699661164,
+      "status": "short-trained upstream IPPO smoke; unconverged"
+    }
+  ],
+  "metrics": {
+    "actor_loss": [
+      -1.7508864402770996e-05,
+      0.00028837844729423523
+    ],
+    "critic_loss": [
+      138.92298889160156,
+      67.66478729248047
+    ],
+    "entropy": [
+      5.675356864929199,
+      5.674805164337158
+    ],
+    "env_step": [
+      32,
+      64
+    ],
+    "ratio": [
+      0.999485433101654,
+      0.9999796748161316
+    ],
+    "ratio0": [
+      1.0,
+      1.0
+    ],
+    "returned_episode": [
+      0.0,
+      0.0
+    ],
+    "returned_episode_lengths": [
+      0.0,
+      0.0
+    ],
+    "returned_episode_returns": [
+      0.0,
+      0.0
+    ],
+    "total_loss": [
+      69.40472412109375,
+      33.77593231201172
+    ],
+    "update_step": [
+      1,
+      2
+    ]
+  },
+  "source_path": "/home/wangyuzhe/Research/multiagentWM/data/uav_transport_external/crazymarl_ippo_gpu_smoke_v3_wrapper.py",
+  "source_sha256": "a0e93c3073022ed68066f5b010a781f18d65434cd34c656ac43d00ab44de560c"
+}

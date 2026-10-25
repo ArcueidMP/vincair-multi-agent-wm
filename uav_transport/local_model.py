@@ -327,6 +327,13 @@ def load_dataset(path):
     return dataset
 
 
+def dataset_family(dataset):
+    value=np.asarray(dataset.get("plant_family","self_built_v2"))
+    if value.shape!=() or str(value.item()) not in ("self_built_v2","menagerie_crazyflie_2"):
+        raise ValueError("Local dataset must identify one supported plant family")
+    return str(value.item())
+
+
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--data",type=Path,required=True)
@@ -341,6 +348,7 @@ def main():
         width=args.width,seed=args.seed,steps=args.steps,batch_size=args.batch_size)
     pack['metadata']['dataset_path']=str(args.data)
     pack['metadata']['dataset_sha256']=hashlib.sha256(args.data.read_bytes()).hexdigest()
+    pack['metadata']['plant_family']=dataset_family(data)
     for split in ('test','test_action'):
         if 'X_'+split in data:
             pack['metadata'][split+'_metrics']=prediction_metrics(FrozenPredictor(pack).predict(data['X_'+split]),data['Y_'+split])

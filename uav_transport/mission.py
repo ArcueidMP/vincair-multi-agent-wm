@@ -25,6 +25,7 @@ from .control import RecoveryConfig, TransportController, smooth_transition
 from .evaluation import fork, run_option, _SubstepObserver, _stack_records
 from .local_model import features, load_model, TARGET_NAMES
 from .plant import TransportConfig, TransportEnv
+from .environment import FAMILIES, LEGACY, make_config, make_env, require_model_family, source_paths
 from .snapshot import capture, integration_state, physical_state
 
 
@@ -113,6 +114,7 @@ def select_option(env, controller, donor, depth, planner, model=None, *,
     cfg=MissionConfig() if config is None else config
     if planner not in PLANNERS:raise ValueError("Unknown mission planner")
     if planner in LEARNED and model is None:raise ValueError("Learned planner requires a frozen model")
+    if planner in LEARNED:require_model_family(model,env.config)
     started=time.perf_counter()
     before=capture(env);memory=controller.capture_memory()
     obs=env.observe()
@@ -218,19 +220,24 @@ def _flight_stage(env,controller,target,*,name,config,settle=False):
 
 
 def run_mission(case, planner, model=None, *, model_seed=0, config=None,
-                margins=(0.,0.), dt=.002, record=True):
+                margins=(0.,0.), dt=.002, record=True, plant_family=LEGACY,
+                controller_factory=None):
     """Execute both recovery operations and all waypoints, retaining failed prefixes."""
     cfg=MissionConfig() if config is None else config
     if planner not in PLANNERS:raise ValueError("Unknown mission planner")
     if planner in LEARNED and model is None:raise ValueError("Learned mission requires frozen local weights")
     if min(asdict(cfg).values())<=0 or cfg.move_seconds>cfg.leg_budget_seconds:
         raise ValueError("Mission durations and limits must be positive and the path fit its leg budget")
-    plant_cfg=TransportConfig(payload_mass=float(case["payload_mass"]),formation_yaw=float(case["formation_yaw"]),dt=float(dt))
+    plant_cfg=make_config(plant_family,payload_mass=float(case["payload_mass"]),formation_yaw=float(case["formation_yaw"]),dt=float(dt))
+    if planner in LEARNED:require_model_family(model,plant_cfg)
     for duration in (cfg.settle_seconds,cfg.leg_budget_seconds,cfg.option_budget_seconds):
         ratio=duration/plant_cfg.control_dt
         if ratio<1 or not math.isclose(ratio,round(ratio),abs_tol=1e-10):
             raise ValueError("Physical stage budgets must be positive integer control periods")
-    env=TransportEnv(plant_cfg);controller=TransportController(plant_cfg)
+    if controller_factory is not None and planner not in ("rule_fixed","rule_reconfigure"):
+        raise ValueError("An external feedback baseline uses the prescribed recovery protocol; learned models retain their training controller")
+    env=make_env(plant_cfg)
+    controller=(TransportController if controller_factory is None else controller_factory)(plant_cfg)
     initial=env.observe();origin=initial["payload_pos"].copy();initial_snapshot=capture(env)
     initial_controller_memory=controller.capture_memory()
     waypoints=origin+np.asarray(case["waypoint_offsets"],dtype=float)
@@ -277,7 +284,8 @@ def run_mission(case, planner, model=None, *, model_seed=0, config=None,
     constrained=delivery and all(x["summary"]["peak_payload_excursion"]<=cfg.payload_excursion_limit
         and x["summary"]["peak_donor_tension"]<=cfg.donor_tension_limit for x in operations)
     flight_records=[x for x in records if x["stage"].startswith("leg_")]
-    summary=dict(case_id=case["case_id"],planner=planner,model_seed=int(model_seed),
+    summary=dict(case_id=case["case_id"],planner=planner,model_seed=int(model_seed),plant_family=plant_family,
+        controller_family=getattr(controller,"family","study_geometric"),
         payload_mass=plant_cfg.payload_mass,donor=int(case["donor"]),route_template=int(case["route_template"]),
         slack_distance=float(case["slack_distance"]),dt=plant_cfg.dt,control_dt=plant_cfg.control_dt,
         delivery_completion=delivery,constrained_completion=bool(constrained),
@@ -325,7 +333,7 @@ def run_mission(case, planner, model=None, *, model_seed=0, config=None,
 def _sha(path):return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 
-def worker(case,planner,model_seed,model_entry,output,source_hashes,model_hashes):
+def worker(case,planner,model_seed,model_entry,output,source_hashes,model_hashes,plant_family=LEGACY):
     for path,digest in {**source_hashes,**model_hashes}.items():
         if _sha(path)!=digest:raise AssertionError("Registered mission input changed: "+path)
     path=Path(f"{output}_{planner}_seed{model_seed}_{case['case_id']}.pkl")
@@ -335,7 +343,7 @@ def worker(case,planner,model_seed,model_entry,output,source_hashes,model_hashes
     model=load_model(prefix) if prefix else None
     margins=tuple(model_entry["margins"]) if kind else (0.,0.)
     started=time.perf_counter()
-    result=run_mission(case,planner,model,model_seed=model_seed,margins=margins)
+    result=run_mission(case,planner,model,model_seed=model_seed,margins=margins,plant_family=plant_family)
     with path.open("wb") as stream:pickle.dump(result,stream,protocol=5)
     return dict(summary=result["summary"],raw_path=str(path),raw_sha256=_sha(path),
         wall_seconds=time.perf_counter()-started)
@@ -349,6 +357,7 @@ def main():
     parser.add_argument("--model-seeds",type=int,nargs="+",default=[0,1,2])
     parser.add_argument("--workers",type=int,default=8)
     parser.add_argument("--register-only",action="store_true")
+    parser.add_argument("--plant",choices=FAMILIES,default=LEGACY)
     args=parser.parse_args()
     if not 1<=args.workers<=8 or len(set(args.planners))!=len(args.planners) or len(set(args.model_seeds))!=len(args.model_seeds):
         raise ValueError("Use1..8workers and unique planners/seeds")
@@ -359,9 +368,12 @@ def main():
     if args.out.with_suffix(".json").exists():raise FileExistsError(args.out)
     paths=[Path(__file__)]+[Path("uav_transport")/(name+".py") for name in
         ("plant","snapshot","control","evaluation","collect","local_model")]
+    paths += source_paths(args.plant)
     source_hashes={str(p):_sha(p) for p in paths}
     model_hashes={}
     model_manifest=json.loads(args.models.read_text()) if any(p in LEARNED for p in args.planners) else dict(models={})
+    if model_manifest["models"] and model_manifest.get("plant_family",LEGACY)!=args.plant:
+        raise ValueError("Use models trained on the requested plant family")
     if model_manifest["models"]:model_hashes[str(args.models)]=_sha(args.models)
     for planner in args.planners:
         kind=model_kind(planner)
@@ -372,7 +384,7 @@ def main():
                     path=entry["prefix"]+"."+suffix
                     if _sha(path)!=entry[key]:raise AssertionError("Frozen model manifest mismatch: "+path)
                     model_hashes[path]=entry[key]
-    registration=dict(cases=cases,planners=args.planners,model_seeds=args.model_seeds,
+    registration=dict(plant_family=args.plant,cases=cases,planners=args.planners,model_seeds=args.model_seeds,
         mission_config=asdict(MissionConfig()),source_sha256=source_hashes,model_sha256=model_hashes,
         mission_count=len(schedule),physical_cases=len(cases),
         model_manifest_path=str(args.models) if model_manifest["models"] else None,
@@ -396,7 +408,7 @@ def main():
     started=time.perf_counter();results=[]
     with ProcessPoolExecutor(max_workers=args.workers,mp_context=multiprocessing.get_context("spawn")) as pool:
         futures=[pool.submit(worker,case,p,seed,
-            model_manifest["models"].get(f"{model_kind(p)}/seed{seed}"),args.out,source_hashes,model_hashes)
+            model_manifest["models"].get(f"{model_kind(p)}/seed{seed}"),args.out,source_hashes,model_hashes,args.plant)
             for case,p,seed in schedule]
         for future in as_completed(futures):
             result=future.result();results.append(result)

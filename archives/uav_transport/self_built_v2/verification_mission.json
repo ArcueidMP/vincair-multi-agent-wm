@@ -1,0 +1,102 @@
+{
+  "mode": "mission",
+  "package_path": "repo/uav_transport",
+  "package_import_is_archived": true,
+  "model_family": "self-built MuJoCo quadrotor baseline v2",
+  "case_id": "mass026_donor0_route0",
+  "original_raw_reference": "data/uav_transport/mission_v2_wm_small_seed0_mass026_donor0_route0.pkl",
+  "original_raw_sha256": "0331ff3d329d888fe3489e8ba80520767609164854e2e693cf3b31308e2f8766",
+  "versions": {
+    "python": "3.10.21",
+    "mujoco": "3.3.0",
+    "numpy": "2.2.6"
+  },
+  "wall_seconds": 5.010226102000161,
+  "checks": {
+    "summary": {
+      "case_id": "mass026_donor0_route0",
+      "planner": "wm_small",
+      "model_seed": 0,
+      "payload_mass": 0.026,
+      "donor": 0,
+      "route_template": 0,
+      "slack_distance": 0.07,
+      "dt": 0.002,
+      "control_dt": 0.02,
+      "delivery_completion": true,
+      "constrained_completion": true,
+      "waypoint_successes": [
+        true,
+        true,
+        true
+      ],
+      "option_completions": [
+        true,
+        true
+      ],
+      "actual_slack_successes": [
+        true,
+        true
+      ],
+      "option_peak_excursions": [
+        0.013659802230940118,
+        0.013176129329766537
+      ],
+      "option_peak_donor_tensions": [
+        0.37440528868180656,
+        0.3680905713648158
+      ],
+      "option_slack_seconds": [
+        2.868,
+        2.876
+      ],
+      "selected_reconfigurations": [
+        true,
+        true
+      ],
+      "selected_durations": [
+        [
+          2.0,
+          2.0
+        ],
+        [
+          2.0,
+          2.0
+        ]
+      ],
+      "total_seconds": 30.66,
+      "control_steps": 1533,
+      "physics_steps": 15330,
+      "maximum_seconds": 56.0,
+      "absolute_actuator_work": 0.36830180707450183,
+      "total_squared_thrust_integral": 4.099942760038833,
+      "rotor_force_integral": 38.687912727204846,
+      "uav_path_length": 4.006390107146852,
+      "maximum_rotor_force": 0.11672873805822244,
+      "motor_bound_seconds": 0.0,
+      "peak_uav_tilt": 0.12831580342251725,
+      "minimum_body_height": 1.1460924766960705,
+      "minimum_uav_separation": 0.3361601719027238,
+      "flight_tracking_rmse": 0.01653372420710599,
+      "finite": true,
+      "collision": false,
+      "warning_count": 0,
+      "predictor_evaluations": 36,
+      "simulated_candidate_control_steps": 0,
+      "simulated_candidate_physics_steps": 0,
+      "total_decision_seconds": 0.0030839430037303828,
+      "minimum_risk_fallbacks": 2,
+      "feasible_candidate_counts": [
+        0,
+        0
+      ],
+      "stop_reason": "mission_sequence_end",
+      "model_kind": "small"
+    },
+    "published_scores_match": true,
+    "physical_states_bitwise": true,
+    "integration_states_bitwise": true,
+    "actions_bitwise": true,
+    "external_forces_bitwise": true
+  }
+}

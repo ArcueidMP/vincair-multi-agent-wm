@@ -1,0 +1,257 @@
+{
+  "status": "Official-airframe study and external baseline integration; historical self-built baseline separately archived",
+  "archive": "archives/uav_transport/self_built_v2/README.md",
+  "files": [
+    {
+      "source": "data/uav_transport_external/mission_menagerie_v1.json",
+      "destination": "mission_menagerie_v1.json",
+      "sha256": "7573d2ab50fdb5f653f497e40b5075cf7812d2aa5a1dba91b5433f414482de06",
+      "bytes": 518284
+    },
+    {
+      "source": "data/uav_transport/menagerie_external_lee_v1.json",
+      "destination": "menagerie_external_lee_v1.json",
+      "sha256": "729b76230ef8917685f5dff69cf67636ed906f4c4fe51131b531d3a4690e0bb3",
+      "bytes": 146537
+    },
+    {
+      "source": "data/uav_transport/menagerie_external_lee_v1_review.json",
+      "destination": "menagerie_external_lee_v1_review.json",
+      "sha256": "599ff1d594c5f32842e5f0fa9be3951487f4e76ce7677e89f6f1eed00be2ff19",
+      "bytes": 114798
+    },
+    {
+      "source": "data/uav_transport_external/lee_refinement_boundary.json",
+      "destination": "lee_refinement_boundary.json",
+      "sha256": "111362235463a808483acd7a9be3ae46ad4400ed030fea84ec57949e05a822e9",
+      "bytes": 9771
+    },
+    {
+      "source": "data/uav_transport_external/lee_refinement_quarter_ms.json",
+      "destination": "lee_refinement_quarter_ms.json",
+      "sha256": "d1db0e40b0f4e7d2e8ccff830c82efa1937c1a7b16a82a6b9992a863eee52e50",
+      "bytes": 5503
+    },
+    {
+      "source": "data/uav_transport_external/menagerie_integration_audit.json",
+      "destination": "menagerie_integration_audit.json",
+      "sha256": "12a481b6b93688733438cd36b533d43ab833d9bbf49887b7056e43ff92f949d3",
+      "bytes": 15115
+    },
+    {
+      "source": "data/uav_transport_external/crazymarl_ippo_cpu_smoke_v3.json",
+      "destination": "crazymarl_ippo_cpu_smoke_v3.json",
+      "sha256": "4efa58a9a4cda38150024fa580f27d9435d0a790ea2b72787bd283bc12cf42e1",
+      "bytes": 7840
+    },
+    {
+      "source": "data/uav_transport_external/crazymarl_ippo_gpu_smoke_v3.json",
+      "destination": "crazymarl_ippo_gpu_smoke_v3.json",
+      "sha256": "4181d9565e2c4cf4a1a0f38416d2f7c72eb0d1bb1139f21d0eb60946490dea90",
+      "bytes": 7835
+    },
+    {
+      "source": "data/uav_transport_external/crazymarl_checkpoint_availability.json",
+      "destination": "crazymarl_checkpoint_availability.json",
+      "sha256": "f0f99804dc1572147c82537d6588966418409e55ec9f959d540a366c121d84ed",
+      "bytes": 1783
+    },
+    {
+      "source": "data/uav_transport_external/crazymarl_actor_update_check.json",
+      "destination": "crazymarl_actor_update_check.json",
+      "sha256": "ece4e347e4420e12b9dcd5b21c1cbf5bcd9902d9adfaf7d9b1834660c774762c",
+      "bytes": 691
+    },
+    {
+      "source": "data/uav_transport_external/crazymarl_integration_provenance.json",
+      "destination": "crazymarl_integration_provenance.json",
+      "sha256": "62bbd83f4964a84a71cd952348bf90425b8ae50e4bc61109dda9eb2f4081b01b",
+      "bytes": 1435
+    },
+    {
+      "source": "data/uav_transport_external/models_menagerie_v1_large_seed0.json",
+      "destination": "models/models_menagerie_v1_large_seed0.json",
+      "sha256": "c8a657a241c532e4ca96bf42294ddf48a3e82bd7052e36ca36716feb4390e8be",
+      "bytes": 15803
+    },
+    {
+      "source": "data/uav_transport_external/models_menagerie_v1_large_seed0.npz",
+      "destination": "models/models_menagerie_v1_large_seed0.npz",
+      "sha256": "a54ce11ad984e7843ab74dab056acc98f8a9109b08af50711c693aba7735f84c",
+      "bytes": 135705
+    },
+    {
+      "source": "data/uav_transport_external/models_menagerie_v1_large_seed1.json",
+      "destination": "models/models_menagerie_v1_large_seed1.json",
+      "sha256": "36467f7a1a3fc9864bb4cc8ae0088019305f06445f868630fde911a50d2dc239",
+      "bytes": 15802
+    },
+    {
+      "source": "data/uav_transport_external/models_menagerie_v1_large_seed1.npz",
+      "destination": "models/models_menagerie_v1_large_seed1.npz",
+      "sha256": "d51871fda92486671670e76b5e16fd3869448438ecd9902b9d573a50529f2c86",
+      "bytes": 135781
+    },
+    {
+      "source": "data/uav_transport_external/models_menagerie_v1_large_seed2.json",
+      "destination": "models/models_menagerie_v1_large_seed2.json",
+      "sha256": "e4e7e7830e0272000639e9b09baf6d0e476e5a6858719a4dcf557740d79ab22a",
+      "bytes": 15802
+    },
+    {
+      "source": "data/uav_transport_external/models_menagerie_v1_large_seed2.npz",
+      "destination": "models/models_menagerie_v1_large_seed2.npz",
+      "sha256": "79775f27f49557d649c4a236bf91ee4cffa8dacd382f6047ef00c6dca4a14522",
+      "bytes": 135803
+    },
+    {
+      "source": "data/uav_transport_external/models_menagerie_v1_manifest.json",
+      "destination": "models/models_menagerie_v1_manifest.json",
+      "sha256": "d4f947383a58d30f84730fe9fd3f8caef06f24be0072106ee4a2cc2def46a71a",
+      "bytes": 3904
+    },
+    {
+      "source": "data/uav_transport_external/models_menagerie_v1_registration.json",
+      "destination": "models/models_menagerie_v1_registration.json",
+      "sha256": "41c27525f9e0cbfe2a661e56bbe00d556a339041e2240014db84cbbc6fb480ea",
+      "bytes": 1337
+    },
+    {
+      "source": "data/uav_transport_external/models_menagerie_v1_small_seed0.json",
+      "destination": "models/models_menagerie_v1_small_seed0.json",
+      "sha256": "935456e370f921d9794016b3394075cf9116bcd9089b580ca7098600470e757a",
+      "bytes": 15747
+    },
+    {
+      "source": "data/uav_transport_external/models_menagerie_v1_small_seed0.npz",
+      "destination": "models/models_menagerie_v1_small_seed0.npz",
+      "sha256": "306e787b0d0bf3b6de18ff7499d244fdab2fb32abf1ba94bfab1313ef6d5ce86",
+      "bytes": 24983
+    },
+    {
+      "source": "data/uav_transport_external/models_menagerie_v1_small_seed1.json",
+      "destination": "models/models_menagerie_v1_small_seed1.json",
+      "sha256": "4d266e7546d6cee4edd4c41d52755cf40d9e7d35528f13bf42e01019ecf6c2f9",
+      "bytes": 15744
+    },
+    {
+      "source": "data/uav_transport_external/models_menagerie_v1_small_seed1.npz",
+      "destination": "models/models_menagerie_v1_small_seed1.npz",
+      "sha256": "2d6d0ca483e62771f600fb35eb471e66e8f77a17b5777ecbd6fabaaf8ae55f34",
+      "bytes": 24981
+    },
+    {
+      "source": "data/uav_transport_external/models_menagerie_v1_small_seed2.json",
+      "destination": "models/models_menagerie_v1_small_seed2.json",
+      "sha256": "9b5dcfcb778c14fffe9140f64e59bd5bca0f0e40627b04bcd381cd122ccf6d5b",
+      "bytes": 15757
+    },
+    {
+      "source": "data/uav_transport_external/models_menagerie_v1_small_seed2.npz",
+      "destination": "models/models_menagerie_v1_small_seed2.npz",
+      "sha256": "2975cecda11bf80296a6c8865aea61dee7f8a42b6869193f1ef39a1d8ca0afb0",
+      "bytes": 24975
+    },
+    {
+      "source": "data/uav_transport_external/legacy_suite_v1.log",
+      "destination": "legacy_suite_v1.log",
+      "sha256": "13ce2ac55eaba1cd30ca4d082ece5a4fd429bb127e35b760222a1e50b637a235",
+      "bytes": 1328
+    },
+    {
+      "source": "data/uav_transport_external/uav_suite_v1.log",
+      "destination": "uav_suite_v1.log",
+      "sha256": "03048423ba95d181e0bf0667dfd95113a07574f403dfa8f1fe73dd2903c1d49a",
+      "bytes": 1243
+    },
+    {
+      "source": "data/uav_transport_external/menagerie_team.png",
+      "destination": "menagerie_team.png",
+      "sha256": "7b041c4810b317e41c2b35026ade5e1f1f4ed67fad511babbfff8a84955abae2",
+      "bytes": 37350
+    },
+    {
+      "source": "data/uav_transport_external/external_v1_verified_inputs.json",
+      "destination": "verified_inputs.json",
+      "sha256": "008404746a676bad8e7838fa0a1876fa6bd56a54bfcd886cb6f60acbe232447a",
+      "bytes": 145288
+    }
+  ],
+  "summary_sha256": "5dadccd4c9c7bc66cc378c2795fa0f2629478b9633c3272a4435718293a16778",
+  "verified_input_files": 973,
+  "source_reports": {
+    "physics_menagerie_v1": {
+      "path": "data/uav_transport_external/physics_menagerie_v1.json",
+      "sha256": "ce56d8096acc586fd6b906e01c0ce95e5a89309690fb785e8c1de7be30bda520"
+    },
+    "local_menagerie_v1": {
+      "path": "data/uav_transport_external/local_menagerie_v1.json",
+      "sha256": "e8a6198af79760390bc030afce853fcccdd4519e84c63fac02547aa2825d2111"
+    },
+    "models_menagerie_v1_manifest": {
+      "path": "data/uav_transport_external/models_menagerie_v1_manifest.json",
+      "sha256": "d4f947383a58d30f84730fe9fd3f8caef06f24be0072106ee4a2cc2def46a71a"
+    },
+    "selection_menagerie_v1": {
+      "path": "data/uav_transport_external/selection_menagerie_v1.json",
+      "sha256": "dce2fbd390bd8164a3b6917e3c6f34b123738c46a0034143f500851851b9ca63"
+    },
+    "mission_menagerie_v1": {
+      "path": "data/uav_transport_external/mission_menagerie_v1.json",
+      "sha256": "7573d2ab50fdb5f653f497e40b5075cf7812d2aa5a1dba91b5433f414482de06"
+    },
+    "mission_menagerie_v1_analysis": {
+      "path": "data/uav_transport_external/mission_menagerie_v1_analysis.json",
+      "sha256": "b2eaa35bded5985f7e349d9f36f5e8b69aceadbb21dbc5d5023eb56b33fc4b94"
+    },
+    "mission_menagerie_v1_replay": {
+      "path": "data/uav_transport_external/mission_menagerie_v1_replay.json",
+      "sha256": "192ea7b26fb7f06acad7b93f9310cac2431703fad5630f692fcf064b9f65f1be"
+    },
+    "mission_external_lee_v1_replay": {
+      "path": "data/uav_transport_external/mission_external_lee_v1_replay.json",
+      "sha256": "d9780a5597fc1df9de2a37bace93b68c520e991c6fc5f76cbdd7a7ae5dd38b16"
+    },
+    "lee_refinement_boundary": {
+      "path": "data/uav_transport_external/lee_refinement_boundary.json",
+      "sha256": "111362235463a808483acd7a9be3ae46ad4400ed030fea84ec57949e05a822e9"
+    },
+    "lee_refinement_quarter_ms": {
+      "path": "data/uav_transport_external/lee_refinement_quarter_ms.json",
+      "sha256": "d1db0e40b0f4e7d2e8ccff830c82efa1937c1a7b16a82a6b9992a863eee52e50"
+    },
+    "menagerie_integration_audit": {
+      "path": "data/uav_transport_external/menagerie_integration_audit.json",
+      "sha256": "12a481b6b93688733438cd36b533d43ab833d9bbf49887b7056e43ff92f949d3"
+    },
+    "crazymarl_ippo_cpu_smoke_v3": {
+      "path": "data/uav_transport_external/crazymarl_ippo_cpu_smoke_v3.json",
+      "sha256": "4efa58a9a4cda38150024fa580f27d9435d0a790ea2b72787bd283bc12cf42e1"
+    },
+    "crazymarl_ippo_gpu_smoke_v3": {
+      "path": "data/uav_transport_external/crazymarl_ippo_gpu_smoke_v3.json",
+      "sha256": "4181d9565e2c4cf4a1a0f38416d2f7c72eb0d1bb1139f21d0eb60946490dea90"
+    },
+    "crazymarl_checkpoint_availability": {
+      "path": "data/uav_transport_external/crazymarl_checkpoint_availability.json",
+      "sha256": "f0f99804dc1572147c82537d6588966418409e55ec9f959d540a366c121d84ed"
+    },
+    "crazymarl_actor_update_check": {
+      "path": "data/uav_transport_external/crazymarl_actor_update_check.json",
+      "sha256": "ece4e347e4420e12b9dcd5b21c1cbf5bcd9902d9adfaf7d9b1834660c774762c"
+    },
+    "crazymarl_integration_provenance": {
+      "path": "data/uav_transport_external/crazymarl_integration_provenance.json",
+      "sha256": "62bbd83f4964a84a71cd952348bf90425b8ae50e4bc61109dda9eb2f4081b01b"
+    },
+    "menagerie_external_lee_v1": {
+      "path": "data/uav_transport/menagerie_external_lee_v1.json",
+      "sha256": "729b76230ef8917685f5dff69cf67636ed906f4c4fe51131b531d3a4690e0bb3"
+    },
+    "menagerie_external_lee_v1_review": {
+      "path": "data/uav_transport/menagerie_external_lee_v1_review.json",
+      "sha256": "599ff1d594c5f32842e5f0fa9be3951487f4e76ce7677e89f6f1eed00be2ff19"
+    }
+  },
+  "policy_status": "CrazyMARL CPU/GPU checkpoints are short integration runs, smoke_unconverged; the retained official full-training configuration supplies the next performance benchmark."
+}

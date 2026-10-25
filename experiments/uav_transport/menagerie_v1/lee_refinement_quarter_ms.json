@@ -1,0 +1,168 @@
+{
+  "cases": [
+    {
+      "identity": {
+        "case_id": "mass034_donor0_route0",
+        "planner": "rule_reconfigure",
+        "model_seed": 0,
+        "payload_mass": 0.034,
+        "donor": 0,
+        "route_template": 0
+      },
+      "source_path": "data/uav_transport/menagerie_external_lee_v1_rule_reconfigure_seed0_mass034_donor0_route0.pkl",
+      "source_sha256": "47fcc70aa97370e4025146d1b4c52b6aac7c34680677cb8e68c225c2ed808779",
+      "nominal_to_0_25ms": {
+        "maximum_body_position_m": 0.0008017584476525598,
+        "maximum_payload_position_m": 0.0007660561520810361,
+        "maximum_uav_position_m": 0.0008017584476525598,
+        "maximum_body_attitude_rad": 0.000760538733757098,
+        "per_body_position_max": [
+          0.0007660561520810361,
+          0.0007904671449292013,
+          0.0008017584476525598,
+          0.0007541860101634829
+        ],
+        "per_body_attitude_max": [
+          6.614768555982015e-15,
+          0.000760538733757098,
+          0.0007400949084073297,
+          0.0004049510605734994
+        ],
+        "position_pass": true,
+        "attitude_pass": true,
+        "passes": true
+      },
+      "half_ms_to_quarter_ms": {
+        "maximum_body_position_m": 0.0004953201583426553,
+        "maximum_payload_position_m": 0.00021266304233522631,
+        "maximum_uav_position_m": 0.0004953201583426553,
+        "maximum_body_attitude_rad": 0.00010911393412907034,
+        "per_body_position_max": [
+          0.00021266304233522631,
+          0.0002222276830338445,
+          0.0004953201583426553,
+          0.00023680665536704925
+        ],
+        "per_body_attitude_max": [
+          1.4541332343565424e-15,
+          0.00010911393412907034,
+          0.00010611360846460588,
+          5.805474102113524e-05
+        ],
+        "position_pass": true,
+        "attitude_pass": true,
+        "passes": true
+      },
+      "quarter_ms_score": {
+        "delivery_completion": true,
+        "constrained_completion": true,
+        "waypoint_successes": [
+          true,
+          true,
+          true
+        ],
+        "option_completions": [
+          true,
+          true
+        ],
+        "actual_slack_successes": [
+          true,
+          true
+        ],
+        "finite": true,
+        "collision": false,
+        "warning_count": 0,
+        "legs": [
+          {
+            "name": "leg_1",
+            "present": true,
+            "success": true,
+            "begin_step": 100,
+            "end_step": 286,
+            "required_dwell_steps": 15,
+            "qualifying_states": 15,
+            "reference_finished": true,
+            "final_position_error": 0.01527140325726611,
+            "final_speed": 0.01547084644181748
+          },
+          {
+            "name": "leg_2",
+            "present": true,
+            "success": true,
+            "begin_step": 736,
+            "end_step": 927,
+            "required_dwell_steps": 15,
+            "qualifying_states": 15,
+            "reference_finished": true,
+            "final_position_error": 0.014768266074219483,
+            "final_speed": 0.0156749203954352
+          },
+          {
+            "name": "leg_3",
+            "present": true,
+            "success": true,
+            "begin_step": 1377,
+            "end_step": 1550,
+            "required_dwell_steps": 15,
+            "qualifying_states": 15,
+            "reference_finished": true,
+            "final_position_error": 0.015686843289980882,
+            "final_speed": 0.01371322634262221
+          }
+        ],
+        "operations": [
+          {
+            "name": "operation_1",
+            "present": true,
+            "completion": true,
+            "slack_success": true,
+            "protocol_finished": true,
+            "original_protocol_failed": false,
+            "original_failure_reason": null,
+            "verified_final_dwell": true,
+            "begin_step": 286,
+            "end_step": 736,
+            "donor": 0,
+            "required_dwell_steps": 15,
+            "peak_payload_excursion": 0.014790486042607786,
+            "peak_donor_tension": 0.3341476786562425,
+            "donor_slack_seconds": 2.735,
+            "finite": true,
+            "collision": false,
+            "excursion_within_limit": true,
+            "tension_within_limit": true
+          },
+          {
+            "name": "operation_2",
+            "present": true,
+            "completion": true,
+            "slack_success": true,
+            "protocol_finished": true,
+            "original_protocol_failed": false,
+            "original_failure_reason": null,
+            "verified_final_dwell": true,
+            "begin_step": 927,
+            "end_step": 1377,
+            "donor": 1,
+            "required_dwell_steps": 15,
+            "peak_payload_excursion": 0.013705682685303987,
+            "peak_donor_tension": 0.5532334265384671,
+            "donor_slack_seconds": 2.6725,
+            "finite": true,
+            "collision": false,
+            "excursion_within_limit": true,
+            "tension_within_limit": true
+          }
+        ],
+        "control_steps": 1550,
+        "physics_steps": 124000,
+        "total_seconds": 31.0,
+        "maximum_uav_tilt": 0.18153836524628097,
+        "minimum_body_height": 1.1459770515975811,
+        "minimum_uav_separation": 0.32842949253750525
+      },
+      "quarter_ms_score_changes": {}
+    }
+  ],
+  "note": "Prespecified 2mm threshold and the original 1ms failure retained; additional finer-grid diagnostic for that single case."
+}

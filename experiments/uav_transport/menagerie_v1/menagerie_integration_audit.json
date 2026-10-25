@@ -1,0 +1,436 @@
+{
+  "plant_family": "menagerie_crazyflie_2",
+  "config": {
+    "dt": 0.002,
+    "control_dt": 0.02,
+    "drone_mass": 0.027,
+    "payload_mass": 0.03,
+    "rotor_max": 0.16,
+    "motor_tau": 0.03,
+    "cable_length": 0.6,
+    "formation_radius": 0.25,
+    "payload_height": 1.2,
+    "payload_xy": [
+      0.0,
+      0.0
+    ],
+    "formation_yaw": 0.0,
+    "gravity": 9.81,
+    "inertia": [
+      2.3951e-05,
+      2.3951e-05,
+      3.2347e-05
+    ],
+    "arm_length": 0.046,
+    "yaw_torque_ratio": 0.006,
+    "cable_solref": [
+      0.01,
+      1.0
+    ],
+    "cable_solimp": [
+      0.95,
+      0.99,
+      0.001
+    ],
+    "solver_iterations": 50,
+    "solver_tolerance": 1e-10,
+    "initial_velocity": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "initial_uav_velocity_offsets": [
+      [
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0
+      ]
+    ],
+    "initial_uav_omegas": [
+      [
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0
+      ]
+    ],
+    "plant_family": "menagerie_crazyflie_2",
+    "air_density": 1.225,
+    "air_viscosity": 1.8e-05,
+    "menagerie_revision": "f3b6013629c7b94f8ee93fd977b161fa8350f9bc",
+    "menagerie_manifest_sha256": "de268445f3b5f6fab4f5c4e835d20ae098ab3b8d77e58d4b8a841b873c7d6226"
+  },
+  "upstream": {
+    "repository": "https://github.com/google-deepmind/mujoco_menagerie",
+    "revision": "f3b6013629c7b94f8ee93fd977b161fa8350f9bc",
+    "source_subdirectory": "bitcraze_crazyflie_2",
+    "files": {
+      "cf2.xml": "c1260dd47cded49edd5c1c02226529a5452a73f70000515f83bf223814037933",
+      "LICENSE": "fc2e3286b47f415c0724d1f82047501d738ef60cff3779b2f3998ea75d8aae99",
+      "assets/cf2_0.obj": "b6e1424d8752f110324c22d06c40fb83cedf0de4cec3423560a7c411e1c2a8d4",
+      "assets/cf2_1.obj": "d28a2c6ebca05dc62f39334669c014a8ceb1a73ea1072d22d208a5f4fe5f0bc9",
+      "assets/cf2_2.obj": "712bee75469773c0d34bb09d3ae5af405617c1f0992be2ff2e80b0f436c323f2",
+      "assets/cf2_3.obj": "b8af754045ad9d4652072584b4fdfa127527c3de9d34c64614995c462b69fdc8",
+      "assets/cf2_4.obj": "c60f8c2b3c74bf7b9d300ed71ba983cedc79da817bafe2baba56e2daa5003d78",
+      "assets/cf2_5.obj": "88bd391a4c7fce1a07950799291123a952756903d4b648f5b6163ec94990e36f",
+      "assets/cf2_6.obj": "99063e076f297125c67ab49f86bac648f338667518b2f824005349d0ef2ab673",
+      "assets/cf2_collision_0.obj": "2715202cd2c831ae6b99a5b0fb35648e2a0e0218d73553c3eaf0689a18119cfc",
+      "assets/cf2_collision_1.obj": "e1c99d02815a006fe5c362fa0d28b8db4c2424c22774ec3eba2670cb78b29914",
+      "assets/cf2_collision_2.obj": "86c18490088f823d2d0233d7be7a88bb1871a4093f48f429ce586892899f7e20",
+      "assets/cf2_collision_3.obj": "01a3484e552fbe40d6813b425c76e51b2112ec92272d471895c62b270d4a2e8f",
+      "assets/cf2_collision_4.obj": "7d06b50d215fb704a80b2488a4dc0cbeaca442c7ef1a09fbc1b53bbe182f7e46",
+      "assets/cf2_collision_5.obj": "d0ebb7fe50429cb7e80cbf3a6716c6a3984face949c60e6c9fa00dbb87682fa1",
+      "assets/cf2_collision_6.obj": "e874be08ff9957735759f1dcb71d86633e9b82f3f0ab904be2147b1df15a34de",
+      "assets/cf2_collision_7.obj": "92c6c4d56b0437cc9fb13feaef345a3a5565b06628e1a8f431b6b4c44df74ee8",
+      "assets/cf2_collision_8.obj": "d5497b2c1bec62802320932f03985cb56c6928e576206324ffd543a8161790da",
+      "assets/cf2_collision_9.obj": "914364e62252bf21f920861be13abf2e1e6c7a1814542095c25ff243ccf968a3",
+      "assets/cf2_collision_10.obj": "fd49af478603928f08d50d60b4fadbb17a4455241ba8879e24287c7ac623ea94",
+      "assets/cf2_collision_11.obj": "d01b42d54389e2cdd20c1b3b0837dffb966617b74d35d2575ba1aa7907b3dfdf",
+      "assets/cf2_collision_12.obj": "ee5c880102440ad8fa574b9921a53dc97cca237b8e1610c2a195fdbe7cbe6494",
+      "assets/cf2_collision_13.obj": "1fc029cdb38637252963983a54590fc560fa2c79fc9890c63d60f6e1f63342c7",
+      "assets/cf2_collision_14.obj": "d04ca1e3f96f625b3c7a8455e19541dc3a3e925cfa6f4a8a2dd252eaa81c08f5",
+      "assets/cf2_collision_15.obj": "5d6787aa1ca17e48d43fa1e9875027bb36038015a0827e1488336487c337167b",
+      "assets/cf2_collision_16.obj": "f2cc9bfe84e09eef87790440096c7580f33ad7cd805fc5cdc7b2f7549302e854",
+      "assets/cf2_collision_17.obj": "eedadc86582d4f654e80d9913eef414012ed4b597fc975546003a8756308cb1f",
+      "assets/cf2_collision_18.obj": "fddcebffa7e4ce1f22239fec38a0912edf0e9e8836eba50cfe34f1a508075b17",
+      "assets/cf2_collision_19.obj": "23bfdbfd15d57b11b0b26306854a66a5faffaf10d63a59896f14e25a1f7bf565",
+      "assets/cf2_collision_20.obj": "07793f71fad9248e44361fa56e9d5105229a171a220a63c78baf0219dd4d38e6",
+      "assets/cf2_collision_21.obj": "673b7779025d0839c246bb75a6bc4a76ad0a09f4aa2ea812818589722c4bcbf4",
+      "assets/cf2_collision_22.obj": "af15e2f7908c692a12155e8e69b3b33ef2d5d97c5dddde31e6d428788024beb4",
+      "assets/cf2_collision_23.obj": "8fd369711d523faf77904bfbf6a5f2a48714be9ade0aa26007ca3c2c9a90ab3d",
+      "assets/cf2_collision_24.obj": "1608b7173ab5655a00949d2c2a839c7a4043674ba2b53e2d479efaeffd0150da",
+      "assets/cf2_collision_25.obj": "db849bb0a87cf2b33fa6fd731f4a73b0730e2766caae5bde802c8979058e06dc",
+      "assets/cf2_collision_26.obj": "4a026f1d2c670d8a2357578efc18339e57ceba5fd72ac02e49572af148dc0af2",
+      "assets/cf2_collision_27.obj": "5ecec9966aa5a7d4c86fa96e2ced9065a1dc627cdd305af8bf154bd5087c3456",
+      "assets/cf2_collision_28.obj": "00229becda358865dc960e79c2a5a79de6b7fe771f65642ea3eae31357c72062",
+      "assets/cf2_collision_29.obj": "38f50fcc582c222a77b5b0f8a7667818f25b12a9b9e245af91aa1cd1e7d5b98c",
+      "assets/cf2_collision_30.obj": "e44b805232a0a2acc79abf7a7f2d54d58fc32350219fa41acb1e528881460f15",
+      "assets/cf2_collision_31.obj": "c60a0fb12811b6251cf217f6e4258141055c0f735c98aa720fe888ae96ab30fb"
+    },
+    "license": "MIT",
+    "copyright": "Copyright (c) 2024 whoenig",
+    "source_readme": "https://github.com/google-deepmind/mujoco_menagerie/blob/f3b6013629c7b94f8ee93fd977b161fa8350f9bc/bitcraze_crazyflie_2/README.md",
+    "upstream_model_url": "https://github.com/google-deepmind/mujoco_menagerie/blob/f3b6013629c7b94f8ee93fd977b161fa8350f9bc/bitcraze_crazyflie_2/cf2.xml",
+    "modifications": "Vendored files are byte-identical. Runtime transport composition renames robot instances, retains meshes/collisions/inertia, adds team tendons and bounded filtered per-rotor actuation.",
+    "upstream_actuator_note": "The upstream README states that body-wrench ctrlrange limits are arbitrary and need tuning. Those actuators are not used in the transport plant.",
+    "compiled_with_mujoco": "3.3.0",
+    "compiled_reference": {
+      "body_mass": 0.027,
+      "body_inertia": [
+        2.3951e-05,
+        2.3951e-05,
+        3.2347e-05
+      ],
+      "body_ipos": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "body_iquat": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "visual_geoms": 7,
+      "collision_geoms": 32,
+      "meshes": 39,
+      "air_density": 1.225,
+      "air_viscosity": 1.8e-05
+    }
+  },
+  "source_manifest_path": "/home/wangyuzhe/Research/multiagentWM/third_party/menagerie/bitcraze_crazyflie_2/UPSTREAM.json",
+  "source_manifest_sha256": "de268445f3b5f6fab4f5c4e835d20ae098ab3b8d77e58d4b8a841b873c7d6226",
+  "compiled_airframe_comparison": {
+    "reference_revision": "f3b6013629c7b94f8ee93fd977b161fa8350f9bc",
+    "reference_mass": 0.027,
+    "reference_inertia": [
+      2.3951e-05,
+      2.3951e-05,
+      3.2347e-05
+    ],
+    "vehicles": [
+      {
+        "vehicle": 0,
+        "geometry_differences": {
+          "geom_type": 0.0,
+          "geom_group": 0.0,
+          "geom_contype": 0.0,
+          "geom_conaffinity": 0.0,
+          "geom_pos": 0.0,
+          "geom_quat": 0.0,
+          "geom_size": 0.0,
+          "geom_friction": 0.0
+        },
+        "inertial_differences": {
+          "body_mass": 0.0,
+          "body_ipos": 0.0,
+          "body_inertia": 0.0,
+          "body_iquat": 0.0
+        },
+        "meshes": 39,
+        "collision_geoms": 32,
+        "matches": true
+      },
+      {
+        "vehicle": 1,
+        "geometry_differences": {
+          "geom_type": 0.0,
+          "geom_group": 0.0,
+          "geom_contype": 0.0,
+          "geom_conaffinity": 0.0,
+          "geom_pos": 0.0,
+          "geom_quat": 0.0,
+          "geom_size": 0.0,
+          "geom_friction": 0.0
+        },
+        "inertial_differences": {
+          "body_mass": 0.0,
+          "body_ipos": 0.0,
+          "body_inertia": 0.0,
+          "body_iquat": 0.0
+        },
+        "meshes": 39,
+        "collision_geoms": 32,
+        "matches": true
+      },
+      {
+        "vehicle": 2,
+        "geometry_differences": {
+          "geom_type": 0.0,
+          "geom_group": 0.0,
+          "geom_contype": 0.0,
+          "geom_conaffinity": 0.0,
+          "geom_pos": 0.0,
+          "geom_quat": 0.0,
+          "geom_size": 0.0,
+          "geom_friction": 0.0
+        },
+        "inertial_differences": {
+          "body_mass": 0.0,
+          "body_ipos": 0.0,
+          "body_inertia": 0.0,
+          "body_iquat": 0.0
+        },
+        "meshes": 39,
+        "collision_geoms": 32,
+        "matches": true
+      }
+    ],
+    "all_airframes_match": true
+  },
+  "dimensions": {
+    "nq": 28,
+    "nv": 24,
+    "na": 12,
+    "geoms": 119,
+    "meshes": 39
+  },
+  "open_loop_hover": {
+    "seconds": 1.0,
+    "payload_start": [
+      0.0,
+      0.0,
+      1.2
+    ],
+    "payload_end": [
+      8.319747094590295e-11,
+      1.0378066279856565e-14,
+      1.19997662173157
+    ],
+    "cable_tensions": [
+      0.1079144767225689,
+      0.10791447671938773,
+      0.1079144767193774
+    ],
+    "finite": true,
+    "warnings": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "collision_pairs": []
+  },
+  "transport_parameters": {
+    "config": {
+      "dt": 0.002,
+      "control_dt": 0.02,
+      "drone_mass": 0.027,
+      "payload_mass": 0.03,
+      "rotor_max": 0.16,
+      "motor_tau": 0.03,
+      "cable_length": 0.6,
+      "formation_radius": 0.25,
+      "payload_height": 1.2,
+      "payload_xy": [
+        0.0,
+        0.0
+      ],
+      "formation_yaw": 0.0,
+      "gravity": 9.81,
+      "inertia": [
+        2.3951e-05,
+        2.3951e-05,
+        3.2347e-05
+      ],
+      "arm_length": 0.046,
+      "yaw_torque_ratio": 0.006,
+      "cable_solref": [
+        0.01,
+        1.0
+      ],
+      "cable_solimp": [
+        0.95,
+        0.99,
+        0.001
+      ],
+      "solver_iterations": 50,
+      "solver_tolerance": 1e-10,
+      "initial_velocity": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "initial_uav_velocity_offsets": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "initial_uav_omegas": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "plant_family": "menagerie_crazyflie_2",
+      "air_density": 1.225,
+      "air_viscosity": 1.8e-05,
+      "menagerie_revision": "f3b6013629c7b94f8ee93fd977b161fa8350f9bc",
+      "menagerie_manifest_sha256": "de268445f3b5f6fab4f5c4e835d20ae098ab3b8d77e58d4b8a841b873c7d6226"
+    },
+    "xml_sha256": "bbb0ac7197735d0d7b17b2af3d0b105f55b2c1db26dbf09a86529cafd720015e",
+    "mujoco_version": "3.3.0",
+    "actuator_units": "newtons per rotor",
+    "work": "substep integral of actuator force times transmission velocity",
+    "saturation_time": "time with any actual rotor force at least 99 percent of its upper bound",
+    "cable_model": "finite-compliance unilateral spatial-tendon upper limits",
+    "payload_model": "spherical rigid body with one common central cable attachment",
+    "plant_family": "menagerie_crazyflie_2",
+    "airframe_source": {
+      "repository": "https://github.com/google-deepmind/mujoco_menagerie",
+      "revision": "f3b6013629c7b94f8ee93fd977b161fa8350f9bc",
+      "subdirectory": "bitcraze_crazyflie_2",
+      "manifest_sha256": "de268445f3b5f6fab4f5c4e835d20ae098ab3b8d77e58d4b8a841b873c7d6226"
+    },
+    "preserved_airframe_properties": "Official meshes, collision decomposition, materials, mass, inertia, COM and IMU sites",
+    "added_transport_components": "Central payload, unilateral team cables, bounded four-rotor force mapping and first-order motor activation",
+    "actuator_parameters": {
+      "rotor_max_n": 0.16,
+      "motor_tau_s": 0.03,
+      "arm_radius_m": 0.046,
+      "yaw_moment_per_thrust_m": 0.006
+    },
+    "actuator_provenance": "Study parameters; the upstream body-wrench ctrlrange limits are replaced explicitly",
+    "fluid_parameters": {
+      "density": 1.225,
+      "viscosity": 1.8e-05
+    },
+    "integration_note": "Transport uses implicitfast with registered dt; the standalone upstream airframe uses RK4"
+  },
+  "physics_audit_path": "data/uav_transport_external/physics_menagerie_v1.json",
+  "physics_audit_sha256": "ce56d8096acc586fd6b906e01c0ce95e5a89309690fb785e8c1de7be30bda520",
+  "physics_refinement": [
+    {
+      "dt": 0.002,
+      "cases": 36,
+      "completion": 36,
+      "continuous_passes": 36,
+      "completion_changed": 0,
+      "maximum_position_discrepancy": 0.0,
+      "maximum_donor_peak_relative_discrepancy": 0.0,
+      "maximum_impulse_absolute_discrepancy": 0.0
+    },
+    {
+      "dt": 0.001,
+      "cases": 36,
+      "completion": 36,
+      "continuous_passes": 36,
+      "completion_changed": 0,
+      "maximum_position_discrepancy": 0.0004789342379230427,
+      "maximum_donor_peak_relative_discrepancy": 0.06934583365430792,
+      "maximum_impulse_absolute_discrepancy": 5.6619770460675234e-05
+    },
+    {
+      "dt": 0.0005,
+      "cases": 36,
+      "completion": 36,
+      "continuous_passes": 36,
+      "completion_changed": 0,
+      "maximum_position_discrepancy": 0.0005463631342782215,
+      "maximum_donor_peak_relative_discrepancy": 0.09722528055145672,
+      "maximum_impulse_absolute_discrepancy": 8.486790119907606e-05
+    }
+  ],
+  "physical_pairs": 18,
+  "focused_tests": {
+    "command": "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 data/uav_transport/.venv/bin/python -m pytest -q tests/test_uav_menagerie.py",
+    "passed": 5,
+    "elapsed_seconds": 6.47
+  },
+  "source_sha256": {
+    "uav_transport/menagerie.py": "af2764767a4b4915cfa891647e0d507167ea982eec77e4a0c2a15d60ddd71b0a",
+    "tests/test_uav_menagerie.py": "c8fa0355c60c0afbd8ce3d5296d5b38fa065bb6543290ba04bf471cf9154159b",
+    "uav_transport/plant.py": "220fa13b2797296c2decbbd80be092764e2d8fcd0d8ae4723cface5822e164af",
+    "uav_transport/environment.py": "47a76a5d031e1d0af7ba2687784ac390beecb65a98033a9f17b6157da0bbd91e"
+  },
+  "render_path": "data/uav_transport_external/menagerie_team.png",
+  "render_sha256": "7b041c4810b317e41c2b35026ade5e1f1f4ed67fad511babbfff8a84955abae2",
+  "source_identity_note": "Official airframe assets and physical properties are verified independently of the chosen feedback controller."
+}

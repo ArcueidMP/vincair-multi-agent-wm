@@ -1,0 +1,3616 @@
+{
+  "manifest_path": "data/uav_transport/menagerie_external_lee_v1.json",
+  "manifest_sha256": "729b76230ef8917685f5dff69cf67636ed906f4c4fe51131b531d3a4690e0bb3",
+  "missions": 24,
+  "all_sources_and_assets_verified": true,
+  "all_mission_scores_reproduced": true,
+  "all_rule_decisions_verified": true,
+  "paired_prefixes_bitwise": 12,
+  "checks": [
+    {
+      "case_id": "mass026_donor0_route0",
+      "planner": "rule_fixed",
+      "model_seed": 0,
+      "issues": [],
+      "scores_reproduced": true,
+      "goal_dwell_checks": [
+        {
+          "stage": "leg_1",
+          "final_dwell_steps": 34,
+          "required": 15,
+          "matches": true
+        },
+        {
+          "stage": "leg_2",
+          "final_dwell_steps": 28,
+          "required": 15,
+          "matches": true
+        },
+        {
+          "stage": "leg_3",
+          "final_dwell_steps": 15,
+          "required": 15,
+          "matches": true
+        }
+      ],
+      "maximum_operation_excursion": 0.1974783457002543,
+      "maximum_operation_donor_tension": 1.4604390868506623,
+      "maximum_all_cable_tension": 1.4604390868506623,
+      "maximum_tension_by_cable": [
+        1.4604390868506623,
+        1.3445000900053699,
+        0.4672713877446489
+      ],
+      "maximum_non_donor_tension_by_operation": [
+        0.4672713877446489,
+        0.42541373425825485
+      ],
+      "any_cable_above_registered_donor_limit_seconds": 0.012,
+      "per_cable_above_registered_donor_limit_seconds": [
+        0.006,
+        0.006,
+        0.0
+      ],
+      "rotor_bound_violation": false,
+      "all_cable_diagnostic_note": "All-cable and non-donor maxima are diagnostics; the registered constrained score remains donor-based."
+    },
+    {
+      "case_id": "mass026_donor0_route0",
+      "planner": "rule_reconfigure",
+      "model_seed": 0,
+      "issues": [],
+      "scores_reproduced": true,
+      "goal_dwell_checks": [
+        {
+          "stage": "leg_1",
+          "final_dwell_steps": 34,
+          "required": 15,
+          "matches": true
+        },
+        {
+          "stage": "leg_2",
+          "final_dwell_steps": 27,
+          "required": 15,
+          "matches": true
+        },
+        {
+          "stage": "leg_3",
+          "final_dwell_steps": 19,
+          "required": 15,
+          "matches": true
+        }
+      ],
+      "maximum_operation_excursion": 0.012432665082539183,
+      "maximum_operation_donor_tension": 0.3111484040848814,
+      "maximum_all_cable_tension": 0.3111484040848814,
+      "maximum_tension_by_cable": [
+        0.1640117048769597,
+        0.3111484040848814,
+        0.1412727038653867
+      ],
+      "maximum_non_donor_tension_by_operation": [
+        0.1412102720509464,
+        0.14171450147456635
+      ],
+      "any_cable_above_registered_donor_limit_seconds": 0.0,
+      "per_cable_above_registered_donor_limit_seconds": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotor_bound_violation": false,
+      "all_cable_diagnostic_note": "All-cable and non-donor maxima are diagnostics; the registered constrained score remains donor-based."
+    },
+    {
+      "case_id": "mass026_donor0_route1",
+      "planner": "rule_fixed",
+      "model_seed": 0,
+      "issues": [],
+      "scores_reproduced": true,
+      "goal_dwell_checks": [
+        {
+          "stage": "leg_1",
+          "final_dwell_steps": 33,
+          "required": 15,
+          "matches": true
+        },
+        {
+          "stage": "leg_2",
+          "final_dwell_steps": 27,
+          "required": 15,
+          "matches": true
+        },
+        {
+          "stage": "leg_3",
+          "final_dwell_steps": 26,
+          "required": 15,
+          "matches": true
+        }
+      ],
+      "maximum_operation_excursion": 0.2025975489907679,
+      "maximum_operation_donor_tension": 1.6638727581844388,
+      "maximum_all_cable_tension": 1.6638727581844388,
+      "maximum_tension_by_cable": [
+        1.6175780084344298,
+        1.6638727581844388,
+        0.5147688889469194
+      ],
+      "maximum_non_donor_tension_by_operation": [
+        0.4877455762860863,
+        0.52602424620851
+      ],
+      "any_cable_above_registered_donor_limit_seconds": 0.012,
+      "per_cable_above_registered_donor_limit_seconds": [
+        0.006,
+        0.006,
+        0.0
+      ],
+      "rotor_bound_violation": false,
+      "all_cable_diagnostic_note": "All-cable and non-donor maxima are diagnostics; the registered constrained score remains donor-based."
+    },
+    {
+      "case_id": "mass026_donor0_route1",
+      "planner": "rule_reconfigure",
+      "model_seed": 0,
+      "issues": [],
+      "scores_reproduced": true,
+      "goal_dwell_checks": [
+        {
+          "stage": "leg_1",
+          "final_dwell_steps": 33,
+          "required": 15,
+          "matches": true
+        },
+        {
+          "stage": "leg_2",
+          "final_dwell_steps": 27,
+          "required": 15,
+          "matches": true
+        },
+        {
+          "stage": "leg_3",
+          "final_dwell_steps": 15,
+          "required": 15,
+          "matches": true
+        }
+      ],
+      "maximum_operation_excursion": 0.012477337141886593,
+      "maximum_operation_donor_tension": 0.357195832874867,
+      "maximum_all_cable_tension": 0.357195832874867,
+      "maximum_tension_by_cable": [
+        0.357195832874867,
+        0.26175717346826066,
+        0.1415849575492982
+      ],
+      "maximum_non_donor_tension_by_operation": [
+        0.14146572557518872,
+        0.1415849575492982
+      ],
+      "any_cable_above_registered_donor_limit_seconds": 0.0,
+      "per_cable_above_registered_donor_limit_seconds": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotor_bound_violation": false,
+      "all_cable_diagnostic_note": "All-cable and non-donor maxima are diagnostics; the registered constrained score remains donor-based."
+    },
+    {
+      "case_id": "mass026_donor1_route0",
+      "planner": "rule_fixed",
+      "model_seed": 0,
+      "issues": [],
+      "scores_reproduced": true,
+      "goal_dwell_checks": [
+        {
+          "stage": "leg_1",
+          "final_dwell_steps": 34,
+          "required": 15,
+          "matches": true
+        },
+        {
+          "stage": "leg_2",
+          "final_dwell_steps": 27,
+          "required": 15,
+          "matches": true
+        },
+        {
+          "stage": "leg_3",
+          "final_dwell_steps": 15,
+          "required": 15,
+          "matches": true
+        }
+      ],
+      "maximum_operation_excursion": 0.19782037531683497,
+      "maximum_operation_donor_tension": 1.4417989547495997,
+      "maximum_all_cable_tension": 1.4417989547495997,
+      "maximum_tension_by_cable": [
+        0.4399367884328303,
+        1.4417989547495997,
+        1.4091016064140973
+      ],
+      "maximum_non_donor_tension_by_operation": [
+        0.4602937963294874,
+        0.4243845584984862
+      ],
+      "any_cable_above_registered_donor_limit_seconds": 0.012,
+      "per_cable_above_registered_donor_limit_seconds": [
+        0.0,
+        0.006,
+        0.006
+      ],
+      "rotor_bound_violation": false,
+      "all_cable_diagnostic_note": "All-cable and non-donor maxima are diagnostics; the registered constrained score remains donor-based."
+    },
+    {
+      "case_id": "mass026_donor1_route0",
+      "planner": "rule_reconfigure",
+      "model_seed": 0,
+      "issues": [],
+      "scores_reproduced": true,
+      "goal_dwell_checks": [
+        {
+          "stage": "leg_1",
+          "final_dwell_steps": 34,
+          "required": 15,
+          "matches": true
+        },
+        {
+          "stage": "leg_2",
+          "final_dwell_steps": 28,
+          "required": 15,
+          "matches": true
+        },
+        {
+          "stage": "leg_3",
+          "final_dwell_steps": 20,
+          "required": 15,
+          "matches": true
+        }
+      ],
+      "maximum_operation_excursion": 0.013213068066394978,
+      "maximum_operation_donor_tension": 0.2732293268101508,
+      "maximum_all_cable_tension": 0.2732293268101508,
+      "maximum_tension_by_cable": [
+        0.14138204251258316,
+        0.21157948337842175,
+        0.2732293268101508
+      ],
+      "maximum_non_donor_tension_by_operation": [
+        0.14148724268957863,
+        0.14199705698557552
+      ],
+      "any_cable_above_registered_donor_limit_seconds": 0.0,
+      "per_cable_above_registered_donor_limit_seconds": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotor_bound_violation": false,
+      "all_cable_diagnostic_note": "All-cable and non-donor maxima are diagnostics; the registered constrained score remains donor-based."
+    },
+    {
+      "case_id": "mass026_donor1_route1",
+      "planner": "rule_fixed",
+      "model_seed": 0,
+      "issues": [],
+      "scores_reproduced": true,
+      "goal_dwell_checks": [
+        {
+          "stage": "leg_1",
+          "final_dwell_steps": 33,
+          "required": 15,
+          "matches": true
+        },
+        {
+          "stage": "leg_2",
+          "final_dwell_steps": 27,
+          "required": 15,
+          "matches": true
+        },
+        {
+          "stage": "leg_3",
+          "final_dwell_steps": 31,
+          "required": 15,
+          "matches": true
+        }
+      ],
+      "maximum_operation_excursion": 0.20058061170855498,
+      "maximum_operation_donor_tension": 1.715866979700922,
+      "maximum_all_cable_tension": 1.715866979700922,
+      "maximum_tension_by_cable": [
+        0.557773091762745,
+        1.715866979700922,
+        1.601923599611545
+      ],
+      "maximum_non_donor_tension_by_operation": [
+        0.557773091762745,
+        0.5435154885289613
+      ],
+      "any_cable_above_registered_donor_limit_seconds": 0.012,
+      "per_cable_above_registered_donor_limit_seconds": [
+        0.0,
+        0.006,
+        0.006
+      ],
+      "rotor_bound_violation": false,
+      "all_cable_diagnostic_note": "All-cable and non-donor maxima are diagnostics; the registered constrained score remains donor-based."
+    },
+    {
+      "case_id": "mass026_donor1_route1",
+      "planner": "rule_reconfigure",
+      "model_seed": 0,
+      "issues": [],
+      "scores_reproduced": true,
+      "goal_dwell_checks": [
+        {
+          "stage": "leg_1",
+          "final_dwell_steps": 33,
+          "required": 15,
+          "matches": true
+        },
+        {
+          "stage": "leg_2",
+          "final_dwell_steps": 28,
+          "required": 15,
+          "matches": true
+        },
+        {
+          "stage": "leg_3",
+          "final_dwell_steps": 15,
+          "required": 15,
+          "matches": true
+        }
+      ],
+      "maximum_operation_excursion": 0.011953352058812552,
+      "maximum_operation_donor_tension": 0.26158094349219074,
+      "maximum_all_cable_tension": 0.26158094349219074,
+      "maximum_tension_by_cable": [
+        0.14152908384299026,
+        0.25049614162854017,
+        0.26158094349219074
+      ],
+      "maximum_non_donor_tension_by_operation": [
+        0.1414381459950914,
+        0.14152908384299026
+      ],
+      "any_cable_above_registered_donor_limit_seconds": 0.0,
+      "per_cable_above_registered_donor_limit_seconds": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotor_bound_violation": false,
+      "all_cable_diagnostic_note": "All-cable and non-donor maxima are diagnostics; the registered constrained score remains donor-based."
+    },
+    {
+      "case_id": "mass026_donor2_route0",
+      "planner": "rule_fixed",
+      "model_seed": 0,
+      "issues": [],
+      "scores_reproduced": true,
+      "goal_dwell_checks": [
+        {
+          "stage": "leg_1",
+          "final_dwell_steps": 34,
+          "required": 15,
+          "matches": true
+        },
+        {
+          "stage": "leg_2",
+          "final_dwell_steps": 28,
+          "required": 15,
+          "matches": true
+        },
+        {
+          "stage": "leg_3",
+          "final_dwell_steps": 31,
+          "required": 15,
+          "matches": true
+        }
+      ],
+      "maximum_operation_excursion": 0.19807294445887508,
+      "maximum_operation_donor_tension": 1.4193600595731712,
+      "maximum_all_cable_tension": 1.4193600595731712,
+      "maximum_tension_by_cable": [
+        1.4193600595731712,
+        0.40975038447204015,
+        1.3415558684544993
+      ],
+      "maximum_non_donor_tension_by_operation": [
+        0.40498405838722523,
+        0.42306140193931335
+      ],
+      "any_cable_above_registered_donor_limit_seconds": 0.012,
+      "per_cable_above_registered_donor_limit_seconds": [
+        0.006,
+        0.0,
+        0.006
+      ],
+      "rotor_bound_violation": false,
+      "all_cable_diagnostic_note": "All-cable and non-donor maxima are diagnostics; the registered constrained score remains donor-based."
+    },
+    {
+      "case_id": "mass026_donor2_route0",
+      "planner": "rule_reconfigure",
+      "model_seed": 0,
+      "issues": [],
+      "scores_reproduced": true,
+      "goal_dwell_checks": [
+        {
+          "stage": "leg_1",
+          "final_dwell_steps": 34,
+          "required": 15,
+          "matches": true
+        },
+        {
+          "stage": "leg_2",
+          "final_dwell_steps": 28,
+          "required": 15,
+          "matches": true
+        },
+        {
+          "stage": "leg_3",
+          "final_dwell_steps": 15,
+          "required": 15,
+          "matches": true
+        }
+      ],
+      "maximum_operation_excursion": 0.013296529572457675,
+      "maximum_operation_donor_tension": 0.37659313882001527,
+      "maximum_all_cable_tension": 0.37659313882001527,
+      "maximum_tension_by_cable": [
+        0.21109199159647088,
+        0.1422231366088681,
+        0.37659313882001527
+      ],
+      "maximum_non_donor_tension_by_operation": [
+        0.141495039020132,
+        0.1422231366088681
+      ],
+      "any_cable_above_registered_donor_limit_seconds": 0.0,
+      "per_cable_above_registered_donor_limit_seconds": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotor_bound_violation": false,
+      "all_cable_diagnostic_note": "All-cable and non-donor maxima are diagnostics; the registered constrained score remains donor-based."
+    },
+    {
+      "case_id": "mass026_donor2_route1",
+      "planner": "rule_fixed",
+      "model_seed": 0,
+      "issues": [],
+      "scores_reproduced": true,
+      "goal_dwell_checks": [
+        {
+          "stage": "leg_1",
+          "final_dwell_steps": 33,
+          "required": 15,
+          "matches": true
+        },
+        {
+          "stage": "leg_2",
+          "final_dwell_steps": 29,
+          "required": 15,
+          "matches": true
+        },
+        {
+          "stage": "leg_3",
+          "final_dwell_steps": 15,
+          "required": 15,
+          "matches": true
+        }
+      ],
+      "maximum_operation_excursion": 0.1993586890066812,
+      "maximum_operation_donor_tension": 1.6960615333012319,
+      "maximum_all_cable_tension": 1.6960615333012319,
+      "maximum_tension_by_cable": [
+        1.5562901438353354,
+        0.5309334652447877,
+        1.6960615333012319
+      ],
+      "maximum_non_donor_tension_by_operation": [
+        0.5140948709710701,
+        0.5417784589786663
+      ],
+      "any_cable_above_registered_donor_limit_seconds": 0.012,
+      "per_cable_above_registered_donor_limit_seconds": [
+        0.006,
+        0.0,
+        0.006
+      ],
+      "rotor_bound_violation": false,
+      "all_cable_diagnostic_note": "All-cable and non-donor maxima are diagnostics; the registered constrained score remains donor-based."
+    },
+    {
+      "case_id": "mass026_donor2_route1",
+      "planner": "rule_reconfigure",
+      "model_seed": 0,
+      "issues": [],
+      "scores_reproduced": true,
+      "goal_dwell_checks": [
+        {
+          "stage": "leg_1",
+          "final_dwell_steps": 33,
+          "required": 15,
+          "matches": true
+        },
+        {
+          "stage": "leg_2",
+          "final_dwell_steps": 29,
+          "required": 15,
+          "matches": true
+        },
+        {
+          "stage": "leg_3",
+          "final_dwell_steps": 24,
+          "required": 15,
+          "matches": true
+        }
+      ],
+      "maximum_operation_excursion": 0.013916164870247875,
+      "maximum_operation_donor_tension": 0.3451744897545155,
+      "maximum_all_cable_tension": 0.3451744897545155,
+      "maximum_tension_by_cable": [
+        0.3451744897545155,
+        0.14142340608107282,
+        0.179624416683264
+      ],
+      "maximum_non_donor_tension_by_operation": [
+        0.14154452815489177,
+        0.14248175254901965
+      ],
+      "any_cable_above_registered_donor_limit_seconds": 0.0,
+      "per_cable_above_registered_donor_limit_seconds": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotor_bound_violation": false,
+      "all_cable_diagnostic_note": "All-cable and non-donor maxima are diagnostics; the registered constrained score remains donor-based."
+    },
+    {
+      "case_id": "mass034_donor0_route0",
+      "planner": "rule_fixed",
+      "model_seed": 0,
+      "issues": [],
+      "scores_reproduced": true,
+      "goal_dwell_checks": [
+        {
+          "stage": "leg_1",
+          "final_dwell_steps": 31,
+          "required": 15,
+          "matches": true
+        },
+        {
+          "stage": "leg_2",
+          "final_dwell_steps": 29,
+          "required": 15,
+          "matches": true
+        },
+        {
+          "stage": "leg_3",
+          "final_dwell_steps": 15,
+          "required": 15,
+          "matches": true
+        }
+      ],
+      "maximum_operation_excursion": 0.21280869674974665,
+      "maximum_operation_donor_tension": 1.7737559386770978,
+      "maximum_all_cable_tension": 1.7737559386770978,
+      "maximum_tension_by_cable": [
+        1.748956352790804,
+        1.7737559386770978,
+        0.531844537295325
+      ],
+      "maximum_non_donor_tension_by_operation": [
+        0.531844537295325,
+        0.5236519769707179
+      ],
+      "any_cable_above_registered_donor_limit_seconds": 0.016,
+      "per_cable_above_registered_donor_limit_seconds": [
+        0.008,
+        0.008,
+        0.0
+      ],
+      "rotor_bound_violation": false,
+      "all_cable_diagnostic_note": "All-cable and non-donor maxima are diagnostics; the registered constrained score remains donor-based."
+    },
+    {
+      "case_id": "mass034_donor0_route0",
+      "planner": "rule_reconfigure",
+      "model_seed": 0,
+      "issues": [],
+      "scores_reproduced": true,
+      "goal_dwell_checks": [
+        {
+          "stage": "leg_1",
+          "final_dwell_steps": 31,
+          "required": 15,
+          "matches": true
+        },
+        {
+          "stage": "leg_2",
+          "final_dwell_steps": 28,
+          "required": 15,
+          "matches": true
+        },
+        {
+          "stage": "leg_3",
+          "final_dwell_steps": 24,
+          "required": 15,
+          "matches": true
+        }
+      ],
+      "maximum_operation_excursion": 0.014770065925028228,
+      "maximum_operation_donor_tension": 0.5991887043680915,
+      "maximum_all_cable_tension": 0.5991887043680915,
+      "maximum_tension_by_cable": [
+        0.35412672424102526,
+        0.5991887043680915,
+        0.18515750114521135
+      ],
+      "maximum_non_donor_tension_by_operation": [
+        0.18501934731790032,
+        0.18515750114521135
+      ],
+      "any_cable_above_registered_donor_limit_seconds": 0.0,
+      "per_cable_above_registered_donor_limit_seconds": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotor_bound_violation": false,
+      "all_cable_diagnostic_note": "All-cable and non-donor maxima are diagnostics; the registered constrained score remains donor-based."
+    },
+    {
+      "case_id": "mass034_donor0_route1",
+      "planner": "rule_fixed",
+      "model_seed": 0,
+      "issues": [],
+      "scores_reproduced": true,
+      "goal_dwell_checks": [
+        {
+          "stage": "leg_1",
+          "final_dwell_steps": 30,
+          "required": 15,
+          "matches": true
+        },
+        {
+          "stage": "leg_2",
+          "final_dwell_steps": 28,
+          "required": 15,
+          "matches": true
+        },
+        {
+          "stage": "leg_3",
+          "final_dwell_steps": 35,
+          "required": 15,
+          "matches": true
+        }
+      ],
+      "maximum_operation_excursion": 0.2179398224852578,
+      "maximum_operation_donor_tension": 2.0476415011163267,
+      "maximum_all_cable_tension": 2.0476415011163267,
+      "maximum_tension_by_cable": [
+        2.0476415011163267,
+        1.932477149467203,
+        0.5966143765135691
+      ],
+      "maximum_non_donor_tension_by_operation": [
+        0.5966143765135691,
+        0.5783081771668466
+      ],
+      "any_cable_above_registered_donor_limit_seconds": 0.016,
+      "per_cable_above_registered_donor_limit_seconds": [
+        0.008,
+        0.008,
+        0.0
+      ],
+      "rotor_bound_violation": false,
+      "all_cable_diagnostic_note": "All-cable and non-donor maxima are diagnostics; the registered constrained score remains donor-based."
+    },
+    {
+      "case_id": "mass034_donor0_route1",
+      "planner": "rule_reconfigure",
+      "model_seed": 0,
+      "issues": [],
+      "scores_reproduced": true,
+      "goal_dwell_checks": [
+        {
+          "stage": "leg_1",
+          "final_dwell_steps": 30,
+          "required": 15,
+          "matches": true
+        },
+        {
+          "stage": "leg_2",
+          "final_dwell_steps": 27,
+          "required": 15,
+          "matches": true
+        },
+        {
+          "stage": "leg_3",
+          "final_dwell_steps": 21,
+          "required": 15,
+          "matches": true
+        }
+      ],
+      "maximum_operation_excursion": 0.014372927128309896,
+      "maximum_operation_donor_tension": 0.6306572504913825,
+      "maximum_all_cable_tension": 0.6306572504913825,
+      "maximum_tension_by_cable": [
+        0.6306572504913825,
+        0.5579077292851736,
+        0.18538161430457611
+      ],
+      "maximum_non_donor_tension_by_operation": [
+        0.18489299957699468,
+        0.18538161430457611
+      ],
+      "any_cable_above_registered_donor_limit_seconds": 0.002,
+      "per_cable_above_registered_donor_limit_seconds": [
+        0.002,
+        0.0,
+        0.0
+      ],
+      "rotor_bound_violation": false,
+      "all_cable_diagnostic_note": "All-cable and non-donor maxima are diagnostics; the registered constrained score remains donor-based."
+    },
+    {
+      "case_id": "mass034_donor1_route0",
+      "planner": "rule_fixed",
+      "model_seed": 0,
+      "issues": [],
+      "scores_reproduced": true,
+      "goal_dwell_checks": [
+        {
+          "stage": "leg_1",
+          "final_dwell_steps": 31,
+          "required": 15,
+          "matches": true
+        },
+        {
+          "stage": "leg_2",
+          "final_dwell_steps": 15,
+          "required": 15,
+          "matches": true
+        },
+        {
+          "stage": "leg_3",
+          "final_dwell_steps": 15,
+          "required": 15,
+          "matches": true
+        }
+      ],
+      "maximum_operation_excursion": 0.21327273030607768,
+      "maximum_operation_donor_tension": 1.9805982886016513,
+      "maximum_all_cable_tension": 1.9805982886016513,
+      "maximum_tension_by_cable": [
+        0.5376876398698909,
+        1.9805982886016513,
+        1.6557501577982108
+      ],
+      "maximum_non_donor_tension_by_operation": [
+        0.5622781327477852,
+        0.4702217027408416
+      ],
+      "any_cable_above_registered_donor_limit_seconds": 0.014,
+      "per_cable_above_registered_donor_limit_seconds": [
+        0.0,
+        0.008,
+        0.006
+      ],
+      "rotor_bound_violation": false,
+      "all_cable_diagnostic_note": "All-cable and non-donor maxima are diagnostics; the registered constrained score remains donor-based."
+    },
+    {
+      "case_id": "mass034_donor1_route0",
+      "planner": "rule_reconfigure",
+      "model_seed": 0,
+      "issues": [],
+      "scores_reproduced": true,
+      "goal_dwell_checks": [
+        {
+          "stage": "leg_1",
+          "final_dwell_steps": 31,
+          "required": 15,
+          "matches": true
+        },
+        {
+          "stage": "leg_2",
+          "final_dwell_steps": 28,
+          "required": 15,
+          "matches": true
+        },
+        {
+          "stage": "leg_3",
+          "final_dwell_steps": 24,
+          "required": 15,
+          "matches": true
+        }
+      ],
+      "maximum_operation_excursion": 0.014423829130644886,
+      "maximum_operation_donor_tension": 0.5574382826015795,
+      "maximum_all_cable_tension": 0.5574666642345684,
+      "maximum_tension_by_cable": [
+        0.18533563127990546,
+        0.3919840855426773,
+        0.5574666642345684
+      ],
+      "maximum_non_donor_tension_by_operation": [
+        0.18503140391983228,
+        0.18533563127990546
+      ],
+      "any_cable_above_registered_donor_limit_seconds": 0.0,
+      "per_cable_above_registered_donor_limit_seconds": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotor_bound_violation": false,
+      "all_cable_diagnostic_note": "All-cable and non-donor maxima are diagnostics; the registered constrained score remains donor-based."
+    },
+    {
+      "case_id": "mass034_donor1_route1",
+      "planner": "rule_fixed",
+      "model_seed": 0,
+      "issues": [],
+      "scores_reproduced": true,
+      "goal_dwell_checks": [
+        {
+          "stage": "leg_1",
+          "final_dwell_steps": 30,
+          "required": 15,
+          "matches": true
+        },
+        {
+          "stage": "leg_2",
+          "final_dwell_steps": 29,
+          "required": 15,
+          "matches": true
+        },
+        {
+          "stage": "leg_3",
+          "final_dwell_steps": 32,
+          "required": 15,
+          "matches": true
+        }
+      ],
+      "maximum_operation_excursion": 0.21506221796396427,
+      "maximum_operation_donor_tension": 2.0683040779188624,
+      "maximum_all_cable_tension": 2.0683040779188624,
+      "maximum_tension_by_cable": [
+        0.6006375898798211,
+        2.0683040779188624,
+        2.0179194626692896
+      ],
+      "maximum_non_donor_tension_by_operation": [
+        0.6006375898798211,
+        0.5638705054048885
+      ],
+      "any_cable_above_registered_donor_limit_seconds": 0.018000000000000002,
+      "per_cable_above_registered_donor_limit_seconds": [
+        0.002,
+        0.008,
+        0.008
+      ],
+      "rotor_bound_violation": false,
+      "all_cable_diagnostic_note": "All-cable and non-donor maxima are diagnostics; the registered constrained score remains donor-based."
+    },
+    {
+      "case_id": "mass034_donor1_route1",
+      "planner": "rule_reconfigure",
+      "model_seed": 0,
+      "issues": [],
+      "scores_reproduced": true,
+      "goal_dwell_checks": [
+        {
+          "stage": "leg_1",
+          "final_dwell_steps": 30,
+          "required": 15,
+          "matches": true
+        },
+        {
+          "stage": "leg_2",
+          "final_dwell_steps": 28,
+          "required": 15,
+          "matches": true
+        },
+        {
+          "stage": "leg_3",
+          "final_dwell_steps": 22,
+          "required": 15,
+          "matches": true
+        }
+      ],
+      "maximum_operation_excursion": 0.013785711016263122,
+      "maximum_operation_donor_tension": 0.5069039346057325,
+      "maximum_all_cable_tension": 0.5069039346057325,
+      "maximum_tension_by_cable": [
+        0.18517107077443268,
+        0.5069039346057325,
+        0.4989047038403503
+      ],
+      "maximum_non_donor_tension_by_operation": [
+        0.1850936026506055,
+        0.18517107077443268
+      ],
+      "any_cable_above_registered_donor_limit_seconds": 0.0,
+      "per_cable_above_registered_donor_limit_seconds": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotor_bound_violation": false,
+      "all_cable_diagnostic_note": "All-cable and non-donor maxima are diagnostics; the registered constrained score remains donor-based."
+    },
+    {
+      "case_id": "mass034_donor2_route0",
+      "planner": "rule_fixed",
+      "model_seed": 0,
+      "issues": [],
+      "scores_reproduced": true,
+      "goal_dwell_checks": [
+        {
+          "stage": "leg_1",
+          "final_dwell_steps": 31,
+          "required": 15,
+          "matches": true
+        },
+        {
+          "stage": "leg_2",
+          "final_dwell_steps": 29,
+          "required": 15,
+          "matches": true
+        },
+        {
+          "stage": "leg_3",
+          "final_dwell_steps": 32,
+          "required": 15,
+          "matches": true
+        }
+      ],
+      "maximum_operation_excursion": 0.2138026010228304,
+      "maximum_operation_donor_tension": 1.9426222144832903,
+      "maximum_all_cable_tension": 1.9426222144832903,
+      "maximum_tension_by_cable": [
+        1.7966233493215091,
+        0.53465398842028,
+        1.9426222144832903
+      ],
+      "maximum_non_donor_tension_by_operation": [
+        0.535695218948936,
+        0.5357228288548647
+      ],
+      "any_cable_above_registered_donor_limit_seconds": 0.016,
+      "per_cable_above_registered_donor_limit_seconds": [
+        0.008,
+        0.0,
+        0.008
+      ],
+      "rotor_bound_violation": false,
+      "all_cable_diagnostic_note": "All-cable and non-donor maxima are diagnostics; the registered constrained score remains donor-based."
+    },
+    {
+      "case_id": "mass034_donor2_route0",
+      "planner": "rule_reconfigure",
+      "model_seed": 0,
+      "issues": [],
+      "scores_reproduced": true,
+      "goal_dwell_checks": [
+        {
+          "stage": "leg_1",
+          "final_dwell_steps": 31,
+          "required": 15,
+          "matches": true
+        },
+        {
+          "stage": "leg_2",
+          "final_dwell_steps": 27,
+          "required": 15,
+          "matches": true
+        },
+        {
+          "stage": "leg_3",
+          "final_dwell_steps": 15,
+          "required": 15,
+          "matches": true
+        }
+      ],
+      "maximum_operation_excursion": 0.014314221346080137,
+      "maximum_operation_donor_tension": 0.5998692280804929,
+      "maximum_all_cable_tension": 0.5998692280804929,
+      "maximum_tension_by_cable": [
+        0.4893281430714086,
+        0.1859843469635292,
+        0.5998692280804929
+      ],
+      "maximum_non_donor_tension_by_operation": [
+        0.1850776570736711,
+        0.1859843469635292
+      ],
+      "any_cable_above_registered_donor_limit_seconds": 0.0,
+      "per_cable_above_registered_donor_limit_seconds": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotor_bound_violation": false,
+      "all_cable_diagnostic_note": "All-cable and non-donor maxima are diagnostics; the registered constrained score remains donor-based."
+    },
+    {
+      "case_id": "mass034_donor2_route1",
+      "planner": "rule_fixed",
+      "model_seed": 0,
+      "issues": [],
+      "scores_reproduced": true,
+      "goal_dwell_checks": [
+        {
+          "stage": "leg_1",
+          "final_dwell_steps": 30,
+          "required": 15,
+          "matches": true
+        },
+        {
+          "stage": "leg_2",
+          "final_dwell_steps": 15,
+          "required": 15,
+          "matches": true
+        },
+        {
+          "stage": "leg_3",
+          "final_dwell_steps": 15,
+          "required": 15,
+          "matches": true
+        }
+      ],
+      "maximum_operation_excursion": 0.21427232026970153,
+      "maximum_operation_donor_tension": 2.1171415714938044,
+      "maximum_all_cable_tension": 2.1171415714938044,
+      "maximum_tension_by_cable": [
+        2.1171415714938044,
+        0.595257186856443,
+        2.040977801445671
+      ],
+      "maximum_non_donor_tension_by_operation": [
+        0.5600834028194798,
+        0.630029390072477
+      ],
+      "any_cable_above_registered_donor_limit_seconds": 0.018000000000000002,
+      "per_cable_above_registered_donor_limit_seconds": [
+        0.008,
+        0.0,
+        0.01
+      ],
+      "rotor_bound_violation": false,
+      "all_cable_diagnostic_note": "All-cable and non-donor maxima are diagnostics; the registered constrained score remains donor-based."
+    },
+    {
+      "case_id": "mass034_donor2_route1",
+      "planner": "rule_reconfigure",
+      "model_seed": 0,
+      "issues": [],
+      "scores_reproduced": true,
+      "goal_dwell_checks": [
+        {
+          "stage": "leg_1",
+          "final_dwell_steps": 30,
+          "required": 15,
+          "matches": true
+        },
+        {
+          "stage": "leg_2",
+          "final_dwell_steps": 29,
+          "required": 15,
+          "matches": true
+        },
+        {
+          "stage": "leg_3",
+          "final_dwell_steps": 27,
+          "required": 15,
+          "matches": true
+        }
+      ],
+      "maximum_operation_excursion": 0.014624820268416647,
+      "maximum_operation_donor_tension": 0.7065029754562155,
+      "maximum_all_cable_tension": 0.7065029754562155,
+      "maximum_tension_by_cable": [
+        0.7065029754562155,
+        0.18563626803764438,
+        0.27934456981629724
+      ],
+      "maximum_non_donor_tension_by_operation": [
+        0.18507422967587567,
+        0.18563626803764438
+      ],
+      "any_cable_above_registered_donor_limit_seconds": 0.002,
+      "per_cable_above_registered_donor_limit_seconds": [
+        0.002,
+        0.0,
+        0.0
+      ],
+      "rotor_bound_violation": false,
+      "all_cable_diagnostic_note": "All-cable and non-donor maxima are diagnostics; the registered constrained score remains donor-based."
+    }
+  ],
+  "decisions": [
+    {
+      "case_id": "mass026_donor0_route0",
+      "planner": "rule_fixed",
+      "model_seed": 0,
+      "operation_index": 0,
+      "issues": [],
+      "verified": true,
+      "learned": false,
+      "oracle": false,
+      "prediction_source": "fixed_feedback_rule",
+      "predictions_bitwise": null,
+      "prediction_max_absolute_difference": null,
+      "oracle_actual_max_absolute_difference": null,
+      "selected_argmin_matches": true,
+      "ranking_scores_match": true,
+      "selected_reconfigure": false,
+      "selected_durations": [
+        2.0,
+        2.0
+      ],
+      "candidate_count": 1,
+      "predictor_evaluations": 0,
+      "predicted_feasible_candidates": 0,
+      "fallback": false,
+      "simulated_candidate_control_steps": 0,
+      "simulated_candidate_physics_steps": 0,
+      "decision_seconds": 0.0004863029971602373,
+      "decision_exceeds_control_period": false,
+      "actual_local_outcome": {
+        "peak_payload_excursion": 0.19474203250622993,
+        "peak_donor_tension": 1.4604390868506623,
+        "elapsed_seconds": 9.0,
+        "absolute_actuator_work": 0.12521196338095272,
+        "total_squared_thrust_integral": 0.8419066679292826,
+        "final_payload_error": 0.014442200424327435,
+        "final_payload_speed": 0.0017505243416208098,
+        "completion": 1.0
+      }
+    },
+    {
+      "case_id": "mass026_donor0_route0",
+      "planner": "rule_fixed",
+      "model_seed": 0,
+      "operation_index": 1,
+      "issues": [],
+      "verified": true,
+      "learned": false,
+      "oracle": false,
+      "prediction_source": "fixed_feedback_rule",
+      "predictions_bitwise": null,
+      "prediction_max_absolute_difference": null,
+      "oracle_actual_max_absolute_difference": null,
+      "selected_argmin_matches": true,
+      "ranking_scores_match": true,
+      "selected_reconfigure": false,
+      "selected_durations": [
+        2.0,
+        2.0
+      ],
+      "candidate_count": 1,
+      "predictor_evaluations": 0,
+      "predicted_feasible_candidates": 0,
+      "fallback": false,
+      "simulated_candidate_control_steps": 0,
+      "simulated_candidate_physics_steps": 0,
+      "decision_seconds": 0.0004595220016199164,
+      "decision_exceeds_control_period": false,
+      "actual_local_outcome": {
+        "peak_payload_excursion": 0.1974783457002543,
+        "peak_donor_tension": 1.3445000900053699,
+        "elapsed_seconds": 9.0,
+        "absolute_actuator_work": 0.12681949037621704,
+        "total_squared_thrust_integral": 0.8417646655266723,
+        "final_payload_error": 0.014117252360939607,
+        "final_payload_speed": 0.0017299446578564444,
+        "completion": 1.0
+      }
+    },
+    {
+      "case_id": "mass026_donor0_route0",
+      "planner": "rule_reconfigure",
+      "model_seed": 0,
+      "operation_index": 0,
+      "issues": [],
+      "verified": true,
+      "learned": false,
+      "oracle": false,
+      "prediction_source": "fixed_feedback_rule",
+      "predictions_bitwise": null,
+      "prediction_max_absolute_difference": null,
+      "oracle_actual_max_absolute_difference": null,
+      "selected_argmin_matches": true,
+      "ranking_scores_match": true,
+      "selected_reconfigure": true,
+      "selected_durations": [
+        2.0,
+        2.0
+      ],
+      "candidate_count": 1,
+      "predictor_evaluations": 0,
+      "predicted_feasible_candidates": 0,
+      "fallback": false,
+      "simulated_candidate_control_steps": 0,
+      "simulated_candidate_physics_steps": 0,
+      "decision_seconds": 0.00043100900074932724,
+      "decision_exceeds_control_period": false,
+      "actual_local_outcome": {
+        "peak_payload_excursion": 0.012432665082539183,
+        "peak_donor_tension": 0.1640117048769597,
+        "elapsed_seconds": 9.0,
+        "absolute_actuator_work": 0.07683820370101171,
+        "total_squared_thrust_integral": 0.8551068391497129,
+        "final_payload_error": 0.009345734477430336,
+        "final_payload_speed": 0.008484387029496731,
+        "completion": 1.0
+      }
+    },
+    {
+      "case_id": "mass026_donor0_route0",
+      "planner": "rule_reconfigure",
+      "model_seed": 0,
+      "operation_index": 1,
+      "issues": [],
+      "verified": true,
+      "learned": false,
+      "oracle": false,
+      "prediction_source": "fixed_feedback_rule",
+      "predictions_bitwise": null,
+      "prediction_max_absolute_difference": null,
+      "oracle_actual_max_absolute_difference": null,
+      "selected_argmin_matches": true,
+      "ranking_scores_match": true,
+      "selected_reconfigure": true,
+      "selected_durations": [
+        2.0,
+        2.0
+      ],
+      "candidate_count": 1,
+      "predictor_evaluations": 0,
+      "predicted_feasible_candidates": 0,
+      "fallback": false,
+      "simulated_candidate_control_steps": 0,
+      "simulated_candidate_physics_steps": 0,
+      "decision_seconds": 0.00041846500243991613,
+      "decision_exceeds_control_period": false,
+      "actual_local_outcome": {
+        "peak_payload_excursion": 0.012292864327432358,
+        "peak_donor_tension": 0.3111484040848814,
+        "elapsed_seconds": 9.0,
+        "absolute_actuator_work": 0.08045278076023142,
+        "total_squared_thrust_integral": 0.8549971288150097,
+        "final_payload_error": 0.008805708380195473,
+        "final_payload_speed": 0.008711030736407673,
+        "completion": 1.0
+      }
+    },
+    {
+      "case_id": "mass026_donor0_route1",
+      "planner": "rule_fixed",
+      "model_seed": 0,
+      "operation_index": 0,
+      "issues": [],
+      "verified": true,
+      "learned": false,
+      "oracle": false,
+      "prediction_source": "fixed_feedback_rule",
+      "predictions_bitwise": null,
+      "prediction_max_absolute_difference": null,
+      "oracle_actual_max_absolute_difference": null,
+      "selected_argmin_matches": true,
+      "ranking_scores_match": true,
+      "selected_reconfigure": false,
+      "selected_durations": [
+        2.0,
+        2.0
+      ],
+      "candidate_count": 1,
+      "predictor_evaluations": 0,
+      "predicted_feasible_candidates": 0,
+      "fallback": false,
+      "simulated_candidate_control_steps": 0,
+      "simulated_candidate_physics_steps": 0,
+      "decision_seconds": 0.000489928999741096,
+      "decision_exceeds_control_period": false,
+      "actual_local_outcome": {
+        "peak_payload_excursion": 0.2025975489907679,
+        "peak_donor_tension": 1.6175780084344298,
+        "elapsed_seconds": 9.0,
+        "absolute_actuator_work": 0.1354856989551511,
+        "total_squared_thrust_integral": 0.8423146311187701,
+        "final_payload_error": 0.010207247185797406,
+        "final_payload_speed": 0.0023209308696790346,
+        "completion": 1.0
+      }
+    },
+    {
+      "case_id": "mass026_donor0_route1",
+      "planner": "rule_fixed",
+      "model_seed": 0,
+      "operation_index": 1,
+      "issues": [],
+      "verified": true,
+      "learned": false,
+      "oracle": false,
+      "prediction_source": "fixed_feedback_rule",
+      "predictions_bitwise": null,
+      "prediction_max_absolute_difference": null,
+      "oracle_actual_max_absolute_difference": null,
+      "selected_argmin_matches": true,
+      "ranking_scores_match": true,
+      "selected_reconfigure": false,
+      "selected_durations": [
+        2.0,
+        2.0
+      ],
+      "candidate_count": 1,
+      "predictor_evaluations": 0,
+      "predicted_feasible_candidates": 0,
+      "fallback": false,
+      "simulated_candidate_control_steps": 0,
+      "simulated_candidate_physics_steps": 0,
+      "decision_seconds": 0.0004471180000109598,
+      "decision_exceeds_control_period": false,
+      "actual_local_outcome": {
+        "peak_payload_excursion": 0.19782189545486145,
+        "peak_donor_tension": 1.6638727581844388,
+        "elapsed_seconds": 9.0,
+        "absolute_actuator_work": 0.13316199176581775,
+        "total_squared_thrust_integral": 0.8421967157162462,
+        "final_payload_error": 0.00887454383093735,
+        "final_payload_speed": 0.0023096722832591137,
+        "completion": 1.0
+      }
+    },
+    {
+      "case_id": "mass026_donor0_route1",
+      "planner": "rule_reconfigure",
+      "model_seed": 0,
+      "operation_index": 0,
+      "issues": [],
+      "verified": true,
+      "learned": false,
+      "oracle": false,
+      "prediction_source": "fixed_feedback_rule",
+      "predictions_bitwise": null,
+      "prediction_max_absolute_difference": null,
+      "oracle_actual_max_absolute_difference": null,
+      "selected_argmin_matches": true,
+      "ranking_scores_match": true,
+      "selected_reconfigure": true,
+      "selected_durations": [
+        2.0,
+        2.0
+      ],
+      "candidate_count": 1,
+      "predictor_evaluations": 0,
+      "predicted_feasible_candidates": 0,
+      "fallback": false,
+      "simulated_candidate_control_steps": 0,
+      "simulated_candidate_physics_steps": 0,
+      "decision_seconds": 0.00042452599882381037,
+      "decision_exceeds_control_period": false,
+      "actual_local_outcome": {
+        "peak_payload_excursion": 0.012106479200152943,
+        "peak_donor_tension": 0.357195832874867,
+        "elapsed_seconds": 9.0,
+        "absolute_actuator_work": 0.09228834504827119,
+        "total_squared_thrust_integral": 0.8550448724442007,
+        "final_payload_error": 0.0076974238948089415,
+        "final_payload_speed": 0.005986179918663335,
+        "completion": 1.0
+      }
+    },
+    {
+      "case_id": "mass026_donor0_route1",
+      "planner": "rule_reconfigure",
+      "model_seed": 0,
+      "operation_index": 1,
+      "issues": [],
+      "verified": true,
+      "learned": false,
+      "oracle": false,
+      "prediction_source": "fixed_feedback_rule",
+      "predictions_bitwise": null,
+      "prediction_max_absolute_difference": null,
+      "oracle_actual_max_absolute_difference": null,
+      "selected_argmin_matches": true,
+      "ranking_scores_match": true,
+      "selected_reconfigure": true,
+      "selected_durations": [
+        2.0,
+        2.0
+      ],
+      "candidate_count": 1,
+      "predictor_evaluations": 0,
+      "predicted_feasible_candidates": 0,
+      "fallback": false,
+      "simulated_candidate_control_steps": 0,
+      "simulated_candidate_physics_steps": 0,
+      "decision_seconds": 0.0004228329999023117,
+      "decision_exceeds_control_period": false,
+      "actual_local_outcome": {
+        "peak_payload_excursion": 0.012477337141886593,
+        "peak_donor_tension": 0.26175717346826066,
+        "elapsed_seconds": 9.0,
+        "absolute_actuator_work": 0.08968963825215874,
+        "total_squared_thrust_integral": 0.8549180829102114,
+        "final_payload_error": 0.008413179534790514,
+        "final_payload_speed": 0.005694904463154691,
+        "completion": 1.0
+      }
+    },
+    {
+      "case_id": "mass026_donor1_route0",
+      "planner": "rule_fixed",
+      "model_seed": 0,
+      "operation_index": 0,
+      "issues": [],
+      "verified": true,
+      "learned": false,
+      "oracle": false,
+      "prediction_source": "fixed_feedback_rule",
+      "predictions_bitwise": null,
+      "prediction_max_absolute_difference": null,
+      "oracle_actual_max_absolute_difference": null,
+      "selected_argmin_matches": true,
+      "ranking_scores_match": true,
+      "selected_reconfigure": false,
+      "selected_durations": [
+        2.0,
+        2.0
+      ],
+      "candidate_count": 1,
+      "predictor_evaluations": 0,
+      "predicted_feasible_candidates": 0,
+      "fallback": false,
+      "simulated_candidate_control_steps": 0,
+      "simulated_candidate_physics_steps": 0,
+      "decision_seconds": 0.0004649719994631596,
+      "decision_exceeds_control_period": false,
+      "actual_local_outcome": {
+        "peak_payload_excursion": 0.19782037531683497,
+        "peak_donor_tension": 1.4417989547495997,
+        "elapsed_seconds": 9.0,
+        "absolute_actuator_work": 0.1269166312546854,
+        "total_squared_thrust_integral": 0.8419052642835797,
+        "final_payload_error": 0.014949892550482268,
+        "final_payload_speed": 0.0018056040967663254,
+        "completion": 1.0
+      }
+    },
+    {
+      "case_id": "mass026_donor1_route0",
+      "planner": "rule_fixed",
+      "model_seed": 0,
+      "operation_index": 1,
+      "issues": [],
+      "verified": true,
+      "learned": false,
+      "oracle": false,
+      "prediction_source": "fixed_feedback_rule",
+      "predictions_bitwise": null,
+      "prediction_max_absolute_difference": null,
+      "oracle_actual_max_absolute_difference": null,
+      "selected_argmin_matches": true,
+      "ranking_scores_match": true,
+      "selected_reconfigure": false,
+      "selected_durations": [
+        2.0,
+        2.0
+      ],
+      "candidate_count": 1,
+      "predictor_evaluations": 0,
+      "predicted_feasible_candidates": 0,
+      "fallback": false,
+      "simulated_candidate_control_steps": 0,
+      "simulated_candidate_physics_steps": 0,
+      "decision_seconds": 0.0004467679973458871,
+      "decision_exceeds_control_period": false,
+      "actual_local_outcome": {
+        "peak_payload_excursion": 0.19460570470954333,
+        "peak_donor_tension": 1.4091016064140973,
+        "elapsed_seconds": 9.0,
+        "absolute_actuator_work": 0.12207666474629889,
+        "total_squared_thrust_integral": 0.8415987592127764,
+        "final_payload_error": 0.01023582329016448,
+        "final_payload_speed": 0.0008189941758234604,
+        "completion": 1.0
+      }
+    },
+    {
+      "case_id": "mass026_donor1_route0",
+      "planner": "rule_reconfigure",
+      "model_seed": 0,
+      "operation_index": 0,
+      "issues": [],
+      "verified": true,
+      "learned": false,
+      "oracle": false,
+      "prediction_source": "fixed_feedback_rule",
+      "predictions_bitwise": null,
+      "prediction_max_absolute_difference": null,
+      "oracle_actual_max_absolute_difference": null,
+      "selected_argmin_matches": true,
+      "ranking_scores_match": true,
+      "selected_reconfigure": true,
+      "selected_durations": [
+        2.0,
+        2.0
+      ],
+      "candidate_count": 1,
+      "predictor_evaluations": 0,
+      "predicted_feasible_candidates": 0,
+      "fallback": false,
+      "simulated_candidate_control_steps": 0,
+      "simulated_candidate_physics_steps": 0,
+      "decision_seconds": 0.000427131999458652,
+      "decision_exceeds_control_period": false,
+      "actual_local_outcome": {
+        "peak_payload_excursion": 0.011143324771365759,
+        "peak_donor_tension": 0.21157948337842175,
+        "elapsed_seconds": 9.0,
+        "absolute_actuator_work": 0.07620696527769204,
+        "total_squared_thrust_integral": 0.8551287753451235,
+        "final_payload_error": 0.0076971374802727015,
+        "final_payload_speed": 0.00849370927795207,
+        "completion": 1.0
+      }
+    },
+    {
+      "case_id": "mass026_donor1_route0",
+      "planner": "rule_reconfigure",
+      "model_seed": 0,
+      "operation_index": 1,
+      "issues": [],
+      "verified": true,
+      "learned": false,
+      "oracle": false,
+      "prediction_source": "fixed_feedback_rule",
+      "predictions_bitwise": null,
+      "prediction_max_absolute_difference": null,
+      "oracle_actual_max_absolute_difference": null,
+      "selected_argmin_matches": true,
+      "ranking_scores_match": true,
+      "selected_reconfigure": true,
+      "selected_durations": [
+        2.0,
+        2.0
+      ],
+      "candidate_count": 1,
+      "predictor_evaluations": 0,
+      "predicted_feasible_candidates": 0,
+      "fallback": false,
+      "simulated_candidate_control_steps": 0,
+      "simulated_candidate_physics_steps": 0,
+      "decision_seconds": 0.0004361480023362674,
+      "decision_exceeds_control_period": false,
+      "actual_local_outcome": {
+        "peak_payload_excursion": 0.013213068066394978,
+        "peak_donor_tension": 0.2732293268101508,
+        "elapsed_seconds": 9.0,
+        "absolute_actuator_work": 0.0787525901180999,
+        "total_squared_thrust_integral": 0.854972464172012,
+        "final_payload_error": 0.007900277291687784,
+        "final_payload_speed": 0.004639731293022455,
+        "completion": 1.0
+      }
+    },
+    {
+      "case_id": "mass026_donor1_route1",
+      "planner": "rule_fixed",
+      "model_seed": 0,
+      "operation_index": 0,
+      "issues": [],
+      "verified": true,
+      "learned": false,
+      "oracle": false,
+      "prediction_source": "fixed_feedback_rule",
+      "predictions_bitwise": null,
+      "prediction_max_absolute_difference": null,
+      "oracle_actual_max_absolute_difference": null,
+      "selected_argmin_matches": true,
+      "ranking_scores_match": true,
+      "selected_reconfigure": false,
+      "selected_durations": [
+        2.0,
+        2.0
+      ],
+      "candidate_count": 1,
+      "predictor_evaluations": 0,
+      "predicted_feasible_candidates": 0,
+      "fallback": false,
+      "simulated_candidate_control_steps": 0,
+      "simulated_candidate_physics_steps": 0,
+      "decision_seconds": 0.00050060899957316,
+      "decision_exceeds_control_period": false,
+      "actual_local_outcome": {
+        "peak_payload_excursion": 0.20004496945071656,
+        "peak_donor_tension": 1.715866979700922,
+        "elapsed_seconds": 9.0,
+        "absolute_actuator_work": 0.1348273192264407,
+        "total_squared_thrust_integral": 0.8423343357730122,
+        "final_payload_error": 0.009970936805895622,
+        "final_payload_speed": 0.0022957475701733017,
+        "completion": 1.0
+      }
+    },
+    {
+      "case_id": "mass026_donor1_route1",
+      "planner": "rule_fixed",
+      "model_seed": 0,
+      "operation_index": 1,
+      "issues": [],
+      "verified": true,
+      "learned": false,
+      "oracle": false,
+      "prediction_source": "fixed_feedback_rule",
+      "predictions_bitwise": null,
+      "prediction_max_absolute_difference": null,
+      "oracle_actual_max_absolute_difference": null,
+      "selected_argmin_matches": true,
+      "ranking_scores_match": true,
+      "selected_reconfigure": false,
+      "selected_durations": [
+        2.0,
+        2.0
+      ],
+      "candidate_count": 1,
+      "predictor_evaluations": 0,
+      "predicted_feasible_candidates": 0,
+      "fallback": false,
+      "simulated_candidate_control_steps": 0,
+      "simulated_candidate_physics_steps": 0,
+      "decision_seconds": 0.0004497440022532828,
+      "decision_exceeds_control_period": false,
+      "actual_local_outcome": {
+        "peak_payload_excursion": 0.20058061170855498,
+        "peak_donor_tension": 1.601923599611545,
+        "elapsed_seconds": 9.0,
+        "absolute_actuator_work": 0.13953748589030054,
+        "total_squared_thrust_integral": 0.8424721780124915,
+        "final_payload_error": 0.012991756618931505,
+        "final_payload_speed": 0.004263445430193625,
+        "completion": 1.0
+      }
+    },
+    {
+      "case_id": "mass026_donor1_route1",
+      "planner": "rule_reconfigure",
+      "model_seed": 0,
+      "operation_index": 0,
+      "issues": [],
+      "verified": true,
+      "learned": false,
+      "oracle": false,
+      "prediction_source": "fixed_feedback_rule",
+      "predictions_bitwise": null,
+      "prediction_max_absolute_difference": null,
+      "oracle_actual_max_absolute_difference": null,
+      "selected_argmin_matches": true,
+      "ranking_scores_match": true,
+      "selected_reconfigure": true,
+      "selected_durations": [
+        2.0,
+        2.0
+      ],
+      "candidate_count": 1,
+      "predictor_evaluations": 0,
+      "predicted_feasible_candidates": 0,
+      "fallback": false,
+      "simulated_candidate_control_steps": 0,
+      "simulated_candidate_physics_steps": 0,
+      "decision_seconds": 0.00044433299626689404,
+      "decision_exceeds_control_period": false,
+      "actual_local_outcome": {
+        "peak_payload_excursion": 0.011953352058812552,
+        "peak_donor_tension": 0.25049614162854017,
+        "elapsed_seconds": 9.0,
+        "absolute_actuator_work": 0.08899063127711923,
+        "total_squared_thrust_integral": 0.8550482448754503,
+        "final_payload_error": 0.007850712574631907,
+        "final_payload_speed": 0.005871298809591187,
+        "completion": 1.0
+      }
+    },
+    {
+      "case_id": "mass026_donor1_route1",
+      "planner": "rule_reconfigure",
+      "model_seed": 0,
+      "operation_index": 1,
+      "issues": [],
+      "verified": true,
+      "learned": false,
+      "oracle": false,
+      "prediction_source": "fixed_feedback_rule",
+      "predictions_bitwise": null,
+      "prediction_max_absolute_difference": null,
+      "oracle_actual_max_absolute_difference": null,
+      "selected_argmin_matches": true,
+      "ranking_scores_match": true,
+      "selected_reconfigure": true,
+      "selected_durations": [
+        2.0,
+        2.0
+      ],
+      "candidate_count": 1,
+      "predictor_evaluations": 0,
+      "predicted_feasible_candidates": 0,
+      "fallback": false,
+      "simulated_candidate_control_steps": 0,
+      "simulated_candidate_physics_steps": 0,
+      "decision_seconds": 0.000445696001406759,
+      "decision_exceeds_control_period": false,
+      "actual_local_outcome": {
+        "peak_payload_excursion": 0.011464486049264028,
+        "peak_donor_tension": 0.26158094349219074,
+        "elapsed_seconds": 9.0,
+        "absolute_actuator_work": 0.089166912115609,
+        "total_squared_thrust_integral": 0.8549169584434436,
+        "final_payload_error": 0.007515968016838209,
+        "final_payload_speed": 0.009155792147086094,
+        "completion": 1.0
+      }
+    },
+    {
+      "case_id": "mass026_donor2_route0",
+      "planner": "rule_fixed",
+      "model_seed": 0,
+      "operation_index": 0,
+      "issues": [],
+      "verified": true,
+      "learned": false,
+      "oracle": false,
+      "prediction_source": "fixed_feedback_rule",
+      "predictions_bitwise": null,
+      "prediction_max_absolute_difference": null,
+      "oracle_actual_max_absolute_difference": null,
+      "selected_argmin_matches": true,
+      "ranking_scores_match": true,
+      "selected_reconfigure": false,
+      "selected_durations": [
+        2.0,
+        2.0
+      ],
+      "candidate_count": 1,
+      "predictor_evaluations": 0,
+      "predicted_feasible_candidates": 0,
+      "fallback": false,
+      "simulated_candidate_control_steps": 0,
+      "simulated_candidate_physics_steps": 0,
+      "decision_seconds": 0.00047742600145284086,
+      "decision_exceeds_control_period": false,
+      "actual_local_outcome": {
+        "peak_payload_excursion": 0.19807294445887508,
+        "peak_donor_tension": 1.3415558684544993,
+        "elapsed_seconds": 9.0,
+        "absolute_actuator_work": 0.12208451605862368,
+        "total_squared_thrust_integral": 0.8417235541252919,
+        "final_payload_error": 0.011187719752307722,
+        "final_payload_speed": 0.0009233151165977553,
+        "completion": 1.0
+      }
+    },
+    {
+      "case_id": "mass026_donor2_route0",
+      "planner": "rule_fixed",
+      "model_seed": 0,
+      "operation_index": 1,
+      "issues": [],
+      "verified": true,
+      "learned": false,
+      "oracle": false,
+      "prediction_source": "fixed_feedback_rule",
+      "predictions_bitwise": null,
+      "prediction_max_absolute_difference": null,
+      "oracle_actual_max_absolute_difference": null,
+      "selected_argmin_matches": true,
+      "ranking_scores_match": true,
+      "selected_reconfigure": false,
+      "selected_durations": [
+        2.0,
+        2.0
+      ],
+      "candidate_count": 1,
+      "predictor_evaluations": 0,
+      "predicted_feasible_candidates": 0,
+      "fallback": false,
+      "simulated_candidate_control_steps": 0,
+      "simulated_candidate_physics_steps": 0,
+      "decision_seconds": 0.0004305179973016493,
+      "decision_exceeds_control_period": false,
+      "actual_local_outcome": {
+        "peak_payload_excursion": 0.19503928822107913,
+        "peak_donor_tension": 1.4193600595731712,
+        "elapsed_seconds": 9.0,
+        "absolute_actuator_work": 0.12576177323810356,
+        "total_squared_thrust_integral": 0.8417702741006532,
+        "final_payload_error": 0.013783162251166837,
+        "final_payload_speed": 0.0017242249569924277,
+        "completion": 1.0
+      }
+    },
+    {
+      "case_id": "mass026_donor2_route0",
+      "planner": "rule_reconfigure",
+      "model_seed": 0,
+      "operation_index": 0,
+      "issues": [],
+      "verified": true,
+      "learned": false,
+      "oracle": false,
+      "prediction_source": "fixed_feedback_rule",
+      "predictions_bitwise": null,
+      "prediction_max_absolute_difference": null,
+      "oracle_actual_max_absolute_difference": null,
+      "selected_argmin_matches": true,
+      "ranking_scores_match": true,
+      "selected_reconfigure": true,
+      "selected_durations": [
+        2.0,
+        2.0
+      ],
+      "candidate_count": 1,
+      "predictor_evaluations": 0,
+      "predicted_feasible_candidates": 0,
+      "fallback": false,
+      "simulated_candidate_control_steps": 0,
+      "simulated_candidate_physics_steps": 0,
+      "decision_seconds": 0.0004261089998180978,
+      "decision_exceeds_control_period": false,
+      "actual_local_outcome": {
+        "peak_payload_excursion": 0.013296529572457675,
+        "peak_donor_tension": 0.37659313882001527,
+        "elapsed_seconds": 9.0,
+        "absolute_actuator_work": 0.08061222127786932,
+        "total_squared_thrust_integral": 0.8550949754732355,
+        "final_payload_error": 0.007707327926323252,
+        "final_payload_speed": 0.004727647635407629,
+        "completion": 1.0
+      }
+    },
+    {
+      "case_id": "mass026_donor2_route0",
+      "planner": "rule_reconfigure",
+      "model_seed": 0,
+      "operation_index": 1,
+      "issues": [],
+      "verified": true,
+      "learned": false,
+      "oracle": false,
+      "prediction_source": "fixed_feedback_rule",
+      "predictions_bitwise": null,
+      "prediction_max_absolute_difference": null,
+      "oracle_actual_max_absolute_difference": null,
+      "selected_argmin_matches": true,
+      "ranking_scores_match": true,
+      "selected_reconfigure": true,
+      "selected_durations": [
+        2.0,
+        2.0
+      ],
+      "candidate_count": 1,
+      "predictor_evaluations": 0,
+      "predicted_feasible_candidates": 0,
+      "fallback": false,
+      "simulated_candidate_control_steps": 0,
+      "simulated_candidate_physics_steps": 0,
+      "decision_seconds": 0.0004270409990567714,
+      "decision_exceeds_control_period": false,
+      "actual_local_outcome": {
+        "peak_payload_excursion": 0.01282005991868883,
+        "peak_donor_tension": 0.21109199159647088,
+        "elapsed_seconds": 9.0,
+        "absolute_actuator_work": 0.07994068495918334,
+        "total_squared_thrust_integral": 0.854972645346382,
+        "final_payload_error": 0.009673294229239812,
+        "final_payload_speed": 0.008224763343390269,
+        "completion": 1.0
+      }
+    },
+    {
+      "case_id": "mass026_donor2_route1",
+      "planner": "rule_fixed",
+      "model_seed": 0,
+      "operation_index": 0,
+      "issues": [],
+      "verified": true,
+      "learned": false,
+      "oracle": false,
+      "prediction_source": "fixed_feedback_rule",
+      "predictions_bitwise": null,
+      "prediction_max_absolute_difference": null,
+      "oracle_actual_max_absolute_difference": null,
+      "selected_argmin_matches": true,
+      "ranking_scores_match": true,
+      "selected_reconfigure": false,
+      "selected_durations": [
+        2.0,
+        2.0
+      ],
+      "candidate_count": 1,
+      "predictor_evaluations": 0,
+      "predicted_feasible_candidates": 0,
+      "fallback": false,
+      "simulated_candidate_control_steps": 0,
+      "simulated_candidate_physics_steps": 0,
+      "decision_seconds": 0.00044921200606040657,
+      "decision_exceeds_control_period": false,
+      "actual_local_outcome": {
+        "peak_payload_excursion": 0.19887898727341127,
+        "peak_donor_tension": 1.6960615333012319,
+        "elapsed_seconds": 9.0,
+        "absolute_actuator_work": 0.13808945252526883,
+        "total_squared_thrust_integral": 0.8426152800307782,
+        "final_payload_error": 0.013696581421074274,
+        "final_payload_speed": 0.004153758703321055,
+        "completion": 1.0
+      }
+    },
+    {
+      "case_id": "mass026_donor2_route1",
+      "planner": "rule_fixed",
+      "model_seed": 0,
+      "operation_index": 1,
+      "issues": [],
+      "verified": true,
+      "learned": false,
+      "oracle": false,
+      "prediction_source": "fixed_feedback_rule",
+      "predictions_bitwise": null,
+      "prediction_max_absolute_difference": null,
+      "oracle_actual_max_absolute_difference": null,
+      "selected_argmin_matches": true,
+      "ranking_scores_match": true,
+      "selected_reconfigure": false,
+      "selected_durations": [
+        2.0,
+        2.0
+      ],
+      "candidate_count": 1,
+      "predictor_evaluations": 0,
+      "predicted_feasible_candidates": 0,
+      "fallback": false,
+      "simulated_candidate_control_steps": 0,
+      "simulated_candidate_physics_steps": 0,
+      "decision_seconds": 0.0004665950036724098,
+      "decision_exceeds_control_period": false,
+      "actual_local_outcome": {
+        "peak_payload_excursion": 0.1993586890066812,
+        "peak_donor_tension": 1.5562901438353354,
+        "elapsed_seconds": 9.0,
+        "absolute_actuator_work": 0.1347110529084721,
+        "total_squared_thrust_integral": 0.8421680865283705,
+        "final_payload_error": 0.008913813999465593,
+        "final_payload_speed": 0.0023997604846581907,
+        "completion": 1.0
+      }
+    },
+    {
+      "case_id": "mass026_donor2_route1",
+      "planner": "rule_reconfigure",
+      "model_seed": 0,
+      "operation_index": 0,
+      "issues": [],
+      "verified": true,
+      "learned": false,
+      "oracle": false,
+      "prediction_source": "fixed_feedback_rule",
+      "predictions_bitwise": null,
+      "prediction_max_absolute_difference": null,
+      "oracle_actual_max_absolute_difference": null,
+      "selected_argmin_matches": true,
+      "ranking_scores_match": true,
+      "selected_reconfigure": true,
+      "selected_durations": [
+        2.0,
+        2.0
+      ],
+      "candidate_count": 1,
+      "predictor_evaluations": 0,
+      "predicted_feasible_candidates": 0,
+      "fallback": false,
+      "simulated_candidate_control_steps": 0,
+      "simulated_candidate_physics_steps": 0,
+      "decision_seconds": 0.00044653799704974517,
+      "decision_exceeds_control_period": false,
+      "actual_local_outcome": {
+        "peak_payload_excursion": 0.011249853867635613,
+        "peak_donor_tension": 0.179624416683264,
+        "elapsed_seconds": 9.0,
+        "absolute_actuator_work": 0.08710665362518703,
+        "total_squared_thrust_integral": 0.8550807837998856,
+        "final_payload_error": 0.00840490035758392,
+        "final_payload_speed": 0.010174453109000578,
+        "completion": 1.0
+      }
+    },
+    {
+      "case_id": "mass026_donor2_route1",
+      "planner": "rule_reconfigure",
+      "model_seed": 0,
+      "operation_index": 1,
+      "issues": [],
+      "verified": true,
+      "learned": false,
+      "oracle": false,
+      "prediction_source": "fixed_feedback_rule",
+      "predictions_bitwise": null,
+      "prediction_max_absolute_difference": null,
+      "oracle_actual_max_absolute_difference": null,
+      "selected_argmin_matches": true,
+      "ranking_scores_match": true,
+      "selected_reconfigure": true,
+      "selected_durations": [
+        2.0,
+        2.0
+      ],
+      "candidate_count": 1,
+      "predictor_evaluations": 0,
+      "predicted_feasible_candidates": 0,
+      "fallback": false,
+      "simulated_candidate_control_steps": 0,
+      "simulated_candidate_physics_steps": 0,
+      "decision_seconds": 0.00043930399988312274,
+      "decision_exceeds_control_period": false,
+      "actual_local_outcome": {
+        "peak_payload_excursion": 0.013916164870247875,
+        "peak_donor_tension": 0.3451744897545155,
+        "elapsed_seconds": 9.0,
+        "absolute_actuator_work": 0.09438836557181095,
+        "total_squared_thrust_integral": 0.8549470972241274,
+        "final_payload_error": 0.009176117360729315,
+        "final_payload_speed": 0.005723159778529188,
+        "completion": 1.0
+      }
+    },
+    {
+      "case_id": "mass034_donor0_route0",
+      "planner": "rule_fixed",
+      "model_seed": 0,
+      "operation_index": 0,
+      "issues": [],
+      "verified": true,
+      "learned": false,
+      "oracle": false,
+      "prediction_source": "fixed_feedback_rule",
+      "predictions_bitwise": null,
+      "prediction_max_absolute_difference": null,
+      "oracle_actual_max_absolute_difference": null,
+      "selected_argmin_matches": true,
+      "ranking_scores_match": true,
+      "selected_reconfigure": false,
+      "selected_durations": [
+        2.0,
+        2.0
+      ],
+      "candidate_count": 1,
+      "predictor_evaluations": 0,
+      "predicted_feasible_candidates": 0,
+      "fallback": false,
+      "simulated_candidate_control_steps": 0,
+      "simulated_candidate_physics_steps": 0,
+      "decision_seconds": 0.0004289450007490814,
+      "decision_exceeds_control_period": false,
+      "actual_local_outcome": {
+        "peak_payload_excursion": 0.20983198754092516,
+        "peak_donor_tension": 1.748956352790804,
+        "elapsed_seconds": 9.0,
+        "absolute_actuator_work": 0.16210576817839537,
+        "total_squared_thrust_integral": 0.9824757479186667,
+        "final_payload_error": 0.022582754553917103,
+        "final_payload_speed": 0.0052946893004441,
+        "completion": 1.0
+      }
+    },
+    {
+      "case_id": "mass034_donor0_route0",
+      "planner": "rule_fixed",
+      "model_seed": 0,
+      "operation_index": 1,
+      "issues": [],
+      "verified": true,
+      "learned": false,
+      "oracle": false,
+      "prediction_source": "fixed_feedback_rule",
+      "predictions_bitwise": null,
+      "prediction_max_absolute_difference": null,
+      "oracle_actual_max_absolute_difference": null,
+      "selected_argmin_matches": true,
+      "ranking_scores_match": true,
+      "selected_reconfigure": false,
+      "selected_durations": [
+        2.0,
+        2.0
+      ],
+      "candidate_count": 1,
+      "predictor_evaluations": 0,
+      "predicted_feasible_candidates": 0,
+      "fallback": false,
+      "simulated_candidate_control_steps": 0,
+      "simulated_candidate_physics_steps": 0,
+      "decision_seconds": 0.0004493629967328161,
+      "decision_exceeds_control_period": false,
+      "actual_local_outcome": {
+        "peak_payload_excursion": 0.21280869674974665,
+        "peak_donor_tension": 1.7737559386770978,
+        "elapsed_seconds": 9.0,
+        "absolute_actuator_work": 0.1661127250407837,
+        "total_squared_thrust_integral": 0.9823732708449344,
+        "final_payload_error": 0.022067236452077803,
+        "final_payload_speed": 0.005636503310100294,
+        "completion": 1.0
+      }
+    },
+    {
+      "case_id": "mass034_donor0_route0",
+      "planner": "rule_reconfigure",
+      "model_seed": 0,
+      "operation_index": 0,
+      "issues": [],
+      "verified": true,
+      "learned": false,
+      "oracle": false,
+      "prediction_source": "fixed_feedback_rule",
+      "predictions_bitwise": null,
+      "prediction_max_absolute_difference": null,
+      "oracle_actual_max_absolute_difference": null,
+      "selected_argmin_matches": true,
+      "ranking_scores_match": true,
+      "selected_reconfigure": true,
+      "selected_durations": [
+        2.0,
+        2.0
+      ],
+      "candidate_count": 1,
+      "predictor_evaluations": 0,
+      "predicted_feasible_candidates": 0,
+      "fallback": false,
+      "simulated_candidate_control_steps": 0,
+      "simulated_candidate_physics_steps": 0,
+      "decision_seconds": 0.0004421889971126802,
+      "decision_exceeds_control_period": false,
+      "actual_local_outcome": {
+        "peak_payload_excursion": 0.014770065925028228,
+        "peak_donor_tension": 0.35412672424102526,
+        "elapsed_seconds": 9.0,
+        "absolute_actuator_work": 0.09044425536284942,
+        "total_squared_thrust_integral": 1.003517500934079,
+        "final_payload_error": 0.012296601528256776,
+        "final_payload_speed": 0.009281878264207212,
+        "completion": 1.0
+      }
+    },
+    {
+      "case_id": "mass034_donor0_route0",
+      "planner": "rule_reconfigure",
+      "model_seed": 0,
+      "operation_index": 1,
+      "issues": [],
+      "verified": true,
+      "learned": false,
+      "oracle": false,
+      "prediction_source": "fixed_feedback_rule",
+      "predictions_bitwise": null,
+      "prediction_max_absolute_difference": null,
+      "oracle_actual_max_absolute_difference": null,
+      "selected_argmin_matches": true,
+      "ranking_scores_match": true,
+      "selected_reconfigure": true,
+      "selected_durations": [
+        2.0,
+        2.0
+      ],
+      "candidate_count": 1,
+      "predictor_evaluations": 0,
+      "predicted_feasible_candidates": 0,
+      "fallback": false,
+      "simulated_candidate_control_steps": 0,
+      "simulated_candidate_physics_steps": 0,
+      "decision_seconds": 0.00043319300311850384,
+      "decision_exceeds_control_period": false,
+      "actual_local_outcome": {
+        "peak_payload_excursion": 0.013423287858840121,
+        "peak_donor_tension": 0.5991887043680915,
+        "elapsed_seconds": 9.0,
+        "absolute_actuator_work": 0.09018615925365835,
+        "total_squared_thrust_integral": 1.0034618138656382,
+        "final_payload_error": 0.00986712150844364,
+        "final_payload_speed": 0.01016171057710573,
+        "completion": 1.0
+      }
+    },
+    {
+      "case_id": "mass034_donor0_route1",
+      "planner": "rule_fixed",
+      "model_seed": 0,
+      "operation_index": 0,
+      "issues": [],
+      "verified": true,
+      "learned": false,
+      "oracle": false,
+      "prediction_source": "fixed_feedback_rule",
+      "predictions_bitwise": null,
+      "prediction_max_absolute_difference": null,
+      "oracle_actual_max_absolute_difference": null,
+      "selected_argmin_matches": true,
+      "ranking_scores_match": true,
+      "selected_reconfigure": false,
+      "selected_durations": [
+        2.0,
+        2.0
+      ],
+      "candidate_count": 1,
+      "predictor_evaluations": 0,
+      "predicted_feasible_candidates": 0,
+      "fallback": false,
+      "simulated_candidate_control_steps": 0,
+      "simulated_candidate_physics_steps": 0,
+      "decision_seconds": 0.00044323099427856505,
+      "decision_exceeds_control_period": false,
+      "actual_local_outcome": {
+        "peak_payload_excursion": 0.2179398224852578,
+        "peak_donor_tension": 2.0476415011163267,
+        "elapsed_seconds": 9.0,
+        "absolute_actuator_work": 0.16823942051856264,
+        "total_squared_thrust_integral": 0.9830048323159555,
+        "final_payload_error": 0.017042388158453093,
+        "final_payload_speed": 0.004823067418154155,
+        "completion": 1.0
+      }
+    },
+    {
+      "case_id": "mass034_donor0_route1",
+      "planner": "rule_fixed",
+      "model_seed": 0,
+      "operation_index": 1,
+      "issues": [],
+      "verified": true,
+      "learned": false,
+      "oracle": false,
+      "prediction_source": "fixed_feedback_rule",
+      "predictions_bitwise": null,
+      "prediction_max_absolute_difference": null,
+      "oracle_actual_max_absolute_difference": null,
+      "selected_argmin_matches": true,
+      "ranking_scores_match": true,
+      "selected_reconfigure": false,
+      "selected_durations": [
+        2.0,
+        2.0
+      ],
+      "candidate_count": 1,
+      "predictor_evaluations": 0,
+      "predicted_feasible_candidates": 0,
+      "fallback": false,
+      "simulated_candidate_control_steps": 0,
+      "simulated_candidate_physics_steps": 0,
+      "decision_seconds": 0.00044211899512447417,
+      "decision_exceeds_control_period": false,
+      "actual_local_outcome": {
+        "peak_payload_excursion": 0.2124576755605069,
+        "peak_donor_tension": 1.932477149467203,
+        "elapsed_seconds": 9.0,
+        "absolute_actuator_work": 0.1653064719499694,
+        "total_squared_thrust_integral": 0.982803897236089,
+        "final_payload_error": 0.014953401636353263,
+        "final_payload_speed": 0.004567350077065583,
+        "completion": 1.0
+      }
+    },
+    {
+      "case_id": "mass034_donor0_route1",
+      "planner": "rule_reconfigure",
+      "model_seed": 0,
+      "operation_index": 0,
+      "issues": [],
+      "verified": true,
+      "learned": false,
+      "oracle": false,
+      "prediction_source": "fixed_feedback_rule",
+      "predictions_bitwise": null,
+      "prediction_max_absolute_difference": null,
+      "oracle_actual_max_absolute_difference": null,
+      "selected_argmin_matches": true,
+      "ranking_scores_match": true,
+      "selected_reconfigure": true,
+      "selected_durations": [
+        2.0,
+        2.0
+      ],
+      "candidate_count": 1,
+      "predictor_evaluations": 0,
+      "predicted_feasible_candidates": 0,
+      "fallback": false,
+      "simulated_candidate_control_steps": 0,
+      "simulated_candidate_physics_steps": 0,
+      "decision_seconds": 0.00045222900371300057,
+      "decision_exceeds_control_period": false,
+      "actual_local_outcome": {
+        "peak_payload_excursion": 0.01320214868282407,
+        "peak_donor_tension": 0.6306572504913825,
+        "elapsed_seconds": 9.0,
+        "absolute_actuator_work": 0.1016213647042785,
+        "total_squared_thrust_integral": 1.0035610083627198,
+        "final_payload_error": 0.008435003234996831,
+        "final_payload_speed": 0.007084045967280451,
+        "completion": 1.0
+      }
+    },
+    {
+      "case_id": "mass034_donor0_route1",
+      "planner": "rule_reconfigure",
+      "model_seed": 0,
+      "operation_index": 1,
+      "issues": [],
+      "verified": true,
+      "learned": false,
+      "oracle": false,
+      "prediction_source": "fixed_feedback_rule",
+      "predictions_bitwise": null,
+      "prediction_max_absolute_difference": null,
+      "oracle_actual_max_absolute_difference": null,
+      "selected_argmin_matches": true,
+      "ranking_scores_match": true,
+      "selected_reconfigure": true,
+      "selected_durations": [
+        2.0,
+        2.0
+      ],
+      "candidate_count": 1,
+      "predictor_evaluations": 0,
+      "predicted_feasible_candidates": 0,
+      "fallback": false,
+      "simulated_candidate_control_steps": 0,
+      "simulated_candidate_physics_steps": 0,
+      "decision_seconds": 0.0004450449996511452,
+      "decision_exceeds_control_period": false,
+      "actual_local_outcome": {
+        "peak_payload_excursion": 0.014372927128309896,
+        "peak_donor_tension": 0.5579077292851736,
+        "elapsed_seconds": 9.0,
+        "absolute_actuator_work": 0.10254652150584159,
+        "total_squared_thrust_integral": 1.003311958248448,
+        "final_payload_error": 0.010322581213497242,
+        "final_payload_speed": 0.006405955859050022,
+        "completion": 1.0
+      }
+    },
+    {
+      "case_id": "mass034_donor1_route0",
+      "planner": "rule_fixed",
+      "model_seed": 0,
+      "operation_index": 0,
+      "issues": [],
+      "verified": true,
+      "learned": false,
+      "oracle": false,
+      "prediction_source": "fixed_feedback_rule",
+      "predictions_bitwise": null,
+      "prediction_max_absolute_difference": null,
+      "oracle_actual_max_absolute_difference": null,
+      "selected_argmin_matches": true,
+      "ranking_scores_match": true,
+      "selected_reconfigure": false,
+      "selected_durations": [
+        2.0,
+        2.0
+      ],
+      "candidate_count": 1,
+      "predictor_evaluations": 0,
+      "predicted_feasible_candidates": 0,
+      "fallback": false,
+      "simulated_candidate_control_steps": 0,
+      "simulated_candidate_physics_steps": 0,
+      "decision_seconds": 0.00047377900045830756,
+      "decision_exceeds_control_period": false,
+      "actual_local_outcome": {
+        "peak_payload_excursion": 0.21327273030607768,
+        "peak_donor_tension": 1.9805982886016513,
+        "elapsed_seconds": 9.0,
+        "absolute_actuator_work": 0.1647422423146936,
+        "total_squared_thrust_integral": 0.9824993929743164,
+        "final_payload_error": 0.02307011005169196,
+        "final_payload_speed": 0.005482104576138377,
+        "completion": 1.0
+      }
+    },
+    {
+      "case_id": "mass034_donor1_route0",
+      "planner": "rule_fixed",
+      "model_seed": 0,
+      "operation_index": 1,
+      "issues": [],
+      "verified": true,
+      "learned": false,
+      "oracle": false,
+      "prediction_source": "fixed_feedback_rule",
+      "predictions_bitwise": null,
+      "prediction_max_absolute_difference": null,
+      "oracle_actual_max_absolute_difference": null,
+      "selected_argmin_matches": true,
+      "ranking_scores_match": true,
+      "selected_reconfigure": false,
+      "selected_durations": [
+        2.0,
+        2.0
+      ],
+      "candidate_count": 1,
+      "predictor_evaluations": 0,
+      "predicted_feasible_candidates": 0,
+      "fallback": false,
+      "simulated_candidate_control_steps": 0,
+      "simulated_candidate_physics_steps": 0,
+      "decision_seconds": 0.0004211799969198182,
+      "decision_exceeds_control_period": false,
+      "actual_local_outcome": {
+        "peak_payload_excursion": 0.20941399996667495,
+        "peak_donor_tension": 1.6557501577982108,
+        "elapsed_seconds": 9.0,
+        "absolute_actuator_work": 0.15329945829652286,
+        "total_squared_thrust_integral": 0.9816558835060083,
+        "final_payload_error": 0.016528421985490975,
+        "final_payload_speed": 0.0012699836846811014,
+        "completion": 1.0
+      }
+    },
+    {
+      "case_id": "mass034_donor1_route0",
+      "planner": "rule_reconfigure",
+      "model_seed": 0,
+      "operation_index": 0,
+      "issues": [],
+      "verified": true,
+      "learned": false,
+      "oracle": false,
+      "prediction_source": "fixed_feedback_rule",
+      "predictions_bitwise": null,
+      "prediction_max_absolute_difference": null,
+      "oracle_actual_max_absolute_difference": null,
+      "selected_argmin_matches": true,
+      "ranking_scores_match": true,
+      "selected_reconfigure": true,
+      "selected_durations": [
+        2.0,
+        2.0
+      ],
+      "candidate_count": 1,
+      "predictor_evaluations": 0,
+      "predicted_feasible_candidates": 0,
+      "fallback": false,
+      "simulated_candidate_control_steps": 0,
+      "simulated_candidate_physics_steps": 0,
+      "decision_seconds": 0.0005975410022074357,
+      "decision_exceeds_control_period": false,
+      "actual_local_outcome": {
+        "peak_payload_excursion": 0.012814075526189161,
+        "peak_donor_tension": 0.3919840855426773,
+        "elapsed_seconds": 9.0,
+        "absolute_actuator_work": 0.08636626174874941,
+        "total_squared_thrust_integral": 1.0036214370647145,
+        "final_payload_error": 0.00968950811261956,
+        "final_payload_speed": 0.00962750523250269,
+        "completion": 1.0
+      }
+    },
+    {
+      "case_id": "mass034_donor1_route0",
+      "planner": "rule_reconfigure",
+      "model_seed": 0,
+      "operation_index": 1,
+      "issues": [],
+      "verified": true,
+      "learned": false,
+      "oracle": false,
+      "prediction_source": "fixed_feedback_rule",
+      "predictions_bitwise": null,
+      "prediction_max_absolute_difference": null,
+      "oracle_actual_max_absolute_difference": null,
+      "selected_argmin_matches": true,
+      "ranking_scores_match": true,
+      "selected_reconfigure": true,
+      "selected_durations": [
+        2.0,
+        2.0
+      ],
+      "candidate_count": 1,
+      "predictor_evaluations": 0,
+      "predicted_feasible_candidates": 0,
+      "fallback": false,
+      "simulated_candidate_control_steps": 0,
+      "simulated_candidate_physics_steps": 0,
+      "decision_seconds": 0.00042833299812627956,
+      "decision_exceeds_control_period": false,
+      "actual_local_outcome": {
+        "peak_payload_excursion": 0.014423829130644886,
+        "peak_donor_tension": 0.5574382826015795,
+        "elapsed_seconds": 9.0,
+        "absolute_actuator_work": 0.08849744709628535,
+        "total_squared_thrust_integral": 1.003515623571313,
+        "final_payload_error": 0.008893199512563732,
+        "final_payload_speed": 0.00596513846638279,
+        "completion": 1.0
+      }
+    },
+    {
+      "case_id": "mass034_donor1_route1",
+      "planner": "rule_fixed",
+      "model_seed": 0,
+      "operation_index": 0,
+      "issues": [],
+      "verified": true,
+      "learned": false,
+      "oracle": false,
+      "prediction_source": "fixed_feedback_rule",
+      "predictions_bitwise": null,
+      "prediction_max_absolute_difference": null,
+      "oracle_actual_max_absolute_difference": null,
+      "selected_argmin_matches": true,
+      "ranking_scores_match": true,
+      "selected_reconfigure": false,
+      "selected_durations": [
+        2.0,
+        2.0
+      ],
+      "candidate_count": 1,
+      "predictor_evaluations": 0,
+      "predicted_feasible_candidates": 0,
+      "fallback": false,
+      "simulated_candidate_control_steps": 0,
+      "simulated_candidate_physics_steps": 0,
+      "decision_seconds": 0.0004546830023173243,
+      "decision_exceeds_control_period": false,
+      "actual_local_outcome": {
+        "peak_payload_excursion": 0.21506221796396427,
+        "peak_donor_tension": 2.0683040779188624,
+        "elapsed_seconds": 9.0,
+        "absolute_actuator_work": 0.16655718898719685,
+        "total_squared_thrust_integral": 0.9829879732361262,
+        "final_payload_error": 0.016590826132584214,
+        "final_payload_speed": 0.004724276234677959,
+        "completion": 1.0
+      }
+    },
+    {
+      "case_id": "mass034_donor1_route1",
+      "planner": "rule_fixed",
+      "model_seed": 0,
+      "operation_index": 1,
+      "issues": [],
+      "verified": true,
+      "learned": false,
+      "oracle": false,
+      "prediction_source": "fixed_feedback_rule",
+      "predictions_bitwise": null,
+      "prediction_max_absolute_difference": null,
+      "oracle_actual_max_absolute_difference": null,
+      "selected_argmin_matches": true,
+      "ranking_scores_match": true,
+      "selected_reconfigure": false,
+      "selected_durations": [
+        2.0,
+        2.0
+      ],
+      "candidate_count": 1,
+      "predictor_evaluations": 0,
+      "predicted_feasible_candidates": 0,
+      "fallback": false,
+      "simulated_candidate_control_steps": 0,
+      "simulated_candidate_physics_steps": 0,
+      "decision_seconds": 0.00045224899804452434,
+      "decision_exceeds_control_period": false,
+      "actual_local_outcome": {
+        "peak_payload_excursion": 0.21485772707727951,
+        "peak_donor_tension": 2.0179194626692896,
+        "elapsed_seconds": 9.0,
+        "absolute_actuator_work": 0.1797775723015532,
+        "total_squared_thrust_integral": 0.983755920336078,
+        "final_payload_error": 0.020480977085640513,
+        "final_payload_speed": 0.01003467174931992,
+        "completion": 1.0
+      }
+    },
+    {
+      "case_id": "mass034_donor1_route1",
+      "planner": "rule_reconfigure",
+      "model_seed": 0,
+      "operation_index": 0,
+      "issues": [],
+      "verified": true,
+      "learned": false,
+      "oracle": false,
+      "prediction_source": "fixed_feedback_rule",
+      "predictions_bitwise": null,
+      "prediction_max_absolute_difference": null,
+      "oracle_actual_max_absolute_difference": null,
+      "selected_argmin_matches": true,
+      "ranking_scores_match": true,
+      "selected_reconfigure": true,
+      "selected_durations": [
+        2.0,
+        2.0
+      ],
+      "candidate_count": 1,
+      "predictor_evaluations": 0,
+      "predicted_feasible_candidates": 0,
+      "fallback": false,
+      "simulated_candidate_control_steps": 0,
+      "simulated_candidate_physics_steps": 0,
+      "decision_seconds": 0.00044312100362731144,
+      "decision_exceeds_control_period": false,
+      "actual_local_outcome": {
+        "peak_payload_excursion": 0.013785711016263122,
+        "peak_donor_tension": 0.5069039346057325,
+        "elapsed_seconds": 9.0,
+        "absolute_actuator_work": 0.10095610586660027,
+        "total_squared_thrust_integral": 1.0034665524574755,
+        "final_payload_error": 0.009772276355728512,
+        "final_payload_speed": 0.006464575361717566,
+        "completion": 1.0
+      }
+    },
+    {
+      "case_id": "mass034_donor1_route1",
+      "planner": "rule_reconfigure",
+      "model_seed": 0,
+      "operation_index": 1,
+      "issues": [],
+      "verified": true,
+      "learned": false,
+      "oracle": false,
+      "prediction_source": "fixed_feedback_rule",
+      "predictions_bitwise": null,
+      "prediction_max_absolute_difference": null,
+      "oracle_actual_max_absolute_difference": null,
+      "selected_argmin_matches": true,
+      "ranking_scores_match": true,
+      "selected_reconfigure": true,
+      "selected_durations": [
+        2.0,
+        2.0
+      ],
+      "candidate_count": 1,
+      "predictor_evaluations": 0,
+      "predicted_feasible_candidates": 0,
+      "fallback": false,
+      "simulated_candidate_control_steps": 0,
+      "simulated_candidate_physics_steps": 0,
+      "decision_seconds": 0.00041873500595102087,
+      "decision_exceeds_control_period": false,
+      "actual_local_outcome": {
+        "peak_payload_excursion": 0.012248576083050461,
+        "peak_donor_tension": 0.4989047038403503,
+        "elapsed_seconds": 9.0,
+        "absolute_actuator_work": 0.09990865055685148,
+        "total_squared_thrust_integral": 1.0033175539994208,
+        "final_payload_error": 0.009666857611566519,
+        "final_payload_speed": 0.010810357411747127,
+        "completion": 1.0
+      }
+    },
+    {
+      "case_id": "mass034_donor2_route0",
+      "planner": "rule_fixed",
+      "model_seed": 0,
+      "operation_index": 0,
+      "issues": [],
+      "verified": true,
+      "learned": false,
+      "oracle": false,
+      "prediction_source": "fixed_feedback_rule",
+      "predictions_bitwise": null,
+      "prediction_max_absolute_difference": null,
+      "oracle_actual_max_absolute_difference": null,
+      "selected_argmin_matches": true,
+      "ranking_scores_match": true,
+      "selected_reconfigure": false,
+      "selected_durations": [
+        2.0,
+        2.0
+      ],
+      "candidate_count": 1,
+      "predictor_evaluations": 0,
+      "predicted_feasible_candidates": 0,
+      "fallback": false,
+      "simulated_candidate_control_steps": 0,
+      "simulated_candidate_physics_steps": 0,
+      "decision_seconds": 0.0004385430002002977,
+      "decision_exceeds_control_period": false,
+      "actual_local_outcome": {
+        "peak_payload_excursion": 0.2138026010228304,
+        "peak_donor_tension": 1.9426222144832903,
+        "elapsed_seconds": 9.0,
+        "absolute_actuator_work": 0.15388583711434922,
+        "total_squared_thrust_integral": 0.981830140439477,
+        "final_payload_error": 0.018104920948695126,
+        "final_payload_speed": 0.0013571742857225425,
+        "completion": 1.0
+      }
+    },
+    {
+      "case_id": "mass034_donor2_route0",
+      "planner": "rule_fixed",
+      "model_seed": 0,
+      "operation_index": 1,
+      "issues": [],
+      "verified": true,
+      "learned": false,
+      "oracle": false,
+      "prediction_source": "fixed_feedback_rule",
+      "predictions_bitwise": null,
+      "prediction_max_absolute_difference": null,
+      "oracle_actual_max_absolute_difference": null,
+      "selected_argmin_matches": true,
+      "ranking_scores_match": true,
+      "selected_reconfigure": false,
+      "selected_durations": [
+        2.0,
+        2.0
+      ],
+      "candidate_count": 1,
+      "predictor_evaluations": 0,
+      "predicted_feasible_candidates": 0,
+      "fallback": false,
+      "simulated_candidate_control_steps": 0,
+      "simulated_candidate_physics_steps": 0,
+      "decision_seconds": 0.0004344650005805306,
+      "decision_exceeds_control_period": false,
+      "actual_local_outcome": {
+        "peak_payload_excursion": 0.21035848908151228,
+        "peak_donor_tension": 1.7966233493215091,
+        "elapsed_seconds": 9.0,
+        "absolute_actuator_work": 0.16310154105021102,
+        "total_squared_thrust_integral": 0.9823227730016567,
+        "final_payload_error": 0.021607487851239972,
+        "final_payload_speed": 0.0052652547963554465,
+        "completion": 1.0
+      }
+    },
+    {
+      "case_id": "mass034_donor2_route0",
+      "planner": "rule_reconfigure",
+      "model_seed": 0,
+      "operation_index": 0,
+      "issues": [],
+      "verified": true,
+      "learned": false,
+      "oracle": false,
+      "prediction_source": "fixed_feedback_rule",
+      "predictions_bitwise": null,
+      "prediction_max_absolute_difference": null,
+      "oracle_actual_max_absolute_difference": null,
+      "selected_argmin_matches": true,
+      "ranking_scores_match": true,
+      "selected_reconfigure": true,
+      "selected_durations": [
+        2.0,
+        2.0
+      ],
+      "candidate_count": 1,
+      "predictor_evaluations": 0,
+      "predicted_feasible_candidates": 0,
+      "fallback": false,
+      "simulated_candidate_control_steps": 0,
+      "simulated_candidate_physics_steps": 0,
+      "decision_seconds": 0.00045324999518925324,
+      "decision_exceeds_control_period": false,
+      "actual_local_outcome": {
+        "peak_payload_excursion": 0.014198163527288555,
+        "peak_donor_tension": 0.5998692280804929,
+        "elapsed_seconds": 9.0,
+        "absolute_actuator_work": 0.08877535165855663,
+        "total_squared_thrust_integral": 1.0036585225674297,
+        "final_payload_error": 0.00826303938733456,
+        "final_payload_speed": 0.006148176278782741,
+        "completion": 1.0
+      }
+    },
+    {
+      "case_id": "mass034_donor2_route0",
+      "planner": "rule_reconfigure",
+      "model_seed": 0,
+      "operation_index": 1,
+      "issues": [],
+      "verified": true,
+      "learned": false,
+      "oracle": false,
+      "prediction_source": "fixed_feedback_rule",
+      "predictions_bitwise": null,
+      "prediction_max_absolute_difference": null,
+      "oracle_actual_max_absolute_difference": null,
+      "selected_argmin_matches": true,
+      "ranking_scores_match": true,
+      "selected_reconfigure": true,
+      "selected_durations": [
+        2.0,
+        2.0
+      ],
+      "candidate_count": 1,
+      "predictor_evaluations": 0,
+      "predicted_feasible_candidates": 0,
+      "fallback": false,
+      "simulated_candidate_control_steps": 0,
+      "simulated_candidate_physics_steps": 0,
+      "decision_seconds": 0.0004248469995218329,
+      "decision_exceeds_control_period": false,
+      "actual_local_outcome": {
+        "peak_payload_excursion": 0.014314221346080137,
+        "peak_donor_tension": 0.4893281430714086,
+        "elapsed_seconds": 9.0,
+        "absolute_actuator_work": 0.09159643312450008,
+        "total_squared_thrust_integral": 1.0034221477298813,
+        "final_payload_error": 0.011367697343263402,
+        "final_payload_speed": 0.009719494408494456,
+        "completion": 1.0
+      }
+    },
+    {
+      "case_id": "mass034_donor2_route1",
+      "planner": "rule_fixed",
+      "model_seed": 0,
+      "operation_index": 0,
+      "issues": [],
+      "verified": true,
+      "learned": false,
+      "oracle": false,
+      "prediction_source": "fixed_feedback_rule",
+      "predictions_bitwise": null,
+      "prediction_max_absolute_difference": null,
+      "oracle_actual_max_absolute_difference": null,
+      "selected_argmin_matches": true,
+      "ranking_scores_match": true,
+      "selected_reconfigure": false,
+      "selected_durations": [
+        2.0,
+        2.0
+      ],
+      "candidate_count": 1,
+      "predictor_evaluations": 0,
+      "predicted_feasible_candidates": 0,
+      "fallback": false,
+      "simulated_candidate_control_steps": 0,
+      "simulated_candidate_physics_steps": 0,
+      "decision_seconds": 0.0004318799983593635,
+      "decision_exceeds_control_period": false,
+      "actual_local_outcome": {
+        "peak_payload_excursion": 0.21369247539307262,
+        "peak_donor_tension": 2.040977801445671,
+        "elapsed_seconds": 9.0,
+        "absolute_actuator_work": 0.17757544871625894,
+        "total_squared_thrust_integral": 0.9839628678893219,
+        "final_payload_error": 0.021455370570591326,
+        "final_payload_speed": 0.01009294774451146,
+        "completion": 1.0
+      }
+    },
+    {
+      "case_id": "mass034_donor2_route1",
+      "planner": "rule_fixed",
+      "model_seed": 0,
+      "operation_index": 1,
+      "issues": [],
+      "verified": true,
+      "learned": false,
+      "oracle": false,
+      "prediction_source": "fixed_feedback_rule",
+      "predictions_bitwise": null,
+      "prediction_max_absolute_difference": null,
+      "oracle_actual_max_absolute_difference": null,
+      "selected_argmin_matches": true,
+      "ranking_scores_match": true,
+      "selected_reconfigure": false,
+      "selected_durations": [
+        2.0,
+        2.0
+      ],
+      "candidate_count": 1,
+      "predictor_evaluations": 0,
+      "predicted_feasible_candidates": 0,
+      "fallback": false,
+      "simulated_candidate_control_steps": 0,
+      "simulated_candidate_physics_steps": 0,
+      "decision_seconds": 0.0004371599934529513,
+      "decision_exceeds_control_period": false,
+      "actual_local_outcome": {
+        "peak_payload_excursion": 0.21427232026970153,
+        "peak_donor_tension": 2.1171415714938044,
+        "elapsed_seconds": 9.0,
+        "absolute_actuator_work": 0.16729403574981486,
+        "total_squared_thrust_integral": 0.9827763925478533,
+        "final_payload_error": 0.014830650394420473,
+        "final_payload_speed": 0.0048889411768788735,
+        "completion": 1.0
+      }
+    },
+    {
+      "case_id": "mass034_donor2_route1",
+      "planner": "rule_reconfigure",
+      "model_seed": 0,
+      "operation_index": 0,
+      "issues": [],
+      "verified": true,
+      "learned": false,
+      "oracle": false,
+      "prediction_source": "fixed_feedback_rule",
+      "predictions_bitwise": null,
+      "prediction_max_absolute_difference": null,
+      "oracle_actual_max_absolute_difference": null,
+      "selected_argmin_matches": true,
+      "ranking_scores_match": true,
+      "selected_reconfigure": true,
+      "selected_durations": [
+        2.0,
+        2.0
+      ],
+      "candidate_count": 1,
+      "predictor_evaluations": 0,
+      "predicted_feasible_candidates": 0,
+      "fallback": false,
+      "simulated_candidate_control_steps": 0,
+      "simulated_candidate_physics_steps": 0,
+      "decision_seconds": 0.00044498500210465863,
+      "decision_exceeds_control_period": false,
+      "actual_local_outcome": {
+        "peak_payload_excursion": 0.013329330383137007,
+        "peak_donor_tension": 0.27934456981629724,
+        "elapsed_seconds": 9.0,
+        "absolute_actuator_work": 0.10053958733026488,
+        "total_squared_thrust_integral": 1.0033787437594368,
+        "final_payload_error": 0.011941617228641614,
+        "final_payload_speed": 0.009927210634493122,
+        "completion": 1.0
+      }
+    },
+    {
+      "case_id": "mass034_donor2_route1",
+      "planner": "rule_reconfigure",
+      "model_seed": 0,
+      "operation_index": 1,
+      "issues": [],
+      "verified": true,
+      "learned": false,
+      "oracle": false,
+      "prediction_source": "fixed_feedback_rule",
+      "predictions_bitwise": null,
+      "prediction_max_absolute_difference": null,
+      "oracle_actual_max_absolute_difference": null,
+      "selected_argmin_matches": true,
+      "ranking_scores_match": true,
+      "selected_reconfigure": true,
+      "selected_durations": [
+        2.0,
+        2.0
+      ],
+      "candidate_count": 1,
+      "predictor_evaluations": 0,
+      "predicted_feasible_candidates": 0,
+      "fallback": false,
+      "simulated_candidate_control_steps": 0,
+      "simulated_candidate_physics_steps": 0,
+      "decision_seconds": 0.00042259300244040787,
+      "decision_exceeds_control_period": false,
+      "actual_local_outcome": {
+        "peak_payload_excursion": 0.014624820268416647,
+        "peak_donor_tension": 0.7065029754562155,
+        "elapsed_seconds": 9.0,
+        "absolute_actuator_work": 0.10704511380113962,
+        "total_squared_thrust_integral": 1.003397471916533,
+        "final_payload_error": 0.010127624554328312,
+        "final_payload_speed": 0.006757602710475229,
+        "completion": 1.0
+      }
+    }
+  ],
+  "paired": [
+    {
+      "direct_planner": "rule_fixed",
+      "expanded_planner": "rule_reconfigure",
+      "case_id": "mass026_donor0_route0",
+      "model_seed": 0,
+      "prefix_steps": 283,
+      "operation_start_steps": [
+        283,
+        283
+      ],
+      "first_leg_clock_and_score_equal": true,
+      "initial_snapshot_equal": true,
+      "operation_start_snapshot_equal": true,
+      "initial_controller_equal": true,
+      "operation_start_controller_equal": true,
+      "traces": {
+        "physical_states": {
+          "bitwise": true,
+          "max_absolute_difference": 0.0
+        },
+        "integration_states": {
+          "bitwise": true,
+          "max_absolute_difference": 0.0
+        },
+        "actions": {
+          "bitwise": true,
+          "max_absolute_difference": 0.0
+        },
+        "external_forces": {
+          "bitwise": true,
+          "max_absolute_difference": 0.0
+        }
+      },
+      "prefix_matches": true,
+      "scores": {
+        "delivery_completion": {
+          "direct": true,
+          "expanded": true,
+          "improved": false,
+          "worsened": false
+        },
+        "constrained_completion": {
+          "direct": false,
+          "expanded": true,
+          "improved": true,
+          "worsened": false
+        }
+      }
+    },
+    {
+      "direct_planner": "rule_fixed",
+      "expanded_planner": "rule_reconfigure",
+      "case_id": "mass026_donor0_route1",
+      "model_seed": 0,
+      "prefix_steps": 282,
+      "operation_start_steps": [
+        282,
+        282
+      ],
+      "first_leg_clock_and_score_equal": true,
+      "initial_snapshot_equal": true,
+      "operation_start_snapshot_equal": true,
+      "initial_controller_equal": true,
+      "operation_start_controller_equal": true,
+      "traces": {
+        "physical_states": {
+          "bitwise": true,
+          "max_absolute_difference": 0.0
+        },
+        "integration_states": {
+          "bitwise": true,
+          "max_absolute_difference": 0.0
+        },
+        "actions": {
+          "bitwise": true,
+          "max_absolute_difference": 0.0
+        },
+        "external_forces": {
+          "bitwise": true,
+          "max_absolute_difference": 0.0
+        }
+      },
+      "prefix_matches": true,
+      "scores": {
+        "delivery_completion": {
+          "direct": true,
+          "expanded": true,
+          "improved": false,
+          "worsened": false
+        },
+        "constrained_completion": {
+          "direct": false,
+          "expanded": true,
+          "improved": true,
+          "worsened": false
+        }
+      }
+    },
+    {
+      "direct_planner": "rule_fixed",
+      "expanded_planner": "rule_reconfigure",
+      "case_id": "mass026_donor1_route0",
+      "model_seed": 0,
+      "prefix_steps": 283,
+      "operation_start_steps": [
+        283,
+        283
+      ],
+      "first_leg_clock_and_score_equal": true,
+      "initial_snapshot_equal": true,
+      "operation_start_snapshot_equal": true,
+      "initial_controller_equal": true,
+      "operation_start_controller_equal": true,
+      "traces": {
+        "physical_states": {
+          "bitwise": true,
+          "max_absolute_difference": 0.0
+        },
+        "integration_states": {
+          "bitwise": true,
+          "max_absolute_difference": 0.0
+        },
+        "actions": {
+          "bitwise": true,
+          "max_absolute_difference": 0.0
+        },
+        "external_forces": {
+          "bitwise": true,
+          "max_absolute_difference": 0.0
+        }
+      },
+      "prefix_matches": true,
+      "scores": {
+        "delivery_completion": {
+          "direct": true,
+          "expanded": true,
+          "improved": false,
+          "worsened": false
+        },
+        "constrained_completion": {
+          "direct": false,
+          "expanded": true,
+          "improved": true,
+          "worsened": false
+        }
+      }
+    },
+    {
+      "direct_planner": "rule_fixed",
+      "expanded_planner": "rule_reconfigure",
+      "case_id": "mass026_donor1_route1",
+      "model_seed": 0,
+      "prefix_steps": 282,
+      "operation_start_steps": [
+        282,
+        282
+      ],
+      "first_leg_clock_and_score_equal": true,
+      "initial_snapshot_equal": true,
+      "operation_start_snapshot_equal": true,
+      "initial_controller_equal": true,
+      "operation_start_controller_equal": true,
+      "traces": {
+        "physical_states": {
+          "bitwise": true,
+          "max_absolute_difference": 0.0
+        },
+        "integration_states": {
+          "bitwise": true,
+          "max_absolute_difference": 0.0
+        },
+        "actions": {
+          "bitwise": true,
+          "max_absolute_difference": 0.0
+        },
+        "external_forces": {
+          "bitwise": true,
+          "max_absolute_difference": 0.0
+        }
+      },
+      "prefix_matches": true,
+      "scores": {
+        "delivery_completion": {
+          "direct": true,
+          "expanded": true,
+          "improved": false,
+          "worsened": false
+        },
+        "constrained_completion": {
+          "direct": false,
+          "expanded": true,
+          "improved": true,
+          "worsened": false
+        }
+      }
+    },
+    {
+      "direct_planner": "rule_fixed",
+      "expanded_planner": "rule_reconfigure",
+      "case_id": "mass026_donor2_route0",
+      "model_seed": 0,
+      "prefix_steps": 283,
+      "operation_start_steps": [
+        283,
+        283
+      ],
+      "first_leg_clock_and_score_equal": true,
+      "initial_snapshot_equal": true,
+      "operation_start_snapshot_equal": true,
+      "initial_controller_equal": true,
+      "operation_start_controller_equal": true,
+      "traces": {
+        "physical_states": {
+          "bitwise": true,
+          "max_absolute_difference": 0.0
+        },
+        "integration_states": {
+          "bitwise": true,
+          "max_absolute_difference": 0.0
+        },
+        "actions": {
+          "bitwise": true,
+          "max_absolute_difference": 0.0
+        },
+        "external_forces": {
+          "bitwise": true,
+          "max_absolute_difference": 0.0
+        }
+      },
+      "prefix_matches": true,
+      "scores": {
+        "delivery_completion": {
+          "direct": true,
+          "expanded": true,
+          "improved": false,
+          "worsened": false
+        },
+        "constrained_completion": {
+          "direct": false,
+          "expanded": true,
+          "improved": true,
+          "worsened": false
+        }
+      }
+    },
+    {
+      "direct_planner": "rule_fixed",
+      "expanded_planner": "rule_reconfigure",
+      "case_id": "mass026_donor2_route1",
+      "model_seed": 0,
+      "prefix_steps": 282,
+      "operation_start_steps": [
+        282,
+        282
+      ],
+      "first_leg_clock_and_score_equal": true,
+      "initial_snapshot_equal": true,
+      "operation_start_snapshot_equal": true,
+      "initial_controller_equal": true,
+      "operation_start_controller_equal": true,
+      "traces": {
+        "physical_states": {
+          "bitwise": true,
+          "max_absolute_difference": 0.0
+        },
+        "integration_states": {
+          "bitwise": true,
+          "max_absolute_difference": 0.0
+        },
+        "actions": {
+          "bitwise": true,
+          "max_absolute_difference": 0.0
+        },
+        "external_forces": {
+          "bitwise": true,
+          "max_absolute_difference": 0.0
+        }
+      },
+      "prefix_matches": true,
+      "scores": {
+        "delivery_completion": {
+          "direct": true,
+          "expanded": true,
+          "improved": false,
+          "worsened": false
+        },
+        "constrained_completion": {
+          "direct": false,
+          "expanded": true,
+          "improved": true,
+          "worsened": false
+        }
+      }
+    },
+    {
+      "direct_planner": "rule_fixed",
+      "expanded_planner": "rule_reconfigure",
+      "case_id": "mass034_donor0_route0",
+      "model_seed": 0,
+      "prefix_steps": 286,
+      "operation_start_steps": [
+        286,
+        286
+      ],
+      "first_leg_clock_and_score_equal": true,
+      "initial_snapshot_equal": true,
+      "operation_start_snapshot_equal": true,
+      "initial_controller_equal": true,
+      "operation_start_controller_equal": true,
+      "traces": {
+        "physical_states": {
+          "bitwise": true,
+          "max_absolute_difference": 0.0
+        },
+        "integration_states": {
+          "bitwise": true,
+          "max_absolute_difference": 0.0
+        },
+        "actions": {
+          "bitwise": true,
+          "max_absolute_difference": 0.0
+        },
+        "external_forces": {
+          "bitwise": true,
+          "max_absolute_difference": 0.0
+        }
+      },
+      "prefix_matches": true,
+      "scores": {
+        "delivery_completion": {
+          "direct": true,
+          "expanded": true,
+          "improved": false,
+          "worsened": false
+        },
+        "constrained_completion": {
+          "direct": false,
+          "expanded": true,
+          "improved": true,
+          "worsened": false
+        }
+      }
+    },
+    {
+      "direct_planner": "rule_fixed",
+      "expanded_planner": "rule_reconfigure",
+      "case_id": "mass034_donor0_route1",
+      "model_seed": 0,
+      "prefix_steps": 285,
+      "operation_start_steps": [
+        285,
+        285
+      ],
+      "first_leg_clock_and_score_equal": true,
+      "initial_snapshot_equal": true,
+      "operation_start_snapshot_equal": true,
+      "initial_controller_equal": true,
+      "operation_start_controller_equal": true,
+      "traces": {
+        "physical_states": {
+          "bitwise": true,
+          "max_absolute_difference": 0.0
+        },
+        "integration_states": {
+          "bitwise": true,
+          "max_absolute_difference": 0.0
+        },
+        "actions": {
+          "bitwise": true,
+          "max_absolute_difference": 0.0
+        },
+        "external_forces": {
+          "bitwise": true,
+          "max_absolute_difference": 0.0
+        }
+      },
+      "prefix_matches": true,
+      "scores": {
+        "delivery_completion": {
+          "direct": true,
+          "expanded": true,
+          "improved": false,
+          "worsened": false
+        },
+        "constrained_completion": {
+          "direct": false,
+          "expanded": false,
+          "improved": false,
+          "worsened": false
+        }
+      }
+    },
+    {
+      "direct_planner": "rule_fixed",
+      "expanded_planner": "rule_reconfigure",
+      "case_id": "mass034_donor1_route0",
+      "model_seed": 0,
+      "prefix_steps": 286,
+      "operation_start_steps": [
+        286,
+        286
+      ],
+      "first_leg_clock_and_score_equal": true,
+      "initial_snapshot_equal": true,
+      "operation_start_snapshot_equal": true,
+      "initial_controller_equal": true,
+      "operation_start_controller_equal": true,
+      "traces": {
+        "physical_states": {
+          "bitwise": true,
+          "max_absolute_difference": 0.0
+        },
+        "integration_states": {
+          "bitwise": true,
+          "max_absolute_difference": 0.0
+        },
+        "actions": {
+          "bitwise": true,
+          "max_absolute_difference": 0.0
+        },
+        "external_forces": {
+          "bitwise": true,
+          "max_absolute_difference": 0.0
+        }
+      },
+      "prefix_matches": true,
+      "scores": {
+        "delivery_completion": {
+          "direct": true,
+          "expanded": true,
+          "improved": false,
+          "worsened": false
+        },
+        "constrained_completion": {
+          "direct": false,
+          "expanded": true,
+          "improved": true,
+          "worsened": false
+        }
+      }
+    },
+    {
+      "direct_planner": "rule_fixed",
+      "expanded_planner": "rule_reconfigure",
+      "case_id": "mass034_donor1_route1",
+      "model_seed": 0,
+      "prefix_steps": 285,
+      "operation_start_steps": [
+        285,
+        285
+      ],
+      "first_leg_clock_and_score_equal": true,
+      "initial_snapshot_equal": true,
+      "operation_start_snapshot_equal": true,
+      "initial_controller_equal": true,
+      "operation_start_controller_equal": true,
+      "traces": {
+        "physical_states": {
+          "bitwise": true,
+          "max_absolute_difference": 0.0
+        },
+        "integration_states": {
+          "bitwise": true,
+          "max_absolute_difference": 0.0
+        },
+        "actions": {
+          "bitwise": true,
+          "max_absolute_difference": 0.0
+        },
+        "external_forces": {
+          "bitwise": true,
+          "max_absolute_difference": 0.0
+        }
+      },
+      "prefix_matches": true,
+      "scores": {
+        "delivery_completion": {
+          "direct": true,
+          "expanded": true,
+          "improved": false,
+          "worsened": false
+        },
+        "constrained_completion": {
+          "direct": false,
+          "expanded": true,
+          "improved": true,
+          "worsened": false
+        }
+      }
+    },
+    {
+      "direct_planner": "rule_fixed",
+      "expanded_planner": "rule_reconfigure",
+      "case_id": "mass034_donor2_route0",
+      "model_seed": 0,
+      "prefix_steps": 286,
+      "operation_start_steps": [
+        286,
+        286
+      ],
+      "first_leg_clock_and_score_equal": true,
+      "initial_snapshot_equal": true,
+      "operation_start_snapshot_equal": true,
+      "initial_controller_equal": true,
+      "operation_start_controller_equal": true,
+      "traces": {
+        "physical_states": {
+          "bitwise": true,
+          "max_absolute_difference": 0.0
+        },
+        "integration_states": {
+          "bitwise": true,
+          "max_absolute_difference": 0.0
+        },
+        "actions": {
+          "bitwise": true,
+          "max_absolute_difference": 0.0
+        },
+        "external_forces": {
+          "bitwise": true,
+          "max_absolute_difference": 0.0
+        }
+      },
+      "prefix_matches": true,
+      "scores": {
+        "delivery_completion": {
+          "direct": true,
+          "expanded": true,
+          "improved": false,
+          "worsened": false
+        },
+        "constrained_completion": {
+          "direct": false,
+          "expanded": true,
+          "improved": true,
+          "worsened": false
+        }
+      }
+    },
+    {
+      "direct_planner": "rule_fixed",
+      "expanded_planner": "rule_reconfigure",
+      "case_id": "mass034_donor2_route1",
+      "model_seed": 0,
+      "prefix_steps": 285,
+      "operation_start_steps": [
+        285,
+        285
+      ],
+      "first_leg_clock_and_score_equal": true,
+      "initial_snapshot_equal": true,
+      "operation_start_snapshot_equal": true,
+      "initial_controller_equal": true,
+      "operation_start_controller_equal": true,
+      "traces": {
+        "physical_states": {
+          "bitwise": true,
+          "max_absolute_difference": 0.0
+        },
+        "integration_states": {
+          "bitwise": true,
+          "max_absolute_difference": 0.0
+        },
+        "actions": {
+          "bitwise": true,
+          "max_absolute_difference": 0.0
+        },
+        "external_forces": {
+          "bitwise": true,
+          "max_absolute_difference": 0.0
+        }
+      },
+      "prefix_matches": true,
+      "scores": {
+        "delivery_completion": {
+          "direct": true,
+          "expanded": true,
+          "improved": false,
+          "worsened": false
+        },
+        "constrained_completion": {
+          "direct": false,
+          "expanded": false,
+          "improved": false,
+          "worsened": false
+        }
+      }
+    }
+  ],
+  "upstream_pin": "b08d9f3cbcc581d8e7f988cabad22c26d35f4a58",
+  "upstream_pin_independently_confirmed": "coltrans-planning146b205e33e20ac26975993d32ec89b140754550 git tree has deps/crazyflie-firmware mode160000 SHA b08d9f3cbcc581d8e7f988cabad22c26d35f4a58",
+  "tests": "10 passed",
+  "roles": "Shared payload/tension allocator, shared recovery/formation plan and bounded motor mixer; unchanged upstream controller_lee.c provides position/attitude control.",
+  "source_clock": "Published default500Hz; wrapper executes source at the shared50Hz controlperiod. Upstream gains remain unchanged; physical mass/inertia calibrated to Menagerie.",
+  "reference_derivatives": "Position and velocity references supplied. Acceleration feedforward includes shared allocated cable load divided by UAV mass and caller-provided payload acceleration (normally zero). Jerk and yaw-rate references are zero; heading is shared configured constant.",
+  "snapshot_contract": "Per-UAV controllerLee_t byte state and shared payload integral are captured. Restore assumes identical plant/controller configuration, consistent with the current controller API; cross-configuration restores are not part of this benchmark.",
+  "capability_guard": "External experiment exposes only rule_fixed/rule_reconfigure; run_mission rejects external controller_factory with learned or true-option planners, preventing a study-controller counterfactual fork mismatch.",
+  "whole_mission_maximum_all_cable_tension": 2.1171415714938044,
+  "reconfigured_maximum_all_cable_tension": 0.7065029754562155,
+  "no_collisions": true,
+  "no_warnings": true,
+  "no_rotor_bound_violations": true
+}

@@ -1,0 +1,22 @@
+{
+  "cpu": {
+    "zero_initialized_actor_output_kernel_max_abs_after_training": 0.0015459660207852721,
+    "zero_initialized_actor_output_bias_max_abs_after_training": 0.0014315566513687372,
+    "learned_log_std": [
+      -0.00044839311158284545,
+      -0.00044996061478741467,
+      -0.0013913968577980995,
+      0.000637503806501627
+    ]
+  },
+  "gpu": {
+    "zero_initialized_actor_output_kernel_max_abs_after_training": 0.0015497389249503613,
+    "zero_initialized_actor_output_bias_max_abs_after_training": 0.0014320018235594034,
+    "learned_log_std": [
+      -0.0004444018704816699,
+      -0.00045364629477262497,
+      -0.0013863937929272652,
+      0.0006049494259059429
+    ]
+  }
+}
