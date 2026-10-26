@@ -9,18 +9,18 @@ conditions, and where they break.
 The benchmark does not assume that learning is needed. A non-privileged physics model of the same
 plant is a reference row, and learned models are reported against it as well as against the oracle.
 
-Status:
+Status (tag `arena-v0.2`):
 - The environment core (`env.py`, `scenarios.py`, `geometry.py`, `lowlevel.py`) and the shared
-  planning layer (`costs.py`, `planning.py`, `run.py`) are implemented and tested, with two
-  reference rows: the oracle U and the physics reference.
+  planning layer (`costs.py`, `planning.py`, `run.py`) are implemented and tested, with three
+  reference rows: the oracle U, the physics reference, and physics with online payload-mass
+  estimation.
+- World models join under the participant contract, [PARTICIPANTS.md](PARTICIPANTS.md): the
+  predictor interface, information rules, seed splits, data, budgets and model selection.
+  `collect.py` collects training data and `openloop.py` scores predictions on it (evaluation
+  layer 1).
 - CrazyMARL runs on arena tasks (`crazymarl_task.py`, `crazymarl_env.py`, `crazymarl_train.py`,
-  `crazymarl_policy.py`). Seed 0 is trained and evaluated on `dev`; seeds 1 and 2 are pending.
-- The world-model participants, the layered evaluation and the leaderboard are next (see Roadmap).
-- **Known issue (fix before reporting new results):** `run.py` reuses one planner for every episode,
-  and swm's MPPI keeps one random generator, so an episode's samples depend on the episodes run
-  before it. The `dev` numbers below are valid as one run, but a single episode does not replay
-  identically on its own. Reseeding the solver at every episode start fixes this; U and physics
-  then need a rerun.
+  `crazymarl_policy.py`). Seed 0 is trained and evaluated on `dev`; seeds 1 and 2 are training.
+- The world-model rows, evaluation layers 2–3 and the leaderboard are next (see Roadmap).
 - Related work, grouped by relation to the arena, with BibTeX:
   [`docs/uav-arena-related-work.md`](../docs/uav-arena-related-work.md).
 - The earlier experiment card v2.0 is archived in
@@ -113,6 +113,10 @@ the predictor differs.
   `MPPISolver` (512 samples, 15 decisions = 1.5 s, one iteration, warm start) and
   `LagrangianSolver`. Costs implement swm's `Costable` protocol (`get_cost`, plus
   `get_constraints` for the Lagrangian).
+- **Sampling seeds:** the solver is reseeded at every episode start from (planner seed, layout
+  seed), so an episode replays identically on its own. Every condition and participant on a layout
+  draws the same samples (common random numbers). Before `arena-v0.2` one generator ran through
+  all episodes, so results depended on episode order.
 - **Action:** per-aircraft setpoint increments of at most 0.12 m per decision and axis, added to
   the last commanded setpoints.
 - **Cost (`costs.py`):** payload distance to the goal (mean over the horizon plus terminal),
@@ -133,6 +137,16 @@ the predictor differs.
     the unobserved motor and controller states between decisions, and the delay is bridged by
     replaying the setpoint segments already sent (a Smith predictor). With the true mass it
     reproduces U's predictions (tested).
+  - **Physics + mass estimation (`AdaptivePhysicsPredictor`):** the physics reference plus online
+    payload-mass estimation by multiple models: a bank of 16 shadows, one per candidate mass on a
+    2 g grid over the prior (10–40 g). Each new observation scores every shadow's prediction of it
+    (positions, velocities scaled by 0.1 s and rotation columns scaled by 0.05 m). The estimate is
+    the candidate with the least error over the last 0.5 s, and planning rolls out its shadow and
+    mass. The first observation is scored against each candidate's settled hover, so the initial
+    estimate comes from the hover tilt that the cable tension sets. With a mass on the grid it
+    reproduces U's predictions (tested). Estimating a cable-suspended payload's mass online has a
+    precedent in adaptive cable-payload control (Hajieghrary et al., IROS 2026); this estimator is a
+    different, multiple-model one.
   - **Kinematic model (`KinematicPredictor`):** aircraft at their setpoints, payload under the
     formation. A differentiable test fixture for the Lagrangian path, not a participant.
 - **Lagrangian limits:** the Lagrangian solver needs gradients through the prediction, so it
@@ -144,8 +158,8 @@ the predictor differs.
 |---|---|---|---|
 | U | MPPI on the true simulator | privileged: true state, payload mass, onboard states | implemented |
 | Physics | MPPI on the nominal simulator | observation only | implemented |
-| Physics + mass estimation | the physics row with online payload-mass estimation from the observed history | observation history | next |
-| CrazyMARL | external, model-free: official IPPO trainer, decentralized 250 Hz motor commands, retrained on arena tasks | own state fresh; payload, teammates and obstacles delayed | training |
+| Physics + mass estimation | the physics row with online payload-mass estimation (multiple models, 2 g grid) | observation history | implemented |
+| CrazyMARL | external, model-free: official IPPO trainer, decentralized 250 Hz motor commands, retrained on arena tasks | own state fresh; payload, teammates and obstacles delayed | seed 0 evaluated; seeds 1–2 training |
 | Entity-token JEPA (`full`, `no_cross`, `flat`), autoregressive state model, PETS ensemble | world models in the shared MPPI | observation history | planned |
 | TD-MPC2 (official, trained online), DreamerV3 | external model-based RL, evaluated as published, plus state probes for layers 1–3 | observation | planned |
 
@@ -185,31 +199,59 @@ PYTHONPATH=. data/uav_arena/.venv/bin/python -m uav_arena.crazymarl_policy \
 
 ## Results on dev (seeds 0–4, all 8 conditions)
 
-Shared MPPI (512 samples, 1.5 s horizon). Success count out of 5, mean time of the successes:
+Shared MPPI (512 samples, 1.5 s horizon) at `arena-v0.2`, with the solver reseeded per episode.
+Success count out of 5, mean time of the successes:
 
-| Condition | U (oracle) | Physics (nominal 25 g) | CrazyMARL (seed 0) |
-|---|---|---|---|
-| static, 0 ms | 5/5 (6.8 s) | 5/5 (8.4 s) | 3/5 (4.7 s) |
-| static, 50 ms | 5/5 (8.3 s) | 4/5 (7.0 s) | 3/5 (4.8 s) |
-| static, 100 ms | 5/5 (6.1 s) | 4/5 (6.0 s) | 3/5 (4.9 s) |
-| static, 200 ms | 5/5 (6.1 s) | 4/5 (6.6 s) | 3/5 (5.2 s) |
-| static+moving, 0 ms | 5/5 (6.8 s) | 4/5 (5.9 s) | 3/5 (4.8 s) |
-| static+moving, 50 ms | 5/5 (7.1 s) | 3/5 (7.4 s) | 3/5 (4.9 s) |
-| static+moving, 100 ms | 5/5 (7.7 s) | 2/5 (5.8 s) | 3/5 (4.9 s) |
-| static+moving, 200 ms | 4/5 (6.7 s) | 2/5 (9.8 s) | 3/5 (5.2 s) |
-| **Total** | **39/40** | **28/40** | **24/40** |
+| Condition | U (oracle) | Physics (nominal 25 g) | Physics + mass estimation | CrazyMARL (seed 0) |
+|---|---|---|---|---|
+| static, 0 ms | 5/5 (6.1 s) | 4/5 (7.2 s) | 5/5 (6.5 s) | 3/5 (4.7 s) |
+| static, 50 ms | 5/5 (6.1 s) | 3/5 (7.1 s) | 5/5 (5.9 s) | 3/5 (4.8 s) |
+| static, 100 ms | 5/5 (6.1 s) | 3/5 (6.2 s) | 5/5 (5.7 s) | 3/5 (4.9 s) |
+| static, 200 ms | 5/5 (6.1 s) | 4/5 (6.4 s) | 5/5 (6.2 s) | 3/5 (5.2 s) |
+| static+moving, 0 ms | 5/5 (6.8 s) | 3/5 (7.7 s) | 5/5 (6.1 s) | 3/5 (4.8 s) |
+| static+moving, 50 ms | 5/5 (7.4 s) | 4/5 (9.3 s) | 5/5 (7.1 s) | 3/5 (4.9 s) |
+| static+moving, 100 ms | 5/5 (7.6 s) | 4/5 (8.0 s) | 5/5 (6.8 s) | 3/5 (4.9 s) |
+| static+moving, 200 ms | 5/5 (7.6 s) | 3/5 (6.1 s) | 5/5 (6.8 s) | 3/5 (5.2 s) |
+| **Total** | **40/40** | **28/40** | **40/40** | **24/40** |
 
-- U's one failure is a mover collision at 200 ms: the constant-velocity forecast misses a turn.
-- Every physics failure is on one of the three heavy payloads (seeds 1, 2 and 4: 38.4, 35.5 and
-  35.9 g against the nominal 25 g). Most are aircraft-separation failures (9 of 12): the heavier
-  load pulls the cables inward harder than the nominal model predicts. Failures grow with latency
-  and moving obstacles. On the light seeds (0 and 3: 27.3 and 23.1 g) it never fails.
-- With the true mass the physics reference reproduces U's predictions, so this gap is the hidden
-  payload mass. It is a parametric mismatch: a physics model with online mass estimation is the
-  reference a learned model must beat before any claim that learning helps.
-- CrazyMARL (one training seed so far; its return plateaued from about 40% of the 2×10⁹ steps)
-  succeeds on layouts 0, 1 and 3 in every condition, faster than U, and hits a pillar within 2 s on
-  layouts 2 and 4 in every condition. Latency and moving obstacles do not change its outcomes.
+- **Physics + mass estimation matches U.** It scores 40/40, and no episode's outcome differs from
+  U's. Paired success times differ by −0.3 s on average (median −0.5 s). Mean minimum clearance
+  is 13.0 cm against U's 12.3 cm.
+- **The estimator.** Its first estimate, from the hover tilt, is within 0.9 g of the true mass
+  (mean 0.5 g). In 9 of 40 episodes it later switches between the two grid neighbours of the true
+  mass, never further: the largest error is 1.6 g.
+- **What this means.** The gap between U and the nominal physics reference is the hidden payload
+  mass alone, and a classical estimator closes it. On `dev`, no closed-loop headroom is left above
+  physics + mass estimation. A learned model can match it, or show where and why it falls short;
+  the evaluation layers measure that.
+- **The nominal physics reference** fails 12 times, 11 of them on the three heavy payloads (seeds
+  1, 2 and 4: 38.4, 35.5 and 35.9 g against the nominal 25 g). Most are aircraft-separation
+  failures (9 of 12): the heavier load pulls the cables inward harder than the nominal model
+  predicts. The twelfth is a timeout on seed 0 (27.3 g). Its mean minimum clearance is 10.4 cm.
+- **CrazyMARL** (one training seed so far; its return plateaued from about 40% of the 2×10⁹
+  steps) succeeds on layouts 0, 1 and 3 in every condition, faster than U, and hits a pillar
+  within 2 s on layouts 2 and 4 in every condition. Latency and moving obstacles do not change its
+  outcomes.
+- **Before `arena-v0.2`** (one solver generator across episodes), U scored 39/40 and physics
+  28/40. U's one failure, a mover collision at 200 ms, did not recur.
+
+## Open-loop references (layer 1, validation set)
+
+`openloop.py` on the contract's validation set (100 `explore-v1` episodes, seeds
+299000–299099, every decision scored). Mean position error over the 15-decision (1.5 s) horizon,
+payload / aircraft:
+
+| Latency | Physics (nominal 25 g) | Physics + mass estimation |
+|---|---|---|
+| 0 ms | 2.81 / 5.61 cm | 0.15 / 0.33 cm |
+| 50 ms | 2.88 / 5.72 cm | 0.15 / 0.34 cm |
+| 100 ms | 2.96 / 5.84 cm | 0.16 / 0.34 cm |
+| 200 ms | 3.08 / 6.01 cm | 0.16 / 0.35 cm |
+| **Selection score** | **2.93 cm** | **0.16 cm** |
+
+The selection score is the contract's model-selection metric: the payload error averaged over the
+horizon and the four latencies. U has no row: it needs the simulator's true state, which recorded
+data does not hold. With the true mass the physics reference scores below 10⁻⁶ m (tested).
 
 ## Evaluation layers (planned)
 
@@ -227,11 +269,12 @@ other layers miss, and how that changes with latency and moving obstacles.
 
 1. ~~Environment, shared MPPI, U and physics references, setpoint segments, hidden payload mass~~
    (done).
-2. CrazyMARL on arena tasks: ~~training environment, motor-level arena interface~~ (done);
-   training three seeds and evaluation on `dev` and `test`.
-3. Physics with online payload-mass estimation: the adaptive reference for the hidden mass.
-4. Data collection; entity-token JEPA variants, the autoregressive model and PETS.
-5. Layer 1–3 diagnostics harness.
+2. CrazyMARL on arena tasks: ~~training environment, motor-level arena interface, seed 0~~
+   (done); seeds 1 and 2 (training), then evaluation on `test`.
+3. ~~Physics with online payload-mass estimation~~ (done).
+4. ~~Participant contract, data collector, layer-1 open-loop metric~~ (done, `arena-v0.2`);
+   entity-token JEPA variants, the autoregressive model and PETS.
+5. Layer 2–3 diagnostics harness.
 6. TD-MPC2 and DreamerV3 adapters (a Gymnasium wrapper; a JAX venv for DreamerV3).
 7. Closed-loop runs on `test`, the leaderboard tables and the layer-consistency analysis.
 
@@ -274,11 +317,25 @@ uv pip install --python data/uav_arena/.venv/bin/python stable-worldmodel==0.1.1
 ## Reproduce
 
 ```bash
-PYTHONPATH=. data/uav_arena/.venv/bin/python -m pytest -q tests/test_uav_arena.py tests/test_uav_arena_planning.py
-PYTHONPATH=. data/uav_arena/.venv/bin/python -m uav_arena.run --predictor oracle --suite dev --seeds 0:5 \
-  --workers 20 --out data/uav_arena/results/oracle_mppi_dev_s0-5.json
-PYTHONPATH=. data/uav_arena/.venv/bin/python -m uav_arena.run --predictor physics --suite dev --seeds 0:5 \
-  --workers 20 --out data/uav_arena/results/physics_mppi_dev_s0-5.json
+PYTHONPATH=. data/uav_arena/.venv/bin/python -m pytest -q tests/test_uav_arena.py tests/test_uav_arena_planning.py \
+  tests/test_uav_arena_collect.py tests/test_uav_arena_openloop.py tests/test_uav_arena_replay.py tests/test_uav_arena_crazymarl.py
+for p in oracle physics adaptive; do
+  PYTHONPATH=. data/uav_arena/.venv/bin/python -m uav_arena.run --predictor $p --suite dev --seeds 0:5 \
+    --workers 20 --out data/uav_arena/results/${p}_mppi_dev_s0-5_v3.json
+done
+```
+
+The `dev` table above ran the three rows in parallel with 7 workers each. The outcome does not
+depend on the worker count: two of its episodes, rerun alone with 3 workers, reproduced their
+records exactly.
+
+```bash
+PYTHONPATH=. data/uav_arena/.venv/bin/python -m uav_arena.collect --seeds 299000:299100 \
+  --out data/uav_arena/datasets/explore_v1_val
+for p in physics adaptive; do
+  PYTHONPATH=. data/uav_arena/.venv/bin/python -m uav_arena.openloop --predictor $p \
+    --data data/uav_arena/datasets/explore_v1_val --out data/uav_arena/results/${p}_openloop_val_v1.json
+done
 ```
 
 The batched controller compiles once into `data/uav_arena/native_build/`

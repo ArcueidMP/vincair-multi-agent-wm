@@ -1,11 +1,15 @@
 """Run planners on arena suites and write per-episode records.
 
     python -m uav_arena.run --predictor oracle --suite dev --seeds 0:5 --out data/uav_arena/results/oracle_dev.json
+
+`--predictor` names a reference row (oracle, physics, adaptive) or a participant's world model as
+`module:factory`; the factory is called with the JSON `--predictor-options` as keyword arguments.
 """
 from __future__ import annotations
 
 import argparse
 from collections import Counter, defaultdict
+import importlib
 import json
 from pathlib import Path
 import time
@@ -19,17 +23,21 @@ from .scenarios import CONDITIONS, SUITE_SEEDS, make_scenario
 def run_episode(scenario, planner):
     env = ArenaEnv(scenario)
     obs = env.reset()
-    planner.reset()
+    planner.reset(scenario.seed)
     plan_seconds = []
     while not env.done:
         start = time.perf_counter()
         setpoints = planner.act(obs, env)
         plan_seconds.append(time.perf_counter()-start)
         obs, reward, done, info = env.step(setpoints)
-    return dict(seed=scenario.seed, condition=scenario.condition.name, outcome=info["outcome"], time=info["time"],
-                decisions=info["decisions"], distance_to_goal=info["distance_to_goal"],
-                min_clearance=info["min_clearance"], plan_seconds_mean=float(np.mean(plan_seconds)),
-                plan_seconds_max=float(np.max(plan_seconds)))
+    record = dict(seed=scenario.seed, condition=scenario.condition.name, payload_mass=scenario.payload_mass,
+                  outcome=info["outcome"], time=info["time"], decisions=info["decisions"],
+                  distance_to_goal=info["distance_to_goal"], min_clearance=info["min_clearance"],
+                  plan_seconds_mean=float(np.mean(plan_seconds)), plan_seconds_max=float(np.max(plan_seconds)))
+    estimates = getattr(planner.cost.predictor, "estimates", None)
+    if estimates is not None:
+        record["mass_estimates"] = list(estimates)      # one per decision
+    return record
 
 
 def summarize(records):
@@ -46,9 +54,21 @@ def summarize(records):
     return rows
 
 
+def make_predictor(name, workers=None, options=None):
+    """A reference row by name, or a participant's predictor from a `module:factory` path."""
+    from .planning import AdaptivePhysicsPredictor, PhysicsPredictor, TrueSimPredictor
+    references = dict(oracle=TrueSimPredictor, physics=PhysicsPredictor, adaptive=AdaptivePhysicsPredictor)
+    if name in references:
+        return references[name](workers)
+    module, _, factory = name.partition(":")
+    if not factory:
+        raise ValueError(f"Expected oracle, physics, adaptive or module:factory, got {name!r}")
+    return getattr(importlib.import_module(module), factory)(**(options or {}))
+
+
 def make_planner(args):
-    from .planning import ArenaCost, ArenaPlanner, ConstrainedArenaCost, PhysicsPredictor, TrueSimPredictor
-    predictor = TrueSimPredictor(args.workers) if args.predictor == "oracle" else PhysicsPredictor(args.workers)
+    from .planning import ArenaCost, ArenaPlanner, ConstrainedArenaCost
+    predictor = make_predictor(args.predictor, args.workers, json.loads(args.predictor_options))
     cost = (ConstrainedArenaCost if args.solver == "lagrangian" else ArenaCost)(predictor)
     return ArenaPlanner(cost, solver=args.solver, horizon=args.horizon, samples=args.samples,
                         var_scale=args.var_scale, temperature=args.temperature, seed=args.seed), predictor
@@ -56,7 +76,9 @@ def make_planner(args):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--predictor", choices=("oracle", "physics"), default="oracle")
+    parser.add_argument("--predictor", default="oracle",
+                        help="oracle (U), physics (nominal mass), adaptive (online mass estimation) or module:factory")
+    parser.add_argument("--predictor-options", default="{}", help="JSON keyword arguments for a module:factory predictor")
     parser.add_argument("--solver", choices=("mppi", "lagrangian"), default="mppi")
     parser.add_argument("--suite", choices=tuple(SUITE_SEEDS), default="dev")
     parser.add_argument("--seeds", default="0:5", help="slice into the suite's seed list, e.g. 0:5")
@@ -69,7 +91,7 @@ def main():
     parser.add_argument("--seed", type=int, default=0)
     parser.add_argument("--out", required=True)
     args = parser.parse_args()
-    if args.solver == "lagrangian":
+    if args.solver == "lagrangian" and args.predictor in ("oracle", "physics", "adaptive"):
         parser.error("the augmented-Lagrangian solver needs a differentiable predictor (a world model)")
     start, stop = (int(x) if x else None for x in args.seeds.split(":"))
     seeds = SUITE_SEEDS[args.suite][start:stop]

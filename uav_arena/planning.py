@@ -14,6 +14,8 @@ setpoints to the team trajectory at each decision end:
   copy of the known onboard flight stack carries the unobserved motor and
   controller states between decisions; the delay is bridged by replaying the
   setpoint segments already sent (a Smith predictor).
+- `AdaptivePhysicsPredictor` adds online payload-mass estimation to it: a bank of
+  shadows over candidate masses, scored against each new observation.
 - `KinematicPredictor` assumes aircraft reach their setpoints within one decision
   and the payload hangs under the formation: a differentiable test fixture for
   the augmented-Lagrangian path, not a benchmark participant.
@@ -24,10 +26,10 @@ to the simulator.
 """
 from __future__ import annotations
 
+from collections import deque
 import contextlib
 import dataclasses
 import io
-import math
 import multiprocessing as mp
 import os
 
@@ -37,11 +39,14 @@ import torch
 from gymnasium.spaces import Box
 
 from .costs import CostWeights, constraint_values, soft_cost
-from .env import DECISION_DT, NOMINAL_PAYLOAD_MASS, ArenaEnv
+from .env import (ACTION_LIMIT, DECISION_DT, FORMATION_DEPTH, NOMINAL_PAYLOAD_MASS, ArenaEnv,
+                  quaternion_matrices)
+from .scenarios import PAYLOAD_MASS_RANGE
 
 
-ACTION_LIMIT = 0.12     # setpoint increment per decision and axis (m), 1.2 m/s reference speed
-FORMATION_DEPTH = math.sqrt(0.6**2-0.25**2)
+MASS_CANDIDATES = np.round(np.arange(PAYLOAD_MASS_RANGE[0], PAYLOAD_MASS_RANGE[1]+1e-9, 0.002), 6)  # 2 g grid
+ESTIMATION_WINDOW = 5   # observations scored per mass estimate (0.5 s)
+ATTITUDE_SCALE = 0.05   # m per unit of rotation-column error: about g T^2/2 over one decision
 
 
 def info_from_observation(obs, anchor, dtype=torch.float32):
@@ -110,7 +115,8 @@ _WORKER_ENVS = {}
 def _rollouts(scenario, state, sequences):
     env = _WORKER_ENVS.get(scenario)
     if env is None:
-        _WORKER_ENVS.clear()
+        for key in [k for k in _WORKER_ENVS if k.public() != scenario.public()]:
+            del _WORKER_ENVS[key]       # another episode; mass candidates of this one stay cached
         env = _WORKER_ENVS[scenario] = ArenaEnv(scenario)
     results = []
     for sequence in sequences:
@@ -121,6 +127,8 @@ def _rollouts(scenario, state, sequences):
 
 class TrueSimPredictor:
     """The oracle U: exact rollouts of the true simulator in a pool of worker processes."""
+
+    privileged = True       # the planner hands it the true state
 
     def __init__(self, workers=None):
         self.workers = int(workers or max(1, (os.cpu_count() or 2)-2))
@@ -149,6 +157,8 @@ class TrueSimPredictor:
 
 class PhysicsPredictor(TrueSimPredictor):
     """Non-privileged physics reference: nominal-mass rollouts from the delayed observation."""
+
+    privileged = False
 
     def __init__(self, workers=None, nominal_mass=NOMINAL_PAYLOAD_MASS):
         super().__init__(workers)
@@ -211,6 +221,60 @@ class PhysicsPredictor(TrueSimPredictor):
         mujoco.mj_forward(model.model, model.data)
 
 
+class AdaptivePhysicsPredictor(PhysicsPredictor):
+    """The physics reference with online payload-mass estimation (multiple-model estimation).
+
+    A bank of shadows, one per candidate mass on a 2 g grid over the scenario prior, runs the
+    physics reference's cycle at every new observation: replay the sent segments up to it, score
+    the prediction against it, re-sync. The estimate is the candidate with the least squared error
+    over the last 0.5 s of observations. The first observation is scored against each candidate's
+    settled hover, so the initial estimate comes from the hover tilt that the cable tension sets.
+    Planning rolls out the estimated candidate: its shadow states and its mass.
+    """
+
+    def __init__(self, workers=None, candidates=MASS_CANDIDATES, window=ESTIMATION_WINDOW):
+        self.candidates, self.window = np.asarray(candidates, dtype=float), int(window)
+        super().__init__(workers)
+
+    def reset(self):
+        super().reset()
+        self.bank, self.errors, self.estimates = None, deque(maxlen=self.window), []
+
+    def observe(self, obs, layout):
+        if self.bank is None:
+            self.bank = [ArenaEnv(dataclasses.replace(layout, payload_mass=float(m))) for m in self.candidates]
+            self.shadows, self.shadow_time = [model.physics_state() for model in self.bank], 0.0
+        errors = np.empty(len(self.bank))
+        for k, model in enumerate(self.bank):
+            self.model = model
+            model.set_physics_state(self.shadows[k])
+            self._replay(obs, self.shadow_time, obs["time"])
+            errors[k] = self._error(obs)
+            self._sync(obs)
+            self.shadows[k] = model.physics_state()
+        if not self.errors or obs["time"] > self.shadow_time+1e-9:   # a repeated observation tells nothing new
+            self.errors.append(errors)
+        self.shadow_time = obs["time"]
+        best = int(np.argmin(np.sum(self.errors, axis=0)))
+        self.model, self.scenario = self.bank[best], self.bank[best].scenario
+        self.model.set_physics_state(self.shadows[best])
+        self._replay(obs, obs["time"], obs["decision_time"])
+        self.state = self.model.physics_state()
+        self.estimates.append(float(self.candidates[best]))
+
+    def _error(self, obs):
+        """Squared distance of the shadow from the observation, in metres."""
+        model = self.model
+        q, v = model.data.qpos, model.data.qvel
+        rotation = quaternion_matrices(q[model._uav_quat].reshape(3, 4))
+        rot6 = np.concatenate((rotation[:, :, 0], rotation[:, :, 1]), axis=1)
+        residuals = (q[model._uav_pos]-obs["uav_pos"].reshape(-1), q[model._payload_pos]-obs["payload_pos"],
+                     DECISION_DT*(v[model._uav_lin]-obs["uav_vel"].reshape(-1)),
+                     DECISION_DT*(v[model._payload_lin]-obs["payload_vel"]),
+                     ATTITUDE_SCALE*(rot6-obs["uav_rot6"]).reshape(-1))
+        return float(sum(np.square(r).sum() for r in residuals))
+
+
 class ArenaPlanner:
     """Plan with a stable-worldmodel solver every decision; execute the first increment."""
 
@@ -230,11 +294,15 @@ class ArenaPlanner:
             raise ValueError(f"Unknown solver {solver}")
         self.solver.configure(action_space=Box(-ACTION_LIMIT, ACTION_LIMIT, shape=(1, 9)), n_envs=1,
                               config=PlanConfig(horizon=horizon, receding_horizon=1, action_block=1))
-        self.cost, self.horizon, self.name = cost, horizon, solver
-        self.reset()
+        self.cost, self.horizon, self.name, self.seed = cost, horizon, solver, seed
+        self.reset(0)
 
-    def reset(self):
+    def reset(self, episode):
+        """Start an episode. The solver is reseeded from (seed, episode), so an episode's samples do not
+        depend on the episodes run before it; run.py passes the layout seed, which every condition and
+        participant on that layout shares (common random numbers)."""
         self.previous = None
+        self.solver.torch_gen.manual_seed(int(np.random.SeedSequence([self.seed, int(episode)]).generate_state(1)[0]))
         if hasattr(self.cost.predictor, "reset"):
             self.cost.predictor.reset()
 
@@ -242,9 +310,9 @@ class ArenaPlanner:
         anchor = obs["recent_setpoints"][-1]
         predictor = self.cost.predictor
         if hasattr(predictor, "observe"):
-            predictor.observe(obs, env.scenario)                        # layout only; nominal mass
-        elif hasattr(predictor, "set_state"):
-            predictor.set_state(env.scenario, env.physics_state())     # privileged: oracle only
+            predictor.observe(obs, env.scenario.public())               # layout without the payload mass
+        elif getattr(predictor, "privileged", False):
+            predictor.set_state(env.scenario, env.physics_state())     # the oracle U only
         info = info_from_observation(obs, anchor)
         with contextlib.redirect_stdout(io.StringIO()):     # swm 0.1.1 prints timing every solve
             outputs = self.solver.solve(info, init_action=self.previous)

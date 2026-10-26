@@ -10,7 +10,7 @@ exactly.
 from __future__ import annotations
 
 from collections import deque
-from dataclasses import asdict, dataclass, field
+from dataclasses import asdict, dataclass, field, replace
 import math
 
 import numpy as np
@@ -87,6 +87,10 @@ class Scenario:
             return np.zeros((0, 3)), np.zeros((0, 3))
         states = [m.state(t) for m in self.movers]
         return np.stack([s[0] for s in states]), np.stack([s[1] for s in states])
+
+    def public(self):
+        """The scenario without its hidden payload mass: what non-privileged methods may read."""
+        return replace(self, payload_mass=None)
 
     def to_dict(self):
         values = asdict(self)

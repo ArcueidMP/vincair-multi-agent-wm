@@ -41,6 +41,8 @@ SUCCESS_SPEED = 0.2
 SUCCESS_HOLD = 5               # consecutive decisions inside the goal tolerance
 TEAM_MIN_SEPARATION = 0.1
 RECENT_SETPOINTS = 4           # setpoints in force returned with each observation (enough to replay 200 ms)
+ACTION_LIMIT = 0.12            # shared action parameterization: setpoint increment per decision and axis (m)
+FORMATION_DEPTH = math.sqrt(0.6**2-0.25**2)   # hover: aircraft above the payload on 0.6 m cables, 0.25 m out
 OUTCOMES = ("running", "success", "timeout", "collision_obstacle", "collision_team", "crash",
             "out_of_bounds", "nonfinite")
 

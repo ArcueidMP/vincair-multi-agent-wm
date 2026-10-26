@@ -60,12 +60,13 @@ def record(scenario, participant, *, actor=None, task=None, workers=None):
     env = RecordingArenaEnv(scenario)
     obs = env.reset()
     close = None
-    if participant in ("oracle", "physics"):
-        from .planning import ArenaCost, ArenaPlanner, PhysicsPredictor, TrueSimPredictor
-        predictor = (TrueSimPredictor if participant == "oracle" else PhysicsPredictor)(workers)
+    if participant in ("oracle", "physics", "adaptive"):
+        from .planning import AdaptivePhysicsPredictor, ArenaCost, ArenaPlanner, PhysicsPredictor, TrueSimPredictor
+        predictors = dict(oracle=TrueSimPredictor, physics=PhysicsPredictor, adaptive=AdaptivePhysicsPredictor)
+        predictor = predictors[participant](workers)
         close = predictor.close
         planner = ArenaPlanner(ArenaCost(predictor))
-        planner.reset()
+        planner.reset(scenario.seed)        # the same samples as the episode in run.py
         advance = lambda obs: env.step(planner.act(obs, env))
     elif participant == "crazymarl":
         from .crazymarl_policy import CrazyMARLActor, CrazyMARLPilot
@@ -256,7 +257,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     commands = parser.add_subparsers(dest="command", required=True)
     rec = commands.add_parser("record", help="run one episode and save its frames")
-    rec.add_argument("--participant", choices=("oracle", "physics", "crazymarl", "transfer"), required=True)
+    rec.add_argument("--participant", choices=("oracle", "physics", "adaptive", "crazymarl", "transfer"), required=True)
     rec.add_argument("--seed", type=int, required=True, help="scenario seed (dev: 0-19, test: 1000-1049)")
     rec.add_argument("--condition", choices=[c.name for c in CONDITIONS], default="static/0ms")
     rec.add_argument("--actor", type=Path, help="CrazyMARL actor weights (.npz)")

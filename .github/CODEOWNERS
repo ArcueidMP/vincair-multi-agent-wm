@@ -7,6 +7,9 @@
 /uav_arena/costs.py            @ArcueidMP
 /uav_arena/planning.py         @ArcueidMP
 /uav_arena/run.py              @ArcueidMP
+/uav_arena/collect.py          @ArcueidMP
+/uav_arena/openloop.py         @ArcueidMP
+/uav_arena/PARTICIPANTS.md     @ArcueidMP
 /uav_arena/crazymarl_*.py      @ArcueidMP
 /uav_arena/README.md           @ArcueidMP
 /tests/test_uav_arena*.py      @ArcueidMP
