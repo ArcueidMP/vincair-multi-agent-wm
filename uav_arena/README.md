@@ -21,6 +21,8 @@ Status:
   before it. The `dev` numbers below are valid as one run, but a single episode does not replay
   identically on its own. Reseeding the solver at every episode start fixes this; U and physics
   then need a rerun.
+- Related work, grouped by relation to the arena, with BibTeX:
+  [`docs/uav-arena-related-work.md`](../docs/uav-arena-related-work.md).
 - The earlier experiment card v2.0 is archived in
   [`archives/uav_transport/experiment_card_v2/`](../archives/uav_transport/experiment_card_v2/README.md)
   and does not apply to this benchmark.
