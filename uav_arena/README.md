@@ -19,7 +19,7 @@ Status (tag `arena-v0.2`):
   `collect.py` collects training data and `openloop.py` scores predictions on it (evaluation
   layer 1).
 - CrazyMARL runs on arena tasks (`crazymarl_task.py`, `crazymarl_env.py`, `crazymarl_train.py`,
-  `crazymarl_policy.py`). Seed 0 is trained and evaluated on `dev`; seeds 1 and 2 are training.
+  `crazymarl_policy.py`). Seeds 0–2 are trained and evaluated on `dev`.
 - The world-model rows, evaluation layers 2–3 and the leaderboard are next (see Roadmap).
 - Related work, grouped by relation to the arena, with BibTeX:
   [`docs/uav-arena-related-work.md`](../docs/uav-arena-related-work.md).
@@ -159,7 +159,7 @@ the predictor differs.
 | U | MPPI on the true simulator | privileged: true state, payload mass, onboard states | implemented |
 | Physics | MPPI on the nominal simulator | observation only | implemented |
 | Physics + mass estimation | the physics row with online payload-mass estimation (multiple models, 2 g grid) | observation history | implemented |
-| CrazyMARL | external, model-free: official IPPO trainer, decentralized 250 Hz motor commands, retrained on arena tasks | own state fresh; payload, teammates and obstacles delayed | seed 0 evaluated; seeds 1–2 training |
+| CrazyMARL | external, model-free: official IPPO trainer, decentralized 250 Hz motor commands, retrained on arena tasks | own state fresh; payload, teammates and obstacles delayed | seeds 0–2 evaluated on `dev` |
 | Entity-token JEPA (`full`, `no_cross`, `flat`), autoregressive state model, PETS ensemble | world models in the shared MPPI | observation history | planned |
 | TD-MPC2 (official, trained online), DreamerV3 | external model-based RL, evaluated as published, plus state probes for layers 1–3 | observation | planned |
 
@@ -184,35 +184,39 @@ checkpoint either). The method stays as published; only the task changes.
   `dev` and `test`; payload mass is not randomized in training, as upstream.
 - **Budget:** 2×10⁹ environment steps per seed. The official 16,384 parallel environments do not
   fit the 8 GB GPU, so 8,192 are used (about 270k steps/s, 2.1 h per seed).
-- **Evaluation (`crazymarl_policy.py`):** the mean action of the exported actor flies the arena
-  plant through `ArenaEnv.step_motors`, mapping upstream rotor order onto the arena's and actions
-  onto 0–0.15 N per rotor (the centre of the training randomization). Outcomes use the arena's
-  events and success rule.
+- **Evaluation (`crazymarl_policy.py`):** the mean action of each seed's final actor (the official
+  training script also exports the final one) flies the arena plant through
+  `ArenaEnv.step_motors`, mapping upstream rotor order onto the arena's and actions onto 0–0.15 N
+  per rotor (the centre of the training randomization). Outcomes use the arena's events and
+  success rule.
 
 ```bash
 PYTHONPATH=. data/uav_arena/.venv/bin/python -c "from uav_arena.crazymarl_task import build_task; build_task('data/uav_arena/crazymarl/task.npz')"
-PYTHONPATH=$PWD data/external/.venv-crazymarl-gpu/bin/python -m uav_arena.crazymarl_train \
-  --checkout data/external/CrazyMARL --out data/uav_arena/crazymarl/ippo_s0 --num-envs 8192 --seed 0
-PYTHONPATH=. data/uav_arena/.venv/bin/python -m uav_arena.crazymarl_policy \
-  --actor data/uav_arena/crazymarl/ippo_s0.npz --suite dev --seeds 0:5 --out data/uav_arena/results/crazymarl_dev_s0-5.json
+for s in 0 1 2; do
+  PYTHONPATH=$PWD data/external/.venv-crazymarl-gpu/bin/python -m uav_arena.crazymarl_train \
+    --checkout data/external/CrazyMARL --out data/uav_arena/crazymarl/ippo_s$s --num-envs 8192 --seed $s
+  PYTHONPATH=. data/uav_arena/.venv/bin/python -m uav_arena.crazymarl_policy --actor data/uav_arena/crazymarl/ippo_s$s.npz \
+    --suite dev --seeds 0:5 --out data/uav_arena/results/crazymarl_s${s}_dev_s0-5.json
+done
 ```
 
 ## Results on dev (seeds 0–4, all 8 conditions)
 
-Shared MPPI (512 samples, 1.5 s horizon) at `arena-v0.2`, with the solver reseeded per episode.
-Success count out of 5, mean time of the successes:
+At `arena-v0.2`. The three planning rows use the shared MPPI (512 samples, 1.5 s horizon),
+reseeded per episode; CrazyMARL flies the final actor of each training seed. Success count out of
+5 (for CrazyMARL, one count per training seed) and mean time of the successes:
 
-| Condition | U (oracle) | Physics (nominal 25 g) | Physics + mass estimation | CrazyMARL (seed 0) |
+| Condition | U (oracle) | Physics (nominal 25 g) | Physics + mass estimation | CrazyMARL (seeds 0, 1, 2) |
 |---|---|---|---|---|
-| static, 0 ms | 5/5 (6.1 s) | 4/5 (7.2 s) | 5/5 (6.5 s) | 3/5 (4.7 s) |
-| static, 50 ms | 5/5 (6.1 s) | 3/5 (7.1 s) | 5/5 (5.9 s) | 3/5 (4.8 s) |
-| static, 100 ms | 5/5 (6.1 s) | 3/5 (6.2 s) | 5/5 (5.7 s) | 3/5 (4.9 s) |
-| static, 200 ms | 5/5 (6.1 s) | 4/5 (6.4 s) | 5/5 (6.2 s) | 3/5 (5.2 s) |
-| static+moving, 0 ms | 5/5 (6.8 s) | 3/5 (7.7 s) | 5/5 (6.1 s) | 3/5 (4.8 s) |
-| static+moving, 50 ms | 5/5 (7.4 s) | 4/5 (9.3 s) | 5/5 (7.1 s) | 3/5 (4.9 s) |
-| static+moving, 100 ms | 5/5 (7.6 s) | 4/5 (8.0 s) | 5/5 (6.8 s) | 3/5 (4.9 s) |
-| static+moving, 200 ms | 5/5 (7.6 s) | 3/5 (6.1 s) | 5/5 (6.8 s) | 3/5 (5.2 s) |
-| **Total** | **40/40** | **28/40** | **40/40** | **24/40** |
+| static, 0 ms | 5/5 (6.1 s) | 4/5 (7.2 s) | 5/5 (6.5 s) | 3, 2, 2 (4.8 s) |
+| static, 50 ms | 5/5 (6.1 s) | 3/5 (7.1 s) | 5/5 (5.9 s) | 3, 2, 2 (4.9 s) |
+| static, 100 ms | 5/5 (6.1 s) | 3/5 (6.2 s) | 5/5 (5.7 s) | 3, 2, 2 (5.0 s) |
+| static, 200 ms | 5/5 (6.1 s) | 4/5 (6.4 s) | 5/5 (6.2 s) | 3, 2, 2 (5.4 s) |
+| static+moving, 0 ms | 5/5 (6.8 s) | 3/5 (7.7 s) | 5/5 (6.1 s) | 3, 2, 2 (4.9 s) |
+| static+moving, 50 ms | 5/5 (7.4 s) | 4/5 (9.3 s) | 5/5 (7.1 s) | 3, 2, 2 (5.0 s) |
+| static+moving, 100 ms | 5/5 (7.6 s) | 4/5 (8.0 s) | 5/5 (6.8 s) | 3, 2, 2 (5.1 s) |
+| static+moving, 200 ms | 5/5 (7.6 s) | 3/5 (6.1 s) | 5/5 (6.8 s) | 3, 2, 2 (5.5 s) |
+| **Total** | **40/40** | **28/40** | **40/40** | **24, 16, 16 of 40** |
 
 - **Physics + mass estimation matches U.** It scores 40/40, and no episode's outcome differs from
   U's. Paired success times differ by −0.3 s on average (median −0.5 s). Mean minimum clearance
@@ -228,10 +232,19 @@ Success count out of 5, mean time of the successes:
   1, 2 and 4: 38.4, 35.5 and 35.9 g against the nominal 25 g). Most are aircraft-separation
   failures (9 of 12): the heavier load pulls the cables inward harder than the nominal model
   predicts. The twelfth is a timeout on seed 0 (27.3 g). Its mean minimum clearance is 10.4 cm.
-- **CrazyMARL** (one training seed so far; its return plateaued from about 40% of the 2×10⁹
-  steps) succeeds on layouts 0, 1 and 3 in every condition, faster than U, and hits a pillar
-  within 2 s on layouts 2 and 4 in every condition. Latency and moving obstacles do not change its
-  outcomes.
+- **CrazyMARL** has one outcome per layout and training seed, the same in all 8 conditions. Seed 0
+  succeeds on layouts 0, 1 and 3; seeds 1 and 2 on layouts 1 and 3 only. Every failure is a
+  pillar strike within 2.7 s, in the moving-obstacle conditions too (the movers stay at least
+  33 cm away). Latency changes only when the strike happens: at 200 ms it comes 0.06–0.47 s later
+  than at 0 ms. Paired with U on the same episodes, its success times differ from U's by −1.5,
+  +0.1 and −0.4 s on average for seeds 0–2 (negative is faster). Seed 0's lead comes from
+  layout 0, where U needs 7.4–11.9 s and seed 0 5.3–5.9 s.
+- **CrazyMARL training.** All three seeds train on the same task file, trainer and pinned upstream
+  commit. Their returns level off after about 40% of the 2×10⁹ steps, then swing between about
+  2,800 and 4,600 (averaged over 50 updates) and end below their peaks; the final logged returns
+  are 3,676, 3,540 and 3,424. No intermediate checkpoints are kept, so the final actor is the one
+  evaluated, as in the official training script. Seed 0 was evaluated before `arena-v0.2`; rerun
+  at the tag, its 40 records are identical.
 - **Before `arena-v0.2`** (one solver generator across episodes), U scored 39/40 and physics
   28/40. U's one failure, a mover collision at 200 ms, did not recur.
 
@@ -269,8 +282,8 @@ other layers miss, and how that changes with latency and moving obstacles.
 
 1. ~~Environment, shared MPPI, U and physics references, setpoint segments, hidden payload mass~~
    (done).
-2. CrazyMARL on arena tasks: ~~training environment, motor-level arena interface, seed 0~~
-   (done); seeds 1 and 2 (training), then evaluation on `test`.
+2. CrazyMARL on arena tasks: ~~training environment, motor-level arena interface, seeds 0–2 on
+   `dev`~~ (done); evaluation on `test`.
 3. ~~Physics with online payload-mass estimation~~ (done).
 4. ~~Participant contract, data collector, layer-1 open-loop metric~~ (done, `arena-v0.2`);
    entity-token JEPA variants, the autoregressive model and PETS.
