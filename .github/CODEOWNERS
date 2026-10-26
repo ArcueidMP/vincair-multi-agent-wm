@@ -1,0 +1,13 @@
+# Changes to the UAV arena's benchmark contract need the maintainer's review.
+# Teammates add participants, data and analysis in new files; those need one review from anyone.
+/uav_arena/env.py              @ArcueidMP
+/uav_arena/scenarios.py        @ArcueidMP
+/uav_arena/geometry.py         @ArcueidMP
+/uav_arena/lowlevel.py         @ArcueidMP
+/uav_arena/costs.py            @ArcueidMP
+/uav_arena/planning.py         @ArcueidMP
+/uav_arena/run.py              @ArcueidMP
+/uav_arena/crazymarl_*.py      @ArcueidMP
+/uav_arena/README.md           @ArcueidMP
+/tests/test_uav_arena*.py      @ArcueidMP
+/.github/                      @ArcueidMP
