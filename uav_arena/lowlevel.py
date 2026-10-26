@@ -73,15 +73,15 @@ static void arena_mix(const double *wrench, const double *inverse, double maximu
 }
 
 void arena_step(void *memory, int count, const double *position, const double *quaternion_wxyz,
-    const double *velocity, const double *omega_body, const double *goal, const double *acceleration,
-    const double *inverse_mixer, double maximum, double *forces, double *wrenches) {
+    const double *velocity, const double *omega_body, const double *goal, const double *goal_velocity,
+    const double *acceleration, const double *inverse_mixer, double maximum, double *forces, double *wrenches) {
     controllerLee_t *items = (controllerLee_t *)memory;
     for (int i = 0; i < count; ++i) {
         control_t control; setpoint_t setpoint; sensorData_t sensors; state_t state;
         memset(&control, 0, sizeof(control)); memset(&setpoint, 0, sizeof(setpoint));
         memset(&sensors, 0, sizeof(sensors)); memset(&state, 0, sizeof(state));
         const double *p = position+3*i, *q = quaternion_wxyz+4*i, *v = velocity+3*i;
-        const double *w = omega_body+3*i, *g = goal+3*i, *a = acceleration+3*i;
+        const double *w = omega_body+3*i, *g = goal+3*i, *gv = goal_velocity+3*i, *a = acceleration+3*i;
         state.position.x = (float)p[0]; state.position.y = (float)p[1]; state.position.z = (float)p[2];
         state.velocity.x = (float)v[0]; state.velocity.y = (float)v[1]; state.velocity.z = (float)v[2];
         state.attitudeQuaternion.x = (float)q[1]; state.attitudeQuaternion.y = (float)q[2];
@@ -89,6 +89,7 @@ void arena_step(void *memory, int count, const double *position, const double *q
         sensors.gyro.x = degrees((float)w[0]); sensors.gyro.y = degrees((float)w[1]); sensors.gyro.z = degrees((float)w[2]);
         setpoint.mode.x = modeAbs; setpoint.mode.y = modeAbs; setpoint.mode.z = modeAbs; setpoint.mode.yaw = modeAbs;
         setpoint.position.x = (float)g[0]; setpoint.position.y = (float)g[1]; setpoint.position.z = (float)g[2];
+        setpoint.velocity.x = (float)gv[0]; setpoint.velocity.y = (float)gv[1]; setpoint.velocity.z = (float)gv[2];
         setpoint.acceleration.x = (float)a[0]; setpoint.acceleration.y = (float)a[1]; setpoint.acceleration.z = (float)a[2];
         controllerLee(items+i, &control, &setpoint, &sensors, &state, 0);
         double *wrench = wrenches+4*i;
@@ -103,7 +104,7 @@ void arena_step(void *memory, int count, const double *position, const double *q
  * mixer, and write rotor forces into ctrl. */
 void arena_control(void *memory, int count, const double *qpos, const double *qvel, double *ctrl,
     const int *qpos_uav, const int *qvel_uav, int qpos_payload, const int *ctrl_index,
-    const double *goal, double nominal_mass, double gravity, double drone_mass,
+    const double *goal, const double *goal_velocity, double nominal_mass, double gravity, double drone_mass,
     const double *inverse_mixer, double maximum, double *scratch) {
     double *position = scratch, *quaternion = scratch+3*count, *velocity = scratch+7*count;
     double *omega = scratch+10*count, *acceleration = scratch+13*count, *forces = scratch+16*count;
@@ -122,7 +123,7 @@ void arena_control(void *memory, int count, const double *qpos, const double *qv
         double tension = nominal_mass*gravity/(3.0*vertical);
         for (int k = 0; k < 3; ++k) acceleration[3*i+k] = tension*cable[k]/length/drone_mass;
     }
-    arena_step(memory, count, position, quaternion, velocity, omega, goal, acceleration,
+    arena_step(memory, count, position, quaternion, velocity, omega, goal, goal_velocity, acceleration,
                inverse_mixer, maximum, forces, wrenches);
     for (int i = 0; i < 4*count; ++i) ctrl[ctrl_index[i]] = forces[i];
 }
@@ -170,11 +171,11 @@ def native_library(rate_hz=FIRMWARE_RATE_HZ):
     lib.arena_state_size.argtypes = []; lib.arena_state_size.restype = ctypes.c_size_t
     lib.arena_init.argtypes = [ctypes.c_void_p, ctypes.c_int, ctypes.c_float, array]
     lib.arena_init.restype = None
-    lib.arena_step.argtypes = [ctypes.c_void_p, ctypes.c_int]+[array]*7+[ctypes.c_double, array, array]
+    lib.arena_step.argtypes = [ctypes.c_void_p, ctypes.c_int]+[array]*8+[ctypes.c_double, array, array]
     lib.arena_step.restype = None
     # The bound fast path passes raw addresses of arrays that outlive the call.
     lib.arena_control.argtypes = ([ctypes.c_void_p, ctypes.c_int]+[ctypes.c_void_p]*5+[ctypes.c_int]
-        +[ctypes.c_void_p]*2+[ctypes.c_double]*3+[ctypes.c_void_p, ctypes.c_double, ctypes.c_void_p])
+        +[ctypes.c_void_p]*3+[ctypes.c_double]*3+[ctypes.c_void_p, ctypes.c_double, ctypes.c_void_p])
     lib.arena_control.restype = None
     return lib, build
 
@@ -195,32 +196,35 @@ class BatchedLee:
     def reset(self):
         self.lib.arena_init(self.memory, self.count, self.mass, self.inertia)
 
-    def step(self, position, quaternion_wxyz, velocity, omega_body, goal, acceleration):
+    def step(self, position, quaternion_wxyz, velocity, omega_body, goal, acceleration, goal_velocity=None):
         """All inputs are (count, 3) or (count, 4) float64 arrays; returns rotor forces (count, 4)."""
+        goal_velocity = np.zeros((self.count, 3)) if goal_velocity is None else goal_velocity
         arrays = [np.ascontiguousarray(x, dtype=np.float64).reshape(-1)
-                  for x in (position, quaternion_wxyz, velocity, omega_body, goal, acceleration)]
+                  for x in (position, quaternion_wxyz, velocity, omega_body, goal, goal_velocity, acceleration)]
         self.lib.arena_step(self.memory, self.count, *arrays, self.inverse_mixer, self.rotor_max,
                             self.forces, self.wrenches)
         return self.forces.reshape(self.count, 4)
 
-    def bind(self, data, *, qpos_uav, qvel_uav, qpos_payload, ctrl_index, goal, nominal_mass, gravity):
+    def bind(self, data, *, qpos_uav, qvel_uav, qpos_payload, ctrl_index, goal, goal_velocity, nominal_mass, gravity):
         """A zero-argument callable running one feedback tick on `data` in place.
 
-        `goal` is the (count, 3) float64 setpoint array; update it in place (goal[:] = ...)
-        so the bound address stays valid. MuJoCo array buffers keep their address for
-        the lifetime of `data`, including across mj_setState.
+        `goal` and `goal_velocity` are the (count, 3) float64 position and velocity setpoint
+        arrays; update them in place (goal[:] = ...) so the bound addresses stay valid.
+        MuJoCo array buffers keep their address for the lifetime of `data`, including
+        across mj_setState.
         """
-        if goal.dtype != np.float64 or not goal.flags.c_contiguous or goal.shape != (self.count, 3):
-            raise ValueError("Bind a C-contiguous float64 (count, 3) setpoint array")
+        for array in (goal, goal_velocity):
+            if array.dtype != np.float64 or not array.flags.c_contiguous or array.shape != (self.count, 3):
+                raise ValueError("Bind C-contiguous float64 (count, 3) setpoint arrays")
         keep = dict(qpos_uav=np.ascontiguousarray(qpos_uav, dtype=np.int32),
                     qvel_uav=np.ascontiguousarray(qvel_uav, dtype=np.int32),
                     ctrl_index=np.ascontiguousarray(ctrl_index, dtype=np.int32),
-                    scratch=np.zeros(24*self.count), goal=goal)
+                    scratch=np.zeros(24*self.count), goal=goal, goal_velocity=goal_velocity)
         qpos, qvel, ctrl = data.qpos, data.qvel, data.ctrl
         args = (ctypes.c_void_p(ctypes.addressof(self.memory)), self.count, qpos.ctypes.data, qvel.ctypes.data,
                 ctrl.ctypes.data, keep["qpos_uav"].ctypes.data, keep["qvel_uav"].ctypes.data, int(qpos_payload),
-                keep["ctrl_index"].ctypes.data, goal.ctypes.data, float(nominal_mass), float(gravity), self.mass,
-                self.inverse_mixer.ctypes.data, self.rotor_max, keep["scratch"].ctypes.data)
+                keep["ctrl_index"].ctypes.data, goal.ctypes.data, goal_velocity.ctypes.data, float(nominal_mass),
+                float(gravity), self.mass, self.inverse_mixer.ctypes.data, self.rotor_max, keep["scratch"].ctypes.data)
         function = self.lib.arena_control
 
         def tick():

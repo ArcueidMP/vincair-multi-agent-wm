@@ -11,10 +11,14 @@ from uav_arena.scenarios import (CONDITIONS, Condition, Mover, Pillar, Scenario,
                                  suite, team_clearance)
 
 
-def go_to_goal(obs, step=0.3):
-    offset = obs["goal"]-obs["payload_pos"]
-    norm = np.linalg.norm(offset)
-    return obs["uav_pos"]+(offset*step/norm if norm > step else offset)
+def smooth_transfer(obs, duration=4.0):
+    """Open-loop reference: shift the hover formation to the goal along a minimum-jerk straight line."""
+    start, shift = obs["recent_setpoints"][-1], obs["goal"]-obs["payload_pos"]
+
+    def policy(obs):
+        s = min(1.0, (obs["decision_time"]+0.1)/duration)
+        return start+shift*(10*s**3-15*s**4+6*s**5)
+    return policy
 
 
 def open_field(latency_ms=0, pillars=()):
@@ -76,7 +80,8 @@ def test_batched_controller_matches_the_pinned_native_adapter():
     rng = np.random.default_rng(0)
     quaternion = rng.normal(size=(3, 4)); quaternion /= np.linalg.norm(quaternion, axis=1, keepdims=True)
     state = dict(position=rng.normal(size=(3, 3)), quaternion_wxyz=quaternion, velocity=rng.normal(size=(3, 3))*0.3,
-                 omega_body=rng.normal(size=(3, 3)), goal=rng.normal(size=(3, 3)), acceleration=rng.normal(size=(3, 3)))
+                 omega_body=rng.normal(size=(3, 3)), goal=rng.normal(size=(3, 3)), acceleration=rng.normal(size=(3, 3)),
+                 goal_velocity=rng.normal(size=(3, 3))*0.5)
     batched = BatchedLee(3, mass=config.drone_mass, inertia=config.inertia, mixer=rotor_mixer(config),
                          rotor_max=config.rotor_max)
     native = [NativeLee(config.drone_mass, config.inertia, 1/500) for _ in range(3)]
@@ -85,7 +90,7 @@ def test_batched_controller_matches_the_pinned_native_adapter():
         forces = batched.step(**state).copy()
         for i, controller in enumerate(native):
             wrench = controller.step(state["position"][i], state["velocity"][i], rotations[i], state["omega_body"][i],
-                                     state["goal"][i], np.zeros(3), state["acceleration"][i])
+                                     state["goal"][i], state["goal_velocity"][i], state["acceleration"][i])
             np.testing.assert_allclose(batched.wrenches.reshape(3, 4)[i], wrench, rtol=1e-4, atol=1e-7)
             np.testing.assert_allclose(forces[i], mix_bounded(wrench, rotor_mixer(config), config.rotor_max),
                                        rtol=1e-4, atol=1e-7)
@@ -104,7 +109,8 @@ def test_bound_feedback_tick_matches_the_array_interface():
     directions = cables/np.linalg.norm(cables, axis=1, keepdims=True)
     tension = NOMINAL_PAYLOAD_MASS*env.config.gravity/(3*np.maximum(directions[:, 2], 0.2))
     expected = env.lee.step(positions, q[env._uav_quat], v[env._uav_lin], v[env._uav_ang], env.setpoints,
-                            tension[:, None]*directions/env.config.drone_mass).copy()
+                            tension[:, None]*directions/env.config.drone_mass, env.setpoint_velocity).copy()
+    assert np.abs(env.setpoint_velocity).max() > 0.1
     env.lee.restore(memory)
     env._tick()
     np.testing.assert_allclose(env.data.ctrl[env._ctrl].reshape(3, 4), expected, rtol=1e-6, atol=1e-9)
@@ -135,7 +141,7 @@ def test_observations_lag_the_true_state_by_the_latency():
         assert observations[100][k]["time"] == pytest.approx(observations[0][k]["time"]-0.1)
         record = next(r for r in fresh.log if abs(r["time"]-(observations[0][k]["time"]-0.05)) < 1e-9)
         np.testing.assert_array_equal(observations[50][k]["payload_pos"], record["payload_pos"])
-    assert observations[100][5]["recent_setpoints"].shape == (3, 3, 3)
+    assert observations[100][5]["recent_setpoints"].shape == (4, 3, 3)
 
 
 @needs_cc
@@ -160,11 +166,13 @@ def test_flying_through_a_pillar_fails_and_open_transport_succeeds():
     from uav_arena.env import ArenaEnv
     env = ArenaEnv(open_field(pillars=[Pillar(0., 0., 0.15)]))
     obs = env.reset()
+    policy = smooth_transfer(obs)
     while not env.done:
-        obs, reward, done, info = env.step(go_to_goal(obs))
+        obs, reward, done, info = env.step(policy(obs))
     assert info["outcome"] == "collision_obstacle" and reward < -5
     env = ArenaEnv(open_field(latency_ms=200))
     obs = env.reset()
+    policy = smooth_transfer(obs)
     while not env.done:
-        obs, reward, done, info = env.step(go_to_goal(obs))
+        obs, reward, done, info = env.step(policy(obs))
     assert info["outcome"] == "success" and info["distance_to_goal"] < 0.15

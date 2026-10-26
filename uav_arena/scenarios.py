@@ -1,9 +1,11 @@
 """Seeded arena scenarios: start, goal, payload and obstacles under eight conditions.
 
 A condition crosses two obstacle settings (static pillars; the same pillars plus
-moving spheres) with four observation latencies. For one seed the layout is
-shared by every condition, so obstacle and latency effects are paired. Moving
-obstacles follow pure functions of time, so any episode replays exactly.
+moving spheres) with four observation latencies. For one seed the layout and the
+payload mass are shared by every condition, so obstacle and latency effects are
+paired. The payload mass is hidden from every method except the privileged
+oracle. Moving obstacles follow pure functions of time, so any episode replays
+exactly.
 """
 from __future__ import annotations
 
@@ -19,6 +21,7 @@ LATENCIES_MS = (0, 50, 100, 200)
 WORKSPACE = ((-3.0, 3.0), (-2.5, 2.5), (0.0, 3.0))   # x, y, z bounds in metres
 PILLAR_HEIGHT = 3.0
 SUITE_SEEDS = dict(dev=tuple(range(20)), test=tuple(range(1000, 1050)))
+PAYLOAD_MASS_RANGE = (0.010, 0.040)    # kg, drawn per seed; onboard feedforward assumes 25 g
 
 
 @dataclass(frozen=True)
@@ -90,6 +93,15 @@ class Scenario:
         values["condition"] = dict(obstacles=self.condition.obstacles, latency_ms=self.condition.latency_ms)
         return values
 
+    @classmethod
+    def from_dict(cls, values):
+        values = dict(values)
+        values["condition"] = Condition(**values["condition"])
+        values["start"], values["goal"] = tuple(values["start"]), tuple(values["goal"])
+        values["pillars"] = tuple(Pillar(**p) for p in values["pillars"])
+        values["movers"] = tuple(Mover(**dict(m, a=tuple(m["a"]), b=tuple(m["b"]))) for m in values["movers"])
+        return cls(**values)
+
 
 def _free_path(pillars, start, goal, clearance, resolution=0.05):
     """Grid search in the plane: can a disc of radius `clearance` pass the pillars?"""
@@ -121,8 +133,10 @@ def team_clearance(formation_radius=0.25, uav_radius=0.06, margin=0.10):
 
 
 def make_scenario(seed, condition, *, n_pillars=4, n_movers=2, mover_radius=0.15,
-                  pillar_radius=(0.10, 0.18), mover_speed=(0.25, 0.45), payload_mass=0.03):
-    """Layout depends only on the seed; movers are added only in the moving setting."""
+                  pillar_radius=(0.10, 0.18), mover_speed=(0.25, 0.45), payload_mass=None):
+    """Layout and payload mass depend only on the seed; movers are added only in the moving setting."""
+    if payload_mass is None:
+        payload_mass = np.random.default_rng([int(seed), 13]).uniform(*PAYLOAD_MASS_RANGE)
     layout = np.random.default_rng([int(seed), 7])
     start = (-1.6, float(layout.uniform(-0.4, 0.4)), float(layout.uniform(1.0, 1.4)))
     goal = (1.6, float(layout.uniform(-0.4, 0.4)), float(layout.uniform(1.0, 1.4)))

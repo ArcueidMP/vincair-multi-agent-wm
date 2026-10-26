@@ -12,13 +12,13 @@ from uav_arena.costs import CONSTRAINTS, clearances, constraint_values
 from uav_arena.env import ArenaEnv
 from uav_arena.geometry import team_clearances
 from uav_arena.planning import (ArenaCost, ArenaPlanner, ConstrainedArenaCost, KinematicPredictor,
-                                TrueSimPredictor, info_from_observation)
+                                PhysicsPredictor, TrueSimPredictor, info_from_observation)
 from uav_arena.run import run_episode
 from uav_arena.scenarios import Condition, Pillar, Scenario, make_scenario
 
 
-def open_field(pillars=()):
-    return Scenario(seed=0, condition=Condition("static", 0), start=(-1.0, 0., 1.2), goal=(1.0, 0.2, 1.2),
+def open_field(pillars=(), latency_ms=0):
+    return Scenario(seed=0, condition=Condition("static", latency_ms), start=(-1.0, 0., 1.2), goal=(1.0, 0.2, 1.2),
                     pillars=tuple(pillars))
 
 
@@ -97,6 +97,41 @@ def test_oracle_reaches_an_open_goal_with_a_small_budget():
     try:
         planner = ArenaPlanner(ArenaCost(predictor), samples=64, horizon=10)
         record = run_episode(open_field(), planner)
+    finally:
+        predictor.close()
+    assert record["outcome"] == "success"
+
+
+@pytest.mark.parametrize("latency_ms", [0, 200])
+def test_physics_reference_with_the_true_mass_matches_the_oracle(latency_ms):
+    env = ArenaEnv(open_field(latency_ms=latency_ms))
+    obs = env.reset()
+    physics = PhysicsPredictor(workers=2, nominal_mass=env.scenario.payload_mass)
+    oracle = TrueSimPredictor(workers=2)
+    try:
+        anchor = obs["recent_setpoints"][-1]
+        for k in range(8):
+            physics.observe(obs, env.scenario)
+            anchor = anchor+[0.08, 0.02*np.cos(k), 0.]
+            obs, *_ = env.step(anchor)
+        physics.observe(obs, env.scenario)
+        oracle.set_state(env.scenario, env.physics_state())
+        info = info_from_observation(obs, obs["recent_setpoints"][-1], dtype=torch.float64)
+        candidates = torch.as_tensor(np.random.default_rng(0).normal(0, 0.05, size=(1, 4, 10, 9)))
+        expected, _ = ArenaCost(oracle).predict(info, candidates)
+        predicted, _ = ArenaCost(physics).predict(info, candidates)
+        for key in ("payload", "uav"):
+            np.testing.assert_allclose(predicted[key].numpy(), expected[key].numpy(), atol=1e-6)
+    finally:
+        physics.close()
+        oracle.close()
+
+
+def test_physics_reference_reaches_an_open_goal_with_a_small_budget():
+    predictor = PhysicsPredictor(workers=4)        # nominal 25 g against the true 30 g
+    try:
+        planner = ArenaPlanner(ArenaCost(predictor), samples=64, horizon=10)
+        record = run_episode(open_field(latency_ms=100), planner)
     finally:
         predictor.close()
     assert record["outcome"] == "success"

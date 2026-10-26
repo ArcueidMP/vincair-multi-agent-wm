@@ -16,7 +16,7 @@ from .geometry import PAYLOAD_RADIUS, UAV_RADIUS
 from .scenarios import WORKSPACE
 
 
-CONSTRAINTS = ("pillars", "movers", "team_separation", "floor")
+CONSTRAINTS = ("pillars", "movers", "team_separation", "floor", "hang")
 
 
 @dataclass(frozen=True)
@@ -29,6 +29,7 @@ class CostWeights:
     obstacle_margin: float = 0.10     # planning margin added to every obstacle clearance (m)
     team_margin: float = 0.18         # minimum planned aircraft separation (m)
     floor_margin: float = 0.30        # minimum planned payload height (m)
+    hang_margin: float = 0.30         # minimum planned height of every aircraft above the payload (m); 0.55 in hover
 
 
 def forecast_movers(position, velocity, offsets):
@@ -69,7 +70,7 @@ def clearances(uav, payload, pillars, movers, mover_radius):
 
 
 def constraint_values(prediction, info, weights=CostWeights()):
-    """Worst-step constraint values (..., 4) in the order of CONSTRAINTS; <= 0 means satisfied."""
+    """Worst-step constraint values (..., 5) in the order of CONSTRAINTS; <= 0 means satisfied."""
     uav, payload = prediction["uav"], prediction["payload"]
     horizon = payload.shape[-2]
     # Obstacles were observed `forecast_offset` seconds before the plan starts; step k ends 0.1 k s later.
@@ -88,7 +89,8 @@ def constraint_values(prediction, info, weights=CostWeights()):
         (weights.obstacle_margin-pillar_clear).clamp(max=big).amax(-1),
         (weights.obstacle_margin-mover_clear).clamp(max=big).amax(-1),
         (weights.team_margin-pairs.amin(-1)).amax(-1),
-        (weights.floor_margin-payload[..., 2]).amax(-1)], -1)
+        (weights.floor_margin-payload[..., 2]).amax(-1),
+        (weights.hang_margin-(uav[..., 2]-payload[..., None, 2]).amin(-1)).amax(-1)], -1)
     return torch.nan_to_num(values, neginf=-1.0)
 
 

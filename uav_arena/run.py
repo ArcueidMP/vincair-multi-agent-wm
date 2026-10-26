@@ -47,8 +47,8 @@ def summarize(records):
 
 
 def make_planner(args):
-    from .planning import ArenaCost, ArenaPlanner, ConstrainedArenaCost, KinematicPredictor, TrueSimPredictor
-    predictor = TrueSimPredictor(args.workers) if args.predictor == "oracle" else KinematicPredictor()
+    from .planning import ArenaCost, ArenaPlanner, ConstrainedArenaCost, PhysicsPredictor, TrueSimPredictor
+    predictor = TrueSimPredictor(args.workers) if args.predictor == "oracle" else PhysicsPredictor(args.workers)
     cost = (ConstrainedArenaCost if args.solver == "lagrangian" else ArenaCost)(predictor)
     return ArenaPlanner(cost, solver=args.solver, horizon=args.horizon, samples=args.samples,
                         var_scale=args.var_scale, temperature=args.temperature, seed=args.seed), predictor
@@ -56,7 +56,7 @@ def make_planner(args):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--predictor", choices=("oracle", "kinematic"), default="oracle")
+    parser.add_argument("--predictor", choices=("oracle", "physics"), default="oracle")
     parser.add_argument("--solver", choices=("mppi", "lagrangian"), default="mppi")
     parser.add_argument("--suite", choices=tuple(SUITE_SEEDS), default="dev")
     parser.add_argument("--seeds", default="0:5", help="slice into the suite's seed list, e.g. 0:5")
@@ -69,6 +69,8 @@ def main():
     parser.add_argument("--seed", type=int, default=0)
     parser.add_argument("--out", required=True)
     args = parser.parse_args()
+    if args.solver == "lagrangian":
+        parser.error("the augmented-Lagrangian solver needs a differentiable predictor (a world model)")
     start, stop = (int(x) if x else None for x in args.seeds.split(":"))
     seeds = SUITE_SEEDS[args.suite][start:stop]
     conditions = CONDITIONS if args.conditions == "all" else [c for c in CONDITIONS if c.name in args.conditions.split(",")]

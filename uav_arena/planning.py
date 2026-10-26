@@ -5,11 +5,18 @@ only the predictor differs. A candidate is a sequence of per-aircraft setpoint
 increments (H, 9) added to the last commanded setpoints. Predictors map
 setpoints to the team trajectory at each decision end:
 
-- `TrueSimPredictor` (the oracle U) forks the true simulator at the current state.
-  Bridging the observation delay with an exact model is equivalent to this.
-  Its obstacle forecasts are the shared constant-velocity ones, like everyone's.
+- `TrueSimPredictor` (the oracle U) forks the true simulator at the current true
+  state. It is privileged: it also knows the payload mass and the onboard motor
+  and controller states, none of which are observed. Its obstacle forecasts are
+  the shared constant-velocity ones, like everyone's.
+- `PhysicsPredictor` is the non-privileged physics reference: the same simulator
+  with the nominal payload mass, started from the delayed observation. A shadow
+  copy of the known onboard flight stack carries the unobserved motor and
+  controller states between decisions; the delay is bridged by replaying the
+  setpoint segments already sent (a Smith predictor).
 - `KinematicPredictor` assumes aircraft reach their setpoints within one decision
-  and the payload hangs under the formation: a differentiable no-dynamics reference.
+  and the payload hangs under the formation: a differentiable test fixture for
+  the augmented-Lagrangian path, not a benchmark participant.
 
 MPPI accepts any predictor. The augmented-Lagrangian solver needs gradients
 through the prediction, so it applies to differentiable predictors only, never
@@ -18,17 +25,19 @@ to the simulator.
 from __future__ import annotations
 
 import contextlib
+import dataclasses
 import io
 import math
 import multiprocessing as mp
 import os
 
+import mujoco
 import numpy as np
 import torch
 from gymnasium.spaces import Box
 
 from .costs import CostWeights, constraint_values, soft_cost
-from .env import DECISION_DT, ArenaEnv
+from .env import DECISION_DT, NOMINAL_PAYLOAD_MASS, ArenaEnv
 
 
 ACTION_LIMIT = 0.12     # setpoint increment per decision and axis (m), 1.2 m/s reference speed
@@ -138,6 +147,70 @@ class TrueSimPredictor:
         self.pool.join()
 
 
+class PhysicsPredictor(TrueSimPredictor):
+    """Non-privileged physics reference: nominal-mass rollouts from the delayed observation."""
+
+    def __init__(self, workers=None, nominal_mass=NOMINAL_PAYLOAD_MASS):
+        super().__init__(workers)
+        self.nominal_mass = float(nominal_mass)
+        self.reset()
+
+    def reset(self):
+        self.model = None
+
+    def observe(self, obs, layout):
+        """Advance the shadow model to the observation, re-sync what is observed, bridge to the decision.
+
+        `layout` supplies start, goal and obstacles; its payload mass is replaced by the nominal one.
+        """
+        if self.model is None:
+            self.scenario = dataclasses.replace(layout, payload_mass=self.nominal_mass)
+            self.model = ArenaEnv(self.scenario)
+            self.shadow, self.shadow_time = self.model.physics_state(), 0.0
+        self.model.set_physics_state(self.shadow)
+        self._replay(obs, self.shadow_time, obs["time"])
+        self._sync(obs)
+        self.shadow, self.shadow_time = self.model.physics_state(), obs["time"]
+        self._replay(obs, obs["time"], obs["decision_time"])
+        self.state = self.model.physics_state()
+
+    def _replay(self, obs, start, stop):
+        """Step the model from `start` to `stop` through the setpoint segments already sent."""
+        model, dt, steps = self.model, self.model.config.dt, self.model.physics_per_decision
+        times, sent = obs["recent_setpoint_times"], obs["recent_setpoints"]
+        t = start
+        while t < stop-1e-9:
+            i = max(j for j, s in enumerate(times) if s <= t+1e-9)
+            if i == 0:      # the hover setpoint before t = 0 (or a segment whose start is unknown): hold
+                model.setpoint_velocity[:] = 0.0
+                ramp = np.repeat(sent[0][None], steps, axis=0)
+            else:
+                model.setpoints[:] = sent[i-1]
+                ramp = model._segment(sent[i])
+            first, last = round((t-times[i])/dt), min(steps, round((stop-times[i])/dt))
+            if last <= first:
+                break
+            for k in range(first, last):
+                model.setpoints[:] = ramp[k]
+                model._physics_step()
+            t = times[i]+last*dt
+
+    def _sync(self, obs):
+        model = self.model
+        q, v = model.data.qpos, model.data.qvel
+        columns = obs["uav_rot6"]
+        quaternions = np.empty((3, 4))
+        for quaternion, c0, c1 in zip(quaternions, columns[:, :3], columns[:, 3:]):
+            mujoco.mju_mat2Quat(quaternion, np.stack([c0, c1, np.cross(c0, c1)], axis=-1).reshape(-1))
+        q[model._uav_pos] = obs["uav_pos"].reshape(-1)
+        q[model._uav_quat] = quaternions.reshape(-1)
+        q[model._payload_pos] = obs["payload_pos"]
+        v[model._uav_lin] = obs["uav_vel"].reshape(-1)
+        v[model._uav_ang] = obs["uav_omega"].reshape(-1)
+        v[model._payload_lin] = obs["payload_vel"]
+        mujoco.mj_forward(model.model, model.data)
+
+
 class ArenaPlanner:
     """Plan with a stable-worldmodel solver every decision; execute the first increment."""
 
@@ -162,11 +235,16 @@ class ArenaPlanner:
 
     def reset(self):
         self.previous = None
+        if hasattr(self.cost.predictor, "reset"):
+            self.cost.predictor.reset()
 
     def act(self, obs, env=None):
-        anchor = obs["recent_setpoints"][-1] if len(obs["recent_setpoints"]) else obs["uav_pos"]
-        if hasattr(self.cost.predictor, "set_state"):
-            self.cost.predictor.set_state(env.scenario, env.physics_state())   # privileged: oracle only
+        anchor = obs["recent_setpoints"][-1]
+        predictor = self.cost.predictor
+        if hasattr(predictor, "observe"):
+            predictor.observe(obs, env.scenario)                        # layout only; nominal mass
+        elif hasattr(predictor, "set_state"):
+            predictor.set_state(env.scenario, env.physics_state())     # privileged: oracle only
         info = info_from_observation(obs, anchor)
         with contextlib.redirect_stdout(io.StringIO()):     # swm 0.1.1 prints timing every solve
             outputs = self.solver.solve(info, init_action=self.previous)
