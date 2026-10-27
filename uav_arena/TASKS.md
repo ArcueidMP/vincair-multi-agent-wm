@@ -10,13 +10,13 @@ them.
 | Autoregressive state model (W-ar) | june (@june250630) | not started; builds on the JEPA backbone |
 | PETS ensemble | june (@june250630) | not started |
 | TD-MPC2, DreamerV3 | unassigned | blocked on the Gymnasium wrapper |
-| Gymnasium wrapper, layer 2–3 harness, reference and CrazyMARL rows on `test` | maintainer (@ArcueidMP) | open |
+| Evaluation harness and recorder ([HARNESS.md](HARNESS.md)), analysis plan ([ANALYSIS.md](ANALYSIS.md)), Gymnasium wrapper, reference and CrazyMARL rows on `test` | maintainer (@ArcueidMP) | analysis plan written; harness designed, not yet built; the rest open |
 
 ## First day, every owner
 
 1. Branch from the integration branch: `git fetch origin && git switch -c <handle>/<row> origin/uav-arena`.
-   Its frozen files are those of the tag `arena-v0.2`; the commits after the tag add this board,
-   the example participant and documentation.
+   Its frozen code files are those of the tag `arena-v0.2`. They are unchanged in `arena-v0.3`,
+   which is tagged before the first `test` run.
 2. Build the environment ([README](README.md#environment)): Linux or WSL2, a C compiler, Python 3.10.
 3. Collect and verify the data, about a minute on 24 cores:
 
@@ -49,8 +49,9 @@ them.
 
 **Phase A: make it work.**
 - Put the model in `uav_arena/participants/<row>/` the way the example is laid out: a `make`
-  factory, `reset`, `observe` and `__call__`, with tests for the planner's call shape
-  (1, 512, 15, 3, 3), for `reset` clearing episode state, and for never reading the payload mass.
+  factory, `reset`, `observe` and `__call__`. Add tests for the call shapes (1, 512, 15, 3, 3),
+  (1, 1, 15, 3, 3) and (1, 555, 15, 3, 3), for `reset` clearing episode state (and reseeding the
+  random generator, if the model is stochastic), and for never reading the payload mass.
 - Train on the first 250 episodes with a short schedule. Iterate with `openloop.py --stride 10` on
   the validation set, and fly `dev` once (40 episodes).
 - Bar: a better selection score than the example.
@@ -63,9 +64,12 @@ them.
   record every configuration with its score.
 - Train the chosen configuration with 3 new seeds, not the selection run, and run each once on
   `test` (all 8 conditions, the frozen planner).
-- In the pull request: the open-loop table per latency, the `dev` and `test` tables per condition,
-  the parameter count, training GPU-hours and the time of one planning call (512 × 15). Result
-  JSON stays under `data/`.
+- Train the same configuration with 3 more seeds on the first 500 standard episodes (seeds
+  200000–200499), with the same number of steps and no new selection, and run each once on `test`
+  too.
+- In the pull request: the open-loop table per latency, the `dev` and `test` tables per condition
+  for both data budgets, the parameter count, training GPU-hours and the time of one planning call
+  (512 × 15). Result JSON stays under `data/`.
 - Done when the maintainer merges the pull request and adds the row to the README.
 
 ## Row cards
@@ -89,7 +93,7 @@ them.
   per frame, with the total latent budget matched and the parameter difference reported. One code
   base; the variants differ only in the mask or tokenization.
 - **Budget:** each variant is its own row: the same grid of up to 8 configurations, selected
-  separately, then 3 seeds each.
+  separately, then 3 seeds at each of the two data budgets (2,000 and 500 episodes).
 - **Shared backbone:** publish the tokenizer and transformer as a module that W-ar (next card) can
   import, and agree on its interface with june in the first week.
 
@@ -117,6 +121,10 @@ them.
   shared planner scores one predicted trajectory per candidate. Propagate each candidate with one
   ensemble member drawn at random per planning call (TS∞ with one particle) and sample from that
   member's Gaussian, as PETS does. State this deviation in the results.
+- **Randomness:** set `stochastic = True`, draw the member choice and the Gaussian samples from
+  torch's global generator, and reseed it in `reset()` ([PARTICIPANTS.md](PARTICIPANTS.md),
+  Section 2). The harness then uses the same draws for a plan and its counterfactual, and averages
+  layers 1 and 3 over 5 repeats.
 - **Why an MLP:** PETS is defined with MLP members, and MLP ensembles remain the standard dynamics
   model for low-dimensional states. The transformer rows are the JEPA variants and W-ar.
 - **Precedent:** PETS has been used for multi-UAV payload transport (Khursheed, Virginia Tech MS
@@ -152,7 +160,7 @@ Measured on the maintainer's laptop (Ryzen 9 7845HX, RTX 5070 Laptop 8 GB) with 
 about 0.8M parameters, training at batch 256 with a 15-step rollout loss:
 - 100k steps take about 10 minutes for a PETS-sized MLP ensemble and 80 minutes for an entity
   transformer.
-- Phase B (11 training runs, open-loop selection, 3 `test` runs) comes to about 3 hours for an MLP
-  row and about 17 hours for a transformer row at 100k steps per run; the three JEPA variants
-  together take about two days of GPU time.
+- Phase B (14 training runs, open-loop selection, 6 `test` runs) comes to about 3.5 hours for an
+  MLP row and about 21 hours for a transformer row at 100k steps per run; the three JEPA variants
+  together take about 64 hours, close to three days of GPU time.
 - `dev` closed loop takes minutes: planning costs 8–25 ms per decision for such models.

@@ -9,23 +9,30 @@ conditions, and where they break.
 The benchmark does not assume that learning is needed. A non-privileged physics model of the same
 plant is a reference row, and learned models are reported against it as well as against the oracle.
 
-Status (tag `arena-v0.2`):
+Status (`arena-v0.3`, tagged before the first `test` run):
 - The environment core (`env.py`, `scenarios.py`, `geometry.py`, `lowlevel.py`) and the shared
   planning layer (`costs.py`, `planning.py`, `run.py`) are implemented and tested, with three
   reference rows: the oracle U, the physics reference, and physics with online payload-mass
-  estimation.
+  estimation. These files are unchanged since `arena-v0.2`.
 - World models join under the participant contract, [PARTICIPANTS.md](PARTICIPANTS.md): the
-  predictor interface, information rules, seed splits, data, budgets and model selection.
-  `collect.py` collects training data and checks it against the committed reference manifests,
-  `windows.py` turns it into training windows, and `openloop.py` scores predictions on it
-  (evaluation layer 1).
+  predictor interface, the rules for stochastic predictors, information rules, seed splits, the two
+  data budgets and model selection. `collect.py` collects training data and checks it against the
+  committed reference manifests, `windows.py` turns it into training windows, and `openloop.py`
+  scores predictions on it (evaluation layer 1).
+- The analysis plan, [ANALYSIS.md](ANALYSIS.md), is frozen with the tag, before any `test` run:
+  the headline test, its decision rule and the secondary analyses.
+- The evaluation harness for layers 1–3 is designed in [HARNESS.md](HARNESS.md) but not built yet.
+  It is maintained outside the frozen contract and scores every model on decision states recorded
+  from U's closed-loop runs.
 - Rows, owners and deliverables are on the task board, [TASKS.md](TASKS.md);
   `participants/example/` is a working example participant.
 - CrazyMARL runs on arena tasks (`crazymarl_task.py`, `crazymarl_env.py`, `crazymarl_train.py`,
   `crazymarl_policy.py`). Seeds 0–2 are trained and evaluated on `dev`.
-- The world-model rows, evaluation layers 2–3 and the leaderboard are next (see Roadmap).
+- Next: the recorder and the harness; then the reference and CrazyMARL rows on `test`, which also
+  record U's questions; then the world-model rows (see Roadmap).
 - Related work, grouped by relation to the arena, with BibTeX:
-  [`docs/uav-arena-related-work.md`](../docs/uav-arena-related-work.md).
+  [`docs/uav-arena-related-work.md`](../docs/uav-arena-related-work.md). Its section 8 covers the
+  evaluation design.
 
 ## Task and conditions
 
@@ -266,17 +273,29 @@ The selection score is the contract's model-selection metric: the payload error 
 horizon and the four latencies. U has no row: it needs the simulator's true state, which recorded
 data does not hold. With the true mass the physics reference scores below 10⁻⁶ m (tested).
 
-## Evaluation layers (planned)
+## Evaluation layers
 
-1. **Open-loop prediction:** multi-step error from decision states, including bridging the latency.
-2. **Cross-agent counterfactuals:** change one aircraft's setpoints and compare predicted and true
-   changes for the payload and the other two aircraft.
-3. **Decision level:** ranking of candidate plans and elite regret against the true simulator
-   under the arena cost.
+Layers 1–3 score a predictor at decision states recorded from U's closed-loop runs (every 5th
+decision; `dev` for development, `test` for results), against exact rollouts of the true simulator
+from the recorded state. [HARNESS.md](HARNESS.md) defines them; the harness is not built yet. Layer 4
+is the closed loop of `run.py`.
+
+1. **Open-loop prediction:** the error of the prediction for U's 15-decision plan, bridging the
+   latency. The validation selection score above remains the metric for model selection.
+2. **Cross-agent counterfactuals:** change one aircraft's increments, by the planner's own sampling
+   noise or by a 10 cm offset, and compare predicted and true changes for the payload, the other two
+   aircraft and the changed aircraft itself. The cross-agent CEE averages the payload and the other
+   two aircraft.
+3. **Decision level:** on the 512 candidates U's planner scored, the plan the planner would execute
+   with the model's costs, and how much worse its true cost is than U's (executed-plan regret).
+   Top-1 and top-8 elite regret and the ranking metrics are reported alongside.
 4. **Closed loop:** success, failure types, time to goal and clearance per condition.
 
-The headline analysis is whether the cross-agent layer explains closed-loop differences that the
-other layers miss, and how that changes with latency and moving obstacles.
+The headline analysis, pre-registered in [ANALYSIS.md](ANALYSIS.md), asks whether the cross-agent
+layer explains closed-loop differences that layer 1 misses. Its test is the partial Spearman
+correlation between layer 2 and the `test` success rate across 30 learned models (5 rows × 3 seeds ×
+2 data budgets), controlling for layer 1, with a bootstrap interval over layouts. Per-condition
+results show how the relation changes with latency and moving obstacles.
 
 ## Roadmap
 
