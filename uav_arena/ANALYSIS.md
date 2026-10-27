@@ -24,7 +24,8 @@ moving obstacles?
   - Rows: the learned world models in the predictor interface, namely entity-token JEPA `full`,
     `no_cross` and `flat`, W-ar and PETS.
   - Each row uses its selected configuration (PARTICIPANTS.md, Section 6) and trains 3 new seeds on
-    the standard 2,000 episodes, plus 3 seeds on the first 500 episodes (seeds 200000–200499).
+    the standard 2,000 `explore-v2` episodes, plus 3 seeds on the first 500 of them (seeds
+    200000–200499).
 - **Sensitivity set.** The primary set plus the physics reference, physics + mass estimation and the
   example MLP. Physics + mass estimation is near-perfect on every layer and could create a strong
   correlation on its own, so it stays out of the primary set.
@@ -127,3 +128,31 @@ Fixes under the exception in the status above:
     made up 97% of its summed regret.
   - The decision used only U, the physics references and the example MLP on `dev`. No relation
     between L3 and J was examined.
+- **2026-10-28, training data.** The standard datasets are `explore-v2` instead of `explore-v1`,
+  with the same seeds; the validation set switches too (PARTICIPANTS.md, Section 5).
+  - Evidence: on U's `dev` flights, `explore-v1` left 47–70% of U's per-aircraft increments,
+    differences between aircraft and changes of increment beyond its 99th percentile (`coverage.py`).
+    The example MLP trained on it had a layer-1 error of 14.6 cm on U's states, against 1.46 cm on
+    its validation set, and 7 `dev` successes of 40. Trained on `explore-v2`: 10.8 cm and 21 of 40.
+  - A first version of `explore-v2` redrew each aircraft's offset at every decision. It covered the
+    per-step statistics, but consecutive increments became anti-correlated (lag-1 autocorrelation
+    −0.47, against U's −0.04). The example MLP trained on it did worse than on `explore-v1` (17.5 cm,
+    2 of 40), so it was discarded before any model was trained for the analysis.
+  - PETS in june's Phase A configuration also improved on every layer (layer 1 on U's states from
+    24.3 to 20.5 cm). With its default Gaussian sampling it still failed all 40 `dev` episodes;
+    with sampling off, the same checkpoint succeeded in 6 (HARNESS.md, Section 7).
+  - The choice used the example MLP and PETS on `dev` and U's `dev` flights. No model has been
+    trained for the analysis, and no `test` run has been made.
+- **2026-10-28, the PETS row.** PETS propagates each candidate with the mean of its randomly drawn
+  ensemble member, without Gaussian sampling (TASKS.md, PETS card). The member draw stays random,
+  so PETS remains a stochastic predictor.
+  - Reasons: the validation selection score (`--stride 10`), 9.42 cm without sampling against
+    18.6 cm with it on `explore-v2` and 3.04 against 5.32 cm on `explore-v1`; and the shared
+    planner scores one trajectory per candidate, so nothing averages the samples as published PETS
+    averages its cost over 20 particles, and for that single trajectory a sample is a noisier
+    estimate than the mean.
+  - Disclosure: the `dev` diagnostic had been seen before the decision. With the same `explore-v2`
+    checkpoint, sampling gave 0 of 40 `dev` successes and no sampling 6, with layer 1 at 20.5
+    against 14.0 cm, layer 2 at 4.44 against 3.84 cm and costly decisions at 46.0% against 38.8%
+    (HARNESS.md, Section 7). The `dev` result is not among the reasons.
+  - No model has been trained for the analysis, and no `test` run has been made.
