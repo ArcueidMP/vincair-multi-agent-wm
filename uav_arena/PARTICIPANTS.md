@@ -140,7 +140,8 @@ In training:
   row delivers; `participants/example/` is a working template for the whole path.
 - `run.py` and `openloop.py` write JSON under `data/uav_arena/results/`. These files are not
   committed.
-- Work on your own branch from `arena-v0.2`. Put the model under your own module (for example
-  `uav_arena/participants/<name>/`) with its tests, and open a pull request into `uav-arena`. The
-  description holds the summary tables and the commands that produced them.
+- Work on your own branch from `uav-arena`, whose frozen files are those of `arena-v0.2`. Put the
+  model under your own module (for example `uav_arena/participants/<name>/`) with its tests, and
+  open a pull request into `uav-arena`. The description holds the summary tables and the commands
+  that produced them.
 - The maintainer adds the row to the README.

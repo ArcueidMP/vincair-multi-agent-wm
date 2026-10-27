@@ -14,7 +14,9 @@ them.
 
 ## First day, every owner
 
-1. Branch from the tag: `git fetch origin --tags && git switch -c <handle>/<row> arena-v0.2`.
+1. Branch from the integration branch: `git fetch origin && git switch -c <handle>/<row> origin/uav-arena`.
+   Its frozen files are those of the tag `arena-v0.2`; the commits after the tag add this board,
+   the example participant and documentation.
 2. Build the environment ([README](README.md#environment)): Linux or WSL2, a C compiler, Python 3.10.
 3. Collect and verify the data, about a minute on 24 cores:
 
