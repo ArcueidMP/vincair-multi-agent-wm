@@ -6,6 +6,8 @@ work relates to it. BibTeX keys refer to [uav-arena-related-work.bib](uav-arena-
 **Checked 2026-10-26.** Every arXiv title and author list comes from the arXiv API. Every other
 entry was checked on its venue page, handle or DOI. A venue is listed only where the arXiv record
 or the venue page states it. Preprints in this area move fast, so search again before submission.
+Section 8 was added on 2026-10-27 under the same rules; its venues come from the arXiv records,
+Crossref (COMA), PMLR (Jaques et al.) and OpenReview (ME-TRPO).
 
 **Position.** We found no work that evaluates learned world models in a physically coupled
 multi-agent system, and none that tests whether cross-agent counterfactual error predicts
@@ -124,3 +126,31 @@ decision-level references.
 | [MuJoCo](https://doi.org/10.1109/IROS.2012.6386109) `todorov2012mujoco` | Physics engine (MJX for CrazyMARL training) |
 | [MuJoCo Menagerie](https://github.com/google-deepmind/mujoco_menagerie) `menagerie2022github` | Official Crazyflie 2 airframe |
 | [Crazyflie firmware, IMRCLab fork](https://github.com/IMRCLab/crazyflie-firmware/tree/b08d9f3cbcc581d8e7f988cabad22c26d35f4a58) `imrclab2024firmware` | Pinned `controller_lee.c` running onboard every aircraft |
+
+## 8. Evaluation design: layers 2–3 and the headline analysis
+
+No work scores cross-agent counterfactuals of learned world models in a physically coupled team (see
+Position), so evaluation layers 2–3 and the headline analysis borrow established practice from
+neighbouring fields. Each row says what the arena takes from the work. A section number after a key
+marks a work already listed in that section.
+
+| Informs | Work | Venue | What the arena takes from it |
+|---|---|---|---|
+| Scored states | [Agnostic system identification for model-based RL](https://arxiv.org/abs/1203.1007) `ross2012agnostic` | ICML 2012 | A model has to be accurate on the states the planner visits, so layers 2–3 score states from closed-loop task flights rather than only the training distribution |
+| | [Objective Mismatch in Model-based RL](https://arxiv.org/abs/2002.04523) `lambert2020objective` (§2) | L4DC 2020 | Likelihood on the training distribution does not track control performance |
+| | [MBPO](https://arxiv.org/abs/1906.08253) `janner2019mbpo`, [ME-TRPO](https://arxiv.org/abs/1802.10592) `kurutach2018metrpo` | NeurIPS 2019, ICLR 2018 | Model error grows away from the data and planners exploit it, which motivates scoring the candidates the planner itself proposes |
+| Layer 2 | [Counterfactual multi-agent policy gradients (COMA)](https://arxiv.org/abs/1705.08926) `foerster2018coma` | AAAI 2018 | The standard multi-agent counterfactual: hold the other agents' actions fixed and change one. Layer 2 applies it to predictions instead of credit assignment |
+| | [CoPhy](https://arxiv.org/abs/1909.12000) `baradel2020cophy` | ICLR 2020 (spotlight) | Counterfactual physical prediction scored against simulator ground truth, for single scenes without control |
+| | [Causal influence detection](https://arxiv.org/abs/2106.03443) `seitzer2021causal` | NeurIPS 2021 | An action's influence on other entities depends on the state, which supports reporting effect sizes per state and a resolution threshold for relative errors |
+| | [Social influence as intrinsic motivation](https://arxiv.org/abs/1810.08647) `jaques2019social` | ICML 2019 | One agent's counterfactual actions measure its influence on the others, there on their policies rather than on physics |
+| | [Counterfactual action evaluation in JEPA world models](https://arxiv.org/abs/2610.02860) `subramanian2026counterfactual` (§2) | NeurIPS 2026 workshop | Predictors can under-use the action pathway, which motivates the changed aircraft's own error as a control for the cross-agent errors |
+| Layer 3 | [Benchmarks for deep off-policy evaluation (DOPE)](https://arxiv.org/abs/2103.16596) `fu2021dope` | ICLR 2021 | Standard metrics for whether an estimator ranks candidates correctly: absolute error, Spearman rank correlation and regret@k |
+| | [Contrastive structured world models (C-SWM)](https://arxiv.org/abs/1911.12247) `kipf2020cswm` | ICLR 2020 | Ranking metrics (Hits@1, MRR) as a world-model evaluation |
+| | [The value equivalence principle](https://arxiv.org/abs/2011.03506) `grimm2020value` | NeurIPS 2020 | A model only needs to be right on decision-relevant quantities, which grounds scoring models by ranking and regret |
+| | [AD-WM](https://arxiv.org/abs/2609.30264) `qiu2026adwm` (§2) | arXiv 2026 | Elite regret tracks closed-loop success better than factual error, for a single agent |
+| Headline analysis | [Deep RL at the edge of the statistical precipice](https://arxiv.org/abs/2108.13264) `agarwal2021rliable` | NeurIPS 2021 (outstanding paper) | Interval estimates with few runs: stratified bootstrap confidence intervals and the interquartile mean |
+| | [Deep RL that matters](https://arxiv.org/abs/1709.06560) `henderson2018matters` | AAAI 2018 | Seed variance and reporting pitfalls |
+| | [How many random seeds?](https://arxiv.org/abs/1806.08295) `colas2018seeds` | arXiv 2018 | Power analysis for the number of seeds; here, the number of models |
+| | [World-in-World](https://arxiv.org/abs/2510.18135) `zhang2026worldinworld` (§3) | ICLR 2026 oral | The closest platform precedent for asking which model property predicts closed-loop success; it reports no confidence intervals |
+| Stochastic predictors | [PEGASUS](https://arxiv.org/abs/1301.3878) `ng2000pegasus` | UAI 2000 | Fixing the random numbers makes comparisons of stochastic systems deterministic, which supports using the same draws for a plan and its counterfactual |
+| | [PETS](https://arxiv.org/abs/1805.12114) `chua2018pets` (§6) | NeurIPS 2018 | The trajectory-sampling propagation that the PETS row adapts |
