@@ -1,13 +1,17 @@
 """World-model training data: seeded arena episodes flown by a fixed exploration policy.
 
     python -m uav_arena.collect --seeds 200000:202000 --out data/uav_arena/datasets/explore_v1
+    python -m uav_arena.collect --verify data/uav_arena/datasets/explore_v1
 
 Each episode is the open-field version of a training seed's scenario: the seed's start and hidden
 payload mass, without obstacles (they are non-physical, and every participant scores them with the
 same forecasts, so a world model only has to predict the team). `Explorer` flies it for up to
 20 s. A file keeps the true 10 ms state log and every setpoint sent, so any observation latency
 can be applied offline: at decision time t with latency d the observation is the record at t - d.
-Episodes are deterministic in the seed; `manifest.json` lists each file's SHA-256.
+Episodes are deterministic in the seed. `manifest.json` lists each file's SHA-256 and a hash of
+its contents; `--verify` compares a directory's contents with the reference manifests committed in
+`uav_arena/manifests/`. Unlike a file's SHA-256, the content hash does not depend on the zlib build
+that compressed the file.
 """
 from __future__ import annotations
 
@@ -29,6 +33,7 @@ TRAINING_SEEDS = (200_000, 300_000)     # disjoint from dev, test and CrazyMARL'
 WAYPOINT_BOX = ((-2.2, 2.2), (-1.7, 1.7), (0.6, 1.8))   # payload waypoints (m)
 HANG_MARGIN = 0.35                      # aircraft setpoints at least this far above the payload
 SEPARATION = 0.3                        # minimum distance between aircraft setpoints
+REFERENCES = Path(__file__).with_name("manifests")     # reference manifests of the standard datasets
 
 
 class Explorer:
@@ -91,13 +96,42 @@ def collect_episode(seed):
                 scenario=np.str_(json.dumps(scenario.public().to_dict())), policy=np.str_(POLICY))
 
 
+def content_sha256(arrays):
+    """SHA-256 over an episode's array names, dtypes, shapes and values, in name order."""
+    digest = hashlib.sha256()
+    for key in sorted(arrays):
+        value = np.asarray(arrays[key])
+        digest.update(f"{key}:{value.dtype.str}:{value.shape};".encode())
+        digest.update(value.tobytes())
+    return digest.hexdigest()
+
+
 def _write(task):
     seed, out = task
     path = Path(out)/f"episode_{seed}.npz"
     episode = collect_episode(seed)
     np.savez_compressed(path, **episode)
     return dict(file=path.name, seed=int(seed), outcome=str(episode["outcome"]), records=len(episode["time"]),
-                sha256=hashlib.sha256(path.read_bytes()).hexdigest())
+                sha256=hashlib.sha256(path.read_bytes()).hexdigest(), content_sha256=content_sha256(episode))
+
+
+def _content(path):
+    with np.load(path) as f:
+        return int(path.stem.split("_")[1]), content_sha256({key: f[key] for key in f.files})
+
+
+def verify(directory, references=None, processes=None):
+    """Seeds of the episodes in `directory` whose contents match the reference manifests (by default
+    every manifest in `uav_arena/manifests/`), differ from them, or have no reference."""
+    expected = {}
+    for path in references or sorted(REFERENCES.glob("*.json")):
+        expected.update({e["seed"]: e["content_sha256"] for e in json.loads(Path(path).read_text())["episodes"]})
+    with mp.get_context("fork").Pool(processes) as pool:
+        found = pool.map(_content, sorted(Path(directory).glob("episode_*.npz")), chunksize=8)
+    result = dict(match=[], differ=[], unknown=[])
+    for seed, digest in sorted(found):
+        result["unknown" if seed not in expected else "match" if digest == expected[seed] else "differ"].append(seed)
+    return result
 
 
 def source_version():
@@ -108,10 +142,21 @@ def source_version():
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("--seeds", required=True, help="start:stop within the training range 200000:300000")
-    parser.add_argument("--out", type=Path, required=True)
+    parser.add_argument("--seeds", help="start:stop within the training range 200000:300000")
+    parser.add_argument("--out", type=Path)
     parser.add_argument("--processes", type=int, default=None)
+    parser.add_argument("--verify", type=Path, metavar="DIR",
+                        help="instead of collecting, compare a dataset's contents with the reference manifests")
     args = parser.parse_args()
+    if args.verify:
+        result = verify(args.verify, processes=args.processes)
+        print(json.dumps(dict({key: len(seeds) for key, seeds in result.items()}, differ_seeds=result["differ"][:20],
+                              unknown_seeds=result["unknown"][:20])))
+        if result["differ"] or result["unknown"] or not result["match"]:
+            raise SystemExit("verification failed: the dataset is not the reference data")
+        return
+    if args.seeds is None or args.out is None:
+        parser.error("--seeds and --out are required unless --verify is given")
     start, stop = (int(x) for x in args.seeds.split(":"))
     if not TRAINING_SEEDS[0] <= start < stop <= TRAINING_SEEDS[1]:
         parser.error(f"training seeds must lie in {TRAINING_SEEDS[0]}:{TRAINING_SEEDS[1]}")
