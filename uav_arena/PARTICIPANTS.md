@@ -129,12 +129,15 @@ In training:
 - Selection uses the validation set only. The score is `openloop.py`'s selection score: the
   payload position error averaged over the 15-decision horizon and the latencies 0, 50, 100 and
   200 ms. Closed-loop `dev` runs are for debugging and never choose a configuration.
-- The chosen configuration trains with 3 seeds, and each runs once on `test`, all 8 conditions,
-  with the frozen planner.
+- The chosen configuration trains with 3 new seeds, not the selection run (selection biases that
+  run's validation score upward), and each runs once on `test`, all 8 conditions, with the frozen
+  planner.
 - Report the parameter count, training GPU-hours and the time of one planning call (512 × 15).
 
 ## 7. Results and pull requests
 
+- The task board, [TASKS.md](TASKS.md), lists the rows, their owners, the two phases and what each
+  row delivers; `participants/example/` is a working template for the whole path.
 - `run.py` and `openloop.py` write JSON under `data/uav_arena/results/`. These files are not
   committed.
 - Work on your own branch from `arena-v0.2`. Put the model under your own module (for example

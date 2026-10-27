@@ -19,6 +19,8 @@ Status (tag `arena-v0.2`):
   `collect.py` collects training data and checks it against the committed reference manifests,
   `windows.py` turns it into training windows, and `openloop.py` scores predictions on it
   (evaluation layer 1).
+- Rows, owners and deliverables are on the task board, [TASKS.md](TASKS.md);
+  `participants/example/` is a working example participant.
 - CrazyMARL runs on arena tasks (`crazymarl_task.py`, `crazymarl_env.py`, `crazymarl_train.py`,
   `crazymarl_policy.py`). Seeds 0–2 are trained and evaluated on `dev`.
 - The world-model rows, evaluation layers 2–3 and the leaderboard are next (see Roadmap).
@@ -337,7 +339,7 @@ uv pip install --python data/uav_arena/.venv/bin/python stable-worldmodel==0.1.1
 ```bash
 PYTHONPATH=. data/uav_arena/.venv/bin/python -m pytest -q tests/test_uav_arena.py tests/test_uav_arena_planning.py \
   tests/test_uav_arena_collect.py tests/test_uav_arena_windows.py tests/test_uav_arena_openloop.py \
-  tests/test_uav_arena_replay.py tests/test_uav_arena_crazymarl.py
+  tests/test_uav_arena_example.py tests/test_uav_arena_replay.py tests/test_uav_arena_crazymarl.py
 for p in oracle physics adaptive; do
   PYTHONPATH=. data/uav_arena/.venv/bin/python -m uav_arena.run --predictor $p --suite dev --seeds 0:5 \
     --workers 20 --out data/uav_arena/results/${p}_mppi_dev_s0-5_v3.json
