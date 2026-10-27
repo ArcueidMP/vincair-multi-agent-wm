@@ -21,15 +21,15 @@ Status (`arena-v0.3`, tagged before the first `test` run):
   scores predictions on it (evaluation layer 1).
 - The analysis plan, [ANALYSIS.md](ANALYSIS.md), is frozen with the tag, before any `test` run:
   the headline test, its decision rule and the secondary analyses.
-- The evaluation harness for layers 1–3 is designed in [HARNESS.md](HARNESS.md) but not built yet.
-  It is maintained outside the frozen contract and scores every model on decision states recorded
-  from U's closed-loop runs.
+- The evaluation harness for layers 1–3, [HARNESS.md](HARNESS.md), is built (`record.py`,
+  `harness.py`), tested and validated on `dev`. It is maintained outside the frozen contract and
+  scores every model on decision states recorded from U's closed-loop runs.
 - Rows, owners and deliverables are on the task board, [TASKS.md](TASKS.md);
   `participants/example/` is a working example participant.
 - CrazyMARL runs on arena tasks (`crazymarl_task.py`, `crazymarl_env.py`, `crazymarl_train.py`,
   `crazymarl_policy.py`). Seeds 0–2 are trained and evaluated on `dev`.
-- Next: the recorder and the harness; then the reference and CrazyMARL rows on `test`, which also
-  record U's questions; then the world-model rows (see Roadmap).
+- Next: tag `arena-v0.3`; then the reference and CrazyMARL rows on `test`, U's through the
+  recorder, which also records the questions; then the world-model rows (see Roadmap).
 - Related work, grouped by relation to the arena, with BibTeX:
   [`docs/uav-arena-related-work.md`](../docs/uav-arena-related-work.md). Its section 8 covers the
   evaluation design.
@@ -277,7 +277,7 @@ data does not hold. With the true mass the physics reference scores below 10⁻�
 
 Layers 1–3 score a predictor at decision states recorded from U's closed-loop runs (every 5th
 decision; `dev` for development, `test` for results), against exact rollouts of the true simulator
-from the recorded state. [HARNESS.md](HARNESS.md) defines them; the harness is not built yet. Layer 4
+from the recorded state. [HARNESS.md](HARNESS.md) defines them and `harness.py` computes them. Layer 4
 is the closed loop of `run.py`.
 
 1. **Open-loop prediction:** the error of the prediction for U's 15-decision plan, bridging the
@@ -287,9 +287,16 @@ is the closed loop of `run.py`.
    aircraft and the changed aircraft itself. The cross-agent CEE averages the payload and the other
    two aircraft.
 3. **Decision level:** on the 512 candidates U's planner scored, the plan the planner would execute
-   with the model's costs, and how much worse its true cost is than U's (executed-plan regret).
-   Top-1 and top-8 elite regret and the ranking metrics are reported alongside.
+   with the model's costs, and how much worse its true cost is than U's (executed-plan regret). The
+   layer-3 number is the share of costly decisions, regrets above 1 cost unit, on the questions where
+   U's own plan is a reliable reference. Top-1 and top-8 elite regret and the ranking metrics are
+   reported alongside.
 4. **Closed loop:** success, failure types, time to goal and clearance per condition.
+
+On `dev` ([HARNESS.md](HARNESS.md), Section 7), U scores exactly zero on layers 1–3, and the layers
+order physics + mass estimation, the nominal physics reference and the example MLP as their
+closed-loop success does. On U's states the example MLP's layer-1 error is 14.6 cm, against 1.46 cm
+on the validation set: the plans U flies lie outside the `explore-v1` data.
 
 The headline analysis, pre-registered in [ANALYSIS.md](ANALYSIS.md), asks whether the cross-agent
 layer explains closed-loop differences that layer 1 misses. Its test is the partial Spearman
@@ -307,7 +314,7 @@ results show how the relation changes with latency and moving obstacles.
 4. ~~Participant contract, data collector with reference manifests, training windows, layer-1
    open-loop metric~~ (done, `arena-v0.2`);
    entity-token JEPA variants, the autoregressive model and PETS.
-5. Layer 2–3 diagnostics harness.
+5. ~~Layer 1–3 harness on recorded U states~~ (done, validated on `dev`).
 6. TD-MPC2 and DreamerV3 adapters (a Gymnasium wrapper; a JAX venv for DreamerV3).
 7. Closed-loop runs on `test`, the leaderboard tables and the layer-consistency analysis.
 
@@ -355,7 +362,8 @@ uv pip install --python data/uav_arena/.venv/bin/python stable-worldmodel==0.1.1
 ```bash
 PYTHONPATH=. data/uav_arena/.venv/bin/python -m pytest -q tests/test_uav_arena.py tests/test_uav_arena_planning.py \
   tests/test_uav_arena_collect.py tests/test_uav_arena_windows.py tests/test_uav_arena_openloop.py \
-  tests/test_uav_arena_example.py tests/test_uav_arena_replay.py tests/test_uav_arena_crazymarl.py
+  tests/test_uav_arena_example.py tests/test_uav_arena_replay.py tests/test_uav_arena_crazymarl.py \
+  tests/test_uav_arena_harness.py
 for p in oracle physics adaptive; do
   PYTHONPATH=. data/uav_arena/.venv/bin/python -m uav_arena.run --predictor $p --suite dev --seeds 0:5 \
     --workers 20 --out data/uav_arena/results/${p}_mppi_dev_s0-5_v3.json

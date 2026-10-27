@@ -10,7 +10,7 @@ them.
 | Autoregressive state model (W-ar) | june (@june250630) | not started; builds on the JEPA backbone |
 | PETS ensemble | june (@june250630) | not started |
 | TD-MPC2, DreamerV3 | unassigned | blocked on the Gymnasium wrapper |
-| Evaluation harness and recorder ([HARNESS.md](HARNESS.md)), analysis plan ([ANALYSIS.md](ANALYSIS.md)), Gymnasium wrapper, reference and CrazyMARL rows on `test` | maintainer (@ArcueidMP) | analysis plan written; harness designed, not yet built; the rest open |
+| Evaluation harness and recorder ([HARNESS.md](HARNESS.md)), analysis plan ([ANALYSIS.md](ANALYSIS.md)), Gymnasium wrapper, reference and CrazyMARL rows on `test` | maintainer (@ArcueidMP) | analysis plan written; recorder and harness built and validated on `dev`; the rest open |
 
 ## First day, every owner
 
@@ -153,6 +153,10 @@ The example predicts better than the nominal physics model open loop yet flies f
 its 33 `dev` failures are aircraft-separation events. Open-loop error along the behavior policy's
 actions does not predict how a model ranks the planner's candidates, which is why the evaluation
 has layers 2–3. Scoring it takes 25 s open loop and 25 s on `dev` (8 ms per planning call, CPU).
+On U's `dev` states the harness gives it a layer-1 error of 14.6 cm (the nominal physics reference:
+4.3 cm), a cross-agent error of 4.5 cm and a pairwise ranking accuracy of 0.64
+([HARNESS.md](HARNESS.md), Section 7). The plans U flies lie outside the `explore-v1` data it was
+trained on, and every row trained on that data will meet the same shift.
 
 ## Compute on a laptop
 

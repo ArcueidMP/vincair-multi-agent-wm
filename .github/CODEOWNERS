@@ -10,6 +10,8 @@
 /uav_arena/collect.py          @ArcueidMP
 /uav_arena/openloop.py         @ArcueidMP
 /uav_arena/windows.py          @ArcueidMP
+/uav_arena/record.py           @ArcueidMP
+/uav_arena/harness.py          @ArcueidMP
 /uav_arena/manifests/          @ArcueidMP
 /uav_arena/PARTICIPANTS.md     @ArcueidMP
 /uav_arena/ANALYSIS.md         @ArcueidMP
