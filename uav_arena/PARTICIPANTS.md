@@ -13,8 +13,9 @@ Tag `arena-v0.2` freezes:
 - the planner and its settings (`planning.py`, `run.py`): MPPI with 512 samples, a 15-decision
   horizon, variance scale 0.04, temperature 0.05, one iteration, a warm start, and the solver
   reseeded every episode from (seed 0, layout seed);
-- the data collector and its behavior policy (`collect.py`, `explore-v1`) and the open-loop metric
-  (`openloop.py`).
+- the data collector, its behavior policy and the reference manifests of the standard datasets
+  (`collect.py`, `explore-v1`, `manifests/`), the training windows (`windows.py`) and the
+  open-loop metric (`openloop.py`).
 
 Participants never edit these files: `.github/CODEOWNERS` routes any change to the maintainer. A
 change to any of them needs a new tag and reruns of the U, physics and adaptive rows.
@@ -97,16 +98,27 @@ In training:
 - **Collector:** `python -m uav_arena.collect --seeds 200000:202000 --out data/uav_arena/datasets/explore_v1`.
   Behavior policy `explore-v1`: formation flight between random waypoints, at random speeds and
   formation sizes, plus each aircraft's own Ornstein–Uhlenbeck deviation. Episodes are open-field
-  versions of the seeds' scenarios, with the hidden 10–40 g payload, and last 20 s.
+  versions of the seeds' scenarios, with the hidden 10–40 g payload, and last up to 20 s: an arena
+  event ends one early, as in 5 of the 2,000 standard training episodes (two aircraft-separation
+  events, two exits from the workspace and one arrival at the seed's goal).
 - **What a file holds:** the true state every 10 ms (aircraft position, velocity, rotation columns,
   body rates; payload position, velocity) and every setpoint flown, with its time. Any latency is
   applied offline, as `openloop.observation` does.
 - **Standard budget:** 2,000 training episodes (seeds 200000–201999), about 11 hours of flight and
   1.6 GB. The data-scaling axis uses the first 250, 500, 1,000 and 2,000.
-- **Validation set:** seeds 299000–299099 (100 episodes).
-- **Storage:** `data/` is never committed. Datasets are deterministic: regenerate them from the
-  tag, or copy them, and check the SHA-256 values in `manifest.json` either way. A dataset whose
-  manifest names another commit is another dataset.
+- **Validation set:** seeds 299000–299099 (100 episodes), collected with
+  `--seeds 299000:299100 --out data/uav_arena/datasets/explore_v1_val`.
+- **Storage and verification:** `data/` is never committed. Regenerate the datasets from the tag
+  (about a minute on 24 cores) or copy them, then run
+  `python -m uav_arena.collect --verify <directory>`. It compares every episode's content hash
+  (array names, dtypes, shapes and values) with the reference manifests in `uav_arena/manifests/`,
+  generated at commit `03aaecb`. A file's own SHA-256 also depends on the zlib build that
+  compressed it; the content hash does not. Regeneration has been checked on Linux x86-64 (Ubuntu
+  26.04, gcc 15.2); on another platform, copy the data if verification fails. An episode whose
+  contents differ from the reference is another dataset.
+- **Training windows (optional):** `windows.py` turns episodes into training examples aligned
+  exactly as `openloop.py` scores predictions. It never loads the payload mass, and it pads the
+  episode start the same way at training and evaluation time (call `padded_recent` in `observe`).
 - **Another behavior policy** (for example MPPI-collected data) is a new policy version, added to
   `collect.py` by the maintainer and named in every result that uses it.
 

@@ -46,3 +46,11 @@ def test_verification_compares_contents_not_file_bytes(tmp_path):
     assert verify(tmp_path, [reference], processes=1)["differ"] == [200_003]
     _write((200_004, tmp_path))
     assert verify(tmp_path, [reference], processes=1)["unknown"] == [200_004]
+
+
+def test_reference_manifests_cover_the_standard_datasets_and_match_the_collector():
+    from uav_arena.collect import REFERENCES, content_sha256
+    references = {e["seed"]: e["content_sha256"] for path in sorted(REFERENCES.glob("*.json"))
+                  for e in json.loads(path.read_text())["episodes"]}
+    assert set(references) == set(range(200_000, 202_000)) | set(range(299_000, 299_100))
+    assert content_sha256(collect_episode(200_003)) == references[200_003]

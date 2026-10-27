@@ -16,8 +16,9 @@ Status (tag `arena-v0.2`):
   estimation.
 - World models join under the participant contract, [PARTICIPANTS.md](PARTICIPANTS.md): the
   predictor interface, information rules, seed splits, data, budgets and model selection.
-  `collect.py` collects training data and `openloop.py` scores predictions on it (evaluation
-  layer 1).
+  `collect.py` collects training data and checks it against the committed reference manifests,
+  `windows.py` turns it into training windows, and `openloop.py` scores predictions on it
+  (evaluation layer 1).
 - CrazyMARL runs on arena tasks (`crazymarl_task.py`, `crazymarl_env.py`, `crazymarl_train.py`,
   `crazymarl_policy.py`). Seeds 0–2 are trained and evaluated on `dev`.
 - The world-model rows, evaluation layers 2–3 and the leaderboard are next (see Roadmap).
@@ -285,7 +286,8 @@ other layers miss, and how that changes with latency and moving obstacles.
 2. CrazyMARL on arena tasks: ~~training environment, motor-level arena interface, seeds 0–2 on
    `dev`~~ (done); evaluation on `test`.
 3. ~~Physics with online payload-mass estimation~~ (done).
-4. ~~Participant contract, data collector, layer-1 open-loop metric~~ (done, `arena-v0.2`);
+4. ~~Participant contract, data collector with reference manifests, training windows, layer-1
+   open-loop metric~~ (done, `arena-v0.2`);
    entity-token JEPA variants, the autoregressive model and PETS.
 5. Layer 2–3 diagnostics harness.
 6. TD-MPC2 and DreamerV3 adapters (a Gymnasium wrapper; a JAX venv for DreamerV3).
@@ -326,12 +328,16 @@ uv pip install --python data/uav_arena/.venv/bin/python stable-worldmodel==0.1.1
   `imageio` and `cv2`, so both are added above.
 - Do not install the `[env]` extra: it pulls in `dm_control`, which can replace MuJoCo 3.3.0.
 - The environment-core tests run without PyTorch, in `data/uav_transport/.venv`.
+- The onboard controller is the pinned upstream C source, compiled on first use, so the arena
+  needs a C compiler (`cc`) and a POSIX system. It has been run on Linux x86-64 (Ubuntu 26.04,
+  gcc 15.2); on Windows, use WSL2.
 
 ## Reproduce
 
 ```bash
 PYTHONPATH=. data/uav_arena/.venv/bin/python -m pytest -q tests/test_uav_arena.py tests/test_uav_arena_planning.py \
-  tests/test_uav_arena_collect.py tests/test_uav_arena_openloop.py tests/test_uav_arena_replay.py tests/test_uav_arena_crazymarl.py
+  tests/test_uav_arena_collect.py tests/test_uav_arena_windows.py tests/test_uav_arena_openloop.py \
+  tests/test_uav_arena_replay.py tests/test_uav_arena_crazymarl.py
 for p in oracle physics adaptive; do
   PYTHONPATH=. data/uav_arena/.venv/bin/python -m uav_arena.run --predictor $p --suite dev --seeds 0:5 \
     --workers 20 --out data/uav_arena/results/${p}_mppi_dev_s0-5_v3.json
@@ -343,13 +349,19 @@ depend on the worker count: two of its episodes, rerun alone with 3 workers, rep
 records exactly.
 
 ```bash
+PYTHONPATH=. data/uav_arena/.venv/bin/python -m uav_arena.collect --seeds 200000:202000 \
+  --out data/uav_arena/datasets/explore_v1
 PYTHONPATH=. data/uav_arena/.venv/bin/python -m uav_arena.collect --seeds 299000:299100 \
   --out data/uav_arena/datasets/explore_v1_val
+for d in explore_v1 explore_v1_val; do
+  PYTHONPATH=. data/uav_arena/.venv/bin/python -m uav_arena.collect --verify data/uav_arena/datasets/$d
+done
 for p in physics adaptive; do
   PYTHONPATH=. data/uav_arena/.venv/bin/python -m uav_arena.openloop --predictor $p \
     --data data/uav_arena/datasets/explore_v1_val --out data/uav_arena/results/${p}_openloop_val_v1.json
 done
 ```
 
-The batched controller compiles once into `data/uav_arena/native_build/`
-(override with `UAV_ARENA_BUILD_CACHE`).
+Both datasets take about a minute on 24 cores (1.6 GB and 80 MB), and `--verify` must report
+every episode as a match with the reference manifests. The batched controller compiles once into
+`data/uav_arena/native_build/` (override with `UAV_ARENA_BUILD_CACHE`).
