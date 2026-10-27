@@ -5,8 +5,8 @@
   299100
  ],
  "source": {
-  "describe": "arena-v0.2-7-gf5cb305-dirty",
-  "commit": "f5cb305fd474882453e226bf5a880144adba6c62"
+  "describe": "arena-v0.2-9-g0d5d579",
+  "commit": "0d5d5798fb1a58e84cf6aab179a111f769232d50"
  },
  "record_dt": 0.01,
  "decision_dt": 0.1,
