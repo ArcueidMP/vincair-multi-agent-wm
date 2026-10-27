@@ -26,9 +26,6 @@ Status (tag `arena-v0.2`):
 - The world-model rows, evaluation layers 2–3 and the leaderboard are next (see Roadmap).
 - Related work, grouped by relation to the arena, with BibTeX:
   [`docs/uav-arena-related-work.md`](../docs/uav-arena-related-work.md).
-- The earlier experiment card v2.0 is archived in
-  [`archives/uav_transport/experiment_card_v2/`](../archives/uav_transport/experiment_card_v2/README.md)
-  and does not apply to this benchmark.
 
 ## Task and conditions
 
