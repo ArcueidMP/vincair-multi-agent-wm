@@ -8,7 +8,9 @@ rows and contract are in [README.md](README.md) and [PARTICIPANTS.md](PARTICIPAN
 - This file is frozen with tag `arena-v0.3` before any `test` run, the reference rows included.
 - A change made after any `test` result has been seen needs a new tag, and the paper labels it as
   made after seeing results.
-- `dev` runs never choose analysis settings.
+- `dev` runs never choose analysis settings, with one exception: a measurement problem found while
+  validating the harness may be fixed before any `test` run. Each such fix is listed in Section 8
+  with its date and evidence.
 
 ## 1. Question
 
@@ -41,16 +43,26 @@ moving obstacles?
 | J | Closed-loop success rate over the 400 `test` episodes (50 layouts × 8 conditions), with the shared MPPI | `run.py` |
 | L1 | Payload position error for U's 15-decision plan, averaged over the 15 steps and all questions | harness, layer 1 |
 | L2 | Cross-agent CEE: ½ payload + ½ other aircraft, over A changes, averaged over changes and questions | harness, layer 2 |
-| L3 | Executed-plan regret against U's executed plan, averaged over questions | harness, layer 3 |
+| L3 | Share of costly decisions: questions where the executed plan's regret against U's executed plan exceeds 1 cost unit, among questions with a reliable reference | harness, layer 3 |
 
 - **Questions.** Every 5th decision of U's 400 `test` episodes (HARNESS.md, Section 1).
-- **Stochastic predictors.** L2 uses common random numbers. L1 and L3 are averaged over 5 repeats.
+- **L3 in detail.** A question's regret is the true cost of the plan the frozen MPPI executes on the
+  model's costs of U's candidates, minus the true cost of U's executed plan (HARNESS.md, Section 5).
+  - A decision is costly when its regret exceeds 1 cost unit. That is about a plan that cuts 1.7 cm
+    into a safety margin, or makes about 0.6 m less progress over the 1.5 s horizon.
+  - A question has a reliable reference when U's own executed plan costs at most 1 cost unit more
+    than the best of its candidates. The other questions, where U's plan averages candidates that
+    go different ways, are left out of L3 for every model alike.
+- **Stochastic predictors.** L2 uses common random numbers. L1 and L3 are averaged over 5 repeats;
+  for L3, the share is taken over questions and repeats.
 - **Also reported for every model, with no decision rule:**
   - closed loop: mean time to goal over successes, and failure types;
   - layer 1: the validation selection score;
   - layer 2: each part of L2, the changed aircraft's own CEE, B changes, and relative CEE with its
     unresolved share;
-  - layer 3: top-1 and top-8 elite regret, whole-pool Spearman and pairwise accuracy;
+  - layer 3: the mean and the median regret and the share of costly decisions over all questions,
+    the share of questions without a reliable reference, top-1 and top-8 elite regret, whole-pool
+    Spearman and pairwise accuracy;
   - cost: the parameter count, training GPU-hours and the time of one planning call.
 
 ## 4. Primary test
@@ -102,3 +114,16 @@ All are reported with intervals and none has a decision rule.
 
 - Who runs the harness for each model.
 - Whether TD-MPC2 and DreamerV3 join through state probes.
+
+## 8. Changes before any `test` run
+
+Fixes under the exception in the status above:
+- **2026-10-27, L3.** L3 was the mean regret over all questions. It is now the share of costly
+  decisions among questions with a reliable reference (Section 3).
+  - Evidence: the harness's validation on `dev` (HARNESS.md, Section 7). In 8% of the questions,
+    U's own executed plan cost more than 1 cost unit above its best candidate, because MPPI's
+    weighted mean averaged candidates that went different ways. On such questions even the
+    near-perfect physics + mass estimation scored regrets of −216 and −100. Its 5 largest regrets
+    made up 97% of its summed regret.
+  - The decision used only U, the physics references and the example MLP on `dev`. No relation
+    between L3 and J was examined.
