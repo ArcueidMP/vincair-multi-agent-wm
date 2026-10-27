@@ -20,8 +20,8 @@ Tag `arena-v0.3` freezes:
 
 Since `arena-v0.2`, only `collect.py` has changed: it adds the behavior policy `explore-v2`, whose
 datasets replace the `explore-v1` ones as the standard (Section 5). The closed loop never imports
-`collect.py`, so the reference rows' results carry over. The tag is created before the first `test`
-run. The evaluation harness for layers 1–3 ([HARNESS.md](HARNESS.md)) is maintained by the
+`collect.py`, so the reference rows' results carry over. The tag was created on 2026-10-28, before
+the first `test` run. The evaluation harness for layers 1–3 ([HARNESS.md](HARNESS.md)) is maintained by the
 maintainer and is not frozen; ANALYSIS.md fixes what each quantity it reports means.
 
 Participants never edit these files: `.github/CODEOWNERS` routes any change to the maintainer. A
@@ -182,8 +182,8 @@ In training:
   committed.
 - Layers 1–3 are computed with the evaluation harness ([HARNESS.md](HARNESS.md)) on U's recorded
   `test` questions, and the headline analysis follows [ANALYSIS.md](ANALYSIS.md).
-- Work on your own branch from `uav-arena`; its frozen files become `arena-v0.3` before the first
-  `test` run. Put the model under your own module (for example `uav_arena/participants/<name>/`)
-  with its tests, and open a pull request into `uav-arena`. The description holds the summary
-  tables and the commands that produced them.
+- Work on your own branch from `uav-arena`, whose frozen files are those of `arena-v0.3`. Put the
+  model under your own module (for example `uav_arena/participants/<name>/`) with its tests, and
+  open a pull request into `uav-arena`. The description holds the summary tables and the commands
+  that produced them.
 - The maintainer adds the row to the README.

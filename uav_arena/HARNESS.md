@@ -271,8 +271,8 @@ batches. For PETS on the GPU that took 0.34 s per question without sampling and 
 
 ## 8. Contract changes for `arena-v0.3`
 
-These changes are on the branch since 2026-10-27. They take effect with the tag, which is created
-once the recorder and the harness are validated on `dev`, before the first `test` run.
+These changes took effect with the tag `arena-v0.3`, created on 2026-10-28 once the recorder and
+the harness were validated on `dev`, before the first `test` run.
 - **PARTICIPANTS.md, Section 1.** The tag also freezes ANALYSIS.md. Of the code files only
   `collect.py` changes, adding `explore-v2`; the closed loop does not import it, so the reference
   rows' results carry over. The harness is not frozen.

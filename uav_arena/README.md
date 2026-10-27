@@ -9,7 +9,7 @@ conditions, and where they break.
 The benchmark does not assume that learning is needed. A non-privileged physics model of the same
 plant is a reference row, and learned models are reported against it as well as against the oracle.
 
-Status (`arena-v0.3`, tagged before the first `test` run):
+Status (`arena-v0.3`, tagged on 2026-10-28, before the first `test` run):
 - The environment core (`env.py`, `scenarios.py`, `geometry.py`, `lowlevel.py`) and the shared
   planning layer (`costs.py`, `planning.py`, `run.py`) are implemented and tested, with three
   reference rows: the oracle U, the physics reference, and physics with online payload-mass
@@ -19,7 +19,7 @@ Status (`arena-v0.3`, tagged before the first `test` run):
   data budgets and model selection. `collect.py` collects training data and checks it against the
   committed reference manifests, `windows.py` turns it into training windows, and `openloop.py`
   scores predictions on it (evaluation layer 1). The standard data are `explore-v2`, which replaced
-  `explore-v1` before `arena-v0.3` because U's planner commands actions `explore-v1` never flew;
+  `explore-v1` in `arena-v0.3` because U's planner commands actions `explore-v1` never flew;
   `coverage.py` compares a dataset with U's flights.
 - The analysis plan, [ANALYSIS.md](ANALYSIS.md), is frozen with the tag, before any `test` run:
   the headline test, its decision rule and the secondary analyses.
@@ -30,8 +30,8 @@ Status (`arena-v0.3`, tagged before the first `test` run):
   `participants/example/` is a working example participant.
 - CrazyMARL runs on arena tasks (`crazymarl_task.py`, `crazymarl_env.py`, `crazymarl_train.py`,
   `crazymarl_policy.py`). Seeds 0–2 are trained and evaluated on `dev`.
-- Next: tag `arena-v0.3`; then the reference and CrazyMARL rows on `test`, U's through the
-  recorder, which also records the questions; then the world-model rows (see Roadmap).
+- Next: the reference and CrazyMARL rows on `test`, U's through the recorder, which also records
+  the questions; then the world-model rows (see Roadmap).
 - Related work, grouped by relation to the arena, with BibTeX:
   [`docs/uav-arena-related-work.md`](../docs/uav-arena-related-work.md). Its section 8 covers the
   evaluation design.
@@ -316,7 +316,7 @@ results show how the relation changes with latency and moving obstacles.
    `dev`~~ (done); evaluation on `test`.
 3. ~~Physics with online payload-mass estimation~~ (done).
 4. ~~Participant contract, data collector with reference manifests, training windows, layer-1
-   open-loop metric~~ (done, `arena-v0.2`; `explore-v2` data before `arena-v0.3`);
+   open-loop metric~~ (done, `arena-v0.2`; `explore-v2` data in `arena-v0.3`);
    entity-token JEPA variants, the autoregressive model and PETS.
 5. ~~Layer 1–3 harness on recorded U states~~ (done, validated on `dev`).
 6. TD-MPC2 and DreamerV3 adapters (a Gymnasium wrapper; a JAX venv for DreamerV3).

@@ -1,16 +1,16 @@
-# Analysis plan (draft for arena-v0.3)
+# Analysis plan (arena-v0.3)
 
 The pre-registered analysis behind the benchmark's headline result. Measurements come from the
 evaluation harness ([HARNESS.md](HARNESS.md)) and from closed-loop runs with `run.py`. The task,
 rows and contract are in [README.md](README.md) and [PARTICIPANTS.md](PARTICIPANTS.md).
 
-**Status: draft of 2026-10-27.**
-- This file is frozen with tag `arena-v0.3` before any `test` run, the reference rows included.
+**Status: frozen with tag `arena-v0.3` on 2026-10-28.**
+- It was frozen before any `test` run, the reference rows' runs included.
 - A change made after any `test` result has been seen needs a new tag, and the paper labels it as
   made after seeing results.
 - `dev` runs never choose analysis settings, with one exception: a measurement problem found while
-  validating the harness may be fixed before any `test` run. Each such fix is listed in Section 8
-  with its date and evidence.
+  validating the harness may be fixed before any `test` run, and since the freeze only with a new
+  tag. Each such fix is listed in Section 8 with its date and evidence.
 
 ## 1. Question
 

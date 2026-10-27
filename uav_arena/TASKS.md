@@ -10,13 +10,13 @@ them.
 | Autoregressive state model (W-ar) | june (@june250630) | not started; builds on the JEPA backbone |
 | PETS ensemble | june (@june250630) | not started |
 | TD-MPC2, DreamerV3 | unassigned | blocked on the Gymnasium wrapper |
-| Evaluation harness and recorder ([HARNESS.md](HARNESS.md)), analysis plan ([ANALYSIS.md](ANALYSIS.md)), Gymnasium wrapper, reference and CrazyMARL rows on `test` | maintainer (@ArcueidMP) | analysis plan written; recorder and harness built and validated on `dev`; the rest open |
+| Evaluation harness and recorder ([HARNESS.md](HARNESS.md)), analysis plan ([ANALYSIS.md](ANALYSIS.md)), Gymnasium wrapper, reference and CrazyMARL rows on `test` | maintainer (@ArcueidMP) | analysis plan frozen in `arena-v0.3`; recorder and harness built and validated on `dev`; the rest open |
 
 ## First day, every owner
 
 1. Branch from the integration branch: `git fetch origin && git switch -c <handle>/<row> origin/uav-arena`.
-   Its frozen files are tagged `arena-v0.3` before the first `test` run. Since `arena-v0.2`, only
-   `collect.py` has changed: the standard data are now `explore-v2`.
+   Its frozen files are those of the tag `arena-v0.3`. Since `arena-v0.2`, only `collect.py` has
+   changed: the standard data are now `explore-v2`.
 2. Build the environment ([README](README.md#environment)): Linux or WSL2, a C compiler, Python 3.10.
 3. Collect and verify the data, about a minute on 24 cores. On Ubuntu 22.04 the regenerated
    episodes differ from the references, so copy the data there instead:
