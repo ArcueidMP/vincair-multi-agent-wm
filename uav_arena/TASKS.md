@@ -15,17 +15,18 @@ them.
 ## First day, every owner
 
 1. Branch from the integration branch: `git fetch origin && git switch -c <handle>/<row> origin/uav-arena`.
-   Its frozen code files are those of the tag `arena-v0.2`. They are unchanged in `arena-v0.3`,
-   which is tagged before the first `test` run.
+   Its frozen files are tagged `arena-v0.3` before the first `test` run. Since `arena-v0.2`, only
+   `collect.py` has changed: the standard data are now `explore-v2`.
 2. Build the environment ([README](README.md#environment)): Linux or WSL2, a C compiler, Python 3.10.
-3. Collect and verify the data, about a minute on 24 cores:
+3. Collect and verify the data, about a minute on 24 cores. On Ubuntu 22.04 the regenerated
+   episodes differ from the references, so copy the data there instead:
 
    ```bash
    PYTHONPATH=. data/uav_arena/.venv/bin/python -m uav_arena.collect --seeds 200000:202000 \
-     --out data/uav_arena/datasets/explore_v1
+     --out data/uav_arena/datasets/explore_v2
    PYTHONPATH=. data/uav_arena/.venv/bin/python -m uav_arena.collect --seeds 299000:299100 \
-     --out data/uav_arena/datasets/explore_v1_val
-   for d in explore_v1 explore_v1_val; do
+     --out data/uav_arena/datasets/explore_v2_val
+   for d in explore_v2 explore_v2_val; do
      PYTHONPATH=. data/uav_arena/.venv/bin/python -m uav_arena.collect --verify data/uav_arena/datasets/$d
    done
    ```
@@ -36,10 +37,10 @@ them.
 
    ```bash
    PYTHONPATH=. data/uav_arena/.venv/bin/python -m uav_arena.participants.example.train \
-     --data data/uav_arena/datasets/explore_v1 --out data/uav_arena/participants/example/mlp.pt
+     --data data/uav_arena/datasets/explore_v2 --out data/uav_arena/participants/example/mlp.pt
    PYTHONPATH=. data/uav_arena/.venv/bin/python -m uav_arena.openloop --predictor uav_arena.participants.example.model:make \
      --predictor-options '{"checkpoint": "data/uav_arena/participants/example/mlp.pt"}' \
-     --data data/uav_arena/datasets/explore_v1_val --out data/uav_arena/results/example_mlp_openloop_val.json
+     --data data/uav_arena/datasets/explore_v2_val --out data/uav_arena/results/example_mlp_openloop_val.json
    PYTHONPATH=. data/uav_arena/.venv/bin/python -m uav_arena.run --predictor uav_arena.participants.example.model:make \
      --predictor-options '{"checkpoint": "data/uav_arena/participants/example/mlp.pt"}' \
      --suite dev --seeds 0:5 --out data/uav_arena/results/example_mlp_dev_s0-5.json
@@ -54,7 +55,9 @@ them.
   random generator, if the model is stochastic), and for never reading the payload mass.
 - Train on the first 250 episodes with a short schedule. Iterate with `openloop.py --stride 10` on
   the validation set, and fly `dev` once (40 episodes).
-- Bar: a better selection score than the example.
+- Bar: a better selection score than the example trained the Phase A way, on the first 250
+  episodes for 5,000 steps and scored with `openloop.py --stride 10`: 8.26 cm on `explore-v2`
+  ([below](#example-participant)).
 - Deliverable: a draft pull request into `uav-arena` with the code, tests, commands and these
   numbers. The maintainer reviews it before Phase B.
 
@@ -119,12 +122,23 @@ them.
   step the age and the setpoints in force (`windows.py` provides both).
 - **Planning:** PETS propagates 20 particles per candidate and averages the cost over them; the
   shared planner scores one predicted trajectory per candidate. Propagate each candidate with one
-  ensemble member drawn at random per planning call (TS∞ with one particle) and sample from that
-  member's Gaussian, as PETS does. State this deviation in the results.
-- **Randomness:** set `stochastic = True`, draw the member choice and the Gaussian samples from
-  torch's global generator, and reseed it in `reset()` ([PARTICIPANTS.md](PARTICIPANTS.md),
-  Section 2). The harness then uses the same draws for a plan and its counterfactual, and averages
-  layers 1 and 3 over 5 repeats.
+  ensemble member drawn at random per planning call (TS∞ with one particle), and use that member's
+  mean at every step, without Gaussian sampling. State both deviations from published PETS in the
+  results: one particle instead of 20, and mean propagation. In june's code (PR #2) this is
+  `sample_gaussian=False`; the default there is `True`.
+- **Why the mean** (decided on 2026-10-28, before the tag; ANALYSIS.md, Section 8):
+  - the validation selection score (`openloop.py --stride 10`): on `explore-v2`, 9.42 cm without
+    sampling against 18.6 cm with it; on `explore-v1`, 3.04 against 5.32 cm;
+  - the shared planner scores one trajectory per candidate, so nothing averages the samples the way
+    published PETS averages its cost over 20 particles, and for that single trajectory a sample is
+    a noisier estimate than the mean.
+- **Randomness:** the member draw is still random, so set `stochastic = True`. Draw the member
+  choice from torch's global generator, and reseed it in `reset()`
+  ([PARTICIPANTS.md](PARTICIPANTS.md), Section 2). The harness then uses the same draws for a plan
+  and its counterfactual, and averages layers 1 and 3 over 5 repeats.
+- **Phase A so far:** PR #2's configuration (250 episodes, 5,000 steps per member), rerun by the
+  maintainer on `explore-v2` without sampling, scores 9.42 cm against the 8.26 cm bar: still
+  1.2 cm short.
 - **Why an MLP:** PETS is defined with MLP members, and MLP ensembles remain the standard dynamics
   model for low-dimensional states. The transformer rows are the JEPA variants and W-ar.
 - **Precedent:** PETS has been used for multi-UAV payload transport (Khursheed, Virginia Tech MS
@@ -146,17 +160,19 @@ episodes for 20,000 steps (batch 1,024) on an RTX 5070 Laptop GPU:
 | | Example MLP | Physics (nominal 25 g) | Physics + mass estimation |
 |---|---|---|---|
 | Training | 4 min, 0.75M parameters | – | – |
-| Selection score (validation) | 1.46 cm | 2.93 cm | 0.16 cm |
-| `dev` closed loop | 7/40 | 28/40 | 40/40 |
+| Selection score (validation) | 6.24 cm | 4.01 cm | 0.25 cm |
+| Phase A bar: 250 episodes, 5,000 steps (`--stride 10`) | 8.26 cm | – | – |
+| Layer 1 on U's `dev` states ([HARNESS.md](HARNESS.md)) | 10.8 cm | 4.3 cm | 0.35 cm |
+| `dev` closed loop | 21/40 | 28/40 | 40/40 |
 
-The example predicts better than the nominal physics model open loop yet flies far worse: 23 of
-its 33 `dev` failures are aircraft-separation events. Open-loop error along the behavior policy's
-actions does not predict how a model ranks the planner's candidates, which is why the evaluation
-has layers 2–3. Scoring it takes 25 s open loop and 25 s on `dev` (8 ms per planning call, CPU).
-On U's `dev` states the harness gives it a layer-1 error of 14.6 cm (the nominal physics reference:
-4.3 cm), a cross-agent error of 4.5 cm and a pairwise ranking accuracy of 0.64
-([HARNESS.md](HARNESS.md), Section 7). The plans U flies lie outside the `explore-v1` data it was
-trained on, and every row trained on that data will meet the same shift.
+- On `explore-v2` the validation score orders the example and the nominal physics reference as the
+  closed loop does. On `explore-v1` it did not. There the example scored 1.46 cm against the
+  physics reference's 2.93 cm, yet flew 7 of 40 `dev` episodes, 23 of its 33 failures being
+  aircraft-separation events, and its layer-1 error on U's states was 14.6 cm: the plans U flies lay
+  outside the `explore-v1` data (PARTICIPANTS.md, Section 5).
+- On U's `dev` states the harness gives the example a cross-agent error of 4.0 cm, costly decisions
+  at 32.5% of the questions and a pairwise ranking accuracy of 0.67 (HARNESS.md, Section 7).
+- Scoring it takes about 10 s open loop and 30 s on `dev` (8 ms per planning call, CPU).
 
 ## Compute on a laptop
 

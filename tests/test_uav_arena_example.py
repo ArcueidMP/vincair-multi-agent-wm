@@ -15,6 +15,7 @@ from uav_arena.participants.example import train
 from uav_arena.planning import ArenaCost, ArenaPlanner
 from uav_arena.run import make_predictor, run_episode
 from uav_arena.scenarios import CONDITIONS, make_scenario
+from uav_arena.windows import decisions
 
 FACTORY = "uav_arena.participants.example.model:make"
 
@@ -38,8 +39,8 @@ def test_example_answers_the_planners_call_and_scores_in_openloop(trained):
     prediction = predictor(None, torch.zeros(1, 512, 15, 3, 3))
     assert prediction["uav"].shape == (1, 512, 15, 3, 3) and prediction["payload"].shape == (1, 512, 15, 3)
     assert prediction["payload_vel"].shape == (1, 512, 15, 3) and prediction["payload"].dtype == torch.float32
-    result = evaluate(predictor, [episode], 100, horizon=15, stride=50)
-    assert result["decisions"] == 4 and np.isfinite(result["payload"]).all()
+    result = evaluate(predictor, [episode], 100, horizon=15, stride=10)
+    assert result["decisions"] == len(range(0, decisions(episode)-15+1, 10)) > 1 and np.isfinite(result["payload"]).all()
 
 
 def test_example_flies_a_closed_loop_episode(trained):

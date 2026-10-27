@@ -11,13 +11,13 @@ pytestmark = pytest.mark.skipif(shutil.which("cc") is None, reason="the pinned C
 from uav_arena.collect import _write
 from uav_arena.env import RECENT_SETPOINTS
 from uav_arena.openloop import evaluate
-from uav_arena.windows import STATE_KEYS, Windows, decisions, load, window
+from uav_arena.windows import PER_DECISION, STATE_KEYS, Windows, decisions, load, window
 
 
 @pytest.fixture(scope="module")
 def episodes(tmp_path_factory):
     out = tmp_path_factory.mktemp("explore")
-    for seed in (200_003, 200_004):
+    for seed in (200_000, 200_003):        # a full 20 s episode and one an aircraft-separation event ends early
         _write((seed, out))
     return load(out)
 
@@ -52,7 +52,7 @@ def test_window_targets_are_what_openloop_scores(episodes, latency_ms):
 def test_windows_hide_the_mass_pad_the_start_and_batch(episodes):
     assert all("payload_mass" not in e for e in episodes)
     data = Windows(episodes, horizon=15, history=4)
-    assert len(data) == sum(4*(decisions(e)-15+1) for e in episodes)
+    assert len(data) == sum(4*max(decisions(e)-15+1, 0) for e in episodes)
     first = data[0]                                   # first episode, decision 0, 0 ms
     assert first["obs_payload_pos"].shape == (4, 3) and first["next_uav_rot6"].shape == (15, 3, 6)
     np.testing.assert_array_equal(first["obs_payload_pos"][0], first["obs_payload_pos"][-1])
@@ -60,9 +60,10 @@ def test_windows_hide_the_mass_pad_the_start_and_batch(episodes):
     np.testing.assert_allclose(first["recent_setpoint_times"], [-0.4, -0.3, -0.2, -0.1], atol=1e-6)
     early = data[3]                                   # decision 0 at 200 ms: only the t = 0 record exists
     assert early["latency"] == pytest.approx(0.2) and early["age"] == pytest.approx(0.0)
-    last = data[len(data)-1]                          # last episode, last decision, 200 ms
+    last = data[len(data)-1]                          # last episode, last complete decision, 200 ms
     assert last["age"] == pytest.approx(0.2)
-    np.testing.assert_array_equal(last["next_payload_pos"][-1], episodes[-1]["payload_pos"][-1].astype(np.float32))
+    end = PER_DECISION*decisions(episodes[-1])        # an event can end an episode within a decision
+    np.testing.assert_array_equal(last["next_payload_pos"][-1], episodes[-1]["payload_pos"][end].astype(np.float32))
     batch = torch.utils.data.default_collate([data[i] for i in range(8)])
     assert set(batch) == {f"obs_{k}" for k in STATE_KEYS} | {f"next_{k}" for k in STATE_KEYS} | {
         "latency", "age", "recent_setpoints", "recent_setpoint_times", "setpoints"}

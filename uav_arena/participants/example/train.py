@@ -1,6 +1,6 @@
 """Train the example participant on `windows.py` examples.
 
-    python -m uav_arena.participants.example.train --data data/uav_arena/datasets/explore_v1 \
+    python -m uav_arena.participants.example.train --data data/uav_arena/datasets/explore_v2 \
         --episodes 2000 --steps 20000 --out data/uav_arena/participants/example/mlp.pt
 
 Every window of the first `--episodes` episodes (all decisions, all four latencies) is a training

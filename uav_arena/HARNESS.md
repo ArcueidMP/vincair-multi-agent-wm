@@ -188,17 +188,56 @@ questions.
 | U (oracle) | 0 | 0 | 0 / 0 / 0 | 0 | 0 (0) | 0 | 1 | 1 | 40/40 |
 | Physics + mass estimation | 0.35 cm | 0.30 cm | 0.28 / 0.32 / 0.59 cm | 1.8% | −0.57 (−0.0002) | 0.04 | 0.97 | 0.96 | 40/40 |
 | Physics (nominal 25 g) | 4.31 cm | 2.07 cm | 2.18 / 1.96 / 3.87 cm | 19.6% | +1.17 (+0.02) | 3.94 | 0.71 | 0.79 | 28/40 |
-| Example MLP | 14.55 cm | 4.54 cm | 4.98 / 4.10 / 7.76 cm | 44.3% | +9.78 (+0.38) | 17.51 | 0.37 | 0.64 | 7/40 |
+| Example MLP, trained on `explore-v2` | 10.76 cm | 3.98 cm | 4.32 / 3.65 / 7.32 cm | 32.5% | +10.83 (+0.08) | 14.30 | 0.45 | 0.67 | 21/40 |
+| Example MLP, trained on `explore-v1` | 14.55 cm | 4.54 cm | 4.98 / 4.10 / 7.76 cm | 44.3% | +9.78 (+0.38) | 17.51 | 0.37 | 0.64 | 7/40 |
+| PETS, june's Phase A, trained on `explore-v2`, mean propagation (the card's rule) | 13.99 cm | 3.84 cm | 4.46 / 3.22 / 7.25 cm | 38.8% | +9.59 (+0.90) | 15.57 | 0.35 | 0.63 | 6/40 |
+| The same checkpoint with Gaussian sampling (diagnostic) | 20.50 cm | 4.44 cm | 5.09 / 3.79 / 7.81 cm | 46.0% | +11.36 (+3.23) | 17.39 | 0.17 | 0.56 | 0/40 |
+| PETS, june's Phase A, trained on `explore-v1`, with Gaussian sampling (diagnostic) | 24.30 cm | 6.24 cm | 6.63 / 5.85 / 9.97 cm | 49.8% | +14.22 (+3.93) | 20.63 | 0.13 | 0.55 | 0/40 |
 
 - **U scores exactly zero** on every question, with Spearman correlation and pairwise accuracy
   exactly 1: the costs, plans and rollouts the harness recomputes equal the recorded ones.
-- **The layers order these rows as the closed loop does.** So does layer 1, so `dev` cannot separate
-  layer 2 from layer 1. That is the job of the 30 learned models on `test`.
-- **The example MLP leaves its training distribution on U's states.** Its validation selection score
-  is 1.46 cm, half the nominal physics reference's 2.93 cm. On U's states its layer-1 error is
-  14.6 cm, 3.4 times the physics reference's 4.3 cm. `openloop.py` along U's flown setpoints gives the
-  same picture: 10.8 cm on the static 0 ms episodes, against 1.1 cm on `explore-v1` validation
-  episodes. The plans U flies lie outside what `explore-v1` covers.
+- **How the layers order these rows.** U and the two physics references come out in their
+  closed-loop order on every layer.
+  - Among the learned rows, layers 1 and 3 match the closed loop but for one near-tie: PETS without
+    sampling scores better than the `explore-v1` example on both and flies 6 episodes against its 7.
+  - Layer 2 has the same near-tie, 3.84 against 4.54 cm for 6 against 7 episodes, and two clear
+    mismatches. PETS without sampling has the lowest cross-agent error of the learned rows, 3.84 cm
+    against the `explore-v2` example's 3.98 cm, yet flies 6 episodes against 21. Sampled PETS on
+    `explore-v2` (4.44 cm, no successes) also scores better than the `explore-v1` example (4.54 cm,
+    7).
+  - A handful of rows on `dev` cannot separate the layers; that is the job of the 30 learned models
+    on `test`.
+- **Trained on `explore-v1`, the example MLP left its training distribution on U's states.** Its
+  validation selection score was 1.46 cm, half the nominal physics reference's 2.93 cm, yet on U's
+  states its layer-1 error was 14.6 cm, 3.4 times the physics reference's 4.3 cm. `openloop.py`
+  along U's flown setpoints gave the same picture: 10.8 cm on the static 0 ms episodes, against
+  1.1 cm on `explore-v1` validation episodes. U's planner commands larger, more individual and more
+  abrupt increments than `explore-v1` flew (`coverage.py`), which is why the standard data became
+  `explore-v2` before the tag (PARTICIPANTS.md, Section 5; ANALYSIS.md, Section 8). Trained on it,
+  the example improves on every layer and in the closed loop.
+- **PETS is the first stochastic predictor through the harness**, with common random numbers for
+  layer 2 and 5 repeats for layers 1 and 3. The rows are june's Phase A configuration (PR #2,
+  commit `f08581c`: 250 episodes, 5,000 steps per member), trained on this machine. On `explore-v1`
+  it reproduces june's selection score with sampling (5.32 cm against 5.23 cm).
+  - The benchmark row follows the PETS card since 2026-10-28 (TASKS.md; ANALYSIS.md, Section 8).
+    Each candidate draws one ensemble member at random and propagates that member's mean, without
+    Gaussian sampling (`sample_gaussian=False` in june's code). The member draw keeps the predictor
+    stochastic. On `explore-v2` it succeeds in 6 of 40 `dev` episodes.
+  - The sampled rows are diagnostics under the card's earlier rule, june's default, which also
+    samples the member's Gaussian at every step. With `explore-v2` sampled PETS improves on every
+    layer over `explore-v1`, and its aircraft-separation failures on `dev` drop from 36 to 26, but it
+    fails all 40 episodes. The benchmark row does better on every layer than the sampled one from
+    the same checkpoint: layer 1 14.0 against 20.5 cm, Spearman 0.35 against 0.17, pairwise accuracy
+    0.63 against 0.56, and costly decisions at 38.8% against 46.0% of the questions.
+  - What the numbers support: sampling adds noise to each candidate's predicted trajectory, and
+    through it to the cost by which the planner weighs the candidates. The shared MPPI scores one
+    trajectory per candidate, where published PETS averages the cost over 20 particles, so nothing
+    averages that noise out. Whether the softmax in addition favours candidates whose noise happened
+    to look safe is not tested here.
+  - Selection scores (`--stride 10`) against the Phase A bar, the example trained the Phase A way:
+    on `explore-v2`, 9.42 cm without sampling and 18.6 cm with it, against 8.26 cm; on
+    `explore-v1`, 3.04 and 5.32 cm against 1.75 cm. Neither variant reaches the bar on either
+    dataset; the benchmark row on `explore-v2` is 1.2 cm short.
 - **Layer 3's mean is dominated by a few questions.** In 43 of the 544 questions (7.9%), U's own
   executed plan is more than 1 cost unit worse than the best candidate in its pool. At the worst one,
   the two candidates carrying 99% of the weight cost 3.6 and 3.7, and their weighted mean costs 219:
@@ -227,27 +266,31 @@ questions.
 | Storage | | 30 MB: questions 16 MB, ground truth 15 MB | about 0.3 GB |
 
 A stochastic predictor makes 48 calls per question instead of one: 43 single sequences and 5 full
-batches.
+batches. For PETS on the GPU that took 0.34 s per question without sampling and 0.46 s with it:
+3–4 min on `dev`, and an estimated 30–45 min on `test`.
 
 ## 8. Contract changes for `arena-v0.3`
 
 These changes are on the branch since 2026-10-27. They take effect with the tag, which is created
 once the recorder and the harness are validated on `dev`, before the first `test` run.
-- **PARTICIPANTS.md, Section 1.** The tag also freezes ANALYSIS.md. The code files are unchanged, so
-  the reference rows' results carry over. The harness is not frozen.
+- **PARTICIPANTS.md, Section 1.** The tag also freezes ANALYSIS.md. Of the code files only
+  `collect.py` changes, adding `explore-v2`; the closed loop does not import it, so the reference
+  rows' results carry over. The harness is not frozen.
 - **PARTICIPANTS.md, Section 2.**
   - Predictors accept any leading shape; the harness calls them with (1, 1) and (1, 555).
   - Stochastic predictors declare `stochastic = True` and use only torch's global generator.
   - They reseed it in `reset()` from a fixed seed, so each episode replays alone exactly. `run.py`
     reseeds only the solver's own generator.
 - **PARTICIPANTS.md, Section 3.** `reset()` also resets the random generator.
-- **PARTICIPANTS.md, Sections 5–6.** After selection, the chosen configuration also trains 3 seeds on
-  the first 500 standard episodes (seeds 200000–200499), and each runs once on `test`.
+- **PARTICIPANTS.md, Sections 5–6.** The standard data are `explore-v2`, with the same seeds, and
+  `explore-v1` stays as the older policy. After selection, the chosen configuration also trains 3
+  seeds on the first 500 standard episodes (seeds 200000–200499), and each runs once on `test`.
 - **PARTICIPANTS.md, Section 7.** Layers 1–3 come from this harness, ANALYSIS.md is the analysis
   plan, and branches start from the files of `arena-v0.3`.
 - **TASKS.md.** The extra 500-episode runs for each row, tests for the new call shapes, the PETS
-  card's randomness rule, the maintainer's row and the Phase B compute estimate.
-- **CODEOWNERS.** `ANALYSIS.md`, `record.py` and `harness.py` are added.
+  card's mean propagation and randomness rule, the maintainer's row, the Phase B compute estimate,
+  the `explore-v2` commands, and a Phase A bar set by the example trained the Phase A way.
+- **CODEOWNERS.** `ANALYSIS.md`, `record.py`, `harness.py` and `coverage.py` are added.
 - **README.md.** The status names `arena-v0.3`, and the evaluation-layers section points to
   HARNESS.md and ANALYSIS.md.
 

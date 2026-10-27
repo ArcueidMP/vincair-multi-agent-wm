@@ -18,7 +18,9 @@ Status (`arena-v0.3`, tagged before the first `test` run):
   predictor interface, the rules for stochastic predictors, information rules, seed splits, the two
   data budgets and model selection. `collect.py` collects training data and checks it against the
   committed reference manifests, `windows.py` turns it into training windows, and `openloop.py`
-  scores predictions on it (evaluation layer 1).
+  scores predictions on it (evaluation layer 1). The standard data are `explore-v2`, which replaced
+  `explore-v1` before `arena-v0.3` because U's planner commands actions `explore-v1` never flew;
+  `coverage.py` compares a dataset with U's flights.
 - The analysis plan, [ANALYSIS.md](ANALYSIS.md), is frozen with the tag, before any `test` run:
   the headline test, its decision rule and the secondary analyses.
 - The evaluation harness for layers 1–3, [HARNESS.md](HARNESS.md), is built (`record.py`,
@@ -257,21 +259,22 @@ reseeded per episode; CrazyMARL flies the final actor of each training seed. Suc
 
 ## Open-loop references (layer 1, validation set)
 
-`openloop.py` on the contract's validation set (100 `explore-v1` episodes, seeds
+`openloop.py` on the contract's validation set (100 `explore-v2` episodes, seeds
 299000–299099, every decision scored). Mean position error over the 15-decision (1.5 s) horizon,
 payload / aircraft:
 
 | Latency | Physics (nominal 25 g) | Physics + mass estimation |
 |---|---|---|
-| 0 ms | 2.81 / 5.61 cm | 0.15 / 0.33 cm |
-| 50 ms | 2.88 / 5.72 cm | 0.15 / 0.34 cm |
-| 100 ms | 2.96 / 5.84 cm | 0.16 / 0.34 cm |
-| 200 ms | 3.08 / 6.01 cm | 0.16 / 0.35 cm |
-| **Selection score** | **2.93 cm** | **0.16 cm** |
+| 0 ms | 3.67 / 5.55 cm | 0.23 / 0.33 cm |
+| 50 ms | 3.77 / 5.58 cm | 0.24 / 0.33 cm |
+| 100 ms | 4.09 / 5.99 cm | 0.26 / 0.35 cm |
+| 200 ms | 4.50 / 6.40 cm | 0.28 / 0.37 cm |
+| **Selection score** | **4.01 cm** | **0.25 cm** |
 
 The selection score is the contract's model-selection metric: the payload error averaged over the
 horizon and the four latencies. U has no row: it needs the simulator's true state, which recorded
-data does not hold. With the true mass the physics reference scores below 10⁻⁶ m (tested).
+data does not hold. With the true mass the physics reference scores below 10⁻⁶ m (tested). On the
+`explore-v1` validation set the two rows scored 2.93 and 0.16 cm.
 
 ## Evaluation layers
 
@@ -295,8 +298,9 @@ is the closed loop of `run.py`.
 
 On `dev` ([HARNESS.md](HARNESS.md), Section 7), U scores exactly zero on layers 1–3, and the layers
 order physics + mass estimation, the nominal physics reference and the example MLP as their
-closed-loop success does. On U's states the example MLP's layer-1 error is 14.6 cm, against 1.46 cm
-on the validation set: the plans U flies lie outside the `explore-v1` data.
+closed-loop success does. Trained on `explore-v1`, the example MLP's layer-1 error on U's states
+was 14.6 cm, against 1.46 cm on its validation set: the plans U flies lay outside that data. Trained
+on `explore-v2`, it is 10.8 cm, and its `dev` closed loop rises from 7 to 21 successes of 40.
 
 The headline analysis, pre-registered in [ANALYSIS.md](ANALYSIS.md), asks whether the cross-agent
 layer explains closed-loop differences that layer 1 misses. Its test is the partial Spearman
@@ -312,7 +316,7 @@ results show how the relation changes with latency and moving obstacles.
    `dev`~~ (done); evaluation on `test`.
 3. ~~Physics with online payload-mass estimation~~ (done).
 4. ~~Participant contract, data collector with reference manifests, training windows, layer-1
-   open-loop metric~~ (done, `arena-v0.2`);
+   open-loop metric~~ (done, `arena-v0.2`; `explore-v2` data before `arena-v0.3`);
    entity-token JEPA variants, the autoregressive model and PETS.
 5. ~~Layer 1–3 harness on recorded U states~~ (done, validated on `dev`).
 6. TD-MPC2 and DreamerV3 adapters (a Gymnasium wrapper; a JAX venv for DreamerV3).
@@ -376,18 +380,20 @@ records exactly.
 
 ```bash
 PYTHONPATH=. data/uav_arena/.venv/bin/python -m uav_arena.collect --seeds 200000:202000 \
-  --out data/uav_arena/datasets/explore_v1
+  --out data/uav_arena/datasets/explore_v2
 PYTHONPATH=. data/uav_arena/.venv/bin/python -m uav_arena.collect --seeds 299000:299100 \
-  --out data/uav_arena/datasets/explore_v1_val
-for d in explore_v1 explore_v1_val; do
+  --out data/uav_arena/datasets/explore_v2_val
+for d in explore_v2 explore_v2_val; do
   PYTHONPATH=. data/uav_arena/.venv/bin/python -m uav_arena.collect --verify data/uav_arena/datasets/$d
 done
 for p in physics adaptive; do
   PYTHONPATH=. data/uav_arena/.venv/bin/python -m uav_arena.openloop --predictor $p \
-    --data data/uav_arena/datasets/explore_v1_val --out data/uav_arena/results/${p}_openloop_val_v1.json
+    --data data/uav_arena/datasets/explore_v2_val --out data/uav_arena/results/${p}_openloop_val_v2.json
 done
+PYTHONPATH=. data/uav_arena/.venv/bin/python -m uav_arena.coverage --data data/uav_arena/datasets/explore_v2_val \
+  --states data/uav_arena/states/dev
 ```
 
-Both datasets take about a minute on 24 cores (1.6 GB and 80 MB), and `--verify` must report
+Both datasets take under a minute on 24 cores (0.7 GB and 35 MB), and `--verify` must report
 every episode as a match with the reference manifests. The batched controller compiles once into
 `data/uav_arena/native_build/` (override with `UAV_ARENA_BUILD_CACHE`).

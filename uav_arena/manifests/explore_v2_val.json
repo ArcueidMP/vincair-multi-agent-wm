@@ -1,0 +1,821 @@
+{
+ "policy": "explore-v2",
+ "seeds": [
+  299000,
+  299100
+ ],
+ "source": {
+  "describe": "arena-v0.2-7-gf5cb305-dirty",
+  "commit": "f5cb305fd474882453e226bf5a880144adba6c62"
+ },
+ "record_dt": 0.01,
+ "decision_dt": 0.1,
+ "outcomes": {
+  "collision_team": 83,
+  "timeout": 13,
+  "crash": 1,
+  "out_of_bounds": 3
+ },
+ "episodes": [
+  {
+   "file": "episode_299000.npz",
+   "seed": 299000,
+   "outcome": "collision_team",
+   "records": 1385,
+   "sha256": "e4d8adbbccfa7b4ac437757fc4a2654131c5dd664494cf6380655799a25d5734",
+   "content_sha256": "8fc94f21e1ab1629eea160923f6f99dd8afed792787ade3b91482c3585554905"
+  },
+  {
+   "file": "episode_299001.npz",
+   "seed": 299001,
+   "outcome": "collision_team",
+   "records": 1105,
+   "sha256": "a8c5566567ddaa5738a3ee3bb8e193ff180c8cd9a555f107735eece71c3c8de3",
+   "content_sha256": "70823d83565d46f5ac1e0364664aff31cf77e3e1cc5581179940df3e9318ef7f"
+  },
+  {
+   "file": "episode_299002.npz",
+   "seed": 299002,
+   "outcome": "collision_team",
+   "records": 78,
+   "sha256": "87711eeb70442fef223e058cb94d2d7c4877a97b4f519260d0189491fc0839e5",
+   "content_sha256": "a06a6c59ec60c406a10c33ca3c1a2815c04a3b9aa394956c59eaefd53a71ea9e"
+  },
+  {
+   "file": "episode_299003.npz",
+   "seed": 299003,
+   "outcome": "collision_team",
+   "records": 587,
+   "sha256": "3dc09e36cf84cbd7aac03f5d82533e265ea08aa40769c20af73cd3b57390d114",
+   "content_sha256": "db42b4db93e04e486f1f38a85aad90fb5f527b6455813a586e0eb735a0e4719b"
+  },
+  {
+   "file": "episode_299004.npz",
+   "seed": 299004,
+   "outcome": "collision_team",
+   "records": 223,
+   "sha256": "0e62856219d0840f7393b62bf5bacf776008bcd7e2843dce2537a71004be3cfc",
+   "content_sha256": "2bc9f029d432c290345eb6f8897f82b5ef075ee6c9694f41c22cc031d715cbc5"
+  },
+  {
+   "file": "episode_299005.npz",
+   "seed": 299005,
+   "outcome": "timeout",
+   "records": 2001,
+   "sha256": "eab5118b6a689f80b0795d07ffde57a31afd00439a74e0811b10a9a7f2f91613",
+   "content_sha256": "f1647ea24391dc90754457d242770222a78aea277ab849e6cc31adba47c4bac9"
+  },
+  {
+   "file": "episode_299006.npz",
+   "seed": 299006,
+   "outcome": "timeout",
+   "records": 2001,
+   "sha256": "e1cebace8ad953db5642a6d539c3e9d995258ab257528c676981f9da47d56f12",
+   "content_sha256": "6a43395d7f63c902d632150b59cbc8307d9368c3505d5d79d01ec70b237e91cf"
+  },
+  {
+   "file": "episode_299007.npz",
+   "seed": 299007,
+   "outcome": "timeout",
+   "records": 2001,
+   "sha256": "cbc67b547720518e9c388ea1df7082eebab1a976170215a0394c6c5ed4d9ef9a",
+   "content_sha256": "22dfc45219083d5d52589dd4ce4192e162f71b0508515ea87fbb2728e3c9e4ed"
+  },
+  {
+   "file": "episode_299008.npz",
+   "seed": 299008,
+   "outcome": "collision_team",
+   "records": 882,
+   "sha256": "28c94b7f6cdd27d7277d20659880c7737868839c73309624095791603ea4868c",
+   "content_sha256": "28602d9ae282087754bf5bf836b2291dac11bbe6aadc78c13d840a3b5f74ce9e"
+  },
+  {
+   "file": "episode_299009.npz",
+   "seed": 299009,
+   "outcome": "collision_team",
+   "records": 216,
+   "sha256": "314770f375122453bfe447b50d333c651034fcea5098b7c018e03582470d82df",
+   "content_sha256": "8ef75365ca757d7dd4d0aa95e3f8651bdb9b46c8ef2b2af736060511d97bce42"
+  },
+  {
+   "file": "episode_299010.npz",
+   "seed": 299010,
+   "outcome": "collision_team",
+   "records": 579,
+   "sha256": "19e97560309f155d97b3715db4bfa3da151f9ffb3c9be6ced27a86777a807725",
+   "content_sha256": "892105d0abd54a6070a68b9cbf75afe03a77b8b1154b8a145915be317768970b"
+  },
+  {
+   "file": "episode_299011.npz",
+   "seed": 299011,
+   "outcome": "collision_team",
+   "records": 1474,
+   "sha256": "8ed169075555eb35d179dfa38656033b6387dc86bc350ce464f1344d658db003",
+   "content_sha256": "eb3c51d3fc267bbefef42eb3142cc9912ae8f52afdbf562dcde9e996301a711f"
+  },
+  {
+   "file": "episode_299012.npz",
+   "seed": 299012,
+   "outcome": "collision_team",
+   "records": 1006,
+   "sha256": "bcbcf3d5cb3409c946c944965a0b23bd3d4068232ec9656f6d792c3cef6557c6",
+   "content_sha256": "741ed0e55c6d74f20ac55e9131390bd078acf71af69fea9410c203b602e344f8"
+  },
+  {
+   "file": "episode_299013.npz",
+   "seed": 299013,
+   "outcome": "collision_team",
+   "records": 998,
+   "sha256": "526cdb56e70494886cae48da42aa18d9dba2efe160d14f61e438df737604948b",
+   "content_sha256": "45c26cdd16469c79283681655c56ffc8c0a098862589cf2cb28bab06c4a5a96a"
+  },
+  {
+   "file": "episode_299014.npz",
+   "seed": 299014,
+   "outcome": "timeout",
+   "records": 2001,
+   "sha256": "42b9a131fc9a815e26f6ec01fefe5e2cbc1f0f90c4e848ae30998741c0f663a7",
+   "content_sha256": "f356f2dcae66a56fed0ec34a6fc7118c120f54aa26cf6862996eda39b4ca09b9"
+  },
+  {
+   "file": "episode_299015.npz",
+   "seed": 299015,
+   "outcome": "collision_team",
+   "records": 628,
+   "sha256": "73e19bb64f38c8ab9f4552bc5aa1946525273fa8f58eab1124436846548532ab",
+   "content_sha256": "585a63bfb5766b80f57a66c23505764a5a6956f06753dde095b6244354ed200c"
+  },
+  {
+   "file": "episode_299016.npz",
+   "seed": 299016,
+   "outcome": "crash",
+   "records": 1129,
+   "sha256": "fcfb4af7937b99ca32f9bef211eb084adceb5d982d16e0f94b2130a404440fdc",
+   "content_sha256": "0c4376ac044098a9ea59949d2b2b4eba280d6730f7d9bb6ea1e9203d564bd36d"
+  },
+  {
+   "file": "episode_299017.npz",
+   "seed": 299017,
+   "outcome": "collision_team",
+   "records": 515,
+   "sha256": "67af4e0720054375ba0a7c63835ea907766f4735940b390e37b148f05e63be1d",
+   "content_sha256": "ad0d292d1d9846a7e04de255061528fa61b4c02e0584d082a7a9285c6f316a72"
+  },
+  {
+   "file": "episode_299018.npz",
+   "seed": 299018,
+   "outcome": "collision_team",
+   "records": 106,
+   "sha256": "fb1af589d237a81ba00d827b826558a3f84e17001080d8170778b209839a1671",
+   "content_sha256": "dc2a3606f14c2abc3119fce60ea50db6207559854c9f3cca21d6363fb02e2f2b"
+  },
+  {
+   "file": "episode_299019.npz",
+   "seed": 299019,
+   "outcome": "collision_team",
+   "records": 1039,
+   "sha256": "a91c3ae8c1e10d87b0119854fcf7925bb3a5245e9abeefc44caa310893f50411",
+   "content_sha256": "6637177ff7e9505a63cd7c1fb0d25cc43ca949a7efc404fdff9afd91210836de"
+  },
+  {
+   "file": "episode_299020.npz",
+   "seed": 299020,
+   "outcome": "collision_team",
+   "records": 148,
+   "sha256": "0dcc0fe7725c89178715d9ebe94738869b8828f542e23f0090e5866b6359ae74",
+   "content_sha256": "f0024326c8bb7a94a59063871715c3c9f418f7a8cc7a6324cae7e95c0a4a08c5"
+  },
+  {
+   "file": "episode_299021.npz",
+   "seed": 299021,
+   "outcome": "collision_team",
+   "records": 56,
+   "sha256": "b7456578818782f61093ccc6d153ee0e1b44158b025e8d40b6cc0cdcee5ebe70",
+   "content_sha256": "bbfe1b2e6faced77df065a9a2693d30195682ccf0e8d76fd364994a6ee43dece"
+  },
+  {
+   "file": "episode_299022.npz",
+   "seed": 299022,
+   "outcome": "collision_team",
+   "records": 162,
+   "sha256": "da26d125a4de7ba78c09da5f69e8a0ebeafdb0c68ea0781948520aae3e8cb353",
+   "content_sha256": "1649f3aae2c6a41767ff56450476e3bce4453a7a75ac79e7f06d924df3764d16"
+  },
+  {
+   "file": "episode_299023.npz",
+   "seed": 299023,
+   "outcome": "collision_team",
+   "records": 238,
+   "sha256": "fef9868c8c7616f77dd5452ebbdee59c4d20ac3de21f7cfd303e4f34cd236980",
+   "content_sha256": "fe7b2939ac3920b1395795842f49073ffdabe07a20eb7a24231f18272277ec69"
+  },
+  {
+   "file": "episode_299024.npz",
+   "seed": 299024,
+   "outcome": "timeout",
+   "records": 2001,
+   "sha256": "5a2d5e140b34465630e0cdb906d015a365dd8dcd299d7ca98fe1253844ec7dc8",
+   "content_sha256": "ccb10989a6e4613ae7e44875adfe8d06ee03053f135f2614961bbbcd89448ac7"
+  },
+  {
+   "file": "episode_299025.npz",
+   "seed": 299025,
+   "outcome": "collision_team",
+   "records": 120,
+   "sha256": "582cb761aae62fc1507df282553c9c272d646fbbab8f4486d0446f704004b67c",
+   "content_sha256": "76fccfbcd5bf4bebb13ea15a9d46d8dfe5295f44419a99a1c8382dcef2ad97d4"
+  },
+  {
+   "file": "episode_299026.npz",
+   "seed": 299026,
+   "outcome": "collision_team",
+   "records": 365,
+   "sha256": "87298570236d6486aec69d944b463f8530c047288ec3b5d7e0dee5446565772f",
+   "content_sha256": "a3da70f979f3e1d092343956212752afef806325b36674ede0811048fcc8afa8"
+  },
+  {
+   "file": "episode_299027.npz",
+   "seed": 299027,
+   "outcome": "collision_team",
+   "records": 1340,
+   "sha256": "89a498104151a2e134ad2a5afef4e0017ae88d99cbafa767b011588fd5a709f9",
+   "content_sha256": "9ae381e74f7d9256d61dd371cfe46b760b9fec7b38e4d5b8c5b2aac7901e0f0b"
+  },
+  {
+   "file": "episode_299028.npz",
+   "seed": 299028,
+   "outcome": "timeout",
+   "records": 2001,
+   "sha256": "5ff75586a982adf638b41a65825607f0ad48537455b2c9778f30aba51a951c4f",
+   "content_sha256": "73ccd2e2421c79e035845b0833d16167d126ec836437b9c201d91c38d47e8861"
+  },
+  {
+   "file": "episode_299029.npz",
+   "seed": 299029,
+   "outcome": "collision_team",
+   "records": 809,
+   "sha256": "24e43ef1817a2f8a3142e3b87029eca156b29449719b4fa421c171c1282a496f",
+   "content_sha256": "7489e483d9916ce0dd4812295a32c668b75e00650dff4f662b90043ab89750da"
+  },
+  {
+   "file": "episode_299030.npz",
+   "seed": 299030,
+   "outcome": "collision_team",
+   "records": 179,
+   "sha256": "d0b4b5ce0777385b4046ddcbca4c14b18b06b54926281635b474cfd90f299e0a",
+   "content_sha256": "0045af4794353b15b28f3c9bfef670fca5d62ddc120059a0c4e5b9ee58fd9c57"
+  },
+  {
+   "file": "episode_299031.npz",
+   "seed": 299031,
+   "outcome": "collision_team",
+   "records": 1035,
+   "sha256": "0b7fdb505e2430f86ec3e5dcdadf7461b32b4e4c135d97857c157e15527163a0",
+   "content_sha256": "1c6bb114d80bc507b498be45c41059679bfdb2d86a6b9946d439d79e54d39310"
+  },
+  {
+   "file": "episode_299032.npz",
+   "seed": 299032,
+   "outcome": "collision_team",
+   "records": 859,
+   "sha256": "3cd49b84ea40196f6145b78c3d20a3551bb5268afab128800c972a2206e09532",
+   "content_sha256": "5a6e1a002a1685f08c8ca02a082605a2e40cf72437f7eba87dad3efe77c31f73"
+  },
+  {
+   "file": "episode_299033.npz",
+   "seed": 299033,
+   "outcome": "collision_team",
+   "records": 425,
+   "sha256": "f2a4ba760fb72de6409cadf8dabc5f99b30cc77323c4df5f91d598e043643546",
+   "content_sha256": "04625ac4a8ff4d1d8fc97546052e6312fad327a790c5a6a181bb720bafc36fa2"
+  },
+  {
+   "file": "episode_299034.npz",
+   "seed": 299034,
+   "outcome": "collision_team",
+   "records": 149,
+   "sha256": "55dd12648207a064e96a91b3929d4f46696ec5e2fd526f82a7b79a9ac515081d",
+   "content_sha256": "5462fb9c7834bc5daaa19af81055432de2748e3a471ba03d6dff11ca116bfbc3"
+  },
+  {
+   "file": "episode_299035.npz",
+   "seed": 299035,
+   "outcome": "collision_team",
+   "records": 992,
+   "sha256": "b5cf0909b834eb22425a52dedd24820638b6843fe94e553555504089bfec1c42",
+   "content_sha256": "0e84732eeae6a116f820008ff92d03df88040b88f03df829b5badb754ec1c207"
+  },
+  {
+   "file": "episode_299036.npz",
+   "seed": 299036,
+   "outcome": "out_of_bounds",
+   "records": 1101,
+   "sha256": "0721904a38b12f4f4c8fcef73e8affaf4fa330a9197f48a71a11f58164631a7f",
+   "content_sha256": "00f1afd4fe463944d8db23ba94fb75db097c48daec66d1d152bdfdbb43a4c2e1"
+  },
+  {
+   "file": "episode_299037.npz",
+   "seed": 299037,
+   "outcome": "collision_team",
+   "records": 1537,
+   "sha256": "c6fc92074c494f6df29543004d17e0b49701eafea933906efa81c7f788d9b237",
+   "content_sha256": "aca9bc4235404c6caa20f42fe5ea485807376e66a42fbedc370a7c10f239ffc8"
+  },
+  {
+   "file": "episode_299038.npz",
+   "seed": 299038,
+   "outcome": "collision_team",
+   "records": 629,
+   "sha256": "0395da4090ce139c18b5fe36466c98510d07ef14b10bbea2e4054799f235678e",
+   "content_sha256": "cbf7e14bf1a160b0728700bfc94429e1b8b14be3977bfacebc8a6e4efbe17dc9"
+  },
+  {
+   "file": "episode_299039.npz",
+   "seed": 299039,
+   "outcome": "collision_team",
+   "records": 346,
+   "sha256": "7db914a535c26a23a8b2edeb334695d46eb3f374709ee24036e284c44d47e57e",
+   "content_sha256": "a9554f93f86861a7ab52fb16d70c59a9408bb1c156b453df8101f2fc5090db20"
+  },
+  {
+   "file": "episode_299040.npz",
+   "seed": 299040,
+   "outcome": "collision_team",
+   "records": 1551,
+   "sha256": "cecf0499413bb735611513da299dd92c518af8e557641770a95d0be139124464",
+   "content_sha256": "813076c8b996a53d274e87847fe760b468c4b7e2d6d2272581efdb175a20a061"
+  },
+  {
+   "file": "episode_299041.npz",
+   "seed": 299041,
+   "outcome": "collision_team",
+   "records": 1285,
+   "sha256": "80e57e61c0209fe42473eb7b8c06f057f2b5ba0e4944106ffe59363443b98b35",
+   "content_sha256": "c286c3209c1a6e26ed99db37ae7d235c004a401dfac8f788a636fda4ccfd273c"
+  },
+  {
+   "file": "episode_299042.npz",
+   "seed": 299042,
+   "outcome": "collision_team",
+   "records": 1243,
+   "sha256": "eaf19a8acd175cef134c26426ff3736d750f19571e17984901553b843715ec5a",
+   "content_sha256": "e9b5bd7ed1c6030e2369b02c096cc1ad81de6560587b2e24f5375892ecf026c1"
+  },
+  {
+   "file": "episode_299043.npz",
+   "seed": 299043,
+   "outcome": "collision_team",
+   "records": 1933,
+   "sha256": "ba84e582ecd6fb0575572419384252cd3e49bf195aaa05ecc47cb97ef5057772",
+   "content_sha256": "8c27891af79672ad4de86002ffe79e35a349e0e9bbddc83cb2825781540313d0"
+  },
+  {
+   "file": "episode_299044.npz",
+   "seed": 299044,
+   "outcome": "collision_team",
+   "records": 272,
+   "sha256": "eac7f971efe7adb642716e6a2f28fdb50fecce73b348b894fee001541e1415fc",
+   "content_sha256": "0c277e6919271e945fb5e56a97763495b95e14bb6f3e52e7255345fa3dd30896"
+  },
+  {
+   "file": "episode_299045.npz",
+   "seed": 299045,
+   "outcome": "collision_team",
+   "records": 476,
+   "sha256": "2eca39863a9aff6e83d9dca357adb9f186a7c42691525a53aa82b407ddaa8763",
+   "content_sha256": "c46c85480d70116be9c6cb762a6a9fde1e03015a453f89c167a8869581b0d9e3"
+  },
+  {
+   "file": "episode_299046.npz",
+   "seed": 299046,
+   "outcome": "collision_team",
+   "records": 433,
+   "sha256": "b55327535b4629e8a94f6f241d07bbee0f0bf5a1b56fb95e7ad5614d4e2092f0",
+   "content_sha256": "a424e412910efea5a4b8bbb0a5f02e7debb54e8c481c326f5c3e511717a520c3"
+  },
+  {
+   "file": "episode_299047.npz",
+   "seed": 299047,
+   "outcome": "collision_team",
+   "records": 1089,
+   "sha256": "b8f9ca1336cfab97e74f6df42ac87e0fdd5b93f1dcc0db922ccedd7aa02f89dc",
+   "content_sha256": "be0d7b25cec6117d882197772bd1537967947b57e5d12db809638fa79c4a562f"
+  },
+  {
+   "file": "episode_299048.npz",
+   "seed": 299048,
+   "outcome": "collision_team",
+   "records": 1192,
+   "sha256": "e3fb9740086ec3313138131579612aaaea3c729e9931affcaa505f693d783929",
+   "content_sha256": "2bec945bb26ba3524a05f6a0234823e1b28d0c8d27c563a436735ffe07344189"
+  },
+  {
+   "file": "episode_299049.npz",
+   "seed": 299049,
+   "outcome": "collision_team",
+   "records": 440,
+   "sha256": "5412880a1967de345f8d697c0b1a61cd3fa2769084b3d58c457c7082c4f8a52b",
+   "content_sha256": "40124ed0b6e1d80fe3e961f13f1731c2dceff6b29bf99067b336d055a7b94cdb"
+  },
+  {
+   "file": "episode_299050.npz",
+   "seed": 299050,
+   "outcome": "collision_team",
+   "records": 1119,
+   "sha256": "394fe6e0d65bcde80b9524f4d2a10aa3e94fa0d684b447f111f6c94d263329fd",
+   "content_sha256": "07c9a82b241f44755e9442e92f83e1de7892f5fea564fc6f8626e33adc544d16"
+  },
+  {
+   "file": "episode_299051.npz",
+   "seed": 299051,
+   "outcome": "collision_team",
+   "records": 391,
+   "sha256": "9305a82b79657d3e0d38e71d4c45080e9bdabf9e5a70630fed4fcb7fd7226de2",
+   "content_sha256": "44f15aff1c58c89dc846dfb29c3ec64b1cea45cf57f00d6e983506483e474ec1"
+  },
+  {
+   "file": "episode_299052.npz",
+   "seed": 299052,
+   "outcome": "collision_team",
+   "records": 356,
+   "sha256": "4495b871a8e10cbb389c10ec939e64f2fa768f8eca0017a49b686723e8c09584",
+   "content_sha256": "e4a375cd03e3c974949b962a65debaafdfb3db60377d073260f5abe71e6081ab"
+  },
+  {
+   "file": "episode_299053.npz",
+   "seed": 299053,
+   "outcome": "collision_team",
+   "records": 552,
+   "sha256": "6aa17032ac1141bb7b9d76afb982d178fbf5ee80cedf1a3add358ffbd166f74c",
+   "content_sha256": "c30fe8debcc2d71e0bb591e8bc2be8e68b2bbc9bc59d4f814aec83155beca1c8"
+  },
+  {
+   "file": "episode_299054.npz",
+   "seed": 299054,
+   "outcome": "timeout",
+   "records": 2001,
+   "sha256": "08e7677e83b8f462ea72c4ab79ae3fabb7276c821531577bb06472454911e4d6",
+   "content_sha256": "ab1bd180baca0e3ed7a755f520f10a4ef168daffe33343676f662e336a4059d0"
+  },
+  {
+   "file": "episode_299055.npz",
+   "seed": 299055,
+   "outcome": "collision_team",
+   "records": 651,
+   "sha256": "4bbc3c1a979fd351054731f261a84319835e26b97691b440594f5914cc2c8f6a",
+   "content_sha256": "8c68e5151e4453ad2a39946334f8d424650798d42012a159bc7104ed28619b24"
+  },
+  {
+   "file": "episode_299056.npz",
+   "seed": 299056,
+   "outcome": "collision_team",
+   "records": 608,
+   "sha256": "e4f35380d99ce575767e019975561299ee65c6f26b37eabd262cb48350eff3a3",
+   "content_sha256": "399a5fda2bf84b981df4f11e640ebf0e58dfb6f814335d12765ece238b2a0938"
+  },
+  {
+   "file": "episode_299057.npz",
+   "seed": 299057,
+   "outcome": "collision_team",
+   "records": 1363,
+   "sha256": "4195d173e23ebb1b8bb313dd9ec7d2c157af268df8f5906f0a25af3e07f05d84",
+   "content_sha256": "9292f854fc2ea0eebe6361dec9adf0f6876a7a55c3bf25ed38d2a634c33fd95c"
+  },
+  {
+   "file": "episode_299058.npz",
+   "seed": 299058,
+   "outcome": "timeout",
+   "records": 2001,
+   "sha256": "fc5f23dcb34ef31645c105cad21b31c58826d6dc0b5b84c95e8688e27ba168e4",
+   "content_sha256": "f1dbe34187ff3b8328dee97d65f233d86a0176c3b86d584fc95c8922bcbcd1d6"
+  },
+  {
+   "file": "episode_299059.npz",
+   "seed": 299059,
+   "outcome": "collision_team",
+   "records": 306,
+   "sha256": "a4f9fdc40a180d92e46b1b649e000648e2e48ebcfb9146b93e54eec202f3c755",
+   "content_sha256": "a3c87de3da07079ba5d4efa45ed9a677eda89918b95284eef7d56e5cdb1b7de1"
+  },
+  {
+   "file": "episode_299060.npz",
+   "seed": 299060,
+   "outcome": "collision_team",
+   "records": 63,
+   "sha256": "ba962fc5b4ae7dc9e6cf5905c3b9bc18d874a0d308a2ebe7111206b1eb38b677",
+   "content_sha256": "1895c37cc70281bed2a73b5bd72fcef37d3f70db61d218027d9427a86ecf21c4"
+  },
+  {
+   "file": "episode_299061.npz",
+   "seed": 299061,
+   "outcome": "collision_team",
+   "records": 579,
+   "sha256": "987b726d5c5f21ddb7287e90cbd6b55105f7ca0df0a4a927a03d9f69e6971ad3",
+   "content_sha256": "d81fab335cb1bbc3cfd9eeae7d3a5973f2bd0aaa48d9ef2eb7def37f302e5164"
+  },
+  {
+   "file": "episode_299062.npz",
+   "seed": 299062,
+   "outcome": "collision_team",
+   "records": 771,
+   "sha256": "8df8bca77a4de0323421a670d80d8421978c1609e59199e741f3a39333ceec99",
+   "content_sha256": "b0aed6bc8b5a269b0fd9e3593b04239949852fe9bff27200018dc2f8eadc1637"
+  },
+  {
+   "file": "episode_299063.npz",
+   "seed": 299063,
+   "outcome": "collision_team",
+   "records": 612,
+   "sha256": "d2b13fd03fb6b6060dacb46341882088e88f8ec1b0a2f0b29f7bf7d322d20ba2",
+   "content_sha256": "26d2983617ba8a896b26b6587872e0445d3e5d7f5067a8628c2e06c5436ed1e7"
+  },
+  {
+   "file": "episode_299064.npz",
+   "seed": 299064,
+   "outcome": "collision_team",
+   "records": 65,
+   "sha256": "5d155042b8967725c0c7fd0a145efac32d8b2344ae226924924bf05c933237d6",
+   "content_sha256": "74b0f44709f9ee748cb7190abe46b7f0e2ae6a1f09709faa4baeb60c9a7f7655"
+  },
+  {
+   "file": "episode_299065.npz",
+   "seed": 299065,
+   "outcome": "collision_team",
+   "records": 429,
+   "sha256": "1039be57592651792704d86b2c072e08e6bc7ffb1df1b590acbe4d0f10c0d285",
+   "content_sha256": "3ebcc1b02af7aaa17e6fc3b17afe309ee66cfcfde38a5d9f2ed0907e45b8b663"
+  },
+  {
+   "file": "episode_299066.npz",
+   "seed": 299066,
+   "outcome": "collision_team",
+   "records": 1675,
+   "sha256": "78da055910ca4736aa535fe3d87c099c9ac82a00c4ed13ec84a786a09f86b393",
+   "content_sha256": "9c0d8de4ccabfc700cdf6474e2f16032caaf14bb60e3f908795a4e6507ed8e24"
+  },
+  {
+   "file": "episode_299067.npz",
+   "seed": 299067,
+   "outcome": "collision_team",
+   "records": 572,
+   "sha256": "3b0382ffeb1406300d1576712af09fd3570d1f174a1419bd28a70e04659440cc",
+   "content_sha256": "71b3169803e587fbfa7accbb6c0121388ad9e0c067ee465a57cdc8a2a23e593d"
+  },
+  {
+   "file": "episode_299068.npz",
+   "seed": 299068,
+   "outcome": "collision_team",
+   "records": 466,
+   "sha256": "951a618230a5ede727a767935c8711e20e5edad4123839c6c7d252e9060fd473",
+   "content_sha256": "54038d1915ded64e4188e66a0b1f6603a76c521cd545b09b864bc0c09f014db1"
+  },
+  {
+   "file": "episode_299069.npz",
+   "seed": 299069,
+   "outcome": "collision_team",
+   "records": 504,
+   "sha256": "0c41f2c12316626e36337cccc2bc4d17738f50a654b83fdb23e3c93e72631587",
+   "content_sha256": "239a6d7552a3217071452fc5696144aba2c039fb18525f07b1f74b399fd9c685"
+  },
+  {
+   "file": "episode_299070.npz",
+   "seed": 299070,
+   "outcome": "collision_team",
+   "records": 480,
+   "sha256": "8c197e892b74c7d3f0c5f04270f9ea69a47247863fc6f6fe888b6247a89d7ff3",
+   "content_sha256": "2ad66f64f08ead7d1c6d7d703d5cbbb65551c5e6cd73e76c7f40c34f1ac9a225"
+  },
+  {
+   "file": "episode_299071.npz",
+   "seed": 299071,
+   "outcome": "collision_team",
+   "records": 910,
+   "sha256": "afe3939f670eeb3c37f693350d484c584db17e9d360c541093a5fc6832d7d929",
+   "content_sha256": "e4ce1376226bd0d0adfca56cf12c89b3e8b12c986db77208968fbaddf7bf5abf"
+  },
+  {
+   "file": "episode_299072.npz",
+   "seed": 299072,
+   "outcome": "collision_team",
+   "records": 113,
+   "sha256": "2128198dd0229f038008d7766b678857bead2495a520c792c3170f912c251e94",
+   "content_sha256": "011f6bcb92d5ef447ed7b86ae103b46bbbf85f6e8feba1bbbcbb3359422ac1b4"
+  },
+  {
+   "file": "episode_299073.npz",
+   "seed": 299073,
+   "outcome": "collision_team",
+   "records": 539,
+   "sha256": "73aa47ee68dae5528b293df31a8d8eb8f12f651f5a040a45160b1fe259de1982",
+   "content_sha256": "8a9f26c89ee6c501343725a312d3213df6eaeebd075fbaf3c1a36615d6af413d"
+  },
+  {
+   "file": "episode_299074.npz",
+   "seed": 299074,
+   "outcome": "out_of_bounds",
+   "records": 1025,
+   "sha256": "bbd8c19c6eb420446590d918c261268189f5ea14cc23f6c382e922562da41ccd",
+   "content_sha256": "00b0f3c72628bc756bfc6d3ae54c2dec4d95dd82eecb3067af2f7d1430cbb58f"
+  },
+  {
+   "file": "episode_299075.npz",
+   "seed": 299075,
+   "outcome": "timeout",
+   "records": 2001,
+   "sha256": "d7d4d89ec69d334fd5072e43137b34936dde70d0d9d059169d66eeb835332886",
+   "content_sha256": "9e30b44ab40ca256abd2b88fd3ea47ee7003f84041e65c23ffa1b5542a9b1533"
+  },
+  {
+   "file": "episode_299076.npz",
+   "seed": 299076,
+   "outcome": "timeout",
+   "records": 2001,
+   "sha256": "45cc6cf54a696c7ed55af07d4539267e7abab0490fec2a2196c3ef2082a00c82",
+   "content_sha256": "f2b96c5bb968175b7d34ad98a9f491d23956085dc609f1f4eb1c05465b76fcad"
+  },
+  {
+   "file": "episode_299077.npz",
+   "seed": 299077,
+   "outcome": "timeout",
+   "records": 2001,
+   "sha256": "e9a12a03c00f62aaeb29b4ee3e925a56dd456f2828b7497b7632a0c5c9848d06",
+   "content_sha256": "36b7c0b400120a79a7709d81844b215138a000fad669dfe4f0e9c049cb08a034"
+  },
+  {
+   "file": "episode_299078.npz",
+   "seed": 299078,
+   "outcome": "collision_team",
+   "records": 464,
+   "sha256": "4028df85be31ba2c06178e36241065d9996217ed061726b67b446674744275ce",
+   "content_sha256": "02c0a19058d144cfa6b04ed613f4499060749c6384437357151cb3d031dca77e"
+  },
+  {
+   "file": "episode_299079.npz",
+   "seed": 299079,
+   "outcome": "collision_team",
+   "records": 358,
+   "sha256": "b3c2b3c820100a39d3385a376f8dd7aa77e3c48c89d099e466af3a67e3c8fcd4",
+   "content_sha256": "6809c2b4d78f7efbdee9d6b5ce28cfb7d196e4afcb7ccea6d1243361408b7f27"
+  },
+  {
+   "file": "episode_299080.npz",
+   "seed": 299080,
+   "outcome": "collision_team",
+   "records": 1636,
+   "sha256": "b0bc092aad08de146ff5c30d344f8c5c9d08d582abbd310bc905ba11d30d1875",
+   "content_sha256": "5767eb36384a80e5de8e28d4ea776beb2ece3fdac440dbad0725b4915c2b01eb"
+  },
+  {
+   "file": "episode_299081.npz",
+   "seed": 299081,
+   "outcome": "timeout",
+   "records": 2001,
+   "sha256": "5f55af7313bcc1cc3debdfa9212182d5742b484525dfe523a63cbda86184f7dd",
+   "content_sha256": "c691446def01e00ade06f507a2131754e39b3c385097af36074dd8abfa834932"
+  },
+  {
+   "file": "episode_299082.npz",
+   "seed": 299082,
+   "outcome": "collision_team",
+   "records": 1202,
+   "sha256": "a3f41941c7a2a30f171130822900a6ae1770a36751960223f849df7735da8797",
+   "content_sha256": "00b6520280a09ed3d78ded5d5de7f0197254cba86483a913d33f7e88d69bd2d0"
+  },
+  {
+   "file": "episode_299083.npz",
+   "seed": 299083,
+   "outcome": "collision_team",
+   "records": 679,
+   "sha256": "68268ee41dfaa845b882ee7b76d2db728d82f95b914955353f09520d49458086",
+   "content_sha256": "26909f7693a31e42e42d2775ab80c828602a1a8221093d18e9000e87b132e96e"
+  },
+  {
+   "file": "episode_299084.npz",
+   "seed": 299084,
+   "outcome": "collision_team",
+   "records": 105,
+   "sha256": "df63ba0f44efcb1299491430c3473445c9fec338556cddb89e6baf82662a4b57",
+   "content_sha256": "b15b04d6cf564d2699111ace3ff65f302e8613827d81713d4267d23bdf00c5d6"
+  },
+  {
+   "file": "episode_299085.npz",
+   "seed": 299085,
+   "outcome": "out_of_bounds",
+   "records": 1388,
+   "sha256": "c18d89124b5dd95eac59852bcd92b554f12d6f1c5a418aae337af2f3dc7708b4",
+   "content_sha256": "bc0ae455300f0002afe20f6061a0f7eff89989368bd6d50967d6549644115398"
+  },
+  {
+   "file": "episode_299086.npz",
+   "seed": 299086,
+   "outcome": "collision_team",
+   "records": 286,
+   "sha256": "87b859bff639fe4705b11f305795fe7448afc299ca506628c5712ed505c2f740",
+   "content_sha256": "a586d6c6a559403e72489b2c54e06d503bcb8cf04d5de9275e7fbf20f983993a"
+  },
+  {
+   "file": "episode_299087.npz",
+   "seed": 299087,
+   "outcome": "collision_team",
+   "records": 1186,
+   "sha256": "6307333d0421514422de1f3093af832c933e22f718daa4f310abc8a2f1513c39",
+   "content_sha256": "f1dc18563c8d7b1aa1caa8ee91981a9c6b532a279fd90d3bad4839f6882f3c81"
+  },
+  {
+   "file": "episode_299088.npz",
+   "seed": 299088,
+   "outcome": "collision_team",
+   "records": 187,
+   "sha256": "4de47fc958f934b7a4683acfe710a131f4b2bc1bb3a367275106eda2729ee5d5",
+   "content_sha256": "f8b8f88c97f0528eb9c4a9e6349ee75a476ee0a2164ce001913ddd424294db52"
+  },
+  {
+   "file": "episode_299089.npz",
+   "seed": 299089,
+   "outcome": "collision_team",
+   "records": 890,
+   "sha256": "393743f333a4561d8b57fab76cab91957666d707c6dc7185d82b42f4ac07234f",
+   "content_sha256": "31ae5cfe8817a24439208695ab4470028c84b797e5ade77b7c81e79ceb8b42ab"
+  },
+  {
+   "file": "episode_299090.npz",
+   "seed": 299090,
+   "outcome": "collision_team",
+   "records": 1021,
+   "sha256": "29cf8ec9f14adcdcfa3674274518fa1e173ae3c395809462696ce4607daa4f85",
+   "content_sha256": "11573a34a5f3d29314b64ed1a8149ba259f0e0dca72538098d9ddfc308973cbd"
+  },
+  {
+   "file": "episode_299091.npz",
+   "seed": 299091,
+   "outcome": "collision_team",
+   "records": 180,
+   "sha256": "d83b57412d7bc57e38f95e658e74708f86232fe289cc445cca0ea31bc6b090f3",
+   "content_sha256": "366dfca8d8d6b3e495b2678f8a3734a0827b630e0465d2b6ac9b7ab4cdae8875"
+  },
+  {
+   "file": "episode_299092.npz",
+   "seed": 299092,
+   "outcome": "collision_team",
+   "records": 1617,
+   "sha256": "975290c1ef3d3fb161a5224cc29ba4610ec4db5fb181ef7c3d401ff7e8860d3c",
+   "content_sha256": "98b63431f724c28b6414ed5afa95f971c99b9deba84b9f2f15058283e4db6530"
+  },
+  {
+   "file": "episode_299093.npz",
+   "seed": 299093,
+   "outcome": "collision_team",
+   "records": 1665,
+   "sha256": "9213126af2f414ee876f447afd2a2e43034e4d1a02814c2b4db8a0da3236f728",
+   "content_sha256": "f60936ba8e7ec1bdd8f2b9ff4a16d20a5b870f55a02ddd5c93f066c8e02c7f1e"
+  },
+  {
+   "file": "episode_299094.npz",
+   "seed": 299094,
+   "outcome": "collision_team",
+   "records": 969,
+   "sha256": "4564c86cfb9ef26e5ac5f5859ecd6874e0845ea38dce247d28ad9156f79e28fe",
+   "content_sha256": "5342c996787cfcfec7c7b5f0ba718a0b8b7aab2bb5aad40e893a515a24cff8af"
+  },
+  {
+   "file": "episode_299095.npz",
+   "seed": 299095,
+   "outcome": "timeout",
+   "records": 2001,
+   "sha256": "c2077d149d4e865f585e6093638ef16e89157ae719f0d4ea927f27d44d4f1872",
+   "content_sha256": "722ffc85c0366748cd7432890212ea21d0a8200774a9fb65d39b7a523327d5f1"
+  },
+  {
+   "file": "episode_299096.npz",
+   "seed": 299096,
+   "outcome": "collision_team",
+   "records": 597,
+   "sha256": "667c9c59c1ea2058f05f3ee2a4a800fe246d33a9571949b245d4a5423bfc5b2d",
+   "content_sha256": "876db018c1ba7348ece6f1671440c3b353e89188a2f8f6ad9cf48a7285ce4855"
+  },
+  {
+   "file": "episode_299097.npz",
+   "seed": 299097,
+   "outcome": "collision_team",
+   "records": 304,
+   "sha256": "c14a895390984e5c3b1de991665b66a0467fd4e5a37dc960f88893cf28fe6367",
+   "content_sha256": "b866cb9ae894ca8b07ecef071dbe667976ea4b9a4b798262b85e361db9dc52af"
+  },
+  {
+   "file": "episode_299098.npz",
+   "seed": 299098,
+   "outcome": "collision_team",
+   "records": 347,
+   "sha256": "2a4b1d2603661e67c0e01e760d926ce1724e8569153b25b0d33d2f1996ca9f5e",
+   "content_sha256": "3a97ea0686b23ee460bbe7e53c20605acf0adcba5885063d19f82b4571f9d09b"
+  },
+  {
+   "file": "episode_299099.npz",
+   "seed": 299099,
+   "outcome": "collision_team",
+   "records": 755,
+   "sha256": "f36ddb7fb1f407fb3bd34a47899ed4aadef659a5c01061a33b6b309315f8f249",
+   "content_sha256": "302913c296a375a30715c09e7beef44969bad7542fa0b4b12f0d80e3bd435462"
+  }
+ ]
+}

@@ -13,15 +13,16 @@ Tag `arena-v0.3` freezes:
 - the planner and its settings (`planning.py`, `run.py`): MPPI with 512 samples, a 15-decision
   horizon, variance scale 0.04, temperature 0.05, one iteration, a warm start, and the solver
   reseeded every episode from (seed 0, layout seed);
-- the data collector, its behavior policy and the reference manifests of the standard datasets
-  (`collect.py`, `explore-v1`, `manifests/`), the training windows (`windows.py`) and the
+- the data collector, its behavior policies and the reference manifests of the standard datasets
+  (`collect.py`, `explore-v2`, `manifests/`), the training windows (`windows.py`) and the
   open-loop metric (`openloop.py`);
 - the analysis plan, [ANALYSIS.md](ANALYSIS.md).
 
-The code files are unchanged since `arena-v0.2`, so the reference rows' results carry over. The tag
-is created before the first `test` run; until then the frozen code files are those of `arena-v0.2`,
-which are identical. The evaluation harness for layers 1–3 ([HARNESS.md](HARNESS.md)) is maintained
-by the maintainer and is not frozen; ANALYSIS.md fixes what each quantity it reports means.
+Since `arena-v0.2`, only `collect.py` has changed: it adds the behavior policy `explore-v2`, whose
+datasets replace the `explore-v1` ones as the standard (Section 5). The closed loop never imports
+`collect.py`, so the reference rows' results carry over. The tag is created before the first `test`
+run. The evaluation harness for layers 1–3 ([HARNESS.md](HARNESS.md)) is maintained by the
+maintainer and is not frozen; ANALYSIS.md fixes what each quantity it reports means.
 
 Participants never edit these files: `.github/CODEOWNERS` routes any change to the maintainer. A
 change to any of the code files needs a new tag and reruns of the U, physics and adaptive rows. A
@@ -73,7 +74,7 @@ PYTHONPATH=. data/uav_arena/.venv/bin/python -m uav_arena.run --predictor my_pac
   --predictor-options '{"checkpoint": "data/my_model/ckpt.pt"}' --suite dev --seeds 0:5 \
   --out data/uav_arena/results/my_model_mppi_dev_s0-5.json
 PYTHONPATH=. data/uav_arena/.venv/bin/python -m uav_arena.openloop --predictor my_package.my_model:make \
-  --predictor-options '{"checkpoint": "data/my_model/ckpt.pt"}' --data data/uav_arena/datasets/explore_v1_val \
+  --predictor-options '{"checkpoint": "data/my_model/ckpt.pt"}' --data data/uav_arena/datasets/explore_v2_val \
   --out data/uav_arena/results/my_model_openloop_val.json
 ```
 
@@ -110,28 +111,47 @@ In training:
 
 ## 5. Data
 
-- **Collector:** `python -m uav_arena.collect --seeds 200000:202000 --out data/uav_arena/datasets/explore_v1`.
-  Behavior policy `explore-v1`: formation flight between random waypoints, at random speeds and
-  formation sizes, plus each aircraft's own Ornstein–Uhlenbeck deviation. Episodes are open-field
-  versions of the seeds' scenarios, with the hidden 10–40 g payload, and last up to 20 s: an arena
-  event ends one early, as in 5 of the 2,000 standard training episodes (two aircraft-separation
-  events, two exits from the workspace and one arrival at the seed's goal).
+- **Collector:** `python -m uav_arena.collect --seeds 200000:202000 --out data/uav_arena/datasets/explore_v2`.
+  Behavior policy `explore-v2`: formation flight between random waypoints, at random speeds and
+  formation sizes, flown with the shared planner's action statistics.
+  - Every decision, each aircraft's increment is the step to its place in the formation plus
+    Gaussian noise at MPPI's sampling scale, 0.04 m per axis. The offsets this builds up decay over
+    the planner's 15-decision horizon, so within a horizon they wander like a candidate's.
+  - Formation speeds reach the planner's action limit, and setpoint targets keep only the cost's
+    margins: 0.30 m above the payload and 0.18 m between aircraft.
+  - Episodes are open-field versions of the seeds' scenarios, with the hidden 10–40 g payload, and
+    last up to 20 s. An arena event ends most of them early. Of the 2,000 standard training
+    episodes, 204 fly the full 20 s; 1,686 end in an aircraft-separation event, 104 in an exit from
+    the workspace and 6 in a crash. The data thus holds the close approaches that the planner's
+    candidates explore.
+- **Why `explore-v2`.** U's planner commands larger, more individual and more abrupt increments than
+  `explore-v1` flew. `coverage.py` compares a dataset with U's flights (HARNESS.md, Section 7). On
+  U's `dev` flights, `explore-v1` left 47%, 70% and 64% of U's per-aircraft increments, differences
+  from the team's mean increment and changes of increment beyond its 99th percentile; `explore-v2`
+  leaves 8%, 15% and 16%, and covers U's states. Trained on `explore-v2` instead, the example
+  participant's layer-1 error on U's states falls from 14.6 to 10.8 cm, and its `dev` closed loop
+  rises from 7 to 21 successes of 40.
 - **What a file holds:** the true state every 10 ms (aircraft position, velocity, rotation columns,
   body rates; payload position, velocity) and every setpoint flown, with its time. Any latency is
   applied offline, as `openloop.observation` does.
-- **Standard budget:** 2,000 training episodes (seeds 200000–201999), about 11 hours of flight and
-  1.6 GB. The data-scaling axis uses the first 250, 500, 1,000 and 2,000. The analysis uses two
-  budgets, the standard 2,000 and the first 500 (seeds 200000–200499); see Section 6.
+- **Standard budget:** 2,000 training episodes (seeds 200000–201999), 170,304 decisions (about
+  4.7 hours of flight) and 0.7 GB. The data-scaling axis uses the first 250, 500, 1,000 and 2,000.
+  The analysis uses two budgets, the standard 2,000 and the first 500 (seeds 200000–200499); see
+  Section 6.
 - **Validation set:** seeds 299000–299099 (100 episodes), collected with
-  `--seeds 299000:299100 --out data/uav_arena/datasets/explore_v1_val`.
+  `--seeds 299000:299100 --out data/uav_arena/datasets/explore_v2_val`.
 - **Storage and verification:** `data/` is never committed. Regenerate the datasets from the tag
   (about a minute on 24 cores) or copy them, then run
   `python -m uav_arena.collect --verify <directory>`. It compares every episode's content hash
-  (array names, dtypes, shapes and values) with the reference manifests in `uav_arena/manifests/`,
-  generated at commit `03aaecb`. A file's own SHA-256 also depends on the zlib build that
-  compressed it; the content hash does not. Regeneration has been checked on Linux x86-64 (Ubuntu
-  26.04, gcc 15.2); on another platform, copy the data if verification fails. An episode whose
-  contents differ from the reference is another dataset.
+  (array names, dtypes, shapes and values) with the reference manifests of its policy in
+  `uav_arena/manifests/`; each manifest records the commit that generated it. A file's own SHA-256
+  also depends on the zlib build that compressed it; the content hash does not. Regeneration has
+  been checked on Linux x86-64 (Ubuntu 26.04, gcc 15.2). It does not reproduce the references on
+  Ubuntu 22.04; there, and on any platform where verification fails, copy the data. An episode
+  whose contents differ from the reference is another dataset.
+- **Older policy:** `explore-v1`, the standard data up to `arena-v0.2`, stays in `collect.py` with
+  its manifests (`--policy explore-v1`). Results on it are labelled with the policy and are not
+  comparable with `explore-v2` results.
 - **Training windows (optional):** `windows.py` turns episodes into training examples aligned
   exactly as `openloop.py` scores predictions. It never loads the payload mass, and it pads the
   episode start the same way at training and evaluation time (call `padded_recent` in `observe`).
@@ -162,9 +182,8 @@ In training:
   committed.
 - Layers 1–3 are computed with the evaluation harness ([HARNESS.md](HARNESS.md)) on U's recorded
   `test` questions, and the headline analysis follows [ANALYSIS.md](ANALYSIS.md).
-- Work on your own branch from `uav-arena`, whose frozen code files are those of `arena-v0.2`,
-  unchanged in `arena-v0.3`. Put the
-  model under your own module (for example `uav_arena/participants/<name>/`) with its tests, and
-  open a pull request into `uav-arena`. The description holds the summary tables and the commands
-  that produced them.
+- Work on your own branch from `uav-arena`; its frozen files become `arena-v0.3` before the first
+  `test` run. Put the model under your own module (for example `uav_arena/participants/<name>/`)
+  with its tests, and open a pull request into `uav-arena`. The description holds the summary
+  tables and the commands that produced them.
 - The maintainer adds the row to the README.
