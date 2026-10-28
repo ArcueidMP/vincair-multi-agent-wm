@@ -91,12 +91,35 @@ PYTHONPATH=. data/uav_arena/.venv/bin/python -m uav_arena.run \
 - 骨干默认history=4，当前C配置history=1。配对实验需同步history、骨干宽度并报告包含各自读出头的总参数量。
 - no_cross阻断无人机之间的直接attention，保留经过payload的间接路径。
 
-## 验证与后续任务
+## 验证
 
 相关102项测试通过，覆盖Arena回归、状态排列、15步反传、1/512/555候选、reset、
 不读取载荷质量、时间因果性、坐标平移和checkpoint重载。完整测试命令与结果见结果JSON。
 
-1. 分别检查readout重建与latent多步预测的收敛，定位主要误差来源。
-2. 在前250个训练episodes上继续调参，使用完整验证集的`--stride 10`评分。
-3. 各变体验证分数低于8.26 cm后，运行一次40 episodes的dev并更新结果。
-4. 维护者审阅Phase A后进入Phase B。
+## 后续任务与验收
+
+按[TASKS.md](../../TASKS.md)推进三条JEPA模型行，并与W-ar共享骨干。
+
+### Phase A：训练收敛与闭环检查
+
+- [x] 实现三个变体、共享骨干、训练入口、预测接口及测试。
+- [x] 完成前250个训练episodes的五次试验，记录完整验证集的stride-10分数、参数量与计算开销。
+- [ ] 分别检查readout重建和latent多步预测的逐步误差，再调整history、损失权重与训练日程。
+- [ ] 将三个变体的验证selection score分别降到8.26 cm以下。
+- [ ] 各变体运行一次dev seeds 0–4的全部8种条件（40 episodes），记录分条件成功数、失败类型与到达时间。
+- [ ] 与june同步W-ar配对实验的history、full mask及骨干宽度，并报告包含各自读出头的总参数量。
+
+### Phase B：维护者审阅后执行
+
+- [ ] 三个变体使用同一组最多8个配置，在2,000个标准训练episodes上分别训练；
+  用完整验证集的每个decision、四种延迟分别选出各变体的配置，并记录所有尝试。
+- [ ] 每个变体固定所选配置，分别在2,000和前500个episodes上训练各3个新seed；
+  两种数据预算保持相同训练步数，500-episode组沿用所选配置。三变体合计18个正式模型。
+- [ ] 每个正式模型在冻结MPPI下执行一次test：50个layouts×8种条件=400 episodes，记录成功率J。
+- [ ] 对接维护者的U记录状态与harness，补齐L1、L2跨智能体CEE与L3高代价决策比例，
+  按[ANALYSIS.md](../../ANALYSIS.md)交付各条件、seed和数据预算的指标与layout bootstrap区间。
+- [ ] 汇总参数量、训练GPU小时和512×15预测耗时；记录arena tag、harness commit、
+  question-set manifest与checkpoint SHA256。
+
+当前表格中的selection score用于训练配置选择；正式L1在U的记录状态上预测U的15步计划。
+后续分析使用L1、L2和J检验跨智能体误差与闭环成功率的关系，并比较三种实体结构。

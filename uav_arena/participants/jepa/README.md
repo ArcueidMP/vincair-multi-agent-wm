@@ -7,6 +7,32 @@ the arena. `backbone.py` contains no JEPA loss, SIGReg, state head or training
 loop; W-ar supplies its own direct-state head and loss. The JEPA-specific
 objective, adapter and training entrypoint are separate modules described below.
 
+## Task and evaluation
+
+This participant implements Yihao's three JEPA rows and the shared W-ar backbone
+assigned in [TASKS.md](../../TASKS.md). The arena's [README](../../README.md)
+defines the shared MPPI; [ANALYSIS.md](../../ANALYSIS.md) defines the comparison
+of cross-agent prediction error with closed-loop success.
+
+| File | Responsibility |
+|---|---|
+| `backbone.py` | UAV/payload tokenizer, encoder, action-conditioned predictor and attention variants; imported by W-ar |
+| `objective.py` | Latent rollout, SIGReg and the 15-feature physical readout loss |
+| `model.py` | Arena factory, observation history, reset and batched trajectory prediction |
+| `train.py` | Training-only normalization, optimization, checkpoints and run metadata |
+| [PHASE_A.md](PHASE_A.md) | Five measured runs, reproduction commands, compute and remaining tasks |
+| [phase_a_summary.json](results/phase_a_summary.json) | Configurations, validation metrics, diagnostics and hashes |
+
+The factory `uav_arena.participants.jepa.model:make` serves both the shared
+planner and the [evaluation harness](../../HARNESS.md). It accepts single-plan
+`(1, 1)`, MPPI `(1, 512)` and harness `(1, 555)` leading shapes, followed by
+`(15, 3, 3)` setpoints. It returns aircraft positions, payload positions and
+payload velocities at each decision endpoint.
+
+Phase A uses 250 training episodes and validation at stride 10. Each variant's
+score must fall below 8.26 cm, followed by a 40-episode dev run. Current scores
+and the Phase B delivery checklist are in [PHASE_A.md](PHASE_A.md).
+
 ## W-ar import contract
 
 ```python
@@ -77,9 +103,10 @@ the transformer uses a causal time mask, so older outputs cannot see it.
   SIGReg belongs to JEPA training only; prediction itself is deterministic.
 
 The two objectives share the actual tokenizer/transformer implementation,
-not trained weights. W-ar must select `attn="full"`. For paired experiments, align history and width and report total parameter
-counts. The JEPA readout predicts 15 planner features; W-ar predicts all 51
-state features. JEPA parameter counts are in [PHASE_A.md](PHASE_A.md).
+not trained weights. W-ar uses `attn="full"`. For paired experiments,
+align history and width and report total parameter counts. The JEPA readout
+predicts 15 planner features; W-ar predicts all 51 state features. JEPA parameter
+counts are in [PHASE_A.md](PHASE_A.md).
 
 ## Variants and capacity
 
@@ -96,8 +123,7 @@ state features. JEPA parameter counts are in [PHASE_A.md](PHASE_A.md).
 
 `full` and `no_cross` have identical learned parameter shapes; only their
 attention masks differ. The encoder and predictor masks both enforce the
-variant. Learned token/time embeddings follow the upstream implementation;
-no claim of full permutation equivariance is made.
+variant. The predictor retains the upstream learned token-slot and time embeddings.
 
 ## Checks and handoff
 
@@ -157,8 +183,8 @@ PYTHONPATH=. data/uav_arena/.venv/bin/python -m uav_arena.openloop \
 Every run needs a fresh output prefix. The trainer writes training arguments,
 selected training seeds, the dataset manifest hash, source hashes, parameter
 count, loss components and runtime alongside the checkpoint. Intermediate
-`.stepN.pt` files are labelled incomplete for debugging. The 8.26 cm gate refers to the frozen validation metric,
-not to the unitless training loss. No `dev` outcome selects configurations.
+`.stepN.pt` files are labelled incomplete for debugging. Configuration
+selection uses the validation score; dev runs check closed-loop behavior.
 
 `model.py::make(checkpoint, device=None)` is the participant entrypoint.
 Default device is CUDA when available, otherwise CPU; returned predictions
@@ -175,9 +201,6 @@ OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 PYTHONPATH=. \
   tests/test_uav_jepa_backbone.py tests/test_uav_jepa_participant.py
 ```
 
-Formal hyperparameter selection, fresh training seeds, both data budgets and
-the final test suite belong to Phase B after maintainer review; they are not
-part of this package's Phase A runs.
-
-Measured Phase A outcomes, all attempts, commands and remaining limitations
-are recorded in [PHASE_A.md](PHASE_A.md). Check its status before starting Phase B.
+After Phase A review, each variant selects its configuration on the full
+validation set and trains three new seeds at each of the 2,000/500-episode
+budgets. [PHASE_A.md](PHASE_A.md) tracks the results and next tasks.
