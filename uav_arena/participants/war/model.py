@@ -35,6 +35,8 @@ class WARPredictor:
         config = pack["config"]
         self.history = int(config["history"])
         self.backbone = build_backbone(config["backbone"], config["backbone_options"]).to(self.device).eval()
+        if int(getattr(self.backbone, "history", self.history)) != self.history:
+            raise ValueError("checkpoint and backbone history settings must match")
         self.head = EntityDeltaHead(self.backbone.token_dim).to(self.device).eval()
         self.backbone.load_state_dict(pack["backbone_state"])
         self.head.load_state_dict(pack["head_state"])

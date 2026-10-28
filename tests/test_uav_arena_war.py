@@ -1,4 +1,4 @@
-"""W-ar outer-loop tests with a stand-in for Yihao's shared backbone."""
+"""W-ar outer-loop and shared-backbone integration tests."""
 from __future__ import annotations
 
 import pytest
@@ -11,6 +11,7 @@ from torch.utils.data import default_collate
 
 from uav_arena.collect import _write
 from uav_arena.openloop import load_episode, observation
+from uav_arena.participants.jepa.backbone import make_backbone
 from uav_arena.participants.war.model import make
 from uav_arena.participants.war import train
 from uav_arena.participants.war.objective import EntityDeltaHead, multistep_loss
@@ -31,8 +32,40 @@ class FakeBackbone(nn.Module):
         return self.linear(state_history[:, -1])[:, None].expand(-1, 4, -1)
 
 
-def fake_factory():
+def fake_factory(**options):
     return FakeBackbone()
+
+
+class PayloadSlice(nn.Module):
+    def forward(self, value):
+        return value[..., :6]
+
+
+def test_entity_head_restores_field_major_state_order():
+    head = EntityDeltaHead(15)
+    head.aircraft = nn.Identity()
+    head.payload = PayloadSlice()
+    tokens = torch.arange(4 * 15, dtype=torch.float32).reshape(1, 4, 15)
+    output = head(tokens)
+    expected = torch.cat((tokens[:, :3, :3].flatten(1),
+                          tokens[:, :3, 3:6].flatten(1),
+                          tokens[:, :3, 6:12].flatten(1),
+                          tokens[:, :3, 12:15].flatten(1),
+                          tokens[:, 3, :6]), dim=-1)
+    torch.testing.assert_close(output, expected)
+
+
+def test_real_shared_backbone_propagates_war_gradients(episode):
+    batch = default_collate([window(episode, 10, 50, horizon=15, history=4)])
+    backbone = make_backbone(dim=16, latent=8, enc_layers=1, pred_layers=1,
+                             heads=4, history=4, attn="full")
+    head = EntityDeltaHead(backbone.token_dim)
+    stats = dict(state_mean=torch.zeros(51), state_std=torch.ones(51),
+                 delta_mean=torch.zeros(51), delta_std=torch.ones(51))
+    loss = multistep_loss(backbone, head, batch, stats, steps=2)
+    loss.backward()
+    assert torch.isfinite(loss)
+    assert backbone.tokenizer.aircraft[0].weight.grad is not None
 
 
 @pytest.fixture(scope="module")

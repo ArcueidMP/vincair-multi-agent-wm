@@ -14,8 +14,9 @@ The downloaded standard datasets passed the frozen content check:
 | `explore_v2` | 2,000 | 0 | 0 |
 | `explore_v2_val` | 100 | 0 | 0 |
 
-The arena regression suite produced 63 passed, 2 skipped and 1 deselected. The
-deselected test regenerates an episode and compares its exact content hash;
+The arena and shared-backbone regression suite produced 95 passed, 2 skipped
+and 1 deselected. The deselected test regenerates an episode and compares its
+exact content hash;
 the task card documents that Ubuntu 22.04 does not reproduce the frozen
 Ubuntu 26.04 reference. No frozen file was changed to hide that platform
 difference, and the copied standard datasets themselves match every manifest.
@@ -38,6 +39,22 @@ TS-infinity), but the member's mean is propagated without Gaussian sampling.
 | PR #2 configuration, maintainer rerun | 200 | 5,000 | no | 9.42 cm |
 | Phase A selected | 256 | 10,000 | no | **7.12 cm** |
 | Example Phase A bar | 512 | 5,000 | no | **8.26 cm** |
+
+The maintainer retrained this selected configuration on Ubuntu 26.04 with an
+RTX 5070 Laptop and reproduced the selection score, every per-latency payload
+and aircraft error, and the parameter count to the reported precision. The
+Phase A review passed; the PR remains a draft through Phase B.
+
+Before `arena-v0.3` replaced the standard data, the following development
+configurations were also scored on the older `explore-v1_val`. They are listed
+for completeness but are not comparable with, and did not select, the v2 row:
+
+| Legacy `explore-v1` configuration | Steps/member | Selection score |
+| --- | ---: | ---: |
+| Single-frame prototype | 1,000 | 21.51 cm |
+| Four-frame history, fixed observed-payload origin | 2,000 | 15.19 cm |
+| Four-frame history, current-payload centering | 2,000 | 5.66 cm |
+| Four-frame history, current-payload centering | 5,000 | 5.23 cm |
 
 The selected configuration's validation errors are:
 
@@ -82,12 +99,13 @@ timeouts and one crash. `dev` was not used to select another configuration.
 
 `participants/war/` contains a direct physical-state increment head, a
 15-decision differentiable state loss, the training CLI and the planner
-adapter. Its training data path now defaults to `explore_v2`. Tests run the
-outer loop with a stand-in backbone, including the required call shapes and
-reset behavior. The actual row cannot train until Yihao publishes the
-tokenizer/transformer with its `full` attention mask. The proposed import
-contract is in `participants/war/README.md`; parameter-count matching to JEPA
-`full` must be checked after that integration.
+adapter. Its training data path defaults to `explore_v2`. Yihao's shared
+tokenizer/transformer is now integrated at
+`uav_arena.participants.jepa.backbone:make_backbone`, and tests exercise both
+the stand-in and real backbone. The interface and field-major state layout are
+confirmed in `participants/war/README.md`. Formal W-ar training waits for the
+JEPA full row's final structural configuration and total capacity so the two
+remain matched.
 
 Checkpoints and raw JSON outputs remain in the ignored `data/uav_arena/` tree
 as required by `PARTICIPANTS.md`; only the code, tests, commands and this
