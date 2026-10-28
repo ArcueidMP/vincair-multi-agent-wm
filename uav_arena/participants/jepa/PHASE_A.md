@@ -38,8 +38,16 @@ flat每帧latent256，匹配总latent预算。所有实验batch128、lr0.001、s
 
 记录的Phase A训练GPU时间合计2.341小时；不含统计、验证、dev和调试。
 设备RTX4060 Laptop 8GB，WSL2 Ubuntu26.04.1；时间受笔记本功耗和并发CPU检查影响。
-配置、分延迟结果、checkpoint及source/data SHA256汇总于[phase_a_summary.json](results/phase_a_summary.json)。
+配置与完整指标保存在`data/uav_arena/results/jepa/phase_a_summary.json`；checkpoint SHA256见下表。
 训练生成的checkpoint与原始结果保存在`data/uav_arena/`下。
+
+| checkpoint | SHA256 |
+|---|---|
+| phase_a_full_a | `0cf9f51fcfc6e656de188ff3e93335fe8680c96cb4d243cea8556a752a91ce0b` |
+| phase_a_full_b | `774f30d551d2eaaa04cf45febe9328807758e2da782949964ff9663cc10ff7b7` |
+| phase_a_full_c | `6461507f53be90b700e73428fb6652a3a96573b3b8de37a2299b5ff51084fbdb` |
+| phase_a_no_cross_c | `1847a74039bdc0ad0717bddd4bd69aa14c1c7643754f8c92410c45f89c31233d` |
+| phase_a_flat_c | `b7842f3697f0e1780fc22df6a610f1b2dfb1d011c762a468b39dcaf9102dba0a` |
 
 512候选×15步调用耗时：CUDA，候选从CPU输入并将结果还原到CPU，观察编码已缓存；
 warmup2次后测量10次均值，包含设备传输及同步，不包含observe或完整MPPI循环。
@@ -83,6 +91,18 @@ PYTHONPATH=. data/uav_arena/.venv/bin/python -m uav_arena.run \
   --suite dev --seeds 0:5 --out data/uav_arena/results/reproduce_full_c_dev.json
 ```
 
+
+## 数据校验
+
+在当前arena-v0.3数据上重新执行`python -m uav_arena.collect --verify <directory>`：
+
+| 数据集 | match | differ | unknown |
+|---|---:|---:|---:|
+| explore_v2 | 2000 | 0 | 0 |
+| explore_v2_val | 100 | 0 | 0 |
+
+训练仍只选取前250个episodes。
+
 ## 实现与共享接口
 
 - 基于`vmas_pusht/model.py`，使用latent MSE、SIGReg、encoded/predicted readout及delta loss。
@@ -91,10 +111,57 @@ PYTHONPATH=. data/uav_arena/.venv/bin/python -m uav_arena.run \
 - 骨干默认history=4，当前C配置history=1。配对实验需同步history、骨干宽度并报告包含各自读出头的总参数量。
 - no_cross阻断无人机之间的直接attention，保留经过payload的间接路径。
 
+## 冻结编码器读出探针
+
+父checkpoint：`phase_a_full_c.pt`。冻结完整父模型，另行随机初始化同结构读出头，
+使用前250个训练episodes的全部67,012个窗口训练5,000步，batch128、lr0.001、
+AdamW（weight decay0.001）、OneCycle、seed0。沿用父模型归一化，只优化编码状态读出的MSE。
+
+完整100个验证episodes按stride10评估3,140个窗口，覆盖四种延迟。
+编码器、预测器及原读出头参数的训练前后哈希一致，父checkpoint文件也保持不变。
+
+| 划分 | 读出头 | 观测载荷cm | 未来载荷cm | 观测飞机cm | 未来飞机cm | 未来载荷速度m/s |
+|---|---|---:|---:|---:|---:|---:|
+| 训练集 | 原读出 | 3.296 | 4.800 | 8.871 | 10.027 | 0.0847 |
+| 训练集 | 新读出 | 1.443 | 1.942 | 2.962 | 3.501 | 0.0420 |
+| 验证集 | 原读出 | 3.187 | 4.883 | 8.579 | 9.975 | 0.0858 |
+| 验证集 | 新读出 | 1.442 | 1.995 | 2.916 | 3.560 | 0.0432 |
+
+验证集未来载荷重建误差分段：
+
+| 读出头 | 延迟 | 第1–5步cm | 第6–10步cm | 第11–15步cm |
+|---|---|---:|---:|---:|
+| 原读出 | 0 ms | 4.497 | 4.751 | 5.188 |
+| 原读出 | 50 ms | 4.587 | 4.778 | 5.216 |
+| 原读出 | 100 ms | 4.637 | 4.816 | 5.247 |
+| 原读出 | 200 ms | 4.648 | 4.907 | 5.327 |
+| 新读出 | 0 ms | 1.567 | 1.970 | 2.288 |
+| 新读出 | 50 ms | 1.606 | 1.988 | 2.318 |
+| 新读出 | 100 ms | 1.650 | 2.002 | 2.346 |
+| 新读出 | 200 ms | 1.741 | 2.050 | 2.416 |
+
+这次完整验证集上的原读出观测载荷误差为3.19 cm；前述3.70 cm诊断使用10个episodes、256个窗口。
+新读出恢复了相当部分位置精度，但未来载荷误差仍约2.00 cm，尚未达到1 cm。
+训练与验证误差接近；本次5,000步同容量探针仍不能单独判定剩余误差来自编码精度还是读出优化收敛。
+观测帧载荷相对位置恒为零，因此判断同时使用飞机位置和未来帧。
+
+探针只测试真实帧编码后的重建，未替换参赛者读出头；原模型selection score仍为8.9844 cm。
+下一步按既定C配置从头运行full的23,000步联合训练，优先观察前5步载荷及飞机误差。
+逐步归一化与目标尺度修改保留为讨论项。
+
+探针耗时51.92秒，完整指标与独立权重保存在：
+
+- `data/uav_arena/results/jepa/full_c_readout_probe_v1.json`
+- `data/uav_arena/results/jepa/full_c_readout_probe_v1.probe.pt`
+- 探针权重SHA256：`c2330d220c709b3e84e12f7c871b84d4a0afd7eb621b87782da8c832fff8c3ba`
+- 父模型冻结状态SHA256：`9d809bfae247d6ebb55add2d10d66746651b3a52d7976cbcb4ea3077b4bbc6d6`
+
+复现命令见[README.md](README.md#frozen-encoder-readout-probe)。
+
 ## 验证
 
-相关102项测试通过，覆盖Arena回归、状态排列、15步反传、1/512/555候选、reset、
-不读取载荷质量、时间因果性、坐标平移和checkpoint重载。完整测试命令与结果见结果JSON。
+相关106项测试通过（原有102项加4项探针测试），覆盖Arena回归、状态排列、15步反传、1/512/555候选、reset、
+不读取载荷质量、时间因果性、坐标平移和checkpoint重载。新增检查包括冻结参数、物理单位、逐episode验证stride、训练/验证划分及独立权重保存。
 
 ## 后续任务与验收
 

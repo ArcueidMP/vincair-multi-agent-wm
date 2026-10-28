@@ -21,7 +21,7 @@ of cross-agent prediction error with closed-loop success.
 | `model.py` | Arena factory, observation history, reset and batched trajectory prediction |
 | `train.py` | Training-only normalization, optimization, checkpoints and run metadata |
 | [PHASE_A.md](PHASE_A.md) | Five measured runs, reproduction commands, compute and remaining tasks |
-| [phase_a_summary.json](results/phase_a_summary.json) | Configurations, validation metrics, diagnostics and hashes |
+| `data/uav_arena/results/jepa/phase_a_summary.json` | Local configurations, metrics and hashes |
 
 The factory `uav_arena.participants.jepa.model:make` serves both the shared
 planner and the [evaluation harness](../../HARNESS.md). It accepts single-plan
@@ -204,3 +204,27 @@ OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 PYTHONPATH=. \
 After Phase A review, each variant selects its configuration on the full
 validation set and trains three new seeds at each of the 2,000/500-episode
 budgets. [PHASE_A.md](PHASE_A.md) tracks the results and next tasks.
+
+
+## Frozen encoder readout probe
+
+Fit a fresh readout while keeping the complete parent model frozen:
+
+```bash
+OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 PYTHONPATH=. \
+  data/uav_arena/.venv/bin/python -m uav_arena.participants.jepa.probe_readout \
+  --checkpoint data/uav_arena/participants/jepa/phase_a_full_c.pt \
+  --device cuda --out data/uav_arena/results/jepa/full_c_readout_probe_v1
+```
+
+Defaults: first 250 training episodes, 5,000 steps, batch 128, learning rate
+0.001, seed 0, AdamW and OneCycle. The probe reuses the parent's normalization
+and optimizes only the encoded-state readout MSE. It caches all training-window
+true-frame encodings on CPU, then evaluates the original/new heads on every
+10th decision of all 100 validation episodes at all four latencies.
+
+The diagnostic reports observed and future aircraft/payload position errors
+in cm and payload velocity errors in m/s, including steps 1–5/6–10/11–15.
+The parent model and checkpoint hashes are checked after training. Probe
+weights use a separate `.probe.pt` file and are not loaded by the participant
+factory. See [PHASE_A.md](PHASE_A.md) for the measured reconstruction results.
