@@ -5,7 +5,8 @@ true simulator. Layer 4, the closed loop, stays with `run.py`. The analysis that
 is specified in [ANALYSIS.md](ANALYSIS.md).
 
 **Status: implemented on 2026-10-27 in `record.py` and `harness.py`, tested in
-`tests/test_uav_arena_harness.py` and validated on `dev` seeds 0–4 (Section 7).**
+`tests/test_uav_arena_harness.py`, validated on `dev` seeds 0–4 and run on `test` with the
+reference rows on 2026-10-28 and 29 (Section 7).**
 - The maintainer maintains the harness. It is not part of the frozen contract.
 - The definitions of the quantities it reports are fixed by [ANALYSIS.md](ANALYSIS.md), which is
   frozen with `arena-v0.3`. A harness change may fix a bug or make it faster. Changing what a
@@ -27,7 +28,7 @@ PYTHONPATH=. data/uav_arena/.venv/bin/python -m uav_arena.harness score --predic
 
 - **Source.** The oracle U (`TrueSimPredictor` with the shared MPPI) flies `dev` for development and
   `test` for final results, in all 8 conditions. Every model is scored on the same questions.
-- **Questions.** Every 5th decision of every recorded episode (k = 0, 5, 10, ...), about 5,400 on
+- **Questions.** Every 5th decision of every recorded episode (k = 0, 5, 10, ...), 8,660 on
   `test`. A stateful predictor observes every decision of the episode up to a question.
 - **Recorder** (`record.py`). It flies U through `run.run_episode` and the frozen planner, unchanged:
   wrappers around the planner's MPPI solver and its cost only read what each solve uses and returns.
@@ -174,7 +175,7 @@ The harness uses only the participant interface ([PARTICIPANTS.md](PARTICIPANTS.
     deterministic version; undeclared randomness is rejected.
   - Each change alters exactly one aircraft, and the changes repeat for the same question.
 
-## 7. Validation on `dev` and compute
+## 7. Validation on `dev`, the `test` run and compute
 
 U flew `dev` seeds 0–4 through the recorder on 2026-10-27: 40 episodes, 2,680 decisions and 544
 questions.
@@ -255,19 +256,26 @@ questions.
     relative to its value: 0.24 for the physics reference, against 0.77 for the mean.
   - The physics reference's share of costly decisions rises from 11–16% in the static conditions to
     20–29% with movers.
+- **On `test`.** U flew seeds 1000–1049 through the recorder on 2026-10-28: 400 episodes, 42,677
+  decisions and 8,660 questions, more per episode than on `dev` because U times out in 93 episodes,
+  each flying the full 20 s. Before any other row was scored, U had to score exactly zero on the
+  first 8 recorded episodes (static, 0 ms, seeds 1000–1007), and did. Scored on all 8,660 questions
+  after the other rows, it scores exactly zero again on every layer and in every condition, with
+  Spearman correlation and pairwise accuracy 1. The scores and closed loops of the reference rows
+  and the example participant are in the [README](README.md) (Results on test).
 - **Compute** on the maintainer's laptop (Ryzen 9 7845HX, 24 threads):
 
-| Part | Workers | `dev`, measured | `test` (10 times the layouts), estimated |
+| Part | Workers | `dev`, measured | `test`, measured |
 |---|---|---|---|
-| Recording U | 20 | 24 min (0.53 s per decision) | about 4 h, as U's reference run |
-| Ground truth | 20 | 36 s | about 6 min |
-| Example MLP on CPU | 20, for rollouts | 15 s (2.5 ms per call) | about 3 min |
-| U and the two physics references, in parallel | 7 each | 18–20 min each (1.6 s per call of 555 rollouts) | about 3.5 h |
-| Storage | | 30 MB: questions 16 MB, ground truth 15 MB | about 0.3 GB |
+| Recording U | 20 | 24 min (0.53 s per decision) | 5.9 h (0.50 s per decision) |
+| Ground truth | 20 | 36 s | 7.4 min |
+| Example MLP on CPU | 20, for rollouts | 15 s (2.5 ms per call) | 2.6 min |
+| U and the two physics references | 7 each in parallel on `dev`, 20 one at a time on `test` | 18–20 min each (1.6 s per call of 555 rollouts) | 83 min (U), 86 min (physics), 106 min (physics + mass estimation) |
+| Storage | | 30 MB: questions 16 MB, ground truth 15 MB | 0.47 GB: questions 238 MB, ground truth 230 MB |
 
 A stochastic predictor makes 48 calls per question instead of one: 43 single sequences and 5 full
 batches. For PETS on the GPU that took 0.34 s per question without sampling and 0.46 s with it:
-3–4 min on `dev`, and an estimated 30–45 min on `test`.
+3–4 min on `dev`, and an estimated 50–65 min on the 8,660 `test` questions.
 
 ## 8. Contract changes for `arena-v0.3`
 

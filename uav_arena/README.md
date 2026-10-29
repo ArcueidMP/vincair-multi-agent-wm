@@ -30,8 +30,9 @@ Status (`arena-v0.3`, tagged on 2026-10-28, before the first `test` run):
   `participants/example/` is a working example participant.
 - CrazyMARL runs on arena tasks (`crazymarl_task.py`, `crazymarl_env.py`, `crazymarl_train.py`,
   `crazymarl_policy.py`). Seeds 0–2 are trained and evaluated on `dev`.
-- Next: the reference and CrazyMARL rows on `test`, U's through the recorder, which also records
-  the questions; then the world-model rows (see Roadmap).
+- The reference rows and the example participant ran on `test` on 2026-10-28 and 29, U's through
+  the recorder, which also recorded the questions (Results on test, below). Next: the CrazyMARL
+  rows on `test`, then the world-model rows (see Roadmap).
 - Related work, grouped by relation to the arena, with BibTeX:
   [`docs/uav-arena-related-work.md`](../docs/uav-arena-related-work.md). Its section 8 covers the
   evaluation design.
@@ -165,9 +166,9 @@ the predictor differs.
 
 | Row | Kind | Information | Status |
 |---|---|---|---|
-| U | MPPI on the true simulator | privileged: true state, payload mass, onboard states | implemented |
-| Physics | MPPI on the nominal simulator | observation only | implemented |
-| Physics + mass estimation | the physics row with online payload-mass estimation (multiple models, 2 g grid) | observation history | implemented |
+| U | MPPI on the true simulator | privileged: true state, payload mass, onboard states | implemented; run on `test` |
+| Physics | MPPI on the nominal simulator | observation only | implemented; run on `test` |
+| Physics + mass estimation | the physics row with online payload-mass estimation (multiple models, 2 g grid) | observation history | implemented; run on `test` |
 | CrazyMARL | external, model-free: official IPPO trainer, decentralized 250 Hz motor commands, retrained on arena tasks | own state fresh; payload, teammates and obstacles delayed | seeds 0–2 evaluated on `dev` |
 | Entity-token JEPA (`full`, `no_cross`, `flat`), autoregressive state model, PETS ensemble | world models in the shared MPPI | observation history | planned |
 | TD-MPC2 (official, trained online), DreamerV3 | external model-based RL, evaluated as published, plus state probes for layers 1–3 | observation | planned |
@@ -208,6 +209,80 @@ for s in 0 1 2; do
     --suite dev --seeds 0:5 --out data/uav_arena/results/crazymarl_s${s}_dev_s0-5.json
 done
 ```
+
+## Results on test (seeds 1000–1049, all 8 conditions)
+
+At `arena-v0.3`, run on 2026-10-28 and 29 from a clean checkout of the tag (64134e7), one step at
+a time with 20 workers for the simulator rollouts. U flew through the recorder, so its run is both
+its row and the source of the 8,660 questions on which the harness scored every row. The example
+MLP is the `explore-v2` checkpoint scored on `dev` (`participants/example/mlp.pt`, SHA-256
+`110c93c4…`). CrazyMARL has not run on `test` yet. Success count out of 50 and mean time of the
+successes:
+
+| Condition | U (oracle) | Physics (nominal 25 g) | Physics + mass estimation | Example MLP |
+|---|---|---|---|---|
+| static, 0 ms | 38/50 (7.9 s) | 33/50 (7.6 s) | 37/50 (7.9 s) | 9/50 (5.8 s) |
+| static, 50 ms | 38/50 (7.9 s) | 27/50 (7.3 s) | 39/50 (7.8 s) | 12/50 (8.0 s) |
+| static, 100 ms | 38/50 (7.9 s) | 27/50 (7.5 s) | 41/50 (8.4 s) | 7/50 (6.2 s) |
+| static, 200 ms | 38/50 (7.9 s) | 25/50 (6.1 s) | 40/50 (8.0 s) | 10/50 (6.0 s) |
+| static+moving, 0 ms | 38/50 (7.6 s) | 30/50 (8.5 s) | 39/50 (8.8 s) | 7/50 (6.2 s) |
+| static+moving, 50 ms | 40/50 (8.2 s) | 26/50 (8.0 s) | 39/50 (8.8 s) | 6/50 (7.2 s) |
+| static+moving, 100 ms | 36/50 (7.5 s) | 23/50 (7.1 s) | 39/50 (8.9 s) | 4/50 (6.6 s) |
+| static+moving, 200 ms | 39/50 (8.0 s) | 22/50 (6.8 s) | 37/50 (7.7 s) | 6/50 (6.6 s) |
+| **Total** | **305/400** | **213/400** | **311/400** | **61/400** |
+| Success rate (95% interval) | 76.25% (65.00–86.75%) | 53.25% (42.50–64.25%) | 77.75% (67.50–87.00%) | 15.25% (9.25–22.25%) |
+
+Layers 1–3 on the 8,660 questions ([HARNESS.md](HARNESS.md)):
+
+| | L1 payload | L2 cross-agent | L2 payload / others / own | L3 costly decisions | Regret, mean (median) | Top-1 | Spearman | Pairwise |
+|---|---|---|---|---|---|---|---|---|
+| U (oracle) | 0 | 0 | 0 / 0 / 0 | 0 | 0 (0) | 0 | 1 | 1 |
+| Physics + mass estimation | 0.57 cm | 0.47 cm | 0.47 / 0.47 / 0.80 cm | 3.7% | +0.02 (+0.00003) | 0.08 | 0.96 | 0.95 |
+| Physics (nominal 25 g) | 8.42 cm | 3.62 cm | 3.76 / 3.48 / 6.29 cm | 33.8% | +9.03 (+0.06) | 12.31 | 0.61 | 0.75 |
+| Example MLP | 12.81 cm | 4.67 cm | 5.28 / 4.05 / 8.41 cm | 51.9% | +14.10 (+1.29) | 23.66 | 0.39 | 0.64 |
+
+The intervals are 95% percentile intervals from 10,000 bootstrap resamples of the 50 layouts, each
+bringing its 8 episodes and its questions (ANALYSIS.md, Section 4; NumPy `default_rng(0)`). For
+physics + mass estimation, the nominal physics reference and the example MLP, L1 lies within
+0.44–0.71, 6.02–10.86 and 11.91–13.70 cm, L2 within 0.37–0.56, 2.69–4.62 and 4.39–4.94 cm, and L3
+within 2.6–4.8%, 24.8–42.8% and 44.9–58.0%.
+
+- **U fails 95 episodes: 93 timeouts and 2 obstacle collisions.** U predicts exactly, so these are
+  failures of the shared planner: on those layouts MPPI with 512 samples and a 1.5 s horizon does
+  not reach the goal within 20 s. Its static episodes are identical at all four latencies
+  ([HARNESS.md](HARNESS.md), Section 1), and 12 of the 50 layouts time out there. It never failed on
+  its 5 `dev` layouts.
+- **Physics + mass estimation matches U within the interval:** 311 against 305 successes, +1.5
+  points (−3.0 to +6.0 over layouts). Their outcomes differ in 45 episodes: it succeeds in 25 that
+  U fails and fails in 19 that U finishes. Unlike U, it plans from the delayed observation, so its
+  static episodes differ between latencies.
+- **The nominal physics reference** succeeds in 213 episodes. Its 187 failures are 76
+  aircraft-separation failures, 66 timeouts, 41 obstacle collisions, 3 exits from the bounds and 1
+  crash; 86 fall on episodes U fails too, 101 on episodes U finishes. As on `dev`, aircraft
+  separation comes with heavy payloads: 41 of the 76 are on the 10 layouts whose payload weighs
+  35.4–39.7 g, against the nominal 25 g. Its success falls with latency, from 33 to 25 of 50 without
+  movers and from 30 to 22 with them, while its share of costly decisions rises only from 31.4% to
+  32.6% and from 34.8% to 36.5%.
+- **The example MLP** succeeds in 61 episodes, against 21 of 40 on `dev`, all of them episodes U
+  finishes. Its failures are 168 obstacle collisions, 137 aircraft-separation failures and 34
+  crashes.
+- **The layers order the rows as the closed loop does.** U scores exactly zero on all 8,660
+  questions. Physics + mass estimation, the nominal physics reference and the example MLP come out
+  in that order on every layer, on top-1 regret, Spearman correlation and pairwise accuracy. On L1
+  and L3 their intervals do not overlap; on L2 the nominal physics reference's and the example's
+  do. In 10.9% of the questions (7.9% on `dev`), U's own plan is more than 1 cost unit worse than
+  its pool's best; L3 leaves them out for every row.
+- **Compute.** The closed loops took 5.9 h for U through the recorder, 5.5 h for the nominal physics
+  reference and 6.2 h for physics + mass estimation (0.50–0.52 s per decision), and 3.5 min for the
+  example MLP; with the harness, 22.4 h. Python 3.10.21, torch 2.11.0+cu128, MuJoCo 3.3.0, NumPy
+  2.2.6, SciPy 1.15.3, stable-worldmodel 0.1.1 and gcc 15.2.0 on the maintainer's laptop (Ryzen 9
+  7845HX). Before the run, the same checkout reproduced one `dev` episode of every row (seed 0,
+  static, 0 ms) and the example's `dev` scores in every field but the timing. The run paused once,
+  after the nominal physics closed loop, and resumed after a reboot in the same environment.
+- **Files** (not in git): records in `data/uav_arena/results/` (`oracle_mppi_test_recorded.json`,
+  `physics_mppi_test.json`, `adaptive_mppi_test.json`, `example_mlp_test.json`), scores in
+  `data/uav_arena/results/harness/*_test.{json,npz}`, questions and ground truth in
+  `data/uav_arena/states/test` (0.47 GB).
 
 ## Results on dev (seeds 0–4, all 8 conditions)
 
@@ -300,7 +375,9 @@ On `dev` ([HARNESS.md](HARNESS.md), Section 7), U scores exactly zero on layers 
 order physics + mass estimation, the nominal physics reference and the example MLP as their
 closed-loop success does. Trained on `explore-v1`, the example MLP's layer-1 error on U's states
 was 14.6 cm, against 1.46 cm on its validation set: the plans U flies lay outside that data. Trained
-on `explore-v2`, it is 10.8 cm, and its `dev` closed loop rises from 7 to 21 successes of 40.
+on `explore-v2`, it is 10.8 cm, and its `dev` closed loop rises from 7 to 21 successes of 40. On
+`test` U again scores exactly zero, on all 8,660 questions, and the layers order the other rows as
+the closed loop does (Results on test, above).
 
 The headline analysis, pre-registered in [ANALYSIS.md](ANALYSIS.md), asks whether the cross-agent
 layer explains closed-loop differences that layer 1 misses. Its test is the partial Spearman
@@ -320,7 +397,8 @@ results show how the relation changes with latency and moving obstacles.
    entity-token JEPA variants, the autoregressive model and PETS.
 5. ~~Layer 1–3 harness on recorded U states~~ (done, validated on `dev`).
 6. TD-MPC2 and DreamerV3 adapters (a Gymnasium wrapper; a JAX venv for DreamerV3).
-7. Closed-loop runs on `test`, the leaderboard tables and the layer-consistency analysis.
+7. Runs on `test`: ~~the reference rows and the example participant~~ (done); the world-model rows,
+   the leaderboard tables and the layer-consistency analysis.
 
 ## Replay and video
 
@@ -377,6 +455,26 @@ done
 The `dev` table above ran the three rows in parallel with 7 workers each. The outcome does not
 depend on the worker count: two of its episodes, rerun alone with 3 workers, reproduced their
 records exactly.
+
+The `test` results:
+
+```bash
+PYTHONPATH=. data/uav_arena/.venv/bin/python -m uav_arena.record --suite test --seeds 0:50 --workers 20 \
+  --out data/uav_arena/states/test --results data/uav_arena/results/oracle_mppi_test_recorded.json
+PYTHONPATH=. data/uav_arena/.venv/bin/python -m uav_arena.harness truth --states data/uav_arena/states/test --workers 20
+for p in physics adaptive oracle; do
+  PYTHONPATH=. data/uav_arena/.venv/bin/python -m uav_arena.harness score --predictor $p \
+    --states data/uav_arena/states/test --workers 20 --out data/uav_arena/results/harness/${p}_test.json
+done
+for p in physics adaptive; do
+  PYTHONPATH=. data/uav_arena/.venv/bin/python -m uav_arena.run --predictor $p --suite test --seeds 0:50 \
+    --workers 20 --out data/uav_arena/results/${p}_mppi_test.json
+done
+```
+
+The example participant runs the same `harness score` and `run.py` commands with
+`--predictor uav_arena.participants.example.model:make` and its `--predictor-options`
+([TASKS.md](TASKS.md)), writing `example_mlp_test.json` in both places.
 
 ```bash
 PYTHONPATH=. data/uav_arena/.venv/bin/python -m uav_arena.collect --seeds 200000:202000 \
