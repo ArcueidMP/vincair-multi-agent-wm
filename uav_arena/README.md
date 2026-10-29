@@ -30,6 +30,8 @@ Status (`arena-v0.3`, tagged on 2026-10-28, before the first `test` run):
   `participants/example/` is a working example participant.
 - CrazyMARL runs on arena tasks (`crazymarl_task.py`, `crazymarl_env.py`, `crazymarl_train.py`,
   `crazymarl_policy.py`). Seeds 0–2 are trained and evaluated on `dev`.
+- Methods that train online, TD-MPC2 and DreamerV3, get a Gymnasium wrapper (`gym_env.py`,
+  `gym_eval.py`; Gymnasium wrapper, below). Their adapters to the official code come next.
 - The reference rows and the example participant ran on `test` on 2026-10-28 and 29, U's through
   the recorder, which also recorded the questions (Results on test, below). Next: the CrazyMARL
   rows on `test`, then the world-model rows (see Roadmap).
@@ -171,7 +173,7 @@ the predictor differs.
 | Physics + mass estimation | the physics row with online payload-mass estimation (multiple models, 2 g grid) | observation history | implemented; run on `test` |
 | CrazyMARL | external, model-free: official IPPO trainer, decentralized 250 Hz motor commands, retrained on arena tasks | own state fresh; payload, teammates and obstacles delayed | seeds 0–2 evaluated on `dev` |
 | Entity-token JEPA (`full`, `no_cross`, `flat`), autoregressive state model, PETS ensemble | world models in the shared MPPI | observation history | planned |
-| TD-MPC2 (official, trained online), DreamerV3 | external model-based RL, evaluated as published, plus state probes for layers 1–3 | observation | planned |
+| TD-MPC2 (official, trained online), DreamerV3 | external model-based RL, evaluated as published, plus state probes for layers 1–3 | observation | Gymnasium wrapper built; adapters planned |
 
 ## CrazyMARL on arena tasks
 
@@ -208,6 +210,34 @@ for s in 0 1 2; do
   PYTHONPATH=. data/uav_arena/.venv/bin/python -m uav_arena.crazymarl_policy --actor data/uav_arena/crazymarl/ippo_s$s.npz \
     --suite dev --seeds 0:5 --out data/uav_arena/results/crazymarl_s${s}_dev_s0-5.json
 done
+```
+
+## Gymnasium wrapper
+
+`gym_env.ArenaGymEnv` serves the methods that train online in the environment, TD-MPC2 and
+DreamerV3. Each of its steps is an `ArenaEnv` step, bit for bit (tested). Settings, decided on
+2026-10-30:
+- **Episodes.** Each reset draws a training layout from seeds 200000–298999 (PARTICIPANTS.md,
+  Section 4) and one of the 8 conditions uniformly. `reset(options=dict(seed=..., condition=...))`
+  sets a `dev` or `test` episode. An event or a success ends an episode (`terminated`); the 20 s time
+  limit truncates it.
+- **Action** (9,) in [−1, 1]: each aircraft's setpoint increment per axis in units of 0.12 m, added to
+  the setpoint in force, as the shared MPPI parameterizes its candidates.
+- **Observation** (118,): the decision maker's current observation, flattened by `gym_env.flatten`:
+  payload and aircraft states seen `latency` late, the goal, pillars, movers, the setpoints in force,
+  the latency, and the share of the time limit left. It never holds the payload mass or the undelayed
+  state, and no history beyond the setpoints in force: the official code takes the current state.
+- **Reward:** `ArenaEnv`'s (Events and scoring), which also charges −10 at the time limit.
+- **Evaluation:** `gym_eval.py` flies a policy, an object with `reset(seed)` and `act(observation)`,
+  on a suite and writes `run.py`'s records.
+- **Versions.** The physics reproduces the reference bit for bit only with MuJoCo 3.3.0 and NumPy 1.26
+  or later; Python 3.10 and 3.11 both do. With NumPy 1.24.4, TD-MPC2's pin, the settled hover already
+  differs by 10⁻¹⁰ m, and `collect.py --verify` reports every regenerated episode as different.
+  Check every venv and machine before training or evaluating; it must report `"differ": 0`:
+
+```bash
+PYTHONPATH=. python -m uav_arena.collect --seeds 200000:200010 --out /tmp/arena_check
+PYTHONPATH=. python -m uav_arena.collect --verify /tmp/arena_check
 ```
 
 ## Results on test (seeds 1000–1049, all 8 conditions)
@@ -396,7 +426,8 @@ results show how the relation changes with latency and moving obstacles.
    open-loop metric~~ (done, `arena-v0.2`; `explore-v2` data in `arena-v0.3`);
    entity-token JEPA variants, the autoregressive model and PETS.
 5. ~~Layer 1–3 harness on recorded U states~~ (done, validated on `dev`).
-6. TD-MPC2 and DreamerV3 adapters (a Gymnasium wrapper; a JAX venv for DreamerV3).
+6. TD-MPC2 and DreamerV3: ~~a Gymnasium wrapper~~ (done); adapters to the official code and their
+   venvs.
 7. Runs on `test`: ~~the reference rows and the example participant~~ (done); the world-model rows,
    the leaderboard tables and the layer-consistency analysis.
 
@@ -445,7 +476,7 @@ uv pip install --python data/uav_arena/.venv/bin/python stable-worldmodel==0.1.1
 PYTHONPATH=. data/uav_arena/.venv/bin/python -m pytest -q tests/test_uav_arena.py tests/test_uav_arena_planning.py \
   tests/test_uav_arena_collect.py tests/test_uav_arena_windows.py tests/test_uav_arena_openloop.py \
   tests/test_uav_arena_example.py tests/test_uav_arena_replay.py tests/test_uav_arena_crazymarl.py \
-  tests/test_uav_arena_harness.py
+  tests/test_uav_arena_harness.py tests/test_uav_arena_gym.py
 for p in oracle physics adaptive; do
   PYTHONPATH=. data/uav_arena/.venv/bin/python -m uav_arena.run --predictor $p --suite dev --seeds 0:5 \
     --workers 20 --out data/uav_arena/results/${p}_mppi_dev_s0-5_v3.json

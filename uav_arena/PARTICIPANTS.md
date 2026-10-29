@@ -106,7 +106,7 @@ In training:
 | `dev` suite: closed-loop development and debugging (reference rows on 0–4) | 0–19 |
 | `test` suite: final closed-loop results, once per trained model | 1000–1049 |
 | CrazyMARL training layouts (reserved) | 100000–102047 |
-| World-model training data | 200000–298999 |
+| World-model training data, and the layouts online methods train on (Gymnasium wrapper) | 200000–298999 |
 | World-model validation data (model selection) | 299000–299999 |
 
 ## 5. Data

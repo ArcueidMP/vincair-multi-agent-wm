@@ -9,8 +9,8 @@ them.
 | Entity-token JEPA `full`, `no_cross`, `flat` | Yihao Xu (@Yihao-Xu-777) | not started |
 | Autoregressive state model (W-ar) | june (@june250630) | not started; builds on the JEPA backbone |
 | PETS ensemble | june (@june250630) | not started |
-| TD-MPC2, DreamerV3 | unassigned | blocked on the Gymnasium wrapper |
-| Evaluation harness and recorder ([HARNESS.md](HARNESS.md)), analysis plan ([ANALYSIS.md](ANALYSIS.md)), Gymnasium wrapper, reference and CrazyMARL rows on `test` | maintainer (@ArcueidMP) | analysis plan frozen in `arena-v0.3`; recorder and harness built and validated on `dev`; reference rows and the example participant run on `test` ([README](README.md)); the Gymnasium wrapper and the CrazyMARL rows on `test` open |
+| TD-MPC2, DreamerV3 | unassigned | Gymnasium wrapper built; adapters to the official code next |
+| Evaluation harness and recorder ([HARNESS.md](HARNESS.md)), analysis plan ([ANALYSIS.md](ANALYSIS.md)), Gymnasium wrapper, reference and CrazyMARL rows on `test` | maintainer (@ArcueidMP) | analysis plan frozen in `arena-v0.3`; recorder and harness built and validated on `dev`; reference rows and the example participant run on `test` ([README](README.md)); Gymnasium wrapper built; the CrazyMARL rows on `test` open |
 
 ## First day, every owner
 
@@ -146,9 +146,20 @@ them.
 
 ### TD-MPC2 and DreamerV3 (unassigned)
 
-Blocked until the maintainer adds the Gymnasium wrapper (README Roadmap, step 6). Then: the
-official code and default settings, trained online on training layouts, evaluated as published
-with their own planners, plus state probes for layers 1–3.
+The official code and default settings, trained online through the Gymnasium wrapper
+([README](README.md), Gymnasium wrapper), evaluated as published with their own planners, plus
+state probes for layers 1–3.
+- **Settled on 2026-10-30:**
+  - layouts from seeds 200000–298999, with the 8 conditions drawn uniformly;
+  - the arena's reward and the shared MPPI's action parameterization;
+  - the current observation only, with no frame stacking.
+- **Settings the arena forces:**
+  - TD-MPC2 runs with `episodic=true`, because arena events end episodes early and its default
+    rejects that.
+  - Every venv keeps MuJoCo 3.3.0 and NumPy 1.26 or later. TD-MPC2's NumPy 1.24.4 pin changes the
+    physics.
+- **Next:** adapters to the official code (TD-MPC2's `envs/`, DreamerV3's `embodied.Env`), with each
+  repository pinned to a commit.
 
 ## Example participant
 

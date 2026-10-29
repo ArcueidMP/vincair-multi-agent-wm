@@ -19,6 +19,7 @@
 /uav_arena/TASKS.md            @ArcueidMP
 /uav_arena/participants/example/  @ArcueidMP
 /uav_arena/crazymarl_*.py      @ArcueidMP
+/uav_arena/gym_*.py            @ArcueidMP
 /uav_arena/README.md           @ArcueidMP
 /tests/test_uav_arena*.py      @ArcueidMP
 /.github/                      @ArcueidMP
