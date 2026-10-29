@@ -1,10 +1,10 @@
 # JEPA Phase A：explore-v2
 
-已实现 full / no_cross / flat 三个变体并完成六次训练与验证。当前最佳分数均高于8.26 cm，尚未运行dev。
+已实现 full / no_cross / flat 三个变体并完成七次训练与验证。当前full最佳分数高于精确门槛8.2593 cm，尚未运行dev。
 
 冻结基线：arena-v0.3 (`64134e72f66be128024b1e602620073de4666851`)。
 训练只用前250个episodes（200000–200249）；验证100个episodes（299000–299099），
-四种latency、15步、官方openloop --stride 10。门槛严格为8.26 cm以下。
+四种latency、15步、官方openloop --stride 10。精确门槛为selection_score < 0.082593 m（8.2593 cm）；8.26 cm仅为四舍五入显示。
 训练seed为0，当前阶段为Phase A。
 
 | 实验 | history | steps | head_weight | SIGReg权重 | 验证cm | 门槛 | dev成功 |
@@ -12,12 +12,13 @@
 | phase_a_full_a | 4 | 5,000 | 5 | 0.09 | 9.8473 | 未通过 | 未运行（未过门槛） |
 | phase_a_full_b | 1 | 10,000 | 5 | 0.09 | 9.3593 | 未通过 | 未运行（未过门槛） |
 | phase_a_full_c | 1 | 10,000 | 20 | 0.01 | 8.9844 | 未通过 | 未运行（未过门槛） |
-| phase_a_no_cross_c | 1 | 10,000 | 20 | 0.01 | 8.8980 | 未通过 | 未运行（未过门槛） |
-| phase_a_flat_c | 1 | 10,000 | 20 | 0.01 | 9.2660 | 未通过 | 未运行（未过门槛） |
+| phase_a_no_cross_c | 1 | 10,000 | 20 | 0.01 | 8.8980 | 历史未过线（现不单独要求） | 待full过线后运行 |
+| phase_a_flat_c | 1 | 10,000 | 20 | 0.01 | 9.2660 | 历史未过线（现不单独要求） | 待full过线后运行 |
 | phase_a_full_d_fresh_v1 | 1 | 23,000 | 20 | 0.01 | 8.3737 | 未通过 | 未运行（未过门槛） |
+| phase_a_full_e_40000_v1 | 1 | 40,000 | 20 | 0.01 | 8.4265 | 未通过 | 未运行（未过门槛） |
 
 A/B是full上的探索，均保留。B同时改history和训练步数，不能据此归因于history。
-C基于重建误差调整现有损失权重；三个变体使用同一C配置。loss公式、指标和门槛未改。
+C基于重建误差调整现有损失权重；三个变体使用同一C配置。loss公式和评分指标保持原样；当前精确门槛按维护者后续澄清执行。
 默认encoder2层、predictor4层、hidden128、每实体latent64、heads4、dropout0。
 flat每帧latent256，匹配总latent预算。所有实验batch128、lr0.001、seed0。
 
@@ -31,6 +32,7 @@ flat每帧latent256，匹配总latent预算。所有实验batch128、lr0.001、s
 | phase_a_no_cross_c | 8.5837 | 8.7786 | 8.9520 | 9.2777 |
 | phase_a_flat_c | 9.0419 | 9.1705 | 9.2810 | 9.5707 |
 | phase_a_full_d_fresh_v1 | 8.0500 | 8.2423 | 8.4152 | 8.7871 |
+| phase_a_full_e_40000_v1 | 8.0847 | 8.3009 | 8.4947 | 8.8257 |
 
 | 变体 | 当前验证最优checkpoint | 含readout参数 | 峰值显存MiB | 训练分钟 |
 |---|---|---:|---:|---:|
@@ -38,10 +40,10 @@ flat每帧latent256，匹配总latent预算。所有实验batch128、lr0.001、s
 | no_cross | phase_a_no_cross_c | 1,288,841 | 3642.1 | 33.01 |
 | flat | phase_a_flat_c | 1,371,663 | 944.5 | 20.45 |
 
-六次完成的Phase A联合训练GPU时间合计3.603小时；不含统计、验证、探针及调试。
+七次完成的Phase A联合训练GPU时间合计5.799小时；不含统计、验证、探针及调试。
 另保留原D训练中断（磁盘权重10,000步、日志10,400步）和warm-start中断（新增4,185步）的记录，不计入完成模型时间或分数。
 设备RTX4060 Laptop 8GB，WSL2 Ubuntu26.04.1；时间受笔记本功耗和并发CPU检查影响。
-六次完成实验的配置与完整指标保存在`data/uav_arena/results/jepa/phase_a_summary.json`；checkpoint SHA256见下表。
+七次完成实验的配置与完整指标保存在`data/uav_arena/results/jepa/phase_a_summary.json`；checkpoint SHA256见下表。
 训练生成的checkpoint与原始结果保存在`data/uav_arena/`下。
 
 | checkpoint | SHA256 |
@@ -52,6 +54,7 @@ flat每帧latent256，匹配总latent预算。所有实验batch128、lr0.001、s
 | phase_a_no_cross_c | `1847a74039bdc0ad0717bddd4bd69aa14c1c7643754f8c92410c45f89c31233d` |
 | phase_a_flat_c | `b7842f3697f0e1780fc22df6a610f1b2dfb1d011c762a468b39dcaf9102dba0a` |
 | phase_a_full_d_fresh_v1 | `ba08fccd69c7fe0b2ca4c65a00d0721e5d651b7d0a89bc47b8124840832d4b43` |
+| phase_a_full_e_40000_v1 | `950787015c95233805a5f97f97ec6997c9f96d30a4f8393cce7406666542a19d` |
 
 512候选×15步调用耗时：CUDA，候选从CPU输入并将结果还原到CPU，观察编码已缓存；
 warmup2次后测量10次均值，包含设备传输及同步，不包含observe或完整MPPI循环。
@@ -74,7 +77,7 @@ warmup2次后测量10次均值，包含设备传输及同步，不包含observe�
 | flat | 5.15 | 6.68 | 9.87 |
 
 读出重建本身仍有误差，latent rollout又增加误差；尚未定位到单一根因。
-下一轮先分别检查读出重建和多步预测的收敛，再决定history与训练日程。
+此处为早期诊断；后续C/D探针与23,000步结果见下文。下一轮按维护者要求只增加full训练步数。
 
 ```bash
 # 在仓库根目录；每次使用新的输出名。C配置三个变体只有attn不同。
@@ -88,11 +91,7 @@ PYTHONPATH=. data/uav_arena/.venv/bin/python -m uav_arena.openloop \
   --predictor-options '{"checkpoint":"data/uav_arena/participants/jepa/reproduce_full_c.pt","device":"cuda"}' \
   --data data/uav_arena/datasets/explore_v2_val --stride 10 \
   --out data/uav_arena/results/reproduce_full_c_openloop.json
-# 仅在selection_score < 0.0826后执行一次dev；不得用dev选配置。
-PYTHONPATH=. data/uav_arena/.venv/bin/python -m uav_arena.run \
-  --predictor uav_arena.participants.jepa.model:make \
-  --predictor-options '{"checkpoint":"data/uav_arena/participants/jepa/reproduce_full_c.pt","device":"cuda"}' \
-  --suite dev --seeds 0:5 --out data/uav_arena/results/reproduce_full_c_dev.json
+# full E按精确门槛过线后，再运行下文指定的三个模型的dev；不使用此处的full C。
 ```
 
 
@@ -150,7 +149,7 @@ AdamW（weight decay0.001）、OneCycle、seed0。沿用父模型归一化，只
 观测帧载荷相对位置恒为零，因此判断同时使用飞机位置和未来帧。
 
 探针只测试真实帧编码后的重建，未替换参赛者读出头；原模型selection score仍为8.9844 cm。
-后续full的23,000步联合训练已完成，新增诊断见下一节。逐步归一化与目标尺度修改仍保留为讨论项。
+后续full的23,000步联合训练已完成，新增诊断见下一节。目标尺度方案按维护者2026-10-29评论暂停，Phase A保留原配方。
 
 探针耗时51.92秒，完整指标与独立权重保存在：
 
@@ -163,7 +162,7 @@ AdamW（weight decay0.001）、OneCycle、seed0。沿用父模型归一化，只
 
 ## full D：23,000步后的诊断与结论
 
-从随机初始化开始，沿用C的模型、损失、归一化统计和seed0；训练器新增完整断点，保持原shuffle顺序。完整23,000步OneCycle训练耗时75.72分钟。选择分数8.3737 cm，较full C改善0.6108 cm，仍高于门槛0.1137 cm。
+从随机初始化开始，沿用C的模型、损失、归一化统计和seed0；训练器新增完整断点，保持原shuffle顺序。完整23,000步OneCycle训练耗时75.72分钟。选择分数8.3737 cm，较full C改善0.6108 cm，按澄清后的精确门槛8.2593 cm计算，仍高于门槛约0.1144 cm。
 
 四种延迟平均的载荷误差：
 
@@ -186,7 +185,7 @@ AdamW（weight decay0.001）、OneCycle、seed0。沿用父模型归一化，只
 
 参数量×训练采样次数：D为3.7943e+12，示例为3.8599e+12，比例0.983；该口径不是FLOPs。
 
-逐步目标归一化已整理为待讨论方案，尚未修改损失。建议先确认是否只重加权predicted未来读出的absolute项，保持encoded读出、delta、latent、SIGReg及骨干不变。详见[完整诊断与讨论](DIAGNOSTICS_FULL_D.md)，含四种延迟分段、逐步误差、探针、实际训练统计尺度与复现口径。
+逐步目标归一化方案已由维护者明确暂缓：Phase A保留vmas_pusht原配方，下一轮只把full训练步数增加到40,000，seed仍为0。详见[完整诊断与讨论](DIAGNOSTICS_FULL_D.md)，含四种延迟分段、逐步误差、探针、实际训练统计尺度与复现口径。
 
 原D中断和warm-start中断的权重、日志均保留；本表只将完整从头训练的D计为第六个完成实验。状态登记脚本的stride字符串类型检查已修正，未改变训练或评分结果。
 
@@ -208,6 +207,77 @@ data/uav_arena/.venv/bin/python -m uav_arena.participants.jepa.probe_readout \
 - 新探针SHA256：`b0a9e5ccfdb142c38790b28f8ba9d85ce690ebcc880f0af1011b760b1461a7c9`
 - 父模型冻结状态SHA256：`b05bda2fb9f9294a1eb8201ea5869a263e6cc22088c486cdd96bd054ac954fe0`
 
+## full E：40,000步结果（未过线，等待后续意见）
+
+按维护者要求，使用D的命令，仅将steps改为40,000、输出名改为`phase_a_full_e_40000_v1`。seed0，前250个训练episodes，batch128、history1、full、原损失和归一化均保持不变。最终模型参数、归一化统计和训练源码哈希已核对。
+
+完整100个验证episodes、四种延迟、15步、官方stride10的selection score为 **8.4265 cm**。精确门槛为严格低于8.2593 cm（0.082593 m），本轮仍高0.1672 cm；相比23,000步D的8.3737 cm高0.0528 cm。当前full最佳仍为D，本轮不跑dev、不换seed、不追加训练，先报告维护者。
+
+| 延迟 | 示例载荷cm | D载荷cm | E载荷cm | D飞机cm | E飞机cm |
+|---|---:|---:|---:|---:|---:|
+| 0ms | 7.8782 | 8.0500 | 8.0847 | 9.2672 | 8.6783 |
+| 50ms | 8.0817 | 8.2423 | 8.3009 | 9.4036 | 8.8417 |
+| 100ms | 8.3197 | 8.4152 | 8.4947 | 9.5113 | 8.9766 |
+| 200ms | 8.7574 | 8.7871 | 8.8257 | 9.7399 | 9.2440 |
+
+四种延迟平均的载荷误差分段：
+
+| 预测阶段 | 示例cm | D cm | E cm | E−D cm |
+|---|---:|---:|---:|---:|
+| 第1–5步 | 4.6598 | 4.9017 | 4.7951 | -0.1066 |
+| 第6–10步 | 9.7406 | 9.5616 | 9.6923 | +0.1307 |
+| 第11–15步 | 10.3774 | 10.6577 | 10.7922 | +0.1344 |
+
+E的前段改善，但中后段误差升高；不能仅凭训练目标下降断定具体原因。D/E最终训练目标分别为1.4544/0.8283，官方验证分数并未同步改善。
+
+训练累计有效时间131.75分钟，峰值显存3642.1 MiB，参数量1,288,841。有效更新40,000×batch128=5,120,000个采样窗口，与示例一致；参数量和参数量×样本数均为示例的1.7096倍，后者为6.59887e+12。该口径不等于FLOPs或额外重放开销。
+
+首次启动在第100步完整断点后遇到CUDA unknown error；随后从该断点恢复模型、优化器、OneCycle、RNG及批次位置，保持训练会话连接后完成。没有用D权重warm start，没有重置优化器；最终完整断点的模型、优化器和调度器均核对为40,000步。运行日志保留初次失败与恢复记录，以上训练时间为训练器记录的累计时间，不包含丢弃更新和故障排查开销。
+
+复现从随机初始化开始，使用下方原命令和新的输出前缀；中断恢复只用本轮完整状态。no_cross/flat的现有C模型保留，尚未运行dev；目标尺度方案仍暂缓，Phase B未开始。
+
+- checkpoint SHA256：`950787015c95233805a5f97f97ec6997c9f96d30a4f8393cce7406666542a19d`
+- 最终权重：`data/uav_arena/participants/jepa/phase_a_full_e_40000_v1.pt`
+- 完整断点：`data/uav_arena/participants/jepa/phase_a_full_e_40000_v1.resume.pt`
+- 官方结果：`data/uav_arena/results/phase_a_full_e_40000_v1_openloop.json`
+- 结果对照：`data/uav_arena/results/jepa/full_e_40000_comparison.json`
+
+## full E从头训练与验证复现命令
+
+依据维护者2026-10-29的[训练要求](https://github.com/ArcueidMP/vincair-multi-agent-wm/pull/3#issuecomment-6488896970)及[变体补充](https://github.com/ArcueidMP/vincair-multi-agent-wm/pull/3#issuecomment-6489347290)：
+
+- 使用D的命令，只把steps改为40,000，seed固定为0，从随机初始化开始；不加载D权重，不修改模型、损失、骨干或归一化。
+- 新输出前缀`phase_a_full_e_40000_v1`。训练完成后在完整100个验证episodes上按stride10、四种延迟评分，以原始分数严格判断`< 0.082593`。
+- 样本量40,000×128=5,120,000，与门槛示例5,000×1,024完全相同；D的样本量为示例57.5%。
+- 参数量1,288,841，为示例753,889的约1.71倍；参数量×样本数为6.599e12，为示例约1.71倍。Phase A检查实现能否使用，不要求算力持平。
+- 如果仍不过线或变差，先报告，不换seed、不自动加训、不同时改其他配置。Phase B在2,000局上另选配置。
+- 门槛按共享代码库判：full过线即可。no_cross、flat使用现有C模型，不重训，不要求各自过线。
+- full过线后三个变体各飞一次dev seeds 0–4、8种条件（各40局）；full使用E模型，no_cross/flat使用各自C模型，只查闭环，不用于选择配置。
+- 维护者复现full并审阅三组dev后决定能否进入Phase B；共享README及W-ar配对协调不阻塞本轮。
+
+维护者示例seed0–4的分数依次为8.2593、8.2318、8.2574、8.2344、8.2603 cm，标准差约0.014 cm。D的差距不能按噪声忽略，不换seed撞线。
+
+本轮执行的从头训练命令（复现时使用新输出名）：
+
+```bash
+OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 PYTHONPATH=. \
+data/uav_arena/.venv/bin/python -u -m uav_arena.participants.jepa.train \
+  --data data/uav_arena/datasets/explore_v2 --episodes 250 --steps 40000 \
+  --batch 128 --history 1 --rollout-steps 15 --dim 128 --latent 64 \
+  --enc-layers 2 --pred-layers 4 --heads 4 --attn full \
+  --head-weight 20 --sigreg-weight 0.01 --sigreg-projections 1024 \
+  --stats-samples 5000 --lr 0.001 --seed 0 --workers 4 --device cuda \
+  --out data/uav_arena/participants/jepa/phase_a_full_e_40000_v1.pt
+OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 PYTHONPATH=. \
+data/uav_arena/.venv/bin/python -m uav_arena.openloop \
+  --predictor uav_arena.participants.jepa.model:make \
+  --predictor-options '{"checkpoint":"data/uav_arena/participants/jepa/phase_a_full_e_40000_v1.pt","device":"cuda"}' \
+  --data data/uav_arena/datasets/explore_v2_val --stride 10 \
+  --out data/uav_arena/results/phase_a_full_e_40000_v1_openloop.json
+```
+
+完整训练状态每100步保存，恢复只能使用本轮`.resume.pt`，不会重置优化器。
+
 ## 验证
 
 相关112项测试通过、1项跳过（在106项基础上新增2项续训和4项完整断点检查），覆盖Arena回归、状态排列、15步反传、1/512/555候选、reset、
@@ -220,12 +290,15 @@ data/uav_arena/.venv/bin/python -m uav_arena.participants.jepa.probe_readout \
 ### Phase A：训练收敛与闭环检查
 
 - [x] 实现三个变体、共享骨干、训练入口、预测接口及测试。
-- [x] 完成前250个训练episodes的六次试验，记录完整验证集的stride-10分数、参数量与计算开销。
+- [x] 完成前250个训练episodes的七次试验，记录完整验证集的stride-10分数、参数量与计算开销。
 - [x] 完成full C/D的读出探针与官方多步误差对照，记录增加训练预算的结果。
-- [ ] 与维护者确认逐步目标归一化的范围，再运行单一改动的受控实验。
-- [ ] 将三个变体的验证selection score分别降到8.26 cm以下。
-- [ ] 各变体运行一次dev seeds 0–4的全部8种条件（40 episodes），记录分条件成功数、失败类型与到达时间。
-- [ ] 与june同步W-ar配对实验的history、full mask及骨干宽度，并报告包含各自读出头的总参数量。
+- [x] 接收维护者结论：Phase A暂缓逐步目标归一化，保留原损失配方。
+- [x] full按D配置、seed0完成40,000步；验证8.4265 cm，未过线。
+- [ ] 报告40,000步结果，等待维护者共同确定下一项实验，不换seed或自行改变配方。
+- [ ] full的完整验证selection_score严格低于0.082593 m，即满足这套代码的Phase A开环门槛；no_cross、flat不要求分别过线或重训。
+- [ ] full过线后，full用40,000步模型，no_cross/flat用各自现有C模型，各运行一次dev --seeds 0:5（40局，共120局），只查闭环、不选配置。
+- [ ] 在PR报告三组dev，等待维护者复现full并决定是否进入Phase B。
+- [ ] 与june确认共享README归属及W-ar配对实验的history、full mask、骨干宽度和含读出头参数量；不阻塞本轮训练。
 
 ### Phase B：维护者审阅后执行
 

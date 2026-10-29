@@ -20,7 +20,7 @@ of cross-agent prediction error with closed-loop success.
 | `objective.py` | Latent rollout, SIGReg and the 15-feature physical readout loss |
 | `model.py` | Arena factory, observation history, reset and batched trajectory prediction |
 | `train.py` | Training-only normalization, optimization, checkpoints and run metadata |
-| [PHASE_A.md](PHASE_A.md) | Six completed runs, reproduction commands, compute and remaining tasks |
+| [PHASE_A.md](PHASE_A.md) | Seven completed runs, reproduction commands, compute and remaining tasks |
 | [DIAGNOSTICS_FULL_D.md](DIAGNOSTICS_FULL_D.md) | C/D/example error comparison, frozen readout probes and normalization discussion |
 | `data/uav_arena/results/jepa/phase_a_summary.json` | Local configurations, metrics and hashes |
 
@@ -30,9 +30,16 @@ planner and the [evaluation harness](../../HARNESS.md). It accepts single-plan
 `(15, 3, 3)` setpoints. It returns aircraft positions, payload positions and
 payload velocities at each decision endpoint.
 
-Phase A uses 250 training episodes and validation at stride 10. Each variant's
-score must fall below 8.26 cm, followed by a 40-episode dev run. Current scores
-and the Phase B delivery checklist are in [PHASE_A.md](PHASE_A.md).
+Phase A uses 250 training episodes and full validation at stride 10. The full
+variant must score strictly below 0.082593 m (8.2593 cm); this qualifies the shared
+codebase, not each variant separately. The full seed-0 run of 40,000 steps completed with 8.4265 cm, above the gate;
+the best full result remains D (23,000 steps, 8.3737 cm). Both used random
+initialization and the same recipe. Report E and await maintainer guidance;
+do not add training or change seeds. Target-scale changes remain deferred.
+After full passes, run dev once per variant (40 episodes): full uses the 40,000-step
+checkpoint; no_cross and flat reuse their existing C checkpoints without retraining.
+Dev checks closed-loop behavior and does not select configurations. The maintainer
+reproduces full and decides Phase B entry. See [PHASE_A.md](PHASE_A.md).
 
 ## W-ar import contract
 
