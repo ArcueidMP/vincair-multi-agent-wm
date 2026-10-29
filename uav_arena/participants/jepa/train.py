@@ -4,15 +4,17 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import signal
 from pathlib import Path
 import time
 
 import numpy as np
 import torch
-from torch.utils.data import DataLoader, default_collate
+from torch.utils.data import BatchSampler, DataLoader, RandomSampler, default_collate
 
 from ...windows import Windows, load
 from .objective import EntityJEPA, window_states
+from .training_checkpoint import CheckpointBatches, atomic_save
 
 
 def statistics(data, seed=0, count=5000):
@@ -62,7 +64,23 @@ def main(argv=None):
     parser.add_argument("--workers", type=int, default=4)
     parser.add_argument("--device", default="cuda" if torch.cuda.is_available() else "cpu")
     parser.add_argument("--out", type=Path, required=True)
+    parser.add_argument("--resume", type=Path, help="Restore a complete training checkpoint")
+    parser.add_argument("--stop-after", type=int, help="Save and stop after this global step")
     args = parser.parse_args(argv)
+    saved = None
+    if args.resume:
+        saved = torch.load(args.resume, map_location="cpu", weights_only=True)
+        if saved.get("kind") != "jepa_training_resume_v1":
+            raise ValueError("expected a complete training checkpoint")
+        overrides = dict(out=args.out, resume=args.resume, stop_after=args.stop_after,
+                         device=args.device, workers=args.workers)
+        if args.workers != saved["training"]["workers"] or args.device != saved["training"]["device"]:
+            raise ValueError("resume with the same workers and device")
+        args = argparse.Namespace(**{**saved["training"], **overrides})
+        args.data = Path(args.data)
+    progress_path = args.out.with_suffix(".resume.pt")
+    if progress_path.exists() and saved is None:
+        raise FileExistsError(f"use a fresh output prefix: {progress_path}")
     if not 1 <= args.episodes <= 2000 or args.steps < 4 or not 1 <= args.rollout_steps <= 15:
         parser.error("episodes must be 1..2000, steps >= 4, rollout-steps 1..15")
     if min(args.batch, args.history, args.stats_samples, args.sigreg_projections) < 1:
@@ -80,7 +98,7 @@ def main(argv=None):
     data = Windows(episodes, horizon=15, history=args.history)
     if len(data) < args.batch:
         raise ValueError("batch exceeds the number of training windows")
-    stats = statistics(data, args.seed, args.stats_samples)
+    stats = saved["stats"] if saved else statistics(data, args.seed, args.stats_samples)
     device_stats = {key: value.to(args.device) for key, value in stats.items()}
     options = dict(history=args.history, dim=args.dim, latent=args.latent, enc_layers=args.enc_layers,
                    pred_layers=args.pred_layers, heads=args.heads, attn=args.attn)
@@ -89,43 +107,98 @@ def main(argv=None):
     optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=1e-3)
     scheduler = torch.optim.lr_scheduler.OneCycleLR(optimizer, args.lr, total_steps=args.steps,
                                                    pct_start=min(.5, max(.05, 2/args.steps)))
-    loader = DataLoader(data, batch_size=args.batch, shuffle=True, drop_last=True, num_workers=args.workers,
-                        persistent_workers=args.workers > 0, generator=torch.Generator().manual_seed(args.seed),
+    generator = torch.Generator().manual_seed(args.seed)
+    sampler = CheckpointBatches(BatchSampler(RandomSampler(data, generator=generator), args.batch, True),
+                                saved["sampler"] if saved else None)
+    loader = DataLoader(data, batch_sampler=sampler, num_workers=args.workers,
+                        persistent_workers=args.workers > 0, generator=generator,
                         pin_memory=str(args.device).startswith("cuda"))
-    iterator, log = iter(loader), []
+    iterator = iter(loader)
+    log = saved["log"] if saved else []
     sources = [Path(__file__), Path(__file__).with_name("objective.py"),
-               Path(__file__).with_name("model.py"), Path(__file__).with_name("backbone.py")]
+               Path(__file__).with_name("model.py"), Path(__file__).with_name("backbone.py"),
+               Path(__file__).with_name("training_checkpoint.py")]
     source_sha256 = {path.name: hashlib.sha256(path.read_bytes()).hexdigest() for path in sources}
+    manifest_hash = hashlib.sha256(manifest_path.read_bytes()).hexdigest()
+    training_args = {key: str(value) if isinstance(value, Path) else value
+                     for key, value in vars(args).items() if key not in ("resume", "stop_after")}
+    initial_step, elapsed = 0, 0.
+    if saved:
+        if saved["source_sha256"] != source_sha256 or saved["dataset_manifest_sha256"] != manifest_hash:
+            raise ValueError("training source or data manifest changed since checkpoint")
+        model.load_state_dict(saved["model"], strict=True)
+        optimizer.load_state_dict(saved["optimizer"])
+        scheduler.load_state_dict(saved["scheduler"])
+        # A new DataLoader iterator draws a worker base seed. Undo that extra
+        # draw: deterministic Windows data does not use worker randomness.
+        generator.set_state(saved["loader_rng"])
+        torch.set_rng_state(saved["cpu_rng"])
+        if str(args.device).startswith("cuda"):
+            torch.cuda.set_rng_state_all(saved["cuda_rng"])
+        initial_step, elapsed = saved["step"], saved["seconds"]
     start = time.perf_counter()
     if str(args.device).startswith("cuda"):
         torch.cuda.reset_peak_memory_stats()
-    for step in range(1, args.steps+1):
-        try:
-            batch = next(iterator)
-        except StopIteration:
-            iterator = iter(loader)
-            batch = next(iterator)
-        batch = {key: value.to(args.device, non_blocking=True) for key, value in batch.items()}
-        optimizer.zero_grad(set_to_none=True)
-        loss, parts = model.loss(batch, device_stats, args.rollout_steps)
-        if not torch.isfinite(loss):
-            raise FloatingPointError(f"nonfinite loss at step {step}")
-        loss.backward()
-        grad = torch.nn.utils.clip_grad_norm_(model.parameters(), 1., error_if_nonfinite=True)
-        optimizer.step()
-        scheduler.step()
-        if step % 100 == 0 or step == args.steps:
-            record = dict(step=step, loss=float(loss.detach()), grad_norm=float(grad),
-                          seconds=time.perf_counter()-start, **{key: float(value) for key, value in parts.items()})
-            log.append(record)
-            print(json.dumps(record), flush=True)
-        if step % 1000 == 0 and step < args.steps:
-            progress = args.out.with_suffix(f".step{step}.pt")
-            progress.parent.mkdir(parents=True, exist_ok=True)
-            torch.save(dict(config=model.config, model={key: value.cpu() for key, value in model.state_dict().items()},
-                            stats=stats, training_info=dict(step=step, planned_steps=args.steps,
-                                                           incomplete=True, source_sha256=source_sha256)), progress)
-    seconds = time.perf_counter()-start
+    stop_requested = False
+    def request_stop(signum, frame):
+        nonlocal stop_requested
+        stop_requested = True
+    handlers = {sig: signal.signal(sig, request_stop) for sig in (signal.SIGINT, signal.SIGTERM)}
+    def save_resume(step):
+        atomic_save(dict(kind="jepa_training_resume_v1", training=training_args, config=model.config,
+                         model=model.state_dict(), stats=stats, optimizer=optimizer.state_dict(),
+                         scheduler=scheduler.state_dict(), sampler=sampler.state_dict(),
+                         loader_rng=generator.get_state(), cpu_rng=torch.get_rng_state(),
+                         cuda_rng=torch.cuda.get_rng_state_all() if str(args.device).startswith("cuda") else [],
+                         step=step, seconds=elapsed+time.perf_counter()-start, log=log,
+                         source_sha256=source_sha256, dataset_manifest_sha256=manifest_hash), progress_path)
+    step = initial_step
+    try:
+        for step in range(initial_step+1, args.steps+1):
+            if stop_requested:
+                step -= 1
+                break
+            try:
+                batch = next(iterator)
+            except StopIteration:
+                sampler.next_epoch()
+                iterator = iter(loader)
+                batch = next(iterator)
+            batch = {key: value.to(args.device, non_blocking=True) for key, value in batch.items()}
+            optimizer.zero_grad(set_to_none=True)
+            loss, parts = model.loss(batch, device_stats, args.rollout_steps)
+            if not torch.isfinite(loss):
+                raise FloatingPointError(f"nonfinite loss at step {step}")
+            loss.backward()
+            grad = torch.nn.utils.clip_grad_norm_(model.parameters(), 1., error_if_nonfinite=True)
+            optimizer.step()
+            scheduler.step()
+            sampler.commit()
+            if step % 100 == 0 or step == args.steps or step == args.stop_after or stop_requested:
+                record = dict(step=step, loss=float(loss.detach()), grad_norm=float(grad),
+                              seconds=elapsed+time.perf_counter()-start, **{key: float(value) for key, value in parts.items()})
+                log.append(record)
+                print(json.dumps(record), flush=True)
+                save_resume(step)
+            if step % 1000 == 0 and step < args.steps:
+                progress = args.out.with_suffix(f".step{step}.pt")
+                progress.parent.mkdir(parents=True, exist_ok=True)
+                torch.save(dict(config=model.config, model={key: value.cpu() for key, value in model.state_dict().items()},
+                                stats=stats, training_info=dict(step=step, planned_steps=args.steps,
+                                                               incomplete=True, source_sha256=source_sha256)), progress)
+            if step == args.stop_after or stop_requested:
+                save_resume(step)
+                print(json.dumps(dict(stage="paused", step=step, resume=str(progress_path))), flush=True)
+                return
+        if stop_requested:
+            save_resume(step)
+            print(json.dumps(dict(stage="paused", step=step, resume=str(progress_path))), flush=True)
+            return
+        save_resume(step)
+    finally:
+        for sig, handler in handlers.items():
+            signal.signal(sig, handler)
+    seconds = elapsed+time.perf_counter()-start
     info = dict(config=model.config, training={key: str(value) if isinstance(value, Path) else value
                                              for key, value in vars(args).items()},
                 windows=len(data), parameters=sum(p.numel() for p in model.parameters()), seconds=seconds,

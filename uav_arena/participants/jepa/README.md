@@ -20,7 +20,8 @@ of cross-agent prediction error with closed-loop success.
 | `objective.py` | Latent rollout, SIGReg and the 15-feature physical readout loss |
 | `model.py` | Arena factory, observation history, reset and batched trajectory prediction |
 | `train.py` | Training-only normalization, optimization, checkpoints and run metadata |
-| [PHASE_A.md](PHASE_A.md) | Five measured runs, reproduction commands, compute and remaining tasks |
+| [PHASE_A.md](PHASE_A.md) | Six completed runs, reproduction commands, compute and remaining tasks |
+| [DIAGNOSTICS_FULL_D.md](DIAGNOSTICS_FULL_D.md) | C/D/example error comparison, frozen readout probes and normalization discussion |
 | `data/uav_arena/results/jepa/phase_a_summary.json` | Local configurations, metrics and hashes |
 
 The factory `uav_arena.participants.jepa.model:make` serves both the shared
@@ -228,3 +229,41 @@ in cm and payload velocity errors in m/s, including steps 1–5/6–10/11–15.
 The parent model and checkpoint hashes are checked after training. Probe
 weights use a separate `.probe.pt` file and are not loaded by the participant
 factory. See [PHASE_A.md](PHASE_A.md) for the measured reconstruction results.
+
+
+### 关机后的续训与完整断点
+
+`continue_train.py` 将旧的仅含权重的检查点作为新实验的起点，保留模型、损失和训练统计量，重置 AdamW / OneCycleLR，并重新开始确定性的训练批次顺序。它不等价于恢复旧实验的优化器轨迹。训练仍限于 Phase A 的前 250 个标准训练 episodes。
+
+```bash
+PYTHONPATH=. data/uav_arena/.venv/bin/python -m uav_arena.participants.jepa.continue_train \
+  --checkpoint data/uav_arena/participants/jepa/phase_a_full_d.step10000.pt \
+  --training-config data/uav_arena/participants/jepa/phase_a_full_c.json \
+  --steps 13000 --device cuda --workers 4 \
+  --out data/uav_arena/participants/jepa/phase_a_full_d_warmstart_v1.pt
+```
+
+每 100 步原子替换同名前缀的 `.resume.pt`，保存权重、优化器、调度器、CPU/CUDA 随机状态、已完成批次位置和累计训练用时。`SIGINT` / `SIGTERM` 会在当前更新完成后保存退出；突然断电最多丢失最近 99 步。数据窗口读取是确定性的，worker 预取不会推进保存的批次位置。
+
+```bash
+PYTHONPATH=. data/uav_arena/.venv/bin/python -m uav_arena.participants.jepa.continue_train \
+  --resume data/uav_arena/participants/jepa/phase_a_full_d_warmstart_v1.resume.pt \
+  --device cuda --workers 4 \
+  --out data/uav_arena/participants/jepa/phase_a_full_d_warmstart_v1.pt
+```
+
+恢复时沿用检查点中的配置和总步数，核对训练源码与数据清单哈希。连续与分段运行的精确一致性已有 CPU 回归测试；CUDA 算子的数值复现仍受运行环境影响。最终 `.pt` 可由现有参赛者接口加载，`.resume.pt` 仅供训练恢复。
+
+
+### 从头训练的完整断点
+
+`train.py` 从随机初始化训练，并保持原 `RandomSampler` 的批次顺序。每 100 步原子保存 `.resume.pt`，包含模型、优化器、学习率计划、CPU/CUDA 随机状态、loader 生成器、当前 epoch 批次列表和已完成位置。`SIGINT` / `SIGTERM` 在当前更新结束后保存退出。恢复命令：
+
+```bash
+PYTHONPATH=. data/uav_arena/.venv/bin/python -m uav_arena.participants.jepa.train \
+  --resume data/uav_arena/participants/jepa/phase_a_full_d_fresh_v1.resume.pt \
+  --out data/uav_arena/participants/jepa/phase_a_full_d_fresh_v1.pt \
+  --device cuda --workers 4
+```
+
+恢复沿用保存的训练配置，必须保持 device 和 workers 一致；源码或数据清单发生变化会拒绝恢复。CPU 回归测试覆盖原始 shuffle 顺序以及跨 epoch、worker 预取条件下的恢复一致性。`full_d_fresh_v1` 从第 0 步开始，目标 23,000 步，与 `full_d_warmstart_v1` 分开保存。

@@ -1,6 +1,6 @@
 # JEPA Phase A：explore-v2
 
-已实现 full / no_cross / flat 三个变体并完成五次训练与验证。当前最佳分数均高于8.26 cm，尚未运行dev。
+已实现 full / no_cross / flat 三个变体并完成六次训练与验证。当前最佳分数均高于8.26 cm，尚未运行dev。
 
 冻结基线：arena-v0.3 (`64134e72f66be128024b1e602620073de4666851`)。
 训练只用前250个episodes（200000–200249）；验证100个episodes（299000–299099），
@@ -14,6 +14,7 @@
 | phase_a_full_c | 1 | 10,000 | 20 | 0.01 | 8.9844 | 未通过 | 未运行（未过门槛） |
 | phase_a_no_cross_c | 1 | 10,000 | 20 | 0.01 | 8.8980 | 未通过 | 未运行（未过门槛） |
 | phase_a_flat_c | 1 | 10,000 | 20 | 0.01 | 9.2660 | 未通过 | 未运行（未过门槛） |
+| phase_a_full_d_fresh_v1 | 1 | 23,000 | 20 | 0.01 | 8.3737 | 未通过 | 未运行（未过门槛） |
 
 A/B是full上的探索，均保留。B同时改history和训练步数，不能据此归因于history。
 C基于重建误差调整现有损失权重；三个变体使用同一C配置。loss公式、指标和门槛未改。
@@ -29,16 +30,18 @@ flat每帧latent256，匹配总latent预算。所有实验batch128、lr0.001、s
 | phase_a_full_c | 8.6701 | 8.8505 | 9.0190 | 9.3981 |
 | phase_a_no_cross_c | 8.5837 | 8.7786 | 8.9520 | 9.2777 |
 | phase_a_flat_c | 9.0419 | 9.1705 | 9.2810 | 9.5707 |
+| phase_a_full_d_fresh_v1 | 8.0500 | 8.2423 | 8.4152 | 8.7871 |
 
 | 变体 | 当前验证最优checkpoint | 含readout参数 | 峰值显存MiB | 训练分钟 |
 |---|---|---:|---:|---:|
-| full | phase_a_full_c | 1,288,841 | 3642.1 | 34.71 |
+| full | phase_a_full_d_fresh_v1 | 1,288,841 | 3642.1 | 75.72 |
 | no_cross | phase_a_no_cross_c | 1,288,841 | 3642.1 | 33.01 |
 | flat | phase_a_flat_c | 1,371,663 | 944.5 | 20.45 |
 
-记录的Phase A训练GPU时间合计2.341小时；不含统计、验证、dev和调试。
+六次完成的Phase A联合训练GPU时间合计3.603小时；不含统计、验证、探针及调试。
+另保留原D训练中断（磁盘权重10,000步、日志10,400步）和warm-start中断（新增4,185步）的记录，不计入完成模型时间或分数。
 设备RTX4060 Laptop 8GB，WSL2 Ubuntu26.04.1；时间受笔记本功耗和并发CPU检查影响。
-配置与完整指标保存在`data/uav_arena/results/jepa/phase_a_summary.json`；checkpoint SHA256见下表。
+六次完成实验的配置与完整指标保存在`data/uav_arena/results/jepa/phase_a_summary.json`；checkpoint SHA256见下表。
 训练生成的checkpoint与原始结果保存在`data/uav_arena/`下。
 
 | checkpoint | SHA256 |
@@ -48,6 +51,7 @@ flat每帧latent256，匹配总latent预算。所有实验batch128、lr0.001、s
 | phase_a_full_c | `6461507f53be90b700e73428fb6652a3a96573b3b8de37a2299b5ff51084fbdb` |
 | phase_a_no_cross_c | `1847a74039bdc0ad0717bddd4bd69aa14c1c7643754f8c92410c45f89c31233d` |
 | phase_a_flat_c | `b7842f3697f0e1780fc22df6a610f1b2dfb1d011c762a468b39dcaf9102dba0a` |
+| phase_a_full_d_fresh_v1 | `ba08fccd69c7fe0b2ca4c65a00d0721e5d651b7d0a89bc47b8124840832d4b43` |
 
 512候选×15步调用耗时：CUDA，候选从CPU输入并将结果还原到CPU，观察编码已缓存；
 warmup2次后测量10次均值，包含设备传输及同步，不包含observe或完整MPPI循环。
@@ -146,8 +150,7 @@ AdamW（weight decay0.001）、OneCycle、seed0。沿用父模型归一化，只
 观测帧载荷相对位置恒为零，因此判断同时使用飞机位置和未来帧。
 
 探针只测试真实帧编码后的重建，未替换参赛者读出头；原模型selection score仍为8.9844 cm。
-下一步按既定C配置从头运行full的23,000步联合训练，优先观察前5步载荷及飞机误差。
-逐步归一化与目标尺度修改保留为讨论项。
+后续full的23,000步联合训练已完成，新增诊断见下一节。逐步归一化与目标尺度修改仍保留为讨论项。
 
 探针耗时51.92秒，完整指标与独立权重保存在：
 
@@ -158,10 +161,57 @@ AdamW（weight decay0.001）、OneCycle、seed0。沿用父模型归一化，只
 
 复现命令见[README.md](README.md#frozen-encoder-readout-probe)。
 
+## full D：23,000步后的诊断与结论
+
+从随机初始化开始，沿用C的模型、损失、归一化统计和seed0；训练器新增完整断点，保持原shuffle顺序。完整23,000步OneCycle训练耗时75.72分钟。选择分数8.3737 cm，较full C改善0.6108 cm，仍高于门槛0.1137 cm。
+
+四种延迟平均的载荷误差：
+
+| 阶段 | 示例cm | full C cm | full D cm |
+|---|---:|---:|---:|
+| 第1–5步 | 4.6598 | 6.0980 | 4.9017 |
+| 第6–10步 | 9.7406 | 9.8301 | 9.5616 |
+| 第11–15步 | 10.3774 | 11.0253 | 10.6577 |
+
+中段已优于示例，短期和末段仍偏高；飞机误差在四种延迟下改善但仍高于示例。
+
+相同5,000步冻结编码器探针，在完整验证集上：
+
+| 模型 | 原读出未来载荷cm | 新读出未来载荷cm | 原读出未来飞机cm | 新读出未来飞机cm |
+|---|---:|---:|---:|---:|
+| C | 4.8832 | 1.9952 | 9.9752 | 3.5596 |
+| D | 2.2120 | 1.6358 | 4.9968 | 2.0780 |
+
+训练量增加已显著改善读出精度，新读出头仍有收益，但尚未达到1 cm。探针仅重建真实编码，不替换官方预测接口，不能据此推算选择分数。新探针耗时39.68秒，冻结参数与父文件哈希验证通过。
+
+参数量×训练采样次数：D为3.7943e+12，示例为3.8599e+12，比例0.983；该口径不是FLOPs。
+
+逐步目标归一化已整理为待讨论方案，尚未修改损失。建议先确认是否只重加权predicted未来读出的absolute项，保持encoded读出、delta、latent、SIGReg及骨干不变。详见[完整诊断与讨论](DIAGNOSTICS_FULL_D.md)，含四种延迟分段、逐步误差、探针、实际训练统计尺度与复现口径。
+
+原D中断和warm-start中断的权重、日志均保留；本表只将完整从头训练的D计为第六个完成实验。状态登记脚本的stride字符串类型检查已修正，未改变训练或评分结果。
+
+从头复现D：使用上方C训练命令，把`--steps 10000`改为`--steps 23000`，并将所有输出前缀替换为新名称；其他参数保持一致。探针命令：
+
+```bash
+OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 PYTHONPATH=. \
+data/uav_arena/.venv/bin/python -m uav_arena.participants.jepa.probe_readout \
+  --checkpoint data/uav_arena/participants/jepa/phase_a_full_d_fresh_v1.pt \
+  --episodes 250 --val-episodes 100 --steps 5000 --batch 128 --lr 0.001 --seed 0 --device cuda \
+  --out data/uav_arena/results/jepa/reproduce_full_d_readout_probe
+```
+
+完整原始结果继续留在`data/`：
+
+- `data/uav_arena/results/phase_a_full_d_fresh_v1_openloop.json`
+- `data/uav_arena/results/jepa/full_d_fresh_v1_readout_probe.json`
+- `data/uav_arena/results/jepa/full_d_fresh_v1_diagnostics.json`
+- 新探针SHA256：`b0a9e5ccfdb142c38790b28f8ba9d85ce690ebcc880f0af1011b760b1461a7c9`
+- 父模型冻结状态SHA256：`b05bda2fb9f9294a1eb8201ea5869a263e6cc22088c486cdd96bd054ac954fe0`
+
 ## 验证
 
-相关106项测试通过（原有102项加4项探针测试），覆盖Arena回归、状态排列、15步反传、1/512/555候选、reset、
-不读取载荷质量、时间因果性、坐标平移和checkpoint重载。新增检查包括冻结参数、物理单位、逐episode验证stride、训练/验证划分及独立权重保存。
+相关112项测试通过、1项跳过（在106项基础上新增2项续训和4项完整断点检查），覆盖Arena回归、状态排列、15步反传、1/512/555候选、reset、
+不读取载荷质量、时间因果性、坐标平移和checkpoint重载。新增检查包括冻结参数、物理单位、逐episode验证stride、训练/验证划分、独立权重保存、原始shuffle顺序和跨epoch完整恢复。
 
 ## 后续任务与验收
 
@@ -170,8 +220,9 @@ AdamW（weight decay0.001）、OneCycle、seed0。沿用父模型归一化，只
 ### Phase A：训练收敛与闭环检查
 
 - [x] 实现三个变体、共享骨干、训练入口、预测接口及测试。
-- [x] 完成前250个训练episodes的五次试验，记录完整验证集的stride-10分数、参数量与计算开销。
-- [ ] 分别检查readout重建和latent多步预测的逐步误差，再调整history、损失权重与训练日程。
+- [x] 完成前250个训练episodes的六次试验，记录完整验证集的stride-10分数、参数量与计算开销。
+- [x] 完成full C/D的读出探针与官方多步误差对照，记录增加训练预算的结果。
+- [ ] 与维护者确认逐步目标归一化的范围，再运行单一改动的受控实验。
 - [ ] 将三个变体的验证selection score分别降到8.26 cm以下。
 - [ ] 各变体运行一次dev seeds 0–4的全部8种条件（40 episodes），记录分条件成功数、失败类型与到达时间。
 - [ ] 与june同步W-ar配对实验的history、full mask及骨干宽度，并报告包含各自读出头的总参数量。
