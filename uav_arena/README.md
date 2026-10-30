@@ -32,7 +32,8 @@ Status (`arena-v0.3`, tagged on 2026-10-28, before the first `test` run):
   `crazymarl_policy.py`). Seeds 0–2 are trained and evaluated on `dev`.
 - Methods that train online, TD-MPC2 and DreamerV3, get a Gymnasium wrapper (`gym_env.py`,
   `gym_eval.py`; Gymnasium wrapper, below) and adapters to their pinned official code, with a venv
-  each (TD-MPC2 and DreamerV3, below). Their training runs come next.
+  each (TD-MPC2 and DreamerV3, below). Their training runs come next: 2M environment steps and
+  seeds 42, 67 and 2027 for each method.
 - The reference rows and the example participant ran on `test` on 2026-10-28 and 29, U's through
   the recorder, which also recorded the questions (Results on test, below). Next: the CrazyMARL
   rows on `test`, then the world-model rows (see Roadmap).
@@ -174,7 +175,7 @@ the predictor differs.
 | Physics + mass estimation | the physics row with online payload-mass estimation (multiple models, 2 g grid) | observation history | implemented; run on `test` |
 | CrazyMARL | external, model-free: official IPPO trainer, decentralized 250 Hz motor commands, retrained on arena tasks | own state fresh; payload, teammates and obstacles delayed | seeds 0–2 evaluated on `dev` |
 | Entity-token JEPA (`full`, `no_cross`, `flat`), autoregressive state model, PETS ensemble | world models in the shared MPPI | observation history | planned |
-| TD-MPC2 (official, trained online), DreamerV3 | external model-based RL, evaluated as published, plus state probes for layers 1–3 | observation | adapters built and smoke-tested; training planned |
+| TD-MPC2 (official, trained online), DreamerV3 | external model-based RL, evaluated as published, plus state probes for layers 1–3 | observation | adapters built and smoke-tested; training planned (2M steps, 3 seeds) |
 
 ## CrazyMARL on arena tasks
 
@@ -248,22 +249,32 @@ the commit and that no tracked file changed), with its default settings, trained
 Gymnasium wrapper and evaluated with its own planner or actor through `gym_eval.py`. Each registers
 the arena task the way the code registers its own tasks (`upstream.py` holds the shared checks).
 - **TD-MPC2** (`tdmpc2_train.py`, `tdmpc2_policy.py`; nicklashansen/tdmpc2 at 332f19e). Upstream's
-  `train.py` with `config.yaml`'s defaults (5M parameters; planning with 512 samples over 3 steps;
-  10M environment steps) on the task `uav-arena`, which joins `envs.make_env` as `envs/mujoco.py`
-  adds Gymnasium tasks. The arena changes two settings: `episodic=true`, because arena events end
-  episodes and the default rejects terminations, and `rho=0.7`, upstream's setting for tasks with
-  terminations (`envs/mujoco.py`, issue #62). Without wandb upstream saves no agent, so the
+  `train.py` with `config.yaml`'s defaults (5M parameters; planning with 512 samples over 3 steps)
+  on the task `uav-arena`, which joins `envs.make_env` as `envs/mujoco.py` adds Gymnasium tasks.
+  Besides the budget (below), the arena changes two settings: `episodic=true`, because arena events
+  end episodes and the default rejects terminations, and `rho=0.7`, upstream's setting for tasks
+  with terminations (`envs/mujoco.py`, issue #62). Without wandb upstream saves no agent, so the
   launcher saves the final one and writes upstream's train and eval logs as JSON lines. Evaluation
   runs upstream's planner in eval mode, with torch reseeded by the layout seed each episode.
 - **DreamerV3** (`dreamerv3_train.py`, `dreamerv3_policy.py`; danijar/dreamerv3 at e01491f).
   Upstream's `main.py` with its `dmc_proprio` preset, the one for proprioceptive continuous control
-  (model size 1M, train ratio 1024, 1.1M environment steps, 16 environments), on the task
-  `arena_train`. A timeout is the last step of an episode but not a terminal one. Upstream
-  checkpoints every 15 minutes and continues from the latest checkpoint when the same command runs
-  again with `--resume`; the launcher adds the final agent. Evaluation runs upstream's actor in eval
-  mode, which samples; its sampling seeds count the actions taken, and each episode restarts the
-  count at the layout seed. The actor's samples can leave [−1, 1]; training clips them
-  (`ClipAction`), and so does the wrapper.
+  (model size 1M, train ratio 1024, 16 environments; the budget below replaces its 1.1M
+  environment steps), on the task `arena_train`. A timeout is the last step of an episode but not a
+  terminal one. Upstream checkpoints every 15 minutes and continues from the latest checkpoint when
+  the same command runs again with `--resume`; the launcher adds the final agent. Evaluation runs
+  upstream's actor in eval mode, which samples; its sampling seeds count the actions taken, and each
+  episode restarts the count at the layout seed. The actor's samples can leave [−1, 1]; training
+  clips them (`ClipAction`), and so does the wrapper.
+- **Budget and seeds** (decided on 2026-10-30, before any training run): 2M environment steps for
+  each method, the same for both so that their rows compare directly, as TD-MPC2's own DreamerV3
+  results do. That lies within the papers' single-task budgets: TD-MPC2's published runs train
+  Meta-World and MyoSuite for 2M steps, most DMControl and ManiSkill2 tasks for 4M and the hardest
+  for 14M (`config.yaml`'s 10M is a default none of them uses), and DreamerV3's own DMControl
+  proprioceptive scores reach 0.5M. It is about 12 times the world models' standard budget of
+  170,304 decisions, with data each method collects with its own policy. Each method trains seeds
+  42, 67 and 2027: 3 seeds, as TD-MPC2 reports per task and as the arena's other trained rows use
+  (DreamerV3 reports 5 for DMControl). Every seed runs once on `test` and is reported with its
+  training curve.
 - **Venvs** (`scripts/setup_online_rl.py`, `requirements-tdmpc2.txt`, `requirements-dreamerv3.txt`):
   one per method, Python 3.11, with the official pins except MuJoCo 3.3.0 and NumPy 1.26.4 for the
   arena's physics, a cu128 build of torch 2.7.1, and JAX 0.5.2 with CUDA 12.9 wheels instead of 0.4.33,
@@ -276,23 +287,26 @@ the arena task the way the code registers its own tasks (`upstream.py` holds the
   training saves an agent whose evaluation replays an episode exactly.
 - **Measured on this laptop** (RTX 5070 Laptop, 2026-10-30, short runs with the default settings):
   TD-MPC2's first `torch.compile` takes about 6 minutes; then it trains at about 50 environment
-  steps a second with one CPU core busy, 5.6 h per million steps (its 10M default: about 56 h).
-  DreamerV3 compiles in about a minute and trains at about 55 steps a second (its 1.1M steps: about
-  5.5 h). Evaluation takes 10 ms per decision for TD-MPC2's planner and 1.5 ms for DreamerV3's actor.
+  steps a second with one CPU core busy, 5.6 h per million steps (2M: about 11 h). DreamerV3
+  compiles in about a minute and trains at about 55 steps a second (2M: about 10 h). The 6 training
+  runs take about 64 h one after another. Evaluation takes 10 ms per decision for TD-MPC2's planner
+  and 1.5 ms for DreamerV3's actor.
 
 ```bash
 python3 scripts/setup_online_rl.py tdmpc2
 python3 scripts/setup_online_rl.py dreamerv3
-PYTHONPATH=$PWD data/external/.venv-tdmpc2/bin/python -m uav_arena.tdmpc2_train \
-  --out data/uav_arena/tdmpc2/s1 --seed 1
-PYTHONPATH=$PWD data/external/.venv-dreamerv3/bin/python -m uav_arena.dreamerv3_train \
-  --out data/uav_arena/dreamerv3/s1 --seed 1
-PYTHONPATH=$PWD data/external/.venv-tdmpc2/bin/python -m uav_arena.gym_eval --policy uav_arena.tdmpc2_policy:make \
-  --policy-options '{"run": "data/uav_arena/tdmpc2/s1"}' --suite dev --seeds 0:5 \
-  --out data/uav_arena/results/tdmpc2_s1_dev_s0-5.json
-PYTHONPATH=$PWD data/external/.venv-dreamerv3/bin/python -m uav_arena.gym_eval --policy uav_arena.dreamerv3_policy:make \
-  --policy-options '{"run": "data/uav_arena/dreamerv3/s1"}' --suite dev --seeds 0:5 \
-  --out data/uav_arena/results/dreamerv3_s1_dev_s0-5.json
+for s in 42 67 2027; do
+  PYTHONPATH=$PWD data/external/.venv-tdmpc2/bin/python -m uav_arena.tdmpc2_train \
+    --out data/uav_arena/tdmpc2/s$s --seed $s --steps 2000000
+  PYTHONPATH=$PWD data/external/.venv-dreamerv3/bin/python -m uav_arena.dreamerv3_train \
+    --out data/uav_arena/dreamerv3/s$s --seed $s --steps 2000000
+  PYTHONPATH=$PWD data/external/.venv-tdmpc2/bin/python -m uav_arena.gym_eval --policy uav_arena.tdmpc2_policy:make \
+    --policy-options "{\"run\": \"data/uav_arena/tdmpc2/s$s\"}" --suite dev --seeds 0:5 \
+    --out data/uav_arena/results/tdmpc2_s${s}_dev_s0-5.json
+  PYTHONPATH=$PWD data/external/.venv-dreamerv3/bin/python -m uav_arena.gym_eval --policy uav_arena.dreamerv3_policy:make \
+    --policy-options "{\"run\": \"data/uav_arena/dreamerv3/s$s\"}" --suite dev --seeds 0:5 \
+    --out data/uav_arena/results/dreamerv3_s${s}_dev_s0-5.json
+done
 ```
 
 ## Results on test (seeds 1000–1049, all 8 conditions)

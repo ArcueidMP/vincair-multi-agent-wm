@@ -9,10 +9,11 @@ Gymnasium tasks: `ArenaGymEnv` behind upstream's old-gym contract and its `Timeo
 - no wandb and no video. Upstream then saves no agent, so the launcher saves the final one.
 
 Writes `<out>.pt` (the final agent), `<out>.json` (a report with the resolved configuration),
-`<out>.log.jsonl` (upstream's train and eval logs) and upstream's work directory `<out>/`.
+`<out>.log.jsonl` (upstream's train and eval logs) and upstream's work directory `<out>/`. The
+arena trains 2M environment steps with seeds 42, 67 and 2027 (TASKS.md), for example:
 
     PYTHONPATH=$PWD data/external/.venv-tdmpc2/bin/python -m uav_arena.tdmpc2_train \
-        --checkout data/external/tdmpc2 --out data/uav_arena/tdmpc2/s1 --seed 1 --steps 1000000
+        --checkout data/external/tdmpc2 --out data/uav_arena/tdmpc2/s42 --seed 42 --steps 2000000
 """
 from __future__ import annotations
 

@@ -9,10 +9,11 @@ one. Upstream saves a checkpoint every 15 minutes and resumes from the latest on
 command runs again (`--resume`); the launcher adds the final agent.
 
 Writes upstream's logdir `<out>/` (config.yaml, metrics.jsonl, scores.jsonl, replay and ckpt/), the
-final agent `<out>/final/` and a report `<out>.json`.
+final agent `<out>/final/` and a report `<out>.json`. The arena trains 2M environment steps with
+seeds 42, 67 and 2027 (TASKS.md), for example:
 
     PYTHONPATH=$PWD data/external/.venv-dreamerv3/bin/python -m uav_arena.dreamerv3_train \
-        --checkout data/external/dreamerv3 --out data/uav_arena/dreamerv3/s0 --seed 0
+        --checkout data/external/dreamerv3 --out data/uav_arena/dreamerv3/s42 --seed 42 --steps 2000000
 """
 from __future__ import annotations
 
