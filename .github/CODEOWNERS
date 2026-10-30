@@ -20,6 +20,9 @@
 /uav_arena/participants/example/  @ArcueidMP
 /uav_arena/crazymarl_*.py      @ArcueidMP
 /uav_arena/gym_*.py            @ArcueidMP
+/uav_arena/tdmpc2_*.py         @ArcueidMP
+/uav_arena/dreamerv3_*.py      @ArcueidMP
+/uav_arena/upstream.py         @ArcueidMP
 /uav_arena/README.md           @ArcueidMP
 /tests/test_uav_arena*.py      @ArcueidMP
 /.github/                      @ArcueidMP

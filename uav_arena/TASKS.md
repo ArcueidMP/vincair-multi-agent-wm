@@ -9,7 +9,7 @@ them.
 | Entity-token JEPA `full`, `no_cross`, `flat` | Yihao Xu (@Yihao-Xu-777) | not started |
 | Autoregressive state model (W-ar) | june (@june250630) | not started; builds on the JEPA backbone |
 | PETS ensemble | june (@june250630) | not started |
-| TD-MPC2, DreamerV3 | unassigned | Gymnasium wrapper built; adapters to the official code next |
+| TD-MPC2, DreamerV3 | unassigned | adapters to the official code built and smoke-tested; training next |
 | Evaluation harness and recorder ([HARNESS.md](HARNESS.md)), analysis plan ([ANALYSIS.md](ANALYSIS.md)), Gymnasium wrapper, reference and CrazyMARL rows on `test` | maintainer (@ArcueidMP) | analysis plan frozen in `arena-v0.3`; recorder and harness built and validated on `dev`; reference rows and the example participant run on `test` ([README](README.md)); Gymnasium wrapper built; the CrazyMARL rows on `test` open |
 
 ## First day, every owner
@@ -155,11 +155,15 @@ state probes for layers 1–3.
   - the current observation only, with no frame stacking.
 - **Settings the arena forces:**
   - TD-MPC2 runs with `episodic=true`, because arena events end episodes early and its default
-    rejects that.
+    rejects that, and with `rho=0.7`, upstream's setting for tasks with terminations.
   - Every venv keeps MuJoCo 3.3.0 and NumPy 1.26 or later. TD-MPC2's NumPy 1.24.4 pin changes the
     physics.
-- **Next:** adapters to the official code (TD-MPC2's `envs/`, DreamerV3's `embodied.Env`), with each
-  repository pinned to a commit.
+- **Built on 2026-10-30:** adapters to the pinned official code, one venv per method and a setup
+  script ([README](README.md), TD-MPC2 and DreamerV3), checked by tests and short runs on the
+  laptop.
+- **Open before training:** each method's budget (upstream: 10M steps for TD-MPC2, 1.1M for
+  DreamerV3's preset), the number of training seeds, and the training machine, which must pass
+  `collect --verify` first.
 
 ## Example participant
 
