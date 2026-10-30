@@ -22,6 +22,7 @@ of cross-agent prediction error with closed-loop success.
 | `train.py` | Training-only normalization, optimization, checkpoints and run metadata |
 | [PHASE_A.md](PHASE_A.md) | Seven completed runs, reproduction commands, compute and remaining tasks |
 | [DIAGNOSTICS_FULL_D.md](DIAGNOSTICS_FULL_D.md) | C/D/example error comparison, frozen readout probes and normalization discussion |
+| [PHASE_B_GRID.md](PHASE_B_GRID.md) | Proposed four-config shared grid, parameter counts, runtime estimates and W-ar/PETS coordination |
 | `data/uav_arena/results/jepa/phase_a_summary.json` | Local configurations, metrics and hashes |
 
 The factory `uav_arena.participants.jepa.model:make` serves both the shared
@@ -30,16 +31,16 @@ planner and the [evaluation harness](../../HARNESS.md). It accepts single-plan
 `(15, 3, 3)` setpoints. It returns aircraft positions, payload positions and
 payload velocities at each decision endpoint.
 
-Phase A uses 250 training episodes and full validation at stride 10. The full
-variant must score strictly below 0.082593 m (8.2593 cm); this qualifies the shared
-codebase, not each variant separately. The full seed-0 run of 40,000 steps completed with 8.4265 cm, above the gate;
-the best full result remains D (23,000 steps, 8.3737 cm). Both used random
-initialization and the same recipe. Report E and await maintainer guidance;
-do not add training or change seeds. Target-scale changes remain deferred.
-After full passes, run dev once per variant (40 episodes): full uses the 40,000-step
-checkpoint; no_cross and flat reuse their existing C checkpoints without retraining.
-Dev checks closed-loop behavior and does not select configurations. The maintainer
-reproduces full and decides Phase B entry. See [PHASE_A.md](PHASE_A.md).
+Phase A uses 250 training episodes and full validation at stride 10. The exact
+numeric gate remains 0.082593 m (8.2593 cm): full D scores 8.3737 cm and E scores
+8.4265 cm, so neither passes. On 2026-10-30, the maintainer explicitly authorized
+closeout with this documented gap. This exception does not set gate_passed=true.
+D/E diagnostics on the first 100 training episodes and all three 40-episode
+dev suites are complete: full used D (23,000 steps); no_cross and flat used
+their existing C checkpoints. Do not use E, retrain variants, or select
+configurations from dev. Formal Phase B starts after maintainer reproduction of D,
+review of all dev results and approval of the proposed shared grid. Target-scale
+changes remain deferred. See [PHASE_A.md](PHASE_A.md).
 
 ## W-ar import contract
 
@@ -209,9 +210,10 @@ OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 PYTHONPATH=. \
   tests/test_uav_jepa_backbone.py tests/test_uav_jepa_participant.py
 ```
 
-After Phase A review, each variant selects its configuration on the full
-validation set and trains three new seeds at each of the 2,000/500-episode
-budgets. [PHASE_A.md](PHASE_A.md) tracks the results and next tasks.
+After maintainer reproduction/review and grid approval, each variant selects
+its configuration on the full validation set (default stride 1) and trains three
+new seeds at each of the 2,000/500-episode budgets. The proposed four-config grid
+is in [PHASE_B_GRID.md](PHASE_B_GRID.md); no Phase B training has started. [PHASE_A.md](PHASE_A.md) tracks the results and next tasks.
 
 
 ## Frozen encoder readout probe
