@@ -52,5 +52,9 @@ time on an RTX 5060 Laptop GPU (about 0.185 GPU-hours). A 512-candidate,
 15-step planning call averaged 23.4 ms during its one `dev` flight. It passed
 the Phase A open-loop bar and then succeeded on 7/40 `dev` episodes.
 
+Phase B uses all 2,000 training episodes and every validation decision. Its
+registered configurations, commands, parameter counts, GPU time and complete
+per-latency scores are recorded in [PHASE_B.md](PHASE_B.md).
+
 Checkpoints, diagnostics and JSON results remain under ignored `data/`; only
 model code, tests and these commands belong in the pull request.

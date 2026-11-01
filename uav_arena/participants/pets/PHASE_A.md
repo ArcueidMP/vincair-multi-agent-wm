@@ -95,7 +95,7 @@ It succeeded on **7/40** episodes.
 The 33 failures were 18 team-separation events, 12 obstacle collisions, two
 timeouts and one crash. `dev` was not used to select another configuration.
 
-## W-ar and remaining work
+## W-ar handoff and Phase B
 
 `participants/war/` contains a direct physical-state increment head, a
 15-decision differentiable state loss, the training CLI and the planner
@@ -105,8 +105,10 @@ tokenizer/transformer is now integrated at
 the stand-in and real backbone. The interface and field-major state layout are
 confirmed in `participants/war/README.md`. Formal W-ar training waits for the
 JEPA full row's final structural configuration and total capacity so the two
-remain matched.
+remain matched. The maintainer subsequently took ownership of W-ar training;
+this branch keeps the verified code but will not run W-ar selection.
 
 Checkpoints and raw JSON outputs remain in the ignored `data/uav_arena/` tree
 as required by `PARTICIPANTS.md`; only the code, tests, commands and this
-summary are committed. Phase B has not begun.
+summary are committed. PETS Phase B progress is recorded separately in
+[`PHASE_B.md`](PHASE_B.md).
