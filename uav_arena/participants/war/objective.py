@@ -21,7 +21,7 @@ from ..state import STATE_DIM, pack_state
 
 
 class EntityDeltaHead(nn.Module):
-    """Shared aircraft head (15 values each) and payload head (6 values)."""
+    """Entity heads assembled into the field-major 51-state layout."""
 
     def __init__(self, token_dim: int):
         super().__init__()
@@ -33,7 +33,15 @@ class EntityDeltaHead(nn.Module):
     def forward(self, tokens: torch.Tensor) -> torch.Tensor:
         if tokens.ndim != 3 or tokens.shape[1] != 4:
             raise ValueError("the backbone must return three aircraft tokens and one payload token")
-        return torch.cat((self.aircraft(tokens[:, :3]).flatten(1), self.payload(tokens[:, 3])), dim=-1)
+        aircraft = self.aircraft(tokens[:, :3])
+        # Each token predicts its own pos/vel/rot6/omega, but pack_state is
+        # field-major rather than aircraft-major. Match that executable layout
+        # before adding the increment to the current state.
+        return torch.cat((aircraft[..., :3].flatten(1),
+                          aircraft[..., 3:6].flatten(1),
+                          aircraft[..., 6:12].flatten(1),
+                          aircraft[..., 12:15].flatten(1),
+                          self.payload(tokens[:, 3])), dim=-1)
 
 
 def state_history(batch: dict[str, torch.Tensor]) -> tuple[torch.Tensor, torch.Tensor]:

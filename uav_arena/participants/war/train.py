@@ -71,6 +71,9 @@ def main(argv=None):
     options = json.loads(args.backbone_options)
     if options.get("attn", "full") != "full":
         parser.error("W-ar must use the JEPA full-attention backbone")
+    options.setdefault("history", args.history)
+    if int(options["history"]) != args.history:
+        parser.error("--history and backbone-options history must match")
     torch.manual_seed(args.seed)
     data = Windows(load(args.data)[:args.episodes], horizon=15, history=args.history)
     if not len(data):

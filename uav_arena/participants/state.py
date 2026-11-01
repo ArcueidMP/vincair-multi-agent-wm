@@ -3,7 +3,8 @@ from __future__ import annotations
 
 import torch
 
-STATE_DIM = 51  # 3 aircraft * (pos 3 + vel 3 + rot6 6 + omega 3), payload pos/vel 6
+# Field-major: all aircraft pos, vel, rot6 and omega, then payload pos/vel.
+STATE_DIM = 51
 
 
 def pack_state(state: dict[str, torch.Tensor], origin: torch.Tensor) -> torch.Tensor:
