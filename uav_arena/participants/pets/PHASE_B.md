@@ -1,8 +1,8 @@
 # PETS Phase B progress report
 
-Status: selection is complete after all eight allowed configurations on the
-frozen `arena-v0.3` protocol. G7 (depth 3, width 291, 60,000 steps/member,
-learning rate 1e-3) is selected for the formal seed runs. Every
+Status: selection and formal validation are complete on the frozen
+`arena-v0.3` protocol. G7 (depth 3, width 291, 60,000 steps/member, learning
+rate 1e-3) was selected after all eight allowed configurations. Every
 selection run uses all 2,000 `explore_v2` episodes, seed 0, mean propagation
 (`sample_gaussian=false`) and every decision of all 100 `explore_v2_val`
 episodes. Neither `dev` nor `test` is used for selection.
@@ -75,6 +75,50 @@ G8 has SHA-256
 `2311ca934ff3f79e7a2fe569279c53c270d64fb2bced3e24bc87421fcd7a5a7d`.
 The checkpoints and raw result JSON are not committed.
 
+## Formal seed results
+
+The selected G7 configuration was retrained from scratch with seeds 1--3 at
+both required data budgets. Each checkpoint was scored at every decision of
+all 100 `explore_v2_val` episodes, with 7,429 decisions per latency. Values
+below are payload error; `±` is the sample standard deviation over the three
+formal seeds.
+
+| Training episodes | Seed 1 | Seed 2 | Seed 3 | Mean ± std |
+| ---: | ---: | ---: | ---: | ---: |
+| 2,000 | 6.23 cm | 6.27 cm | 6.21 cm | **6.24 ± 0.03 cm** |
+| 500 | 6.40 cm | 6.43 cm | 6.41 cm | **6.41 ± 0.01 cm** |
+
+Mean payload error by latency:
+
+| Training episodes | 0 ms | 50 ms | 100 ms | 200 ms |
+| ---: | ---: | ---: | ---: | ---: |
+| 2,000 | 4.28 ± 0.03 cm | 5.17 ± 0.03 cm | 6.60 ± 0.03 cm | 8.90 ± 0.07 cm |
+| 500 | 4.62 ± 0.04 cm | 5.39 ± 0.03 cm | 6.70 ± 0.01 cm | 8.95 ± 0.03 cm |
+
+Mean aircraft error by latency:
+
+| Training episodes | 0 ms | 50 ms | 100 ms | 200 ms |
+| ---: | ---: | ---: | ---: | ---: |
+| 2,000 | 4.08 ± 0.02 cm | 4.85 ± 0.02 cm | 6.13 ± 0.01 cm | 8.19 ± 0.02 cm |
+| 500 | 4.37 ± 0.02 cm | 5.04 ± 0.02 cm | 6.21 ± 0.01 cm | 8.22 ± 0.02 cm |
+
+The 2,000-episode mean matches the 6.24 cm example reference. Restricting
+training to the first 500 episodes worsens the mean by 0.17 cm, while both
+budgets have low across-seed variation. Training took 3.149 GPU-hours for the
+three 2,000-episode runs and 3.173 GPU-hours for the three 500-episode runs.
+Neither `dev` nor `test` was used.
+
+Formal checkpoint SHA-256 values are:
+
+- 2,000 episodes, seeds 1--3: `ea5f8adabdb38995cabba09ab37061986f38bdb5777746cb83445e9fe8a272bc`,
+  `e23fe83b845a8e1e5f3eed0ae1d91d740472280e686d754c0f698bf80c89b0a3`,
+  `e7e55332ecb44f2e4aea480777372d6722785cb5ffbe56fe68cfd15ec0bcfccc`.
+- 500 episodes, seeds 1--3: `1bd299045bdf8a0b31ae265113ad702aebd0f9081588c25ee16796651350ea84`,
+  `b022450c782d54058d27bc6558f074155b6d43c1db1e89b6bd041627083b684a`,
+  `0412db9e2e690b9c48def1cff946944d53f234c739d8c6e4f66809bb8e0f4573`.
+These checkpoints and the six raw validation JSON files remain ignored and
+local.
+
 ## Commands
 
 G1 training:
@@ -136,4 +180,10 @@ G8 changes G7 to `--lr 0.0005` and writes
 `data/uav_arena/participants/pets/phase_b_sel_g8_d3w291_s60k_lr5e4_seed0.pt`.
 Its complete validation result is
 `data/uav_arena/results/pets_phase_b_sel_g8_d3w291_s60k_lr5e4_seed0_openloop_val.json`.
+
+For the formal runs, G7's training command changes `--episodes` to either
+`2000` or `500`, changes `--seed` to 1, 2, or 3, and writes
+`data/uav_arena/participants/pets/phase_b_formal_d3w291_s60k_e<episodes>_seed<seed>.pt`.
+Complete validation writes the matching
+`data/uav_arena/results/phase_b_formal_d3w291_s60k_e<episodes>_seed<seed>_openloop_val.json`.
 
