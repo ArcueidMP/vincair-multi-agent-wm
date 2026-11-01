@@ -66,3 +66,27 @@ Local integration verification used the delivered default full backbone:
   a 15-step loss and three optimizer steps on an RTX 5060 Laptop GPU;
 - the 1,281,365-parameter backbone-plus-head produced finite gradients and a
   finite final smoke loss. This is not a Phase A training result.
+
+## Training recipe
+
+The maintainer trains W-ar from 2026-11-01 (PR #2), starting from the code
+above at `f837514`. The optimizer follows JEPA's C/D recipe
+(`participants/jepa/train.py` on PR #3), so W-ar and JEPA `full` differ only in
+the objective and the head: AdamW with weight decay 1e-3; a one-cycle learning
+rate that peaks at `--lr` (default 1e-3) after `min(0.5, max(0.05, 2/steps))`
+of the run; the gradient norm clipped at 1; batch 128 by default; 15-step
+rollouts; statistics from 5,000 training windows. A nonfinite loss or gradient
+stops the run. JEPA's SIGReg, latent targets and head weight have no W-ar
+counterpart.
+
+History and backbone options are not tuned for W-ar. They follow JEPA `full`'s
+Phase B selection: history 4 (G4 on PR #3, 2026-11-01) with the options above.
+If a longer JEPA schedule changes that selection, W-ar follows it. W-ar's
+backbone plus state head has 1,281,365 parameters against JEPA `full`'s
+1,289,225 with its readout; the difference of 7,860 is reported, not padded.
+
+Each run writes `<out>.pt` and `<out>.json` and refuses to overwrite either.
+The JSON records the arguments, the selected episode seeds, a log every 100
+steps (loss, gradient norm, learning rate, seconds), the parameter count, wall
+seconds, peak GPU memory, the GPU, torch and host, the dataset manifest's
+SHA-256 and the SHA-256 of the W-ar, backbone and state sources.

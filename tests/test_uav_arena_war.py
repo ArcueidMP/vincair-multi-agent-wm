@@ -1,6 +1,8 @@
 """W-ar outer-loop and shared-backbone integration tests."""
 from __future__ import annotations
 
+import json
+
 import pytest
 
 torch = pytest.importorskip("torch")
@@ -124,8 +126,16 @@ def test_training_entry_point_accepts_the_backbone_contract(tmp_path):
     _write((200_003, tmp_path))
     assert source.exists()
     checkpoint = tmp_path / "trained.pt"
-    train.main(["--data", str(tmp_path), "--episodes", "1", "--history", "4",
-                "--steps", "1", "--rollout-steps", "2", "--batch", "2",
-                "--stats-samples", "16", "--workers", "0", "--device", "cpu",
-                "--backbone", "test_uav_arena_war:fake_factory", "--out", str(checkpoint)])
+    argv = ["--data", str(tmp_path), "--episodes", "1", "--history", "4",
+            "--steps", "4", "--rollout-steps", "2", "--batch", "2",
+            "--stats-samples", "16", "--workers", "0", "--device", "cpu",
+            "--backbone", "test_uav_arena_war:fake_factory", "--out", str(checkpoint)]
+    train.main(argv)
     assert checkpoint.exists()
+    info = json.loads(checkpoint.with_suffix(".json").read_text())
+    assert info["selected_seeds"] == [200_003, 200_003]
+    assert [record["step"] for record in info["log"]] == [4]
+    assert set(info["source_sha256"]) == {"train.py", "objective.py", "model.py", "backbone.py", "state.py"}
+    # A recorded run is never overwritten.
+    with pytest.raises(FileExistsError):
+        train.main(argv)
