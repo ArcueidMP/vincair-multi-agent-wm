@@ -33,12 +33,15 @@ train on independent bootstrap resamples with Gaussian NLL. At inference, a
 member is drawn per candidate and held for the whole rollout (one-particle
 TS-infinity), but the member's mean is propagated without Gaussian sampling.
 
-| Configuration | Width | Steps/member | Gaussian sampling | Selection score |
-| --- | ---: | ---: | :---: | ---: |
-| PR #2 configuration, maintainer rerun | 200 | 5,000 | yes | 18.60 cm |
-| PR #2 configuration, maintainer rerun | 200 | 5,000 | no | 9.42 cm |
-| Phase A selected | 256 | 10,000 | no | **7.12 cm** |
-| Example Phase A bar | 512 | 5,000 | no | **8.26 cm** |
+| Configuration | Width | Depth | History | Center | Steps/member | Gaussian sampling | Selection score |
+| --- | ---: | ---: | ---: | --- | ---: | :---: | ---: |
+| PR #2 configuration, maintainer rerun | 200 | 4 | 4 | current payload | 5,000 | yes | 18.60 cm |
+| PR #2 configuration, maintainer rerun | 200 | 4 | 4 | current payload | 5,000 | no | 9.42 cm |
+| Phase A selected | 256 | 4 | 4 | current payload | 10,000 | no | **7.12 cm** |
+
+The external example Phase A bar is 8.26 cm. It is a direct multi-step MLP,
+not another PETS configuration, so it is not counted in the configuration
+table.
 
 The maintainer retrained this selected configuration on Ubuntu 26.04 with an
 RTX 5070 Laptop and reproduced the selection score, every per-latency payload
@@ -49,12 +52,28 @@ Before `arena-v0.3` replaced the standard data, the following development
 configurations were also scored on the older `explore-v1_val`. They are listed
 for completeness but are not comparable with, and did not select, the v2 row:
 
-| Legacy `explore-v1` configuration | Steps/member | Selection score |
-| --- | ---: | ---: |
-| Single-frame prototype | 1,000 | 21.51 cm |
-| Four-frame history, fixed observed-payload origin | 2,000 | 15.19 cm |
-| Four-frame history, current-payload centering | 2,000 | 5.66 cm |
-| Four-frame history, current-payload centering | 5,000 | 5.23 cm |
+| Legacy `explore-v1` configuration | Width | Depth | History | Center | Steps/member | Gaussian sampling | Selection score |
+| --- | ---: | ---: | ---: | --- | ---: | :---: | ---: |
+| Single-frame prototype | 200 | 4 | 1 | observed payload | 1,000 | yes | 21.51 cm |
+| Four-frame history | 200 | 4 | 4 | observed payload | 2,000 | yes | 15.19 cm |
+| Four-frame history | 200 | 4 | 4 | current payload | 2,000 | yes | 5.66 cm |
+| Four-frame history | 200 | 4 | 4 | current payload | 5,000 | yes | 5.23 cm |
+
+For full accounting, several partial diagnostics were also run before the
+protocol was frozen. They used only the first 10 `explore-v1_val` episodes and
+latencies 0 and 200 ms with stride 10, so their two-latency means are not
+selection scores and are not comparable to the tables above:
+
+| Checkpoint | Diagnostic | Two-latency mean |
+| --- | --- | ---: |
+| Single-frame prototype | Gaussian sampling | 21.02 cm |
+| Single-frame prototype | Mean propagation | 16.14 cm |
+| Four-frame, observed-payload origin, 2,000 steps | Raw predicted rotation columns | 14.02 cm |
+| Four-frame, observed-payload origin, 2,000 steps | Projected rotation columns | 14.27 cm |
+
+Changing member selection to torch's global random generator was also checked
+on the complete legacy validation set. It reproduced the same 15.19 cm score
+bit for bit and was an implementation check, not a new configuration.
 
 The selected configuration's validation errors are:
 
