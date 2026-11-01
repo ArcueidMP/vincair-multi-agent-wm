@@ -10,7 +10,7 @@ them.
 | Autoregressive state model (W-ar) | june (@june250630) | not started; builds on the JEPA backbone |
 | PETS ensemble | june (@june250630) | not started |
 | TD-MPC2, DreamerV3 | unassigned | adapters to the official code built and smoke-tested; training next (2M steps, seeds 42, 67 and 2027) |
-| Evaluation harness and recorder ([HARNESS.md](HARNESS.md)), analysis plan ([ANALYSIS.md](ANALYSIS.md)), Gymnasium wrapper, reference and CrazyMARL rows on `test` | maintainer (@ArcueidMP) | analysis plan frozen in `arena-v0.3`; recorder and harness built and validated on `dev`; reference rows and the example participant run on `test` ([README](README.md)); Gymnasium wrapper built; the CrazyMARL rows on `test` open |
+| Evaluation harness and recorder ([HARNESS.md](HARNESS.md)), analysis plan ([ANALYSIS.md](ANALYSIS.md)), Gymnasium wrapper, reference and CrazyMARL rows on `test` | maintainer (@ArcueidMP) | analysis plan frozen in `arena-v0.3`; recorder and harness built and validated on `dev`; reference rows, the example participant and the CrazyMARL rows run on `test` ([README](README.md)); Gymnasium wrapper built |
 
 ## First day, every owner
 

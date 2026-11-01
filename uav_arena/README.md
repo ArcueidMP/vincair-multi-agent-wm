@@ -29,14 +29,14 @@ Status (`arena-v0.3`, tagged on 2026-10-28, before the first `test` run):
 - Rows, owners and deliverables are on the task board, [TASKS.md](TASKS.md);
   `participants/example/` is a working example participant.
 - CrazyMARL runs on arena tasks (`crazymarl_task.py`, `crazymarl_env.py`, `crazymarl_train.py`,
-  `crazymarl_policy.py`). Seeds 0–2 are trained and evaluated on `dev`.
+  `crazymarl_policy.py`). Seeds 0–2 are trained, evaluated on `dev` and run on `test`.
 - Methods that train online, TD-MPC2 and DreamerV3, get a Gymnasium wrapper (`gym_env.py`,
   `gym_eval.py`; Gymnasium wrapper, below) and adapters to their pinned official code, with a venv
   each (TD-MPC2 and DreamerV3, below). Their training runs come next: 2M environment steps and
   seeds 42, 67 and 2027 for each method.
 - The reference rows and the example participant ran on `test` on 2026-10-28 and 29, U's through
-  the recorder, which also recorded the questions (Results on test, below). Next: the CrazyMARL
-  rows on `test`, then the world-model rows (see Roadmap).
+  the recorder, which also recorded the questions, and the CrazyMARL rows on 2026-11-01 (Results on
+  test, below). Next: the world-model rows (see Roadmap).
 - Related work, grouped by relation to the arena, with BibTeX:
   [`docs/uav-arena-related-work.md`](../docs/uav-arena-related-work.md). Its section 8 covers the
   evaluation design.
@@ -173,7 +173,7 @@ the predictor differs.
 | U | MPPI on the true simulator | privileged: true state, payload mass, onboard states | implemented; run on `test` |
 | Physics | MPPI on the nominal simulator | observation only | implemented; run on `test` |
 | Physics + mass estimation | the physics row with online payload-mass estimation (multiple models, 2 g grid) | observation history | implemented; run on `test` |
-| CrazyMARL | external, model-free: official IPPO trainer, decentralized 250 Hz motor commands, retrained on arena tasks | own state fresh; payload, teammates and obstacles delayed | seeds 0–2 evaluated on `dev` |
+| CrazyMARL | external, model-free: official IPPO trainer, decentralized 250 Hz motor commands, retrained on arena tasks | own state fresh; payload, teammates and obstacles delayed | seeds 0–2 run on `test` |
 | Entity-token JEPA (`full`, `no_cross`, `flat`), autoregressive state model, PETS ensemble | world models in the shared MPPI | observation history | planned |
 | TD-MPC2 (official, trained online), DreamerV3 | external model-based RL, evaluated as published, plus state probes for layers 1–3 | observation | adapters built and smoke-tested; training planned (2M steps, 3 seeds) |
 
@@ -315,21 +315,22 @@ At `arena-v0.3`, run on 2026-10-28 and 29 from a clean checkout of the tag (6413
 a time with 20 workers for the simulator rollouts. U flew through the recorder, so its run is both
 its row and the source of the 8,660 questions on which the harness scored every row. The example
 MLP is the `explore-v2` checkpoint scored on `dev` (`participants/example/mlp.pt`, SHA-256
-`110c93c4…`). CrazyMARL has not run on `test` yet. Success count out of 50 and mean time of the
-successes:
+`110c93c4…`). CrazyMARL ran on 2026-11-01 from the same checkout and environment, once it had
+reproduced its `dev` records exactly; it flies the final actor of each training seed. Success count
+out of 50 (for CrazyMARL, one count per training seed) and mean time of the successes:
 
-| Condition | U (oracle) | Physics (nominal 25 g) | Physics + mass estimation | Example MLP |
-|---|---|---|---|---|
-| static, 0 ms | 38/50 (7.9 s) | 33/50 (7.6 s) | 37/50 (7.9 s) | 9/50 (5.8 s) |
-| static, 50 ms | 38/50 (7.9 s) | 27/50 (7.3 s) | 39/50 (7.8 s) | 12/50 (8.0 s) |
-| static, 100 ms | 38/50 (7.9 s) | 27/50 (7.5 s) | 41/50 (8.4 s) | 7/50 (6.2 s) |
-| static, 200 ms | 38/50 (7.9 s) | 25/50 (6.1 s) | 40/50 (8.0 s) | 10/50 (6.0 s) |
-| static+moving, 0 ms | 38/50 (7.6 s) | 30/50 (8.5 s) | 39/50 (8.8 s) | 7/50 (6.2 s) |
-| static+moving, 50 ms | 40/50 (8.2 s) | 26/50 (8.0 s) | 39/50 (8.8 s) | 6/50 (7.2 s) |
-| static+moving, 100 ms | 36/50 (7.5 s) | 23/50 (7.1 s) | 39/50 (8.9 s) | 4/50 (6.6 s) |
-| static+moving, 200 ms | 39/50 (8.0 s) | 22/50 (6.8 s) | 37/50 (7.7 s) | 6/50 (6.6 s) |
-| **Total** | **305/400** | **213/400** | **311/400** | **61/400** |
-| Success rate (95% interval) | 76.25% (65.00–86.75%) | 53.25% (42.50–64.25%) | 77.75% (67.50–87.00%) | 15.25% (9.25–22.25%) |
+| Condition | U (oracle) | Physics (nominal 25 g) | Physics + mass estimation | Example MLP | CrazyMARL (seeds 0, 1, 2) |
+|---|---|---|---|---|---|
+| static, 0 ms | 38/50 (7.9 s) | 33/50 (7.6 s) | 37/50 (7.9 s) | 9/50 (5.8 s) | 20, 27, 20 (4.5 s) |
+| static, 50 ms | 38/50 (7.9 s) | 27/50 (7.3 s) | 39/50 (7.8 s) | 12/50 (8.0 s) | 20, 27, 21 (4.7 s) |
+| static, 100 ms | 38/50 (7.9 s) | 27/50 (7.5 s) | 41/50 (8.4 s) | 7/50 (6.2 s) | 20, 26, 19 (5.1 s) |
+| static, 200 ms | 38/50 (7.9 s) | 25/50 (6.1 s) | 40/50 (8.0 s) | 10/50 (6.0 s) | 18, 21, 18 (5.6 s) |
+| static+moving, 0 ms | 38/50 (7.6 s) | 30/50 (8.5 s) | 39/50 (8.8 s) | 7/50 (6.2 s) | 16, 25, 18 (4.6 s) |
+| static+moving, 50 ms | 40/50 (8.2 s) | 26/50 (8.0 s) | 39/50 (8.8 s) | 6/50 (7.2 s) | 16, 26, 17 (4.8 s) |
+| static+moving, 100 ms | 36/50 (7.5 s) | 23/50 (7.1 s) | 39/50 (8.9 s) | 4/50 (6.6 s) | 16, 24, 17 (5.1 s) |
+| static+moving, 200 ms | 39/50 (8.0 s) | 22/50 (6.8 s) | 37/50 (7.7 s) | 6/50 (6.6 s) | 16, 22, 17 (5.6 s) |
+| **Total** | **305/400** | **213/400** | **311/400** | **61/400** | **142, 198, 147 of 400** |
+| Success rate (95% interval) | 76.25% (65.00–86.75%) | 53.25% (42.50–64.25%) | 77.75% (67.50–87.00%) | 15.25% (9.25–22.25%) | 35.50% (23.25–48.25%), 49.50% (36.75–62.50%), 36.75% (24.75–49.25%) |
 
 Layers 1–3 on the 8,660 questions ([HARNESS.md](HARNESS.md)):
 
@@ -365,6 +366,14 @@ within 2.6–4.8%, 24.8–42.8% and 44.9–58.0%.
 - **The example MLP** succeeds in 61 episodes, against 21 of 40 on `dev`, all of them episodes U
   finishes. Its failures are 168 obstacle collisions, 137 aircraft-separation failures and 34
   crashes.
+- **CrazyMARL** succeeds in 142, 198 and 147 episodes with seeds 0, 1 and 2 (487 of 1,200, 40.6%),
+  below the nominal physics reference and above the example MLP. Every failure but one is an
+  obstacle collision, 2.1 s into the episode on average; the other is a timeout (seed 1). Its
+  successes take 5.0 s on average, against U's 7.5–8.2 s, and 12–34 per seed fall on episodes U
+  fails. As on `dev`, the outcome mostly depends on the layout alone: 41–43 of the 50 layouts end
+  the same way in all 8 conditions. Latency costs it little: without movers, it goes from 20, 27
+  and 20 successes at 0 ms to 18, 21 and 18 at 200 ms. Seed 0 led on `dev` (24 against 16 and 16
+  of 40), seed 1 on `test`. Without a predictor, it has no layer scores (ANALYSIS.md, Section 2).
 - **The layers order the rows as the closed loop does.** U scores exactly zero on all 8,660
   questions. Physics + mass estimation, the nominal physics reference and the example MLP come out
   in that order on every layer, on top-1 regret, Spearman correlation and pairwise accuracy. On L1
@@ -377,11 +386,12 @@ within 2.6–4.8%, 24.8–42.8% and 44.9–58.0%.
   2.2.6, SciPy 1.15.3, stable-worldmodel 0.1.1 and gcc 15.2.0 on the maintainer's laptop (Ryzen 9
   7845HX). Before the run, the same checkout reproduced one `dev` episode of every row (seed 0,
   static, 0 ms) and the example's `dev` scores in every field but the timing. The run paused once,
-  after the nominal physics closed loop, and resumed after a reboot in the same environment.
+  after the nominal physics closed loop, and resumed after a reboot in the same environment. On
+  2026-11-01, CrazyMARL's three seeds ran in parallel, one process each, in 1.5–1.7 min.
 - **Files** (not in git): records in `data/uav_arena/results/` (`oracle_mppi_test_recorded.json`,
-  `physics_mppi_test.json`, `adaptive_mppi_test.json`, `example_mlp_test.json`), scores in
-  `data/uav_arena/results/harness/*_test.{json,npz}`, questions and ground truth in
-  `data/uav_arena/states/test` (0.47 GB).
+  `physics_mppi_test.json`, `adaptive_mppi_test.json`, `example_mlp_test.json`,
+  `crazymarl_s{0,1,2}_test.json`), scores in `data/uav_arena/results/harness/*_test.{json,npz}`,
+  questions and ground truth in `data/uav_arena/states/test` (0.47 GB).
 
 ## Results on dev (seeds 0–4, all 8 conditions)
 
@@ -489,7 +499,7 @@ results show how the relation changes with latency and moving obstacles.
 1. ~~Environment, shared MPPI, U and physics references, setpoint segments, hidden payload mass~~
    (done).
 2. CrazyMARL on arena tasks: ~~training environment, motor-level arena interface, seeds 0–2 on
-   `dev`~~ (done); evaluation on `test`.
+   `dev` and on `test`~~ (done).
 3. ~~Physics with online payload-mass estimation~~ (done).
 4. ~~Participant contract, data collector with reference manifests, training windows, layer-1
    open-loop metric~~ (done, `arena-v0.2`; `explore-v2` data in `arena-v0.3`);
@@ -497,8 +507,8 @@ results show how the relation changes with latency and moving obstacles.
 5. ~~Layer 1–3 harness on recorded U states~~ (done, validated on `dev`).
 6. TD-MPC2 and DreamerV3: ~~a Gymnasium wrapper, adapters to the official code and their venvs~~
    (done); training, then their rows on `test`.
-7. Runs on `test`: ~~the reference rows and the example participant~~ (done); the world-model rows,
-   the leaderboard tables and the layer-consistency analysis.
+7. Runs on `test`: ~~the reference rows, the example participant and CrazyMARL~~ (done); the
+   world-model rows, the leaderboard tables and the layer-consistency analysis.
 
 ## Replay and video
 
@@ -574,7 +584,15 @@ done
 
 The example participant runs the same `harness score` and `run.py` commands with
 `--predictor uav_arena.participants.example.model:make` and its `--predictor-options`
-([TASKS.md](TASKS.md)), writing `example_mlp_test.json` in both places.
+([TASKS.md](TASKS.md)), writing `example_mlp_test.json` in both places. CrazyMARL has no
+predictor, so it skips the harness; each seed's final actor flies `test` directly:
+
+```bash
+for s in 0 1 2; do
+  PYTHONPATH=. data/uav_arena/.venv/bin/python -m uav_arena.crazymarl_policy --actor data/uav_arena/crazymarl/ippo_s$s.npz \
+    --suite test --seeds 0:50 --out data/uav_arena/results/crazymarl_s${s}_test.json
+done
+```
 
 ```bash
 PYTHONPATH=. data/uav_arena/.venv/bin/python -m uav_arena.collect --seeds 200000:202000 \
