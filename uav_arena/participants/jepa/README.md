@@ -37,9 +37,10 @@ numeric gate remains 0.082593 m (8.2593 cm): full D scores 8.3737 cm and E score
 closeout with this documented gap. This exception does not set gate_passed=true.
 D/E diagnostics on the first 100 training episodes and all three 40-episode
 dev suites are complete: full used D (23,000 steps); no_cross and flat used
-their existing C checkpoints. Do not use E, retrain variants, or select
-configurations from dev. Formal Phase B starts after maintainer reproduction of D,
-review of all dev results and approval of the proposed shared grid. Target-scale
+their existing C checkpoints. The Phase A closeout did not use E or retrain
+variants; dev never selects configurations. Phase B selection was approved in maintainer comment 6520010790 on 2026-10-30.
+Maintainer reproduction of D is deferred and does not block it. Run full G1–G4
+first (comment 6522103322), then share the selected history for W-ar. Target-scale
 changes remain deferred. See [PHASE_A.md](PHASE_A.md).
 
 ## W-ar import contract
@@ -210,10 +211,10 @@ OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 PYTHONPATH=. \
   tests/test_uav_jepa_backbone.py tests/test_uav_jepa_participant.py
 ```
 
-After maintainer reproduction/review and grid approval, each variant selects
+Under the approved grid, each variant selects
 its configuration on the full validation set (default stride 1) and trains three
-new seeds at each of the 2,000/500-episode budgets. The proposed four-config grid
-is in [PHASE_B_GRID.md](PHASE_B_GRID.md); no Phase B training has started. [PHASE_A.md](PHASE_A.md) tracks the results and next tasks.
+new seeds at each of the 2,000/500-episode budgets. The approved four-config grid
+is in [PHASE_B_GRID.md](PHASE_B_GRID.md). Full G1–G4 selection is complete; [PHASE_B_FULL.md](PHASE_B_FULL.md) records all four scores, final checkpoint hashes, and the W-ar handoff. The current grid selects **history=4, 40,000 steps (G4)**; longer-step grid review remains pending. No formal new-seed training has started. [PHASE_A.md](PHASE_A.md) preserves the Phase A record.
 
 
 ## Frozen encoder readout probe

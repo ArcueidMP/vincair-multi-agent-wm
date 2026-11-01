@@ -5,7 +5,7 @@
 冻结基线：arena-v0.3 (`64134e72f66be128024b1e602620073de4666851`)。
 训练只用前250个episodes（200000–200249）；验证100个episodes（299000–299099），
 四种latency、15步、官方openloop --stride 10。精确门槛为selection_score < 0.082593 m（8.2593 cm）；8.26 cm仅为四舍五入显示。
-训练seed为0，当前阶段为获例外许可的Phase A收尾。
+训练seed为0，Phase A已按例外许可收尾；Phase B full四配置选择完成，当前最优history=4、40,000步。结果与W-ar交接见[PHASE_B_FULL.md](PHASE_B_FULL.md)。
 
 | 实验 | history | steps | head_weight | SIGReg权重 | 验证cm | 门槛 | dev成功 |
 |---|---:|---:|---:|---:|---:|---|---|
@@ -253,7 +253,7 @@ E的前段改善，但中后段误差升高；不能仅凭训练目标下降断�
 - 如果仍不过线或变差，先报告，不换seed、不自动加训、不同时改其他配置。Phase B在2,000局上另选配置。
 - 门槛按共享代码库判：full过线即可。no_cross、flat使用现有C模型，不重训，不要求各自过线。
 - 后续2026-10-30例外决定替代原门槛前置条件：full使用D模型，no_cross/flat使用各自C模型，分别执行dev seeds 0–4、8种条件（各40局），只查闭环。
-- 维护者复现full并审阅三组dev后决定能否进入Phase B；共享README及W-ar配对协调不阻塞本轮。
+- 历史要求为维护者复现full并审阅dev；后续评论6520010790已批准Phase B，复现不再阻塞。共享README归属另行协调。
 
 维护者示例seed0–4的分数依次为8.2593、8.2318、8.2574、8.2344、8.2603 cm，标准差约0.014 cm。D的差距不能按噪声忽略，不换seed撞线。
 
@@ -284,7 +284,7 @@ data/uav_arena/.venv/bin/python -m uav_arena.openloop \
 
 依据：实现、数据校验和测试未发现问题，短期/中段预测与示例接近，冻结编码器读出约1.6 cm；D到E训练目标下降但验证变差，可能受250局过拟合影响；Phase B将使用2,000局并重新选配置；冻结主分析保留三个变体，许可作于JEPA dev/test之前。
 
-当前仅获准完成诊断与dev收尾。维护者本机复现D、审阅三组dev后，正式开始Phase B；网格需先在PR审阅。PR保持Draft，合并在Phase B完成之后。README归属及与june对齐history/宽度/full mask仍需处理，不阻塞本轮。
+当时仅获准诊断与dev收尾，网格需审阅；该历史条件已被评论6520010790的Phase B批准取代，D复现延后且不阻塞。PR保持Draft，合并在Phase B完成之后。共享README归属另行协调，W-ar history跟随full最终选择。
 
 ### D/E前100训练局诊断（不选配置）
 
@@ -387,7 +387,7 @@ done
 - phase_a_flat_c_dev.json
 - jepa/phase_a_dev_closeout_summary.json
 
-数值门槛仍未通过，gate_passed=false；本轮只有例外收尾许可。D/E训练集诊断及三组dev已完成，正式Phase B仍须维护者复现D、审阅dev与4配置候选网格后启动。PR继续Draft，未运行test、未启动Phase B训练。
+数值门槛仍未通过，gate_passed=false；D/E训练集诊断及三组dev已完成，维护者已在评论6520010790通过收尾并批准4配置Phase B，D复现不再阻塞。PR继续Draft，JEPA未运行test；Phase B选择训练的最新状态见[PHASE_B_FULL.md](PHASE_B_FULL.md)。
 
 ## 验证
 
@@ -409,12 +409,12 @@ done
 - [x] 完成D/E前100训练局stride10诊断并与已有验证分数对照。
 - [x] 记录例外放行依据：full D仍未低于0.082593 m，gate_passed=false；条件许可与数值门槛分别记录，no_cross/flat不重训。
 - [x] 按例外许可完成full D、no_cross C、flat C各40局dev，共120局；未用于选择配置。
-- [x] 将训练集诊断、三组dev和4配置网格纳入现有草稿PR；正式Phase B等待维护者复现D并确认网格。
+- [x] 将训练集诊断、三组dev和4配置网格纳入现有草稿PR；维护者已批准，先运行full G1–G4。
 - [ ] 与june确认共享README归属及W-ar配对实验的history、full mask、骨干宽度和含读出头参数量；不阻塞本轮训练。
 
 ### Phase B：维护者审阅后执行
 
-已准备[共享4配置网格](PHASE_B_GRID.md)，包含history1/4与23,000/40,000步；12次选择训练预计约19.95 GPU小时（仅训练估计）。尚未启动，待维护者复现D及审阅。
+已准备[共享4配置网格](PHASE_B_GRID.md)，包含history1/4与23,000/40,000步；12次选择训练预计约19.95 GPU小时（仅训练估计）。网格已批准；full G1–G4已完成，结果及history交接见[PHASE_B_FULL.md](PHASE_B_FULL.md)。正式新seed模型尚未启动。
 
 - [ ] 三个变体使用同一组最多8个配置，在2,000个标准训练episodes上分别训练；
   用完整验证集的每个decision、四种延迟分别选出各变体的配置，并记录所有尝试。
@@ -428,3 +428,16 @@ done
 
 当前表格中的selection score用于训练配置选择；正式L1在U的记录状态上预测U的15步计划。
 后续分析使用L1、L2和J检验跨智能体误差与闭环成功率的关系，并比较三种实体结构。
+
+
+## Phase B启动前：flat顺序检查与最新批准
+
+| 变体（C配置） | 0 ms飞机cm | 50 ms | 100 ms | 200 ms |
+|---|---:|---:|---:|---:|
+| full | 11.7183 | 11.7785 | 11.8283 | 11.9636 |
+| no_cross | 10.6814 | 10.7857 | 10.8762 | 11.0664 |
+| flat | 11.9092 | 11.9448 | 11.9785 | 12.0875 |
+
+直接读取三份已有C配置openloop JSON；没有重新训练、重新评分或重飞dev。flat/full的飞机误差比为1.0104–1.0163，与full C处于相近量级，未见明显的顺序错配迹象。新增针对性测试检查field-major输入、flat读出及adapter还原三架飞机的对应顺序；通过后按原计划保留flat进入Phase B，不据dev调参。
+
+维护者已[批准Phase B](https://github.com/ArcueidMP/vincair-multi-agent-wm/pull/3#issuecomment-6520010790)，D复现不再阻塞；[要求先跑full四配置](https://github.com/ArcueidMP/vincair-multi-agent-wm/pull/3#issuecomment-6522103322)。精确门槛差距与gate_passed=false保持不变。正式seed采用1、2、3。PETS容量和W-ar配对见[PR #2评论](https://github.com/ArcueidMP/vincair-multi-agent-wm/pull/2#issuecomment-6522101172)。第一块完成队列准备；第二块已完成full四配置训练与验证，见[PHASE_B_FULL.md](PHASE_B_FULL.md)。
