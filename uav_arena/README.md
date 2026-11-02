@@ -35,8 +35,8 @@ Status (`arena-v0.3`, tagged on 2026-10-28, before the first `test` run):
   each (TD-MPC2 and DreamerV3, below). Their training runs come next: 2M environment steps and
   seeds 42, 67 and 2027 for each method.
 - The reference rows and the example participant ran on `test` on 2026-10-28 and 29, U's through
-  the recorder, which also recorded the questions, and the CrazyMARL rows on 2026-11-01 (Results on
-  test, below). Next: the world-model rows (see Roadmap).
+  the recorder, which also recorded the questions, the CrazyMARL rows on 2026-11-01 and W-ar's six
+  models on 2026-11-02 (Results on test, below). Next: the other world-model rows (see Roadmap).
 - Related work, grouped by relation to the arena, with BibTeX:
   [`docs/uav-arena-related-work.md`](../docs/uav-arena-related-work.md). Its section 8 covers the
   evaluation design.
@@ -174,7 +174,8 @@ the predictor differs.
 | Physics | MPPI on the nominal simulator | observation only | implemented; run on `test` |
 | Physics + mass estimation | the physics row with online payload-mass estimation (multiple models, 2 g grid) | observation history | implemented; run on `test` |
 | CrazyMARL | external, model-free: official IPPO trainer, decentralized 250 Hz motor commands, retrained on arena tasks | own state fresh; payload, teammates and obstacles delayed | seeds 0–2 run on `test` |
-| Entity-token JEPA (`full`, `no_cross`, `flat`), autoregressive state model, PETS ensemble | world models in the shared MPPI | observation history | planned |
+| Autoregressive state model (W-ar) | world model in the shared MPPI | observation history | six formal models run on `test` |
+| Entity-token JEPA (`full`, `no_cross`, `flat`), PETS ensemble | world models in the shared MPPI | observation history | planned |
 | TD-MPC2 (official, trained online), DreamerV3 | external model-based RL, evaluated as published, plus state probes for layers 1–3 | observation | adapters built and smoke-tested; training planned (2M steps, 3 seeds) |
 
 ## CrazyMARL on arena tasks
@@ -393,6 +394,71 @@ within 2.6–4.8%, 24.8–42.8% and 44.9–58.0%.
   `crazymarl_s{0,1,2}_test.json`), scores in `data/uav_arena/results/harness/*_test.{json,npz}`,
   questions and ground truth in `data/uav_arena/states/test` (0.47 GB).
 
+### W-ar
+
+The autoregressive state model's six formal models: history 4 and 60,000 steps, seeds 1, 2 and 3
+on the 2,000 standard episodes and on the first 500 (selection and training in
+[participants/war/README.md](participants/war/README.md)). They ran on 2026-11-02, one model at a
+time, from a clean checkout of `f65e007` (`uav/war`). Since the tag, that commit adds participant
+code, the Gymnasium and online-training files, tests and documentation; the environment, the
+planner, the recorder and the harness are the tag's. Before the first `test` episode, the checkout
+reproduced the 2,000-episode models' `dev` records exactly, timings aside, and the harness accepted
+the predictor on `dev`. Success count out of 50 (one count per training seed) and mean time of the
+successes:
+
+| Condition | W-ar, 2,000 episodes (seeds 1, 2, 3) | W-ar, 500 episodes (seeds 1, 2, 3) |
+|---|---|---|
+| static, 0 ms | 32, 28, 31 (7.4 s) | 31, 30, 26 (6.5 s) |
+| static, 50 ms | 28, 29, 27 (7.3 s) | 27, 27, 26 (6.6 s) |
+| static, 100 ms | 25, 23, 25 (7.2 s) | 22, 26, 24 (6.6 s) |
+| static, 200 ms | 16, 17, 16 (7.3 s) | 15, 17, 15 (6.8 s) |
+| static+moving, 0 ms | 28, 29, 27 (8.1 s) | 29, 27, 29 (7.2 s) |
+| static+moving, 50 ms | 23, 27, 30 (8.0 s) | 21, 23, 19 (6.8 s) |
+| static+moving, 100 ms | 18, 20, 22 (8.5 s) | 22, 22, 20 (7.2 s) |
+| static+moving, 200 ms | 11, 14, 15 (7.5 s) | 17, 16, 12 (7.0 s) |
+| **Total** | **181, 187, 193 of 400** | **184, 188, 171 of 400** |
+| Success rate (95% interval) | 45.25% (36.00–54.50%), 46.75% (37.50–56.00%), 48.25% (38.75–57.75%) | 46.00% (36.50–55.50%), 47.00% (36.75–57.00%), 42.75% (33.25–52.25%) |
+
+Layers 1–3 on the same 8,660 questions, with 95% intervals for L1, L2 and L3:
+
+| | L1 payload | L2 cross-agent | L2 payload / others / own | L3 costly decisions | Regret, mean (median) | Top-1 | Spearman | Pairwise |
+|---|---|---|---|---|---|---|---|---|
+| W-ar, 2,000 episodes, seed 1 | 8.46 cm (7.91–9.00) | 3.05 cm (2.82–3.27) | 3.60 / 2.49 / 6.26 cm | 41.2% (34.7–47.0%) | +8.53 (+0.15) | 12.10 | 0.58 | 0.72 |
+| W-ar, 2,000 episodes, seed 2 | 8.65 cm (8.06–9.21) | 3.09 cm (2.86–3.31) | 3.66 / 2.51 / 6.22 cm | 42.1% (34.8–48.4%) | +9.43 (+0.16) | 12.25 | 0.58 | 0.72 |
+| W-ar, 2,000 episodes, seed 3 | 8.53 cm (7.97–9.06) | 3.08 cm (2.85–3.30) | 3.65 / 2.51 / 6.20 cm | 40.9% (34.0–47.1%) | +8.44 (+0.15) | 11.47 | 0.59 | 0.72 |
+| W-ar, 500 episodes, seed 1 | 9.35 cm (8.81–9.86) | 3.43 cm (3.24–3.62) | 3.97 / 2.89 / 6.63 cm | 43.6% (36.7–49.8%) | +10.38 (+0.23) | 15.52 | 0.52 | 0.69 |
+| W-ar, 500 episodes, seed 2 | 9.62 cm (9.03–10.20) | 3.49 cm (3.29–3.68) | 4.04 / 2.93 / 6.67 cm | 44.3% (37.1–50.6%) | +11.42 (+0.27) | 17.28 | 0.51 | 0.69 |
+| W-ar, 500 episodes, seed 3 | 9.40 cm (8.83–9.97) | 3.41 cm (3.21–3.60) | 3.95 / 2.86 / 6.53 cm | 43.3% (36.6–49.4%) | +9.74 (+0.21) | 14.65 | 0.52 | 0.69 |
+
+- **Data size** (ANALYSIS.md, Section 5). Pooled over the three seeds, the 500-episode models are
+  worse than the 2,000-episode models on every layer: L1 +0.91 cm (+0.74 to +1.08), L2 +0.37 cm
+  (+0.33 to +0.42) and L3 +2.35 points (+1.33 to +3.39), as on the validation set (5.83–5.87
+  against 4.44–4.49 cm). In the closed loop the two cannot be told apart: 543 against 561 successes
+  of 1,200, −1.50 points (−5.08 to +1.92).
+- **Against the nominal physics reference.** Pooled over seeds, W-ar succeeds in 46.75% (2,000
+  episodes) and 45.25% (500) of the episodes, between the nominal physics reference (53.25%) and
+  CrazyMARL (40.6% over its three seeds). Paired over layouts, the 2,000-episode models' J is 6.50
+  points lower than the reference's (−14.50 to +1.33), their L1 about the same (+0.13 cm, −2.00 to
+  +2.27), their L2 lower (−0.54 cm, −1.41 to +0.27) and their L3 higher (+7.60 points, +0.66 to
+  +15.21). For the 500-episode models, J is 8.00 points lower (−14.92 to −1.00) and L3 9.95 points
+  higher (+3.05 to +17.50). On this pair L3 orders the rows as the closed loop does and L2 does
+  not; the analysis plan's test runs over the 30 primary models, not one pair.
+- **Latency.** W-ar's successes fall from 91 to 49 of 150 without movers and from 84 to 40 with
+  them (2,000 episodes; 87 to 47 and 85 to 45 at 500), against 33 to 25 and 30 to 22 of 50 for the
+  nominal physics reference: at 0 ms the two are close, at 200 ms W-ar trails. On U's states its
+  layers rise less: L1 from 7.66 to 9.45 cm and L3 from 40.3% to 42.6% without movers, and from
+  7.83 to 9.83 cm and from 39.6% to 43.7% with them (2,000 episodes).
+- **Failures.** At 2,000 episodes, 331 aircraft-separation failures, 207 obstacle collisions, 63
+  crashes, 37 timeouts and 1 exit from the bounds. At 500 episodes obstacle collisions lead with
+  307, then 269 aircraft-separation failures, 65 crashes, 14 timeouts and 2 exits. Per model, 5–11
+  successes fall on episodes U fails and 119–140 failures on episodes U finishes. Successes take
+  7.53–7.75 s on average at 2,000 episodes and 6.72–6.94 s at 500.
+- **Compute.** 34–40 min per closed loop (0.075 s per planning call on the RTX 5070 Laptop GPU)
+  and 13.6–13.8 min per harness run, 5.1 h for the six models. Training costs are in the W-ar
+  README.
+- **Files** (not in git): `data/uav_arena/results/formal_war_h4_60k_ep{2000,500}_s{1,2,3}_test.json`
+  and `data/uav_arena/results/harness/formal_war_h4_60k_ep{2000,500}_s{1,2,3}_test.{json,npz}`.
+
 ## Results on dev (seeds 0–4, all 8 conditions)
 
 At `arena-v0.2`. The three planning rows use the shared MPPI (512 samples, 1.5 s horizon),
@@ -502,13 +568,13 @@ results show how the relation changes with latency and moving obstacles.
    `dev` and on `test`~~ (done).
 3. ~~Physics with online payload-mass estimation~~ (done).
 4. ~~Participant contract, data collector with reference manifests, training windows, layer-1
-   open-loop metric~~ (done, `arena-v0.2`; `explore-v2` data in `arena-v0.3`);
-   entity-token JEPA variants, the autoregressive model and PETS.
+   open-loop metric~~ (done, `arena-v0.2`; `explore-v2` data in `arena-v0.3`); ~~the
+   autoregressive model~~ (done); entity-token JEPA variants and PETS.
 5. ~~Layer 1–3 harness on recorded U states~~ (done, validated on `dev`).
 6. TD-MPC2 and DreamerV3: ~~a Gymnasium wrapper, adapters to the official code and their venvs~~
    (done); training, then their rows on `test`.
-7. Runs on `test`: ~~the reference rows, the example participant and CrazyMARL~~ (done); the
-   world-model rows, the leaderboard tables and the layer-consistency analysis.
+7. Runs on `test`: ~~the reference rows, the example participant, CrazyMARL and W-ar~~ (done); the
+   other world-model rows, the leaderboard tables and the layer-consistency analysis.
 
 ## Replay and video
 
@@ -584,7 +650,9 @@ done
 
 The example participant runs the same `harness score` and `run.py` commands with
 `--predictor uav_arena.participants.example.model:make` and its `--predictor-options`
-([TASKS.md](TASKS.md)), writing `example_mlp_test.json` in both places. CrazyMARL has no
+([TASKS.md](TASKS.md)), writing `example_mlp_test.json` in both places; W-ar's six models run them
+with `uav_arena.participants.war.model:make` and each checkpoint
+([participants/war/README.md](participants/war/README.md#commands)). CrazyMARL has no
 predictor, so it skips the harness; each seed's final actor flies `test` directly:
 
 ```bash

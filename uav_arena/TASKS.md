@@ -7,7 +7,7 @@ them.
 | Row | Owner | Status |
 |---|---|---|
 | Entity-token JEPA `full`, `no_cross`, `flat` | Yihao Xu (@Yihao-Xu-777) | not started |
-| Autoregressive state model (W-ar) | maintainer (@ArcueidMP), from june's code in PR #2 | taken over on 2026-11-01 (branch `uav/war`); history 4 from JEPA `full`'s Phase B selection; Phase A next |
+| Autoregressive state model (W-ar) | maintainer (@ArcueidMP), from june's code in PR #2 | taken over on 2026-11-01 (branch `uav/war`); history 4 from JEPA `full`'s Phase B selection; Phase A passed (6.58 cm against 8.26 cm); Phase B selected 60,000 steps (4.49 cm); the six formal models ran on `test` on 2026-11-02 ([README](README.md#w-ar)) |
 | PETS ensemble | june (@june250630) | not started |
 | TD-MPC2, DreamerV3 | unassigned | adapters to the official code built and smoke-tested; training next (2M steps, seeds 42, 67 and 2027) |
 | Evaluation harness and recorder ([HARNESS.md](HARNESS.md)), analysis plan ([ANALYSIS.md](ANALYSIS.md)), Gymnasium wrapper, reference and CrazyMARL rows on `test` | maintainer (@ArcueidMP) | analysis plan frozen in `arena-v0.3`; recorder and harness built and validated on `dev`; reference rows, the example participant and the CrazyMARL rows run on `test` ([README](README.md)); Gymnasium wrapper built |
@@ -105,6 +105,10 @@ them.
 - **Since 2026-11-01** the maintainer trains this row on `uav/war`, from june's code at `f837514`
   (PR #2), with JEPA's C/D optimizer recipe; history and backbone options follow JEPA `full`'s
   Phase B selection ([participants/war/README.md](participants/war/README.md#training-recipe)).
+- **Done on 2026-11-02:** Phase A, the Phase B selection, the six formal models and their `test`
+  runs; the open-loop, `dev` and `test` tables, the parameter count, GPU-hours and planning time
+  are in [participants/war/README.md](participants/war/README.md#selection), the `test` tables
+  also in the [README](README.md#w-ar).
 - **What it is:** the state-space reference for the JEPA rows: the same entity-token backbone,
   history, `full` mask and data as JEPA `full`, trained to predict normalized physical-state
   increments decision by decision with a multistep state loss; no latent prediction, no SIGReg.
