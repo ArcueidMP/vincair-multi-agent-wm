@@ -1,18 +1,20 @@
 # PETS Phase B progress report
 
-Status: selection, formal validation and the six formal `dev` runs are
-complete on the frozen `arena-v0.3` protocol. Central `test` evaluation is
-pending. G7 (depth 3, width 291, 60,000 steps/member, learning rate 1e-3) was
+Status: selection, formal validation, the six formal `dev` runs and the
+central `test` run are complete on the frozen `arena-v0.3` protocol (results
+below). G7 (depth 3, width 291, 60,000 steps/member, learning rate 1e-3) was
 selected after all eight allowed configurations. Every
 selection run uses all 2,000 `explore_v2` episodes, seed 0, mean propagation
 (`sample_gaussian=false`) and every decision of all 100 `explore_v2_val`
 episodes. Neither `dev` nor `test` is used for selection.
 
 The total parameter limit is 1,372,047, counting all five ensemble members and
-their bounded log-variance parameters. The search is staged and will use at
-most eight configurations: compare the largest compliant depth-4 and depth-5
-models first, then spend longer schedules or learning-rate checks only on the
-better architecture. Every attempted configuration remains in the table.
+their bounded log-variance parameters. The search was staged and used all
+eight allowed configurations. G1 and G2 compared the largest compliant depth-4
+and depth-5 models. Depth 4 then went on to longer schedules (G3 at 40,000
+steps, G5 at 60,000) and a lower learning rate (G4). G6, G7 and G8 tried the
+largest compliant depth-3 model at 40,000 and 60,000 steps and, at 60,000, the
+lower learning rate. Every attempted configuration remains in the table.
 
 ## Selection results
 
@@ -145,10 +147,79 @@ seeds (mean ± sample standard deviation between training seeds). Pooling all
 13,504 formal `dev` planning calls gives **20.51 ms per call** on the RTX 5060
 Laptop GPU.
 
-The six formal checkpoints have not been run on `test` locally. They and the
-exact `harness score` and closed-loop commands are prepared for the maintainer,
-who will run the central `test` on one machine and return the two per-condition
-tables for this report.
+The six formal checkpoints were not run on `test` locally. They went to the
+maintainer with the exact `harness score` and closed-loop commands; the central
+`test` results follow.
+
+## Central `test` results
+
+The maintainer ran each formal checkpoint once on `test` on 2026-11-02, one at
+a time on an RTX 5070 Laptop GPU, from a clean detached checkout of `87a502b`
+with `sample_gaussian=false`: the closed loop on all 50 layouts and 8
+conditions, then the harness on its 8,660 questions. Every output records the
+source `arena-v0.3-17-g87a502b` and the checkpoint's SHA-256. Before the first
+`test` episode, on the same machine, the six checkpoints flew `dev` (12, 20 and
+20 of 40 at 2,000 episodes; 8, 13 and 17 at 500), the 2,000-episode seed-1
+checkpoint flew it again with identical records, timings aside, and the harness
+accepted the predictor on `dev`. The `dev` table above was flown on Ubuntu
+22.04, where the simulator does not reproduce this machine's episodes bit for
+bit; 21 of its 48 cells agree with the maintainer's.
+
+Each cell is successes out of 50 episodes, followed by mean time among
+successes. Intervals are 95% layout bootstraps with the arena README's
+resamples.
+
+| Condition | 2,000 s1 | 2,000 s2 | 2,000 s3 | 500 s1 | 500 s2 | 500 s3 |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| static / 0 ms | 10/50 (6.2 s) | 15/50 (7.8 s) | 22/50 (7.8 s) | 6/50 (6.5 s) | 14/50 (6.8 s) | 14/50 (6.9 s) |
+| static / 50 ms | 13/50 (7.0 s) | 20/50 (7.8 s) | 19/50 (6.5 s) | 12/50 (7.4 s) | 13/50 (7.7 s) | 12/50 (6.5 s) |
+| static / 100 ms | 12/50 (9.1 s) | 11/50 (8.1 s) | 14/50 (6.7 s) | 9/50 (5.6 s) | 7/50 (8.9 s) | 10/50 (7.3 s) |
+| static / 200 ms | 5/50 (5.6 s) | 7/50 (8.6 s) | 8/50 (8.5 s) | 6/50 (7.4 s) | 8/50 (6.7 s) | 6/50 (6.1 s) |
+| static+moving / 0 ms | 9/50 (7.0 s) | 15/50 (8.0 s) | 17/50 (8.3 s) | 6/50 (6.3 s) | 11/50 (7.8 s) | 10/50 (7.8 s) |
+| static+moving / 50 ms | 13/50 (8.7 s) | 15/50 (9.1 s) | 14/50 (6.7 s) | 9/50 (6.5 s) | 14/50 (8.9 s) | 10/50 (6.1 s) |
+| static+moving / 100 ms | 7/50 (7.6 s) | 10/50 (8.4 s) | 8/50 (7.8 s) | 2/50 (5.7 s) | 5/50 (6.1 s) | 12/50 (9.6 s) |
+| static+moving / 200 ms | 4/50 (6.2 s) | 6/50 (8.4 s) | 5/50 (8.2 s) | 2/50 (5.6 s) | 2/50 (5.0 s) | 6/50 (7.3 s) |
+| **Total** | **73/400** | **99/400** | **107/400** | **52/400** | **74/400** | **80/400** |
+| Success rate (95% interval) | 18.25% (11.50–25.75%) | 24.75% (17.25–33.00%) | 26.75% (19.00–35.25%) | 13.00% (8.00–19.00%) | 18.50% (11.75–25.75%) | 20.00% (12.75–28.00%) |
+
+Harness layers on the 8,660 questions, with 95% intervals for L1, L2 and L3:
+
+| Model | L1 payload | L2 cross-agent | L3 costly decisions | Regret, mean (median) | Top-1 | Spearman | Pairwise |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| 2,000 episodes, seed 1 | 12.93 cm (11.82–14.03) | 3.78 cm (3.51–4.06) | 46.7% (39.7–53.0%) | +12.32 (+2.22) | 19.06 | 0.43 | 0.66 |
+| 2,000 episodes, seed 2 | 12.22 cm (11.22–13.22) | 3.67 cm (3.41–3.93) | 46.6% (39.7–52.8%) | +12.25 (+2.17) | 19.44 | 0.44 | 0.66 |
+| 2,000 episodes, seed 3 | 12.44 cm (11.40–13.48) | 3.70 cm (3.43–3.97) | 46.6% (39.6–52.8%) | +12.07 (+2.24) | 19.39 | 0.44 | 0.66 |
+| 500 episodes, seed 1 | 13.11 cm (11.97–14.25) | 3.88 cm (3.60–4.16) | 47.1% (40.2–53.2%) | +12.69 (+2.33) | 19.87 | 0.42 | 0.65 |
+| 500 episodes, seed 2 | 13.64 cm (12.42–14.84) | 3.99 cm (3.69–4.27) | 48.4% (41.3–54.6%) | +13.19 (+2.61) | 20.18 | 0.41 | 0.65 |
+| 500 episodes, seed 3 | 12.97 cm (11.88–14.05) | 3.89 cm (3.61–4.17) | 47.9% (40.8–54.1%) | +12.76 (+2.54) | 19.56 | 0.42 | 0.65 |
+
+Mean over the three seeds, per condition:
+
+| Condition | 2,000: L1 / L2 / L3 | 500: L1 / L2 / L3 |
+| --- | ---: | ---: |
+| static / 0 ms | 10.54 cm / 3.49 cm / 43.5% | 11.33 cm / 3.69 cm / 45.4% |
+| static / 50 ms | 11.38 cm / 3.55 cm / 44.4% | 12.20 cm / 3.75 cm / 45.8% |
+| static / 100 ms | 12.67 cm / 3.68 cm / 47.0% | 13.37 cm / 3.87 cm / 47.3% |
+| static / 200 ms | 15.07 cm / 3.94 cm / 48.7% | 15.63 cm / 4.10 cm / 49.4% |
+| static+moving / 0 ms | 10.65 cm / 3.57 cm / 44.5% | 11.49 cm / 3.79 cm / 46.6% |
+| static+moving / 50 ms | 11.69 cm / 3.65 cm / 46.0% | 12.45 cm / 3.86 cm / 47.4% |
+| static+moving / 100 ms | 12.99 cm / 3.89 cm / 49.6% | 13.65 cm / 4.10 cm / 49.9% |
+| static+moving / 200 ms | 15.30 cm / 4.01 cm / 49.7% | 15.82 cm / 4.19 cm / 50.7% |
+
+Pooled over the three seeds, the 500-episode checkpoints are worse than the
+2,000-episode checkpoints in the closed loop and on every layer; the difference
+pairs the checkpoints on each resample:
+
+| | Success rate | L1 | L2 | L3 |
+| --- | ---: | ---: | ---: | ---: |
+| 2,000 episodes | 23.25% (16.42–30.92%) | 12.53 cm (11.49–13.58) | 3.72 cm (3.45–3.99) | 46.65% (39.66–52.82%) |
+| 500 episodes | 17.17% (11.42–23.67%) | 13.24 cm (12.10–14.37) | 3.92 cm (3.63–4.20) | 47.80% (40.77–54.01%) |
+| 500 − 2,000 | −6.08 points (−10.00 to −2.25) | +0.71 cm (+0.59 to +0.82) | +0.20 cm (+0.18 to +0.22) | +1.16 points (+0.71 to +1.57) |
+
+A planning call took 19.2–21.9 ms. A closed loop took 10.1–10.8 min and a
+harness run 50.2–52.9 min, since a stochastic predictor makes 48 calls per
+question; the six checkpoints took 6.2 h in all. The arena README compares the
+row with the reference rows and W-ar.
 
 ## Commands
 
@@ -217,4 +288,19 @@ For the formal runs, G7's training command changes `--episodes` to either
 `data/uav_arena/participants/pets/phase_b_formal_d3w291_s60k_e<episodes>_seed<seed>.pt`.
 Complete validation writes the matching
 `data/uav_arena/results/phase_b_formal_d3w291_s60k_e<episodes>_seed<seed>_openloop_val.json`.
+
+The central `test` run used, for each formal checkpoint, with `<m>` standing
+for `e<episodes>_s<seed>`:
+
+```bash
+OPTIONS='{"checkpoint":"data/uav_arena/participants/pets/phase_b_formal_d3w291_s60k_e<episodes>_seed<seed>.pt","device":"cuda","sample_gaussian":false}'
+PYTHONPATH=. data/uav_arena/.venv/bin/python -m uav_arena.run \
+  --predictor uav_arena.participants.pets.model:make --predictor-options "$OPTIONS" \
+  --suite test --seeds 0:50 --workers 20 \
+  --out data/uav_arena/results/pets_<m>_mppi_test.json
+PYTHONPATH=. data/uav_arena/.venv/bin/python -m uav_arena.harness score \
+  --predictor uav_arena.participants.pets.model:make --predictor-options "$OPTIONS" \
+  --states data/uav_arena/states/test --workers 20 \
+  --out data/uav_arena/results/harness/pets_<m>_test.json
+```
 

@@ -8,7 +8,7 @@ them.
 |---|---|---|
 | Entity-token JEPA `full`, `no_cross`, `flat` | Yihao Xu (@Yihao-Xu-777) | not started |
 | Autoregressive state model (W-ar) | maintainer (@ArcueidMP), from june's code in PR #2 | taken over on 2026-11-01 (branch `uav/war`); history 4 from JEPA `full`'s Phase B selection; Phase A passed (6.58 cm against 8.26 cm); Phase B selected 60,000 steps (4.49 cm); the six formal models ran on `test` on 2026-11-02 ([README](README.md#w-ar)) |
-| PETS ensemble | june (@june250630) | not started |
+| PETS ensemble | june (@june250630) | Phase A passed (7.12 cm against 8.26 cm); Phase B selected G7 (6.26 cm); the six formal models, handed over on 2026-11-02, ran on `test` the same day ([README](README.md#pets)); merged from PR #2 |
 | TD-MPC2, DreamerV3 | unassigned | adapters to the official code built and smoke-tested; training next (2M steps, seeds 42, 67 and 2027) |
 | Evaluation harness and recorder ([HARNESS.md](HARNESS.md)), analysis plan ([ANALYSIS.md](ANALYSIS.md)), Gymnasium wrapper, reference and CrazyMARL rows on `test` | maintainer (@ArcueidMP) | analysis plan frozen in `arena-v0.3`; recorder and harness built and validated on `dev`; reference rows, the example participant and the CrazyMARL rows run on `test` ([README](README.md)); Gymnasium wrapper built |
 
@@ -143,9 +143,14 @@ them.
   choice from torch's global generator, and reseed it in `reset()`
   ([PARTICIPANTS.md](PARTICIPANTS.md), Section 2). The harness then uses the same draws for a plan
   and its counterfactual, and averages layers 1 and 3 over 5 repeats.
-- **Phase A so far:** PR #2's configuration (250 episodes, 5,000 steps per member), rerun by the
-  maintainer on `explore-v2` without sampling, scores 9.42 cm against the 8.26 cm bar: still
-  1.2 cm short.
+- **Phase A** passed at 7.12 cm against the 8.26 cm bar (width 256, 10,000 steps per member);
+  PR #2's first configuration (5,000 steps per member) had scored 9.42 cm
+  ([participants/pets/README.md](participants/pets/README.md)).
+- **Done on 2026-11-02:** the Phase B selection (G7: depth 3, width 291, 60,000 steps per member,
+  6.26 cm), the six formal models and their `dev` runs (june), and their `test` runs (maintainer).
+  The selection, validation, `dev` and `test` tables are in
+  [participants/pets/PHASE_B.md](participants/pets/PHASE_B.md), the `test` tables also in the
+  [README](README.md#pets).
 - **Why an MLP:** PETS is defined with MLP members, and MLP ensembles remain the standard dynamics
   model for low-dimensional states. The transformer rows are the JEPA variants and W-ar.
 - **Precedent:** PETS has been used for multi-UAV payload transport (Khursheed, Virginia Tech MS

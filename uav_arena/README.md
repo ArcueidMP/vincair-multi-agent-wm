@@ -35,8 +35,9 @@ Status (`arena-v0.3`, tagged on 2026-10-28, before the first `test` run):
   each (TD-MPC2 and DreamerV3, below). Their training runs come next: 2M environment steps and
   seeds 42, 67 and 2027 for each method.
 - The reference rows and the example participant ran on `test` on 2026-10-28 and 29, U's through
-  the recorder, which also recorded the questions, the CrazyMARL rows on 2026-11-01 and W-ar's six
-  models on 2026-11-02 (Results on test, below). Next: the other world-model rows (see Roadmap).
+  the recorder, which also recorded the questions, the CrazyMARL rows on 2026-11-01, and W-ar's and
+  PETS's six models each on 2026-11-02 (Results on test, below). Next: the other world-model rows
+  (see Roadmap).
 - Related work, grouped by relation to the arena, with BibTeX:
   [`docs/uav-arena-related-work.md`](../docs/uav-arena-related-work.md). Its section 8 covers the
   evaluation design.
@@ -175,7 +176,8 @@ the predictor differs.
 | Physics + mass estimation | the physics row with online payload-mass estimation (multiple models, 2 g grid) | observation history | implemented; run on `test` |
 | CrazyMARL | external, model-free: official IPPO trainer, decentralized 250 Hz motor commands, retrained on arena tasks | own state fresh; payload, teammates and obstacles delayed | seeds 0–2 run on `test` |
 | Autoregressive state model (W-ar) | world model in the shared MPPI | observation history | six formal models run on `test` |
-| Entity-token JEPA (`full`, `no_cross`, `flat`), PETS ensemble | world models in the shared MPPI | observation history | planned |
+| PETS ensemble | world model in the shared MPPI | observation history | six formal models run on `test` |
+| Entity-token JEPA (`full`, `no_cross`, `flat`) | world models in the shared MPPI | observation history | planned |
 | TD-MPC2 (official, trained online), DreamerV3 | external model-based RL, evaluated as published, plus state probes for layers 1–3 | observation | adapters built and smoke-tested; training planned (2M steps, 3 seeds) |
 
 ## CrazyMARL on arena tasks
@@ -459,6 +461,79 @@ Layers 1–3 on the same 8,660 questions, with 95% intervals for L1, L2 and L3:
 - **Files** (not in git): `data/uav_arena/results/formal_war_h4_60k_ep{2000,500}_s{1,2,3}_test.json`
   and `data/uav_arena/results/harness/formal_war_h4_60k_ep{2000,500}_s{1,2,3}_test.{json,npz}`.
 
+### PETS
+
+The PETS ensemble's six formal models: G7, five members of depth 3 and width 291, 60,000 steps per
+member, seeds 1, 2 and 3 on the 2,000 standard episodes and on the first 500 (selection and training
+by june in [participants/pets/PHASE_B.md](participants/pets/PHASE_B.md)). Each candidate is
+propagated by one member drawn at random per planning call, with the member's mean at every step
+(`sample_gaussian=false`): one particle instead of published PETS's 20, and mean propagation
+([TASKS.md](TASKS.md#pets-ensemble-june)). They ran on 2026-11-02, one model at a time, from a clean
+checkout of `87a502b` (PR #2), whose PETS files are merged here unchanged. Outside `participants/`,
+`tests/` and the documentation, that commit is identical to W-ar's `f65e007`, so the environment,
+the planner, the recorder and the harness are the tag's. june flew `dev` on Ubuntu 22.04, which
+does not reproduce these episodes bit for bit, so the check before the first `test` episode was on
+this machine: the six models flew `dev`, the 2,000-episode seed-1 model flew it again with identical
+records, timings aside, and the harness accepted the predictor on `dev`. Success count out of 50
+(one count per training seed) and mean time of the successes:
+
+| Condition | PETS, 2,000 episodes (seeds 1, 2, 3) | PETS, 500 episodes (seeds 1, 2, 3) |
+|---|---|---|
+| static, 0 ms | 10, 15, 22 (7.5 s) | 6, 14, 14 (6.8 s) |
+| static, 50 ms | 13, 20, 19 (7.1 s) | 12, 13, 12 (7.2 s) |
+| static, 100 ms | 12, 11, 14 (7.9 s) | 9, 7, 10 (7.1 s) |
+| static, 200 ms | 5, 7, 8 (7.8 s) | 6, 8, 6 (6.7 s) |
+| static+moving, 0 ms | 9, 15, 17 (7.9 s) | 6, 11, 10 (7.5 s) |
+| static+moving, 50 ms | 13, 15, 14 (8.2 s) | 9, 14, 10 (7.4 s) |
+| static+moving, 100 ms | 7, 10, 8 (8.0 s) | 2, 5, 12 (8.3 s) |
+| static+moving, 200 ms | 4, 6, 5 (7.8 s) | 2, 2, 6 (6.5 s) |
+| **Total** | **73, 99, 107 of 400** | **52, 74, 80 of 400** |
+| Success rate (95% interval) | 18.25% (11.50–25.75%), 24.75% (17.25–33.00%), 26.75% (19.00–35.25%) | 13.00% (8.00–19.00%), 18.50% (11.75–25.75%), 20.00% (12.75–28.00%) |
+
+Layers 1–3 on the same 8,660 questions, with 95% intervals for L1, L2 and L3:
+
+| | L1 payload | L2 cross-agent | L2 payload / others / own | L3 costly decisions | Regret, mean (median) | Top-1 | Spearman | Pairwise |
+|---|---|---|---|---|---|---|---|---|
+| PETS, 2,000 episodes, seed 1 | 12.93 cm (11.82–14.03) | 3.78 cm (3.51–4.06) | 4.60 / 2.96 / 7.02 cm | 46.7% (39.7–53.0%) | +12.32 (+2.22) | 19.06 | 0.43 | 0.66 |
+| PETS, 2,000 episodes, seed 2 | 12.22 cm (11.22–13.22) | 3.67 cm (3.41–3.93) | 4.44 / 2.90 / 6.93 cm | 46.6% (39.7–52.8%) | +12.25 (+2.17) | 19.44 | 0.44 | 0.66 |
+| PETS, 2,000 episodes, seed 3 | 12.44 cm (11.40–13.48) | 3.70 cm (3.43–3.97) | 4.47 / 2.94 / 6.97 cm | 46.6% (39.6–52.8%) | +12.07 (+2.24) | 19.39 | 0.44 | 0.66 |
+| PETS, 500 episodes, seed 1 | 13.11 cm (11.97–14.25) | 3.88 cm (3.60–4.16) | 4.68 / 3.08 / 7.03 cm | 47.1% (40.2–53.2%) | +12.69 (+2.33) | 19.87 | 0.42 | 0.65 |
+| PETS, 500 episodes, seed 2 | 13.64 cm (12.42–14.84) | 3.99 cm (3.69–4.27) | 4.79 / 3.19 / 7.16 cm | 48.4% (41.3–54.6%) | +13.19 (+2.61) | 20.18 | 0.41 | 0.65 |
+| PETS, 500 episodes, seed 3 | 12.97 cm (11.88–14.05) | 3.89 cm (3.61–4.17) | 4.66 / 3.12 / 7.08 cm | 47.9% (40.8–54.1%) | +12.76 (+2.54) | 19.56 | 0.42 | 0.65 |
+
+- **Data size** (ANALYSIS.md, Section 5). Pooled over the three seeds, the 500-episode models are
+  worse than the 2,000-episode models in the closed loop, 206 against 279 successes of 1,200,
+  −6.08 points (−10.00 to −2.25), and on every layer: L1 +0.71 cm (+0.59 to +0.82), L2 +0.20 cm
+  (+0.18 to +0.22) and L3 +1.16 points (+0.71 to +1.57), as on the validation set (6.40–6.43
+  against 6.21–6.27 cm).
+- **Against the nominal physics reference and W-ar.** Pooled over seeds, PETS succeeds in 23.25%
+  (2,000 episodes) and 17.17% (500) of the episodes, below the nominal physics reference (53.25%),
+  W-ar (46.75% and 45.25%) and CrazyMARL (40.6% over its three seeds). Paired over layouts, the
+  2,000-episode models' J is 30.00 points lower than the reference's (−38.25 to −22.08), their L1
+  higher (+4.11 cm, +2.21 to +6.04), their L2 about the same (+0.10 cm, −0.71 to +0.88) and their
+  L3 higher (+12.87 points, +6.30 to +20.06). Against W-ar at the same data size, J is 23.50
+  points lower (−29.00 to −18.08) and every layer higher: L1 +3.98 cm (+3.33 to +4.62), L2
+  +0.65 cm (+0.57 to +0.73) and L3 +5.26 points (+4.25 to +6.44); at 500 episodes, J is 28.08
+  points lower (−34.25 to −21.91) and L3 4.07 points higher (+2.87 to +5.33). Against the
+  reference, L3 orders the rows as the closed loop does and L2 does not, as for W-ar; against W-ar,
+  all three layers do. The analysis plan's test runs over the 30 primary models, not single pairs.
+- **Latency.** PETS's successes fall from 47 to 20 of 150 without movers and from 41 to 15 with
+  them (2,000 episodes; 34 to 20 and 27 to 10 at 500). On U's states, L1 rises from 10.54 to
+  15.07 cm and L3 from 43.5% to 48.7% without movers, and from 10.65 to 15.30 cm and from 44.5% to
+  49.7% with them (2,000 episodes).
+- **Failures.** At 2,000 episodes, 419 aircraft-separation failures, 349 obstacle collisions, 123
+  crashes, 28 timeouts and 2 exits from the bounds; at 500 episodes, 457, 402, 101, 30 and 4. Per
+  model, 0–2 successes fall on episodes U fails and 199–253 failures on episodes U finishes.
+  Successes take 7.43–8.20 s on average at 2,000 episodes and 6.59–7.60 s at 500.
+- **Compute.** 10.1–10.8 min per closed loop (19.2–21.9 ms per planning call on the RTX 5070 Laptop
+  GPU) and 50.2–52.9 min per harness run, since a stochastic predictor makes 48 calls per question
+  ([HARNESS.md](HARNESS.md)); 6.2 h for the six models. Training costs are in PHASE_B.md.
+- **Files** (not in git): `data/uav_arena/results/pets_e{2000,500}_s{1,2,3}_mppi_test.json` and
+  `data/uav_arena/results/harness/pets_e{2000,500}_s{1,2,3}_test.{json,npz}`. The checkpoints,
+  handed over out of band, are
+  `data/uav_arena/participants/pets/phase_b_formal_d3w291_s60k_e{2000,500}_seed{1,2,3}.pt`, with
+  their SHA-256 in PHASE_B.md.
+
 ## Results on dev (seeds 0–4, all 8 conditions)
 
 At `arena-v0.2`. The three planning rows use the shared MPPI (512 samples, 1.5 s horizon),
@@ -569,12 +644,12 @@ results show how the relation changes with latency and moving obstacles.
 3. ~~Physics with online payload-mass estimation~~ (done).
 4. ~~Participant contract, data collector with reference manifests, training windows, layer-1
    open-loop metric~~ (done, `arena-v0.2`; `explore-v2` data in `arena-v0.3`); ~~the
-   autoregressive model~~ (done); entity-token JEPA variants and PETS.
+   autoregressive model and PETS~~ (done); entity-token JEPA variants.
 5. ~~Layer 1–3 harness on recorded U states~~ (done, validated on `dev`).
 6. TD-MPC2 and DreamerV3: ~~a Gymnasium wrapper, adapters to the official code and their venvs~~
    (done); training, then their rows on `test`.
-7. Runs on `test`: ~~the reference rows, the example participant, CrazyMARL and W-ar~~ (done); the
-   other world-model rows, the leaderboard tables and the layer-consistency analysis.
+7. Runs on `test`: ~~the reference rows, the example participant, CrazyMARL, W-ar and PETS~~
+   (done); the other world-model rows, the leaderboard tables and the layer-consistency analysis.
 
 ## Replay and video
 
@@ -652,7 +727,9 @@ The example participant runs the same `harness score` and `run.py` commands with
 `--predictor uav_arena.participants.example.model:make` and its `--predictor-options`
 ([TASKS.md](TASKS.md)), writing `example_mlp_test.json` in both places; W-ar's six models run them
 with `uav_arena.participants.war.model:make` and each checkpoint
-([participants/war/README.md](participants/war/README.md#commands)). CrazyMARL has no
+([participants/war/README.md](participants/war/README.md#commands)), PETS's with
+`uav_arena.participants.pets.model:make`
+([participants/pets/PHASE_B.md](participants/pets/PHASE_B.md#commands)). CrazyMARL has no
 predictor, so it skips the harness; each seed's final actor flies `test` directly:
 
 ```bash

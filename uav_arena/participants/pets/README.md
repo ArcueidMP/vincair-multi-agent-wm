@@ -54,7 +54,9 @@ the Phase A open-loop bar and then succeeded on 7/40 `dev` episodes.
 
 Phase B uses all 2,000 training episodes and every validation decision. Its
 registered configurations, commands, parameter counts, GPU time and complete
-per-latency scores are recorded in [PHASE_B.md](PHASE_B.md).
+per-latency scores are recorded in [PHASE_B.md](PHASE_B.md). It selected G7
+(depth 3, width 291, 60,000 steps per member), whose six formal checkpoints ran
+on `test` on 2026-11-02 ([results](PHASE_B.md#central-test-results)).
 
 Checkpoints, diagnostics and JSON results remain under ignored `data/`; only
 model code, tests and these commands belong in the pull request.
