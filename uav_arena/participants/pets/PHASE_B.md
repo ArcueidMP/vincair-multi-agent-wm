@@ -1,8 +1,9 @@
 # PETS Phase B progress report
 
-Status: selection and formal validation are complete on the frozen
-`arena-v0.3` protocol. G7 (depth 3, width 291, 60,000 steps/member, learning
-rate 1e-3) was selected after all eight allowed configurations. Every
+Status: selection, formal validation and the six formal `dev` runs are
+complete on the frozen `arena-v0.3` protocol. Central `test` evaluation is
+pending. G7 (depth 3, width 291, 60,000 steps/member, learning rate 1e-3) was
+selected after all eight allowed configurations. Every
 selection run uses all 2,000 `explore_v2` episodes, seed 0, mean propagation
 (`sample_gaussian=false`) and every decision of all 100 `explore_v2_val`
 episodes. Neither `dev` nor `test` is used for selection.
@@ -118,6 +119,36 @@ Formal checkpoint SHA-256 values are:
   `0412db9e2e690b9c48def1cff946944d53f234c739d8c6e4f66809bb8e0f4573`.
 These checkpoints and the six raw validation JSON files remain ignored and
 local.
+
+## Formal dev results and planning time
+
+After selection was frozen, each formal checkpoint ran once on all 40 `dev`
+episodes. `dev` was not used to choose or change the configuration. Each cell
+is successes out of five episodes, followed by mean time among successes.
+
+| Condition | 2,000 s1 | 2,000 s2 | 2,000 s3 | 500 s1 | 500 s2 | 500 s3 |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| static / 0 ms | 3/5 (8.1 s) | 5/5 (6.3 s) | 4/5 (5.2 s) | 1/5 (4.5 s) | 1/5 (4.8 s) | 4/5 (7.4 s) |
+| static / 50 ms | 0/5 | 4/5 (6.7 s) | 3/5 (6.2 s) | 2/5 (11.0 s) | 2/5 (5.7 s) | 3/5 (5.4 s) |
+| static / 100 ms | 2/5 (5.5 s) | 1/5 (8.6 s) | 1/5 (5.4 s) | 1/5 (5.4 s) | 2/5 (8.4 s) | 2/5 (6.0 s) |
+| static / 200 ms | 1/5 (5.2 s) | 2/5 (7.8 s) | 1/5 (5.9 s) | 0/5 | 2/5 (5.9 s) | 1/5 (5.8 s) |
+| static+moving / 0 ms | 2/5 (5.1 s) | 2/5 (5.6 s) | 4/5 (6.2 s) | 2/5 (7.7 s) | 0/5 | 1/5 (4.4 s) |
+| static+moving / 50 ms | 1/5 (6.3 s) | 0/5 | 2/5 (5.1 s) | 2/5 (5.0 s) | 2/5 (10.5 s) | 2/5 (5.3 s) |
+| static+moving / 100 ms | 1/5 (4.9 s) | 2/5 (7.4 s) | 2/5 (5.8 s) | 2/5 (6.9 s) | 1/5 (5.4 s) | 2/5 (6.2 s) |
+| static+moving / 200 ms | 1/5 (5.2 s) | 1/5 (6.6 s) | 2/5 (7.7 s) | 0/5 | 1/5 (5.5 s) | 1/5 (5.8 s) |
+| **Total** | **11/40** | **17/40** | **19/40** | **10/40** | **11/40** | **16/40** |
+
+The mean time of one frozen-planner call (512 candidates × 15 decisions),
+weighted by the number of decisions in each episode, was 20.86 ± 0.49 ms over
+the three 2,000-episode seeds and 20.15 ± 0.56 ms over the three 500-episode
+seeds (mean ± sample standard deviation between training seeds). Pooling all
+13,504 formal `dev` planning calls gives **20.51 ms per call** on the RTX 5060
+Laptop GPU.
+
+The six formal checkpoints have not been run on `test` locally. They and the
+exact `harness score` and closed-loop commands are prepared for the maintainer,
+who will run the central `test` on one machine and return the two per-condition
+tables for this report.
 
 ## Commands
 
