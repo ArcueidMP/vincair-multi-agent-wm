@@ -52,8 +52,14 @@ def test_queue_generates_fresh_fixed_seed_commands_without_stride(tmp_path):
         variants={'full': dict(checkpoint=f'data/uav_arena/participants/jepa/phase_b_select_full_{c.lower()}_s0.pt',
         result=f'data/uav_arena/results/phase_b_select_full_{c.lower()}_s0_openloop.json',
         parameters={'total': 1})}) for c,h,s in q.CONFIGS])
-    for job in q.jobs(grid, 'full', tmp_path):
+    queue = list(q.jobs(grid, 'full', tmp_path))
+    assert len(queue) == 6
+    assert [(j['config'], j['history'], j['steps']) for j in queue[-2:]] == [
+        ('G5', 1, 60000), ('G6', 4, 60000)]
+    for job in queue:
         command = job['training']
+        assert command[command.index('--steps')+1] == str(job['steps'])
+        assert command[command.index('--history')+1] == str(job['history'])
         assert '--resume' not in command and command[command.index('--seed')+1] == '0'
         assert command[command.index('--episodes')+1] == '2000'
         assert '--stride' not in job['evaluation']
@@ -168,3 +174,77 @@ def test_flat_readout_and_adapter_preserve_aircraft_order_with_physical_scaling(
     torch.testing.assert_close(output['payload'][0,0,0],
         torch.arange(9.,12.)*torch.arange(46.,49.)+predictor.context['origin'][0])
     torch.testing.assert_close(output['payload_vel'][0,0,0],torch.arange(12.,15.)*torch.arange(49.,52.))
+
+
+@pytest.fixture
+def six_grid():
+    return dict(status='approved_ready', common=q.COMMON.copy(),
+        training_episodes=2000, validation_stride=1, selection_seed=0, horizon=15,
+        extension_approval_url=q.EXTENSION_APPROVAL, hard_step_cap=60000,
+        source_sha256={}, data_manifest_sha256={}, flat_preflight={'cleared': True},
+        configs=[dict(id=c, history=h, steps=s, variants={v:dict(
+            checkpoint=f'data/uav_arena/participants/jepa/phase_b_select_{v}_{c.lower()}_s0.pt',
+            result=f'data/uav_arena/results/phase_b_select_{v}_{c.lower()}_s0_openloop.json',
+            parameters={'total':1}) for v in ('full','no_cross','flat')})
+            for c,h,s in q.CONFIGS])
+
+
+@pytest.mark.parametrize('fault', ['approval','cap','extra_steps','missing_candidate'])
+def test_six_grid_rejects_unapproved_or_changed_extension(tmp_path,six_grid,fault):
+    q.check_grid(six_grid,tmp_path)
+    if fault == 'approval': del six_grid['extension_approval_url']
+    if fault == 'cap': six_grid['hard_step_cap'] = 80000
+    if fault == 'extra_steps': six_grid['configs'][-1]['steps'] = 80000
+    if fault == 'missing_candidate': six_grid['configs'].pop()
+    with pytest.raises(ValueError): q.check_grid(six_grid,tmp_path)
+
+
+def test_extension_cannot_resume_a_40000_step_schedule(case):
+    _,job,grid,_=case
+    old=q.expected_training(job)
+    job.update(config='G5',steps=60000)
+    pack=dict(kind='jepa_training_resume_v1',training={**old,
+        'data':'data/uav_arena/datasets/explore_v2'},step=40000,
+        source_sha256=grid['source_sha256'],dataset_manifest_sha256='train')
+    with pytest.raises(ValueError,match='configuration mismatch'):
+        q.validate_resume(pack,job,grid)
+
+
+def test_default_queue_is_dry_run(tmp_path,six_grid,monkeypatch,capsys):
+    q.write(tmp_path/q.GRID,six_grid)
+    before={str(p):p.read_bytes() for p in tmp_path.rglob('*') if p.is_file()}
+    monkeypatch.setattr(q,'ROOT',tmp_path)
+    monkeypatch.setattr(q.sys,'argv',['selection_queue','--variant','full'])
+    monkeypatch.setattr(q,'run_command',lambda *_:pytest.fail('dry run launched command'))
+    monkeypatch.setattr(q,'run_one',lambda *_:pytest.fail('dry run changed receipt'))
+    q.main()
+    output=json.loads(capsys.readouterr().out)
+    assert not output['launch'] and len(output['runs'])==6
+    assert before=={str(p):p.read_bytes() for p in tmp_path.rglob('*') if p.is_file()}
+
+
+@pytest.mark.parametrize('variant',['full','no_cross','flat'])
+@pytest.mark.parametrize('scores,winner',[
+    ([.09,.08,.07,.06,.06,.05],'G6'),
+    ([.09,.08,.07,.06,.06,.06],'G4')])
+def test_final_selection_uses_all_six_raw_scores_and_stable_ties(
+        tmp_path,six_grid,monkeypatch,variant,scores,winner):
+    q.write(tmp_path/q.GRID,six_grid)
+    monkeypatch.setattr(q,'ROOT',tmp_path)
+    monkeypatch.setattr(q.sys,'argv',['selection_queue','--variant',variant,'--run'])
+    monkeypatch.setattr(q,'ensure_idle',lambda:None)
+    seen=[]
+    def completed(job,*_):
+        seen.append(job['config'])
+        job['checkpoint'].parent.mkdir(parents=True,exist_ok=True)
+        job['checkpoint'].write_text('test weights')
+        return scores[int(job['config'][1:])-1]
+    monkeypatch.setattr(q,'run_one',completed)
+    monkeypatch.setattr(q,'run_command',lambda *_:pytest.fail('test launched real training'))
+    q.main()
+    result=q.read(tmp_path/f'data/uav_arena/results/jepa/phase_b_{variant}_selection.json')
+    assert seen==result['completed_configs']==['G1','G2','G3','G4','G5','G6']
+    assert result['selected']['config']==winner
+    assert result['selection_complete'] and not result['selected_is_provisional']
+    assert not result['grid_extension_review_required'] and result['hard_step_cap']==60000
+    assert not result['formal_training_started']

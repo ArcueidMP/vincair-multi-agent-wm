@@ -22,7 +22,7 @@ of cross-agent prediction error with closed-loop success.
 | `train.py` | Training-only normalization, optimization, checkpoints and run metadata |
 | [PHASE_A.md](PHASE_A.md) | Seven completed runs, reproduction commands, compute and remaining tasks |
 | [DIAGNOSTICS_FULL_D.md](DIAGNOSTICS_FULL_D.md) | C/D/example error comparison, frozen readout probes and normalization discussion |
-| [PHASE_B_GRID.md](PHASE_B_GRID.md) | Proposed four-config shared grid, parameter counts, runtime estimates and W-ar/PETS coordination |
+| [PHASE_B_GRID.md](PHASE_B_GRID.md) | Approved six-config shared grid, archive, runtime estimates and W-ar/PETS coordination |
 | `data/uav_arena/results/jepa/phase_a_summary.json` | Local configurations, metrics and hashes |
 
 The factory `uav_arena.participants.jepa.model:make` serves both the shared
@@ -211,10 +211,18 @@ OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 PYTHONPATH=. \
   tests/test_uav_jepa_backbone.py tests/test_uav_jepa_participant.py
 ```
 
-Under the approved grid, each variant selects
-its configuration on the full validation set (default stride 1) and trains three
-new seeds at each of the 2,000/500-episode budgets. The approved four-config grid
-is in [PHASE_B_GRID.md](PHASE_B_GRID.md). Full G1–G4 selection is complete; [PHASE_B_FULL.md](PHASE_B_FULL.md) records all four scores, final checkpoint hashes, and the W-ar handoff. The current grid selects **history=4, 40,000 steps (G4)**; longer-step grid review remains pending. No formal new-seed training has started. [PHASE_A.md](PHASE_A.md) preserves the Phase A record.
+All three JEPA variants have completed the approved G1–G6 selection grid and
+select **G6: history=4, 60,000 steps**. Full/no_cross/flat validation scores are
+**5.069164 / 4.671645 / 6.559518 cm**. All 18 seed0 candidates use the complete
+100-episode validation set, four latencies, horizon15 and stride1 (7429 decisions
+per latency), with final checkpoint and result hashes verified.
+See [PHASE_B_SELECTION.md](PHASE_B_SELECTION.md) for all scores, runtimes and hashes,
+[PHASE_B_GRID.md](PHASE_B_GRID.md) for the grid, and
+[PHASE_B_FULL.md](PHASE_B_FULL.md) for the final W-ar **history4** handoff.
+The 60,000-step cap is final. Formal models will use new seeds1/2/3 at each of
+the 500/2000-episode budgets with the same selected history and steps; none has
+started. The selection results are not the formal L1/L2/L3/J analysis.
+[PHASE_A.md](PHASE_A.md) preserves the Phase A record.
 
 
 ## Frozen encoder readout probe

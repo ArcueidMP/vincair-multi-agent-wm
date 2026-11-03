@@ -5,7 +5,7 @@
 冻结基线：arena-v0.3 (`64134e72f66be128024b1e602620073de4666851`)。
 训练只用前250个episodes（200000–200249）；验证100个episodes（299000–299099），
 四种latency、15步、官方openloop --stride 10。精确门槛为selection_score < 0.082593 m（8.2593 cm）；8.26 cm仅为四舍五入显示。
-训练seed为0，Phase A已按例外许可收尾；Phase B full四配置选择完成，当前最优history=4、40,000步。结果与W-ar交接见[PHASE_B_FULL.md](PHASE_B_FULL.md)。
+训练seed为0，Phase A已按例外许可收尾；Phase B三个变体六配置选择完成，最终均选G6：history=4、60,000步。结果与W-ar交接见[PHASE_B_FULL.md](PHASE_B_FULL.md)。
 
 | 实验 | history | steps | head_weight | SIGReg权重 | 验证cm | 门槛 | dev成功 |
 |---|---:|---:|---:|---:|---:|---|---|
@@ -414,7 +414,7 @@ done
 
 ### Phase B：维护者审阅后执行
 
-已准备[共享4配置网格](PHASE_B_GRID.md)，包含history1/4与23,000/40,000步；12次选择训练预计约19.95 GPU小时（仅训练估计）。网格已批准；full G1–G4已完成，结果及history交接见[PHASE_B_FULL.md](PHASE_B_FULL.md)。正式新seed模型尚未启动。
+[共享网格](PHASE_B_GRID.md)已按维护者批准扩展为G1–G6并全部完成；三个变体最终均选history4、60,000步。完整结果见[PHASE_B_SELECTION.md](PHASE_B_SELECTION.md)，W-ar交接见[PHASE_B_FULL.md](PHASE_B_FULL.md)。正式新seed模型尚未启动。
 
 - [ ] 三个变体使用同一组最多8个配置，在2,000个标准训练episodes上分别训练；
   用完整验证集的每个decision、四种延迟分别选出各变体的配置，并记录所有尝试。

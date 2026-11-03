@@ -20,7 +20,10 @@ COMMON = dict(batch=128, lr=.001, dim=128, latent=64, enc_layers=2,
               pred_layers=4, heads=4, head_weight=20., sigreg_weight=.01,
               sigreg_projections=1024, sigreg_per_token=False, rollout_steps=15,
               stats_samples=5000, seed=0, workers=4, device='cuda')
-CONFIGS = [('G1', 1, 23000), ('G2', 1, 40000), ('G3', 4, 23000), ('G4', 4, 40000)]
+CONFIGS = [('G1', 1, 23000), ('G2', 1, 40000), ('G3', 4, 23000), ('G4', 4, 40000),
+           ('G5', 1, 60000), ('G6', 4, 60000)]
+EXTENSION_APPROVAL = 'https://github.com/ArcueidMP/vincair-multi-agent-wm/pull/3#issuecomment-6555210796'
+HARD_STEP_CAP = 60000
 
 
 def read(path):
@@ -49,6 +52,9 @@ def check_grid(grid, root):
             'Grid approval or fixed recipe mismatch')
     checked([(c['id'], c['history'], c['steps']) for c in grid['configs']] == CONFIGS,
             'Unexpected configurations')
+    checked(grid.get('extension_approval_url') == EXTENSION_APPROVAL and
+            grid.get('hard_step_cap') == HARD_STEP_CAP,
+            'Missing approved six-configuration grid or final step cap')
     checked(grid['training_episodes'] == 2000 and grid['validation_stride'] == 1
             and grid['selection_seed'] == 0 and grid['horizon'] == 15,
             'Unexpected data budget or evaluation settings')
@@ -250,7 +256,7 @@ def run_one(job, grid, root):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--variant', choices=('full', 'no_cross', 'flat'), default='full')
-    parser.add_argument('--run', action='store_true', help='Launch all four runs for this variant')
+    parser.add_argument('--run', action='store_true', help='Run six approved candidates; verify and reuse completed runs')
     args = parser.parse_args()
     grid = read(ROOT/GRID)
     check_grid(grid, ROOT)
@@ -271,8 +277,13 @@ def main():
         selected = min(scores, key=lambda row: row['selection_score'])
         write(ROOT/f'data/uav_arena/results/jepa/phase_b_{args.variant}_selection.json',
               dict(scores=scores, selected=selected, formal_training_started=False,
-                   grid_extension_review_required=selected['steps'] == 40000))
-        print(json.dumps(dict(selected=selected, grid_extension_review_required=selected['steps'] == 40000)), flush=True)
+                   selection_complete=True, selected_is_provisional=False,
+                   expected_configs=[c[0] for c in CONFIGS],
+                   completed_configs=[row['config'] for row in scores],
+                   extension_approval_url=EXTENSION_APPROVAL, hard_step_cap=HARD_STEP_CAP,
+                   grid_extension_review_required=False))
+        print(json.dumps(dict(selected=selected, selection_complete=True, hard_step_cap=HARD_STEP_CAP,
+                              grid_extension_review_required=False)), flush=True)
 
 
 if __name__ == '__main__':

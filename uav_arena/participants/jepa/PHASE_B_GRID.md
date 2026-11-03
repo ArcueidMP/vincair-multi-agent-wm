@@ -1,25 +1,29 @@
-# Phase B配置网格（已批准；full四配置选择完成）
+# Phase B配置网格（G1–G6已完成；最终均选G6）
 
 Phase A收尾已完成：D/E训练集诊断与三组各40局dev结果见[PHASE_A.md](PHASE_A.md)。维护者2026-10-30已通过收尾并批准四配置网格（评论6520010790）；复现D延后，不阻塞训练。先完成full G1–G4选择（评论6522103322），供W-ar确定history。PR保持Draft，合并放在Phase B完成后。
 
-## 共享的4配置
+维护者已在[评论6555210796](https://github.com/ArcueidMP/vincair-multi-agent-wm/pull/3#issuecomment-6555210796)批准三个变体共同新增G5/G6；60,000步为最终上限，即使仍在改善也不再扩展。三个变体六配置训练与完整验证已全部完成，最终均选G6；完整分数、耗时及哈希见[PHASE_B_SELECTION.md](PHASE_B_SELECTION.md)。
 
-| 配置 | history | steps | full/no_cross参数 | flat参数 | 训练GPU小时：full / no_cross / flat |
+## 共享的6配置
+
+| 配置 | history | steps | full/no_cross参数 | flat参数 | 实测训练GPU小时：full / no_cross / flat |
 |---|---:|---:|---:|---:|---|
-| G1 | 1 | 23,000 | 1,288,841 | 1,371,663 | 1.26 / 1.27 / 0.78 |
-| G2 | 1 | 40,000 | 1,288,841 | 1,371,663 | 2.19 / 2.20 / 1.36 |
-| G3 | 4 | 23,000 | 1,289,225 | 1,372,047 | 1.51 / 1.52 / 0.94 |
-| G4 | 4 | 40,000 | 1,289,225 | 1,372,047 | 2.63 / 2.64 / 1.64 |
+| G1 | 1 | 23,000 | 1,288,841 | 1,371,663 | 1.29 / 1.26 / 0.82 |
+| G2 | 1 | 40,000 | 1,288,841 | 1,371,663 | 2.20 / 2.28 / 1.29 |
+| G3 | 4 | 23,000 | 1,289,225 | 1,372,047 | 1.48 / 1.37 / 0.85 |
+| G4 | 4 | 40,000 | 1,289,225 | 1,372,047 | 2.58 / 2.45 / 1.53 |
+| G5 | 1 | 60,000 | 1,288,841 | 1,371,663 | 3.52 / 3.16 / 1.98 |
+| G6 | 4 | 60,000 | 1,289,225 | 1,372,047 | 3.75 / 3.77 / 2.28 |
 
-三个变体共用相同网格，各自选优，共12次选择训练。只改变history与steps，保留C/D配方：batch128、lr0.001、head_weight20、SIGReg0.01、projections1024、rollout15、dim128、latent64、encoder2、predictor4、heads4、dropout0、stats_samples5000、AdamW/OneCycle、seed0。full/no_cross每帧4×64 latent，flat每帧256，参数量按实际模型构造统计。
+三个变体共用相同网格，各自选优，共18次选择训练。G1–G4共12次核验后复用，G5/G6共6次补跑已完成。只改变history与steps，保留C/D配方：batch128、lr0.001、head_weight20、SIGReg0.01、projections1024、rollout15、dim128、latent64、encoder2、predictor4、heads4、dropout0、stats_samples5000、AdamW/OneCycle、seed0。full/no_cross每帧4×64 latent，flat每帧256，参数量按实际模型构造统计。
 
 每次从随机初始化开始，用explore_v2全部2,000局（seeds200000–201999），归一化仍只由训练数据统计。选择运行的seed固定为0；不会复用Phase A权重。只评最终checkpoint，不用中间checkpoint、dev或test选配置。
 
 ## 完整验证与选择
 
-每个候选均使用explore_v2_val全部100局（299000–299099）、四延迟、15步、每个decision的官方openloop。**命令不传--stride，使用默认1；不得沿用Phase A的stride10。** 原始selection_score越低越好，各变体独立选最优；若原始分数完全相同，按G1→G4顺序选，不按四舍五入分数判同分。
+每个候选均使用explore_v2_val全部100局（299000–299099）、四延迟、15步、每个decision的官方openloop。**命令不传--stride，使用默认1；不得沿用Phase A的stride10。** 原始selection_score越低越好，各变体独立选最优；若原始分数完全相同，按G1→G6编号顺序选，不按四舍五入分数判同分。
 
-所有候选配置、结果、权重哈希和失败运行均保留；基础设施中断可恢复同一实验完整状态，不更换seed或修改配置。候选输出名使用phase_b_select_变体_g1至g4_s0，现有检查未发现路径冲突。
+所有候选配置、结果、权重哈希和失败运行均保留；基础设施中断可恢复同一实验完整状态，不更换seed或修改配置。候选输出名使用phase_b_select_变体_g1至g6_s0，现有检查未发现路径冲突。
 
 原审阅草案保留在`phase_b_grid_draft.json`；当前批准元数据和命令保存在`data/uav_arena/results/jepa/phase_b_grid.json`，不会由本次报告自动执行。以下仅示意G1 full的完整验证口径：
 
@@ -31,11 +35,9 @@ PYTHONPATH=. data/uav_arena/.venv/bin/python -m uav_arena.openloop \
   --out data/uav_arena/results/phase_b_select_full_g1_s0_openloop.json
 ```
 
-## 计算量估计
+## 计算开销
 
-12次选择训练合计约 **19.95 GPU小时**，不含完整验证、2,000局加载/统计和后续正式多seed实验。history1按本机已有Phase A各变体每步耗时线性外推，full使用D、no_cross/flat使用C；history4先按同变体history1的1.20倍估计，该倍率尚未实测。模型参数量已实际统计，但时间不是2,000局上的实测，不把估计当作完成结果。
-
-正式开跑前先确认GPU/内存和数据校验，首次运行后校准耗时；不因速度或dev结果私自更改已批准网格。若内存不足或预计成本明显变化，先报告。
+全部18次选择训练实测累计37.8768 GPU小时，其中新增G5/G6共18.4707 GPU小时，接近维护者约19小时的估计。表格已替换为训练元数据记录的实测耗时，不含验证、数据加载及统计。正式多seed训练未计入。
 
 ## W-ar / PETS对齐信息
 
@@ -54,7 +56,13 @@ PETS总容量按transformer最大行确定，本表保留full与flat参数供对
 
 候选选优后，每变体固定配置，在2,000/500局各训练3个新seed，两种数据预算保持相同步数，共18个正式JEPA模型；正式新seed按最新审阅采用1、2、3，三个变体与两种数据量配对。test及L1/L2/L3/J按冻结ANALYSIS.md执行，所有变体保留，不按Phase A dev成功率筛掉变体。
 
-**full G1–G4已完成，当前最优G4：history=4、40,000步，5.918571 cm。** 完整结果、分延迟误差、checkpoint哈希与W-ar骨干选项见[PHASE_B_FULL.md](PHASE_B_FULL.md)。40,000步位于网格边界，按审阅提请讨论三个变体是否共同扩展；未自动新增配置或启动正式18模型训练。
+**三个变体最终均选G6（history=4、60,000步）**：full 5.069164 cm、no_cross 4.671645 cm、flat 6.559518 cm。全部六配置完整验证及哈希核验已完成；结果见[PHASE_B_SELECTION.md](PHASE_B_SELECTION.md)。W-ar最终history保持4，骨干交接见[PHASE_B_FULL.md](PHASE_B_FULL.md)。
+
+### 2026-11-02归档与迁移
+
+旧网格、三份四配置汇总、12次训练的最终权重/完整断点/训练元数据、验证结果、队列状态、train/val日志及迁移前源码文档已复制到`data/uav_arena/results/jepa/archive/phase_b_g1_g4_2026-11-02/`。`manifest.json`逐文件记录路径、大小与SHA256；99个文件全部核验一致，原文件保留原位。历史block3状态和旧汇总中的扩展待审标志保留于归档，不代表批准仍待定。
+
+迁移时活动selection汇总曾保留四配置暂定结果；2026-11-03队列完成后已更新为六配置最终汇总，`selection_complete=true`、`selected_is_provisional=false`，历史四配置汇总保留在归档。G5/G6使用独立输出名、seed0随机初始化及完整60,000步OneCycle计划，不能从G2/G4的40,000步断点接着训；同一G5/G6实验若中断，可恢复自身完整断点。训练器、骨干、损失、归一化和数据均未改变。
 
 
 ## 串行训练与验证队列
@@ -67,9 +75,9 @@ PYTHONPATH=. data/uav_arena/.venv/bin/python -m uav_arena.participants.jepa.sele
 PYTHONPATH=. data/uav_arena/.venv/bin/python -m uav_arena.participants.jepa.selection_queue --variant full --run
 ```
 
-`--variant no_cross`或`flat`各处理该变体G1–G4，默认full优先。每个候选从头训练后立即完整验证；中断时只恢复该候选完整断点。完成结果经配置、最终步数、源码/数据/权重哈希及验证覆盖检查后跳过；异常停止，不重置优化器、不自动改配置，不覆盖不完整或不匹配输出。必须保留前台WSL会话。
+`--variant no_cross`或`flat`各处理该变体G1–G6，后续补跑顺序为full G5/G6→no_cross G5/G6→flat G5/G6；现有G1–G4只核验和复用。每个候选从头训练后立即完整验证；中断时只恢复该候选完整断点。完成结果经配置、最终步数、源码/数据/权重哈希及验证覆盖检查后跳过；异常停止，不重置优化器、不自动改配置，不覆盖不完整或不匹配输出。必须保留前台WSL会话。
 
-队列不运行dev/test，不发布PR。训练、验证日志在`data/uav_arena/logs/`，每个候选队列状态和变体选择汇总在`data/uav_arena/results/jepa/`。若40000步配置最优，汇总标记需讨论扩展；不自动开始正式多seed训练。
+队列不运行dev/test，不发布PR。训练、验证日志在`data/uav_arena/logs/`，每个候选队列状态和变体选择汇总在`data/uav_arena/results/jepa/`。汇总记录六配置完整性与60,000步硬上限，不再标记需要扩展；不自动开始正式多seed训练。
 
 
 ## 新checkout准备队列元数据
@@ -85,6 +93,8 @@ import json
 root = Path('.')
 docs = root/'uav_arena/participants/jepa'
 grid = dict(status='approved_ready', common=COMMON, training_episodes=2000,
+            extension_approval_url='https://github.com/ArcueidMP/vincair-multi-agent-wm/pull/3#issuecomment-6555210796',
+            hard_step_cap=60000,
             validation_stride=1, selection_seed=0, horizon=15,
             validation_decisions_per_latency=7429, flat_preflight={'cleared': True},
             source_sha256={n: digest(docs/n) for n in
