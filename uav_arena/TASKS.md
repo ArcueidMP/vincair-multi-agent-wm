@@ -6,11 +6,11 @@ them.
 
 | Row | Owner | Status |
 |---|---|---|
-| Entity-token JEPA `full`, `no_cross`, `flat` | Yihao Xu (@Yihao-Xu-777) | not started |
+| Entity-token JEPA `full`, `no_cross`, `flat` | Yihao Xu (@Yihao-Xu-777); formal models: maintainer (@ArcueidMP) | Phase A closed by exception on 2026-10-30 (8.37 cm against 8.26 cm); Phase B selected G6, history 4 and 60,000 steps, for all three (5.07, 4.67 and 6.56 cm); merged from PR #3; the 18 formal models, trained by the maintainer from `57e9b1a`, ran on `test` on 2026-11-03 and 04 ([README](README.md#jepa)) |
 | Autoregressive state model (W-ar) | maintainer (@ArcueidMP), from june's code in PR #2 | taken over on 2026-11-01 (branch `uav/war`); history 4 from JEPA `full`'s Phase B selection; Phase A passed (6.58 cm against 8.26 cm); Phase B selected 60,000 steps (4.49 cm); the six formal models ran on `test` on 2026-11-02 ([README](README.md#w-ar)) |
 | PETS ensemble | june (@june250630) | Phase A passed (7.12 cm against 8.26 cm); Phase B selected G7 (6.26 cm); the six formal models, handed over on 2026-11-02, ran on `test` the same day ([README](README.md#pets)); merged from PR #2 |
 | TD-MPC2, DreamerV3 | unassigned | adapters to the official code built and smoke-tested; training next (2M steps, seeds 42, 67 and 2027) |
-| Evaluation harness and recorder ([HARNESS.md](HARNESS.md)), analysis plan ([ANALYSIS.md](ANALYSIS.md)), Gymnasium wrapper, reference and CrazyMARL rows on `test` | maintainer (@ArcueidMP) | analysis plan frozen in `arena-v0.3`; recorder and harness built and validated on `dev`; reference rows, the example participant and the CrazyMARL rows run on `test` ([README](README.md)); Gymnasium wrapper built |
+| Evaluation harness and recorder ([HARNESS.md](HARNESS.md)), analysis plan ([ANALYSIS.md](ANALYSIS.md)), Gymnasium wrapper, reference and CrazyMARL rows on `test` | maintainer (@ArcueidMP) | analysis plan frozen in `arena-v0.3`; recorder and harness built and validated on `dev`; reference rows, the example participant and the CrazyMARL rows run on `test` ([README](README.md)); Gymnasium wrapper built; the pre-registered analysis (`analysis.py`) ran on 2026-11-04 and is supported ([README](README.md#pre-registered-analysis)) |
 
 ## First day, every owner
 
@@ -79,6 +79,13 @@ them.
 
 ### Entity-token JEPA `full`, `no_cross`, `flat` (Yihao)
 
+- **Done:** Phase A and the Phase B selection (Yihao, PR #3:
+  [participants/jepa/PHASE_A.md](participants/jepa/PHASE_A.md),
+  [participants/jepa/PHASE_B_SELECTION.md](participants/jepa/PHASE_B_SELECTION.md)). Then the 18
+  formal models, trained by the maintainer from PR #3's `57e9b1a` on 2026-11-03, and their `test`
+  runs on 2026-11-03 and 04. The training, validation and `test` tables are in
+  [participants/jepa/FORMAL.md](participants/jepa/FORMAL.md); the `test` tables are also in the
+  [README](README.md#jepa).
 - **Start from** `vmas_pusht/model.py` (on `main` and this branch): the entity-token LeWM with the
   same three `attn` variants, SIGReg, a readout head and a k-step rollout loss. Keep its recipe;
   change the entities and the actions.

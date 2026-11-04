@@ -22,7 +22,7 @@ Status (`arena-v0.3`, tagged on 2026-10-28, before the first `test` run):
   `explore-v1` in `arena-v0.3` because U's planner commands actions `explore-v1` never flew;
   `coverage.py` compares a dataset with U's flights.
 - The analysis plan, [ANALYSIS.md](ANALYSIS.md), is frozen with the tag, before any `test` run:
-  the headline test, its decision rule and the secondary analyses.
+  the headline test, its decision rule and the secondary analyses. `analysis.py` computes them.
 - The evaluation harness for layers 1–3, [HARNESS.md](HARNESS.md), is built (`record.py`,
   `harness.py`), tested and validated on `dev`. It is maintained outside the frozen contract and
   scores every model on decision states recorded from U's closed-loop runs.
@@ -35,9 +35,11 @@ Status (`arena-v0.3`, tagged on 2026-10-28, before the first `test` run):
   each (TD-MPC2 and DreamerV3, below). Their training runs come next: 2M environment steps and
   seeds 42, 67 and 2027 for each method.
 - The reference rows and the example participant ran on `test` on 2026-10-28 and 29, U's through
-  the recorder, which also recorded the questions, the CrazyMARL rows on 2026-11-01, and W-ar's and
-  PETS's six models each on 2026-11-02 (Results on test, below). Next: the other world-model rows
-  (see Roadmap).
+  the recorder, which also recorded the questions, the CrazyMARL rows on 2026-11-01, W-ar's and
+  PETS's six models each on 2026-11-02, and JEPA's 18 on 2026-11-03 and 04 (Results on test,
+  below).
+- The pre-registered test ran on 2026-11-04 over the 30 primary models and is supported:
+  ρ(L2, J | L1) = −0.390 (−0.602 to −0.274). Next: the TD-MPC2 and DreamerV3 rows (see Roadmap).
 - Related work, grouped by relation to the arena, with BibTeX:
   [`docs/uav-arena-related-work.md`](../docs/uav-arena-related-work.md). Its section 8 covers the
   evaluation design.
@@ -177,7 +179,7 @@ the predictor differs.
 | CrazyMARL | external, model-free: official IPPO trainer, decentralized 250 Hz motor commands, retrained on arena tasks | own state fresh; payload, teammates and obstacles delayed | seeds 0–2 run on `test` |
 | Autoregressive state model (W-ar) | world model in the shared MPPI | observation history | six formal models run on `test` |
 | PETS ensemble | world model in the shared MPPI | observation history | six formal models run on `test` |
-| Entity-token JEPA (`full`, `no_cross`, `flat`) | world models in the shared MPPI | observation history | planned |
+| Entity-token JEPA (`full`, `no_cross`, `flat`) | world models in the shared MPPI | observation history | 18 formal models run on `test` |
 | TD-MPC2 (official, trained online), DreamerV3 | external model-based RL, evaluated as published, plus state probes for layers 1–3 | observation | adapters built and smoke-tested; training planned (2M steps, 3 seeds) |
 
 ## CrazyMARL on arena tasks
@@ -534,6 +536,249 @@ Layers 1–3 on the same 8,660 questions, with 95% intervals for L1, L2 and L3:
   `data/uav_arena/participants/pets/phase_b_formal_d3w291_s60k_e{2000,500}_seed{1,2,3}.pt`, with
   their SHA-256 in PHASE_B.md.
 
+### JEPA
+
+The entity-token JEPA's 18 formal models: `full`, `no_cross` and `flat` at G6 (history 4, 60,000
+steps), with seeds 1, 2 and 3 on the 2,000 standard episodes and on the first 500. Yihao selected
+the configuration in
+[participants/jepa/PHASE_B_SELECTION.md](participants/jepa/PHASE_B_SELECTION.md), merged from
+PR #3; the training is in [participants/jepa/FORMAL.md](participants/jepa/FORMAL.md).
+- The maintainer trained them on 2026-11-03 from a clean checkout of `57e9b1a` (PR #3), 15 on
+  AIHUB's RTX 4090 and 3 on the laptop. They ran on `test` on 2026-11-03 and 04 from the same
+  checkout, one model at a time as each arrived.
+- Since the tag, that commit adds only participant code, tests and documentation, so the
+  environment, the planner, the recorder and the harness are the tag's.
+- Before the first `test` episode, the checkout reproduced the 2,000-episode `full` seed-3 model's
+  `dev` records exactly, timings aside, and the harness accepted the predictor on `dev`.
+
+Success count out of 50 (one count per training seed) and mean time of the successes:
+
+| Condition | `full`, 2,000 episodes (seeds 1, 2, 3) | `full`, 500 episodes | `no_cross`, 2,000 episodes | `no_cross`, 500 episodes | `flat`, 2,000 episodes | `flat`, 500 episodes |
+|---|---|---|---|---|---|---|
+| static, 0 ms | 27, 27, 25 (5.8 s) | 15, 23, 20 (6.3 s) | 30, 26, 31 (6.9 s) | 22, 14, 16 (6.5 s) | 10, 5, 12 (5.3 s) | 10, 6, 5 (5.7 s) |
+| static, 50 ms | 33, 28, 24 (6.2 s) | 20, 22, 22 (6.5 s) | 30, 26, 28 (7.0 s) | 21, 10, 23 (7.1 s) | 12, 6, 4 (5.9 s) | 7, 10, 6 (5.3 s) |
+| static, 100 ms | 26, 30, 27 (6.6 s) | 17, 21, 18 (6.6 s) | 27, 24, 27 (6.9 s) | 18, 13, 18 (6.7 s) | 10, 8, 9 (5.2 s) | 8, 5, 4 (5.7 s) |
+| static, 200 ms | 22, 22, 21 (6.3 s) | 15, 17, 15 (6.4 s) | 28, 19, 24 (6.9 s) | 15, 14, 13 (6.8 s) | 10, 6, 6 (5.2 s) | 12, 12, 5 (5.6 s) |
+| static+moving, 0 ms | 28, 29, 25 (6.4 s) | 16, 21, 21 (7.1 s) | 28, 23, 26 (6.9 s) | 20, 13, 16 (7.0 s) | 14, 7, 10 (5.4 s) | 4, 5, 3 (6.1 s) |
+| static+moving, 50 ms | 26, 24, 25 (6.8 s) | 13, 16, 22 (6.5 s) | 25, 24, 26 (7.1 s) | 18, 14, 16 (7.3 s) | 10, 8, 6 (5.8 s) | 8, 8, 1 (6.3 s) |
+| static+moving, 100 ms | 29, 27, 24 (6.6 s) | 16, 16, 16 (6.3 s) | 27, 23, 26 (7.5 s) | 6, 14, 15 (7.0 s) | 10, 8, 8 (6.3 s) | 5, 6, 3 (5.5 s) |
+| static+moving, 200 ms | 20, 18, 18 (7.0 s) | 12, 13, 12 (7.1 s) | 19, 13, 13 (7.1 s) | 12, 8, 11 (7.1 s) | 7, 5, 3 (6.0 s) | 5, 5, 3 (5.2 s) |
+| **Total** | **211, 205, 189 of 400** | **124, 149, 146 of 400** | **214, 178, 201 of 400** | **132, 100, 128 of 400** | **83, 53, 58 of 400** | **59, 57, 30 of 400** |
+| Success rate (95% interval) | 52.75% (42.25–63.00%), 51.25% (40.50–62.00%), 47.25% (36.75–57.50%) | 31.00% (22.75–39.25%), 37.25% (27.50–47.25%), 36.50% (27.49–45.76%) | 53.50% (43.25–63.50%), 44.50% (34.50–54.50%), 50.25% (39.50–60.75%) | 33.00% (24.00–42.50%), 25.00% (17.50–32.75%), 32.00% (24.25–40.25%) | 20.75% (13.00–29.25%), 13.25% (8.75–18.25%), 14.50% (8.75–21.00%) | 14.75% (8.50–22.00%), 14.25% (7.75–21.75%), 7.50% (3.25–12.75%) |
+
+Layers 1–3 on the same 8,660 questions, with 95% intervals for L1, L2 and L3:
+
+| | L1 payload | L2 cross-agent | L2 payload / others / own | L3 costly decisions | Regret, mean (median) | Top-1 | Spearman | Pairwise |
+|---|---|---|---|---|---|---|---|---|
+| `full`, 2,000 episodes, seed 1 | 8.82 cm (8.24–9.40) | 3.51 cm (3.29–3.72) | 4.01 / 3.00 / 7.23 cm | 47.5% (40.4–53.8%) | +10.47 (+0.50) | 20.70 | 0.42 | 0.65 |
+| `full`, 2,000 episodes, seed 2 | 9.13 cm (8.54–9.69) | 3.58 cm (3.37–3.78) | 4.08 / 3.07 / 7.45 cm | 48.4% (41.3–54.6%) | +11.11 (+0.56) | 21.11 | 0.42 | 0.65 |
+| `full`, 2,000 episodes, seed 3 | 9.07 cm (8.48–9.66) | 3.59 cm (3.37–3.80) | 4.12 / 3.07 / 7.41 cm | 46.8% (40.0–52.9%) | +9.49 (+0.46) | 19.65 | 0.43 | 0.65 |
+| `full`, 500 episodes, seed 1 | 11.26 cm (10.57–11.93) | 4.16 cm (3.96–4.36) | 4.66 / 3.65 / 8.14 cm | 49.2% (41.9–55.6%) | +12.60 (+0.86) | 22.83 | 0.39 | 0.64 |
+| `full`, 500 episodes, seed 2 | 10.60 cm (10.02–11.20) | 3.99 cm (3.80–4.18) | 4.47 / 3.51 / 7.98 cm | 47.2% (40.3–53.3%) | +11.89 (+0.46) | 22.06 | 0.41 | 0.65 |
+| `full`, 500 episodes, seed 3 | 10.67 cm (10.07–11.26) | 4.05 cm (3.86–4.24) | 4.54 / 3.57 / 7.99 cm | 47.1% (40.2–53.2%) | +11.29 (+0.58) | 21.12 | 0.41 | 0.65 |
+| `no_cross`, 2,000 episodes, seed 1 | 8.74 cm (8.15–9.32) | 3.47 cm (3.25–3.68) | 3.98 / 2.96 / 6.94 cm | 45.6% (38.7–51.6%) | +9.90 (+0.30) | 19.54 | 0.44 | 0.66 |
+| `no_cross`, 2,000 episodes, seed 2 | 8.95 cm (8.35–9.53) | 3.49 cm (3.28–3.69) | 4.00 / 2.97 / 7.04 cm | 47.6% (40.6–53.9%) | +10.84 (+0.55) | 19.61 | 0.42 | 0.65 |
+| `no_cross`, 2,000 episodes, seed 3 | 8.70 cm (8.11–9.29) | 3.48 cm (3.26–3.69) | 4.00 / 2.96 / 6.96 cm | 45.1% (37.8–51.5%) | +10.40 (+0.26) | 19.04 | 0.42 | 0.65 |
+| `no_cross`, 500 episodes, seed 1 | 10.59 cm (9.95–11.24) | 3.81 cm (3.61–4.02) | 4.46 / 3.16 / 7.73 cm | 46.4% (39.2–52.8%) | +12.47 (+0.39) | 21.74 | 0.41 | 0.65 |
+| `no_cross`, 500 episodes, seed 2 | 10.83 cm (10.17–11.49) | 3.82 cm (3.63–4.02) | 4.48 / 3.16 / 7.75 cm | 46.7% (39.9–52.7%) | +11.55 (+0.47) | 20.62 | 0.43 | 0.65 |
+| `no_cross`, 500 episodes, seed 3 | 10.60 cm (9.99–11.19) | 3.82 cm (3.62–4.03) | 4.47 / 3.17 / 7.72 cm | 46.9% (39.7–53.2%) | +12.28 (+0.43) | 22.21 | 0.42 | 0.65 |
+| `flat`, 2,000 episodes, seed 1 | 11.18 cm (10.47–11.88) | 4.20 cm (3.98–4.43) | 4.68 / 3.72 / 8.78 cm | 56.2% (49.6–62.0%) | +16.67 (+2.39) | 28.96 | 0.31 | 0.61 |
+| `flat`, 2,000 episodes, seed 2 | 11.21 cm (10.53–11.88) | 4.24 cm (4.02–4.46) | 4.71 / 3.78 / 8.75 cm | 56.9% (50.2–62.6%) | +15.78 (+2.24) | 27.75 | 0.34 | 0.62 |
+| `flat`, 2,000 episodes, seed 3 | 11.21 cm (10.52–11.88) | 4.29 cm (4.06–4.51) | 4.77 / 3.82 / 8.75 cm | 56.2% (49.1–62.5%) | +15.56 (+2.10) | 28.87 | 0.33 | 0.61 |
+| `flat`, 500 episodes, seed 1 | 12.37 cm (11.60–13.15) | 4.39 cm (4.18–4.61) | 4.90 / 3.89 / 8.34 cm | 51.0% (43.8–57.2%) | +14.95 (+1.15) | 27.40 | 0.34 | 0.62 |
+| `flat`, 500 episodes, seed 2 | 12.47 cm (11.69–13.25) | 4.38 cm (4.17–4.60) | 4.91 / 3.86 / 8.35 cm | 50.7% (43.2–57.1%) | +15.12 (+1.03) | 27.06 | 0.35 | 0.62 |
+| `flat`, 500 episodes, seed 3 | 12.93 cm (12.06–13.81) | 4.46 cm (4.25–4.68) | 4.99 / 3.94 / 8.40 cm | 52.5% (45.3–58.8%) | +15.33 (+1.43) | 26.23 | 0.34 | 0.62 |
+
+- **Data size** (ANALYSIS.md, Section 5). Pooled over the three seeds, 500 episodes against 2,000:
+
+  | Variant | J | L1 | L2 | L3 | Validation |
+  |---|---|---|---|---|---|
+  | `full` | 419 against 605 successes of 1,200, −15.50 points (−20.67 to −10.42) | +1.83 cm (+1.60 to +2.08) | +0.51 cm (+0.47 to +0.54) | +0.26 points (−1.25 to +1.84) | 6.68–6.93 against 4.85–5.04 cm |
+  | `no_cross` | 360 against 593, −19.42 points (−24.59 to −14.33) | +1.88 cm (+1.64 to +2.11) | +0.34 cm (+0.31 to +0.37) | +0.55 points (−0.74 to +1.83) | 6.36–6.44 against 4.54–4.74 cm |
+  | `flat` | 146 against 194, −4.00 points (−7.67 to 0.00) | +1.40 cm (+1.16 to +1.63) | +0.17 cm (+0.14 to +0.20) | −5.05 points (−6.71 to −3.47) | 7.39–7.48 against 6.47–6.54 cm |
+
+  - L1 and L2 are worse with 500 episodes for every variant, as on the validation set.
+  - In the closed loop, `full` and `no_cross` lose 15.50 and 19.42 points and `flat` 4.00.
+  - L3 does not follow: it stays about the same for `full` and `no_cross` and falls by 5.05
+    points for `flat`.
+- **Against the nominal physics reference and W-ar.** Pooled over seeds at 2,000 episodes, `full`
+  and `no_cross` succeed in 50.42% and 49.42% of the episodes. That is between W-ar (46.75%) and
+  the nominal physics reference (53.25%); `flat` succeeds in 16.17%.
+  - Paired over layouts, the closed loop cannot tell `full` from either: −2.83 points against the
+    reference (−10.75 to +5.33) and +3.67 against W-ar (−3.17 to +10.42).
+  - Every layer still puts `full` behind W-ar: L1 +0.46 cm (+0.29 to +0.64), L2 +0.49 cm (+0.46 to
+    +0.52) and L3 +6.20 points (+4.84 to +7.57).
+  - `no_cross` likewise: J +2.67 points (−3.92 to +8.83), with L1 +0.25 cm, L2 +0.41 cm and L3
+    +4.73 points, each interval above 0.
+  - At 500 episodes, W-ar leads `full` by 10.33 points (+6.92 to +13.92) and `no_cross` by 15.25
+    (+11.08 to +19.58), and is again ahead on every layer.
+  - The analysis plan's test runs over the 30 primary models, not single pairs (Pre-registered
+    analysis, below).
+- **Latency.** Pooled over seeds, successes from 0 to 200 ms, of 150:
+
+  | Variant | 2,000 episodes, without movers | with movers | 500 episodes, without movers | with movers |
+  |---|---|---|---|---|
+  | `full` | 79 to 65 | 82 to 56 | 58 to 47 | 58 to 37 |
+  | `no_cross` | 87 to 71 | 77 to 45 | 52 to 42 | 49 to 31 |
+  | `flat` | 27 to 22 | 31 to 15 | 21 to 29 | 12 to 13 |
+
+  - Without movers, `full` and `no_cross` lose less than W-ar (91 to 49).
+  - On U's states L1 rises with latency, while L3 hardly changes. For `full` at 2,000 episodes,
+    L1 goes from 8.14 to 9.60 cm without movers and from 8.44 to 9.91 cm with them; L3 stays at
+    46.6% without movers and goes from 48.0% to 47.4% with them.
+- **Failures.**
+
+  | | `full` | `no_cross` | `flat` |
+  |---|---|---|---|
+  | 2,000 episodes | 344 obstacle collisions, 214 aircraft-separation failures, 27 timeouts, 10 crashes | 364, 185, 37, 21 | 280, 691, 21, 14 |
+  | 500 episodes | 393, 318, 52, 16, and 2 exits from the bounds | 444, 283, 82, 29, and 2 exits | 542, 368, 25, 112, and 7 exits |
+
+  - At 2,000 episodes obstacle collisions lead for `full` and `no_cross`, while `flat` fails
+    mostly through aircraft separation. At 500 episodes obstacle collisions lead for all three.
+  - Per model, 0–20 successes fall on episodes U fails and 108–275 failures on episodes U
+    finishes.
+  - Successes take 5.27–7.50 s on average; `flat`'s take 5.27–6.16 s.
+- **Compute.**
+  - Closed loop: 22.5–28.5 min per model for `full` and `no_cross` (52–59 ms per planning call on
+    the RTX 5070 Laptop GPU); 6.0–10.1 min for `flat` (19–24 ms per call), whose episodes also end
+    sooner.
+  - Harness: 10.2–11.6 min per model for `full` and `no_cross`, 5.0–6.0 min for `flat`.
+  - In all, 9.3 h for the 18 models with their `dev` runs and the check. Training costs are in
+    FORMAL.md.
+- **Files** (not in git):
+  - `data/uav_arena/results/formal_{full,no_cross,flat}_h4_60k_ep{2000,500}_s{1,2,3}_test.json`;
+  - `data/uav_arena/results/harness/formal_{full,no_cross,flat}_h4_60k_ep{2000,500}_s{1,2,3}_test.{json,npz}`;
+  - the checkpoints, `data/uav_arena/participants/jepa/formal_{full,no_cross,flat}_h4_60k_ep{2000,500}_s{1,2,3}.pt`,
+    with their SHA-256 in FORMAL.md.
+
+### Pre-registered analysis
+
+ANALYSIS.md, Sections 4 and 5, on the 30 primary models above, computed on 2026-11-04 by
+`analysis.py` from their `test` records and harness scores.
+- **Checks.** Before any statistic, the script checks that every model flew the same 400 episodes
+  and was scored on the same 8,660 questions. It also checks that each model's recomputed J and
+  layers equal the run's and the harness's own summaries, overall and per condition.
+- **Provenance.** Every harness result comes from `arena-v0.3` or a descendant whose harness,
+  environment and planner are the tag's, on the question manifest `3c352ce9…`. Each records its
+  checkpoint's SHA-256, which matches the file here.
+- **Intervals** come from the same 10,000 resamples of the 50 layouts as every interval above.
+
+The rows at a glance. The learned rows are pooled over the three seeds: J over 1,200 episodes, the
+layers the mean of the three models.
+
+| Row | Data | Successes | J | L1 | L2 | L3 |
+|---|---|---|---|---|---|---|
+| U (oracle) | | 305/400 | 76.25% (65.00–86.75%) | 0 | 0 | 0 |
+| Physics + mass estimation | | 311/400 | 77.75% (67.50–87.00%) | 0.57 cm (0.44–0.71) | 0.47 cm (0.37–0.56) | 3.7% (2.6–4.8%) |
+| Physics (nominal 25 g) | | 213/400 | 53.25% (42.50–64.25%) | 8.42 cm (6.02–10.86) | 3.62 cm (2.69–4.62) | 33.8% (24.8–42.8%) |
+| `full` | 2,000 episodes | 605/1,200 | 50.42% (40.33–60.25%) | 9.01 cm (8.43–9.58) | 3.56 cm (3.35–3.77) | 47.6% (40.6–53.7%) |
+| `full` | 500 episodes | 419/1,200 | 34.92% (26.50–43.58%) | 10.84 cm (10.23–11.46) | 4.07 cm (3.87–4.26) | 47.8% (40.9–54.0%) |
+| `no_cross` | 2,000 episodes | 593/1,200 | 49.42% (39.83–59.00%) | 8.80 cm (8.21–9.38) | 3.48 cm (3.26–3.69) | 46.1% (39.0–52.3%) |
+| `no_cross` | 500 episodes | 360/1,200 | 30.00% (22.58–37.83%) | 10.67 cm (10.04–11.30) | 3.82 cm (3.62–4.02) | 46.7% (39.7–52.8%) |
+| `flat` | 2,000 episodes | 194/1,200 | 16.17% (11.42–21.50%) | 11.20 cm (10.51–11.87) | 4.25 cm (4.02–4.47) | 56.4% (49.8–62.3%) |
+| `flat` | 500 episodes | 146/1,200 | 12.17% (7.08–18.33%) | 12.59 cm (11.79–13.40) | 4.41 cm (4.20–4.63) | 51.4% (44.3–57.6%) |
+| W-ar | 2,000 episodes | 561/1,200 | 46.75% (37.83–55.50%) | 8.55 cm (7.98–9.08) | 3.07 cm (2.84–3.29) | 41.4% (34.5–47.6%) |
+| W-ar | 500 episodes | 543/1,200 | 45.25% (36.17–54.33%) | 9.46 cm (8.89–10.00) | 3.44 cm (3.25–3.63) | 43.7% (36.9–49.8%) |
+| PETS | 2,000 episodes | 279/1,200 | 23.25% (16.42–30.92%) | 12.53 cm (11.49–13.58) | 3.72 cm (3.45–3.99) | 46.6% (39.7–52.8%) |
+| PETS | 500 episodes | 206/1,200 | 17.17% (11.42–23.67%) | 13.24 cm (12.10–14.37) | 3.92 cm (3.63–4.20) | 47.8% (40.8–54.0%) |
+| Example MLP | | 61/400 | 15.25% (9.25–22.25%) | 12.81 cm (11.91–13.70) | 4.67 cm (4.39–4.94) | 51.9% (44.9–58.0%) |
+
+**Primary test: supported.** ρ(L2, J | L1) = −0.390 (−0.602 to −0.274) across the 30 models.
+- The interval lies below 0, and J takes 30 distinct values, so the outcome is not degenerate.
+- Controlling for L1, models with larger cross-agent error succeed less often: layer 2 explains
+  closed-loop differences that layer 1 misses.
+- The correlations it is built from are ρ(L1, J) = −0.880 (−0.911 to −0.838), ρ(L2, J) = −0.799
+  (−0.862 to −0.762) and ρ(L2, L1) = +0.774 (+0.744 to +0.796).
+- **Robustness:**
+  - None of the 10,000 resamples gives a value of 0 or above.
+  - Leaving out one layout at a time keeps the estimate between −0.450 and −0.352.
+  - The resampled values center below the estimate (median −0.434), so the percentile interval
+    leans negative. A bias-corrected and accelerated (BCa) interval, outside the plan, gives
+    −0.498 to −0.168.
+
+Secondary analyses (Section 5, no decision rule). The sensitivity set adds physics, physics + mass
+estimation and the example MLP:
+
+| Statistic | 30 primary models | Sensitivity set (33 models) |
+|---|---|---|
+| ρ(L2, J \| L1) | −0.390 (−0.602 to −0.274) | −0.404 (−0.586 to −0.147) |
+| ρ(L3, J \| L1) | −0.231 (−0.524 to −0.092) | −0.291 (−0.570 to −0.138) |
+| ρ(L1, J) | −0.880 (−0.911 to −0.838) | −0.896 (−0.921 to −0.846) |
+| ρ(L2, J) | −0.799 (−0.862 to −0.762) | −0.816 (−0.878 to −0.711) |
+| ρ(L3, J) | −0.615 (−0.764 to −0.518) | −0.700 (−0.809 to −0.616) |
+| ρ(L2, J) − ρ(L1, J) | +0.081 (+0.008 to +0.124) | +0.080 (+0.012 to +0.159) |
+| ρ(L2, J \| L1, own CEE) | −0.295 (−0.435 to −0.032) | −0.197 (−0.364 to +0.264) |
+| ρ(L2 payload part, J \| L1) | −0.408 (−0.639 to −0.295) | −0.404 (−0.634 to −0.251) |
+| ρ(L2 others part, J \| L1) | −0.317 (−0.566 to −0.188) | −0.328 (−0.529 to −0.084) |
+| ρ(L2 payload part, J) | −0.867 (−0.921 to −0.830) | −0.883 (−0.929 to −0.839) |
+| ρ(L2 others part, J) | −0.651 (−0.754 to −0.543) | −0.643 (−0.741 to −0.551) |
+
+- **L1 alone tracks J more closely than L2 alone:** the difference of +0.081 lies above 0. Layer 2
+  adds to layer 1; it does not replace it.
+- **Layer 3** also explains differences that L1 misses.
+- **The changed aircraft's own action sensitivity.** Controlling for it as well, L2's relation to
+  J holds on the primary set and not on the sensitivity set, whose interval contains 0.
+- **Each part of L2**, the payload and the other aircraft, relates to J on its own, controlling for
+  L1.
+
+Per condition, 50 episodes per model; the means are over the 30 models:
+
+| Condition | Mean J | Mean L1 / L2 (cm) / L3 | Distinct J | ρ(L2, J \| L1) | ρ(L3, J \| L1) | ρ(L1, J) | ρ(L2, J) |
+|---|---|---|---|---|---|---|---|
+| static, 0 ms | 38.9% | 9.67 / 3.65 / 46.2% | 17 | −0.519 (−0.623 to −0.062) | −0.459 (−0.601 to −0.089) | −0.907 (−0.919 to −0.807) | −0.857 (−0.877 to −0.729) |
+| static, 50 ms | 39.0% | 10.06 / 3.68 / 46.2% | 18 | −0.566 (−0.657 to −0.251) | −0.327 (−0.515 to −0.058) | −0.856 (−0.882 to −0.751) | −0.846 (−0.874 to −0.718) |
+| static, 100 ms | 34.5% | 10.60 / 3.73 / 46.8% | 20 | −0.501 (−0.618 to −0.186) | −0.300 (−0.514 to −0.014) | −0.858 (−0.891 to −0.769) | −0.809 (−0.851 to −0.688) |
+| static, 200 ms | 27.5% | 11.60 / 3.82 / 47.7% | 16 | −0.034 (−0.258 to +0.304) | −0.152 (−0.393 to +0.165) | −0.879 (−0.894 to −0.703) | −0.705 (−0.756 to −0.474) |
+| static+moving, 0 ms | 36.4% | 9.92 / 3.72 / 47.3% | 21 | −0.285 (−0.470 to +0.128) | −0.193 (−0.455 to +0.161) | −0.900 (−0.925 to −0.818) | −0.818 (−0.859 to −0.701) |
+| static+moving, 50 ms | 33.9% | 10.64 / 3.77 / 47.2% | 19 | −0.431 (−0.572 to +0.061) | −0.312 (−0.502 to +0.061) | −0.903 (−0.921 to −0.791) | −0.832 (−0.869 to −0.687) |
+| static+moving, 100 ms | 29.8% | 11.14 / 3.92 / 50.2% | 19 | −0.232 (−0.399 to +0.016) | +0.075 (−0.314 to +0.276) | −0.845 (−0.889 to −0.751) | −0.734 (−0.793 to −0.615) |
+| static+moving, 200 ms | 20.5% | 11.92 / 3.90 / 49.0% | 17 | −0.162 (−0.365 to +0.073) | −0.163 (−0.456 to +0.103) | −0.849 (−0.883 to −0.692) | −0.740 (−0.792 to −0.587) |
+
+- **Static scenes at 0–100 ms:** the interval of ρ(L2, J | L1) lies below 0.
+- **Static scenes at 200 ms, and moving obstacles at every latency:** the interval contains 0.
+- **L1** stays closely tied to J in every condition.
+- **Success falls with latency and with movers:** the mean J over the 30 models goes from 38.9% to
+  27.5% without movers and from 36.4% to 20.5% with them.
+
+Data size, 500 minus 2,000 episodes, mean over the three seeds:
+
+| Row | J (points) | L1 (cm) | L2 (cm) | L3 (points) |
+|---|---|---|---|---|
+| `full` | −15.50 (−20.67 to −10.42) | +1.83 (+1.60 to +2.08) | +0.51 (+0.47 to +0.54) | +0.26 (−1.25 to +1.84) |
+| `no_cross` | −19.42 (−24.59 to −14.33) | +1.88 (+1.64 to +2.11) | +0.34 (+0.31 to +0.37) | +0.55 (−0.74 to +1.83) |
+| `flat` | −4.00 (−7.67 to 0.00) | +1.40 (+1.16 to +1.63) | +0.17 (+0.14 to +0.20) | −5.05 (−6.71 to −3.47) |
+| W-ar | −1.50 (−5.08 to +1.92) | +0.91 (+0.74 to +1.08) | +0.37 (+0.33 to +0.42) | +2.35 (+1.33 to +3.39) |
+| PETS | −6.08 (−10.00 to −2.25) | +0.71 (+0.59 to +0.82) | +0.20 (+0.18 to +0.22) | +1.16 (+0.71 to +1.57) |
+
+- Less data raises L1 and L2 for every row.
+- J falls for `full`, `no_cross` and PETS. For `flat` the interval reaches 0, and W-ar's change
+  cannot be told from 0.
+- L3 rises only for W-ar and PETS and falls for `flat`.
+
+Structure: `full`, `no_cross` and `flat`, paired by seed and data size:
+
+| Comparison | Data | J (points) | L2 (cm) |
+|---|---|---|---|
+| `full` − `no_cross` | 2,000 episodes | +1.00 (−2.50 to +4.42) | +0.08 (+0.07 to +0.09) |
+| `full` − `no_cross` | 500 episodes | +4.92 (+0.92 to +8.83) | +0.25 (+0.24 to +0.26) |
+| `full` − `no_cross` | both | +2.96 (+0.29 to +5.75) | +0.16 (+0.16 to +0.17) |
+| `full` − `flat` | 2,000 episodes | +34.25 (+26.92 to +41.58) | −0.69 (−0.73 to −0.64) |
+| `full` − `flat` | 500 episodes | +22.75 (+16.67 to +28.67) | −0.35 (−0.39 to −0.30) |
+| `full` − `flat` | both | +28.50 (+22.54 to +34.38) | −0.52 (−0.56 to −0.48) |
+| `no_cross` − `flat` | 2,000 episodes | +33.25 (+26.25 to +40.25) | −0.77 (−0.81 to −0.72) |
+| `no_cross` − `flat` | 500 episodes | +17.83 (+13.17 to +22.50) | −0.60 (−0.63 to −0.56) |
+| `no_cross` − `flat` | both | +25.54 (+20.17 to +30.88) | −0.68 (−0.72 to −0.64) |
+
+- **Entity tokens against one token per frame:** `full` and `no_cross` beat `flat` by 28.50 and
+  25.54 points of J over both data sizes, with 0.52 and 0.68 cm less L2.
+- **`full` against `no_cross`:** J and L2 disagree. `full` succeeds 2.96 points more often, mostly
+  at 500 episodes, while its L2 is 0.16 cm higher. This pair runs against the relation of the
+  primary test.
+
+**Files** (not in git): `data/uav_arena/results/primary_analysis.json`, with every number above
+per model and per condition and each result's provenance, and
+`data/uav_arena/results/primary_analysis.txt`, the printed report.
+
 ## Results on dev (seeds 0–4, all 8 conditions)
 
 At `arena-v0.2`. The three planning rows use the shared MPPI (512 samples, 1.5 s horizon),
@@ -632,8 +877,11 @@ the closed loop does (Results on test, above).
 The headline analysis, pre-registered in [ANALYSIS.md](ANALYSIS.md), asks whether the cross-agent
 layer explains closed-loop differences that layer 1 misses. Its test is the partial Spearman
 correlation between layer 2 and the `test` success rate across 30 learned models (5 rows × 3 seeds ×
-2 data budgets), controlling for layer 1, with a bootstrap interval over layouts. Per-condition
-results show how the relation changes with latency and moving obstacles.
+2 data budgets), controlling for layer 1, with a bootstrap interval over layouts.
+- **Result:** −0.390 (−0.602 to −0.274), so the test is supported. Layer 1 alone still correlates
+  more closely with success than layer 2 alone; layer 2 adds to it.
+- **Per condition:** the relation holds in static scenes up to 100 ms. In static scenes at 200 ms
+  and with moving obstacles, it is not established (Pre-registered analysis, above).
 
 ## Roadmap
 
@@ -644,12 +892,13 @@ results show how the relation changes with latency and moving obstacles.
 3. ~~Physics with online payload-mass estimation~~ (done).
 4. ~~Participant contract, data collector with reference manifests, training windows, layer-1
    open-loop metric~~ (done, `arena-v0.2`; `explore-v2` data in `arena-v0.3`); ~~the
-   autoregressive model and PETS~~ (done); entity-token JEPA variants.
+   autoregressive model, PETS and the entity-token JEPA variants~~ (done).
 5. ~~Layer 1–3 harness on recorded U states~~ (done, validated on `dev`).
 6. TD-MPC2 and DreamerV3: ~~a Gymnasium wrapper, adapters to the official code and their venvs~~
    (done); training, then their rows on `test`.
-7. Runs on `test`: ~~the reference rows, the example participant, CrazyMARL, W-ar and PETS~~
-   (done); the other world-model rows, the leaderboard tables and the layer-consistency analysis.
+7. Runs on `test`: ~~the reference rows, the example participant, CrazyMARL, W-ar, PETS, the JEPA
+   variants and the pre-registered layer-consistency analysis~~ (done); the TD-MPC2 and DreamerV3
+   rows and the leaderboard tables.
 
 ## Replay and video
 
@@ -696,7 +945,8 @@ uv pip install --python data/uav_arena/.venv/bin/python stable-worldmodel==0.1.1
 PYTHONPATH=. data/uav_arena/.venv/bin/python -m pytest -q tests/test_uav_arena.py tests/test_uav_arena_planning.py \
   tests/test_uav_arena_collect.py tests/test_uav_arena_windows.py tests/test_uav_arena_openloop.py \
   tests/test_uav_arena_example.py tests/test_uav_arena_replay.py tests/test_uav_arena_crazymarl.py \
-  tests/test_uav_arena_harness.py tests/test_uav_arena_gym.py tests/test_uav_arena_online.py
+  tests/test_uav_arena_harness.py tests/test_uav_arena_gym.py tests/test_uav_arena_online.py \
+  tests/test_uav_arena_analysis.py
 for p in oracle physics adaptive; do
   PYTHONPATH=. data/uav_arena/.venv/bin/python -m uav_arena.run --predictor $p --suite dev --seeds 0:5 \
     --workers 20 --out data/uav_arena/results/${p}_mppi_dev_s0-5_v3.json
@@ -729,7 +979,9 @@ The example participant runs the same `harness score` and `run.py` commands with
 with `uav_arena.participants.war.model:make` and each checkpoint
 ([participants/war/README.md](participants/war/README.md#commands)), PETS's with
 `uav_arena.participants.pets.model:make`
-([participants/pets/PHASE_B.md](participants/pets/PHASE_B.md#commands)). CrazyMARL has no
+([participants/pets/PHASE_B.md](participants/pets/PHASE_B.md#commands)), JEPA's 18 with
+`uav_arena.participants.jepa.model:make`
+([participants/jepa/FORMAL.md](participants/jepa/FORMAL.md#commands)). CrazyMARL has no
 predictor, so it skips the harness; each seed's final actor flies `test` directly:
 
 ```bash
@@ -737,6 +989,13 @@ for s in 0 1 2; do
   PYTHONPATH=. data/uav_arena/.venv/bin/python -m uav_arena.crazymarl_policy --actor data/uav_arena/crazymarl/ippo_s$s.npz \
     --suite test --seeds 0:50 --out data/uav_arena/results/crazymarl_s${s}_test.json
 done
+```
+
+The pre-registered analysis, once the 30 primary models and the reference rows have their `test`
+and harness results:
+
+```bash
+PYTHONPATH=. data/uav_arena/.venv/bin/python -m uav_arena.analysis --results data/uav_arena/results
 ```
 
 ```bash
