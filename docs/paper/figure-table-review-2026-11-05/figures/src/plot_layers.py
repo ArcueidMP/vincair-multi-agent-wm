@@ -80,7 +80,7 @@ for k, (ax, (_, xlabel, xlim, xticks)) in enumerate(zip(axes, panels)):
     if k < 3:
         for row, label, offset, ha in [
             ("PETS", "PETS", [(0, 15), (-24, 13), (-22, -8)][k], "center"),
-            ("flat", "flat", [(-24, -7), (10, -7), (-32, -8)][k], ["center", "left", "right"][k])]:
+            ("flat", "flat", [(-24, -7), (-26, -8), (-32, -8)][k], ["center", "right", "right"][k])]:
             j, *layers = rows[row][2000][1]
             colour, _ = style[row]
             ax.annotate(label, (layers[k],j), xytext=offset, textcoords="offset points", ha=ha, va="center",
