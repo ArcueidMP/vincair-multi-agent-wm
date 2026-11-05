@@ -1,0 +1,107 @@
+% Focused revision: same original palette and serif font; schematic, not experimental data.
+% Fig. 4, how layers 1-3 pose and score a question (Section IV): the question and its two answers on top, then
+% one panel per layer, numbered and named as the probes and cards of Fig. 1 (figures/fig1_teaser.tex), in the
+% same vocabulary: solid ink for the truth, dashed violet for the model. A sketch, not data: the paths, arrows
+% and costs are illustrative. Definitions from uav_arena/ANALYSIS.md and HARNESS.md, as in Section IV.
+\definecolor{ink}{HTML}{0B0B0B}
+\definecolor{inktwo}{HTML}{52514E}
+\definecolor{rule}{HTML}{D3D1C7}
+\definecolor{panel}{HTML}{F7F6F3}
+\definecolor{refgrey}{HTML}{8A8984}
+\definecolor{probe}{HTML}{6250D6}
+\begin{tikzpicture}[
+  font=\fontsize{7.5}{8.6}\selectfont, >={Stealth[length=3.5pt,width=3pt]},
+  panel/.style={draw=rule, fill=panel, rounded corners=3pt, line width=0.5pt},
+  box/.style={draw=inktwo, fill=white, rounded corners=2pt, line width=0.5pt, align=left, inner xsep=3pt,
+    inner ysep=2.5pt, text width=6.20cm},
+  slot/.style={draw=ink, dash pattern=on 2.5pt off 1.2pt, fill=white, rounded corners=2pt, line width=0.8pt,
+    align=left, inner xsep=3pt, inner ysep=2.5pt, text width=6.20cm},
+  probe/.style={circle, fill=probe, text=white, inner sep=0pt, minimum size=0.32cm, font=\tiny\bfseries},
+  flow/.style={->, draw=inktwo, line width=0.6pt},
+  truth/.style={draw=ink, line width=0.8pt},
+  pred/.style={draw=probe, line width=0.8pt, dash pattern=on 2pt off 1pt},
+  heading/.style={font=\fontsize{7.5}{8.6}\selectfont\bfseries, text=ink, anchor=west, inner sep=0pt},
+  note/.style={font=\fontsize{7.2}{8.2}\selectfont, text=inktwo, inner sep=0pt, align=left},
+  craft/.style={circle, fill=inktwo, inner sep=0pt, minimum size=3.4pt},
+  load/.style={circle, fill=ink, inner sep=0pt, minimum size=4.6pt},
+  ring/.style={circle, draw=probe, fill=white, line width=0.9pt, inner sep=0pt, minimum size=5pt},
+]
+% Top: a question, a state from U's flight, answered by the true simulator and by the model.
+\draw[panel] (0,4.02) rectangle (8.8,5.54);
+\node[heading] at (0.12,5.36) {A question: a state U planned from in a test flight};
+\draw[inktwo, line width=0.6pt] (0.2,4.14) .. controls (0.6,5.07) and (1.05,4.07) .. (1.75,5.07)
+  node[pos=0.12, craft]{} node[pos=0.37, craft]{} node[pos=0.86, craft]{}
+  node[pos=0.62, ring](q){};
+\node[box, anchor=west] (sim) at (2.1,4.94) {\textbf{True simulator}: exact reset and rollout};
+\node[slot, anchor=west] (mod) at (2.1,4.4) {\textbf{Model}: prediction from the delayed observation};
+\draw[flow] (q) to[out=40, in=180] (sim.west);
+\draw[flow] (q) to[out=-40, in=180] (mod.west);
+% Bottom: one panel per layer.
+\foreach \x/\n/\name in {0/1/Prediction, 2.975/2/Counterfactual, 5.95/3/Decision} {
+  \draw[panel] (\x,0) rectangle ++(2.85,3.9);
+  \node[probe] at (\x+0.27,3.63) {\n};
+  \node[heading] at (\x+0.5,3.63) {\name};
+}
+% 1: U's plan, the load's predicted and true paths.
+\begin{scope}[yshift=0.6cm]
+  \draw[truth] (0.3,1.32) .. controls (1.0,1.42) and (1.8,2.2) .. (2.55,2.42)
+    coordinate[pos=0.4](t1) coordinate[pos=0.7](t2) coordinate[pos=1](t3);
+  \draw[pred] (0.3,1.32) .. controls (1.0,1.37) and (1.8,1.75) .. (2.55,1.85)
+    coordinate[pos=0.4](p1) coordinate[pos=0.7](p2) coordinate[pos=1](p3);
+  \foreach \i in {1,2,3} \draw[probe!45, line width=0.6pt] (t\i) -- (p\i);
+  \node[load] at (0.3,1.32) {};
+  \node[note, anchor=south east] at (2.6,2.46) {true};
+  \node[note, anchor=north, text=probe] at (1.95,1.6) {model};
+  \node[note, anchor=north west, text width=2.62cm] at (0.12,0.81)
+    {Same plan $a$; load only.\\[3pt]$L_1$: mean position error};
+\end{scope}
+% 2: one aircraft's plan nudged, the predicted and true effects on the load and the other two aircraft.
+\begin{scope}[shift={(2.975,0.6)}]
+  \coordinate (a1) at (0.8,2.15); \coordinate (a2) at (1.55,2.27); \coordinate (a3) at (2.3,2.15);
+  \coordinate (l) at (1.55,1.5);
+  \foreach \a in {a1,a2,a3} \draw[rule, line width=0.6pt] (\a) -- (l);
+  \draw[->, ink, line width=0.7pt] (a1) -- ++(0,0.3);
+  \node[note, anchor=west, text=ink] at (0.12,2.65) {A: $a\to a'$};
+  \node[note, anchor=south] at (1.55,2.47) {B};
+  \node[note, anchor=west] at (2.35,2.15) {C};
+  \draw[->, truth] (l) -- ++(-0.45,-0.14) node[note, anchor=north east, text=ink] {$\Delta x$};
+  \draw[->, pred] (l) -- ++(-0.55,0.08) node[note, anchor=east, text=probe] {$\Delta\hat{x}$};
+  \draw[->, ink, line width=0.6pt] (a2) -- ++(-0.27,0.05);
+  \draw[->, pred, line width=0.6pt] (a2) -- ++(-0.2,0.14);
+  \draw[->, ink, line width=0.6pt] (a3) -- ++(-0.25,0.0);
+  \draw[->, pred, line width=0.6pt] (a3) -- ++(-0.3,-0.12);
+  \foreach \a in {a1,a2,a3} \node[craft] at (\a) {};
+  \node[load] at (l) {};
+  \node[note, anchor=west] at (1.73,1.5) {load};
+  \node[note, anchor=north west, text width=2.62cm] at (0.12,0.81)
+    {Change A only.\\Score load and B/C.\\[3pt]$L_2$: effect error};
+\end{scope}
+% 3: the weighted execution plan, placed by its true cost.
+\begin{scope}[shift={(5.95,0.6)}]
+  \fill[probe!9] (1.3,1.3) rectangle (2.65,2.32);
+  \draw[probe, dash pattern=on 1.5pt off 1pt, line width=0.5pt] (1.3,1.3) -- (1.3,2.32);
+  \node[note, anchor=north east, text=probe] at (2.62,2.29) {costly};
+  \draw[->, inktwo, line width=0.5pt] (0.2,1.28) -- (2.7,1.28);
+  \node[note, anchor=north east] at (2.7,1.24) {true cost};
+  \node[note, anchor=north, text=probe] at (1.3,1.24) {$+1$ unit};
+  \foreach \x in {0.38,0.55,0.74,0.93,1.12,1.48,1.7,1.95,2.2,2.45} \fill[refgrey] (\x,1.41) circle (1.1pt);
+  \node[load] at (0.62,1.72) {};
+  \node[ring] at (2.05,1.72) {};
+  \draw[<->, inktwo, line width=0.5pt] (0.7,1.9) -- (1.97,1.9);
+  \node[note, anchor=south] at (0.9,1.91) {regret};
+  \node[note, anchor=east] at (0.53,1.72) {U};
+  \node[note, anchor=west, text=probe, font=\fontsize{6.5}{7.5}\selectfont] at (2.22,1.72) {model};
+  \node[note, anchor=north west, text width=2.62cm] at (0.12,0.81)
+    {Weighted execution plan.\\[3pt]$L_3$: costly-plan rate\\(regret $>1$)};
+\end{scope}
+% Align visible digit bounds with the fraction rules; preserve the original serif font.
+\node[note, anchor=west, font=\fontsize{6.8}{7.8}\selectfont] at (0.12,-0.28) {$L_2$:};
+\foreach \xc in {0.87,1.98} {
+  \node[anchor=center,inner sep=0pt,font=\fontsize{5.5}{5.5}\selectfont,text=inktwo] at (\xc,-0.17) {1};
+  \draw[inktwo,line width=0.28pt] (\xc-0.075,-0.28)--(\xc+0.075,-0.28);
+  \node[anchor=center,inner sep=0pt,font=\fontsize{5.5}{5.5}\selectfont,text=inktwo] at (\xc+0.10,-0.39) {2};
+}
+\node[note, anchor=west, font=\fontsize{6.8}{7.8}\selectfont] at (1.02,-0.28) {load +};
+\node[note, anchor=west, font=\fontsize{6.8}{7.8}\selectfont] at (2.13,-0.28) {mean(B,C); repeat for each source UAV.};
+\end{tikzpicture}
+

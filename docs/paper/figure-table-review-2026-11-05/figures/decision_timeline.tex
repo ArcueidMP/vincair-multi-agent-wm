@@ -1,0 +1,72 @@
+% Fig. 3, one decision of the shared planner in time (Sections III-B and III-C): the delayed state, the setpoints
+% sent since, the plan, the onboard loop, and what is and is not observed. Every row of the shared planner but the
+% oracle U plans this way; U starts from the true current state. Drawn at column width in the vocabulary of Fig. 1
+% (figures/fig1_teaser.tex). Facts from Section III and Table I: decisions at 10 Hz on a state up to 200 ms
+% old; plans of 15 decisions (1.5 s); Lee controllers at 500 Hz on the true state; a setpoint slides to its new
+% value (ramps) over one decision period. The time axis is to scale, with the delay drawn at 200 ms. The
+% aircraft states include attitudes and rotation rates; the load's and the spheres' are positions and velocities.
+\definecolor{ink}{HTML}{0B0B0B}
+\definecolor{inktwo}{HTML}{52514E}
+\definecolor{rule}{HTML}{D3D1C7}
+\definecolor{panel}{HTML}{F7F6F3}
+\definecolor{refgrey}{HTML}{8A8984}
+\begin{tikzpicture}[
+  font=\fontsize{7.5}{8.8}\selectfont, >={Stealth[length=3.5pt,width=3pt]},
+  heading/.style={font=\fontsize{8}{9.2}\selectfont\bfseries, text=ink, anchor=west, inner sep=0pt},
+  note/.style={font=\fontsize{7.5}{8.8}\selectfont, text=inktwo, inner sep=0pt, align=left},
+  brace/.style={decorate, decoration={brace, amplitude=2.5pt}, draw=inktwo, line width=0.5pt}
+]
+\def\now{2.9}
+\def\dt{0.34} % One 0.1 s decision period; original proportional time scale.
+% 1. Information: delayed state versus known task data and sent commands.
+\begin{scope}[yshift=0.55cm]
+\fill[panel,rounded corners=2pt] (0,4.80) rectangle (8.8,6.10);
+\node[heading] at (0.12,5.83) {Available information};
+\node[note,anchor=west] at (0.12,5.42)
+ {\textit{Delayed:} aircraft, load and moving-obstacle states.};
+\node[note,anchor=west] at (0.12,5.07)
+ {\textit{Known:} goal, pillars, sent setpoints and observation history.};
+
+% 2. Prediction: time to scale, with d=200 ms as in the original illustration.
+\node[heading] at (0,4.48) {World-model prediction};
+\draw[->,inktwo,line width=0.6pt] (0,3.72)--(8.8,3.72);
+\node[note,anchor=south east] at (8.8,3.79) {time};
+\foreach \k in {-8,...,15}
+  \draw[inktwo,line width=0.45pt] ({\now+\dt*\k},3.66)--({\now+\dt*\k},3.78);
+\foreach \k in {-8,...,-3}
+  \fill[refgrey] ({\now+\dt*\k},3.72) circle (1.5pt);
+\fill[ink] ({\now-2*\dt},3.72) circle (2pt);
+\node[note,anchor=south] at ({\now-5.5*\dt},3.88) {history};
+\draw[ink,line width=0.9pt] (\now,3.57)--(\now,4.02);
+\node[note,anchor=north,text=ink] at ({\now-2*\dt},3.48) {$t-d$};
+\node[note,anchor=north,text=ink] at (\now,3.48) {$t$};
+\node[note,anchor=north,text=ink] at ({\now+15*\dt},3.48) {$t+1.5\,\mathrm{s}$};
+\draw[brace] ({\now-2*\dt},3.94)--(\now,3.94)
+  node[midway,above=2.5pt,note] {$d$};
+\draw[brace] (\now,3.94)--({\now+15*\dt},3.94)
+  node[midway,above=2.5pt,note,text=ink] {15 decisions: 1.5\,s planning horizon};
+\fill[refgrey!18] ({\now-2*\dt},2.94) rectangle (\now,3.23);
+\draw[rule,line width=0.5pt] ({\now-2*\dt},2.94) rectangle (\now,3.23);
+\fill[panel] (\now,2.94) rectangle ({\now+15*\dt},3.23);
+\draw[rule,line width=0.5pt] (\now,2.94) rectangle ({\now+15*\dt},3.23);
+\node[note,anchor=west,text width=1.8cm] (delaylabel) at (0.08,3.085) {Delay\\compensation};
+\draw[->,inktwo,line width=0.6pt] ([xshift=0.08cm]delaylabel.east)--({\now-\dt},3.085);
+\node[note,anchor=center] at ({\now+7.5*\dt},3.085) {Candidate prediction};
+\end{scope}
+\node[note,anchor=west] at (0.08,2.67)
+ {Use sent setpoints to bridge $t-d\to t$.};
+\node[note,anchor=west] at (0.08,2.17)
+ {Predict aircraft positions and load position/velocity.};
+
+% 3. Execution: separate delayed planning from the fresh onboard feedback loop.
+\fill[panel,rounded corners=2pt] (0,0.80) rectangle (8.8,1.79);
+\node[heading] at (0.12,1.57) {Execution};
+\node[note,anchor=west,font=\fontsize{7.2}{8.4}\selectfont] at (0.12,1.25)
+ {Planner: 10\,Hz; onboard Lee control: 500\,Hz on the true state.};
+\node[note,anchor=west,font=\fontsize{7.2}{8.4}\selectfont] at (0.12,0.99)
+ {Setpoints ramp to their new values over 0.1\,s.};
+\node[note,anchor=west,font=\fontsize{7.2}{8.4}\selectfont] at (0,0.56)
+ {\textit{Hidden:} load mass, cable tensions, controller and motor states.};
+\node[note,anchor=west,font=\fontsize{6.8}{7.8}\selectfont] at (0,0.20)
+ {Oracle U uses true current state; time to scale, delay shown at 200\,ms.};
+\end{tikzpicture}

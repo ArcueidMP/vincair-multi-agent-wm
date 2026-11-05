@@ -1,0 +1,19 @@
+{
+  "table": 1,
+  "font": "IEEEtran original serif; footnotesize unchanged",
+  "content_width_inches": 3.5,
+  "groups": 3,
+  "setting_rows": 17,
+  "training_budgets": [
+    500,
+    2000
+  ],
+  "budget_relation_verified_in_original_prose": true,
+  "removed_details_preserved_in": "body_changes.tex",
+  "revised_overfull_boxes": 0,
+  "pdf_pages": 1,
+  "original_overfull_warnings": 0,
+  "overleaf_modified": false,
+  "table2_modified": false,
+  "full_paper_pagination_checked": false
+}

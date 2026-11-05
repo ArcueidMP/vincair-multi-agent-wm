@@ -1,0 +1,19 @@
+{
+  "modified_figures": [
+    1,
+    4
+  ],
+  "base": "original Overleaf source",
+  "palette_identical": true,
+  "font_family_unchanged": true,
+  "512_candidates_retained": true,
+  "training_sizes_and_seeds_retained": true,
+  "overleaf_modified": false,
+  "other_figures_modified": false,
+  "scene_image_crop_xyxy": [
+    400,
+    160,
+    1400,
+    600
+  ]
+}

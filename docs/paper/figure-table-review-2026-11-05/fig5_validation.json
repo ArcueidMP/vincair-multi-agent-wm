@@ -1,0 +1,15 @@
+{
+  "figure": 5,
+  "palette_identical": true,
+  "font_family": "DejaVu Sans (unchanged)",
+  "all_reported_values_identical": true,
+  "actual_scatter_offsets_verified": true,
+  "learned_points_per_panel": 30,
+  "physics_points_per_panel": 2,
+  "example_mlp_points_per_panel": 1,
+  "oracle_reference": 76.25,
+  "axis_limits_and_ticks_unchanged": true,
+  "overleaf_modified": false,
+  "other_figures_modified": false,
+  "comparison_pages": 1
+}
