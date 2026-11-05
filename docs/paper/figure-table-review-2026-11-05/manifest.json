@@ -1,8 +1,8 @@
 [
   {
     "path": "all-comparisons.pdf",
-    "bytes": 1574533,
-    "sha256": "9145ad8b6dcba04a0ae3b368a4f655cb77ff1d972ef0d2e455ff9ee9d959ea90"
+    "bytes": 1574729,
+    "sha256": "cf1c762eee901e9a9b6c79eee21b5fe6ea55730003adfb60acaf9c4250bc9993"
   },
   {
     "path": "fig1_validation.json",
@@ -21,8 +21,8 @@
   },
   {
     "path": "fig5_validation.json",
-    "bytes": 454,
-    "sha256": "4ffb651305374dd67456d9aca1608a8d318bebd201f9eebd50295b1218dd05ee"
+    "bytes": 555,
+    "sha256": "831b6580bea352739983a3c0bb436af8a76e852454c6882bd77dea4a52122e39"
   },
   {
     "path": "fig6_validation.json",
@@ -51,8 +51,8 @@
   },
   {
     "path": "figures/src/plot_layers.py",
-    "bytes": 8573,
-    "sha256": "53770e4a5a6c6917ab8b2d1063ce5a26ba10d7615e1b0f454d4fa8b48583a0f9"
+    "bytes": 8577,
+    "sha256": "bb49c5d5d447a7db9444bd6ed7874b557960ff13d1761c9ebc5643aeb960a885"
   },
   {
     "path": "figures/src/plot_outcomes.py",
@@ -146,13 +146,13 @@
   },
   {
     "path": "revised/fig5.pdf",
-    "bytes": 143471,
-    "sha256": "261a3c053361a1b94ae1372cdd46f9b540c86e98dd02d96189f869669fa1389c"
+    "bytes": 143664,
+    "sha256": "46b7843f961e75d12e5a119d9e427e0ed9df7e9845235a7357a531c83fbb3571"
   },
   {
     "path": "revised/fig5.png",
-    "bytes": 215697,
-    "sha256": "8a280b97ea18fc2e3c4f11f44f0f3de1501d32bc438da96520679b2c691e3f08"
+    "bytes": 219230,
+    "sha256": "b4dc5e7b6327d17afd239cdf3c04b510dcb6b993e27e11389027192e406e6d8a"
   },
   {
     "path": "revised/fig6.pdf",

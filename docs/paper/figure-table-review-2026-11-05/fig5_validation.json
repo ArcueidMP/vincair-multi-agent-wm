@@ -2,6 +2,8 @@
   "figure": 5,
   "palette_identical": true,
   "font_family": "DejaVu Sans (unchanged)",
+  "pets_flat_labels_in_all_three_panels": true,
+  "label_targets_verified_seed2_budget2000": true,
   "all_reported_values_identical": true,
   "actual_scatter_offsets_verified": true,
   "learned_points_per_panel": 30,

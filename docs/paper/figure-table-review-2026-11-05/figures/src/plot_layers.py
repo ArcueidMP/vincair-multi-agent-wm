@@ -77,10 +77,10 @@ for k, (ax, (_, xlabel, xlim, xticks)) in enumerate(zip(axes, panels)):
                                               x=layers[k],y=j))
     # Labels point to existing seed-2 / 2,000-episode observations. No points are
     # added at means and no observations are shifted or connected across seeds.
-    if k < 2:
+    if k < 3:
         for row, label, offset, ha in [
-            ("PETS", "PETS", (0, 15) if k == 0 else (-24, 13), "center"),
-            ("flat", "flat", (-24, -7) if k == 0 else (10, -7), "center" if k == 0 else "left")]:
+            ("PETS", "PETS", [(0, 15), (-24, 13), (-22, -8)][k], "center"),
+            ("flat", "flat", [(-24, -7), (10, -7), (-32, -8)][k], ["center", "left", "right"][k])]:
             j, *layers = rows[row][2000][1]
             colour, _ = style[row]
             ax.annotate(label, (layers[k],j), xytext=offset, textcoords="offset points", ha=ha, va="center",
