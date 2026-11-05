@@ -1,0 +1,19 @@
+{
+  "figure": 6,
+  "palette_identical_including_success_and_timeout": true,
+  "font_family": "DejaVu Sans (unchanged)",
+  "source_counts_identical": true,
+  "actual_bar_widths_lefts_and_colors_verified": true,
+  "rows": 17,
+  "categories": 5,
+  "method_labels_aligned_to_individual_bar_centers": true,
+  "all_rows_sum_to_100_percent": true,
+  "denominator": "all test episodes, including success",
+  "training_budgets_retained": [
+    500,
+    2000
+  ],
+  "overleaf_modified": false,
+  "other_figures_modified": false,
+  "comparison_pages": 1
+}

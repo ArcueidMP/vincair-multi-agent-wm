@@ -1,0 +1,38 @@
+% Local review only. Replace the original table block only after approval.
+\begin{table}[t]
+\caption{Task, Planning, and Evaluation Settings}
+\label{tab:arena}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.245\columnwidth}>{\raggedright\arraybackslash}p{\dimexpr0.755\columnwidth-6pt\relax}@{}}
+\hline
+\multicolumn{2}{@{}l}{\textbf{Task and environment}} \\
+\hline
+Team & Three Crazyflie~2 quadrotors; one load; 0.6\,m tension-only cables \\
+Load mass & 10--40\,g per layout, hidden; nominal mass 25\,g \\
+Obstacles & Four pillars, with or without two moving spheres (0.25--0.45\,m/s) \\
+Mission & Goal 3.2\,m ahead; time limit 20\,s \\
+Success criterion & Load within 0.15\,m of the goal, below 0.2\,m/s, continuously for 0.5\,s \\
+\hline
+\multicolumn{2}{@{}l}{\textbf{Control and planning}} \\
+\hline
+Simulation/control & MuJoCo and onboard Lee controllers, both at 500\,Hz \\
+Decision rate & 10\,Hz \\
+Observation delay & 0, 50, 100, or 200\,ms \\
+Shared planner & MPPI; 512 candidate plans per decision \\
+Planning horizon & 15 decisions (1.5\,s) \\
+Setpoint moves & At most 0.12\,m per axis \\
+\hline
+\multicolumn{2}{@{}l}{\textbf{Data and evaluation}} \\
+\hline
+Training budgets & 500 / 2,000 episodes; 500 uses the first quarter of the same dataset \\
+Full training set & 170,304 decisions (4.7\,h); 100 separate validation episodes \\
+Main model set & 5 model rows $\times$ 2 budgets $\times$ 3 new seeds $=$ 30 models; 1.28--1.37\,M parameters \\
+Test coverage & 50 layouts $\times$ 2 obstacle settings $\times$ 4 delays $=$ 400 episodes per model \\
+Probe states & Every fifth decision of U's test flights; 8,660 states in total \\
+Uncertainty & 95\% intervals; 10,000 bootstrap resamples of the 50 test layouts \\
+\hline
+\end{tabular}
+\end{table}

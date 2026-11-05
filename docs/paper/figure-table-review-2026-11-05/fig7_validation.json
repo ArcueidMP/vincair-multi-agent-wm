@@ -1,0 +1,13 @@
+{
+  "intervals": 14,
+  "source_statistics_exact": true,
+  "marker_and_interval_coordinates_exact": true,
+  "labels_aligned": true,
+  "text_interval_overlap": false,
+  "palette_unchanged": true,
+  "font_family": "DejaVu Sans (unchanged)",
+  "pooled_background_removed": true,
+  "all_cross_zero_intervals_retained": true,
+  "overleaf_modified": false,
+  "other_figures_modified": false
+}

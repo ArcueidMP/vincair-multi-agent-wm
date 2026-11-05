@@ -1,0 +1,15 @@
+{
+  "figure": 3,
+  "palette_identical": true,
+  "font_family_unchanged": true,
+  "time_axis_proportional": true,
+  "illustrated_delay_ms": 200,
+  "planning_horizon_s": 1.5,
+  "horizon_decisions": 15,
+  "planner_hz": 10,
+  "onboard_hz": 500,
+  "setpoint_ramp_s": 0.1,
+  "overleaf_modified": false,
+  "other_figures_modified": false,
+  "comparison_pages": 1
+}

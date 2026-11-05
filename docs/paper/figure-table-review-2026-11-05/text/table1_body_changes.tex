@@ -1,0 +1,25 @@
+% Suggested local prose changes, NOT applied to main.tex or Overleaf.
+% These preserve details moved out of Table I; merge with the corresponding
+% existing paragraphs rather than adding a disconnected settings paragraph.
+
+% 1. Rows and Data / Reference rows: append to the mass-estimation description.
+The mass estimator maintains 16 physics models on a 2\,g grid and uses the model that best predicts the preceding 0.5\,s of observations for planning.
+
+% 2. Rows and Data / Learned world models: REPLACE the two sentences beginning
+% "Each row then trained its chosen configuration..." with the following.
+Each row then trained its chosen configuration with three new seeds at two data budgets: all 2,000 training episodes and the first 500 episodes of the same dataset. Within each model row, both budgets use the same selected configuration and number of optimization steps.
+
+% 3. Policies without the shared planner: retain the existing descriptions and
+% merge in these budgets formerly given only by the Table I Policies row.
+CrazyMARL was trained for $2\times10^9$ steps per seed with 8,192 parallel environments, half the official 16,384. TD-MPC2 and DreamerV3 were each trained for $2\times10^6$ steps per seed.
+
+% 4. Four Layers / L2: merge with its perturbation definition.
+For each source aircraft, layer~2 applies eight Gaussian perturbations with a scale of 0.04\,m per axis and decision. On U's development states, the median true effect is 6.2\,cm on the load and 2.7\,cm on another aircraft.
+
+% 5. Four Layers / L3: retain the exact existing cost definition and merge
+% these explanatory values; do not substitute a new cost formula.
+One cost unit corresponds approximately to a 1.7\,cm reduction in a safety margin or 0.6\,m less progress. Layer~3 uses the 89\% of questions at which U's plan lies within one cost unit of its best candidate.
+
+% 6. Statistical analysis: retain this as a simulated power estimate, not an
+% observed experimental result.
+The simulated power is 67--79\% for a partial correlation of 0.43--0.48.

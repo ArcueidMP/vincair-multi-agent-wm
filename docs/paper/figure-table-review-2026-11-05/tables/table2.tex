@@ -1,0 +1,42 @@
+% Local review only. Same 17 result rows and original numerical values.
+\begin{table}[t]
+\caption{Benchmark Results Across Eight Test Conditions}
+\label{tab:results}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{1.8pt}
+\renewcommand{\arraystretch}{1.16}
+\begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}}lrrrrr@{}}
+\hline
+Method & \shortstack{Train\\ep.} & \shortstack{$J$ (\%) $\uparrow$\\{\scriptsize [95\% CI]}} & \shortstack{$L_1$\\(cm) $\downarrow$} & \shortstack{$L_2$\\(cm) $\downarrow$} & \shortstack{$L_3$\\(\%) $\downarrow$} \\
+\hline
+\multicolumn{6}{@{}l}{\rule{0pt}{2.1ex}\textbf{Reference rows, shared MPPI}} \\
+U (oracle) & -- & 76.3 [65.0, 86.8] & 0 & 0 & 0 \\
+Physics + mass est. & -- & 77.8 [67.5, 87.0] & 0.57 & 0.47 & 3.7 \\
+Physics (25\,g) & -- & 53.3 [42.5, 64.3] & 8.42 & 3.62 & 33.8 \\
+\hline
+\multicolumn{6}{@{}l}{\rule{0pt}{2.1ex}\textbf{Learned world models, shared MPPI}} \\
+Example MLP & -- & 15.3 [9.3, 22.3] & 12.81 & 4.67 & 51.9 \\
+JEPA \texttt{full} & 500 & 34.9 [26.5, 43.6] & 10.84 & 4.07 & 47.8 \\
+JEPA \texttt{full} & 2,000 & 50.4 [40.3, 60.3] & 9.01 & 3.56 & 47.6 \\
+JEPA \texttt{no\_cross} & 500 & 30.0 [22.6, 37.8] & 10.67 & 3.82 & 46.7 \\
+JEPA \texttt{no\_cross} & 2,000 & 49.4 [39.8, 59.0] & 8.80 & 3.48 & 46.1 \\
+JEPA \texttt{flat} & 500 & 12.2 [7.1, 18.3] & 12.59 & 4.41 & 51.4 \\
+JEPA \texttt{flat} & 2,000 & 16.2 [11.4, 21.5] & 11.20 & 4.25 & 56.4 \\
+W-ar & 500 & 45.3 [36.2, 54.3] & 9.46 & 3.44 & 43.7 \\
+W-ar & 2,000 & 46.8 [37.8, 55.5] & 8.55 & 3.07 & 41.4 \\
+PETS & 500 & 17.2 [11.4, 23.7] & 13.24 & 3.92 & 47.8 \\
+PETS & 2,000 & 23.3 [16.4, 30.9] & 12.53 & 3.72 & 46.6 \\
+\hline
+\multicolumn{6}{@{}l}{\rule{0pt}{2.1ex}\textbf{Policies without the shared planner}} \\
+CrazyMARL & -- & 40.6 [30.0, 51.5] & -- & -- & -- \\
+TD-MPC2 & -- & 0.0\textsuperscript{a} & -- & -- & -- \\
+DreamerV3 & -- & 0.0\textsuperscript{a} & -- & -- & -- \\
+\hline
+\end{tabular*}
+\par\vspace{2pt}
+\begin{minipage}{\columnwidth}
+\scriptsize\raggedright
+400 test episodes per model. For three-seed methods, $J$ pools 1,200 episodes; $L_1$--$L_3$ are seed means. Brackets: 95\% bootstrap CIs over 50 layouts. Train ep.: offline training episodes; --: not reported or not applicable. \textsuperscript{a}Zero successes across all three seeds.
+\end{minipage}
+\end{table}
