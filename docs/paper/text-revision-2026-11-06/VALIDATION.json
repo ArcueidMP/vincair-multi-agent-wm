@@ -1,0 +1,40 @@
+{
+  "source": "Read-only Overleaf main.tex snapshot from 2026-11-06",
+  "todo_lines_unchanged": 19,
+  "tables_and_equations_unchanged": true,
+  "citation_occurrences_and_order_unchanged": true,
+  "figure_inputs_unchanged": true,
+  "labels_unchanged": true,
+  "approximate_words_before": {
+    "Abstract": 251,
+    "Introduction": 745,
+    "Related Work": 244,
+    "The Arena": 1169,
+    "Evaluation Layers": 849,
+    "Results": 692,
+    "Discussion": 128,
+    "Conclusion": 0
+  },
+  "approximate_words_after": {
+    "Abstract": 181,
+    "Introduction": 394,
+    "Related Work": 160,
+    "The Arena": 841,
+    "Evaluation Layers": 542,
+    "Results": 447,
+    "Discussion": 81,
+    "Conclusion": 0
+  },
+  "total_before": 4078,
+  "total_after": 2646,
+  "pages_before": 9,
+  "pages_after": 8,
+  "latex_warnings": [],
+  "underfull_box_messages": [
+    "Underfull \\vbox (badness 10000) has occurred while \\output is active []",
+    "Underfull \\hbox (badness 3168) in paragraph at lines 119--120",
+    "Underfull \\vbox (badness 1189) has occurred while \\output is active []",
+    "Underfull \\hbox (badness 1418) in paragraph at lines 152--157"
+  ],
+  "overleaf_modified": false
+}
